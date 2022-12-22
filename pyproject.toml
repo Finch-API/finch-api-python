@@ -5,7 +5,7 @@ description = "Client library for the Finch API"
 readme = "README.md"
 authors = ["Finch <founders@tryfinch.com>"]
 license = "Apache-2.0"
-repository = "https://github.com/Finch-API/finch-python"
+repository = "https://github.com/Finch-API/finch-api-python"
 packages = [
   { include = "finch", from = "src" }
 ]
