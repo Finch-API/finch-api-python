@@ -342,6 +342,32 @@ class TestFinch:
         assert isinstance(response, Model1)
         assert response.foo == 1
 
+    def test_base_url_trailing_slash(self) -> None:
+        client = Finch(
+            base_url="http://localhost:5000/custom/path/", access_token=access_token, _strict_response_validation=True
+        )
+        request = client._build_request(
+            FinalRequestOptions(
+                method="post",
+                url="/foo",
+                json_data={"foo": "bar"},
+            ),
+        )
+        assert request.url == "http://localhost:5000/custom/path/foo"
+
+    def test_base_url_no_trailing_slash(self) -> None:
+        client = Finch(
+            base_url="http://localhost:5000/custom/path", access_token=access_token, _strict_response_validation=True
+        )
+        request = client._build_request(
+            FinalRequestOptions(
+                method="post",
+                url="/foo",
+                json_data={"foo": "bar"},
+            ),
+        )
+        assert request.url == "http://localhost:5000/custom/path/foo"
+
 
 class TestAsyncFinch:
     client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -658,3 +684,29 @@ class TestAsyncFinch:
         response = await self.client.get("/foo", cast_to=cast(Any, Union[Model1, Model2]))
         assert isinstance(response, Model1)
         assert response.foo == 1
+
+    def test_base_url_trailing_slash(self) -> None:
+        client = AsyncFinch(
+            base_url="http://localhost:5000/custom/path/", access_token=access_token, _strict_response_validation=True
+        )
+        request = client._build_request(
+            FinalRequestOptions(
+                method="post",
+                url="/foo",
+                json_data={"foo": "bar"},
+            ),
+        )
+        assert request.url == "http://localhost:5000/custom/path/foo"
+
+    def test_base_url_no_trailing_slash(self) -> None:
+        client = AsyncFinch(
+            base_url="http://localhost:5000/custom/path", access_token=access_token, _strict_response_validation=True
+        )
+        request = client._build_request(
+            FinalRequestOptions(
+                method="post",
+                url="/foo",
+                json_data={"foo": "bar"},
+            ),
+        )
+        assert request.url == "http://localhost:5000/custom/path/foo"
