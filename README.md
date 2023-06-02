@@ -236,7 +236,7 @@ If you need to, you can override it by setting default headers per-request or on
 from finch import Finch
 
 finch = Finch(
-    default_headers={"Finch-API-Version": My - Custom - Value},
+    default_headers={"Finch-API-Version": "My-Custom-Value"},
 )
 ```
 
