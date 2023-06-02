@@ -33,9 +33,9 @@ class TestBenefits:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         benefit = client.hris.benefits.create(
-            type="401k",
             description="string",
             frequency="one_time",
+            type="401k",
         )
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 
@@ -85,9 +85,9 @@ class TestAsyncBenefits:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncFinch) -> None:
         benefit = await client.hris.benefits.create(
-            type="401k",
             description="string",
             frequency="one_time",
+            type="401k",
         )
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 

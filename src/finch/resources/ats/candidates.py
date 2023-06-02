@@ -28,6 +28,15 @@ class Candidates(SyncAPIResource):
 
         A candidate represents an individual
         associated with one or more applications.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             f"/ats/candidates/{candidate_id}",
@@ -103,6 +112,15 @@ class AsyncCandidates(AsyncAPIResource):
 
         A candidate represents an individual
         associated with one or more applications.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             f"/ats/candidates/{candidate_id}",

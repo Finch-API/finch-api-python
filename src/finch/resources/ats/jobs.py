@@ -24,7 +24,18 @@ class Jobs(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Job:
-        """Gets a job from an organization."""
+        """
+        Gets a job from an organization.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/ats/jobs/{job_id}",
             options=make_request_options(
@@ -93,7 +104,18 @@ class AsyncJobs(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Job:
-        """Gets a job from an organization."""
+        """
+        Gets a job from an organization.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/ats/jobs/{job_id}",
             options=make_request_options(

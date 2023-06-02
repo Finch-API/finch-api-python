@@ -8,6 +8,11 @@ from typing_extensions import Required, TypedDict
 __all__ = ["EmploymentDataRetrieveManyParams", "Request"]
 
 
+class EmploymentDataRetrieveManyParams(TypedDict, total=False):
+    requests: Required[List[Request]]
+    """The array of batch requests."""
+
+
 class Request(TypedDict, total=False):
     individual_id: Required[str]
     """A stable Finch `id` (UUID v4) for an individual in the company.
@@ -16,8 +21,3 @@ class Request(TypedDict, total=False):
     preferantial to send all ids in a single request for Finch to optimize provider
     rate-limits.
     """
-
-
-class EmploymentDataRetrieveManyParams(TypedDict, total=False):
-    requests: Required[List[Request]]
-    """The array of batch requests."""
