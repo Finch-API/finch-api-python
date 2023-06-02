@@ -56,8 +56,8 @@ class Payments(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_date": start_date,
                         "end_date": end_date,
+                        "start_date": start_date,
                     },
                     payment_list_params.PaymentListParams,
                 ),
@@ -107,8 +107,8 @@ class AsyncPayments(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "start_date": start_date,
                         "end_date": end_date,
+                        "start_date": start_date,
                     },
                     payment_list_params.PaymentListParams,
                 ),
