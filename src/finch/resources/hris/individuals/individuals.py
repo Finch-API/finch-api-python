@@ -54,8 +54,8 @@ class Individuals(SyncAPIResource):
             page=SyncResponsesPage[IndividualResponse],
             body=maybe_transform(
                 {
-                    "requests": requests,
                     "options": options,
+                    "requests": requests,
                 },
                 individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),
@@ -103,8 +103,8 @@ class AsyncIndividuals(AsyncAPIResource):
             page=AsyncResponsesPage[IndividualResponse],
             body=maybe_transform(
                 {
-                    "requests": requests,
                     "options": options,
+                    "requests": requests,
                 },
                 individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),

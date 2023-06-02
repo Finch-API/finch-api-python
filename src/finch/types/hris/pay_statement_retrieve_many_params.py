@@ -8,6 +8,11 @@ from typing_extensions import Required, TypedDict
 __all__ = ["PayStatementRetrieveManyParams", "Request"]
 
 
+class PayStatementRetrieveManyParams(TypedDict, total=False):
+    requests: Required[List[Request]]
+    """The array of batch requests."""
+
+
 class Request(TypedDict, total=False):
     payment_id: Required[str]
     """A stable Finch `id` (UUID v4) for a payment."""
@@ -17,8 +22,3 @@ class Request(TypedDict, total=False):
 
     offset: int
     """Index to start from."""
-
-
-class PayStatementRetrieveManyParams(TypedDict, total=False):
-    requests: Required[List[Request]]
-    """The array of batch requests."""

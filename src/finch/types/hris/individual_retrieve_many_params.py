@@ -5,18 +5,18 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import TypedDict
 
-__all__ = ["IndividualRetrieveManyParams", "Request", "Options"]
-
-
-class Request(TypedDict, total=False):
-    individual_id: str
-
-
-class Options(TypedDict, total=False):
-    include: List[str]
+__all__ = ["IndividualRetrieveManyParams", "Options", "Request"]
 
 
 class IndividualRetrieveManyParams(TypedDict, total=False):
     options: Optional[Options]
 
     requests: List[Request]
+
+
+class Options(TypedDict, total=False):
+    include: List[str]
+
+
+class Request(TypedDict, total=False):
+    individual_id: str

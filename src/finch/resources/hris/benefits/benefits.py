@@ -68,9 +68,9 @@ class Benefits(SyncAPIResource):
             "/employer/benefits",
             body=maybe_transform(
                 {
-                    "type": type,
                     "description": description,
                     "frequency": frequency,
+                    "type": type,
                 },
                 benefit_create_params.BenefitCreateParams,
             ),
@@ -95,6 +95,15 @@ class Benefits(SyncAPIResource):
         **Availability: Automated Benefits providers only**
 
         Lists benefit information for a given benefit
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             f"/employer/benefits/{benefit_id}",
@@ -232,9 +241,9 @@ class AsyncBenefits(AsyncAPIResource):
             "/employer/benefits",
             body=maybe_transform(
                 {
-                    "type": type,
                     "description": description,
                     "frequency": frequency,
+                    "type": type,
                 },
                 benefit_create_params.BenefitCreateParams,
             ),
@@ -259,6 +268,15 @@ class AsyncBenefits(AsyncAPIResource):
         **Availability: Automated Benefits providers only**
 
         Lists benefit information for a given benefit
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             f"/employer/benefits/{benefit_id}",

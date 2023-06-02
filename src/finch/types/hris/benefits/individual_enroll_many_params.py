@@ -3,16 +3,18 @@
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
-__all__ = ["IndividualEnrollManyParam"]
+__all__ = ["IndividualEnrollManyParams", "Individual"]
 
 
-class IndividualEnrollManyParam(TypedDict, total=False):
+class IndividualEnrollManyParams(TypedDict, total=False):
+    individuals: Required[List[Individual]]
+    """Array of the individual_id to enroll and a configuration object."""
+
+
+class Individual(TypedDict, total=False):
     configuration: object
 
     individual_id: str
     """Finch id (uuidv4) for the individual to enroll"""
-
-
-IndividualEnrollManyParams = List[IndividualEnrollManyParam]

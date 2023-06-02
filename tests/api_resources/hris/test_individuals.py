@@ -28,8 +28,8 @@ class TestIndividuals:
     @parametrize
     def test_method_retrieve_many_with_all_params(self, client: Finch) -> None:
         individual = client.hris.individuals.retrieve_many(
-            requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
             options={"include": ["string", "string", "string"]},
+            requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
         )
         assert_matches_type(SyncResponsesPage[IndividualResponse], individual, path=["response"])
 
@@ -47,7 +47,7 @@ class TestAsyncIndividuals:
     @parametrize
     async def test_method_retrieve_many_with_all_params(self, client: AsyncFinch) -> None:
         individual = await client.hris.individuals.retrieve_many(
-            requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
             options={"include": ["string", "string", "string"]},
+            requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
         )
         assert_matches_type(AsyncResponsesPage[IndividualResponse], individual, path=["response"])
