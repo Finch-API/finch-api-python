@@ -25,9 +25,8 @@ finch = Finch(
     access_token="my access token",
 )
 
-page = finch.hris.directory.list_individuals()
-directory = page.individuals[0]
-print(directory.ein)
+candidate = finch.ats.candidates.retrieve()
+print(candidate.first_name)
 ```
 
 ## Async Usage
@@ -43,8 +42,8 @@ finch = AsyncFinch(
 
 
 async def main():
-    page = await finch.hris.directory.list_individuals()
-    print(page.individuals[0].ein)
+    candidate = await finch.ats.candidates.retrieve()
+    print(candidate.first_name)
 
 
 asyncio.run(main())
