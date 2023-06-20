@@ -25,7 +25,9 @@ finch = Finch(
     access_token="my access token",
 )
 
-candidate = finch.ats.candidates.retrieve()
+candidate = finch.ats.candidates.retrieve(
+    "<candidate id>",
+)
 print(candidate.first_name)
 ```
 
@@ -42,7 +44,9 @@ finch = AsyncFinch(
 
 
 async def main():
-    candidate = await finch.ats.candidates.retrieve()
+    candidate = await finch.ats.candidates.retrieve(
+        "<candidate id>",
+    )
     print(candidate.first_name)
 
 
