@@ -235,6 +235,8 @@ We automatically send the `Finch-API-Version` header set to `2020-09-17`.
 
 If you need to, you can override it by setting default headers per-request or on the client object.
 
+Be aware that doing so may result in incorrect types and other unexpected or undefined behavior in the SDK.
+
 ```python
 from finch import Finch
 
