@@ -8,14 +8,14 @@ __all__ = ["Provider"]
 
 
 class Provider(BaseModel):
+    id: Optional[str]
+    """The id of the payroll provider used in Connect."""
+
     display_name: Optional[str]
     """The display name of the payroll provider."""
 
     icon: Optional[str]
     """The url to the official icon of the payroll provider."""
-
-    id: Optional[str]
-    """The id of the payroll provider used in Connect."""
 
     logo: Optional[str]
     """The url to the official logo of the payroll provider."""

@@ -28,6 +28,8 @@ class HiringTeam(BaseModel):
 
 
 class Job(BaseModel):
+    id: str
+
     closed_at: Optional[datetime]
 
     created_at: Optional[datetime]
@@ -35,8 +37,6 @@ class Job(BaseModel):
     department: Department
 
     hiring_team: HiringTeam
-
-    id: str
 
     name: Optional[str]
 

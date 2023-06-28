@@ -7,7 +7,7 @@ from ...types import money
 from ..._models import BaseModel
 from ...types.hris import benefit_type
 
-__all__ = ["PayStatement", "Earning", "Tax", "EmployeeDeduction", "EmployerContribution"]
+__all__ = ["PayStatement", "Earning", "EmployeeDeduction", "EmployerContribution", "Tax"]
 
 
 class Earning(BaseModel):
@@ -47,23 +47,6 @@ class Earning(BaseModel):
     """The type of earning."""
 
 
-class Tax(BaseModel):
-    amount: Optional[int]
-    """The tax amount in cents."""
-
-    currency: Optional[str]
-    """The currency code."""
-
-    employer: Optional[bool]
-    """`true` if the amount is paid by the employers."""
-
-    name: Optional[str]
-    """The exact name of tax from the pay statement."""
-
-    type: Optional[Literal["state", "federal", "local", "fica"]]
-    """The type of taxes."""
-
-
 class EmployeeDeduction(BaseModel):
     amount: Optional[int]
     """The deduction amount in cents."""
@@ -93,6 +76,23 @@ class EmployerContribution(BaseModel):
 
     type: Optional[benefit_type.BenefitType]
     """Type of benefit."""
+
+
+class Tax(BaseModel):
+    amount: Optional[int]
+    """The tax amount in cents."""
+
+    currency: Optional[str]
+    """The currency code."""
+
+    employer: Optional[bool]
+    """`true` if the amount is paid by the employers."""
+
+    name: Optional[str]
+    """The exact name of tax from the pay statement."""
+
+    type: Optional[Literal["state", "federal", "local", "fica"]]
+    """The type of taxes."""
 
 
 class PayStatement(BaseModel):

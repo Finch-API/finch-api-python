@@ -15,6 +15,9 @@ class PayPeriod(BaseModel):
 
 
 class Payment(BaseModel):
+    id: Optional[str]
+    """The unique id for the payment."""
+
     company_debit: Optional[money.Money]
 
     debit_date: Optional[str]
@@ -24,9 +27,6 @@ class Payment(BaseModel):
     employer_taxes: Optional[money.Money]
 
     gross_pay: Optional[money.Money]
-
-    id: Optional[str]
-    """The unique id for the payment."""
 
     individual_ids: Optional[List[str]]
     """Array of every individual on this payment."""
