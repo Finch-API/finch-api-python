@@ -6,28 +6,7 @@ from typing_extensions import Literal
 from ...types import location
 from ..._models import BaseModel
 
-__all__ = ["Company", "Entity", "Department", "DepartmentParent", "Account"]
-
-
-class Entity(BaseModel):
-    subtype: Optional[Literal["s_corporation", "c_corporation", "b_corporation"]]
-    """The tax payer subtype of the company."""
-
-    type: Optional[Literal["llc", "corporation", "sole_proprietor", "non_profit", "partnership", "cooperative"]]
-    """The tax payer type of the company."""
-
-
-class DepartmentParent(BaseModel):
-    name: Optional[str]
-    """The parent department's name."""
-
-
-class Department(BaseModel):
-    name: Optional[str]
-    """The department name."""
-
-    parent: Optional[DepartmentParent]
-    """The parent department, if present."""
+__all__ = ["Company", "Account", "Department", "DepartmentParent", "Entity"]
 
 
 class Account(BaseModel):
@@ -50,7 +29,31 @@ class Account(BaseModel):
     """
 
 
+class DepartmentParent(BaseModel):
+    name: Optional[str]
+    """The parent department's name."""
+
+
+class Department(BaseModel):
+    name: Optional[str]
+    """The department name."""
+
+    parent: Optional[DepartmentParent]
+    """The parent department, if present."""
+
+
+class Entity(BaseModel):
+    subtype: Optional[Literal["s_corporation", "c_corporation", "b_corporation"]]
+    """The tax payer subtype of the company."""
+
+    type: Optional[Literal["llc", "corporation", "sole_proprietor", "non_profit", "partnership", "cooperative"]]
+    """The tax payer type of the company."""
+
+
 class Company(BaseModel):
+    id: str
+    """A stable Finch `id` (UUID v4) for the company."""
+
     accounts: Optional[List[Account]]
     """An array of bank account objects associated with the payroll/HRIS system."""
 
@@ -62,9 +65,6 @@ class Company(BaseModel):
 
     entity: Optional[Entity]
     """The entity type object."""
-
-    id: str
-    """A stable Finch `id` (UUID v4) for the company."""
 
     legal_name: Optional[str]
     """The legal name of the company."""

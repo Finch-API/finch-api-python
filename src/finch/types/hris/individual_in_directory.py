@@ -4,12 +4,7 @@ from typing import Optional
 
 from ..._models import BaseModel
 
-__all__ = ["IndividualInDirectory", "Manager", "Department"]
-
-
-class Manager(BaseModel):
-    id: Optional[str]
-    """A stable Finch `id` (UUID v4) for an individual in the company."""
+__all__ = ["IndividualInDirectory", "Department", "Manager"]
 
 
 class Department(BaseModel):
@@ -17,15 +12,20 @@ class Department(BaseModel):
     """The name of the department."""
 
 
+class Manager(BaseModel):
+    id: Optional[str]
+    """A stable Finch `id` (UUID v4) for an individual in the company."""
+
+
 class IndividualInDirectory(BaseModel):
+    id: Optional[str]
+    """A stable Finch id (UUID v4) for an individual in the company."""
+
     department: Optional[Department]
     """The department object."""
 
     first_name: Optional[str]
     """The legal first name of the individual."""
-
-    id: Optional[str]
-    """A stable Finch id (UUID v4) for an individual in the company."""
 
     is_active: Optional[bool]
     """`true` if the individual is an active employee or contractor at the company."""

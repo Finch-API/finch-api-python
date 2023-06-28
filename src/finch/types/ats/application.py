@@ -14,9 +14,9 @@ class RejectedReason(BaseModel):
 
 
 class Application(BaseModel):
-    candidate_id: str
-
     id: str
+
+    candidate_id: str
 
     job_id: str
 

@@ -21,6 +21,8 @@ class PhoneNumber(BaseModel):
 
 
 class Candidate(BaseModel):
+    id: str
+
     application_ids: List[str]
     """Array of Finch uuids corresponding to `application`s for this individual"""
 
@@ -31,8 +33,6 @@ class Candidate(BaseModel):
     first_name: Optional[str]
 
     full_name: Optional[str]
-
-    id: str
 
     last_activity_at: datetime
 

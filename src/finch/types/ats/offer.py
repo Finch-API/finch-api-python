@@ -9,13 +9,13 @@ __all__ = ["Offer"]
 
 
 class Offer(BaseModel):
+    id: str
+
     application_id: str
 
     candidate_id: str
 
     created_at: datetime
-
-    id: str
 
     job_id: str
 

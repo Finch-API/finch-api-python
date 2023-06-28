@@ -22,6 +22,9 @@ class PhoneNumber(BaseModel):
 
 
 class Individual(BaseModel):
+    id: Optional[str]
+    """A stable Finch `id` (UUID v4) for an individual in the company."""
+
     dob: Optional[str]
 
     emails: Optional[List[Email]]
@@ -31,9 +34,6 @@ class Individual(BaseModel):
 
     gender: Optional[Literal["female", "male", "other", "decline_to_specify"]]
     """The gender of the individual."""
-
-    id: Optional[str]
-    """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     last_name: Optional[str]
     """The legal last name of the individual."""
