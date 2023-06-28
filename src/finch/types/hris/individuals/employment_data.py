@@ -8,12 +8,7 @@ from pydantic import Field as FieldInfo
 from ....types import income, location
 from ...._models import BaseModel
 
-__all__ = ["EmploymentData", "Manager", "Department", "Employment"]
-
-
-class Manager(BaseModel):
-    id: Optional[str]
-    """A stable Finch `id` (UUID v4) for an individual in the company."""
+__all__ = ["EmploymentData", "Department", "Employment", "Manager"]
 
 
 class Department(BaseModel):
@@ -33,7 +28,15 @@ class Employment(BaseModel):
     """The main employment type of the individual."""
 
 
+class Manager(BaseModel):
+    id: Optional[str]
+    """A stable Finch `id` (UUID v4) for an individual in the company."""
+
+
 class EmploymentData(BaseModel):
+    id: Optional[str]
+    """string A stable Finch `id` (UUID v4) for an individual in the company."""
+
     class_code: Optional[str]
     """Worker's compensation classification code for this employee"""
 
@@ -47,9 +50,6 @@ class EmploymentData(BaseModel):
 
     first_name: Optional[str]
     """The legal first name of the individual."""
-
-    id: Optional[str]
-    """string A stable Finch `id` (UUID v4) for an individual in the company."""
 
     income_history: Optional[List[Optional[income.Income]]]
     """The array of income history."""
