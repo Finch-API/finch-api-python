@@ -1,9 +1,9 @@
-# Top Level
+# Finch
 
-Custom Methods:
+Methods:
 
-- `get_access_token`
-- `get_auth_url`
+- <code>client.<a href="./src/finch/_client.py">get_access_token</a>(\*args) -> str</code>
+- <code>client.<a href="./src/finch/_client.py">get_auth_url</a>(\*args) -> str</code>
 
 # ATS
 
