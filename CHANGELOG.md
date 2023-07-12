@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.4](https://github.com/Finch-API/finch-api-python/compare/v0.0.3...v0.0.4) (2023-07-12)
+
+
+### Chores
+
+* **package:** pin major versions of dependencies ([#36](https://github.com/Finch-API/finch-api-python/issues/36)) ([e8b1500](https://github.com/Finch-API/finch-api-python/commit/e8b1500ca2c3b309fcc27197b4d5cd76cb42632a))
+* **package:** pin major versions of dependencies ([#38](https://github.com/Finch-API/finch-api-python/issues/38)) ([ac82ea9](https://github.com/Finch-API/finch-api-python/commit/ac82ea965df7124d29293fda0af92467a876c03d))
+
 ## [0.0.3](https://github.com/Finch-API/finch-api-python/compare/v0.0.2...v0.0.3) (2023-07-07)
 
 
