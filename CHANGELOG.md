@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/Finch-API/finch-api-python/compare/v0.0.4...v0.0.5) (2023-07-17)
+
+
+### Chores
+
+* **internal:** add `codegen.log` to `.gitignore` ([#40](https://github.com/Finch-API/finch-api-python/issues/40)) ([54f5028](https://github.com/Finch-API/finch-api-python/commit/54f50284611843b4a40986d6f553af4e6e5a5198))
+
 ## [0.0.4](https://github.com/Finch-API/finch-api-python/compare/v0.0.3...v0.0.4) (2023-07-12)
 
 
