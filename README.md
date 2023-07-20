@@ -151,12 +151,13 @@ response), a subclass of `finch.APIStatusError` will be raised, containing `stat
 All errors inherit from `finch.APIError`.
 
 ```python
+import finch
 from finch import Finch
 
-finch = Finch()
+client = Finch()
 
 try:
-    finch.hris.directory.list_individuals()
+    client.hris.directory.list_individuals()
 except finch.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
