@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/Finch-API/finch-api-python/compare/v0.0.5...v0.0.6) (2023-07-22)
+
+
+### Documentation
+
+* **readme:** reference "client" in errors section and add missing import ([#43](https://github.com/Finch-API/finch-api-python/issues/43)) ([3d5a742](https://github.com/Finch-API/finch-api-python/commit/3d5a742ce6b1341377368fd36b092bef024796f3))
+
 ## [0.0.5](https://github.com/Finch-API/finch-api-python/compare/v0.0.4...v0.0.5) (2023-07-17)
 
 
