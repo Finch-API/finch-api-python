@@ -21,11 +21,11 @@ pip install finch-api
 ```python
 from finch import Finch
 
-finch = Finch(
+client = Finch(
     access_token="my access token",
 )
 
-candidate = finch.ats.candidates.retrieve(
+candidate = client.ats.candidates.retrieve(
     "<candidate id>",
 )
 print(candidate.first_name)
@@ -38,13 +38,13 @@ Simply import `AsyncFinch` instead of `Finch` and use `await` with each API call
 ```python
 from finch import AsyncFinch
 
-finch = AsyncFinch(
+client = AsyncFinch(
     access_token="my access token",
 )
 
 
 async def main():
-    candidate = await finch.ats.candidates.retrieve(
+    candidate = await client.ats.candidates.retrieve(
         "<candidate id>",
     )
     print(candidate.first_name)
@@ -70,11 +70,11 @@ This library provides auto-paginating iterators with each list response, so you 
 ```python
 import finch
 
-finch = Finch()
+client = Finch()
 
 all_jobs = []
 # Automatically fetches more pages as needed.
-for job in finch.ats.jobs.list():
+for job in client.ats.jobs.list():
     # Do something with job here
     all_jobs.append(job)
 print(all_jobs)
@@ -86,13 +86,13 @@ Or, asynchronously:
 import asyncio
 import finch
 
-finch = AsyncFinch()
+client = AsyncFinch()
 
 
 async def main() -> None:
     all_jobs = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for job in finch.ats.jobs.list():
+    async for job in client.ats.jobs.list():
         all_jobs.append(job)
     print(all_jobs)
 
@@ -103,7 +103,7 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await finch.ats.jobs.list()
+first_page = await client.ats.jobs.list()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -115,7 +115,7 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await finch.ats.jobs.list()
+first_page = await client.ats.jobs.list()
 
 print(
     f"the current start offset for this page: {first_page.paging.offset}"
@@ -133,9 +133,9 @@ Nested parameters are dictionaries, typed using `TypedDict`, for example:
 ```python
 from finch import Finch
 
-finch = Finch()
+client = Finch()
 
-finch.hris.directory.list_individuals(
+client.hris.directory.list_individuals(
     path_params=[],
     params={},
 )
@@ -194,13 +194,13 @@ You can use the `max_retries` option to configure or disable this:
 from finch import Finch
 
 # Configure the default for all requests:
-finch = Finch(
+client = Finch(
     # default is 2
     max_retries=0,
 )
 
 # Or, configure per-request:
-finch.with_options(max_retries=5).hris.directory.list_individuals()
+client.with_options(max_retries=5).hris.directory.list_individuals()
 ```
 
 ### Timeouts
@@ -212,18 +212,18 @@ which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advan
 from finch import Finch
 
 # Configure the default for all requests:
-finch = Finch(
+client = Finch(
     # default is 60s
     timeout=20.0,
 )
 
 # More granular control:
-finch = Finch(
+client = Finch(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
-finch.with_options(timeout=5 * 1000).hris.directory.list_individuals()
+client.with_options(timeout=5 * 1000).hris.directory.list_individuals()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -241,7 +241,7 @@ Be aware that doing so may result in incorrect types and other unexpected or und
 ```python
 from finch import Finch
 
-finch = Finch(
+client = Finch(
     default_headers={"Finch-API-Version": "My-Custom-Value"},
 )
 ```
@@ -254,7 +254,7 @@ You can configure the following keyword arguments when instantiating the client:
 import httpx
 from finch import Finch
 
-finch = Finch(
+client = Finch(
     # Use a custom base URL
     base_url="http://my.test.server.example.com:8083",
     proxies="http://my.test.proxy.example.com",
