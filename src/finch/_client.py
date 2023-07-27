@@ -89,7 +89,7 @@ class Finch(SyncAPIClient):
         """
 
         if base_url is None:
-            base_url = "https://api.tryfinch.com"
+            base_url = f"https://api.tryfinch.com"
 
         super().__init__(
             version=__version__,
@@ -310,7 +310,7 @@ class AsyncFinch(AsyncAPIClient):
         """
 
         if base_url is None:
-            base_url = "https://api.tryfinch.com"
+            base_url = f"https://api.tryfinch.com"
 
         super().__init__(
             version=__version__,
