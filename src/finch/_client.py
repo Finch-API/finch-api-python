@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import asyncio
 from typing import Union, Mapping, Optional
 
 import httpx
@@ -87,6 +88,13 @@ class Finch(SyncAPIClient):
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
         """
+        self.access_token = access_token
+
+        client_id_envvar = os.environ.get("FINCH_CLIENT_ID", None)
+        self.client_id = client_id or client_id_envvar or None
+
+        client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
+        self.client_secret = client_secret or client_secret_envvar or None
 
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
@@ -103,14 +111,6 @@ class Finch(SyncAPIClient):
             custom_query=default_query,
             _strict_response_validation=_strict_response_validation,
         )
-
-        self.access_token = access_token
-
-        client_id_envvar = os.environ.get("FINCH_CLIENT_ID", None)
-        self.client_id = client_id or client_id_envvar or None
-
-        client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
-        self.client_secret = client_secret or client_secret_envvar or None
 
         self.ats = resources.ATS(self)
         self.hris = resources.HRIS(self)
@@ -203,6 +203,9 @@ class Finch(SyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def __del__(self) -> None:
+        self.close()
 
     def get_access_token(
         self,
@@ -308,6 +311,13 @@ class AsyncFinch(AsyncAPIClient):
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
         """
+        self.access_token = access_token
+
+        client_id_envvar = os.environ.get("FINCH_CLIENT_ID", None)
+        self.client_id = client_id or client_id_envvar or None
+
+        client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
+        self.client_secret = client_secret or client_secret_envvar or None
 
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
@@ -324,14 +334,6 @@ class AsyncFinch(AsyncAPIClient):
             custom_query=default_query,
             _strict_response_validation=_strict_response_validation,
         )
-
-        self.access_token = access_token
-
-        client_id_envvar = os.environ.get("FINCH_CLIENT_ID", None)
-        self.client_id = client_id or client_id_envvar or None
-
-        client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
-        self.client_secret = client_secret or client_secret_envvar or None
 
         self.ats = resources.AsyncATS(self)
         self.hris = resources.AsyncHRIS(self)
@@ -424,6 +426,12 @@ class AsyncFinch(AsyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def __del__(self) -> None:
+        try:
+            asyncio.get_running_loop().create_task(self.close())
+        except Exception:
+            pass
 
     async def get_access_token(
         self,
