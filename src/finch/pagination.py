@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import List, Type, Generic, Mapping, TypeVar, Optional
+from typing import Any, List, Type, Generic, Mapping, TypeVar, Optional, cast
 
 from httpx import Response
 
 from ._types import ModelT
+from ._utils import is_mapping
 from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
@@ -45,7 +46,7 @@ class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:
         return cls.construct(
             **{
-                **(data if isinstance(data, Mapping) else {"items": data}),
+                **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
             }
         )
 
@@ -67,7 +68,7 @@ class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:
         return cls.construct(
             **{
-                **(data if isinstance(data, Mapping) else {"items": data}),
+                **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
             }
         )
 
