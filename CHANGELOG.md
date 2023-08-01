@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.0.7](https://github.com/Finch-API/finch-api-python/compare/v0.0.6...v0.0.7) (2023-08-01)
+
+
+### Documentation
+
+* **readme:** use `client` everywhere for consistency ([5a2c941](https://github.com/Finch-API/finch-api-python/commit/5a2c941e02c068fa9d3da1665099f1657812c1ea))
+
+
+### Chores
+
+* **internal:** bump pyright ([#48](https://github.com/Finch-API/finch-api-python/issues/48)) ([36353e3](https://github.com/Finch-API/finch-api-python/commit/36353e36693a2ee73cc2d745f893c90190235f92))
+* **internal:** bump pyright ([#49](https://github.com/Finch-API/finch-api-python/issues/49)) ([bd4d420](https://github.com/Finch-API/finch-api-python/commit/bd4d4207aab19ad76e8d9a520c2c2c2c563b788c))
+* **internal:** minor refactoring of client instantiation ([1eff35f](https://github.com/Finch-API/finch-api-python/commit/1eff35f077f28c82fbcc594053d6ecf9088e20e1))
+* **internal:** minor reformatting of code ([#46](https://github.com/Finch-API/finch-api-python/issues/46)) ([8ed806e](https://github.com/Finch-API/finch-api-python/commit/8ed806e6c94f0bb315b395d5257ea883401151bc))
+* remove unused resource classes ([def0f2e](https://github.com/Finch-API/finch-api-python/commit/def0f2e0a09b99c50ed3aaecb5e5ba0bf22ca618))
+
 ## [0.0.6](https://github.com/Finch-API/finch-api-python/compare/v0.0.5...v0.0.6) (2023-07-22)
 
 
