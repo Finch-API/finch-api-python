@@ -4,7 +4,7 @@ from typing import Optional
 from datetime import datetime
 
 from ..._models import BaseModel
-from ...types.ats import stage
+from ...types.ats.stage import Stage
 
 __all__ = ["Application", "RejectedReason"]
 
@@ -26,4 +26,4 @@ class Application(BaseModel):
 
     rejected_reason: Optional[RejectedReason]
 
-    stage: Optional[stage.Stage]
+    stage: Optional[Stage]
