@@ -3,13 +3,13 @@
 from typing import Optional
 
 from ...._models import BaseModel
-from ....types.hris.individuals import employment_data
+from .employment_data import EmploymentData
 
 __all__ = ["EmploymentDataResponse"]
 
 
 class EmploymentDataResponse(BaseModel):
-    body: Optional[employment_data.EmploymentData]
+    body: Optional[EmploymentData]
 
     code: Optional[int]
 

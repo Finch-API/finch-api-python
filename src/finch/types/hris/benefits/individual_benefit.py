@@ -4,7 +4,7 @@ from typing import Optional
 from typing_extensions import Literal
 
 from ...._models import BaseModel
-from ....types.hris import benfit_contribution
+from ..benfit_contribution import BenfitContribution
 
 __all__ = ["IndividualBenefit", "Body"]
 
@@ -21,9 +21,9 @@ class Body(BaseModel):
     for this individual.
     """
 
-    company_contribution: Optional[benfit_contribution.BenfitContribution]
+    company_contribution: Optional[BenfitContribution]
 
-    employee_deduction: Optional[benfit_contribution.BenfitContribution]
+    employee_deduction: Optional[BenfitContribution]
 
     hsa_contribution_limit: Optional[Literal["individual", "family"]]
     """Type for HSA contribution limit if the benefit is a HSA."""

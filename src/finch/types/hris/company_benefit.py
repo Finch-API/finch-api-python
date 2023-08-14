@@ -3,7 +3,9 @@
 from typing import Optional
 
 from ..._models import BaseModel
-from ...types.hris import benefit_type, benefit_frequency, benfit_contribution
+from .benefit_type import BenefitType
+from .benefit_frequency import BenefitFrequency
+from .benfit_contribution import BenfitContribution
 
 __all__ = ["CompanyBenefit"]
 
@@ -11,13 +13,13 @@ __all__ = ["CompanyBenefit"]
 class CompanyBenefit(BaseModel):
     benefit_id: str
 
-    company_contribution: Optional[benfit_contribution.BenfitContribution]
+    company_contribution: Optional[BenfitContribution]
 
     description: Optional[str]
 
-    employee_deduction: Optional[benfit_contribution.BenfitContribution]
+    employee_deduction: Optional[BenfitContribution]
 
-    frequency: Optional[benefit_frequency.BenefitFrequency]
+    frequency: Optional[BenefitFrequency]
 
-    type: Optional[benefit_type.BenefitType]
+    type: Optional[BenefitType]
     """Type of benefit."""

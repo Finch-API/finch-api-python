@@ -3,9 +3,9 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from ...types import money
+from ..money import Money
 from ..._models import BaseModel
-from ...types.hris import benefit_type
+from .benefit_type import BenefitType
 
 __all__ = ["PayStatement", "Earning", "EmployeeDeduction", "EmployerContribution", "Tax"]
 
@@ -60,7 +60,7 @@ class EmployeeDeduction(BaseModel):
     pre_tax: Optional[bool]
     """Boolean indicating if the deduction is pre-tax."""
 
-    type: Optional[benefit_type.BenefitType]
+    type: Optional[BenefitType]
     """Type of benefit."""
 
 
@@ -74,7 +74,7 @@ class EmployerContribution(BaseModel):
     name: Optional[str]
     """The contribution name from the pay statement."""
 
-    type: Optional[benefit_type.BenefitType]
+    type: Optional[BenefitType]
     """Type of benefit."""
 
 
@@ -104,12 +104,12 @@ class PayStatement(BaseModel):
 
     employer_contributions: Optional[List[Optional[EmployerContribution]]]
 
-    gross_pay: Optional[money.Money]
+    gross_pay: Optional[Money]
 
     individual_id: Optional[str]
     """A stable Finch `id` (UUID v4) for an individual in the company"""
 
-    net_pay: Optional[money.Money]
+    net_pay: Optional[Money]
 
     payment_method: Optional[Literal["check", "direct_deposit"]]
     """The payment method."""

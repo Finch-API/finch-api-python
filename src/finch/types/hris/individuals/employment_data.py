@@ -5,10 +5,9 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ....types import income
+from ...income import Income
 from ...._models import BaseModel
-from ....types.income import Income
-from ....types.location import Location
+from ...location import Location
 
 __all__ = ["EmploymentData", "Department", "Employment", "Manager"]
 
@@ -53,7 +52,7 @@ class EmploymentData(BaseModel):
     first_name: Optional[str]
     """The legal first name of the individual."""
 
-    income_history: Optional[List[Optional[income.Income]]]
+    income_history: Optional[List[Optional[Income]]]
     """The array of income history."""
 
     income: Optional[Income]

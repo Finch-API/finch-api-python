@@ -2,9 +2,9 @@
 
 from typing import List, Optional
 
+from ..paging import Paging
 from ..._models import BaseModel
-from ...types.hris import pay_statement
-from ...types.paging import Paging
+from .pay_statement import PayStatement
 
 __all__ = ["PayStatementResponseBody"]
 
@@ -12,5 +12,5 @@ __all__ = ["PayStatementResponseBody"]
 class PayStatementResponseBody(BaseModel):
     paging: Optional[Paging]
 
-    pay_statements: Optional[List[pay_statement.PayStatement]]
+    pay_statements: Optional[List[PayStatement]]
     """The array of pay statements for the current payment."""
