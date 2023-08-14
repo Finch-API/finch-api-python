@@ -3,8 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from ...types import location
 from ..._models import BaseModel
+from ..location import Location
 
 __all__ = ["Individual", "Email", "PhoneNumber"]
 
@@ -46,7 +46,7 @@ class Individual(BaseModel):
     preferred_name: Optional[str]
     """The preferred name of the individual."""
 
-    residence: Optional[location.Location]
+    residence: Optional[Location]
 
     ssn: Optional[str]
     """Note: This property is only available if enabled for your account.
