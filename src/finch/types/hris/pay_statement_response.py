@@ -3,13 +3,13 @@
 from typing import Optional
 
 from ..._models import BaseModel
-from ...types.hris import pay_statement_response_body
+from .pay_statement_response_body import PayStatementResponseBody
 
 __all__ = ["PayStatementResponse"]
 
 
 class PayStatementResponse(BaseModel):
-    body: Optional[pay_statement_response_body.PayStatementResponseBody]
+    body: Optional[PayStatementResponseBody]
 
     code: Optional[int]
 

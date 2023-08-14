@@ -3,8 +3,8 @@
 from typing import Optional
 from datetime import datetime
 
+from .stage import Stage
 from ..._models import BaseModel
-from ...types.ats.stage import Stage
 
 __all__ = ["Application", "RejectedReason"]
 

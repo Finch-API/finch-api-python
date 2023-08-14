@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 
-from ...types import money
+from ..money import Money
 from ..._models import BaseModel
 
 __all__ = ["Payment", "PayPeriod"]
@@ -18,20 +18,20 @@ class Payment(BaseModel):
     id: Optional[str]
     """The unique id for the payment."""
 
-    company_debit: Optional[money.Money]
+    company_debit: Optional[Money]
 
     debit_date: Optional[str]
 
-    employee_taxes: Optional[money.Money]
+    employee_taxes: Optional[Money]
 
-    employer_taxes: Optional[money.Money]
+    employer_taxes: Optional[Money]
 
-    gross_pay: Optional[money.Money]
+    gross_pay: Optional[Money]
 
     individual_ids: Optional[List[str]]
     """Array of every individual on this payment."""
 
-    net_pay: Optional[money.Money]
+    net_pay: Optional[Money]
 
     pay_date: Optional[str]
 

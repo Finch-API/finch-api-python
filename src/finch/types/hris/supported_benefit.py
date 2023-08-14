@@ -4,7 +4,7 @@ from typing import List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from ...types.hris import benefit_type
+from .benefit_type import BenefitType
 
 __all__ = ["SupportedBenefit"]
 
@@ -43,5 +43,5 @@ class SupportedBenefit(BaseModel):
     values for HSA benefits.
     """
 
-    type: Optional[benefit_type.BenefitType]
+    type: Optional[BenefitType]
     """Type of benefit."""

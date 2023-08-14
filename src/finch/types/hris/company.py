@@ -3,8 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from ...types import location
 from ..._models import BaseModel
+from ..location import Location
 
 __all__ = ["Company", "Account", "Department", "DepartmentParent", "Entity"]
 
@@ -69,7 +69,7 @@ class Company(BaseModel):
     legal_name: Optional[str]
     """The legal name of the company."""
 
-    locations: Optional[List[Optional[location.Location]]]
+    locations: Optional[List[Optional[Location]]]
 
     primary_email: Optional[str]
     """The email of the main administrator on the account."""

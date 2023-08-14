@@ -3,13 +3,13 @@
 from typing import Optional
 
 from ..._models import BaseModel
-from ...types.hris import individual
+from .individual import Individual
 
 __all__ = ["IndividualResponse"]
 
 
 class IndividualResponse(BaseModel):
-    body: Optional[individual.Individual]
+    body: Optional[Individual]
 
     code: Optional[int]
 
