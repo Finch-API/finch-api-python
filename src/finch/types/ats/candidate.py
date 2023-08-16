@@ -9,15 +9,15 @@ __all__ = ["Candidate", "Email", "PhoneNumber"]
 
 
 class Email(BaseModel):
-    data: Optional[str]
+    data: Optional[str] = None
 
-    type: Optional[str]
+    type: Optional[str] = None
 
 
 class PhoneNumber(BaseModel):
-    data: Optional[str]
+    data: Optional[str] = None
 
-    type: Optional[str]
+    type: Optional[str] = None
 
 
 class Candidate(BaseModel):

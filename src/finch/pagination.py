@@ -102,10 +102,10 @@ class AsyncResponsesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT
 
 
 class IndividualsPagePaging(BaseModel):
-    count: Optional[int]
+    count: Optional[int] = None
     """The total number of elements for the entire query (not just the given page)"""
 
-    offset: Optional[int]
+    offset: Optional[int] = None
     """The current start index of the returned list of elements"""
 
 
@@ -160,10 +160,10 @@ class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mode
 
 
 class CandidatesPagePaging(BaseModel):
-    count: Optional[int]
+    count: Optional[int] = None
     """The total number of elements for the entire query (not just the given page)"""
 
-    offset: Optional[int]
+    offset: Optional[int] = None
     """The current start index of the returned list of elements"""
 
 
@@ -218,10 +218,10 @@ class AsyncCandidatesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Model
 
 
 class ApplicationsPagePaging(BaseModel):
-    count: Optional[int]
+    count: Optional[int] = None
     """The total number of elements for the entire query (not just the given page)"""
 
-    offset: Optional[int]
+    offset: Optional[int] = None
     """The current start index of the returned list of elements"""
 
 
@@ -276,10 +276,10 @@ class AsyncApplicationsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mod
 
 
 class JobsPagePaging(BaseModel):
-    count: Optional[int]
+    count: Optional[int] = None
     """The total number of elements for the entire query (not just the given page)"""
 
-    offset: Optional[int]
+    offset: Optional[int] = None
     """The current start index of the returned list of elements"""
 
 
@@ -334,10 +334,10 @@ class AsyncJobsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
 
 class OffersPagePaging(BaseModel):
-    count: Optional[int]
+    count: Optional[int] = None
     """The total number of elements for the entire query (not just the given page)"""
 
-    offset: Optional[int]
+    offset: Optional[int] = None
     """The current start index of the returned list of elements"""
 
 

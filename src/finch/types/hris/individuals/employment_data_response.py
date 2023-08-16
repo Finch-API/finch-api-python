@@ -9,8 +9,8 @@ __all__ = ["EmploymentDataResponse"]
 
 
 class EmploymentDataResponse(BaseModel):
-    body: Optional[EmploymentData]
+    body: Optional[EmploymentData] = None
 
-    code: Optional[int]
+    code: Optional[int] = None
 
-    individual_id: Optional[str]
+    individual_id: Optional[str] = None

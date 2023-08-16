@@ -9,18 +9,18 @@ __all__ = ["Income"]
 
 
 class Income(BaseModel):
-    amount: Optional[int]
+    amount: Optional[int] = None
     """The income amount in cents."""
 
-    currency: Optional[str]
+    currency: Optional[str] = None
     """The currency code."""
 
-    effective_date: Optional[str]
+    effective_date: Optional[str] = None
     """The date the income amount went into effect."""
 
     unit: Optional[
         Literal["yearly", "quarterly", "monthly", "semi_monthly", "bi_weekly", "weekly", "daily", "hourly", "fixed"]
-    ]
+    ] = None
     """The income unit of payment.
 
     Options: `yearly`, `quarterly`, `monthly`, `semi_monthly`, `bi_weekly`,

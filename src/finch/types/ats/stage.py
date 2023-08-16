@@ -8,12 +8,12 @@ __all__ = ["Stage"]
 
 
 class Stage(BaseModel):
-    id: Optional[str]
+    id: Optional[str] = None
 
-    job_id: Optional[str]
+    job_id: Optional[str] = None
     """The job id that this stage applies to, if applicable.
 
     Not all systems enumerate stages specific to jobs.
     """
 
-    name: Optional[str]
+    name: Optional[str] = None
