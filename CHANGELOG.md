@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.0.8](https://github.com/Finch-API/finch-api-python/compare/v0.0.7...v0.0.8) (2023-08-16)
+
+
+### Features
+
+* allow a default timeout to be set for clients ([#61](https://github.com/Finch-API/finch-api-python/issues/61)) ([0ac3cc6](https://github.com/Finch-API/finch-api-python/commit/0ac3cc62589f8ee0a1152fcaa242106cdfbdeae4))
+
+
+### Documentation
+
+* **readme:** remove beta status + document versioning policy ([#54](https://github.com/Finch-API/finch-api-python/issues/54)) ([a749f3e](https://github.com/Finch-API/finch-api-python/commit/a749f3edae42ea0b025be4966cd0907600c238e5))
+
+
+### Styles
+
+* prefer importing types directly instead of module names ([#62](https://github.com/Finch-API/finch-api-python/issues/62)) ([f7dfd51](https://github.com/Finch-API/finch-api-python/commit/f7dfd513c4e88dbed9b10ed6f37830fcf0c07762))
+
+
+### Chores
+
+* assign default reviewers to release PRs ([#63](https://github.com/Finch-API/finch-api-python/issues/63)) ([502f5c5](https://github.com/Finch-API/finch-api-python/commit/502f5c53bcfff104ea961977b273ffa07594913c))
+* **deps:** bump typing-extensions to 4.5 ([#59](https://github.com/Finch-API/finch-api-python/issues/59)) ([d489180](https://github.com/Finch-API/finch-api-python/commit/d489180f9d9ccc748c945be549585937c8a9fc5b))
+* **internal/deps:** update lock file ([#58](https://github.com/Finch-API/finch-api-python/issues/58)) ([a5511cf](https://github.com/Finch-API/finch-api-python/commit/a5511cf43a9629d1cd7fd33fbd76be71c22c6215))
+* **internal:** bump certifi dependency ([#56](https://github.com/Finch-API/finch-api-python/issues/56)) ([b9506e9](https://github.com/Finch-API/finch-api-python/commit/b9506e96129b867d2fa26836feccb9549602c6ef))
+* **internal:** bump lock file ([#53](https://github.com/Finch-API/finch-api-python/issues/53)) ([39d2f3f](https://github.com/Finch-API/finch-api-python/commit/39d2f3fcb929c93e6fdc434c7e64914f606447ae))
+* **internal:** bump pytest-asyncio ([#60](https://github.com/Finch-API/finch-api-python/issues/60)) ([4160d43](https://github.com/Finch-API/finch-api-python/commit/4160d43c3df4da4d435862364e3a0cc7b57b5776))
+* **internal:** minor formatting change ([#64](https://github.com/Finch-API/finch-api-python/issues/64)) ([aff405c](https://github.com/Finch-API/finch-api-python/commit/aff405cf043ac05b3b1fb1351b7700f29eb24e3c))
+* **internal:** minor import restructuring ([#57](https://github.com/Finch-API/finch-api-python/issues/57)) ([bead8c1](https://github.com/Finch-API/finch-api-python/commit/bead8c1eb95b468985545e636df6d81ac14aa16c))
+* **internal:** update mypy to v1.4.1 ([#51](https://github.com/Finch-API/finch-api-python/issues/51)) ([9427d13](https://github.com/Finch-API/finch-api-python/commit/9427d13d5f2baec5fd5de52711210c33daf9f271))
+* **internal:** update ruff to v0.0.282 ([#55](https://github.com/Finch-API/finch-api-python/issues/55)) ([0f311c4](https://github.com/Finch-API/finch-api-python/commit/0f311c4e0ac5c0a81e2b9a2ff7364b1831ca02e4))
+
 ## [0.0.7](https://github.com/Finch-API/finch-api-python/compare/v0.0.6...v0.0.7) (2023-08-01)
 
 
