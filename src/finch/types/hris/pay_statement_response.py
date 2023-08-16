@@ -9,8 +9,8 @@ __all__ = ["PayStatementResponse"]
 
 
 class PayStatementResponse(BaseModel):
-    body: Optional[PayStatementResponseBody]
+    body: Optional[PayStatementResponseBody] = None
 
-    code: Optional[int]
+    code: Optional[int] = None
 
-    payment_id: Optional[str]
+    payment_id: Optional[str] = None

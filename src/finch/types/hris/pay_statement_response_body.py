@@ -10,7 +10,7 @@ __all__ = ["PayStatementResponseBody"]
 
 
 class PayStatementResponseBody(BaseModel):
-    paging: Optional[Paging]
+    paging: Optional[Paging] = None
 
-    pay_statements: Optional[List[PayStatement]]
+    pay_statements: Optional[List[PayStatement]] = None
     """The array of pay statements for the current payment."""

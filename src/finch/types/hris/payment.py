@@ -9,31 +9,31 @@ __all__ = ["Payment", "PayPeriod"]
 
 
 class PayPeriod(BaseModel):
-    end_date: Optional[str]
+    end_date: Optional[str] = None
 
-    start_date: Optional[str]
+    start_date: Optional[str] = None
 
 
 class Payment(BaseModel):
-    id: Optional[str]
+    id: Optional[str] = None
     """The unique id for the payment."""
 
-    company_debit: Optional[Money]
+    company_debit: Optional[Money] = None
 
-    debit_date: Optional[str]
+    debit_date: Optional[str] = None
 
-    employee_taxes: Optional[Money]
+    employee_taxes: Optional[Money] = None
 
-    employer_taxes: Optional[Money]
+    employer_taxes: Optional[Money] = None
 
-    gross_pay: Optional[Money]
+    gross_pay: Optional[Money] = None
 
-    individual_ids: Optional[List[str]]
+    individual_ids: Optional[List[str]] = None
     """Array of every individual on this payment."""
 
-    net_pay: Optional[Money]
+    net_pay: Optional[Money] = None
 
-    pay_date: Optional[str]
+    pay_date: Optional[str] = None
 
-    pay_period: Optional[PayPeriod]
+    pay_period: Optional[PayPeriod] = None
     """The pay period object."""

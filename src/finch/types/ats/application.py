@@ -10,7 +10,7 @@ __all__ = ["Application", "RejectedReason"]
 
 
 class RejectedReason(BaseModel):
-    text: Optional[str]
+    text: Optional[str] = None
 
 
 class Application(BaseModel):

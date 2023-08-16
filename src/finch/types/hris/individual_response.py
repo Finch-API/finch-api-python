@@ -9,8 +9,8 @@ __all__ = ["IndividualResponse"]
 
 
 class IndividualResponse(BaseModel):
-    body: Optional[Individual]
+    body: Optional[Individual] = None
 
-    code: Optional[int]
+    code: Optional[int] = None
 
-    individual_id: Optional[str]
+    individual_id: Optional[str] = None

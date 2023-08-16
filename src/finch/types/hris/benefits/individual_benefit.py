@@ -10,28 +10,28 @@ __all__ = ["IndividualBenefit", "Body"]
 
 
 class Body(BaseModel):
-    annual_maximum: Optional[int]
+    annual_maximum: Optional[int] = None
     """
     If the benefit supports annual maximum, the amount in cents for this individual.
     """
 
-    catch_up: Optional[bool]
+    catch_up: Optional[bool] = None
     """
     If the benefit supports catch up (401k, 403b, etc.), whether catch up is enabled
     for this individual.
     """
 
-    company_contribution: Optional[BenfitContribution]
+    company_contribution: Optional[BenfitContribution] = None
 
-    employee_deduction: Optional[BenfitContribution]
+    employee_deduction: Optional[BenfitContribution] = None
 
-    hsa_contribution_limit: Optional[Literal["individual", "family"]]
+    hsa_contribution_limit: Optional[Literal["individual", "family"]] = None
     """Type for HSA contribution limit if the benefit is a HSA."""
 
 
 class IndividualBenefit(BaseModel):
-    body: Optional[Body]
+    body: Optional[Body] = None
 
-    code: Optional[int]
+    code: Optional[int] = None
 
-    individual_id: Optional[str]
+    individual_id: Optional[str] = None
