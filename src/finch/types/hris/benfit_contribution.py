@@ -9,8 +9,8 @@ __all__ = ["BenfitContribution"]
 
 
 class BenfitContribution(BaseModel):
-    amount: Optional[int]
+    amount: Optional[int] = None
     """Contribution amount in cents (if `fixed`) or basis points (if `percent`)."""
 
-    type: Optional[Literal["fixed", "percent"]]
+    type: Optional[Literal["fixed", "percent"]] = None
     """Contribution type."""

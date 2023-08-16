@@ -8,20 +8,20 @@ __all__ = ["UnenrolledIndividual", "Body"]
 
 
 class Body(BaseModel):
-    finch_code: Optional[str]
+    finch_code: Optional[str] = None
     """A descriptive identifier for the response."""
 
-    message: Optional[str]
+    message: Optional[str] = None
     """Short description in English that provides more information about the response."""
 
-    name: Optional[str]
+    name: Optional[str] = None
     """Identifier indicating whether the benefit was newly enrolled or updated."""
 
 
 class UnenrolledIndividual(BaseModel):
-    body: Optional[Body]
+    body: Optional[Body] = None
 
-    code: Optional[int]
+    code: Optional[int] = None
     """HTTP status code"""
 
-    individual_id: Optional[str]
+    individual_id: Optional[str] = None

@@ -8,7 +8,7 @@ __all__ = ["Money"]
 
 
 class Money(BaseModel):
-    amount: Optional[int]
+    amount: Optional[int] = None
     """Amount for money object (in cents)"""
 
-    currency: Optional[str]
+    currency: Optional[str] = None

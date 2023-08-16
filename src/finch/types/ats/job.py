@@ -10,21 +10,21 @@ __all__ = ["Job", "Department", "HiringTeam", "HiringTeamHiringManager", "Hiring
 
 
 class Department(BaseModel):
-    name: Optional[str]
+    name: Optional[str] = None
 
 
 class HiringTeamHiringManager(BaseModel):
-    name: Optional[str]
+    name: Optional[str] = None
 
 
 class HiringTeamRecruiter(BaseModel):
-    name: Optional[str]
+    name: Optional[str] = None
 
 
 class HiringTeam(BaseModel):
-    hiring_managers: Optional[List[HiringTeamHiringManager]]
+    hiring_managers: Optional[List[HiringTeamHiringManager]] = None
 
-    recruiters: Optional[List[HiringTeamRecruiter]]
+    recruiters: Optional[List[HiringTeamRecruiter]] = None
 
 
 class Job(BaseModel):
