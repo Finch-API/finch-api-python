@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/Finch-API/finch-api-python/compare/v0.0.8...v0.0.9) (2023-08-17)
+
+
+### Features
+
+* add support for Pydantic v2 ([#66](https://github.com/Finch-API/finch-api-python/issues/66)) ([85d7032](https://github.com/Finch-API/finch-api-python/commit/85d7032f70ae6bd294d96916a91eb42c57a4f6ed))
+
 ## [0.0.8](https://github.com/Finch-API/finch-api-python/compare/v0.0.7...v0.0.8) (2023-08-16)
 
 
