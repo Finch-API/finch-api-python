@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.10](https://github.com/Finch-API/finch-api-python/compare/v0.0.9...v0.0.10) (2023-08-24)
+
+
+### Chores
+
+* **internal:** bump pydantic dep ([#69](https://github.com/Finch-API/finch-api-python/issues/69)) ([a8f406f](https://github.com/Finch-API/finch-api-python/commit/a8f406fe52ad5e5594f7b595a9c033db0d771e7c))
+* **internal:** update anyio ([#71](https://github.com/Finch-API/finch-api-python/issues/71)) ([a5a05af](https://github.com/Finch-API/finch-api-python/commit/a5a05af8964b90a4494cc01faca58f6259dacd58))
+
 ## [0.0.9](https://github.com/Finch-API/finch-api-python/compare/v0.0.8...v0.0.9) (2023-08-17)
 
 
