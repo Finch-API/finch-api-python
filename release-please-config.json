@@ -56,9 +56,6 @@
       "hidden": true
     }
   ],
-  "reviewers": [
-    "yjp20"
-  ],
   "release-type": "python",
   "extra-files": [
     "src/finch/_version.py"
