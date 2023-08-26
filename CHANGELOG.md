@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/Finch-API/finch-api-python/compare/v0.0.10...v0.0.11) (2023-08-26)
+
+
+### Chores
+
+* **internal:** remove reviewer ([#74](https://github.com/Finch-API/finch-api-python/issues/74)) ([2dfb7fa](https://github.com/Finch-API/finch-api-python/commit/2dfb7fae29910aa164a9ff3dbd708189afb9b2ff))
+
 ## [0.0.10](https://github.com/Finch-API/finch-api-python/compare/v0.0.9...v0.0.10) (2023-08-24)
 
 
