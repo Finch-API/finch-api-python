@@ -5,20 +5,23 @@ from .company import CompanyResource, AsyncCompanyResource
 from .benefits import Benefits, AsyncBenefits
 from .payments import Payments, AsyncPayments
 from .directory import Directory, AsyncDirectory
+from .employments import Employments, AsyncEmployments
 from .individuals import Individuals, AsyncIndividuals
 from .pay_statements import PayStatements, AsyncPayStatements
 
 __all__ = [
     "CompanyResource",
     "AsyncCompanyResource",
-    "Payments",
-    "AsyncPayments",
-    "PayStatements",
-    "AsyncPayStatements",
     "Directory",
     "AsyncDirectory",
     "Individuals",
     "AsyncIndividuals",
+    "Employments",
+    "AsyncEmployments",
+    "Payments",
+    "AsyncPayments",
+    "PayStatements",
+    "AsyncPayStatements",
     "Benefits",
     "AsyncBenefits",
     "HRIS",

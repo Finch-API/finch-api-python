@@ -2,43 +2,35 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import maybe_transform
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from ....pagination import SyncResponsesPage, AsyncResponsesPage
-from ...._base_client import AsyncPaginator, make_request_options
-from ....types.hris.individuals import (
-    EmploymentDataResponse,
-    employment_data_retrieve_many_params,
-)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ...pagination import SyncResponsesPage, AsyncResponsesPage
+from ...types.hris import IndividualResponse, individual_retrieve_many_params
+from ..._base_client import AsyncPaginator, make_request_options
 
-__all__ = ["EmploymentData", "AsyncEmploymentData"]
+__all__ = ["Individuals", "AsyncIndividuals"]
 
 
-class EmploymentData(SyncAPIResource):
+class Individuals(SyncAPIResource):
     def retrieve_many(
         self,
         *,
-        requests: List[employment_data_retrieve_many_params.Request],
+        options: Optional[individual_retrieve_many_params.Options] | NotGiven = NOT_GIVEN,
+        requests: List[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> SyncResponsesPage[EmploymentDataResponse]:
+    ) -> SyncResponsesPage[IndividualResponse]:
         """
-        Read individual employment and income data
-
-        Note: Income information is returned as reported by the provider. This may not
-        always be annualized income, but may be in units of bi-weekly, semi-monthly,
-        daily, etc, depending on what information the provider returns.
+        Read individual data, excluding income and employment data
 
         Args:
-          requests: The array of batch requests.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -48,41 +40,40 @@ class EmploymentData(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/employer/employment",
-            page=SyncResponsesPage[EmploymentDataResponse],
+            "/employer/individual",
+            page=SyncResponsesPage[IndividualResponse],
             body=maybe_transform(
-                {"requests": requests}, employment_data_retrieve_many_params.EmploymentDataRetrieveManyParams
+                {
+                    "options": options,
+                    "requests": requests,
+                },
+                individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=EmploymentDataResponse,
+            model=IndividualResponse,
             method="post",
         )
 
 
-class AsyncEmploymentData(AsyncAPIResource):
+class AsyncIndividuals(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
-        requests: List[employment_data_retrieve_many_params.Request],
+        options: Optional[individual_retrieve_many_params.Options] | NotGiven = NOT_GIVEN,
+        requests: List[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[EmploymentDataResponse, AsyncResponsesPage[EmploymentDataResponse]]:
+    ) -> AsyncPaginator[IndividualResponse, AsyncResponsesPage[IndividualResponse]]:
         """
-        Read individual employment and income data
-
-        Note: Income information is returned as reported by the provider. This may not
-        always be annualized income, but may be in units of bi-weekly, semi-monthly,
-        daily, etc, depending on what information the provider returns.
+        Read individual data, excluding income and employment data
 
         Args:
-          requests: The array of batch requests.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -92,14 +83,18 @@ class AsyncEmploymentData(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/employer/employment",
-            page=AsyncResponsesPage[EmploymentDataResponse],
+            "/employer/individual",
+            page=AsyncResponsesPage[IndividualResponse],
             body=maybe_transform(
-                {"requests": requests}, employment_data_retrieve_many_params.EmploymentDataRetrieveManyParams
+                {
+                    "options": options,
+                    "requests": requests,
+                },
+                individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=EmploymentDataResponse,
+            model=IndividualResponse,
             method="post",
         )

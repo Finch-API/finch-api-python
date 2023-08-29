@@ -5,9 +5,9 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ...income import Income
-from ...._models import BaseModel
-from ...location import Location
+from ..income import Income
+from ..._models import BaseModel
+from ..location import Location
 
 __all__ = ["EmploymentData", "Department", "Employment", "Manager"]
 
