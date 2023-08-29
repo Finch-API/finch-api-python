@@ -2,7 +2,7 @@
 
 from typing import Optional
 
-from ...._models import BaseModel
+from ..._models import BaseModel
 from .employment_data import EmploymentData
 
 __all__ = ["EmploymentDataResponse"]

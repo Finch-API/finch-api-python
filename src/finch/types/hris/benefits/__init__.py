@@ -5,11 +5,11 @@ from __future__ import annotations
 from .individual_benefit import IndividualBenefit as IndividualBenefit
 from .enrolled_individual import EnrolledIndividual as EnrolledIndividual
 from .unenrolled_individual import UnenrolledIndividual as UnenrolledIndividual
-from .individual_unenroll_params import (
-    IndividualUnenrollParams as IndividualUnenrollParams,
-)
 from .individual_enroll_many_params import (
     IndividualEnrollManyParams as IndividualEnrollManyParams,
+)
+from .individual_unenroll_many_params import (
+    IndividualUnenrollManyParams as IndividualUnenrollManyParams,
 )
 from .individual_enrolled_ids_response import (
     IndividualEnrolledIDsResponse as IndividualEnrolledIDsResponse,

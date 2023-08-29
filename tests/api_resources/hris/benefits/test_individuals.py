@@ -56,15 +56,15 @@ class TestIndividuals:
         assert_matches_type(SyncSinglePage[IndividualBenefit], individual, path=["response"])
 
     @parametrize
-    def test_method_unenroll(self, client: Finch) -> None:
-        individual = client.hris.benefits.individuals.unenroll(
+    def test_method_unenroll_many(self, client: Finch) -> None:
+        individual = client.hris.benefits.individuals.unenroll_many(
             "string",
         )
         assert_matches_type(SyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 
     @parametrize
-    def test_method_unenroll_with_all_params(self, client: Finch) -> None:
-        individual = client.hris.benefits.individuals.unenroll(
+    def test_method_unenroll_many_with_all_params(self, client: Finch) -> None:
+        individual = client.hris.benefits.individuals.unenroll_many(
             "string",
             individual_ids=["string", "string", "string"],
         )
@@ -107,15 +107,15 @@ class TestAsyncIndividuals:
         assert_matches_type(AsyncSinglePage[IndividualBenefit], individual, path=["response"])
 
     @parametrize
-    async def test_method_unenroll(self, client: AsyncFinch) -> None:
-        individual = await client.hris.benefits.individuals.unenroll(
+    async def test_method_unenroll_many(self, client: AsyncFinch) -> None:
+        individual = await client.hris.benefits.individuals.unenroll_many(
             "string",
         )
         assert_matches_type(AsyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 
     @parametrize
-    async def test_method_unenroll_with_all_params(self, client: AsyncFinch) -> None:
-        individual = await client.hris.benefits.individuals.unenroll(
+    async def test_method_unenroll_many_with_all_params(self, client: AsyncFinch) -> None:
+        individual = await client.hris.benefits.individuals.unenroll_many(
             "string",
             individual_ids=["string", "string", "string"],
         )

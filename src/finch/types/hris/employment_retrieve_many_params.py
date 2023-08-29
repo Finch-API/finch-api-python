@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Required, TypedDict
 
-__all__ = ["EmploymentDataRetrieveManyParams", "Request"]
+__all__ = ["EmploymentRetrieveManyParams", "Request"]
 
 
-class EmploymentDataRetrieveManyParams(TypedDict, total=False):
+class EmploymentRetrieveManyParams(TypedDict, total=False):
     requests: Required[List[Request]]
     """The array of batch requests."""
 
