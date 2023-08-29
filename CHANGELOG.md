@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0 (2023-08-29)
+
+Full Changelog: [v0.0.11...v0.1.0](https://github.com/Finch-API/finch-api-python/compare/v0.0.11...v0.1.0)
+
+### ⚠ BREAKING CHANGES
+
+* **client:** restructure some methods ([#80](https://github.com/Finch-API/finch-api-python/issues/80))
+
+### Features
+
+* **client:** restructure some methods ([#80](https://github.com/Finch-API/finch-api-python/issues/80)) ([21abe3d](https://github.com/Finch-API/finch-api-python/commit/21abe3d79c572eb6cb232edac37b2d89bf3061e8))
+
+
+### Chores
+
+* **ci:** setup workflows to create releases and release PRs ([#77](https://github.com/Finch-API/finch-api-python/issues/77)) ([2af3cc1](https://github.com/Finch-API/finch-api-python/commit/2af3cc1013ba8ceb409699a17058a758ae9916ca))
+
 ## [0.0.11](https://github.com/Finch-API/finch-api-python/compare/v0.0.10...v0.0.11) (2023-08-26)
 
 
