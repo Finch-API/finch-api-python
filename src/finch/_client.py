@@ -45,8 +45,8 @@ __all__ = [
 
 
 class Finch(SyncAPIClient):
-    ats: resources.ATS
     hris: resources.HRIS
+    ats: resources.ATS
     providers: resources.Providers
     account: resources.Account
 
@@ -112,8 +112,8 @@ class Finch(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.ats = resources.ATS(self)
         self.hris = resources.HRIS(self)
+        self.ats = resources.ATS(self)
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
 
@@ -268,8 +268,8 @@ class Finch(SyncAPIClient):
 
 
 class AsyncFinch(AsyncAPIClient):
-    ats: resources.AsyncATS
     hris: resources.AsyncHRIS
+    ats: resources.AsyncATS
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
 
@@ -335,8 +335,8 @@ class AsyncFinch(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.ats = resources.AsyncATS(self)
         self.hris = resources.AsyncHRIS(self)
+        self.ats = resources.AsyncATS(self)
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
 

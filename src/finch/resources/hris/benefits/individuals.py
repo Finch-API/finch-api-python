@@ -14,8 +14,8 @@ from ....types.hris.benefits import (
     EnrolledIndividual,
     UnenrolledIndividual,
     IndividualEnrolledIDsResponse,
-    individual_unenroll_params,
     individual_enroll_many_params,
+    individual_unenroll_many_params,
     individual_retrieve_many_benefits_params,
 )
 
@@ -147,7 +147,7 @@ class Individuals(SyncAPIResource):
             model=IndividualBenefit,
         )
 
-    def unenroll(
+    def unenroll_many(
         self,
         benefit_id: str,
         *,
@@ -179,7 +179,7 @@ class Individuals(SyncAPIResource):
             f"/employer/benefits/{benefit_id}/individuals",
             page=SyncSinglePage[UnenrolledIndividual],
             body=maybe_transform(
-                {"individual_ids": individual_ids}, individual_unenroll_params.IndividualUnenrollParams
+                {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -314,7 +314,7 @@ class AsyncIndividuals(AsyncAPIResource):
             model=IndividualBenefit,
         )
 
-    def unenroll(
+    def unenroll_many(
         self,
         benefit_id: str,
         *,
@@ -346,7 +346,7 @@ class AsyncIndividuals(AsyncAPIResource):
             f"/employer/benefits/{benefit_id}/individuals",
             page=AsyncSinglePage[UnenrolledIndividual],
             body=maybe_transform(
-                {"individual_ids": individual_ids}, individual_unenroll_params.IndividualUnenrollParams
+                {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
