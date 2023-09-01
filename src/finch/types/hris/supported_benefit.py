@@ -5,6 +5,7 @@ from typing_extensions import Literal
 
 from ..._models import BaseModel
 from .benefit_type import BenefitType
+from .benefit_frequency import BenefitFrequency
 
 __all__ = ["SupportedBenefit"]
 
@@ -33,7 +34,7 @@ class SupportedBenefit(BaseModel):
     An empty array indicates deductions are not supported.
     """
 
-    frequencies: Optional[List[Optional[Literal["one_time", "every_paycheck"]]]] = None
+    frequencies: Optional[List[Optional[BenefitFrequency]]] = None
     """The list of frequencies supported by the provider for this benefit"""
 
     hsa_contribution_limit: Optional[List[Literal["individual", "family"]]] = None
