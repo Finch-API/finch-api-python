@@ -4,6 +4,7 @@ from typing import Any, List, Type, Generic, Mapping, TypeVar, Optional, cast
 
 from httpx import Response
 
+from .types import Paging
 from ._types import ModelT
 from ._utils import is_mapping
 from ._models import BaseModel
@@ -101,17 +102,13 @@ class AsyncResponsesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT
         return None
 
 
-class IndividualsPagePaging(BaseModel):
-    count: Optional[int] = None
-    """The total number of elements for the entire query (not just the given page)"""
-
-    offset: Optional[int] = None
-    """The current start index of the returned list of elements"""
+IndividualsPagePaging = Paging
+"""This is deprecated, Paging should be used instead"""
 
 
 class SyncIndividualsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: IndividualsPagePaging
     individuals: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.individuals
@@ -135,8 +132,8 @@ class SyncIndividualsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT
 
 
 class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: IndividualsPagePaging
     individuals: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.individuals
@@ -159,17 +156,13 @@ class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mode
         return None
 
 
-class CandidatesPagePaging(BaseModel):
-    count: Optional[int] = None
-    """The total number of elements for the entire query (not just the given page)"""
-
-    offset: Optional[int] = None
-    """The current start index of the returned list of elements"""
+CandidatesPagePaging = Paging
+"""This is deprecated, Paging should be used instead"""
 
 
 class SyncCandidatesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: CandidatesPagePaging
     candidates: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.candidates
@@ -193,8 +186,8 @@ class SyncCandidatesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]
 
 
 class AsyncCandidatesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: CandidatesPagePaging
     candidates: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.candidates
@@ -217,17 +210,13 @@ class AsyncCandidatesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Model
         return None
 
 
-class ApplicationsPagePaging(BaseModel):
-    count: Optional[int] = None
-    """The total number of elements for the entire query (not just the given page)"""
-
-    offset: Optional[int] = None
-    """The current start index of the returned list of elements"""
+ApplicationsPagePaging = Paging
+"""This is deprecated, Paging should be used instead"""
 
 
 class SyncApplicationsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: ApplicationsPagePaging
     applications: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.applications
@@ -251,8 +240,8 @@ class SyncApplicationsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[Model
 
 
 class AsyncApplicationsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: ApplicationsPagePaging
     applications: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.applications
@@ -275,17 +264,13 @@ class AsyncApplicationsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mod
         return None
 
 
-class JobsPagePaging(BaseModel):
-    count: Optional[int] = None
-    """The total number of elements for the entire query (not just the given page)"""
-
-    offset: Optional[int] = None
-    """The current start index of the returned list of elements"""
+JobsPagePaging = Paging
+"""This is deprecated, Paging should be used instead"""
 
 
 class SyncJobsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: JobsPagePaging
     jobs: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.jobs
@@ -309,8 +294,8 @@ class SyncJobsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
 
 class AsyncJobsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: JobsPagePaging
     jobs: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.jobs
@@ -333,17 +318,13 @@ class AsyncJobsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
         return None
 
 
-class OffersPagePaging(BaseModel):
-    count: Optional[int] = None
-    """The total number of elements for the entire query (not just the given page)"""
-
-    offset: Optional[int] = None
-    """The current start index of the returned list of elements"""
+OffersPagePaging = Paging
+"""This is deprecated, Paging should be used instead"""
 
 
 class SyncOffersPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: OffersPagePaging
     offers: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.offers
@@ -367,8 +348,8 @@ class SyncOffersPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
 
 class AsyncOffersPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    paging: OffersPagePaging
     offers: List[ModelT]
+    paging: Paging
 
     def _get_page_items(self) -> List[ModelT]:
         return self.offers
