@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import TypedDict
 
 from .benefit_type import BenefitType
@@ -13,7 +14,7 @@ __all__ = ["BenefitCreateParams"]
 class BenefitCreateParams(TypedDict, total=False):
     description: str
 
-    frequency: BenefitFrequency
+    frequency: Optional[BenefitFrequency]
 
-    type: BenefitType
+    type: Optional[BenefitType]
     """Type of benefit."""
