@@ -223,3 +223,10 @@ Methods:
 
 - <code title="post /disconnect">client.account.<a href="./src/finch/resources/account.py">disconnect</a>() -> <a href="./src/finch/types/disconnect_response.py">DisconnectResponse</a></code>
 - <code title="get /introspect">client.account.<a href="./src/finch/resources/account.py">introspect</a>() -> <a href="./src/finch/types/introspection.py">Introspection</a></code>
+
+# Webhooks
+
+Methods:
+
+- <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
+- <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
