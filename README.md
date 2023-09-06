@@ -18,6 +18,8 @@ pip install finch-api
 
 ## Usage
 
+The full API of this library can be found in [api.md](https://www.github.com/Finch-API/finch-api-python/blob/main/api.md).
+
 ```python
 from finch import Finch
 
