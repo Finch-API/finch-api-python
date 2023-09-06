@@ -49,17 +49,20 @@ class Finch(SyncAPIClient):
     ats: resources.ATS
     providers: resources.Providers
     account: resources.Account
+    webhooks: resources.Webhooks
 
     # client options
     access_token: str | None
     client_id: str | None
     client_secret: str | None
+    webhook_secret: str | None
 
     def __init__(
         self,
         *,
         client_id: str | None = None,
         client_secret: str | None = None,
+        webhook_secret: str | None = None,
         base_url: Optional[str] = None,
         access_token: Optional[str] = None,
         timeout: Union[float, Timeout, None] = DEFAULT_TIMEOUT,
@@ -87,6 +90,7 @@ class Finch(SyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
+        - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
         self.access_token = access_token
 
@@ -95,6 +99,9 @@ class Finch(SyncAPIClient):
 
         client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
         self.client_secret = client_secret or client_secret_envvar or None
+
+        webhook_secret_envvar = os.environ.get("FINCH_WEBHOOK_SECRET", None)
+        self.webhook_secret = webhook_secret or webhook_secret_envvar or None
 
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
@@ -116,6 +123,7 @@ class Finch(SyncAPIClient):
         self.ats = resources.ATS(self)
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
+        self.webhooks = resources.Webhooks(self)
 
     @property
     def qs(self) -> Querystring:
@@ -151,6 +159,7 @@ class Finch(SyncAPIClient):
         *,
         client_id: str | None = None,
         client_secret: str | None = None,
+        webhook_secret: str | None = None,
         access_token: str | None = None,
         base_url: str | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -189,6 +198,7 @@ class Finch(SyncAPIClient):
         return self.__class__(
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
+            webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or str(self.base_url),
             access_token=access_token or self.access_token,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -272,17 +282,20 @@ class AsyncFinch(AsyncAPIClient):
     ats: resources.AsyncATS
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
+    webhooks: resources.AsyncWebhooks
 
     # client options
     access_token: str | None
     client_id: str | None
     client_secret: str | None
+    webhook_secret: str | None
 
     def __init__(
         self,
         *,
         client_id: str | None = None,
         client_secret: str | None = None,
+        webhook_secret: str | None = None,
         base_url: Optional[str] = None,
         access_token: Optional[str] = None,
         timeout: Union[float, Timeout, None] = DEFAULT_TIMEOUT,
@@ -310,6 +323,7 @@ class AsyncFinch(AsyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
+        - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
         self.access_token = access_token
 
@@ -318,6 +332,9 @@ class AsyncFinch(AsyncAPIClient):
 
         client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
         self.client_secret = client_secret or client_secret_envvar or None
+
+        webhook_secret_envvar = os.environ.get("FINCH_WEBHOOK_SECRET", None)
+        self.webhook_secret = webhook_secret or webhook_secret_envvar or None
 
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
@@ -339,6 +356,7 @@ class AsyncFinch(AsyncAPIClient):
         self.ats = resources.AsyncATS(self)
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
+        self.webhooks = resources.AsyncWebhooks(self)
 
     @property
     def qs(self) -> Querystring:
@@ -374,6 +392,7 @@ class AsyncFinch(AsyncAPIClient):
         *,
         client_id: str | None = None,
         client_secret: str | None = None,
+        webhook_secret: str | None = None,
         access_token: str | None = None,
         base_url: str | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -412,6 +431,7 @@ class AsyncFinch(AsyncAPIClient):
         return self.__class__(
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
+            webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or str(self.base_url),
             access_token=access_token or self.access_token,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
