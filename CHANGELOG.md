@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.1.1 (2023-09-11)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/Finch-API/finch-api-python/compare/v0.1.0...v0.1.1)
+
+### Features
+
+* add webhook verification methods ([#89](https://github.com/Finch-API/finch-api-python/issues/89)) ([483ffef](https://github.com/Finch-API/finch-api-python/commit/483ffefdaf118a1f9d496dfb5309ced17fe1ffb5))
+
+
+### Bug Fixes
+
+* **client:** properly handle optional file params ([#88](https://github.com/Finch-API/finch-api-python/issues/88)) ([77b9914](https://github.com/Finch-API/finch-api-python/commit/77b991409d71ca0e608082f54c00824f00d0841d))
+* **pagination:** don't duplicate shared types ([#86](https://github.com/Finch-API/finch-api-python/issues/86)) ([3f5d18f](https://github.com/Finch-API/finch-api-python/commit/3f5d18f2a71488e6d5248acaed8e9b68c1d6a15d))
+
+
+### Chores
+
+* **internal:** add example for configuration ([#81](https://github.com/Finch-API/finch-api-python/issues/81)) ([a71605a](https://github.com/Finch-API/finch-api-python/commit/a71605a090760aa91120c16265f81bd742376d04))
+* **internal:** minor formatting changes ([#87](https://github.com/Finch-API/finch-api-python/issues/87)) ([f940fb2](https://github.com/Finch-API/finch-api-python/commit/f940fb2320ce901025eb34f6fbab42a70f80dd37))
+* **internal:** minor restructuring ([#84](https://github.com/Finch-API/finch-api-python/issues/84)) ([fafab61](https://github.com/Finch-API/finch-api-python/commit/fafab61d4b247255be99c3c57d7e8975c8ee73ad))
+* **internal:** minor update ([#91](https://github.com/Finch-API/finch-api-python/issues/91)) ([1bd2f68](https://github.com/Finch-API/finch-api-python/commit/1bd2f68229cb690b04b2610f0e3bc7cc7c8932d4))
+* **internal:** update base client ([#90](https://github.com/Finch-API/finch-api-python/issues/90)) ([ee7284a](https://github.com/Finch-API/finch-api-python/commit/ee7284a84d96158765307011cf8a674b17579894))
+* **internal:** update pyright ([#94](https://github.com/Finch-API/finch-api-python/issues/94)) ([9209bca](https://github.com/Finch-API/finch-api-python/commit/9209bca492b41adbd91b00f13d48570e44954e1e))
+* **internal:** updates ([#93](https://github.com/Finch-API/finch-api-python/issues/93)) ([01662d9](https://github.com/Finch-API/finch-api-python/commit/01662d9c27a615ae0a638a55df606a77bc98ccbb))
+
+
+### Documentation
+
+* **readme:** add link to api.md ([#92](https://github.com/Finch-API/finch-api-python/issues/92)) ([4770119](https://github.com/Finch-API/finch-api-python/commit/477011938cf7128f06364fa69db8dd9fa244f5b8))
+* **readme:** reference pydantic helpers ([#85](https://github.com/Finch-API/finch-api-python/issues/85)) ([95d0870](https://github.com/Finch-API/finch-api-python/commit/95d087023e69a17aabcc18521078ee2fad106bf7))
+
 ## 0.1.0 (2023-08-29)
 
 Full Changelog: [v0.0.11...v0.1.0](https://github.com/Finch-API/finch-api-python/compare/v0.0.11...v0.1.0)
