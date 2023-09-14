@@ -12,7 +12,6 @@ from ._client import (
     AsyncFinch,
     AsyncClient,
     AsyncStream,
-    ProxiesTypes,
     RequestOptions,
 )
 from ._version import __title__, __version__
