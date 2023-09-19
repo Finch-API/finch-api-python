@@ -46,7 +46,6 @@ __all__ = [
 
 class Finch(SyncAPIClient):
     hris: resources.HRIS
-    ats: resources.ATS
     providers: resources.Providers
     account: resources.Account
     webhooks: resources.Webhooks
@@ -120,7 +119,6 @@ class Finch(SyncAPIClient):
         )
 
         self.hris = resources.HRIS(self)
-        self.ats = resources.ATS(self)
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
         self.webhooks = resources.Webhooks(self)
@@ -279,7 +277,6 @@ class Finch(SyncAPIClient):
 
 class AsyncFinch(AsyncAPIClient):
     hris: resources.AsyncHRIS
-    ats: resources.AsyncATS
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
     webhooks: resources.AsyncWebhooks
@@ -353,7 +350,6 @@ class AsyncFinch(AsyncAPIClient):
         )
 
         self.hris = resources.AsyncHRIS(self)
-        self.ats = resources.AsyncATS(self)
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
         self.webhooks = resources.AsyncWebhooks(self)

@@ -27,10 +27,11 @@ client = Finch(
     access_token="my access token",
 )
 
-candidate = client.ats.candidates.retrieve(
-    "<candidate id>",
+page = client.hris.directory.list_individuals(
+    candidate_id="<candidate id>",
 )
-print(candidate.first_name)
+directory = page.individuals[0]
+print(directory.first_name)
 ```
 
 ## Async Usage
@@ -46,10 +47,10 @@ client = AsyncFinch(
 
 
 async def main():
-    candidate = await client.ats.candidates.retrieve(
-        "<candidate id>",
+    page = await client.hris.directory.list_individuals(
+        candidate_id="<candidate id>",
     )
-    print(candidate.first_name)
+    print(page.individuals[0].first_name)
 
 
 asyncio.run(main())
@@ -74,12 +75,12 @@ import finch
 
 client = Finch()
 
-all_jobs = []
+all_directories = []
 # Automatically fetches more pages as needed.
-for job in client.ats.jobs.list():
-    # Do something with job here
-    all_jobs.append(job)
-print(all_jobs)
+for directory in client.hris.directory.list_individuals():
+    # Do something with directory here
+    all_directories.append(directory)
+print(all_directories)
 ```
 
 Or, asynchronously:
@@ -92,11 +93,11 @@ client = AsyncFinch()
 
 
 async def main() -> None:
-    all_jobs = []
+    all_directories = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for job in client.ats.jobs.list():
-        all_jobs.append(job)
-    print(all_jobs)
+    async for directory in client.hris.directory.list_individuals():
+        all_directories.append(directory)
+    print(all_directories)
 
 
 asyncio.run(main())
@@ -105,11 +106,11 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.ats.jobs.list()
+first_page = await client.hris.directory.list_individuals()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
-    print(f"number of items we just fetched: {len(next_page.jobs)}")
+    print(f"number of items we just fetched: {len(next_page.individuals)}")
 
 # Remove `await` for non-async usage.
 ```
@@ -117,13 +118,13 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.ats.jobs.list()
+first_page = await client.hris.directory.list_individuals()
 
 print(
     f"the current start offset for this page: {first_page.paging.offset}"
 )  # => "the current start offset for this page: 1"
-for job in first_page.jobs:
-    print(job.id)
+for directory in first_page.individuals:
+    print(directory.id)
 
 # Remove `await` for non-async usage.
 ```
