@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.1.2 (2023-09-19)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/Finch-API/finch-api-python/compare/v0.1.1...v0.1.2)
+
+### Features
+
+* **client:** retry on 408 Request Timeout ([#99](https://github.com/Finch-API/finch-api-python/issues/99)) ([f8d0bbf](https://github.com/Finch-API/finch-api-python/commit/f8d0bbf9f9f3bd310d4d0cad6f4f43f0a2393273))
+
+
+### Bug Fixes
+
+* **client:** properly configure model set fields ([#98](https://github.com/Finch-API/finch-api-python/issues/98)) ([ada3ad6](https://github.com/Finch-API/finch-api-python/commit/ada3ad60c40e1b26fcb0a12be0686df82f523554))
+
+
+### Chores
+
+* **api:** remove deprecated & unused ATS API ([#103](https://github.com/Finch-API/finch-api-python/issues/103)) ([96b9a92](https://github.com/Finch-API/finch-api-python/commit/96b9a923ef83207e9b3c20676cde3690a4c368d6))
+* **internal:** add helpers ([#100](https://github.com/Finch-API/finch-api-python/issues/100)) ([fec8c01](https://github.com/Finch-API/finch-api-python/commit/fec8c01ac4bee0f2a39ed42e0b4d6b2bf170ebf1))
+
+
+### Documentation
+
+* add some missing inline documentation ([#95](https://github.com/Finch-API/finch-api-python/issues/95)) ([dc178c6](https://github.com/Finch-API/finch-api-python/commit/dc178c60adc0e38291c94d2d9e5347b528e4edbe))
+
 ## 0.1.1 (2023-09-11)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/Finch-API/finch-api-python/compare/v0.1.0...v0.1.1)
