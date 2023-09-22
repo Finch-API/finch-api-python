@@ -8,7 +8,7 @@ from typing import Union, Mapping, Optional
 
 import httpx
 
-from . import resources
+from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -23,6 +23,7 @@ from ._types import (
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
+from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_LIMITS,
     DEFAULT_TIMEOUT,
@@ -274,6 +275,38 @@ class Finch(SyncAPIClient):
             )
         )
 
+    def _make_status_error(
+        self,
+        err_msg: str,
+        *,
+        body: object,
+        response: httpx.Response,
+    ) -> APIStatusError:
+        if response.status_code == 400:
+            return _exceptions.BadRequestError(err_msg, response=response, body=body)
+
+        if response.status_code == 401:
+            return _exceptions.AuthenticationError(err_msg, response=response, body=body)
+
+        if response.status_code == 403:
+            return _exceptions.PermissionDeniedError(err_msg, response=response, body=body)
+
+        if response.status_code == 404:
+            return _exceptions.NotFoundError(err_msg, response=response, body=body)
+
+        if response.status_code == 409:
+            return _exceptions.ConflictError(err_msg, response=response, body=body)
+
+        if response.status_code == 422:
+            return _exceptions.UnprocessableEntityError(err_msg, response=response, body=body)
+
+        if response.status_code == 429:
+            return _exceptions.RateLimitError(err_msg, response=response, body=body)
+
+        if response.status_code >= 500:
+            return _exceptions.InternalServerError(err_msg, response=response, body=body)
+        return APIStatusError(err_msg, response=response, body=body)
+
 
 class AsyncFinch(AsyncAPIClient):
     hris: resources.AsyncHRIS
@@ -507,6 +540,38 @@ class AsyncFinch(AsyncAPIClient):
                 },
             )
         )
+
+    def _make_status_error(
+        self,
+        err_msg: str,
+        *,
+        body: object,
+        response: httpx.Response,
+    ) -> APIStatusError:
+        if response.status_code == 400:
+            return _exceptions.BadRequestError(err_msg, response=response, body=body)
+
+        if response.status_code == 401:
+            return _exceptions.AuthenticationError(err_msg, response=response, body=body)
+
+        if response.status_code == 403:
+            return _exceptions.PermissionDeniedError(err_msg, response=response, body=body)
+
+        if response.status_code == 404:
+            return _exceptions.NotFoundError(err_msg, response=response, body=body)
+
+        if response.status_code == 409:
+            return _exceptions.ConflictError(err_msg, response=response, body=body)
+
+        if response.status_code == 422:
+            return _exceptions.UnprocessableEntityError(err_msg, response=response, body=body)
+
+        if response.status_code == 429:
+            return _exceptions.RateLimitError(err_msg, response=response, body=body)
+
+        if response.status_code >= 500:
+            return _exceptions.InternalServerError(err_msg, response=response, body=body)
+        return APIStatusError(err_msg, response=response, body=body)
 
 
 Client = Finch
