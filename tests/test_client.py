@@ -12,7 +12,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from finch import Finch, AsyncFinch
+from finch import Finch, AsyncFinch, APIResponseValidationError
 from finch._types import Omit
 from finch._models import BaseModel, FinalRequestOptions
 from finch._base_client import BaseClient, make_request_options
@@ -385,6 +385,23 @@ class TestFinch:
             assert not client.is_closed()
         assert client.is_closed()
 
+    @pytest.mark.respx(base_url=base_url)
+    def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
+        class Model(BaseModel):
+            name: str
+
+        respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
+
+        strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+
+        with pytest.raises(APIResponseValidationError):
+            strict_client.get("/foo", cast_to=Model)
+
+        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
+
+        response = client.get("/foo", cast_to=Model)
+        assert isinstance(response, str)  # type: ignore[unreachable]
+
 
 class TestAsyncFinch:
     client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -744,3 +761,21 @@ class TestAsyncFinch:
             assert not c2.is_closed()
             assert not client.is_closed()
         assert client.is_closed()
+
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
+        class Model(BaseModel):
+            name: str
+
+        respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
+
+        strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+
+        with pytest.raises(APIResponseValidationError):
+            await strict_client.get("/foo", cast_to=Model)
+
+        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
+
+        response = await client.get("/foo", cast_to=Model)
+        assert isinstance(response, str)  # type: ignore[unreachable]
