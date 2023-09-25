@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.3 (2023-09-25)
+
+Full Changelog: [v0.1.2...v0.1.3](https://github.com/Finch-API/finch-api-python/compare/v0.1.2...v0.1.3)
+
+### Features
+
+* **ci:** add reviewers ([#106](https://github.com/Finch-API/finch-api-python/issues/106)) ([6cced26](https://github.com/Finch-API/finch-api-python/commit/6cced26464cfd952be880617e0b1fd8321d4ecff))
+* **package:** export a root error type ([#108](https://github.com/Finch-API/finch-api-python/issues/108)) ([9ddf707](https://github.com/Finch-API/finch-api-python/commit/9ddf707ef7480471ee19e8fa426c47a3232ad736))
+
+
+### Bug Fixes
+
+* **client:** don't error by default for unexpected content types ([#104](https://github.com/Finch-API/finch-api-python/issues/104)) ([61dd6ba](https://github.com/Finch-API/finch-api-python/commit/61dd6ba7db2c872d6b234dad3a5abd8a3299cb86))
+
+
+### Chores
+
+* **internal:** move error classes from _base_exceptions to _exceptions (⚠️ breaking) ([#107](https://github.com/Finch-API/finch-api-python/issues/107)) ([6f6c4a1](https://github.com/Finch-API/finch-api-python/commit/6f6c4a14052fcfba58c8ef9c990f5a7817a59a24))
+
 ## 0.1.2 (2023-09-19)
 
 Full Changelog: [v0.1.1...v0.1.2](https://github.com/Finch-API/finch-api-python/compare/v0.1.1...v0.1.2)
