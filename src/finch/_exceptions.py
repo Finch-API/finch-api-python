@@ -18,7 +18,11 @@ __all__ = [
 ]
 
 
-class APIError(Exception):
+class FinchError(Exception):
+    pass
+
+
+class APIError(FinchError):
     message: str
     request: httpx.Request
 
