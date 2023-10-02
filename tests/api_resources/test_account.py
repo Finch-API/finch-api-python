@@ -10,7 +10,7 @@ from finch import Finch, AsyncFinch
 from finch.types import Introspection, DisconnectResponse
 from tests.utils import assert_matches_type
 
-base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = os.environ.get("API_KEY", "something1234")
 
 
