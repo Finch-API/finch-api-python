@@ -22,19 +22,22 @@ class TestRequestForwarding:
     @parametrize
     def test_method_forward(self, client: Finch) -> None:
         request_forwarding = client.request_forwarding.forward(
-            method="string",
-            route="string",
+            method="POST",
+            route="/people/search",
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
     @parametrize
     def test_method_forward_with_all_params(self, client: Finch) -> None:
         request_forwarding = client.request_forwarding.forward(
-            method="string",
-            route="string",
-            data="string",
-            headers={},
-            params={},
+            method="POST",
+            route="/people/search",
+            data=None,
+            headers={"content-type": "application/json"},
+            params={
+                "showInactive": True,
+                "humanReadable": True,
+            },
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
@@ -47,18 +50,21 @@ class TestAsyncRequestForwarding:
     @parametrize
     async def test_method_forward(self, client: AsyncFinch) -> None:
         request_forwarding = await client.request_forwarding.forward(
-            method="string",
-            route="string",
+            method="POST",
+            route="/people/search",
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
     @parametrize
     async def test_method_forward_with_all_params(self, client: AsyncFinch) -> None:
         request_forwarding = await client.request_forwarding.forward(
-            method="string",
-            route="string",
-            data="string",
-            headers={},
-            params={},
+            method="POST",
+            route="/people/search",
+            data=None,
+            headers={"content-type": "application/json"},
+            params={
+                "showInactive": True,
+                "humanReadable": True,
+            },
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
