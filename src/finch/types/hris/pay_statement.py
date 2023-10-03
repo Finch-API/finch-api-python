@@ -117,7 +117,7 @@ class PayStatement(BaseModel):
     taxes: Optional[List[Optional[Tax]]] = None
     """The array of taxes objects associated with this pay statement."""
 
-    total_hours: Optional[int] = None
+    total_hours: Optional[float] = None
     """The number of hours worked for this pay period"""
 
     type: Optional[Literal["regular_payroll", "off_cycle_payroll", "one_time_payment"]] = None

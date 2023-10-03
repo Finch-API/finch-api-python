@@ -164,3 +164,15 @@ Methods:
 
 - <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
 - <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
+
+# RequestForwarding
+
+Types:
+
+```python
+from finch.types import RequestForwardingForwardResponse
+```
+
+Methods:
+
+- <code title="post /forward">client.request_forwarding.<a href="./src/finch/resources/request_forwarding.py">forward</a>(\*\*<a href="src/finch/types/request_forwarding_forward_params.py">params</a>) -> <a href="./src/finch/types/request_forwarding_forward_response.py">RequestForwardingForwardResponse</a></code>
