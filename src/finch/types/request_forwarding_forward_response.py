@@ -26,7 +26,7 @@ class Request(BaseModel):
     method: str
     """The HTTP method that was specified for the forwarded request.
 
-    Valid values include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
+    Valid values include: `GET`, `POST`, `PUT` , `DELETE`, and `PATCH`.
     """
 
     params: Optional[object]
