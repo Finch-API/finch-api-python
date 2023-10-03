@@ -33,8 +33,8 @@ class RequestForwarding(SyncAPIResource):
         The Forward API allows you to make direct requests to an employment system.
 
         Args:
-          method: The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
-              , `PUT` , `DELETE` , and `PATCH`.
+          method: The HTTP method for the forwarded request. Valid values include: `GET`, `POST`,
+              `PUT`, `DELETE`, and `PATCH`.
 
           route: The URL route path for the forwarded request. This value must begin with a
               forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
@@ -97,8 +97,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
         The Forward API allows you to make direct requests to an employment system.
 
         Args:
-          method: The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
-              , `PUT` , `DELETE` , and `PATCH`.
+          method: The HTTP method for the forwarded request. Valid values include: `GET`, `POST`,
+              `PUT`, `DELETE`, and `PATCH`.
 
           route: The URL route path for the forwarded request. This value must begin with a
               forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
