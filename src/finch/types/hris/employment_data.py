@@ -82,6 +82,9 @@ class EmploymentData(BaseModel):
     Please reach out to your Finch representative if you would like access.
     """
 
+    source_id: Optional[str] = None
+    """The source system's unique employment identifier for this individual"""
+
     start_date: Optional[str] = None
 
     title: Optional[str] = None
