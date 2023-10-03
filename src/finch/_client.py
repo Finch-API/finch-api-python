@@ -50,6 +50,7 @@ class Finch(SyncAPIClient):
     providers: resources.Providers
     account: resources.Account
     webhooks: resources.Webhooks
+    request_forwarding: resources.RequestForwarding
 
     # client options
     access_token: str | None
@@ -123,6 +124,7 @@ class Finch(SyncAPIClient):
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
         self.webhooks = resources.Webhooks(self)
+        self.request_forwarding = resources.RequestForwarding(self)
 
     @property
     def qs(self) -> Querystring:
@@ -313,6 +315,7 @@ class AsyncFinch(AsyncAPIClient):
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
     webhooks: resources.AsyncWebhooks
+    request_forwarding: resources.AsyncRequestForwarding
 
     # client options
     access_token: str | None
@@ -386,6 +389,7 @@ class AsyncFinch(AsyncAPIClient):
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
         self.webhooks = resources.AsyncWebhooks(self)
+        self.request_forwarding = resources.AsyncRequestForwarding(self)
 
     @property
     def qs(self) -> Querystring:
