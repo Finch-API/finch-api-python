@@ -29,7 +29,7 @@ class TestIndividuals:
     def test_method_enroll_many(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.enroll_many(
             "string",
-            individuals=[{}, {}, {}],
+            individuals=[{}],
         )
         assert_matches_type(SyncSinglePage[EnrolledIndividual], individual, path=["response"])
 
@@ -80,7 +80,7 @@ class TestAsyncIndividuals:
     async def test_method_enroll_many(self, client: AsyncFinch) -> None:
         individual = await client.hris.benefits.individuals.enroll_many(
             "string",
-            individuals=[{}, {}, {}],
+            individuals=[{}],
         )
         assert_matches_type(AsyncSinglePage[EnrolledIndividual], individual, path=["response"])
 
