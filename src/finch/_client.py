@@ -10,9 +10,12 @@ import httpx
 
 from . import resources, _exceptions
 from ._qs import Querystring
+from .types import ForwardResponse, top_level_forward_params
 from ._types import (
     NOT_GIVEN,
+    Body,
     Omit,
+    Query,
     Headers,
     Timeout,
     NotGiven,
@@ -20,6 +23,7 @@ from ._types import (
     ProxiesTypes,
     RequestOptions,
 )
+from ._utils import maybe_transform
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
@@ -30,6 +34,7 @@ from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
     AsyncAPIClient,
+    make_request_options,
 )
 
 __all__ = [
@@ -50,6 +55,7 @@ class Finch(SyncAPIClient):
     providers: resources.Providers
     account: resources.Account
     webhooks: resources.Webhooks
+    employer: resources.Employer
 
     # client options
     access_token: str | None
@@ -123,6 +129,7 @@ class Finch(SyncAPIClient):
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
         self.webhooks = resources.Webhooks(self)
+        self.employer = resources.Employer(self)
 
     @property
     def qs(self) -> Querystring:
@@ -215,6 +222,72 @@ class Finch(SyncAPIClient):
 
     def __del__(self) -> None:
         self.close()
+
+    def forward(
+        self,
+        *,
+        method: str,
+        route: str,
+        data: Optional[str] | NotGiven = NOT_GIVEN,
+        headers: Optional[object] | NotGiven = NOT_GIVEN,
+        params: Optional[object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+    ) -> ForwardResponse:
+        """The Forward API allows you to make direct requests to an employment system.
+
+        If
+        Finch’s unified API doesn’t have a data model that cleanly fits your needs, then
+        Forward allows you to push or pull data models directly against an integration’s
+        API.
+
+        Args:
+          method: The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+              , `PUT` , `DELETE` , and `PATCH`.
+
+          route: The URL route path for the forwarded request. This value must begin with a
+              forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
+              underscores.
+
+          data: The body for the forwarded request. This value must be specified as either a
+              string or a valid JSON object.
+
+          headers: The HTTP headers to include on the forwarded request. This value must be
+              specified as an object of key-value pairs. Example:
+              `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
+
+          params: The query parameters for the forwarded request. This value must be specified as
+              a valid JSON object rather than a query string.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self.post(
+            "/forward",
+            body=maybe_transform(
+                {
+                    "method": method,
+                    "route": route,
+                    "data": data,
+                    "headers": headers,
+                    "params": params,
+                },
+                top_level_forward_params.TopLevelForwardParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ForwardResponse,
+        )
 
     def get_access_token(
         self,
@@ -313,6 +386,7 @@ class AsyncFinch(AsyncAPIClient):
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
     webhooks: resources.AsyncWebhooks
+    employer: resources.AsyncEmployer
 
     # client options
     access_token: str | None
@@ -386,6 +460,7 @@ class AsyncFinch(AsyncAPIClient):
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
         self.webhooks = resources.AsyncWebhooks(self)
+        self.employer = resources.AsyncEmployer(self)
 
     @property
     def qs(self) -> Querystring:
@@ -481,6 +556,72 @@ class AsyncFinch(AsyncAPIClient):
             asyncio.get_running_loop().create_task(self.close())
         except Exception:
             pass
+
+    async def forward(
+        self,
+        *,
+        method: str,
+        route: str,
+        data: Optional[str] | NotGiven = NOT_GIVEN,
+        headers: Optional[object] | NotGiven = NOT_GIVEN,
+        params: Optional[object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+    ) -> ForwardResponse:
+        """The Forward API allows you to make direct requests to an employment system.
+
+        If
+        Finch’s unified API doesn’t have a data model that cleanly fits your needs, then
+        Forward allows you to push or pull data models directly against an integration’s
+        API.
+
+        Args:
+          method: The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+              , `PUT` , `DELETE` , and `PATCH`.
+
+          route: The URL route path for the forwarded request. This value must begin with a
+              forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
+              underscores.
+
+          data: The body for the forwarded request. This value must be specified as either a
+              string or a valid JSON object.
+
+          headers: The HTTP headers to include on the forwarded request. This value must be
+              specified as an object of key-value pairs. Example:
+              `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
+
+          params: The query parameters for the forwarded request. This value must be specified as
+              a valid JSON object rather than a query string.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self.post(
+            "/forward",
+            body=maybe_transform(
+                {
+                    "method": method,
+                    "route": route,
+                    "data": data,
+                    "headers": headers,
+                    "params": params,
+                },
+                top_level_forward_params.TopLevelForwardParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ForwardResponse,
+        )
 
     async def get_access_token(
         self,

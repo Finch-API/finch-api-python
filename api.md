@@ -1,7 +1,14 @@
 # Finch
 
+Types:
+
+```python
+from finch.types import ForwardResponse
+```
+
 Methods:
 
+- <code title="post /forward">client.<a href="./src/finch/_client.py">forward</a>(\*\*<a href="src/finch/types/top_level_forward_params.py">params</a>) -> <a href="./src/finch/types/forward_response.py">ForwardResponse</a></code>
 - <code>client.<a href="./src/finch/_client.py">get_access_token</a>(\*args) -> str</code>
 - <code>client.<a href="./src/finch/_client.py">get_auth_url</a>(\*args) -> str</code>
 
@@ -138,7 +145,7 @@ Methods:
 Types:
 
 ```python
-from finch.types import Provider
+from finch.types import BenefitSupportType, Provider
 ```
 
 Methods:
@@ -164,3 +171,17 @@ Methods:
 
 - <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
 - <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
+
+# Employer
+
+## Benefits
+
+Types:
+
+```python
+from finch.types.employer import RegisterCompanyBenefitsResponse
+```
+
+Methods:
+
+- <code title="post /employer/benefits/register">client.employer.benefits.<a href="./src/finch/resources/employer/benefits.py">register</a>(\*\*<a href="src/finch/types/employer/benefit_register_params.py">params</a>) -> <a href="./src/finch/types/employer/register_company_benefits_response.py">RegisterCompanyBenefitsResponse</a></code>

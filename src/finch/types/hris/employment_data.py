@@ -9,7 +9,13 @@ from ..income import Income
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["EmploymentData", "Department", "Employment", "Manager"]
+__all__ = ["EmploymentData", "CustomField", "Department", "Employment", "Manager"]
+
+
+class CustomField(BaseModel):
+    name: Optional[str] = None
+
+    value: Optional[object] = None
 
 
 class Department(BaseModel):
@@ -40,6 +46,12 @@ class EmploymentData(BaseModel):
 
     class_code: Optional[str] = None
     """Worker's compensation classification code for this employee"""
+
+    custom_fields: Optional[List[CustomField]] = None
+    """Custom fields for the individual.
+
+    These are fields which are defined by the employer in the system.
+    """
 
     department: Optional[Department] = None
     """The department object."""
@@ -81,6 +93,9 @@ class EmploymentData(BaseModel):
 
     Please reach out to your Finch representative if you would like access.
     """
+
+    source_id: Optional[str] = None
+    """The source system's unique employment identifier for this individual"""
 
     start_date: Optional[str] = None
 

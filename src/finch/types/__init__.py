@@ -8,4 +8,7 @@ from .paging import Paging as Paging
 from .location import Location as Location
 from .provider import Provider as Provider
 from .introspection import Introspection as Introspection
+from .forward_response import ForwardResponse as ForwardResponse
 from .disconnect_response import DisconnectResponse as DisconnectResponse
+from .benefit_support_type import BenefitSupportType as BenefitSupportType
+from .top_level_forward_params import TopLevelForwardParams as TopLevelForwardParams
