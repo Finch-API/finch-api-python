@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found [here](https://developer.tryfinch.com/).
+The API documentation can be found [in the Finch Documentation Center](https://developer.tryfinch.com/).
 
 ## Installation
 
@@ -306,7 +306,10 @@ See the httpx documentation for information about the [`proxies`](https://www.py
 
 ### Managing HTTP resources
 
-By default we will close the underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__) is called but you can also manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
+By default, we will close the underlying HTTP connections whenever the client is 
+[garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__), 
+but you can also manually close the client using the `.close()` method 
+if desired, or with a context manager that closes when exiting.
 
 ## Versioning
 
