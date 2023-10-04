@@ -97,7 +97,7 @@ Types:
 from finch.types.hris import (
     BenefitFrequency,
     BenefitType,
-    BenfitContribution,
+    BenefitContribution,
     CompanyBenefit,
     CreateCompanyBenefitsResponse,
     SupportedBenefit,

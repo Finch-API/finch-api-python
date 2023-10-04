@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from ..._models import BaseModel
 
-__all__ = ["BenfitContribution"]
+__all__ = ["BenefitContribution"]
 
 
-class BenfitContribution(BaseModel):
+class BenefitContribution(BaseModel):
     amount: Optional[int] = None
     """Contribution amount in cents (if `fixed`) or basis points (if `percent`)."""
 

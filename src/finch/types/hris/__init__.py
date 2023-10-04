@@ -11,7 +11,7 @@ from .company_benefit import CompanyBenefit as CompanyBenefit
 from .employment_data import EmploymentData as EmploymentData
 from .benefit_frequency import BenefitFrequency as BenefitFrequency
 from .supported_benefit import SupportedBenefit as SupportedBenefit
-from .benfit_contribution import BenfitContribution as BenfitContribution
+from .benefit_contribution import BenefitContribution as BenefitContribution
 from .individual_response import IndividualResponse as IndividualResponse
 from .payment_list_params import PaymentListParams as PaymentListParams
 from .benefit_create_params import BenefitCreateParams as BenefitCreateParams
