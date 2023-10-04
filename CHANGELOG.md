@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.4 (2023-10-04)
+
+Full Changelog: [v0.1.3...v0.1.4](https://github.com/Finch-API/finch-api-python/compare/v0.1.3...v0.1.4)
+
+### Features
+
+* **api:** add `/forward` endpoint and other updates ([#116](https://github.com/Finch-API/finch-api-python/issues/116)) ([ef97220](https://github.com/Finch-API/finch-api-python/commit/ef9722064915cbf6f646df514c1a35914a8b2b3f))
+* **client:** handle retry-after header with a date format ([#113](https://github.com/Finch-API/finch-api-python/issues/113)) ([b90cd33](https://github.com/Finch-API/finch-api-python/commit/b90cd335063941a7a58a8d93f065f6bcaf310238))
+
+
+### Chores
+
+* **docs:** adjust some docstrings ([#117](https://github.com/Finch-API/finch-api-python/issues/117)) ([7b68074](https://github.com/Finch-API/finch-api-python/commit/7b6807452c519b2734b2056e48e8592291821752))
+* **docs:** adjust some docstrings ([#119](https://github.com/Finch-API/finch-api-python/issues/119)) ([0b9561d](https://github.com/Finch-API/finch-api-python/commit/0b9561d1377930da45d3b816308b630827109dd3))
+* **tests:** improve raw response test ([#110](https://github.com/Finch-API/finch-api-python/issues/110)) ([a54268b](https://github.com/Finch-API/finch-api-python/commit/a54268bec11f79d4421af583fb2743ff078eed92))
+* **tests:** update test examples ([#118](https://github.com/Finch-API/finch-api-python/issues/118)) ([03a9546](https://github.com/Finch-API/finch-api-python/commit/03a954632c55be84ea4b37f1d69b16aa7199909e))
+
 ## 0.1.3 (2023-09-25)
 
 Full Changelog: [v0.1.2...v0.1.3](https://github.com/Finch-API/finch-api-python/compare/v0.1.2...v0.1.3)
