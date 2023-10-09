@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.5 (2023-10-09)
+
+Full Changelog: [v0.1.4...v0.1.5](https://github.com/Finch-API/finch-api-python/compare/v0.1.4...v0.1.5)
+
+### Features
+
+* **client:** add forwards-compatible pydantic methods ([#121](https://github.com/Finch-API/finch-api-python/issues/121)) ([b03289d](https://github.com/Finch-API/finch-api-python/commit/b03289d43c95ae13ea16ad3b23cd967d1a28ec34))
+
 ## 0.1.4 (2023-10-04)
 
 Full Changelog: [v0.1.3...v0.1.4](https://github.com/Finch-API/finch-api-python/compare/v0.1.3...v0.1.4)
