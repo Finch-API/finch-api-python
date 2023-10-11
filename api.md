@@ -35,7 +35,7 @@ from finch.types.hris import IndividualInDirectory
 
 Methods:
 
-- <code title="get /employer/directory">client.hris.directory.<a href="./src/finch/resources/hris/directory.py">list_individuals</a>(\*\*<a href="src/finch/types/hris/directory_list_individuals_params.py">params</a>) -> <a href="./src/finch/types/hris/individual_in_directory.py">SyncIndividualsPage[IndividualInDirectory]</a></code>
+- <code title="get /employer/directory">client.hris.directory.<a href="./src/finch/resources/hris/directory.py">list</a>(\*\*<a href="src/finch/types/hris/directory_list_params.py">params</a>) -> <a href="./src/finch/types/hris/individual_in_directory.py">SyncIndividualsPage[IndividualInDirectory]</a></code>
 
 ## Individuals
 
@@ -95,6 +95,7 @@ Types:
 
 ```python
 from finch.types.hris import (
+    BenefitContribution,
     BenefitFrequency,
     BenefitType,
     BenfitContribution,
