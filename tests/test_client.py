@@ -18,7 +18,12 @@ from finch import Finch, AsyncFinch, APIResponseValidationError
 from finch._types import Omit
 from finch._models import BaseModel, FinalRequestOptions
 from finch._exceptions import APIResponseValidationError
-from finch._base_client import BaseClient, make_request_options
+from finch._base_client import (
+    DEFAULT_TIMEOUT,
+    HTTPX_DEFAULT_TIMEOUT,
+    BaseClient,
+    make_request_options,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = os.environ.get("API_KEY", "something1234")
@@ -154,6 +159,57 @@ class TestFinch:
 
             copy_param = copy_signature.parameters.get(name)
             assert copy_param is not None, f"copy() signature is missing the {name} param"
+
+    def test_request_timeout(self) -> None:
+        request = self.client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+        assert timeout == DEFAULT_TIMEOUT
+
+        request = self.client._build_request(
+            FinalRequestOptions(method="get", url="/foo", timeout=httpx.Timeout(100.0))
+        )
+        timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+        assert timeout == httpx.Timeout(100.0)
+
+    def test_client_timeout_option(self) -> None:
+        client = Finch(
+            base_url=base_url, access_token=access_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
+        )
+
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+        assert timeout == httpx.Timeout(0)
+
+    def test_http_client_timeout_option(self) -> None:
+        # custom timeout given to the httpx client should be used
+        with httpx.Client(timeout=None) as http_client:
+            client = Finch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+            )
+
+            request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+            timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+            assert timeout == httpx.Timeout(None)
+
+        # no timeout given to the httpx client should not use the httpx default
+        with httpx.Client() as http_client:
+            client = Finch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+            )
+
+            request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+            timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+            assert timeout == DEFAULT_TIMEOUT
+
+        # explicitly passing the default timeout currently results in it being ignored
+        with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
+            client = Finch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+            )
+
+            request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+            timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+            assert timeout == DEFAULT_TIMEOUT  # our default
 
     def test_default_headers_option(self) -> None:
         client = Finch(
@@ -350,10 +406,24 @@ class TestFinch:
         assert isinstance(response, Model1)
         assert response.foo == 1
 
-    def test_base_url_trailing_slash(self) -> None:
-        client = Finch(
-            base_url="http://localhost:5000/custom/path/", access_token=access_token, _strict_response_validation=True
-        )
+    @pytest.mark.parametrize(
+        "client",
+        [
+            Finch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+            ),
+            Finch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+                http_client=httpx.Client(),
+            ),
+        ],
+        ids=["standard", "custom http client"],
+    )
+    def test_base_url_trailing_slash(self, client: Finch) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -363,10 +433,24 @@ class TestFinch:
         )
         assert request.url == "http://localhost:5000/custom/path/foo"
 
-    def test_base_url_no_trailing_slash(self) -> None:
-        client = Finch(
-            base_url="http://localhost:5000/custom/path", access_token=access_token, _strict_response_validation=True
-        )
+    @pytest.mark.parametrize(
+        "client",
+        [
+            Finch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+            ),
+            Finch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+                http_client=httpx.Client(),
+            ),
+        ],
+        ids=["standard", "custom http client"],
+    )
+    def test_base_url_no_trailing_slash(self, client: Finch) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -375,6 +459,124 @@ class TestFinch:
             ),
         )
         assert request.url == "http://localhost:5000/custom/path/foo"
+
+    @pytest.mark.parametrize(
+        "client",
+        [
+            Finch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+            ),
+            Finch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+                http_client=httpx.Client(),
+            ),
+        ],
+        ids=["standard", "custom http client"],
+    )
+    def test_absolute_request_url(self, client: Finch) -> None:
+        request = client._build_request(
+            FinalRequestOptions(
+                method="post",
+                url="https://myapi.com/foo",
+                json_data={"foo": "bar"},
+            ),
+        )
+        assert request.url == "https://myapi.com/foo"
+
+    def test_transport_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `transport` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            transport = httpx.MockTransport(lambda: None)
+
+            client = Finch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, transport=transport
+            )
+
+            assert client._client._transport is transport
+
+    def test_transport_option_mutually_exclusive_with_http_client(self) -> None:
+        with httpx.Client() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `transport`"):
+                with pytest.warns(DeprecationWarning):
+                    Finch(
+                        base_url=base_url,
+                        access_token=access_token,
+                        _strict_response_validation=True,
+                        transport=httpx.MockTransport(lambda: None),
+                        http_client=http_client,
+                    )
+
+    def test_connection_pool_limits_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `connection_pool_limits` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            connection_pool_limits = httpx.Limits(
+                max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+            )
+
+            client = Finch(
+                base_url=base_url,
+                access_token=access_token,
+                _strict_response_validation=True,
+                connection_pool_limits=connection_pool_limits,
+            )
+
+            assert isinstance(client._client._transport, httpx.HTTPTransport)
+            assert client._client._transport._pool._max_connections == 101
+            assert client._client._transport._pool._max_keepalive_connections == 76
+            assert client._client._transport._pool._keepalive_expiry == 23
+
+    def test_connection_pool_limits_option_mutually_exclusive_with_http_client(self) -> None:
+        with httpx.Client() as http_client:
+            with pytest.raises(
+                ValueError, match="The `http_client` argument is mutually exclusive with `connection_pool_limits`"
+            ):
+                with pytest.warns(DeprecationWarning):
+                    Finch(
+                        base_url=base_url,
+                        access_token=access_token,
+                        _strict_response_validation=True,
+                        connection_pool_limits=httpx.Limits(
+                            max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+                        ),
+                        http_client=http_client,
+                    )
+
+    def test_proxies_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `proxies` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            proxies = "https://www.example.com/proxy"
+
+            client = Finch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, proxies=proxies
+            )
+
+            mounts = list(client._client._mounts.keys())
+            assert len(mounts) == 1
+
+            pattern = mounts[0].pattern
+            assert pattern == "all://"
+
+    def test_proxies_option_mutually_exclusive_with_http_client(self) -> None:
+        with httpx.Client() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `proxies`"):
+                with pytest.warns(DeprecationWarning):
+                    Finch(
+                        base_url=base_url,
+                        access_token=access_token,
+                        _strict_response_validation=True,
+                        proxies="https://www.example.com/proxy",
+                        http_client=http_client,
+                    )
 
     def test_client_del(self) -> None:
         client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -383,6 +585,18 @@ class TestFinch:
         client.__del__()
 
         assert client.is_closed()
+
+    def test_copied_client_does_not_close_http(self) -> None:
+        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        assert not client.is_closed()
+
+        copied = client.copy()
+        assert copied is not client
+
+        copied.__del__()
+
+        assert not copied.is_closed()
+        assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
         client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -574,6 +788,57 @@ class TestAsyncFinch:
 
             copy_param = copy_signature.parameters.get(name)
             assert copy_param is not None, f"copy() signature is missing the {name} param"
+
+    async def test_request_timeout(self) -> None:
+        request = self.client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+        assert timeout == DEFAULT_TIMEOUT
+
+        request = self.client._build_request(
+            FinalRequestOptions(method="get", url="/foo", timeout=httpx.Timeout(100.0))
+        )
+        timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+        assert timeout == httpx.Timeout(100.0)
+
+    async def test_client_timeout_option(self) -> None:
+        client = AsyncFinch(
+            base_url=base_url, access_token=access_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
+        )
+
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+        assert timeout == httpx.Timeout(0)
+
+    async def test_http_client_timeout_option(self) -> None:
+        # custom timeout given to the httpx client should be used
+        async with httpx.AsyncClient(timeout=None) as http_client:
+            client = AsyncFinch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+            )
+
+            request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+            timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+            assert timeout == httpx.Timeout(None)
+
+        # no timeout given to the httpx client should not use the httpx default
+        async with httpx.AsyncClient() as http_client:
+            client = AsyncFinch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+            )
+
+            request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+            timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+            assert timeout == DEFAULT_TIMEOUT
+
+        # explicitly passing the default timeout currently results in it being ignored
+        async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
+            client = AsyncFinch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+            )
+
+            request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+            timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
+            assert timeout == DEFAULT_TIMEOUT  # our default
 
     def test_default_headers_option(self) -> None:
         client = AsyncFinch(
@@ -770,10 +1035,24 @@ class TestAsyncFinch:
         assert isinstance(response, Model1)
         assert response.foo == 1
 
-    def test_base_url_trailing_slash(self) -> None:
-        client = AsyncFinch(
-            base_url="http://localhost:5000/custom/path/", access_token=access_token, _strict_response_validation=True
-        )
+    @pytest.mark.parametrize(
+        "client",
+        [
+            AsyncFinch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+            ),
+            AsyncFinch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+                http_client=httpx.AsyncClient(),
+            ),
+        ],
+        ids=["standard", "custom http client"],
+    )
+    def test_base_url_trailing_slash(self, client: AsyncFinch) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -783,10 +1062,24 @@ class TestAsyncFinch:
         )
         assert request.url == "http://localhost:5000/custom/path/foo"
 
-    def test_base_url_no_trailing_slash(self) -> None:
-        client = AsyncFinch(
-            base_url="http://localhost:5000/custom/path", access_token=access_token, _strict_response_validation=True
-        )
+    @pytest.mark.parametrize(
+        "client",
+        [
+            AsyncFinch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+            ),
+            AsyncFinch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+                http_client=httpx.AsyncClient(),
+            ),
+        ],
+        ids=["standard", "custom http client"],
+    )
+    def test_base_url_no_trailing_slash(self, client: AsyncFinch) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -795,6 +1088,124 @@ class TestAsyncFinch:
             ),
         )
         assert request.url == "http://localhost:5000/custom/path/foo"
+
+    @pytest.mark.parametrize(
+        "client",
+        [
+            AsyncFinch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+            ),
+            AsyncFinch(
+                base_url="http://localhost:5000/custom/path/",
+                access_token=access_token,
+                _strict_response_validation=True,
+                http_client=httpx.AsyncClient(),
+            ),
+        ],
+        ids=["standard", "custom http client"],
+    )
+    def test_absolute_request_url(self, client: AsyncFinch) -> None:
+        request = client._build_request(
+            FinalRequestOptions(
+                method="post",
+                url="https://myapi.com/foo",
+                json_data={"foo": "bar"},
+            ),
+        )
+        assert request.url == "https://myapi.com/foo"
+
+    def test_transport_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `transport` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            transport = httpx.MockTransport(lambda: None)
+
+            client = AsyncFinch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, transport=transport
+            )
+
+            assert client._client._transport is transport
+
+    async def test_transport_option_mutually_exclusive_with_http_client(self) -> None:
+        async with httpx.AsyncClient() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `transport`"):
+                with pytest.warns(DeprecationWarning):
+                    AsyncFinch(
+                        base_url=base_url,
+                        access_token=access_token,
+                        _strict_response_validation=True,
+                        transport=httpx.MockTransport(lambda: None),
+                        http_client=http_client,
+                    )
+
+    def test_connection_pool_limits_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `connection_pool_limits` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            connection_pool_limits = httpx.Limits(
+                max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+            )
+
+            client = AsyncFinch(
+                base_url=base_url,
+                access_token=access_token,
+                _strict_response_validation=True,
+                connection_pool_limits=connection_pool_limits,
+            )
+
+            assert isinstance(client._client._transport, httpx.AsyncHTTPTransport)
+            assert client._client._transport._pool._max_connections == 101
+            assert client._client._transport._pool._max_keepalive_connections == 76
+            assert client._client._transport._pool._keepalive_expiry == 23
+
+    async def test_connection_pool_limits_option_mutually_exclusive_with_http_client(self) -> None:
+        async with httpx.AsyncClient() as http_client:
+            with pytest.raises(
+                ValueError, match="The `http_client` argument is mutually exclusive with `connection_pool_limits`"
+            ):
+                with pytest.warns(DeprecationWarning):
+                    AsyncFinch(
+                        base_url=base_url,
+                        access_token=access_token,
+                        _strict_response_validation=True,
+                        connection_pool_limits=httpx.Limits(
+                            max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+                        ),
+                        http_client=http_client,
+                    )
+
+    def test_proxies_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `proxies` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            proxies = "https://www.example.com/proxy"
+
+            client = AsyncFinch(
+                base_url=base_url, access_token=access_token, _strict_response_validation=True, proxies=proxies
+            )
+
+            mounts = list(client._client._mounts.keys())
+            assert len(mounts) == 1
+
+            pattern = mounts[0].pattern
+            assert pattern == "all://"
+
+    async def test_proxies_option_mutually_exclusive_with_http_client(self) -> None:
+        async with httpx.AsyncClient() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `proxies`"):
+                with pytest.warns(DeprecationWarning):
+                    AsyncFinch(
+                        base_url=base_url,
+                        access_token=access_token,
+                        _strict_response_validation=True,
+                        proxies="https://www.example.com/proxy",
+                        http_client=http_client,
+                    )
 
     async def test_client_del(self) -> None:
         client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -804,6 +1215,19 @@ class TestAsyncFinch:
 
         await asyncio.sleep(0.2)
         assert client.is_closed()
+
+    async def test_copied_client_does_not_close_http(self) -> None:
+        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        assert not client.is_closed()
+
+        copied = client.copy()
+        assert copied is not client
+
+        copied.__del__()
+
+        await asyncio.sleep(0.2)
+        assert not copied.is_closed()
+        assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
         client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
