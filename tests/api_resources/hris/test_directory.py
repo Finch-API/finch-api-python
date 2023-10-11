@@ -21,16 +21,31 @@ class TestDirectory:
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @parametrize
+    def test_method_list(self, client: Finch) -> None:
+        directory = client.hris.directory.list()
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Finch) -> None:
+        directory = client.hris.directory.list(
+            limit=0,
+            offset=0,
+        )
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
     def test_method_list_individuals(self, client: Finch) -> None:
-        directory = client.hris.directory.list_individuals()
+        with pytest.warns(DeprecationWarning):
+            directory = client.hris.directory.list_individuals()  # pyright: ignore[reportDeprecated]
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     def test_method_list_individuals_with_all_params(self, client: Finch) -> None:
-        directory = client.hris.directory.list_individuals(
-            limit=0,
-            offset=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            directory = client.hris.directory.list_individuals(  # pyright: ignore[reportDeprecated]
+                limit=0,
+                offset=0,
+            )
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
 
@@ -40,14 +55,29 @@ class TestAsyncDirectory:
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @parametrize
+    async def test_method_list(self, client: AsyncFinch) -> None:
+        directory = await client.hris.directory.list()
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, client: AsyncFinch) -> None:
+        directory = await client.hris.directory.list(
+            limit=0,
+            offset=0,
+        )
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
     async def test_method_list_individuals(self, client: AsyncFinch) -> None:
-        directory = await client.hris.directory.list_individuals()
+        with pytest.warns(DeprecationWarning):
+            directory = await client.hris.directory.list_individuals()  # pyright: ignore[reportDeprecated]
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     async def test_method_list_individuals_with_all_params(self, client: AsyncFinch) -> None:
-        directory = await client.hris.directory.list_individuals(
-            limit=0,
-            offset=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            directory = await client.hris.directory.list_individuals(  # pyright: ignore[reportDeprecated]
+                limit=0,
+                offset=0,
+            )
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])

@@ -14,8 +14,10 @@ from .supported_benefit import SupportedBenefit as SupportedBenefit
 from .benfit_contribution import BenfitContribution as BenfitContribution
 from .individual_response import IndividualResponse as IndividualResponse
 from .payment_list_params import PaymentListParams as PaymentListParams
+from .benefit_contribution import BenefitContribution as BenefitContribution
 from .benefit_create_params import BenefitCreateParams as BenefitCreateParams
 from .benefit_update_params import BenefitUpdateParams as BenefitUpdateParams
+from .directory_list_params import DirectoryListParams as DirectoryListParams
 from .pay_statement_response import PayStatementResponse as PayStatementResponse
 from .individual_in_directory import IndividualInDirectory as IndividualInDirectory
 from .employment_data_response import EmploymentDataResponse as EmploymentDataResponse
