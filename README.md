@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found at [https://developer.tryfinch.com/](https://developer.tryfinch.com/).
+The API documentation can be found [in the Finch Documentation Center](https://developer.tryfinch.com/).
 
 ## Installation
 
@@ -27,7 +27,7 @@ client = Finch(
     access_token="my access token",
 )
 
-page = client.hris.directory.list_individuals(
+page = client.hris.directory.list(
     candidate_id="<candidate id>",
 )
 directory = page.individuals[0]
@@ -47,7 +47,7 @@ client = AsyncFinch(
 
 
 async def main():
-    page = await client.hris.directory.list_individuals(
+    page = await client.hris.directory.list(
         candidate_id="<candidate id>",
     )
     print(page.individuals[0].first_name)
@@ -77,7 +77,7 @@ client = Finch()
 
 all_directories = []
 # Automatically fetches more pages as needed.
-for directory in client.hris.directory.list_individuals():
+for directory in client.hris.directory.list():
     # Do something with directory here
     all_directories.append(directory)
 print(all_directories)
@@ -95,7 +95,7 @@ client = AsyncFinch()
 async def main() -> None:
     all_directories = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for directory in client.hris.directory.list_individuals():
+    async for directory in client.hris.directory.list():
         all_directories.append(directory)
     print(all_directories)
 
@@ -106,7 +106,7 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.hris.directory.list_individuals()
+first_page = await client.hris.directory.list()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -118,7 +118,7 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.hris.directory.list_individuals()
+first_page = await client.hris.directory.list()
 
 print(
     f"the current start offset for this page: {first_page.paging.offset}"
@@ -138,7 +138,7 @@ from finch import Finch
 
 client = Finch()
 
-client.hris.directory.list_individuals(
+client.hris.directory.list(
     path_params=[],
     params={},
 )
@@ -183,7 +183,7 @@ from finch import Finch
 client = Finch()
 
 try:
-    client.hris.directory.list_individuals()
+    client.hris.directory.list()
 except finch.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -226,7 +226,7 @@ client = Finch(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).hris.directory.list_individuals()
+client.with_options(max_retries=5).hris.directory.list()
 ```
 
 ### Timeouts
@@ -249,7 +249,7 @@ client = Finch(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).hris.directory.list_individuals()
+client.with_options(timeout=5 * 1000).hris.directory.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -313,7 +313,7 @@ By default the library closes underlying HTTP connections whenever the client is
 
 ## Versioning
 
-This package generally attempts to follow [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
+This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions, though certain backwards-incompatible changes may be released as minor versions:
 
 1. Changes that only affect static types, without breaking runtime behavior.
 2. Changes to library internals which are technically public but not intended or documented for external use. _(Please open a GitHub issue to let us know if you are relying on such internals)_.
