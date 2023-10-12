@@ -62,11 +62,11 @@ class Finch(SyncAPIClient):
     def __init__(
         self,
         *,
-        client_id: str | None = None,
-        client_secret: str | None = None,
-        webhook_secret: str | None = None,
+        access_token: str | None = None,
+        client_id: str | None = os.environ.get("FINCH_CLIENT_ID", None),
+        client_secret: str | None = os.environ.get("FINCH_CLIENT_SECRET", None),
+        webhook_secret: str | None = os.environ.get("FINCH_WEBHOOK_SECRET", None),
         base_url: Optional[str] = None,
-        access_token: Optional[str] = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
@@ -98,14 +98,11 @@ class Finch(SyncAPIClient):
         """
         self.access_token = access_token
 
-        client_id_envvar = os.environ.get("FINCH_CLIENT_ID", None)
-        self.client_id = client_id or client_id_envvar or None
+        self.client_id = client_id
 
-        client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
-        self.client_secret = client_secret or client_secret_envvar or None
+        self.client_secret = client_secret
 
-        webhook_secret_envvar = os.environ.get("FINCH_WEBHOOK_SECRET", None)
-        self.webhook_secret = webhook_secret or webhook_secret_envvar or None
+        self.webhook_secret = webhook_secret
 
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
@@ -162,10 +159,10 @@ class Finch(SyncAPIClient):
     def copy(
         self,
         *,
+        access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
         webhook_secret: str | None = None,
-        access_token: str | None = None,
         base_url: str | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -219,11 +216,11 @@ class Finch(SyncAPIClient):
             http_client = http_client or self._client
 
         return self.__class__(
+            access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
             webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or str(self.base_url),
-            access_token=access_token or self.access_token,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
             connection_pool_limits=connection_pool_limits,
@@ -354,11 +351,11 @@ class AsyncFinch(AsyncAPIClient):
     def __init__(
         self,
         *,
-        client_id: str | None = None,
-        client_secret: str | None = None,
-        webhook_secret: str | None = None,
+        access_token: str | None = None,
+        client_id: str | None = os.environ.get("FINCH_CLIENT_ID", None),
+        client_secret: str | None = os.environ.get("FINCH_CLIENT_SECRET", None),
+        webhook_secret: str | None = os.environ.get("FINCH_WEBHOOK_SECRET", None),
         base_url: Optional[str] = None,
-        access_token: Optional[str] = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
@@ -390,14 +387,11 @@ class AsyncFinch(AsyncAPIClient):
         """
         self.access_token = access_token
 
-        client_id_envvar = os.environ.get("FINCH_CLIENT_ID", None)
-        self.client_id = client_id or client_id_envvar or None
+        self.client_id = client_id
 
-        client_secret_envvar = os.environ.get("FINCH_CLIENT_SECRET", None)
-        self.client_secret = client_secret or client_secret_envvar or None
+        self.client_secret = client_secret
 
-        webhook_secret_envvar = os.environ.get("FINCH_WEBHOOK_SECRET", None)
-        self.webhook_secret = webhook_secret or webhook_secret_envvar or None
+        self.webhook_secret = webhook_secret
 
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
@@ -454,10 +448,10 @@ class AsyncFinch(AsyncAPIClient):
     def copy(
         self,
         *,
+        access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
         webhook_secret: str | None = None,
-        access_token: str | None = None,
         base_url: str | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -511,11 +505,11 @@ class AsyncFinch(AsyncAPIClient):
             http_client = http_client or self._client
 
         return self.__class__(
+            access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
             webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or str(self.base_url),
-            access_token=access_token or self.access_token,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
             connection_pool_limits=connection_pool_limits,
