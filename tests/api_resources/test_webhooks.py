@@ -27,7 +27,7 @@ class TestWebhooks:
     payload = """{"company_id":"720be419-0293-4d32-a707-32179b0827ab"}"""
     signature = "m7y0TV2C+hlHxU42wCieApTSTaA8/047OAplBqxIV/s="
     headers = {
-        "finch-event-id": "msg_2Lh9KRb0pzN4LePd3XiA4v12Axj",
+        "Finch-Event-Id": "msg_2Lh9KRb0pzN4LePd3XiA4v12Axj",
         "finch-timestamp": timestamp,
         "finch-signature": f"v1,{signature}",
     }
@@ -127,7 +127,7 @@ class TestAsyncWebhooks:
     payload = """{"company_id":"720be419-0293-4d32-a707-32179b0827ab"}"""
     signature = "m7y0TV2C+hlHxU42wCieApTSTaA8/047OAplBqxIV/s="
     headers = {
-        "finch-event-id": "msg_2Lh9KRb0pzN4LePd3XiA4v12Axj",
+        "Finch-Event-Id": "msg_2Lh9KRb0pzN4LePd3XiA4v12Axj",
         "finch-timestamp": timestamp,
         "finch-signature": f"v1,{signature}",
     }
