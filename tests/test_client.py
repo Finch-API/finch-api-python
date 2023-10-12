@@ -26,7 +26,7 @@ from finch._base_client import (
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = os.environ.get("API_KEY", "something1234")
+access_token = "My Access Token"
 
 
 def _get_params(client: BaseClient) -> dict[str, str]:
@@ -51,9 +51,9 @@ class TestFinch:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(access_token="my new access token")
-        assert copied.access_token == "my new access token"
-        assert self.client.access_token == access_token
+        copied = self.client.copy(access_token="another My Access Token")
+        assert copied.access_token == "another My Access Token"
+        assert self.client.access_token == "My Access Token"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -680,9 +680,9 @@ class TestAsyncFinch:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(access_token="my new access token")
-        assert copied.access_token == "my new access token"
-        assert self.client.access_token == access_token
+        copied = self.client.copy(access_token="another My Access Token")
+        assert copied.access_token == "another My Access Token"
+        assert self.client.access_token == "My Access Token"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly

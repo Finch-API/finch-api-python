@@ -24,7 +24,7 @@ The full API of this library can be found in [api.md](https://www.github.com/Fin
 from finch import Finch
 
 client = Finch(
-    access_token="my access token",
+    access_token="My Access Token",
 )
 
 page = client.hris.directory.list(
@@ -42,7 +42,7 @@ Simply import `AsyncFinch` instead of `Finch` and use `await` with each API call
 from finch import AsyncFinch
 
 client = AsyncFinch(
-    access_token="my access token",
+    access_token="My Access Token",
 )
 
 
