@@ -10,6 +10,7 @@ import hashlib
 from datetime import datetime, timezone, timedelta
 
 from .._types import HeadersLike
+from .._utils import get_required_header
 from .._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["Webhooks", "AsyncWebhooks"]
@@ -51,13 +52,8 @@ class Webhooks(SyncAPIResource):
         except Exception:
             raise ValueError("Bad secret")
 
-        msg_id = headers.get("finch-event-id")
-        if not msg_id:
-            raise ValueError("Could not find finch-event-id header")
-
-        msg_timestamp = headers.get("finch-timestamp")
-        if not msg_timestamp:
-            raise ValueError("Could not find finch-timestamp header")
+        msg_id = get_required_header(headers, "finch-event-id")
+        msg_timestamp = get_required_header(headers, "finch-timestamp")
 
         # validate the timestamp
         webhook_tolerance = timedelta(minutes=5)
@@ -88,9 +84,7 @@ class Webhooks(SyncAPIResource):
         to_sign = f"{msg_id}.{timestamp_str}.{body}".encode()
         expected_signature = hmac.new(parsedSecret, to_sign, hashlib.sha256).digest()
 
-        msg_signature = headers.get("finch-signature")
-        if not msg_signature:
-            raise ValueError("Could not find finch-signature header")
+        msg_signature = get_required_header(headers, "finch-signature")
 
         # Signature header can contain multiple signatures delimited by spaces
         passed_sigs = msg_signature.split(" ")
@@ -151,13 +145,8 @@ class AsyncWebhooks(AsyncAPIResource):
         except Exception:
             raise ValueError("Bad secret")
 
-        msg_id = headers.get("finch-event-id")
-        if not msg_id:
-            raise ValueError("Could not find finch-event-id header")
-
-        msg_timestamp = headers.get("finch-timestamp")
-        if not msg_timestamp:
-            raise ValueError("Could not find finch-timestamp header")
+        msg_id = get_required_header(headers, "finch-event-id")
+        msg_timestamp = get_required_header(headers, "finch-timestamp")
 
         # validate the timestamp
         webhook_tolerance = timedelta(minutes=5)
@@ -188,9 +177,7 @@ class AsyncWebhooks(AsyncAPIResource):
         to_sign = f"{msg_id}.{timestamp_str}.{body}".encode()
         expected_signature = hmac.new(parsedSecret, to_sign, hashlib.sha256).digest()
 
-        msg_signature = headers.get("finch-signature")
-        if not msg_signature:
-            raise ValueError("Could not find finch-signature header")
+        msg_signature = get_required_header(headers, "finch-signature")
 
         # Signature header can contain multiple signatures delimited by spaces
         passed_sigs = msg_signature.split(" ")
