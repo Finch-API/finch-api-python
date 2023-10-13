@@ -36,7 +36,7 @@ class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
         return None
 
     @classmethod
-    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:
+    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:  # noqa: ARG003
         return cls.construct(
             **{
                 **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
@@ -58,7 +58,7 @@ class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
         return None
 
     @classmethod
-    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:
+    def build(cls: Type[_BaseModelT], *, response: Response, data: object) -> _BaseModelT:  # noqa: ARG003
         return cls.construct(
             **{
                 **(cast(Mapping[str, Any], data) if is_mapping(data) else {"items": data}),
