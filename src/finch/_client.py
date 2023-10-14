@@ -96,20 +96,18 @@ class Finch(SyncAPIClient):
         - `client_secret` from `FINCH_CLIENT_SECRET`
         - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
-        if access_token is None:
-            access_token = None
         self.access_token = access_token
 
         if client_id is None:
-            client_id = os.environ.get("FINCH_CLIENT_ID") or None
+            client_id = os.environ.get("FINCH_CLIENT_ID")
         self.client_id = client_id
 
         if client_secret is None:
-            client_secret = os.environ.get("FINCH_CLIENT_SECRET") or None
+            client_secret = os.environ.get("FINCH_CLIENT_SECRET")
         self.client_secret = client_secret
 
         if webhook_secret is None:
-            webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET") or None
+            webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
         self.webhook_secret = webhook_secret
 
         if base_url is None:
@@ -393,20 +391,18 @@ class AsyncFinch(AsyncAPIClient):
         - `client_secret` from `FINCH_CLIENT_SECRET`
         - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
-        if access_token is None:
-            access_token = None
         self.access_token = access_token
 
         if client_id is None:
-            client_id = os.environ.get("FINCH_CLIENT_ID") or None
+            client_id = os.environ.get("FINCH_CLIENT_ID")
         self.client_id = client_id
 
         if client_secret is None:
-            client_secret = os.environ.get("FINCH_CLIENT_SECRET") or None
+            client_secret = os.environ.get("FINCH_CLIENT_SECRET")
         self.client_secret = client_secret
 
         if webhook_secret is None:
-            webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET") or None
+            webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
         self.webhook_secret = webhook_secret
 
         if base_url is None:
