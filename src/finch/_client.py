@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 import asyncio
-from typing import Union, Mapping, Optional
+from typing import Union, Mapping
 
 import httpx
 
@@ -66,7 +66,7 @@ class Finch(SyncAPIClient):
         client_id: str | None = None,
         client_secret: str | None = None,
         webhook_secret: str | None = None,
-        base_url: Optional[str] = None,
+        base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
@@ -169,7 +169,7 @@ class Finch(SyncAPIClient):
         client_id: str | None = None,
         client_secret: str | None = None,
         webhook_secret: str | None = None,
-        base_url: str | None = None,
+        base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
         connection_pool_limits: httpx.Limits | None = None,
@@ -361,7 +361,7 @@ class AsyncFinch(AsyncAPIClient):
         client_id: str | None = None,
         client_secret: str | None = None,
         webhook_secret: str | None = None,
-        base_url: Optional[str] = None,
+        base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
@@ -464,7 +464,7 @@ class AsyncFinch(AsyncAPIClient):
         client_id: str | None = None,
         client_secret: str | None = None,
         webhook_secret: str | None = None,
-        base_url: str | None = None,
+        base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
         connection_pool_limits: httpx.Limits | None = None,
