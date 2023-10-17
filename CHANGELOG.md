@@ -1,5 +1,42 @@
 # Changelog
 
+## 0.2.0 (2023-10-17)
+
+Full Changelog: [v0.1.5...v0.2.0](https://github.com/Finch-API/finch-api-python/compare/v0.1.5...v0.2.0)
+
+### Features
+
+* **client:** add logging setup ([#127](https://github.com/Finch-API/finch-api-python/issues/127)) ([71aab4b](https://github.com/Finch-API/finch-api-python/commit/71aab4bab20f465005c6300bdedf46862d7fdb82))
+* **client:** add support for passing in a httpx client ([#123](https://github.com/Finch-API/finch-api-python/issues/123)) ([623f5bc](https://github.com/Finch-API/finch-api-python/commit/623f5bc8c460e8e880ebc932c8a0f4a4ba780396))
+* **client:** support passing httpx.URL instances to base_url ([#138](https://github.com/Finch-API/finch-api-python/issues/138)) ([0aad4df](https://github.com/Finch-API/finch-api-python/commit/0aad4df2c3a86f60ff9a28fc7b28ea2012541257))
+* make webhook headers case insensitive ([#130](https://github.com/Finch-API/finch-api-python/issues/130)) ([3af34f9](https://github.com/Finch-API/finch-api-python/commit/3af34f9a71dde0fa60ac7c2aa75e1273e8431015))
+
+
+### Bug Fixes
+
+* **client:** accept io.IOBase instances in file params ([#134](https://github.com/Finch-API/finch-api-python/issues/134)) ([1297832](https://github.com/Finch-API/finch-api-python/commit/1297832b447ed973ab39b93a329550151747a899))
+* **client:** correctly handle arguments with env vars ([#128](https://github.com/Finch-API/finch-api-python/issues/128)) ([e502b18](https://github.com/Finch-API/finch-api-python/commit/e502b18337da39095aee811ea3d69576085602a4))
+* correct benfits to benefits ([#125](https://github.com/Finch-API/finch-api-python/issues/125)) ([9e2c02a](https://github.com/Finch-API/finch-api-python/commit/9e2c02ad1f53d94ed523e340751b39f10ebbe483))
+
+
+### Chores
+
+* **internal:** cleanup some redundant code ([#133](https://github.com/Finch-API/finch-api-python/issues/133)) ([88e49bc](https://github.com/Finch-API/finch-api-python/commit/88e49bcc474195cde09d127d028e3a427b13e9a2))
+* **internal:** enable lint rule ([#132](https://github.com/Finch-API/finch-api-python/issues/132)) ([8e266e8](https://github.com/Finch-API/finch-api-python/commit/8e266e82511822cfefc7d877300382a05ca2f25e))
+* **internal:** improve publish script ([#137](https://github.com/Finch-API/finch-api-python/issues/137)) ([78cd8ba](https://github.com/Finch-API/finch-api-python/commit/78cd8bad7146ab40a16342d9d0c838d36c041c23))
+* **internal:** migrate from Poetry to Rye ([#136](https://github.com/Finch-API/finch-api-python/issues/136)) ([ac49d7c](https://github.com/Finch-API/finch-api-python/commit/ac49d7cd8721c46ad2a1ed77c5f5b75eca7ad4f9))
+* update comment ([#131](https://github.com/Finch-API/finch-api-python/issues/131)) ([20aa00a](https://github.com/Finch-API/finch-api-python/commit/20aa00ac06e4104b74c047cc75720b2aa77c2f4a))
+
+
+### Documentation
+
+* organisation -&gt; organization (UK to US English) ([#135](https://github.com/Finch-API/finch-api-python/issues/135)) ([2e278bd](https://github.com/Finch-API/finch-api-python/commit/2e278bd482dc7407689142037df9fd3bfa15f05e))
+
+
+### Refactors
+
+* **test:** refactor authentication tests ([#126](https://github.com/Finch-API/finch-api-python/issues/126)) ([88b79b5](https://github.com/Finch-API/finch-api-python/commit/88b79b5a98bda98ae1b6562b385db6ca53105707))
+
 ## 0.1.5 (2023-10-09)
 
 Full Changelog: [v0.1.4...v0.1.5](https://github.com/Finch-API/finch-api-python/compare/v0.1.4...v0.1.5)
