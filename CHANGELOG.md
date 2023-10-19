@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 (2023-10-19)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/Finch-API/finch-api-python/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* **internal:** update gitignore ([#141](https://github.com/Finch-API/finch-api-python/issues/141)) ([f4325e8](https://github.com/Finch-API/finch-api-python/commit/f4325e83bc9c96578b55c65ede49b95b6c0bfc5e))
+* **internal:** update gitignore ([#142](https://github.com/Finch-API/finch-api-python/issues/142)) ([c5cb20a](https://github.com/Finch-API/finch-api-python/commit/c5cb20a35900618e865ab599a8401d87a174045e))
+* **internal:** update lock file ([#139](https://github.com/Finch-API/finch-api-python/issues/139)) ([17c0b12](https://github.com/Finch-API/finch-api-python/commit/17c0b125bb03a6d9ef6657a01b67ce680b76ce5d))
+
 ## 0.2.0 (2023-10-17)
 
 Full Changelog: [v0.1.5...v0.2.0](https://github.com/Finch-API/finch-api-python/compare/v0.1.5...v0.2.0)
