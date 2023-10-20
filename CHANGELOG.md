@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.3 (2023-10-20)
+
+Full Changelog: [v0.2.2...v0.2.3](https://github.com/Finch-API/finch-api-python/compare/v0.2.2...v0.2.3)
+
+### Chores
+
+* **internal:** bump mypy ([#147](https://github.com/Finch-API/finch-api-python/issues/147)) ([da22ad6](https://github.com/Finch-API/finch-api-python/commit/da22ad671a2d6c3779283aade3e27af8bfd2024e))
+* **internal:** bump pyright ([#145](https://github.com/Finch-API/finch-api-python/issues/145)) ([8d62f69](https://github.com/Finch-API/finch-api-python/commit/8d62f69efd62ca6df00cda8af30655fde1e2f0f0))
+
 ## 0.2.2 (2023-10-19)
 
 Full Changelog: [v0.2.1...v0.2.2](https://github.com/Finch-API/finch-api-python/compare/v0.2.1...v0.2.2)
