@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import asyncio
 from typing import Union, Mapping
+from typing_extensions import override
 
 import httpx
 
@@ -134,10 +135,12 @@ class Finch(SyncAPIClient):
         self.request_forwarding = resources.RequestForwarding(self)
 
     @property
+    @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
 
     @property
+    @override
     def auth_headers(self) -> dict[str, str]:
         access_token = self.access_token
         if access_token is None:
@@ -145,6 +148,7 @@ class Finch(SyncAPIClient):
         return {"Authorization": f"Bearer {access_token}"}
 
     @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -152,6 +156,7 @@ class Finch(SyncAPIClient):
             **self._custom_headers,
         }
 
+    @override
     def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
         if self.access_token and headers.get("Authorization"):
             return
@@ -308,6 +313,7 @@ class Finch(SyncAPIClient):
             )
         )
 
+    @override
     def _make_status_error(
         self,
         err_msg: str,
@@ -429,10 +435,12 @@ class AsyncFinch(AsyncAPIClient):
         self.request_forwarding = resources.AsyncRequestForwarding(self)
 
     @property
+    @override
     def qs(self) -> Querystring:
         return Querystring(array_format="comma")
 
     @property
+    @override
     def auth_headers(self) -> dict[str, str]:
         access_token = self.access_token
         if access_token is None:
@@ -440,6 +448,7 @@ class AsyncFinch(AsyncAPIClient):
         return {"Authorization": f"Bearer {access_token}"}
 
     @property
+    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -447,6 +456,7 @@ class AsyncFinch(AsyncAPIClient):
             **self._custom_headers,
         }
 
+    @override
     def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
         if self.access_token and headers.get("Authorization"):
             return
@@ -606,6 +616,7 @@ class AsyncFinch(AsyncAPIClient):
             )
         )
 
+    @override
     def _make_status_error(
         self,
         err_msg: str,
