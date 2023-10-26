@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Any, List, Type, Generic, Mapping, TypeVar, Optional, cast
+from typing_extensions import override
 
 from httpx import Response
 
@@ -25,9 +26,11 @@ _BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
 class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     items: List[ModelT]
 
+    @override
     def _get_page_items(self) -> List[ModelT]:
         return self.items
 
+    @override
     def next_page_info(self) -> None:
         """
         This page represents a response that isn't actually paginated at the API level
@@ -47,9 +50,11 @@ class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     items: List[ModelT]
 
+    @override
     def _get_page_items(self) -> List[ModelT]:
         return self.items
 
+    @override
     def next_page_info(self) -> None:
         """
         This page represents a response that isn't actually paginated at the API level
@@ -69,9 +74,11 @@ class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 class SyncResponsesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     responses: List[ModelT]
 
+    @override
     def _get_page_items(self) -> List[ModelT]:
         return self.responses
 
+    @override
     def next_page_info(self) -> None:
         """
         This page represents a response that isn't actually paginated at the API level
@@ -83,9 +90,11 @@ class SyncResponsesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT])
 class AsyncResponsesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     responses: List[ModelT]
 
+    @override
     def _get_page_items(self) -> List[ModelT]:
         return self.responses
 
+    @override
     def next_page_info(self) -> None:
         """
         This page represents a response that isn't actually paginated at the API level
@@ -102,9 +111,11 @@ class SyncIndividualsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT
     individuals: List[ModelT]
     paging: Paging
 
+    @override
     def _get_page_items(self) -> List[ModelT]:
         return self.individuals
 
+    @override
     def next_page_info(self) -> Optional[PageInfo]:
         offset = self.paging.offset
         if offset is None:
@@ -127,9 +138,11 @@ class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mode
     individuals: List[ModelT]
     paging: Paging
 
+    @override
     def _get_page_items(self) -> List[ModelT]:
         return self.individuals
 
+    @override
     def next_page_info(self) -> Optional[PageInfo]:
         offset = self.paging.offset
         if offset is None:
