@@ -8,8 +8,11 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncIndividualsPage, AsyncIndividualsPage
 from finch.types.hris import IndividualInDirectory
+
+# pyright: reportDeprecated=false
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = "My Access Token"
@@ -34,18 +37,33 @@ class TestDirectory:
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Finch) -> None:
+        response = client.hris.directory.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        directory = response.parse()
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
     def test_method_list_individuals(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
-            directory = client.hris.directory.list_individuals()  # pyright: ignore[reportDeprecated]
+            directory = client.hris.directory.list_individuals()
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     def test_method_list_individuals_with_all_params(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
-            directory = client.hris.directory.list_individuals(  # pyright: ignore[reportDeprecated]
+            directory = client.hris.directory.list_individuals(
                 limit=0,
                 offset=0,
             )
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_individuals(self, client: Finch) -> None:
+        with pytest.warns(DeprecationWarning):
+            response = client.hris.directory.with_raw_response.list_individuals()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        directory = response.parse()
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
 
@@ -68,16 +86,31 @@ class TestAsyncDirectory:
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncFinch) -> None:
+        response = await client.hris.directory.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        directory = response.parse()
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
     async def test_method_list_individuals(self, client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
-            directory = await client.hris.directory.list_individuals()  # pyright: ignore[reportDeprecated]
+            directory = await client.hris.directory.list_individuals()
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     async def test_method_list_individuals_with_all_params(self, client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
-            directory = await client.hris.directory.list_individuals(  # pyright: ignore[reportDeprecated]
+            directory = await client.hris.directory.list_individuals(
                 limit=0,
                 offset=0,
             )
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_individuals(self, client: AsyncFinch) -> None:
+        with pytest.warns(DeprecationWarning):
+            response = await client.hris.directory.with_raw_response.list_individuals()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        directory = response.parse()
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])

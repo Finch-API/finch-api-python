@@ -16,6 +16,7 @@ from pydantic import ValidationError
 
 from finch import Finch, AsyncFinch, APIResponseValidationError
 from finch._types import Omit
+from finch._client import Finch, AsyncFinch
 from finch._models import BaseModel, FinalRequestOptions
 from finch._exceptions import APIResponseValidationError
 from finch._base_client import (
@@ -29,7 +30,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = "My Access Token"
 
 
-def _get_params(client: BaseClient[Any]) -> dict[str, str]:
+def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
     request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
     url = httpx.URL(request.url)
     return dict(url.params)

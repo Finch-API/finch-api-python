@@ -6,8 +6,14 @@ from typing import TYPE_CHECKING, Optional
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
-from .individuals import Individuals, AsyncIndividuals
+from .individuals import (
+    Individuals,
+    AsyncIndividuals,
+    IndividualsWithRawResponse,
+    AsyncIndividualsWithRawResponse,
+)
 from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncSinglePage, AsyncSinglePage
 from ....types.hris import (
     BenefitType,
@@ -29,10 +35,12 @@ __all__ = ["Benefits", "AsyncBenefits"]
 
 class Benefits(SyncAPIResource):
     individuals: Individuals
+    with_raw_response: BenefitsWithRawResponse
 
     def __init__(self, client: Finch) -> None:
         super().__init__(client)
         self.individuals = Individuals(client)
+        self.with_raw_response = BenefitsWithRawResponse(self)
 
     def create(
         self,
@@ -202,10 +210,12 @@ class Benefits(SyncAPIResource):
 
 class AsyncBenefits(AsyncAPIResource):
     individuals: AsyncIndividuals
+    with_raw_response: AsyncBenefitsWithRawResponse
 
     def __init__(self, client: AsyncFinch) -> None:
         super().__init__(client)
         self.individuals = AsyncIndividuals(client)
+        self.with_raw_response = AsyncBenefitsWithRawResponse(self)
 
     async def create(
         self,
@@ -370,4 +380,46 @@ class AsyncBenefits(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             model=SupportedBenefit,
+        )
+
+
+class BenefitsWithRawResponse:
+    def __init__(self, benefits: Benefits) -> None:
+        self.individuals = IndividualsWithRawResponse(benefits.individuals)
+
+        self.create = to_raw_response_wrapper(
+            benefits.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            benefits.retrieve,
+        )
+        self.update = to_raw_response_wrapper(
+            benefits.update,
+        )
+        self.list = to_raw_response_wrapper(
+            benefits.list,
+        )
+        self.list_supported_benefits = to_raw_response_wrapper(
+            benefits.list_supported_benefits,
+        )
+
+
+class AsyncBenefitsWithRawResponse:
+    def __init__(self, benefits: AsyncBenefits) -> None:
+        self.individuals = AsyncIndividualsWithRawResponse(benefits.individuals)
+
+        self.create = async_to_raw_response_wrapper(
+            benefits.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            benefits.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            benefits.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            benefits.list,
+        )
+        self.list_supported_benefits = async_to_raw_response_wrapper(
+            benefits.list_supported_benefits,
         )

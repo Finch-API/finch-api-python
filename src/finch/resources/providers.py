@@ -2,16 +2,28 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import Provider
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncSinglePage, AsyncSinglePage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Finch, AsyncFinch
 
 __all__ = ["Providers", "AsyncProviders"]
 
 
 class Providers(SyncAPIResource):
+    with_raw_response: ProvidersWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = ProvidersWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -34,6 +46,12 @@ class Providers(SyncAPIResource):
 
 
 class AsyncProviders(AsyncAPIResource):
+    with_raw_response: AsyncProvidersWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncProvidersWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -52,4 +70,18 @@ class AsyncProviders(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             model=Provider,
+        )
+
+
+class ProvidersWithRawResponse:
+    def __init__(self, providers: Providers) -> None:
+        self.list = to_raw_response_wrapper(
+            providers.list,
+        )
+
+
+class AsyncProvidersWithRawResponse:
+    def __init__(self, providers: AsyncProviders) -> None:
+        self.list = async_to_raw_response_wrapper(
+            providers.list,
         )

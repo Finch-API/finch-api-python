@@ -8,6 +8,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncSinglePage, AsyncSinglePage
 from finch.types.hris import (
     CompanyBenefit,
@@ -40,10 +41,26 @@ class TestBenefits:
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Finch) -> None:
+        response = client.hris.benefits.with_raw_response.create()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
+        assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Finch) -> None:
         benefit = client.hris.benefits.retrieve(
             "string",
         )
+        assert_matches_type(CompanyBenefit, benefit, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Finch) -> None:
+        response = client.hris.benefits.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
         assert_matches_type(CompanyBenefit, benefit, path=["response"])
 
     @parametrize
@@ -62,13 +79,36 @@ class TestBenefits:
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
+    def test_raw_response_update(self, client: Finch) -> None:
+        response = client.hris.benefits.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
+        assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Finch) -> None:
         benefit = client.hris.benefits.list()
         assert_matches_type(SyncSinglePage[CompanyBenefit], benefit, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Finch) -> None:
+        response = client.hris.benefits.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
+        assert_matches_type(SyncSinglePage[CompanyBenefit], benefit, path=["response"])
+
+    @parametrize
     def test_method_list_supported_benefits(self, client: Finch) -> None:
         benefit = client.hris.benefits.list_supported_benefits()
+        assert_matches_type(SyncSinglePage[SupportedBenefit], benefit, path=["response"])
+
+    @parametrize
+    def test_raw_response_list_supported_benefits(self, client: Finch) -> None:
+        response = client.hris.benefits.with_raw_response.list_supported_benefits()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
         assert_matches_type(SyncSinglePage[SupportedBenefit], benefit, path=["response"])
 
 
@@ -92,10 +132,26 @@ class TestAsyncBenefits:
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.with_raw_response.create()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
+        assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncFinch) -> None:
         benefit = await client.hris.benefits.retrieve(
             "string",
         )
+        assert_matches_type(CompanyBenefit, benefit, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
         assert_matches_type(CompanyBenefit, benefit, path=["response"])
 
     @parametrize
@@ -114,11 +170,34 @@ class TestAsyncBenefits:
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
+    async def test_raw_response_update(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
+        assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncFinch) -> None:
         benefit = await client.hris.benefits.list()
         assert_matches_type(AsyncSinglePage[CompanyBenefit], benefit, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
+        assert_matches_type(AsyncSinglePage[CompanyBenefit], benefit, path=["response"])
+
+    @parametrize
     async def test_method_list_supported_benefits(self, client: AsyncFinch) -> None:
         benefit = await client.hris.benefits.list_supported_benefits()
+        assert_matches_type(AsyncSinglePage[SupportedBenefit], benefit, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list_supported_benefits(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.with_raw_response.list_supported_benefits()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        benefit = response.parse()
         assert_matches_type(AsyncSinglePage[SupportedBenefit], benefit, path=["response"])

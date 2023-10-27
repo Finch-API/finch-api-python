@@ -11,6 +11,7 @@ import pytest
 import time_machine
 
 from finch import Finch, AsyncFinch
+from finch._client import Finch, AsyncFinch
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = "My Access Token"
