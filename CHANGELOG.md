@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2023-10-27)
+
+Full Changelog: [v0.3.2...v0.4.0](https://github.com/Finch-API/finch-api-python/compare/v0.3.2...v0.4.0)
+
+### Features
+
+* **package:** add classifiers ([#160](https://github.com/Finch-API/finch-api-python/issues/160)) ([36a57af](https://github.com/Finch-API/finch-api-python/commit/36a57af03d936fb73572380fb3ac88c468899e92))
+
 ## 0.3.2 (2023-10-27)
 
 Full Changelog: [v0.3.1...v0.3.2](https://github.com/Finch-API/finch-api-python/compare/v0.3.1...v0.3.2)
