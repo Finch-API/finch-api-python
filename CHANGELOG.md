@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.3.0 (2023-10-27)
+
+Full Changelog: [v0.2.3...v0.3.0](https://github.com/finch-api/finch-api-python/compare/v0.2.3...v0.3.0)
+
+### Features
+
+* **client:** adjust retry behavior to be exponential backoff ([#149](https://github.com/finch-api/finch-api-python/issues/149)) ([6c76643](https://github.com/finch-api/finch-api-python/commit/6c766434ba25b5684c41261dfd68355ea9c347ad))
+* **client:** improve file upload types ([#148](https://github.com/finch-api/finch-api-python/issues/148)) ([7f9db48](https://github.com/finch-api/finch-api-python/commit/7f9db48ced6c9914cc65ad6e071f3e10ec02885c))
+* **client:** support accessing raw response objects ([#154](https://github.com/finch-api/finch-api-python/issues/154)) ([10638eb](https://github.com/finch-api/finch-api-python/commit/10638eb2689ce1a4a522c989df8a9a474e0590f8))
+
+
+### Chores
+
+* **internal:** require explicit overrides ([#153](https://github.com/finch-api/finch-api-python/issues/153)) ([9ffdf66](https://github.com/finch-api/finch-api-python/commit/9ffdf669051d12e34078205d49d12b7c55909611))
+
+
+### Documentation
+
+* improve to dictionary example ([#151](https://github.com/finch-api/finch-api-python/issues/151)) ([098d453](https://github.com/finch-api/finch-api-python/commit/098d453e1f1170d14362090500c460fba36d70e9))
+
 ## 0.2.3 (2023-10-20)
 
 Full Changelog: [v0.2.2...v0.2.3](https://github.com/Finch-API/finch-api-python/compare/v0.2.2...v0.2.3)
