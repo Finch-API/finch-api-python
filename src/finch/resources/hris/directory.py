@@ -3,18 +3,29 @@
 from __future__ import annotations
 
 import typing_extensions
+from typing import TYPE_CHECKING
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncIndividualsPage, AsyncIndividualsPage
 from ...types.hris import IndividualInDirectory, directory_list_params
 from ..._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Finch, AsyncFinch
 
 __all__ = ["Directory", "AsyncDirectory"]
 
 
 class Directory(SyncAPIResource):
+    with_raw_response: DirectoryWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = DirectoryWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -102,6 +113,12 @@ class Directory(SyncAPIResource):
 
 
 class AsyncDirectory(AsyncAPIResource):
+    with_raw_response: AsyncDirectoryWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncDirectoryWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -185,4 +202,24 @@ class AsyncDirectory(AsyncAPIResource):
             extra_query=extra_query,
             extra_body=extra_body,
             timeout=timeout,
+        )
+
+
+class DirectoryWithRawResponse:
+    def __init__(self, directory: Directory) -> None:
+        self.list = to_raw_response_wrapper(
+            directory.list,
+        )
+        self.list_individuals = to_raw_response_wrapper(  # pyright: ignore[reportDeprecated]
+            directory.list_individuals  # pyright: ignore[reportDeprecated],
+        )
+
+
+class AsyncDirectoryWithRawResponse:
+    def __init__(self, directory: AsyncDirectory) -> None:
+        self.list = async_to_raw_response_wrapper(
+            directory.list,
+        )
+        self.list_individuals = async_to_raw_response_wrapper(  # pyright: ignore[reportDeprecated]
+            directory.list_individuals  # pyright: ignore[reportDeprecated],
         )

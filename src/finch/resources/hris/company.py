@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...types.hris import Company
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Finch, AsyncFinch
 
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
 
 class CompanyResource(SyncAPIResource):
+    with_raw_response: CompanyResourceWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = CompanyResourceWithRawResponse(self)
+
     def retrieve(
         self,
         *,
@@ -32,6 +44,12 @@ class CompanyResource(SyncAPIResource):
 
 
 class AsyncCompanyResource(AsyncAPIResource):
+    with_raw_response: AsyncCompanyResourceWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCompanyResourceWithRawResponse(self)
+
     async def retrieve(
         self,
         *,
@@ -49,4 +67,18 @@ class AsyncCompanyResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=Company,
+        )
+
+
+class CompanyResourceWithRawResponse:
+    def __init__(self, company: CompanyResource) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            company.retrieve,
+        )
+
+
+class AsyncCompanyResourceWithRawResponse:
+    def __init__(self, company: AsyncCompanyResource) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            company.retrieve,
         )

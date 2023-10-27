@@ -9,6 +9,7 @@ import pytest
 from finch import Finch, AsyncFinch
 from finch.types import Provider
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncSinglePage, AsyncSinglePage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -25,6 +26,13 @@ class TestProviders:
         provider = client.providers.list()
         assert_matches_type(SyncSinglePage[Provider], provider, path=["response"])
 
+    @parametrize
+    def test_raw_response_list(self, client: Finch) -> None:
+        response = client.providers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        provider = response.parse()
+        assert_matches_type(SyncSinglePage[Provider], provider, path=["response"])
+
 
 class TestAsyncProviders:
     strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -34,4 +42,11 @@ class TestAsyncProviders:
     @parametrize
     async def test_method_list(self, client: AsyncFinch) -> None:
         provider = await client.providers.list()
+        assert_matches_type(AsyncSinglePage[Provider], provider, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncFinch) -> None:
+        response = await client.providers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        provider = response.parse()
         assert_matches_type(AsyncSinglePage[Provider], provider, path=["response"])

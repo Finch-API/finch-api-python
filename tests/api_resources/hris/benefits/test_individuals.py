@@ -8,6 +8,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncSinglePage, AsyncSinglePage
 from finch.types.hris.benefits import (
     IndividualBenefit,
@@ -34,10 +35,29 @@ class TestIndividuals:
         assert_matches_type(SyncSinglePage[EnrolledIndividual], individual, path=["response"])
 
     @parametrize
+    def test_raw_response_enroll_many(self, client: Finch) -> None:
+        response = client.hris.benefits.individuals.with_raw_response.enroll_many(
+            "string",
+            individuals=[{}],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
+        assert_matches_type(SyncSinglePage[EnrolledIndividual], individual, path=["response"])
+
+    @parametrize
     def test_method_enrolled_ids(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.enrolled_ids(
             "string",
         )
+        assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
+
+    @parametrize
+    def test_raw_response_enrolled_ids(self, client: Finch) -> None:
+        response = client.hris.benefits.individuals.with_raw_response.enrolled_ids(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
         assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
 
     @parametrize
@@ -56,6 +76,15 @@ class TestIndividuals:
         assert_matches_type(SyncSinglePage[IndividualBenefit], individual, path=["response"])
 
     @parametrize
+    def test_raw_response_retrieve_many_benefits(self, client: Finch) -> None:
+        response = client.hris.benefits.individuals.with_raw_response.retrieve_many_benefits(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
+        assert_matches_type(SyncSinglePage[IndividualBenefit], individual, path=["response"])
+
+    @parametrize
     def test_method_unenroll_many(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.unenroll_many(
             "string",
@@ -68,6 +97,15 @@ class TestIndividuals:
             "string",
             individual_ids=["string", "string", "string"],
         )
+        assert_matches_type(SyncSinglePage[UnenrolledIndividual], individual, path=["response"])
+
+    @parametrize
+    def test_raw_response_unenroll_many(self, client: Finch) -> None:
+        response = client.hris.benefits.individuals.with_raw_response.unenroll_many(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
         assert_matches_type(SyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 
 
@@ -85,10 +123,29 @@ class TestAsyncIndividuals:
         assert_matches_type(AsyncSinglePage[EnrolledIndividual], individual, path=["response"])
 
     @parametrize
+    async def test_raw_response_enroll_many(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.individuals.with_raw_response.enroll_many(
+            "string",
+            individuals=[{}],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
+        assert_matches_type(AsyncSinglePage[EnrolledIndividual], individual, path=["response"])
+
+    @parametrize
     async def test_method_enrolled_ids(self, client: AsyncFinch) -> None:
         individual = await client.hris.benefits.individuals.enrolled_ids(
             "string",
         )
+        assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
+
+    @parametrize
+    async def test_raw_response_enrolled_ids(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.individuals.with_raw_response.enrolled_ids(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
         assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
 
     @parametrize
@@ -107,6 +164,15 @@ class TestAsyncIndividuals:
         assert_matches_type(AsyncSinglePage[IndividualBenefit], individual, path=["response"])
 
     @parametrize
+    async def test_raw_response_retrieve_many_benefits(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.individuals.with_raw_response.retrieve_many_benefits(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
+        assert_matches_type(AsyncSinglePage[IndividualBenefit], individual, path=["response"])
+
+    @parametrize
     async def test_method_unenroll_many(self, client: AsyncFinch) -> None:
         individual = await client.hris.benefits.individuals.unenroll_many(
             "string",
@@ -119,4 +185,13 @@ class TestAsyncIndividuals:
             "string",
             individual_ids=["string", "string", "string"],
         )
+        assert_matches_type(AsyncSinglePage[UnenrolledIndividual], individual, path=["response"])
+
+    @parametrize
+    async def test_raw_response_unenroll_many(self, client: AsyncFinch) -> None:
+        response = await client.hris.benefits.individuals.with_raw_response.unenroll_many(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
         assert_matches_type(AsyncSinglePage[UnenrolledIndividual], individual, path=["response"])

@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import TYPE_CHECKING, List, Optional
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import IndividualResponse, individual_retrieve_many_params
 from ..._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Finch, AsyncFinch
 
 __all__ = ["Individuals", "AsyncIndividuals"]
 
 
 class Individuals(SyncAPIResource):
+    with_raw_response: IndividualsWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = IndividualsWithRawResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -58,6 +68,12 @@ class Individuals(SyncAPIResource):
 
 
 class AsyncIndividuals(AsyncAPIResource):
+    with_raw_response: AsyncIndividualsWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncIndividualsWithRawResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -97,4 +113,18 @@ class AsyncIndividuals(AsyncAPIResource):
             ),
             model=IndividualResponse,
             method="post",
+        )
+
+
+class IndividualsWithRawResponse:
+    def __init__(self, individuals: Individuals) -> None:
+        self.retrieve_many = to_raw_response_wrapper(
+            individuals.retrieve_many,
+        )
+
+
+class AsyncIndividualsWithRawResponse:
+    def __init__(self, individuals: AsyncIndividuals) -> None:
+        self.retrieve_many = async_to_raw_response_wrapper(
+            individuals.retrieve_many,
         )

@@ -53,6 +53,7 @@ class Finch(SyncAPIClient):
     account: resources.Account
     webhooks: resources.Webhooks
     request_forwarding: resources.RequestForwarding
+    with_raw_response: FinchWithRawResponse
 
     # client options
     access_token: str | None
@@ -133,6 +134,7 @@ class Finch(SyncAPIClient):
         self.account = resources.Account(self)
         self.webhooks = resources.Webhooks(self)
         self.request_forwarding = resources.RequestForwarding(self)
+        self.with_raw_response = FinchWithRawResponse(self)
 
     @property
     @override
@@ -353,6 +355,7 @@ class AsyncFinch(AsyncAPIClient):
     account: resources.AsyncAccount
     webhooks: resources.AsyncWebhooks
     request_forwarding: resources.AsyncRequestForwarding
+    with_raw_response: AsyncFinchWithRawResponse
 
     # client options
     access_token: str | None
@@ -433,6 +436,7 @@ class AsyncFinch(AsyncAPIClient):
         self.account = resources.AsyncAccount(self)
         self.webhooks = resources.AsyncWebhooks(self)
         self.request_forwarding = resources.AsyncRequestForwarding(self)
+        self.with_raw_response = AsyncFinchWithRawResponse(self)
 
     @property
     @override
@@ -648,6 +652,22 @@ class AsyncFinch(AsyncAPIClient):
         if response.status_code >= 500:
             return _exceptions.InternalServerError(err_msg, response=response, body=body)
         return APIStatusError(err_msg, response=response, body=body)
+
+
+class FinchWithRawResponse:
+    def __init__(self, client: Finch) -> None:
+        self.hris = resources.HRISWithRawResponse(client.hris)
+        self.providers = resources.ProvidersWithRawResponse(client.providers)
+        self.account = resources.AccountWithRawResponse(client.account)
+        self.request_forwarding = resources.RequestForwardingWithRawResponse(client.request_forwarding)
+
+
+class AsyncFinchWithRawResponse:
+    def __init__(self, client: AsyncFinch) -> None:
+        self.hris = resources.AsyncHRISWithRawResponse(client.hris)
+        self.providers = resources.AsyncProvidersWithRawResponse(client.providers)
+        self.account = resources.AsyncAccountWithRawResponse(client.account)
+        self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
 
 
 Client = Finch

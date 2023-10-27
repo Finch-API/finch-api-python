@@ -2,20 +2,30 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 from datetime import date
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncSinglePage, AsyncSinglePage
 from ...types.hris import Payment, payment_list_params
 from ..._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Finch, AsyncFinch
 
 __all__ = ["Payments", "AsyncPayments"]
 
 
 class Payments(SyncAPIResource):
+    with_raw_response: PaymentsWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = PaymentsWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -67,6 +77,12 @@ class Payments(SyncAPIResource):
 
 
 class AsyncPayments(AsyncAPIResource):
+    with_raw_response: AsyncPaymentsWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncPaymentsWithRawResponse(self)
+
     def list(
         self,
         *,
@@ -114,4 +130,18 @@ class AsyncPayments(AsyncAPIResource):
                 ),
             ),
             model=Payment,
+        )
+
+
+class PaymentsWithRawResponse:
+    def __init__(self, payments: Payments) -> None:
+        self.list = to_raw_response_wrapper(
+            payments.list,
+        )
+
+
+class AsyncPaymentsWithRawResponse:
+    def __init__(self, payments: AsyncPayments) -> None:
+        self.list = async_to_raw_response_wrapper(
+            payments.list,
         )
