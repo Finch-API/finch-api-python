@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.2 (2023-10-27)
+
+Full Changelog: [v0.3.1...v0.3.2](https://github.com/Finch-API/finch-api-python/compare/v0.3.1...v0.3.2)
+
+### Chores
+
+* **internal:** minor restructuring of base client ([#158](https://github.com/Finch-API/finch-api-python/issues/158)) ([4aee7a7](https://github.com/Finch-API/finch-api-python/commit/4aee7a757122de18ee54ccecc5a5698e19511aaf))
+
 ## 0.3.1 (2023-10-27)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/Finch-API/finch-api-python/compare/v0.3.0...v0.3.1)
