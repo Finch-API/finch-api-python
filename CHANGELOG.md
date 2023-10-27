@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1 (2023-10-27)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/Finch-API/finch-api-python/compare/v0.3.0...v0.3.1)
+
 ## 0.3.0 (2023-10-27)
 
 Full Changelog: [v0.2.3...v0.3.0](https://github.com/finch-api/finch-api-python/compare/v0.2.3...v0.3.0)
