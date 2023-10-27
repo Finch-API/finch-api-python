@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import Introspection, DisconnectResponse
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Finch, AsyncFinch
 
 __all__ = ["Account", "AsyncAccount"]
 
 
 class Account(SyncAPIResource):
+    with_raw_response: AccountWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AccountWithRawResponse(self)
+
     def disconnect(
         self,
         *,
@@ -55,6 +67,12 @@ class Account(SyncAPIResource):
 
 
 class AsyncAccount(AsyncAPIResource):
+    with_raw_response: AsyncAccountWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncAccountWithRawResponse(self)
+
     async def disconnect(
         self,
         *,
@@ -95,4 +113,24 @@ class AsyncAccount(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=Introspection,
+        )
+
+
+class AccountWithRawResponse:
+    def __init__(self, account: Account) -> None:
+        self.disconnect = to_raw_response_wrapper(
+            account.disconnect,
+        )
+        self.introspect = to_raw_response_wrapper(
+            account.introspect,
+        )
+
+
+class AsyncAccountWithRawResponse:
+    def __init__(self, account: AsyncAccount) -> None:
+        self.disconnect = async_to_raw_response_wrapper(
+            account.disconnect,
+        )
+        self.introspect = async_to_raw_response_wrapper(
+            account.introspect,
         )

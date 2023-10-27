@@ -2,18 +2,28 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..types import RequestForwardingForwardResponse, request_forwarding_forward_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Finch, AsyncFinch
 
 __all__ = ["RequestForwarding", "AsyncRequestForwarding"]
 
 
 class RequestForwarding(SyncAPIResource):
+    with_raw_response: RequestForwardingWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = RequestForwardingWithRawResponse(self)
+
     def forward(
         self,
         *,
@@ -78,6 +88,12 @@ class RequestForwarding(SyncAPIResource):
 
 
 class AsyncRequestForwarding(AsyncAPIResource):
+    with_raw_response: AsyncRequestForwardingWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncRequestForwardingWithRawResponse(self)
+
     async def forward(
         self,
         *,
@@ -138,4 +154,18 @@ class AsyncRequestForwarding(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=RequestForwardingForwardResponse,
+        )
+
+
+class RequestForwardingWithRawResponse:
+    def __init__(self, request_forwarding: RequestForwarding) -> None:
+        self.forward = to_raw_response_wrapper(
+            request_forwarding.forward,
+        )
+
+
+class AsyncRequestForwardingWithRawResponse:
+    def __init__(self, request_forwarding: AsyncRequestForwarding) -> None:
+        self.forward = async_to_raw_response_wrapper(
+            request_forwarding.forward,
         )

@@ -9,6 +9,7 @@ import pytest
 from finch import Finch, AsyncFinch
 from finch.types import Introspection, DisconnectResponse
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = "My Access Token"
@@ -25,8 +26,22 @@ class TestAccount:
         assert_matches_type(DisconnectResponse, account, path=["response"])
 
     @parametrize
+    def test_raw_response_disconnect(self, client: Finch) -> None:
+        response = client.account.with_raw_response.disconnect()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
+        assert_matches_type(DisconnectResponse, account, path=["response"])
+
+    @parametrize
     def test_method_introspect(self, client: Finch) -> None:
         account = client.account.introspect()
+        assert_matches_type(Introspection, account, path=["response"])
+
+    @parametrize
+    def test_raw_response_introspect(self, client: Finch) -> None:
+        response = client.account.with_raw_response.introspect()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
         assert_matches_type(Introspection, account, path=["response"])
 
 
@@ -41,6 +56,20 @@ class TestAsyncAccount:
         assert_matches_type(DisconnectResponse, account, path=["response"])
 
     @parametrize
+    async def test_raw_response_disconnect(self, client: AsyncFinch) -> None:
+        response = await client.account.with_raw_response.disconnect()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
+        assert_matches_type(DisconnectResponse, account, path=["response"])
+
+    @parametrize
     async def test_method_introspect(self, client: AsyncFinch) -> None:
         account = await client.account.introspect()
+        assert_matches_type(Introspection, account, path=["response"])
+
+    @parametrize
+    async def test_raw_response_introspect(self, client: AsyncFinch) -> None:
+        response = await client.account.with_raw_response.introspect()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
         assert_matches_type(Introspection, account, path=["response"])

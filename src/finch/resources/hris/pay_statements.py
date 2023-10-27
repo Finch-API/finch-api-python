@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import PayStatementResponse, pay_statement_retrieve_many_params
 from ..._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Finch, AsyncFinch
 
 __all__ = ["PayStatements", "AsyncPayStatements"]
 
 
 class PayStatements(SyncAPIResource):
+    with_raw_response: PayStatementsWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = PayStatementsWithRawResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -58,6 +68,12 @@ class PayStatements(SyncAPIResource):
 
 
 class AsyncPayStatements(AsyncAPIResource):
+    with_raw_response: AsyncPayStatementsWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncPayStatementsWithRawResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -97,4 +113,18 @@ class AsyncPayStatements(AsyncAPIResource):
             ),
             model=PayStatementResponse,
             method="post",
+        )
+
+
+class PayStatementsWithRawResponse:
+    def __init__(self, pay_statements: PayStatements) -> None:
+        self.retrieve_many = to_raw_response_wrapper(
+            pay_statements.retrieve_many,
+        )
+
+
+class AsyncPayStatementsWithRawResponse:
+    def __init__(self, pay_statements: AsyncPayStatements) -> None:
+        self.retrieve_many = async_to_raw_response_wrapper(
+            pay_statements.retrieve_many,
         )

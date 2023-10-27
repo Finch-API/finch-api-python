@@ -8,6 +8,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncResponsesPage, AsyncResponsesPage
 from finch.types.hris import IndividualResponse
 
@@ -33,6 +34,13 @@ class TestIndividuals:
         )
         assert_matches_type(SyncResponsesPage[IndividualResponse], individual, path=["response"])
 
+    @parametrize
+    def test_raw_response_retrieve_many(self, client: Finch) -> None:
+        response = client.hris.individuals.with_raw_response.retrieve_many()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
+        assert_matches_type(SyncResponsesPage[IndividualResponse], individual, path=["response"])
+
 
 class TestAsyncIndividuals:
     strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -50,4 +58,11 @@ class TestAsyncIndividuals:
             options={"include": ["string", "string", "string"]},
             requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
         )
+        assert_matches_type(AsyncResponsesPage[IndividualResponse], individual, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve_many(self, client: AsyncFinch) -> None:
+        response = await client.hris.individuals.with_raw_response.retrieve_many()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        individual = response.parse()
         assert_matches_type(AsyncResponsesPage[IndividualResponse], individual, path=["response"])

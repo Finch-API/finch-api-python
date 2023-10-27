@@ -8,6 +8,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncResponsesPage, AsyncResponsesPage
 from finch.types.hris import EmploymentDataResponse
 
@@ -27,6 +28,15 @@ class TestEmployments:
         )
         assert_matches_type(SyncResponsesPage[EmploymentDataResponse], employment, path=["response"])
 
+    @parametrize
+    def test_raw_response_retrieve_many(self, client: Finch) -> None:
+        response = client.hris.employments.with_raw_response.retrieve_many(
+            requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        employment = response.parse()
+        assert_matches_type(SyncResponsesPage[EmploymentDataResponse], employment, path=["response"])
+
 
 class TestAsyncEmployments:
     strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -38,4 +48,13 @@ class TestAsyncEmployments:
         employment = await client.hris.employments.retrieve_many(
             requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
         )
+        assert_matches_type(AsyncResponsesPage[EmploymentDataResponse], employment, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve_many(self, client: AsyncFinch) -> None:
+        response = await client.hris.employments.with_raw_response.retrieve_many(
+            requests=[{"individual_id": "string"}, {"individual_id": "string"}, {"individual_id": "string"}],
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        employment = response.parse()
         assert_matches_type(AsyncResponsesPage[EmploymentDataResponse], employment, path=["response"])

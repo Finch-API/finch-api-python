@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import EmploymentDataResponse, employment_retrieve_many_params
 from ..._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Finch, AsyncFinch
 
 __all__ = ["Employments", "AsyncEmployments"]
 
 
 class Employments(SyncAPIResource):
+    with_raw_response: EmploymentsWithRawResponse
+
+    def __init__(self, client: Finch) -> None:
+        super().__init__(client)
+        self.with_raw_response = EmploymentsWithRawResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -57,6 +67,12 @@ class Employments(SyncAPIResource):
 
 
 class AsyncEmployments(AsyncAPIResource):
+    with_raw_response: AsyncEmploymentsWithRawResponse
+
+    def __init__(self, client: AsyncFinch) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncEmploymentsWithRawResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -95,4 +111,18 @@ class AsyncEmployments(AsyncAPIResource):
             ),
             model=EmploymentDataResponse,
             method="post",
+        )
+
+
+class EmploymentsWithRawResponse:
+    def __init__(self, employments: Employments) -> None:
+        self.retrieve_many = to_raw_response_wrapper(
+            employments.retrieve_many,
+        )
+
+
+class AsyncEmploymentsWithRawResponse:
+    def __init__(self, employments: AsyncEmployments) -> None:
+        self.retrieve_many = async_to_raw_response_wrapper(
+            employments.retrieve_many,
         )
