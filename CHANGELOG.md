@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2023-10-31)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/Finch-API/finch-api-python/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **github:** include a devcontainer setup ([#162](https://github.com/Finch-API/finch-api-python/issues/162)) ([e309b43](https://github.com/Finch-API/finch-api-python/commit/e309b43e522701f24a7e66e17f3701fe20a5410f))
+
 ## 0.4.0 (2023-10-27)
 
 Full Changelog: [v0.3.2...v0.4.0](https://github.com/Finch-API/finch-api-python/compare/v0.3.2...v0.4.0)
