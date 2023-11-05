@@ -27,11 +27,8 @@ client = Finch(
     access_token="My Access Token",
 )
 
-page = client.hris.directory.list(
-    candidate_id="<candidate id>",
-)
-directory = page.individuals[0]
-print(directory.first_name)
+page = client.hris.directory.list()
+print(page.page)
 ```
 
 ## Async usage
@@ -39,6 +36,7 @@ print(directory.first_name)
 Simply import `AsyncFinch` instead of `Finch` and use `await` with each API call:
 
 ```python
+import asyncio
 from finch import AsyncFinch
 
 client = AsyncFinch(
@@ -46,11 +44,9 @@ client = AsyncFinch(
 )
 
 
-async def main():
-    page = await client.hris.directory.list(
-        candidate_id="<candidate id>",
-    )
-    print(page.individuals[0].first_name)
+async def main() -> None:
+    page = await client.hris.directory.list()
+    print(page.page)
 
 
 asyncio.run(main())
@@ -138,10 +134,8 @@ from finch import Finch
 
 client = Finch()
 
-client.hris.directory.list(
-    path_params=[],
-    params={},
-)
+page = client.hris.directory.list()
+print(page.page)
 ```
 
 ## Webhook Verification
@@ -183,7 +177,7 @@ from finch import Finch
 client = Finch()
 
 try:
-    client.hris.directory.list()
+    client.hris.company.retrieve()
 except finch.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -304,13 +298,11 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from finch import Finch
 
 client = Finch()
-page = client.hris.directory.with_raw_response.list()
-response = page.individuals[0]
-
+response = client.hris.directory.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 directory = response.parse()  # get the object that `hris.directory.list()` would have returned
-print(directory.first_name)
+print(directory.id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/Finch-API/finch-api-python/src/finch/_response.py) object.
