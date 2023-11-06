@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
+import httpx
+
 from ..types import RequestForwardingForwardResponse, request_forwarding_forward_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
@@ -37,7 +39,7 @@ class RequestForwarding(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RequestForwardingForwardResponse:
         """
         The Forward API allows you to make direct requests to an employment system.
@@ -107,7 +109,7 @@ class AsyncRequestForwarding(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RequestForwardingForwardResponse:
         """
         The Forward API allows you to make direct requests to an employment system.

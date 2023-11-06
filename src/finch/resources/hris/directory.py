@@ -5,6 +5,8 @@ from __future__ import annotations
 import typing_extensions
 from typing import TYPE_CHECKING
 
+import httpx
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -36,7 +38,7 @@ class Directory(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncIndividualsPage[IndividualInDirectory]:
         """
         Read company directory and organization structure
@@ -84,7 +86,7 @@ class Directory(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncIndividualsPage[IndividualInDirectory]:
         """
         Read company directory and organization structure
@@ -129,7 +131,7 @@ class AsyncDirectory(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[IndividualInDirectory, AsyncIndividualsPage[IndividualInDirectory]]:
         """
         Read company directory and organization structure
@@ -177,7 +179,7 @@ class AsyncDirectory(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[IndividualInDirectory, AsyncIndividualsPage[IndividualInDirectory]]:
         """
         Read company directory and organization structure

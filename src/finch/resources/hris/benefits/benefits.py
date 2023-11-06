@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
+import httpx
+
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from .individuals import (
@@ -53,7 +55,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreateCompanyBenefitsResponse:
         """
         **Availability: Automated and Assisted Benefits providers**
@@ -97,7 +99,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CompanyBenefit:
         """
         **Availability: Automated Benefits providers only**
@@ -131,7 +133,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> UpdateCompanyBenefitResponse:
         """
         **Availability: Automated and Assisted Benefits providers**
@@ -166,7 +168,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[CompanyBenefit]:
         """
         **Availability: Automated Benefits providers only**
@@ -190,7 +192,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[SupportedBenefit]:
         """
         **Availability: Automated and Assisted Benefits providers**
@@ -228,7 +230,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreateCompanyBenefitsResponse:
         """
         **Availability: Automated and Assisted Benefits providers**
@@ -272,7 +274,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CompanyBenefit:
         """
         **Availability: Automated Benefits providers only**
@@ -306,7 +308,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> UpdateCompanyBenefitResponse:
         """
         **Availability: Automated and Assisted Benefits providers**
@@ -341,7 +343,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[CompanyBenefit, AsyncSinglePage[CompanyBenefit]]:
         """
         **Availability: Automated Benefits providers only**
@@ -365,7 +367,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[SupportedBenefit, AsyncSinglePage[SupportedBenefit]]:
         """
         **Availability: Automated and Assisted Benefits providers**
