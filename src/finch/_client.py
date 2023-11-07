@@ -297,7 +297,7 @@ class Finch(SyncAPIClient):
     ) -> str:
         """
         Returns the authorization url which can be visited in order to obtain an
-        authorization code from Finch. The autorization code can then be exchanged for
+        authorization code from Finch. The authorization code can then be exchanged for
         an access token for the Finch api by calling get_access_token().
         """
         if self.client_id is None:
@@ -602,7 +602,7 @@ class AsyncFinch(AsyncAPIClient):
     ) -> str:
         """
         Returns the authorization url which can be visited in order to obtain an
-        authorization code from Finch. The autorization code can then be exchanged for
+        authorization code from Finch. The authorization code can then be exchanged for
         an access token for the Finch api by calling get_access_token().
         """
         if self.client_id is None:
