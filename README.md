@@ -305,7 +305,7 @@ directory = response.parse()  # get the object that `hris.directory.list()` woul
 print(directory.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/Finch-API/finch-api-python/src/finch/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/Finch-API/finch-api-python/tree/main/src/finch/_response.py) object.
 
 ### Configuring the HTTP client
 
