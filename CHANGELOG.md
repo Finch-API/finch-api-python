@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.6.0 (2023-11-08)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/Finch-API/finch-api-python/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **client:** allow binary returns ([#164](https://github.com/Finch-API/finch-api-python/issues/164)) ([6322114](https://github.com/Finch-API/finch-api-python/commit/6322114c6e752686d4d3f502df94339037a44698))
+* **client:** support passing BaseModels to request params at runtime ([#166](https://github.com/Finch-API/finch-api-python/issues/166)) ([f3e7e76](https://github.com/Finch-API/finch-api-python/commit/f3e7e763c9e1809b6d84e78720465a96daa11ec2))
+* **client:** support passing httpx.Timeout to method timeout argument ([#171](https://github.com/Finch-API/finch-api-python/issues/171)) ([a3dcd4b](https://github.com/Finch-API/finch-api-python/commit/a3dcd4b1add4499894bfc4f63dfe3f46b9a3a2e9))
+
+
+### Bug Fixes
+
+* **binaries:** don't synchronously block in astream_to_file ([#167](https://github.com/Finch-API/finch-api-python/issues/167)) ([c607d54](https://github.com/Finch-API/finch-api-python/commit/c607d545379a03d0926aef998e246fd33009d716))
+* prevent TypeError in Python 3.8 (ABC is not subscriptable) ([#170](https://github.com/Finch-API/finch-api-python/issues/170)) ([fc12d83](https://github.com/Finch-API/finch-api-python/commit/fc12d835d80d6d7f076aa81ecfb5fcc318c80261))
+
+
+### Chores
+
+* **docs:** fix github links ([#173](https://github.com/Finch-API/finch-api-python/issues/173)) ([9a8407d](https://github.com/Finch-API/finch-api-python/commit/9a8407df5c7e44c3466c2fb860fcbd0d162a9d40))
+* **docs:** fix some typos ([#172](https://github.com/Finch-API/finch-api-python/issues/172)) ([19702d1](https://github.com/Finch-API/finch-api-python/commit/19702d1b40f8e3fbfdf35d1da0645a14c422cdb7))
+* **internal:** improve github devcontainer setup ([#174](https://github.com/Finch-API/finch-api-python/issues/174)) ([5334b9c](https://github.com/Finch-API/finch-api-python/commit/5334b9cb09e65c07495a4b8ae3910547e0121539))
+* **internal:** remove unused int/float conversion ([#168](https://github.com/Finch-API/finch-api-python/issues/168)) ([69faf73](https://github.com/Finch-API/finch-api-python/commit/69faf737601c196eb3fa53fa2575c9c3a53a0d28))
+
+
+### Documentation
+
+* **readme:** improve example snippets ([#169](https://github.com/Finch-API/finch-api-python/issues/169)) ([37fe000](https://github.com/Finch-API/finch-api-python/commit/37fe0007d4c1643a14aae4e580ebebf537963399))
+
 ## 0.5.0 (2023-10-31)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/Finch-API/finch-api-python/compare/v0.4.0...v0.5.0)
