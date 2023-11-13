@@ -12,7 +12,7 @@ class RequestForwardingForwardParams(TypedDict, total=False):
     method: Required[str]
     """The HTTP method for the forwarded request.
 
-    Valid values include: `GET`, `POST`, `PUT`, `DELETE`, and `PATCH`.
+    Valid values include: `GET` , `POST` , `PUT` , `DELETE` , and `PATCH`.
     """
 
     route: Required[str]

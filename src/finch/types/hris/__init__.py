@@ -9,6 +9,7 @@ from .benefit_type import BenefitType as BenefitType
 from .pay_statement import PayStatement as PayStatement
 from .company_benefit import CompanyBenefit as CompanyBenefit
 from .employment_data import EmploymentData as EmploymentData
+from .benefits_support import BenefitsSupport as BenefitsSupport
 from .benefit_frequency import BenefitFrequency as BenefitFrequency
 from .supported_benefit import SupportedBenefit as SupportedBenefit
 from .benfit_contribution import BenfitContribution as BenfitContribution
@@ -21,8 +22,12 @@ from .directory_list_params import DirectoryListParams as DirectoryListParams
 from .pay_statement_response import PayStatementResponse as PayStatementResponse
 from .individual_in_directory import IndividualInDirectory as IndividualInDirectory
 from .employment_data_response import EmploymentDataResponse as EmploymentDataResponse
+from .support_per_benefit_type import SupportPerBenefitType as SupportPerBenefitType
 from .pay_statement_response_body import (
     PayStatementResponseBody as PayStatementResponseBody,
+)
+from .benefit_features_and_operations import (
+    BenefitFeaturesAndOperations as BenefitFeaturesAndOperations,
 )
 from .employment_retrieve_many_params import (
     EmploymentRetrieveManyParams as EmploymentRetrieveManyParams,

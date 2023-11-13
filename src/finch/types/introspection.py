@@ -8,6 +8,9 @@ __all__ = ["Introspection"]
 
 
 class Introspection(BaseModel):
+    account_id: str
+    """The Finch uuid of the account used to connect this company."""
+
     client_id: str
     """The client id of the application associated with the `access_token`."""
 

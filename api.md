@@ -1,3 +1,9 @@
+# Shared Types
+
+```python
+from finch.types import OperationSupport, OperationSupportMatrix
+```
+
 # Finch
 
 Methods:
@@ -96,11 +102,14 @@ Types:
 ```python
 from finch.types.hris import (
     BenefitContribution,
+    BenefitFeaturesAndOperations,
     BenefitFrequency,
     BenefitType,
+    BenefitsSupport,
     BenfitContribution,
     CompanyBenefit,
     CreateCompanyBenefitsResponse,
+    SupportPerBenefitType,
     SupportedBenefit,
     UpdateCompanyBenefitResponse,
 )

@@ -41,12 +41,16 @@ class RequestForwarding(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RequestForwardingForwardResponse:
-        """
-        The Forward API allows you to make direct requests to an employment system.
+        """The Forward API allows you to make direct requests to an employment system.
+
+        If
+        Finch’s unified API doesn’t have a data model that cleanly fits your needs, then
+        Forward allows you to push or pull data models directly against an integration’s
+        API.
 
         Args:
-          method: The HTTP method for the forwarded request. Valid values include: `GET`, `POST`,
-              `PUT`, `DELETE`, and `PATCH`.
+          method: The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+              , `PUT` , `DELETE` , and `PATCH`.
 
           route: The URL route path for the forwarded request. This value must begin with a
               forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and
@@ -111,12 +115,16 @@ class AsyncRequestForwarding(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RequestForwardingForwardResponse:
-        """
-        The Forward API allows you to make direct requests to an employment system.
+        """The Forward API allows you to make direct requests to an employment system.
+
+        If
+        Finch’s unified API doesn’t have a data model that cleanly fits your needs, then
+        Forward allows you to push or pull data models directly against an integration’s
+        API.
 
         Args:
-          method: The HTTP method for the forwarded request. Valid values include: `GET`, `POST`,
-              `PUT`, `DELETE`, and `PATCH`.
+          method: The HTTP method for the forwarded request. Valid values include: `GET` , `POST`
+              , `PUT` , `DELETE` , and `PATCH`.
 
           route: The URL route path for the forwarded request. This value must begin with a
               forward-slash ( / ) and may only contain alphanumeric characters, hyphens, and

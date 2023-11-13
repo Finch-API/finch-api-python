@@ -3,13 +3,17 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from pydantic import Field as FieldInfo
-
 from ..income import Income
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["EmploymentData", "Department", "Employment", "Manager"]
+__all__ = ["EmploymentData", "CustomField", "Department", "Employment", "Manager"]
+
+
+class CustomField(BaseModel):
+    name: Optional[str] = None
+
+    value: Optional[object] = None
 
 
 class Department(BaseModel):
@@ -40,6 +44,12 @@ class EmploymentData(BaseModel):
 
     class_code: Optional[str] = None
     """Worker's compensation classification code for this employee"""
+
+    custom_fields: Optional[List[CustomField]] = None
+    """Custom fields for the individual.
+
+    These are fields which are defined by the employer in the system.
+    """
 
     department: Optional[Department] = None
     """The department object."""
@@ -96,7 +106,7 @@ class EmploymentData(BaseModel):
     Please reach out to your Finch representative if you would like access.
     """
 
-    work_id2: Optional[str] = FieldInfo(alias="work_id_2", default=None)
+    work_id_2: Optional[str] = None
     """Note: This property is only available if enabled for your account.
 
     Please reach out to your Finch representative if you would like access.
