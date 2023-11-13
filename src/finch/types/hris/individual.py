@@ -29,6 +29,20 @@ class Individual(BaseModel):
 
     emails: Optional[List[Email]] = None
 
+    ethnicity: Optional[
+        Literal[
+            "asian",
+            "white",
+            "black_or_african_american",
+            "native_hawaiian_or_pacific_islander",
+            "american_indian_or_alaska_native",
+            "hispanic_or_latino",
+            "two_or_more_races",
+            "decline_to_specify",
+        ]
+    ] = None
+    """The EEOC-defined ethnicity of the individual."""
+
     first_name: Optional[str] = None
     """The legal first name of the individual."""
 
