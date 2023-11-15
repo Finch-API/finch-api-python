@@ -113,6 +113,8 @@ class Finch(SyncAPIClient):
         self.webhook_secret = webhook_secret
 
         if base_url is None:
+            base_url = os.environ.get("FINCH_BASE_URL")
+        if base_url is None:
             base_url = f"https://api.tryfinch.com"
 
         super().__init__(
@@ -414,6 +416,8 @@ class AsyncFinch(AsyncAPIClient):
             webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
         self.webhook_secret = webhook_secret
 
+        if base_url is None:
+            base_url = os.environ.get("FINCH_BASE_URL")
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
 
