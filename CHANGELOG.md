@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.7.0 (2023-11-15)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/Finch-API/finch-api-python/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** updates ([#184](https://github.com/Finch-API/finch-api-python/issues/184)) ([1fbf21e](https://github.com/Finch-API/finch-api-python/commit/1fbf21e96dc700db462b619da54897ce156301a9))
+* **client:** support passing chunk size for binary responses ([#175](https://github.com/Finch-API/finch-api-python/issues/175)) ([3d02d4b](https://github.com/Finch-API/finch-api-python/commit/3d02d4ba528ad199981a185def69bb80d939d445))
+* **client:** support reading the base url from an env variable ([#186](https://github.com/Finch-API/finch-api-python/issues/186)) ([bb2dc38](https://github.com/Finch-API/finch-api-python/commit/bb2dc38e25da74fcbcdc2a34b4706ec304e9657f))
+
+
+### Bug Fixes
+
+* **client:** retry if SSLWantReadError occurs in the async client ([#181](https://github.com/Finch-API/finch-api-python/issues/181)) ([b2a7d2c](https://github.com/Finch-API/finch-api-python/commit/b2a7d2c0a617f358a12e7556fc53b740880892a4))
+* **client:** serialise pydantic v1 default fields correctly in params ([#180](https://github.com/Finch-API/finch-api-python/issues/180)) ([cb69944](https://github.com/Finch-API/finch-api-python/commit/cb6994491d3c2bf4112443018bc7d2d6d2b78fd4))
+* **models:** mark unknown fields as set in pydantic v1 ([#179](https://github.com/Finch-API/finch-api-python/issues/179)) ([c8261c9](https://github.com/Finch-API/finch-api-python/commit/c8261c9fb39b0a275dde59a78c67feb15d84c0f9))
+
+
+### Chores
+
+* **internal:** base client updates ([#178](https://github.com/Finch-API/finch-api-python/issues/178)) ([d06251d](https://github.com/Finch-API/finch-api-python/commit/d06251dfdb660fc7843b55c533f5b59906197160))
+* **internal:** fix devcontainer interpeter path ([#183](https://github.com/Finch-API/finch-api-python/issues/183)) ([ca48726](https://github.com/Finch-API/finch-api-python/commit/ca487263a47beab1f4dce8c052e734358d6893ef))
+* **internal:** fix typo in NotGiven docstring ([#182](https://github.com/Finch-API/finch-api-python/issues/182)) ([ca198e9](https://github.com/Finch-API/finch-api-python/commit/ca198e9a817cf76eadd912909a4581ef1ad2fd29))
+
+
+### Documentation
+
+* fix code comment typo ([#185](https://github.com/Finch-API/finch-api-python/issues/185)) ([09df068](https://github.com/Finch-API/finch-api-python/commit/09df068fad1545affb78bb5a982eb4ba4c9ed080))
+* reword package description ([#177](https://github.com/Finch-API/finch-api-python/issues/177)) ([ee5340a](https://github.com/Finch-API/finch-api-python/commit/ee5340ae2a36d26e2c9e12add86e8ba0a1603d2e))
+
 ## 0.6.0 (2023-11-08)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/Finch-API/finch-api-python/compare/v0.5.0...v0.6.0)
