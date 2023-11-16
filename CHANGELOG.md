@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.1 (2023-11-16)
+
+Full Changelog: [v0.7.0...v0.7.1](https://github.com/Finch-API/finch-api-python/compare/v0.7.0...v0.7.1)
+
+### Documentation
+
+* **readme:** minor updates ([#187](https://github.com/Finch-API/finch-api-python/issues/187)) ([244fc4c](https://github.com/Finch-API/finch-api-python/commit/244fc4cd912103511589f53d9c2695396a172e1e))
+
 ## 0.7.0 (2023-11-15)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/Finch-API/finch-api-python/compare/v0.6.0...v0.7.0)
