@@ -25,6 +25,7 @@ __all__ = [
     "AuthenticationMethodSupportedFieldsEmploymentEmployment",
     "AuthenticationMethodSupportedFieldsEmploymentIncome",
     "AuthenticationMethodSupportedFieldsEmploymentLocation",
+    "AuthenticationMethodSupportedFieldsEmploymentManager",
     "AuthenticationMethodSupportedFieldsIndividual",
     "AuthenticationMethodSupportedFieldsIndividualEmails",
     "AuthenticationMethodSupportedFieldsIndividualPhoneNumbers",
@@ -167,6 +168,10 @@ class AuthenticationMethodSupportedFieldsEmploymentLocation(BaseModel):
     state: Optional[bool] = None
 
 
+class AuthenticationMethodSupportedFieldsEmploymentManager(BaseModel):
+    id: Optional[bool] = None
+
+
 class AuthenticationMethodSupportedFieldsEmployment(BaseModel):
     id: Optional[bool] = None
 
@@ -192,7 +197,7 @@ class AuthenticationMethodSupportedFieldsEmployment(BaseModel):
 
     location: Optional[AuthenticationMethodSupportedFieldsEmploymentLocation] = None
 
-    manager: Optional[object] = None
+    manager: Optional[AuthenticationMethodSupportedFieldsEmploymentManager] = None
 
     middle_name: Optional[bool] = None
 
@@ -233,6 +238,8 @@ class AuthenticationMethodSupportedFieldsIndividual(BaseModel):
     dob: Optional[bool] = None
 
     emails: Optional[AuthenticationMethodSupportedFieldsIndividualEmails] = None
+
+    encrypted_ssn: Optional[bool] = None
 
     ethnicity: Optional[bool] = None
 
