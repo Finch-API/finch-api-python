@@ -29,6 +29,12 @@ class Individual(BaseModel):
 
     emails: Optional[List[Email]] = None
 
+    encrypted_ssn: Optional[str] = None
+    """Note: This property is only available if enabled for your account.
+
+    Please reach out to your Finch representative if you would like access.
+    """
+
     ethnicity: Optional[
         Literal[
             "asian",
