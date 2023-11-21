@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.8.0 (2023-11-21)
+
+Full Changelog: [v0.7.1...v0.8.0](https://github.com/Finch-API/finch-api-python/compare/v0.7.1...v0.8.0)
+
+### Features
+
+* **api:** updates ([#192](https://github.com/Finch-API/finch-api-python/issues/192)) ([8f03e74](https://github.com/Finch-API/finch-api-python/commit/8f03e74f6dbc3e9c2e9543e74b06dba90fe8bbbb))
+
+
+### Bug Fixes
+
+* **client:** attempt to parse unknown json content types ([#191](https://github.com/Finch-API/finch-api-python/issues/191)) ([aad45fe](https://github.com/Finch-API/finch-api-python/commit/aad45fee8d71d2b6499e71f7e37be08f8cb5a71a))
+
+
+### Chores
+
+* **client:** improve copy method ([#193](https://github.com/Finch-API/finch-api-python/issues/193)) ([00fe295](https://github.com/Finch-API/finch-api-python/commit/00fe2958163a4236cd678e6825d636608ad3a9e6))
+* **internal:** update type hint for helper function ([#189](https://github.com/Finch-API/finch-api-python/issues/189)) ([0fb6bff](https://github.com/Finch-API/finch-api-python/commit/0fb6bff18863f51e8abe8c89e70eee72c49f44bf))
+* **package:** add license classifier metadata ([#194](https://github.com/Finch-API/finch-api-python/issues/194)) ([0ab421b](https://github.com/Finch-API/finch-api-python/commit/0ab421b10ab73d796e2a20a649235669047abb33))
+
 ## 0.7.1 (2023-11-16)
 
 Full Changelog: [v0.7.0...v0.7.1](https://github.com/Finch-API/finch-api-python/compare/v0.7.0...v0.7.1)
