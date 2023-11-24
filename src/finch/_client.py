@@ -22,7 +22,7 @@ from ._types import (
     AsyncTransport,
     RequestOptions,
 )
-from ._utils import is_given
+from ._utils import is_given, get_async_library
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
@@ -156,6 +156,7 @@ class Finch(SyncAPIClient):
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
+            "X-Stainless-Async": "false",
             "Finch-API-Version": "2020-09-17",
             **self._custom_headers,
         }
@@ -459,6 +460,7 @@ class AsyncFinch(AsyncAPIClient):
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
+            "X-Stainless-Async": f"async:{get_async_library()}",
             "Finch-API-Version": "2020-09-17",
             **self._custom_headers,
         }
