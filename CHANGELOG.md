@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.1 (2023-11-24)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/Finch-API/finch-api-python/compare/v0.8.0...v0.8.1)
+
+### Chores
+
+* **internal:** options updates ([#195](https://github.com/Finch-API/finch-api-python/issues/195)) ([0dd9a28](https://github.com/Finch-API/finch-api-python/commit/0dd9a2830e69c0fe555ca8dc4fd164ecdaeda490))
+* **internal:** revert recent options change ([#197](https://github.com/Finch-API/finch-api-python/issues/197)) ([e10ebe4](https://github.com/Finch-API/finch-api-python/commit/e10ebe4151a6c55884967acfc83aa92163162db2))
+* **internal:** send more detailed x-stainless headers ([#198](https://github.com/Finch-API/finch-api-python/issues/198)) ([ca854cd](https://github.com/Finch-API/finch-api-python/commit/ca854cdb23af269eb9d89bc3407e5c6c18e0c0df))
+
 ## 0.8.0 (2023-11-21)
 
 Full Changelog: [v0.7.1...v0.8.0](https://github.com/Finch-API/finch-api-python/compare/v0.7.1...v0.8.0)
