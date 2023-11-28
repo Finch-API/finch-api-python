@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.2 (2023-11-28)
+
+Full Changelog: [v0.8.1...v0.8.2](https://github.com/Finch-API/finch-api-python/compare/v0.8.1...v0.8.2)
+
+### Chores
+
+* **deps:** bump mypy to v1.7.1 ([#199](https://github.com/Finch-API/finch-api-python/issues/199)) ([30fe5d2](https://github.com/Finch-API/finch-api-python/commit/30fe5d210c738a7df4f967de558de29cde1f3d38))
+
 ## 0.8.1 (2023-11-24)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/Finch-API/finch-api-python/compare/v0.8.0...v0.8.1)
