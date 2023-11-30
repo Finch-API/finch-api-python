@@ -18,7 +18,7 @@ from finch import Finch, AsyncFinch, APIResponseValidationError
 from finch._types import Omit
 from finch._client import Finch, AsyncFinch
 from finch._models import BaseModel, FinalRequestOptions
-from finch._exceptions import APIResponseValidationError
+from finch._exceptions import APIStatusError, APIResponseValidationError
 from finch._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -704,6 +704,31 @@ class TestFinch:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
+    @pytest.mark.respx(base_url=base_url)
+    def test_status_error_within_httpx(self, respx_mock: MockRouter) -> None:
+        respx_mock.post("/foo").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        def on_response(response: httpx.Response) -> None:
+            raise httpx.HTTPStatusError(
+                "Simulating an error inside httpx",
+                response=response,
+                request=response.request,
+            )
+
+        client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            _strict_response_validation=True,
+            http_client=httpx.Client(
+                event_hooks={
+                    "response": [on_response],
+                }
+            ),
+            max_retries=0,
+        )
+        with pytest.raises(APIStatusError):
+            client.post("/foo", cast_to=httpx.Response)
+
 
 class TestAsyncFinch:
     client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -1377,3 +1402,29 @@ class TestAsyncFinch:
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
+
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_status_error_within_httpx(self, respx_mock: MockRouter) -> None:
+        respx_mock.post("/foo").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+
+        def on_response(response: httpx.Response) -> None:
+            raise httpx.HTTPStatusError(
+                "Simulating an error inside httpx",
+                response=response,
+                request=response.request,
+            )
+
+        client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            _strict_response_validation=True,
+            http_client=httpx.AsyncClient(
+                event_hooks={
+                    "response": [on_response],
+                }
+            ),
+            max_retries=0,
+        )
+        with pytest.raises(APIStatusError):
+            await client.post("/foo", cast_to=httpx.Response)
