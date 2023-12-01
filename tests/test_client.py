@@ -441,6 +441,16 @@ class TestFinch:
         assert isinstance(response, Model)
         assert response.foo == 2
 
+    def test_base_url_setter(self) -> None:
+        client = Finch(
+            base_url="https://example.com/from_init", access_token=access_token, _strict_response_validation=True
+        )
+        assert client.base_url == "https://example.com/from_init/"
+
+        client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
+
+        assert client.base_url == "https://example.com/from_setter/"
+
     def test_base_url_env(self) -> None:
         with update_env(FINCH_BASE_URL="http://localhost:5000/from/env"):
             client = Finch(access_token=access_token, _strict_response_validation=True)
@@ -1134,6 +1144,16 @@ class TestAsyncFinch:
         response = await self.client.get("/foo", cast_to=Model)
         assert isinstance(response, Model)
         assert response.foo == 2
+
+    def test_base_url_setter(self) -> None:
+        client = AsyncFinch(
+            base_url="https://example.com/from_init", access_token=access_token, _strict_response_validation=True
+        )
+        assert client.base_url == "https://example.com/from_init/"
+
+        client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
+
+        assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
         with update_env(FINCH_BASE_URL="http://localhost:5000/from/env"):
