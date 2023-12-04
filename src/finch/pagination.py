@@ -5,11 +5,11 @@ from typing_extensions import override
 
 from httpx import Response
 
-from .types import Paging
 from ._types import ModelT
 from ._utils import is_mapping
 from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
+from .types.shared import Paging
 
 __all__ = [
     "SyncSinglePage",
@@ -18,6 +18,8 @@ __all__ = [
     "AsyncResponsesPage",
     "SyncIndividualsPage",
     "AsyncIndividualsPage",
+    "SyncPage",
+    "AsyncPage",
 ]
 
 _BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
@@ -151,6 +153,64 @@ class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mode
             return None
 
         length = len(self.individuals)
+        current_count = offset + length
+
+        total_count = self.paging.count
+        if total_count is None:
+            return None
+
+        if current_count < total_count:
+            return PageInfo(params={"offset": current_count})
+
+        return None
+
+
+PagePaging = Paging
+"""This is deprecated, Paging should be used instead"""
+
+
+class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
+    paging: Paging
+    data: List[ModelT]
+
+    @override
+    def _get_page_items(self) -> List[ModelT]:
+        return self.data
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        offset = self.paging.offset
+        if offset is None:
+            return None
+
+        length = len(self.data)
+        current_count = offset + length
+
+        total_count = self.paging.count
+        if total_count is None:
+            return None
+
+        if current_count < total_count:
+            return PageInfo(params={"offset": current_count})
+
+        return None
+
+
+class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
+    paging: Paging
+    data: List[ModelT]
+
+    @override
+    def _get_page_items(self) -> List[ModelT]:
+        return self.data
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        offset = self.paging.offset
+        if offset is None:
+            return None
+
+        length = len(self.data)
         current_count = offset + length
 
         total_count = self.paging.count
