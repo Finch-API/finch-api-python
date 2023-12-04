@@ -53,6 +53,7 @@ class Finch(SyncAPIClient):
     account: resources.Account
     webhooks: resources.Webhooks
     request_forwarding: resources.RequestForwarding
+    jobs: resources.Jobs
     with_raw_response: FinchWithRawResponse
 
     # client options
@@ -136,6 +137,7 @@ class Finch(SyncAPIClient):
         self.account = resources.Account(self)
         self.webhooks = resources.Webhooks(self)
         self.request_forwarding = resources.RequestForwarding(self)
+        self.jobs = resources.Jobs(self)
         self.with_raw_response = FinchWithRawResponse(self)
 
     @property
@@ -357,6 +359,7 @@ class AsyncFinch(AsyncAPIClient):
     account: resources.AsyncAccount
     webhooks: resources.AsyncWebhooks
     request_forwarding: resources.AsyncRequestForwarding
+    jobs: resources.AsyncJobs
     with_raw_response: AsyncFinchWithRawResponse
 
     # client options
@@ -440,6 +443,7 @@ class AsyncFinch(AsyncAPIClient):
         self.account = resources.AsyncAccount(self)
         self.webhooks = resources.AsyncWebhooks(self)
         self.request_forwarding = resources.AsyncRequestForwarding(self)
+        self.jobs = resources.AsyncJobs(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
 
     @property
@@ -664,6 +668,7 @@ class FinchWithRawResponse:
         self.providers = resources.ProvidersWithRawResponse(client.providers)
         self.account = resources.AccountWithRawResponse(client.account)
         self.request_forwarding = resources.RequestForwardingWithRawResponse(client.request_forwarding)
+        self.jobs = resources.JobsWithRawResponse(client.jobs)
 
 
 class AsyncFinchWithRawResponse:
@@ -672,6 +677,7 @@ class AsyncFinchWithRawResponse:
         self.providers = resources.AsyncProvidersWithRawResponse(client.providers)
         self.account = resources.AsyncAccountWithRawResponse(client.account)
         self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
+        self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
 
 
 Client = Finch

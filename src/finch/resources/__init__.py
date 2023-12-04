@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from .hris import HRIS, AsyncHRIS, HRISWithRawResponse, AsyncHRISWithRawResponse
+from .jobs import Jobs, AsyncJobs, JobsWithRawResponse, AsyncJobsWithRawResponse
 from .account import (
     Account,
     AsyncAccount,
@@ -40,4 +41,8 @@ __all__ = [
     "AsyncRequestForwarding",
     "RequestForwardingWithRawResponse",
     "AsyncRequestForwardingWithRawResponse",
+    "Jobs",
+    "AsyncJobs",
+    "JobsWithRawResponse",
+    "AsyncJobsWithRawResponse",
 ]

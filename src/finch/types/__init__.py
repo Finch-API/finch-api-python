@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from .money import Money as Money
 from .income import Income as Income
-from .paging import Paging as Paging
+from .shared import Paging as Paging
 from .shared import OperationSupport as OperationSupport
 from .shared import OperationSupportMatrix as OperationSupportMatrix
 from .location import Location as Location

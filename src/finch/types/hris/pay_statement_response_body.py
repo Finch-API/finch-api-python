@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 
-from ..paging import Paging
+from ..shared import Paging
 from ..._models import BaseModel
 from .pay_statement import PayStatement
 
