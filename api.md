@@ -1,7 +1,7 @@
 # Shared Types
 
 ```python
-from finch.types import OperationSupport, OperationSupportMatrix
+from finch.types import OperationSupport, OperationSupportMatrix, Paging
 ```
 
 # Finch
@@ -16,7 +16,7 @@ Methods:
 Types:
 
 ```python
-from finch.types import Income, Location, Money, Paging
+from finch.types import Income, Location, Money
 ```
 
 ## CompanyResource
@@ -186,3 +186,31 @@ from finch.types import RequestForwardingForwardResponse
 Methods:
 
 - <code title="post /forward">client.request_forwarding.<a href="./src/finch/resources/request_forwarding.py">forward</a>(\*\*<a href="src/finch/types/request_forwarding_forward_params.py">params</a>) -> <a href="./src/finch/types/request_forwarding_forward_response.py">RequestForwardingForwardResponse</a></code>
+
+# Jobs
+
+## Automated
+
+Types:
+
+```python
+from finch.types.jobs import AutomatedAsyncJob, AutomatedCreateResponse
+```
+
+Methods:
+
+- <code title="post /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">create</a>(\*\*<a href="src/finch/types/jobs/automated_create_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_create_response.py">AutomatedCreateResponse</a></code>
+- <code title="get /jobs/automated/{job_id}">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/automated_async_job.py">AutomatedAsyncJob</a></code>
+- <code title="get /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">list</a>(\*\*<a href="src/finch/types/jobs/automated_list_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_async_job.py">SyncPage[AutomatedAsyncJob]</a></code>
+
+## Manual
+
+Types:
+
+```python
+from finch.types.jobs import ManualAsyncJob
+```
+
+Methods:
+
+- <code title="get /jobs/manual/{job_id}">client.jobs.manual.<a href="./src/finch/resources/jobs/manual.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/manual_async_job.py">ManualAsyncJob</a></code>
