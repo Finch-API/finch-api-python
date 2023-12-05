@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import List
+from typing_extensions import Literal
 
 from .._models import BaseModel
 
@@ -14,8 +15,17 @@ class Introspection(BaseModel):
     client_id: str
     """The client id of the application associated with the `access_token`."""
 
+    client_type: Literal["production", "development", "sandbox"]
+    """The type of application associated with a token."""
+
     company_id: str
     """The Finch uuid of the company associated with the `access_token`."""
+
+    connection_type: Literal["provider", "finch"]
+    """
+    The type of the connection associated with the token.<br> `provider` -
+    connection to an external provider<br> `finch` - finch-generated data.
+    """
 
     manual: bool
     """
