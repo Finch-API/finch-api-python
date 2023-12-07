@@ -7,11 +7,36 @@ from .company import (
     CompanyResourceWithRawResponse,
     AsyncCompanyResourceWithRawResponse,
 )
-from .benefits import Benefits, AsyncBenefits, BenefitsWithRawResponse, AsyncBenefitsWithRawResponse
-from .payments import Payments, AsyncPayments, PaymentsWithRawResponse, AsyncPaymentsWithRawResponse
-from .directory import Directory, AsyncDirectory, DirectoryWithRawResponse, AsyncDirectoryWithRawResponse
-from .employments import Employments, AsyncEmployments, EmploymentsWithRawResponse, AsyncEmploymentsWithRawResponse
-from .individuals import Individuals, AsyncIndividuals, IndividualsWithRawResponse, AsyncIndividualsWithRawResponse
+from .benefits import (
+    Benefits,
+    AsyncBenefits,
+    BenefitsWithRawResponse,
+    AsyncBenefitsWithRawResponse,
+)
+from .payments import (
+    Payments,
+    AsyncPayments,
+    PaymentsWithRawResponse,
+    AsyncPaymentsWithRawResponse,
+)
+from .directory import (
+    Directory,
+    AsyncDirectory,
+    DirectoryWithRawResponse,
+    AsyncDirectoryWithRawResponse,
+)
+from .employments import (
+    Employments,
+    AsyncEmployments,
+    EmploymentsWithRawResponse,
+    AsyncEmploymentsWithRawResponse,
+)
+from .individuals import (
+    Individuals,
+    AsyncIndividuals,
+    IndividualsWithRawResponse,
+    AsyncIndividualsWithRawResponse,
+)
 from .pay_statements import (
     PayStatements,
     AsyncPayStatements,

@@ -7,25 +7,13 @@ from typing import TYPE_CHECKING
 
 import httpx
 
-from ..._types import (
-    NOT_GIVEN,
-    Body,
-    Query,
-    Headers,
-    NotGiven,
-)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncIndividualsPage, AsyncIndividualsPage
-from ...types.hris import (
-    IndividualInDirectory,
-    directory_list_params,
-)
-from ..._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ...types.hris import IndividualInDirectory, directory_list_params
+from ..._base_client import AsyncPaginator, make_request_options
 
 if TYPE_CHECKING:
     from ..._client import Finch, AsyncFinch
