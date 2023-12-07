@@ -10,12 +10,8 @@ import hashlib
 from typing import TYPE_CHECKING
 from datetime import datetime, timezone, timedelta
 
-from .._types import (
-    HeadersLike,
-)
-from .._utils import (
-    get_required_header,
-)
+from .._types import HeadersLike
+from .._utils import get_required_header
 from .._resource import SyncAPIResource, AsyncAPIResource
 
 if TYPE_CHECKING:
