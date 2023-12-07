@@ -10,12 +10,37 @@ from .company import (
     CompanyResourceWithRawResponse,
     AsyncCompanyResourceWithRawResponse,
 )
-from .benefits import Benefits, AsyncBenefits, BenefitsWithRawResponse, AsyncBenefitsWithRawResponse
-from .payments import Payments, AsyncPayments, PaymentsWithRawResponse, AsyncPaymentsWithRawResponse
-from .directory import Directory, AsyncDirectory, DirectoryWithRawResponse, AsyncDirectoryWithRawResponse
+from .benefits import (
+    Benefits,
+    AsyncBenefits,
+    BenefitsWithRawResponse,
+    AsyncBenefitsWithRawResponse,
+)
+from .payments import (
+    Payments,
+    AsyncPayments,
+    PaymentsWithRawResponse,
+    AsyncPaymentsWithRawResponse,
+)
+from .directory import (
+    Directory,
+    AsyncDirectory,
+    DirectoryWithRawResponse,
+    AsyncDirectoryWithRawResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .employments import Employments, AsyncEmployments, EmploymentsWithRawResponse, AsyncEmploymentsWithRawResponse
-from .individuals import Individuals, AsyncIndividuals, IndividualsWithRawResponse, AsyncIndividualsWithRawResponse
+from .employments import (
+    Employments,
+    AsyncEmployments,
+    EmploymentsWithRawResponse,
+    AsyncEmploymentsWithRawResponse,
+)
+from .individuals import (
+    Individuals,
+    AsyncIndividuals,
+    IndividualsWithRawResponse,
+    AsyncIndividualsWithRawResponse,
+)
 from .pay_statements import (
     PayStatements,
     AsyncPayStatements,
