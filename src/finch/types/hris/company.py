@@ -46,7 +46,9 @@ class Entity(BaseModel):
     subtype: Optional[Literal["s_corporation", "c_corporation", "b_corporation"]] = None
     """The tax payer subtype of the company."""
 
-    type: Optional[Literal["llc", "corporation", "sole_proprietor", "non_profit", "partnership", "cooperative"]] = None
+    type: Optional[
+        Literal["llc", "lp", "corporation", "sole_proprietor", "non_profit", "partnership", "cooperative"]
+    ] = None
     """The tax payer type of the company."""
 
 
