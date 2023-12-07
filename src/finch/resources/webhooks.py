@@ -56,8 +56,8 @@ class Webhooks(SyncAPIResource):
 
         try:
             parsedSecret = base64.b64decode(secret)
-        except Exception:
-            raise ValueError("Bad secret")
+        except Exception as err:
+            raise ValueError("Bad secret") from err
 
         msg_id = get_required_header(headers, "finch-event-id")
         msg_timestamp = get_required_header(headers, "finch-timestamp")
@@ -68,8 +68,8 @@ class Webhooks(SyncAPIResource):
 
         try:
             timestamp = datetime.fromtimestamp(float(msg_timestamp), tz=timezone.utc)
-        except Exception:
-            raise ValueError("Invalid timestamp header: " + msg_timestamp + ". Could not convert to timestamp")
+        except Exception as err:
+            raise ValueError("Invalid timestamp header: " + msg_timestamp + ". Could not convert to timestamp") from err
 
         # too old
         if timestamp < (now - webhook_tolerance):
@@ -152,8 +152,8 @@ class AsyncWebhooks(AsyncAPIResource):
 
         try:
             parsedSecret = base64.b64decode(secret)
-        except Exception:
-            raise ValueError("Bad secret")
+        except Exception as err:
+            raise ValueError("Bad secret") from err
 
         msg_id = get_required_header(headers, "finch-event-id")
         msg_timestamp = get_required_header(headers, "finch-timestamp")
@@ -164,8 +164,8 @@ class AsyncWebhooks(AsyncAPIResource):
 
         try:
             timestamp = datetime.fromtimestamp(float(msg_timestamp), tz=timezone.utc)
-        except Exception:
-            raise ValueError("Invalid timestamp header: " + msg_timestamp + ". Could not convert to timestamp")
+        except Exception as err:
+            raise ValueError("Invalid timestamp header: " + msg_timestamp + ". Could not convert to timestamp") from err
 
         # too old
         if timestamp < (now - webhook_tolerance):
