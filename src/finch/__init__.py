@@ -75,7 +75,7 @@ __locals = locals()
 for __name in __all__:
     if not __name.startswith("__"):
         try:
-            setattr(__locals[__name], "__module__", "finch")
+            __locals[__name].__module__ = "finch"
         except (TypeError, AttributeError):
             # Some of our exported symbols are builtins which we can't set attributes for.
             pass
