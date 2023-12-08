@@ -41,6 +41,7 @@ class APIError(FinchError):
         super().__init__(message)
         self.request = request
         self.message = message
+        self.body = body
 
 
 class APIResponseValidationError(APIError):
