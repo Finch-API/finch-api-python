@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.9.0 (2023-12-17)
+
+Full Changelog: [v0.8.2...v0.9.0](https://github.com/Finch-API/finch-api-python/compare/v0.8.2...v0.9.0)
+
+### Features
+
+* **api:** add `/jobs` endpoints ([#210](https://github.com/Finch-API/finch-api-python/issues/210)) ([cd3cc6f](https://github.com/Finch-API/finch-api-python/commit/cd3cc6febbb46537d6694303c52fbfa266e762cd))
+* **api:** add `client_type` and `connection_type` to introspection ([#211](https://github.com/Finch-API/finch-api-python/issues/211)) ([d354f0a](https://github.com/Finch-API/finch-api-python/commit/d354f0a501deeea8090c0e2a6200302fe40a7638))
+* **api:** add `lp` tax payer type enum value ([#218](https://github.com/Finch-API/finch-api-python/issues/218)) ([d0f1493](https://github.com/Finch-API/finch-api-python/commit/d0f1493c4bbbabe9fa9b7c5c3ef55588820ba87b))
+* **pagination:** remove unused types ([#215](https://github.com/Finch-API/finch-api-python/issues/215)) ([9adf490](https://github.com/Finch-API/finch-api-python/commit/9adf490d6b23ddb642eb630be867690a8f8a8693))
+
+
+### Bug Fixes
+
+* avoid leaking memory when Client.with_options is used ([#220](https://github.com/Finch-API/finch-api-python/issues/220)) ([c634771](https://github.com/Finch-API/finch-api-python/commit/c6347717feebc43eb69d191aeee3369aa010e0a0))
+* **client:** correct base_url setter implementation ([#207](https://github.com/Finch-API/finch-api-python/issues/207)) ([5e04fa7](https://github.com/Finch-API/finch-api-python/commit/5e04fa773d4603d0be73aa67268b17fdc4f6fed2))
+* **client:** ensure retried requests are closed ([#204](https://github.com/Finch-API/finch-api-python/issues/204)) ([0659932](https://github.com/Finch-API/finch-api-python/commit/0659932aaaa69850982e6acbe076a4af7980efcd))
+* **errors:** properly assign APIError.body ([#219](https://github.com/Finch-API/finch-api-python/issues/219)) ([ee8fb39](https://github.com/Finch-API/finch-api-python/commit/ee8fb3977610c5a7578353042553665a07943b42))
+
+
+### Chores
+
+* **ci:** run release workflow once per day ([#226](https://github.com/Finch-API/finch-api-python/issues/226)) ([7147466](https://github.com/Finch-API/finch-api-python/commit/7147466ca5ce520e88fb392bd2d84be99a03e2b7))
+* **internal:** add tests for proxy change ([#203](https://github.com/Finch-API/finch-api-python/issues/203)) ([b5b9f79](https://github.com/Finch-API/finch-api-python/commit/b5b9f79c19e846e2e8fc3fd1faf905a65a6aa7c4))
+* **internal:** enable more lint rules ([#217](https://github.com/Finch-API/finch-api-python/issues/217)) ([61018d4](https://github.com/Finch-API/finch-api-python/commit/61018d4794ec858953dc0a3746054dbc04807ff9))
+* **internal:** reformat imports ([#213](https://github.com/Finch-API/finch-api-python/issues/213)) ([81a6e2f](https://github.com/Finch-API/finch-api-python/commit/81a6e2f22a5c5fe862c693a0b5b2affda78d88af))
+* **internal:** reformat imports ([#216](https://github.com/Finch-API/finch-api-python/issues/216)) ([14c8df0](https://github.com/Finch-API/finch-api-python/commit/14c8df00568bba59acab45ff6cdef2cb04599b43))
+* **internal:** replace string concatenation with f-strings ([#206](https://github.com/Finch-API/finch-api-python/issues/206)) ([7c920a3](https://github.com/Finch-API/finch-api-python/commit/7c920a33c103fadee08cd784f5d028f2ab19411f))
+* **internal:** update formatting ([#214](https://github.com/Finch-API/finch-api-python/issues/214)) ([cd5253c](https://github.com/Finch-API/finch-api-python/commit/cd5253c9a8417eec88dc8c30fdfa817ec1519a9e))
+* **internal:** update lock file ([#201](https://github.com/Finch-API/finch-api-python/issues/201)) ([42de23d](https://github.com/Finch-API/finch-api-python/commit/42de23d5c7a3b9253396b94af7884e7a9300b841))
+* **internal:** updates to proxy helper ([#202](https://github.com/Finch-API/finch-api-python/issues/202)) ([2049c50](https://github.com/Finch-API/finch-api-python/commit/2049c50e723ec6ec4b4d46a18fa87800a58d581a))
+* **package:** lift anyio v4 restriction ([#208](https://github.com/Finch-API/finch-api-python/issues/208)) ([e1ed4a5](https://github.com/Finch-API/finch-api-python/commit/e1ed4a53591362f5e2579e301b43529b64f2fc8b))
+
+
+### Documentation
+
+* improve README timeout comment ([#221](https://github.com/Finch-API/finch-api-python/issues/221)) ([1c946dd](https://github.com/Finch-API/finch-api-python/commit/1c946dd97fc43bfdda3346311282086af8cac6cb))
+* **readme:** update example snippets ([#205](https://github.com/Finch-API/finch-api-python/issues/205)) ([4ff1a6b](https://github.com/Finch-API/finch-api-python/commit/4ff1a6b04ba8e3301ac6ff4a612bb8aab801abd0))
+
+
+### Refactors
+
+* **client:** simplify cleanup ([#222](https://github.com/Finch-API/finch-api-python/issues/222)) ([7f116d2](https://github.com/Finch-API/finch-api-python/commit/7f116d2665c22e08988fb01cbbb692c8c0b79fea))
+* remove unused model types used in params ([#224](https://github.com/Finch-API/finch-api-python/issues/224)) ([f0b3fb7](https://github.com/Finch-API/finch-api-python/commit/f0b3fb7fceb4cdfe42abc5e49e04de30633cc55c))
+* simplify internal error handling ([#223](https://github.com/Finch-API/finch-api-python/issues/223)) ([481dc7d](https://github.com/Finch-API/finch-api-python/commit/481dc7de11733b2493e820ff241b7999d873fd16))
+
 ## 0.8.2 (2023-11-28)
 
 Full Changelog: [v0.8.1...v0.8.2](https://github.com/Finch-API/finch-api-python/compare/v0.8.1...v0.8.2)
