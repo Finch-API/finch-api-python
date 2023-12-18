@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 (2023-12-18)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/Finch-API/finch-api-python/compare/v0.9.0...v0.9.1)
+
+### Documentation
+
+* replace &lt;br&gt; tags with newlines ([#227](https://github.com/Finch-API/finch-api-python/issues/227)) ([803ebd3](https://github.com/Finch-API/finch-api-python/commit/803ebd3ccf46ee0d6d2d75a804cfc67c1a298498))
+
 ## 0.9.0 (2023-12-17)
 
 Full Changelog: [v0.8.2...v0.9.0](https://github.com/Finch-API/finch-api-python/compare/v0.8.2...v0.9.0)
