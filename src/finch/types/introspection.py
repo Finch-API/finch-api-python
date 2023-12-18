@@ -22,9 +22,11 @@ class Introspection(BaseModel):
     """The Finch uuid of the company associated with the `access_token`."""
 
     connection_type: Literal["provider", "finch"]
-    """
-    The type of the connection associated with the token.<br> `provider` -
-    connection to an external provider<br> `finch` - finch-generated data.
+    """The type of the connection associated with the token.
+
+    `provider` - connection to an external provider
+
+    `finch` - finch-generated data.
     """
 
     manual: bool
