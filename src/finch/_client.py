@@ -259,8 +259,7 @@ class Finch(SyncAPIClient):
     ) -> str:
         """Returns an access token for the Finch API given an authorization code.
 
-        An
-        authorization code can be obtained by visiting the url returned by
+        An authorization code can be obtained by visiting the url returned by
         get_auth_url().
         """
         if self.client_id is None:
@@ -555,8 +554,7 @@ class AsyncFinch(AsyncAPIClient):
     ) -> str:
         """Returns an access token for the Finch API given an authorization code.
 
-        An
-        authorization code can be obtained by visiting the url returned by
+        An authorization code can be obtained by visiting the url returned by
         get_auth_url().
         """
         if self.client_id is None:
