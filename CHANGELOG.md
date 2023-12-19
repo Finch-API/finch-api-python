@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.3 (2023-12-19)
+
+Full Changelog: [v0.9.2...v0.9.3](https://github.com/Finch-API/finch-api-python/compare/v0.9.2...v0.9.3)
+
+### Chores
+
+* **internal:** fix typos ([#233](https://github.com/Finch-API/finch-api-python/issues/233)) ([04e2063](https://github.com/Finch-API/finch-api-python/commit/04e2063da581e491e434c5a379b8ecee282c7691))
+* **package:** bump minimum typing-extensions to 4.7 ([#235](https://github.com/Finch-API/finch-api-python/issues/235)) ([0851286](https://github.com/Finch-API/finch-api-python/commit/0851286146418a6235e2d3a26cd5d8f700a67234))
+
 ## 0.9.2 (2023-12-19)
 
 Full Changelog: [v0.9.1...v0.9.2](https://github.com/Finch-API/finch-api-python/compare/v0.9.1...v0.9.2)
