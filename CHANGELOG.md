@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.9.2 (2023-12-19)
+
+Full Changelog: [v0.9.1...v0.9.2](https://github.com/Finch-API/finch-api-python/compare/v0.9.1...v0.9.2)
+
+### Chores
+
+* **internal:** minor utils restructuring ([#232](https://github.com/Finch-API/finch-api-python/issues/232)) ([222e949](https://github.com/Finch-API/finch-api-python/commit/222e94926d93f5afe9c1002556c37146cfde94a7))
+* **internal:** updates to base client ([#231](https://github.com/Finch-API/finch-api-python/issues/231)) ([f435145](https://github.com/Finch-API/finch-api-python/commit/f4351455da869321b2172ac586f2a8c154bccdca))
+
+
+### Documentation
+
+* improve formatting ([#229](https://github.com/Finch-API/finch-api-python/issues/229)) ([1bf8f45](https://github.com/Finch-API/finch-api-python/commit/1bf8f45e7a6950d367e33531e5b649f152575575))
+
 ## 0.9.1 (2023-12-18)
 
 Full Changelog: [v0.9.0...v0.9.1](https://github.com/Finch-API/finch-api-python/compare/v0.9.0...v0.9.1)
