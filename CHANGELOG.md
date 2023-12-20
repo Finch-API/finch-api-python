@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.4 (2023-12-20)
+
+Full Changelog: [v0.9.3...v0.9.4](https://github.com/Finch-API/finch-api-python/compare/v0.9.3...v0.9.4)
+
+### Chores
+
+* **internal:** minor updates to pagination ([#236](https://github.com/Finch-API/finch-api-python/issues/236)) ([9fb357e](https://github.com/Finch-API/finch-api-python/commit/9fb357e18aa800fd21d62ecb31690abcb65502af))
+
 ## 0.9.3 (2023-12-19)
 
 Full Changelog: [v0.9.2...v0.9.3](https://github.com/Finch-API/finch-api-python/compare/v0.9.2...v0.9.3)
