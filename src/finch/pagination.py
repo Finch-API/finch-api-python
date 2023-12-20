@@ -30,10 +30,7 @@ class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        items = self.items
-        if not items:
-            return []
-        return items
+        return self.items
 
     @override
     def next_page_info(self) -> None:
@@ -58,10 +55,7 @@ class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        items = self.items
-        if not items:
-            return []
-        return items
+        return self.items
 
     @override
     def next_page_info(self) -> None:
@@ -86,10 +80,7 @@ class SyncResponsesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT])
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        responses = self.responses
-        if not responses:
-            return []
-        return responses
+        return self.responses
 
     @override
     def next_page_info(self) -> None:
@@ -105,10 +96,7 @@ class AsyncResponsesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        responses = self.responses
-        if not responses:
-            return []
-        return responses
+        return self.responses
 
     @override
     def next_page_info(self) -> None:
@@ -125,29 +113,22 @@ class SyncIndividualsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        individuals = self.individuals
-        if not individuals:
-            return []
-        return individuals
+        return self.individuals
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        offset = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            offset = self.paging.offset
+        offset = self.paging.offset
         if offset is None:
             return None
 
-        length = len(self._get_page_items())
+        length = len(self.individuals)
         current_count = offset + length
 
-        count = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            count = self.paging.count
-        if count is None:
+        total_count = self.paging.count
+        if total_count is None:
             return None
 
-        if current_count < count:
+        if current_count < total_count:
             return PageInfo(params={"offset": current_count})
 
         return None
@@ -159,97 +140,76 @@ class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mode
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        individuals = self.individuals
-        if not individuals:
-            return []
-        return individuals
+        return self.individuals
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        offset = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            offset = self.paging.offset
+        offset = self.paging.offset
         if offset is None:
             return None
 
-        length = len(self._get_page_items())
+        length = len(self.individuals)
         current_count = offset + length
 
-        count = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            count = self.paging.count
-        if count is None:
+        total_count = self.paging.count
+        if total_count is None:
             return None
 
-        if current_count < count:
+        if current_count < total_count:
             return PageInfo(params={"offset": current_count})
 
         return None
 
 
 class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    data: List[ModelT]
     paging: Paging
+    data: List[ModelT]
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        data = self.data
-        if not data:
-            return []
-        return data
+        return self.data
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        offset = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            offset = self.paging.offset
+        offset = self.paging.offset
         if offset is None:
             return None
 
-        length = len(self._get_page_items())
+        length = len(self.data)
         current_count = offset + length
 
-        count = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            count = self.paging.count
-        if count is None:
+        total_count = self.paging.count
+        if total_count is None:
             return None
 
-        if current_count < count:
+        if current_count < total_count:
             return PageInfo(params={"offset": current_count})
 
         return None
 
 
 class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    data: List[ModelT]
     paging: Paging
+    data: List[ModelT]
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        data = self.data
-        if not data:
-            return []
-        return data
+        return self.data
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        offset = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            offset = self.paging.offset
+        offset = self.paging.offset
         if offset is None:
             return None
 
-        length = len(self._get_page_items())
+        length = len(self.data)
         current_count = offset + length
 
-        count = None
-        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            count = self.paging.count
-        if count is None:
+        total_count = self.paging.count
+        if total_count is None:
             return None
 
-        if current_count < count:
+        if current_count < total_count:
             return PageInfo(params={"offset": current_count})
 
         return None
