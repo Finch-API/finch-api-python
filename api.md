@@ -84,11 +84,7 @@ Methods:
 Types:
 
 ```python
-from finch.types.hris import (
-    PayStatement,
-    PayStatementResponse,
-    PayStatementResponseBody,
-)
+from finch.types.hris import PayStatement, PayStatementResponse, PayStatementResponseBody
 ```
 
 Methods:
