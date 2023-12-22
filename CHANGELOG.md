@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.5 (2023-12-22)
+
+Full Changelog: [v0.9.4...v0.9.5](https://github.com/Finch-API/finch-api-python/compare/v0.9.4...v0.9.5)
+
+### Chores
+
+* **internal:** add bin script ([#238](https://github.com/Finch-API/finch-api-python/issues/238)) ([9fe973e](https://github.com/Finch-API/finch-api-python/commit/9fe973ec0837b86eea3b42b9277403dae0abded5))
+* **internal:** use ruff instead of black for formatting ([#241](https://github.com/Finch-API/finch-api-python/issues/241)) ([f27579e](https://github.com/Finch-API/finch-api-python/commit/f27579ec7e4e5088b9d2e7c6b87826dfebf6daf6))
+
 ## 0.9.4 (2023-12-20)
 
 Full Changelog: [v0.9.3...v0.9.4](https://github.com/Finch-API/finch-api-python/compare/v0.9.3...v0.9.4)
