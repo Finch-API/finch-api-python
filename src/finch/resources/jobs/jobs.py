@@ -4,18 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from .manual import (
-    Manual,
-    AsyncManual,
-    ManualWithRawResponse,
-    AsyncManualWithRawResponse,
-)
-from .automated import (
-    Automated,
-    AsyncAutomated,
-    AutomatedWithRawResponse,
-    AsyncAutomatedWithRawResponse,
-)
+from .manual import Manual, AsyncManual, ManualWithRawResponse, AsyncManualWithRawResponse
+from .automated import Automated, AsyncAutomated, AutomatedWithRawResponse, AsyncAutomatedWithRawResponse
 from ..._resource import SyncAPIResource, AsyncAPIResource
 
 if TYPE_CHECKING:
