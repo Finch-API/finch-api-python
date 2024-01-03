@@ -21,12 +21,7 @@ from finch._types import Omit
 from finch._client import Finch, AsyncFinch
 from finch._models import BaseModel, FinalRequestOptions
 from finch._exceptions import APIResponseValidationError
-from finch._base_client import (
-    DEFAULT_TIMEOUT,
-    HTTPX_DEFAULT_TIMEOUT,
-    BaseClient,
-    make_request_options,
-)
+from finch._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
 
 from .utils import update_env
 
