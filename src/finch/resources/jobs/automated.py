@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 import httpx
@@ -15,32 +14,23 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ...types.jobs import (
-    AutomatedAsyncJob,
-    AutomatedCreateResponse,
-    automated_list_params,
-    automated_create_params,
-)
+from ...types.jobs import AutomatedAsyncJob, AutomatedCreateResponse, automated_list_params, automated_create_params
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
-
 __all__ = ["Automated", "AsyncAutomated"]
 
 
 class Automated(SyncAPIResource):
-    with_raw_response: AutomatedWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AutomatedWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AutomatedWithRawResponse:
+        return AutomatedWithRawResponse(self)
 
     def create(
         self,
@@ -169,11 +159,9 @@ class Automated(SyncAPIResource):
 
 
 class AsyncAutomated(AsyncAPIResource):
-    with_raw_response: AsyncAutomatedWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncAutomatedWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncAutomatedWithRawResponse:
+        return AsyncAutomatedWithRawResponse(self)
 
     async def create(
         self,

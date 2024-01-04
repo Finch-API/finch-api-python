@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from .company import (
     CompanyResource,
     AsyncCompanyResource,
@@ -12,6 +10,7 @@ from .company import (
 )
 from .benefits import Benefits, AsyncBenefits, BenefitsWithRawResponse, AsyncBenefitsWithRawResponse
 from .payments import Payments, AsyncPayments, PaymentsWithRawResponse, AsyncPaymentsWithRawResponse
+from ..._compat import cached_property
 from .directory import Directory, AsyncDirectory, DirectoryWithRawResponse, AsyncDirectoryWithRawResponse
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .employments import Employments, AsyncEmployments, EmploymentsWithRawResponse, AsyncEmploymentsWithRawResponse
@@ -22,55 +21,77 @@ from .pay_statements import (
     PayStatementsWithRawResponse,
     AsyncPayStatementsWithRawResponse,
 )
-
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
+from .benefits.benefits import Benefits, AsyncBenefits
 
 __all__ = ["HRIS", "AsyncHRIS"]
 
 
 class HRIS(SyncAPIResource):
-    company: CompanyResource
-    directory: Directory
-    individuals: Individuals
-    employments: Employments
-    payments: Payments
-    pay_statements: PayStatements
-    benefits: Benefits
-    with_raw_response: HRISWithRawResponse
+    @cached_property
+    def company(self) -> CompanyResource:
+        return CompanyResource(self._client)
 
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.company = CompanyResource(client)
-        self.directory = Directory(client)
-        self.individuals = Individuals(client)
-        self.employments = Employments(client)
-        self.payments = Payments(client)
-        self.pay_statements = PayStatements(client)
-        self.benefits = Benefits(client)
-        self.with_raw_response = HRISWithRawResponse(self)
+    @cached_property
+    def directory(self) -> Directory:
+        return Directory(self._client)
+
+    @cached_property
+    def individuals(self) -> Individuals:
+        return Individuals(self._client)
+
+    @cached_property
+    def employments(self) -> Employments:
+        return Employments(self._client)
+
+    @cached_property
+    def payments(self) -> Payments:
+        return Payments(self._client)
+
+    @cached_property
+    def pay_statements(self) -> PayStatements:
+        return PayStatements(self._client)
+
+    @cached_property
+    def benefits(self) -> Benefits:
+        return Benefits(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> HRISWithRawResponse:
+        return HRISWithRawResponse(self)
 
 
 class AsyncHRIS(AsyncAPIResource):
-    company: AsyncCompanyResource
-    directory: AsyncDirectory
-    individuals: AsyncIndividuals
-    employments: AsyncEmployments
-    payments: AsyncPayments
-    pay_statements: AsyncPayStatements
-    benefits: AsyncBenefits
-    with_raw_response: AsyncHRISWithRawResponse
+    @cached_property
+    def company(self) -> AsyncCompanyResource:
+        return AsyncCompanyResource(self._client)
 
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.company = AsyncCompanyResource(client)
-        self.directory = AsyncDirectory(client)
-        self.individuals = AsyncIndividuals(client)
-        self.employments = AsyncEmployments(client)
-        self.payments = AsyncPayments(client)
-        self.pay_statements = AsyncPayStatements(client)
-        self.benefits = AsyncBenefits(client)
-        self.with_raw_response = AsyncHRISWithRawResponse(self)
+    @cached_property
+    def directory(self) -> AsyncDirectory:
+        return AsyncDirectory(self._client)
+
+    @cached_property
+    def individuals(self) -> AsyncIndividuals:
+        return AsyncIndividuals(self._client)
+
+    @cached_property
+    def employments(self) -> AsyncEmployments:
+        return AsyncEmployments(self._client)
+
+    @cached_property
+    def payments(self) -> AsyncPayments:
+        return AsyncPayments(self._client)
+
+    @cached_property
+    def pay_statements(self) -> AsyncPayStatements:
+        return AsyncPayStatements(self._client)
+
+    @cached_property
+    def benefits(self) -> AsyncBenefits:
+        return AsyncBenefits(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncHRISWithRawResponse:
+        return AsyncHRISWithRawResponse(self)
 
 
 class HRISWithRawResponse:

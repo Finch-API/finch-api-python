@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..types import Provider
@@ -14,6 +12,7 @@ from .._types import (
     Headers,
     NotGiven,
 )
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncSinglePage, AsyncSinglePage
@@ -22,18 +21,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Finch, AsyncFinch
-
 __all__ = ["Providers", "AsyncProviders"]
 
 
 class Providers(SyncAPIResource):
-    with_raw_response: ProvidersWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = ProvidersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ProvidersWithRawResponse:
+        return ProvidersWithRawResponse(self)
 
     def list(
         self,
@@ -57,11 +51,9 @@ class Providers(SyncAPIResource):
 
 
 class AsyncProviders(AsyncAPIResource):
-    with_raw_response: AsyncProvidersWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncProvidersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncProvidersWithRawResponse:
+        return AsyncProvidersWithRawResponse(self)
 
     def list(
         self,

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import List
 
 import httpx
 
@@ -14,6 +14,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
@@ -23,18 +24,13 @@ from ..._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
-
 __all__ = ["Employments", "AsyncEmployments"]
 
 
 class Employments(SyncAPIResource):
-    with_raw_response: EmploymentsWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = EmploymentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> EmploymentsWithRawResponse:
+        return EmploymentsWithRawResponse(self)
 
     def retrieve_many(
         self,
@@ -78,11 +74,9 @@ class Employments(SyncAPIResource):
 
 
 class AsyncEmployments(AsyncAPIResource):
-    with_raw_response: AsyncEmploymentsWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncEmploymentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncEmploymentsWithRawResponse:
+        return AsyncEmploymentsWithRawResponse(self)
 
     def retrieve_many(
         self,
