@@ -56,25 +56,25 @@ class Company(BaseModel):
     id: str
     """A stable Finch `id` (UUID v4) for the company."""
 
-    accounts: Optional[List[Account]]
+    accounts: Optional[List[Account]] = None
     """An array of bank account objects associated with the payroll/HRIS system."""
 
-    departments: Optional[List[Optional[Department]]]
+    departments: Optional[List[Optional[Department]]] = None
     """The array of company departments."""
 
-    ein: Optional[str]
+    ein: Optional[str] = None
     """The employer identification number."""
 
-    entity: Optional[Entity]
+    entity: Optional[Entity] = None
     """The entity type object."""
 
-    legal_name: Optional[str]
+    legal_name: Optional[str] = None
     """The legal name of the company."""
 
-    locations: Optional[List[Optional[Location]]]
+    locations: Optional[List[Optional[Location]]] = None
 
-    primary_email: Optional[str]
+    primary_email: Optional[str] = None
     """The email of the main administrator on the account."""
 
-    primary_phone_number: Optional[str]
+    primary_phone_number: Optional[str] = None
     """The phone number of the main administrator on the account. Format: `XXXXXXXXXX`"""
