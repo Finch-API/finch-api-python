@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import httpx
 
@@ -14,6 +14,7 @@ from ...._types import (
     NotGiven,
 )
 from ...._utils import maybe_transform
+from ...._compat import cached_property
 from .individuals import Individuals, AsyncIndividuals, IndividualsWithRawResponse, AsyncIndividualsWithRawResponse
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
@@ -33,20 +34,17 @@ from ...._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ...._client import Finch, AsyncFinch
-
 __all__ = ["Benefits", "AsyncBenefits"]
 
 
 class Benefits(SyncAPIResource):
-    individuals: Individuals
-    with_raw_response: BenefitsWithRawResponse
+    @cached_property
+    def individuals(self) -> Individuals:
+        return Individuals(self._client)
 
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.individuals = Individuals(client)
-        self.with_raw_response = BenefitsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> BenefitsWithRawResponse:
+        return BenefitsWithRawResponse(self)
 
     def create(
         self,
@@ -215,13 +213,13 @@ class Benefits(SyncAPIResource):
 
 
 class AsyncBenefits(AsyncAPIResource):
-    individuals: AsyncIndividuals
-    with_raw_response: AsyncBenefitsWithRawResponse
+    @cached_property
+    def individuals(self) -> AsyncIndividuals:
+        return AsyncIndividuals(self._client)
 
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.individuals = AsyncIndividuals(client)
-        self.with_raw_response = AsyncBenefitsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncBenefitsWithRawResponse:
+        return AsyncBenefitsWithRawResponse(self)
 
     async def create(
         self,

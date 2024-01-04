@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import List
 
 import httpx
 
@@ -14,6 +14,7 @@ from ...._types import (
     NotGiven,
 )
 from ...._utils import maybe_transform
+from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ....pagination import SyncSinglePage, AsyncSinglePage
@@ -31,18 +32,13 @@ from ....types.hris.benefits import (
     individual_retrieve_many_benefits_params,
 )
 
-if TYPE_CHECKING:
-    from ...._client import Finch, AsyncFinch
-
 __all__ = ["Individuals", "AsyncIndividuals"]
 
 
 class Individuals(SyncAPIResource):
-    with_raw_response: IndividualsWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = IndividualsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> IndividualsWithRawResponse:
+        return IndividualsWithRawResponse(self)
 
     def enroll_many(
         self,
@@ -211,11 +207,9 @@ class Individuals(SyncAPIResource):
 
 
 class AsyncIndividuals(AsyncAPIResource):
-    with_raw_response: AsyncIndividualsWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncIndividualsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncIndividualsWithRawResponse:
+        return AsyncIndividualsWithRawResponse(self)
 
     def enroll_many(
         self,
