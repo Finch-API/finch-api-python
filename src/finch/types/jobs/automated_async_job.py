@@ -10,7 +10,7 @@ __all__ = ["AutomatedAsyncJob"]
 
 
 class AutomatedAsyncJob(BaseModel):
-    completed_at: Optional[datetime]
+    completed_at: Optional[datetime] = None
     """The datetime the job completed."""
 
     created_at: datetime
@@ -26,14 +26,14 @@ class AutomatedAsyncJob(BaseModel):
     job_url: str
     """The url that can be used to retrieve the job status"""
 
-    scheduled_at: Optional[datetime]
+    scheduled_at: Optional[datetime] = None
     """The datetime a job is scheduled to be run.
 
     For scheduled jobs, this datetime can be in the future if the job has not yet
     been enqueued. For ad-hoc jobs, this field will be null.
     """
 
-    started_at: Optional[datetime]
+    started_at: Optional[datetime] = None
     """The datetime a job entered into the job queue."""
 
     status: Literal["pending", "in_progress", "complete", "error", "reauth_error", "permissions_error"]

@@ -13,13 +13,13 @@ __all__ = ["CompanyBenefit"]
 class CompanyBenefit(BaseModel):
     benefit_id: str
 
-    company_contribution: Optional[BenefitContribution]
+    company_contribution: Optional[BenefitContribution] = None
 
-    description: Optional[str]
+    description: Optional[str] = None
 
-    employee_deduction: Optional[BenefitContribution]
+    employee_deduction: Optional[BenefitContribution] = None
 
-    frequency: Optional[BenefitFrequency]
+    frequency: Optional[BenefitFrequency] = None
 
-    type: Optional[BenefitType]
+    type: Optional[BenefitType] = None
     """Type of benefit."""
