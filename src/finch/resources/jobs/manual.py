@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..._types import (
@@ -13,6 +11,7 @@ from ..._types import (
     Headers,
     NotGiven,
 )
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...types.jobs import ManualAsyncJob
@@ -20,18 +19,13 @@ from ..._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
-
 __all__ = ["Manual", "AsyncManual"]
 
 
 class Manual(SyncAPIResource):
-    with_raw_response: ManualWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = ManualWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ManualWithRawResponse:
+        return ManualWithRawResponse(self)
 
     def retrieve(
         self,
@@ -68,11 +62,9 @@ class Manual(SyncAPIResource):
 
 
 class AsyncManual(AsyncAPIResource):
-    with_raw_response: AsyncManualWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncManualWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncManualWithRawResponse:
+        return AsyncManualWithRawResponse(self)
 
     async def retrieve(
         self,

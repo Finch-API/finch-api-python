@@ -2,40 +2,40 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from .manual import Manual, AsyncManual, ManualWithRawResponse, AsyncManualWithRawResponse
+from ..._compat import cached_property
 from .automated import Automated, AsyncAutomated, AutomatedWithRawResponse, AsyncAutomatedWithRawResponse
 from ..._resource import SyncAPIResource, AsyncAPIResource
-
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
 
 __all__ = ["Jobs", "AsyncJobs"]
 
 
 class Jobs(SyncAPIResource):
-    automated: Automated
-    manual: Manual
-    with_raw_response: JobsWithRawResponse
+    @cached_property
+    def automated(self) -> Automated:
+        return Automated(self._client)
 
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.automated = Automated(client)
-        self.manual = Manual(client)
-        self.with_raw_response = JobsWithRawResponse(self)
+    @cached_property
+    def manual(self) -> Manual:
+        return Manual(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> JobsWithRawResponse:
+        return JobsWithRawResponse(self)
 
 
 class AsyncJobs(AsyncAPIResource):
-    automated: AsyncAutomated
-    manual: AsyncManual
-    with_raw_response: AsyncJobsWithRawResponse
+    @cached_property
+    def automated(self) -> AsyncAutomated:
+        return AsyncAutomated(self._client)
 
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.automated = AsyncAutomated(client)
-        self.manual = AsyncManual(client)
-        self.with_raw_response = AsyncJobsWithRawResponse(self)
+    @cached_property
+    def manual(self) -> AsyncManual:
+        return AsyncManual(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncJobsWithRawResponse:
+        return AsyncJobsWithRawResponse(self)
 
 
 class JobsWithRawResponse:

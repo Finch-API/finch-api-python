@@ -2,14 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import httpx
 
-from ..types import (
-    RequestForwardingForwardResponse,
-    request_forwarding_forward_params,
-)
+from ..types import RequestForwardingForwardResponse, request_forwarding_forward_params
 from .._types import (
     NOT_GIVEN,
     Body,
@@ -18,24 +15,20 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Finch, AsyncFinch
-
 __all__ = ["RequestForwarding", "AsyncRequestForwarding"]
 
 
 class RequestForwarding(SyncAPIResource):
-    with_raw_response: RequestForwardingWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = RequestForwardingWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> RequestForwardingWithRawResponse:
+        return RequestForwardingWithRawResponse(self)
 
     def forward(
         self,
@@ -105,11 +98,9 @@ class RequestForwarding(SyncAPIResource):
 
 
 class AsyncRequestForwarding(AsyncAPIResource):
-    with_raw_response: AsyncRequestForwardingWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncRequestForwardingWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncRequestForwardingWithRawResponse:
+        return AsyncRequestForwardingWithRawResponse(self)
 
     async def forward(
         self,

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import typing_extensions
-from typing import TYPE_CHECKING
 
 import httpx
 
@@ -15,30 +14,23 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncIndividualsPage, AsyncIndividualsPage
-from ...types.hris import (
-    IndividualInDirectory,
-    directory_list_params,
-)
+from ...types.hris import IndividualInDirectory, directory_list_params
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
-
 __all__ = ["Directory", "AsyncDirectory"]
 
 
 class Directory(SyncAPIResource):
-    with_raw_response: DirectoryWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = DirectoryWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> DirectoryWithRawResponse:
+        return DirectoryWithRawResponse(self)
 
     def list(
         self,
@@ -127,11 +119,9 @@ class Directory(SyncAPIResource):
 
 
 class AsyncDirectory(AsyncAPIResource):
-    with_raw_response: AsyncDirectoryWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncDirectoryWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncDirectoryWithRawResponse:
+        return AsyncDirectoryWithRawResponse(self)
 
     def list(
         self,

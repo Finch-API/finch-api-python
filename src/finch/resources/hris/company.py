@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..._types import (
@@ -13,6 +11,7 @@ from ..._types import (
     Headers,
     NotGiven,
 )
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...types.hris import Company
@@ -20,18 +19,13 @@ from ..._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Finch, AsyncFinch
-
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
 
 class CompanyResource(SyncAPIResource):
-    with_raw_response: CompanyResourceWithRawResponse
-
-    def __init__(self, client: Finch) -> None:
-        super().__init__(client)
-        self.with_raw_response = CompanyResourceWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CompanyResourceWithRawResponse:
+        return CompanyResourceWithRawResponse(self)
 
     def retrieve(
         self,
@@ -54,11 +48,9 @@ class CompanyResource(SyncAPIResource):
 
 
 class AsyncCompanyResource(AsyncAPIResource):
-    with_raw_response: AsyncCompanyResourceWithRawResponse
-
-    def __init__(self, client: AsyncFinch) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncCompanyResourceWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCompanyResourceWithRawResponse:
+        return AsyncCompanyResourceWithRawResponse(self)
 
     async def retrieve(
         self,
