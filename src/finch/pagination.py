@@ -5,7 +5,6 @@ from typing_extensions import override
 
 from httpx import Response
 
-from ._types import ModelT
 from ._utils import is_mapping
 from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
@@ -24,12 +23,14 @@ __all__ = [
 
 _BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
 
+_T = TypeVar("_T")
 
-class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    items: List[ModelT]
+
+class SyncSinglePage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    items: List[_T]
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.items
 
     @override
@@ -50,11 +51,11 @@ class SyncSinglePage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
         )
 
 
-class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    items: List[ModelT]
+class AsyncSinglePage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    items: List[_T]
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.items
 
     @override
@@ -75,11 +76,11 @@ class AsyncSinglePage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
         )
 
 
-class SyncResponsesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    responses: List[ModelT]
+class SyncResponsesPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    responses: List[_T]
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.responses
 
     @override
@@ -91,11 +92,11 @@ class SyncResponsesPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT])
         return None
 
 
-class AsyncResponsesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    responses: List[ModelT]
+class AsyncResponsesPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    responses: List[_T]
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.responses
 
     @override
@@ -107,12 +108,12 @@ class AsyncResponsesPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT
         return None
 
 
-class SyncIndividualsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    individuals: List[ModelT]
+class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    individuals: List[_T]
     paging: Paging
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.individuals
 
     @override
@@ -134,12 +135,12 @@ class SyncIndividualsPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT
         return None
 
 
-class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
-    individuals: List[ModelT]
+class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    individuals: List[_T]
     paging: Paging
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.individuals
 
     @override
@@ -161,12 +162,12 @@ class AsyncIndividualsPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[Mode
         return None
 
 
-class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
+class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     paging: Paging
-    data: List[ModelT]
+    data: List[_T]
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.data
 
     @override
@@ -188,12 +189,12 @@ class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
         return None
 
 
-class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
+class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     paging: Paging
-    data: List[ModelT]
+    data: List[_T]
 
     @override
-    def _get_page_items(self) -> List[ModelT]:
+    def _get_page_items(self) -> List[_T]:
         return self.data
 
     @override
