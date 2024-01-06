@@ -5,6 +5,12 @@ from .jobs import Jobs, AsyncJobs, JobsWithRawResponse, AsyncJobsWithRawResponse
 from .account import Account, AsyncAccount, AccountWithRawResponse, AsyncAccountWithRawResponse
 from .webhooks import Webhooks, AsyncWebhooks
 from .providers import Providers, AsyncProviders, ProvidersWithRawResponse, AsyncProvidersWithRawResponse
+from .access_tokens import (
+    AccessTokens,
+    AsyncAccessTokens,
+    AccessTokensWithRawResponse,
+    AsyncAccessTokensWithRawResponse,
+)
 from .request_forwarding import (
     RequestForwarding,
     AsyncRequestForwarding,
@@ -13,6 +19,10 @@ from .request_forwarding import (
 )
 
 __all__ = [
+    "AccessTokens",
+    "AsyncAccessTokens",
+    "AccessTokensWithRawResponse",
+    "AsyncAccessTokensWithRawResponse",
     "HRIS",
     "AsyncHRIS",
     "HRISWithRawResponse",
