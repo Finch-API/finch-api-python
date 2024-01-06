@@ -10,6 +10,19 @@ Methods:
 
 - <code>client.<a href="./src/finch/_client.py">get_access_token</a>(\*args) -> str</code>
 - <code>client.<a href="./src/finch/_client.py">get_auth_url</a>(\*args) -> str</code>
+- <code>client.<a href="./src/finch/_client.py">with_access_token</a>(\*args) -> Self</code>
+
+# AccessTokens
+
+Types:
+
+```python
+from finch.types import CreateAccessTokenResponse
+```
+
+Methods:
+
+- <code title="post /auth/token">client.access_tokens.<a href="./src/finch/resources/access_tokens.py">create</a>(\*\*<a href="src/finch/types/access_token_create_params.py">params</a>) -> <a href="./src/finch/types/create_access_token_response.py">CreateAccessTokenResponse</a></code>
 
 # HRIS
 

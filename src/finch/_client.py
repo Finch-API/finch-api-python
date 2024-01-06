@@ -51,6 +51,7 @@ __all__ = [
 
 
 class Finch(SyncAPIClient):
+    access_tokens: resources.AccessTokens
     hris: resources.HRIS
     providers: resources.Providers
     account: resources.Account
@@ -135,6 +136,7 @@ class Finch(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.access_tokens = resources.AccessTokens(self)
         self.hris = resources.HRIS(self)
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
@@ -311,6 +313,16 @@ class Finch(SyncAPIClient):
             )
         )
 
+    def with_access_token(
+        self,
+        access_token: str,
+    ) -> Self:
+        """
+        Returns a copy of the current Finch client with the given access token for
+        authentication.
+        """
+        return self.with_options(access_token=access_token)
+
     @override
     def _make_status_error(
         self,
@@ -346,6 +358,7 @@ class Finch(SyncAPIClient):
 
 
 class AsyncFinch(AsyncAPIClient):
+    access_tokens: resources.AsyncAccessTokens
     hris: resources.AsyncHRIS
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
@@ -430,6 +443,7 @@ class AsyncFinch(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.access_tokens = resources.AsyncAccessTokens(self)
         self.hris = resources.AsyncHRIS(self)
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
@@ -606,6 +620,16 @@ class AsyncFinch(AsyncAPIClient):
             )
         )
 
+    def with_access_token(
+        self,
+        access_token: str,
+    ) -> Self:
+        """
+        Returns a copy of the current Finch client with the given access token for
+        authentication.
+        """
+        return self.with_options(access_token=access_token)
+
     @override
     def _make_status_error(
         self,
@@ -642,6 +666,7 @@ class AsyncFinch(AsyncAPIClient):
 
 class FinchWithRawResponse:
     def __init__(self, client: Finch) -> None:
+        self.access_tokens = resources.AccessTokensWithRawResponse(client.access_tokens)
         self.hris = resources.HRISWithRawResponse(client.hris)
         self.providers = resources.ProvidersWithRawResponse(client.providers)
         self.account = resources.AccountWithRawResponse(client.account)
@@ -651,6 +676,7 @@ class FinchWithRawResponse:
 
 class AsyncFinchWithRawResponse:
     def __init__(self, client: AsyncFinch) -> None:
+        self.access_tokens = resources.AsyncAccessTokensWithRawResponse(client.access_tokens)
         self.hris = resources.AsyncHRISWithRawResponse(client.hris)
         self.providers = resources.AsyncProvidersWithRawResponse(client.providers)
         self.account = resources.AsyncAccountWithRawResponse(client.account)
