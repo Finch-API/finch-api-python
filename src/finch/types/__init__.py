@@ -17,7 +17,6 @@ from .income_param import IncomeParam as IncomeParam
 from .introspection import Introspection as Introspection
 from .location_param import LocationParam as LocationParam
 from .disconnect_response import DisconnectResponse as DisconnectResponse
-from .auth_create_token_params import AuthCreateTokenParams as AuthCreateTokenParams
 from .access_token_create_params import AccessTokenCreateParams as AccessTokenCreateParams
 from .create_access_token_response import CreateAccessTokenResponse as CreateAccessTokenResponse
 from .request_forwarding_forward_params import RequestForwardingForwardParams as RequestForwardingForwardParams
