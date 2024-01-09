@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.10.0 (2024-01-09)
+
+Full Changelog: [v0.9.5...v0.10.0](https://github.com/Finch-API/finch-api-python/compare/v0.9.5...v0.10.0)
+
+### Features
+
+* add `None` default value to nullable response properties ([#246](https://github.com/Finch-API/finch-api-python/issues/246)) ([a3c577c](https://github.com/Finch-API/finch-api-python/commit/a3c577c2408ca18de1cdfeaf513b2e92f06120c3))
+* **api:** add method to create access token ([#249](https://github.com/Finch-API/finch-api-python/issues/249)) ([3dedeb6](https://github.com/Finch-API/finch-api-python/commit/3dedeb6bc0912e18d0574005eabe41490434bea1))
+* **api:** add sandbox APIs ([#251](https://github.com/Finch-API/finch-api-python/issues/251)) ([3ac7bc5](https://github.com/Finch-API/finch-api-python/commit/3ac7bc52c912008baa9d2b6da548aea858b8fbde))
+
+
+### Bug Fixes
+
+* **client:** correctly use custom http client auth ([#242](https://github.com/Finch-API/finch-api-python/issues/242)) ([244aef9](https://github.com/Finch-API/finch-api-python/commit/244aef94986b9775df68c247dad9e1f576fd0415))
+
+
+### Chores
+
+* add .keep files for examples and custom code directories ([#250](https://github.com/Finch-API/finch-api-python/issues/250)) ([e5a7c17](https://github.com/Finch-API/finch-api-python/commit/e5a7c17686359f0a121c815635f70e83f0e21092))
+* **internal:** bump license ([#244](https://github.com/Finch-API/finch-api-python/issues/244)) ([b7b0145](https://github.com/Finch-API/finch-api-python/commit/b7b01454503efda4542805d4fb335f39b301bc1f))
+* **internal:** loosen type var restrictions ([#248](https://github.com/Finch-API/finch-api-python/issues/248)) ([f070165](https://github.com/Finch-API/finch-api-python/commit/f0701652f2e85b5d6b139eb68c2b3fe665618dd9))
+* **internal:** replace isort with ruff ([#245](https://github.com/Finch-API/finch-api-python/issues/245)) ([82a7085](https://github.com/Finch-API/finch-api-python/commit/82a7085b46391bbb1a08f45d1fa4469c1225e3dd))
+* **test:** update examples ([#252](https://github.com/Finch-API/finch-api-python/issues/252)) ([b802828](https://github.com/Finch-API/finch-api-python/commit/b802828c164bd32eab6e778128003a10d16d6dba))
+* use property declarations for resource members ([#247](https://github.com/Finch-API/finch-api-python/issues/247)) ([acd29fd](https://github.com/Finch-API/finch-api-python/commit/acd29fd6138c0fa23ac429aa2b92e31791560bf4))
+
 ## 0.9.5 (2023-12-22)
 
 Full Changelog: [v0.9.4...v0.9.5](https://github.com/Finch-API/finch-api-python/compare/v0.9.4...v0.9.5)
