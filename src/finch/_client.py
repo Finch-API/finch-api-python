@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import base64
 from typing import Any, Union, Mapping
 from typing_extensions import Self, override
 
@@ -169,10 +170,28 @@ class Finch(SyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
+        if self._bearer_auth:
+            return self._bearer_auth
+        if self._basic_auth:
+            return self._basic_auth
+        return {}
+
+    @property
+    def _bearer_auth(self) -> dict[str, str]:
         access_token = self.access_token
         if access_token is None:
             return {}
         return {"Authorization": f"Bearer {access_token}"}
+
+    @property
+    def _basic_auth(self) -> dict[str, str]:
+        if self.sandbox_client_id is None:
+            return {}
+        if self.sandbox_client_secret is None:
+            return {}
+        credentials = f"{self.sandbox_client_id}:{self.sandbox_client_secret}".encode("ascii")
+        header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
+        return {"Authorization": header}
 
     @property
     @override
@@ -191,8 +210,13 @@ class Finch(SyncAPIClient):
         if isinstance(custom_headers.get("Authorization"), Omit):
             return
 
+        if self.sandbox_client_id and self.sandbox_client_secret and headers.get("Authorization"):
+            return
+        if isinstance(custom_headers.get("Authorization"), Omit):
+            return
+
         raise TypeError(
-            '"Could not resolve authentication method. Expected the access_token to be set. Or for the `Authorization` headers to be explicitly omitted"'
+            '"Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
         )
 
     def copy(
@@ -496,10 +520,28 @@ class AsyncFinch(AsyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
+        if self._bearer_auth:
+            return self._bearer_auth
+        if self._basic_auth:
+            return self._basic_auth
+        return {}
+
+    @property
+    def _bearer_auth(self) -> dict[str, str]:
         access_token = self.access_token
         if access_token is None:
             return {}
         return {"Authorization": f"Bearer {access_token}"}
+
+    @property
+    def _basic_auth(self) -> dict[str, str]:
+        if self.sandbox_client_id is None:
+            return {}
+        if self.sandbox_client_secret is None:
+            return {}
+        credentials = f"{self.sandbox_client_id}:{self.sandbox_client_secret}".encode("ascii")
+        header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
+        return {"Authorization": header}
 
     @property
     @override
@@ -518,8 +560,13 @@ class AsyncFinch(AsyncAPIClient):
         if isinstance(custom_headers.get("Authorization"), Omit):
             return
 
+        if self.sandbox_client_id and self.sandbox_client_secret and headers.get("Authorization"):
+            return
+        if isinstance(custom_headers.get("Authorization"), Omit):
+            return
+
         raise TypeError(
-            '"Could not resolve authentication method. Expected the access_token to be set. Or for the `Authorization` headers to be explicitly omitted"'
+            '"Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
         )
 
     def copy(
