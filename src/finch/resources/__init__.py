@@ -1,6 +1,5 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from .auth import Auth, AsyncAuth, AuthWithRawResponse, AsyncAuthWithRawResponse
 from .hris import HRIS, AsyncHRIS, HRISWithRawResponse, AsyncHRISWithRawResponse
 from .jobs import Jobs, AsyncJobs, JobsWithRawResponse, AsyncJobsWithRawResponse
 from .account import Account, AsyncAccount, AccountWithRawResponse, AsyncAccountWithRawResponse
@@ -47,10 +46,6 @@ __all__ = [
     "AsyncJobs",
     "JobsWithRawResponse",
     "AsyncJobsWithRawResponse",
-    "Auth",
-    "AsyncAuth",
-    "AuthWithRawResponse",
-    "AsyncAuthWithRawResponse",
     "Sandbox",
     "AsyncSandbox",
     "SandboxWithRawResponse",

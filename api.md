@@ -224,12 +224,6 @@ Methods:
 
 - <code title="get /jobs/manual/{job_id}">client.jobs.manual.<a href="./src/finch/resources/jobs/manual.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/manual_async_job.py">ManualAsyncJob</a></code>
 
-# Auth
-
-Methods:
-
-- <code title="post /auth/token">client.auth.<a href="./src/finch/resources/auth.py">create_token</a>(\*\*<a href="src/finch/types/auth_create_token_params.py">params</a>) -> <a href="./src/finch/types/create_access_token_response.py">CreateAccessTokenResponse</a></code>
-
 # Sandbox
 
 ## Connections
