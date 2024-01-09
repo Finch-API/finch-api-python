@@ -24,22 +24,14 @@ class TestPayStatements:
     @parametrize
     def test_method_retrieve_many(self, client: Finch) -> None:
         pay_statement = client.hris.pay_statements.retrieve_many(
-            requests=[
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-            ],
+            requests=[{"payment_id": "string"}],
         )
         assert_matches_type(SyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve_many(self, client: Finch) -> None:
         response = client.hris.pay_statements.with_raw_response.retrieve_many(
-            requests=[
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-            ],
+            requests=[{"payment_id": "string"}],
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pay_statement = response.parse()
@@ -54,22 +46,14 @@ class TestAsyncPayStatements:
     @parametrize
     async def test_method_retrieve_many(self, client: AsyncFinch) -> None:
         pay_statement = await client.hris.pay_statements.retrieve_many(
-            requests=[
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-            ],
+            requests=[{"payment_id": "string"}],
         )
         assert_matches_type(AsyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve_many(self, client: AsyncFinch) -> None:
         response = await client.hris.pay_statements.with_raw_response.retrieve_many(
-            requests=[
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-                {"payment_id": "e8b90071-0c11-471c-86e8-e303ef2f6782"},
-            ],
+            requests=[{"payment_id": "string"}],
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pay_statement = response.parse()

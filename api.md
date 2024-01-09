@@ -1,7 +1,12 @@
 # Shared Types
 
 ```python
-from finch.types import OperationSupport, OperationSupportMatrix, Paging
+from finch.types import (
+    IntrospectResponseConnectionStatus,
+    OperationSupport,
+    OperationSupportMatrix,
+    Paging,
+)
 ```
 
 # Finch
@@ -223,3 +228,111 @@ from finch.types.jobs import ManualAsyncJob
 Methods:
 
 - <code title="get /jobs/manual/{job_id}">client.jobs.manual.<a href="./src/finch/resources/jobs/manual.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/manual_async_job.py">ManualAsyncJob</a></code>
+
+# Auth
+
+Methods:
+
+- <code title="post /auth/token">client.auth.<a href="./src/finch/resources/auth.py">create_token</a>(\*\*<a href="src/finch/types/auth_create_token_params.py">params</a>) -> <a href="./src/finch/types/create_access_token_response.py">CreateAccessTokenResponse</a></code>
+
+# Sandbox
+
+## Connections
+
+Types:
+
+```python
+from finch.types.sandbox import ConnectionCreateResponse
+```
+
+Methods:
+
+- <code title="post /sandbox/connections">client.sandbox.connections.<a href="./src/finch/resources/sandbox/connections/connections.py">create</a>(\*\*<a href="src/finch/types/sandbox/connection_create_params.py">params</a>) -> <a href="./src/finch/types/sandbox/connection_create_response.py">ConnectionCreateResponse</a></code>
+
+### Accounts
+
+Types:
+
+```python
+from finch.types.sandbox.connections import AccountCreateResponse, AccountUpdateResponse
+```
+
+Methods:
+
+- <code title="post /sandbox/connections/accounts">client.sandbox.connections.accounts.<a href="./src/finch/resources/sandbox/connections/accounts.py">create</a>(\*\*<a href="src/finch/types/sandbox/connections/account_create_params.py">params</a>) -> <a href="./src/finch/types/sandbox/connections/account_create_response.py">AccountCreateResponse</a></code>
+- <code title="put /sandbox/connections/accounts">client.sandbox.connections.accounts.<a href="./src/finch/resources/sandbox/connections/accounts.py">update</a>(\*\*<a href="src/finch/types/sandbox/connections/account_update_params.py">params</a>) -> <a href="./src/finch/types/sandbox/connections/account_update_response.py">AccountUpdateResponse</a></code>
+
+## Company
+
+Types:
+
+```python
+from finch.types.sandbox import CompanyUpdateResponse
+```
+
+Methods:
+
+- <code title="put /sandbox/company">client.sandbox.company.<a href="./src/finch/resources/sandbox/company.py">update</a>(\*\*<a href="src/finch/types/sandbox/company_update_params.py">params</a>) -> <a href="./src/finch/types/sandbox/company_update_response.py">CompanyUpdateResponse</a></code>
+
+## Directory
+
+Types:
+
+```python
+from finch.types.sandbox import DirectoryCreateResponse
+```
+
+Methods:
+
+- <code title="post /sandbox/directory">client.sandbox.directory.<a href="./src/finch/resources/sandbox/directory.py">create</a>(\*\*<a href="src/finch/types/sandbox/directory_create_params.py">params</a>) -> <a href="./src/finch/types/sandbox/directory_create_response.py">DirectoryCreateResponse</a></code>
+
+## Individual
+
+Types:
+
+```python
+from finch.types.sandbox import IndividualUpdateResponse
+```
+
+Methods:
+
+- <code title="put /sandbox/individual/{individual_id}">client.sandbox.individual.<a href="./src/finch/resources/sandbox/individual.py">update</a>(individual_id, \*\*<a href="src/finch/types/sandbox/individual_update_params.py">params</a>) -> <a href="./src/finch/types/sandbox/individual_update_response.py">IndividualUpdateResponse</a></code>
+
+## Employment
+
+Types:
+
+```python
+from finch.types.sandbox import EmploymentUpdateResponse
+```
+
+Methods:
+
+- <code title="put /sandbox/employment/{individual_id}">client.sandbox.employment.<a href="./src/finch/resources/sandbox/employment.py">update</a>(individual_id, \*\*<a href="src/finch/types/sandbox/employment_update_params.py">params</a>) -> <a href="./src/finch/types/sandbox/employment_update_response.py">EmploymentUpdateResponse</a></code>
+
+## Payment
+
+Types:
+
+```python
+from finch.types.sandbox import PaymentCreateResponse
+```
+
+Methods:
+
+- <code title="post /sandbox/payment">client.sandbox.payment.<a href="./src/finch/resources/sandbox/payment.py">create</a>(\*\*<a href="src/finch/types/sandbox/payment_create_params.py">params</a>) -> <a href="./src/finch/types/sandbox/payment_create_response.py">PaymentCreateResponse</a></code>
+
+## Jobs
+
+### Configuration
+
+Types:
+
+```python
+from finch.types.sandbox.jobs import SandboxJobConfiguration, ConfigurationRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /sandbox/jobs/configuration">client.sandbox.jobs.configuration.<a href="./src/finch/resources/sandbox/jobs/configuration.py">retrieve</a>() -> <a href="./src/finch/types/sandbox/jobs/configuration_retrieve_response.py">ConfigurationRetrieveResponse</a></code>
+- <code title="put /sandbox/jobs/configuration">client.sandbox.jobs.configuration.<a href="./src/finch/resources/sandbox/jobs/configuration.py">update</a>(\*\*<a href="src/finch/types/sandbox/jobs/configuration_update_params.py">params</a>) -> <a href="./src/finch/types/sandbox/jobs/sandbox_job_configuration.py">SandboxJobConfiguration</a></code>

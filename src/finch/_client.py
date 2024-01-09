@@ -58,6 +58,8 @@ class Finch(SyncAPIClient):
     webhooks: resources.Webhooks
     request_forwarding: resources.RequestForwarding
     jobs: resources.Jobs
+    auth: resources.Auth
+    sandbox: resources.Sandbox
     with_raw_response: FinchWithRawResponse
 
     # client options
@@ -143,6 +145,8 @@ class Finch(SyncAPIClient):
         self.webhooks = resources.Webhooks(self)
         self.request_forwarding = resources.RequestForwarding(self)
         self.jobs = resources.Jobs(self)
+        self.auth = resources.Auth(self)
+        self.sandbox = resources.Sandbox(self)
         self.with_raw_response = FinchWithRawResponse(self)
 
     @property
@@ -365,6 +369,8 @@ class AsyncFinch(AsyncAPIClient):
     webhooks: resources.AsyncWebhooks
     request_forwarding: resources.AsyncRequestForwarding
     jobs: resources.AsyncJobs
+    auth: resources.AsyncAuth
+    sandbox: resources.AsyncSandbox
     with_raw_response: AsyncFinchWithRawResponse
 
     # client options
@@ -450,6 +456,8 @@ class AsyncFinch(AsyncAPIClient):
         self.webhooks = resources.AsyncWebhooks(self)
         self.request_forwarding = resources.AsyncRequestForwarding(self)
         self.jobs = resources.AsyncJobs(self)
+        self.auth = resources.AsyncAuth(self)
+        self.sandbox = resources.AsyncSandbox(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
 
     @property
@@ -672,6 +680,8 @@ class FinchWithRawResponse:
         self.account = resources.AccountWithRawResponse(client.account)
         self.request_forwarding = resources.RequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.JobsWithRawResponse(client.jobs)
+        self.auth = resources.AuthWithRawResponse(client.auth)
+        self.sandbox = resources.SandboxWithRawResponse(client.sandbox)
 
 
 class AsyncFinchWithRawResponse:
@@ -682,6 +692,8 @@ class AsyncFinchWithRawResponse:
         self.account = resources.AsyncAccountWithRawResponse(client.account)
         self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
+        self.auth = resources.AsyncAuthWithRawResponse(client.auth)
+        self.sandbox = resources.AsyncSandboxWithRawResponse(client.sandbox)
 
 
 Client = Finch
