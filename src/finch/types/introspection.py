@@ -3,7 +3,7 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from .shared import IntrospectResponseConnectionStatus
+from .shared import ConnectionStatusType
 from .._models import BaseModel
 
 __all__ = ["Introspection", "AuthenticationMethods", "AuthenticationMethodsConnectionStatus"]
@@ -12,7 +12,7 @@ __all__ = ["Introspection", "AuthenticationMethods", "AuthenticationMethodsConne
 class AuthenticationMethodsConnectionStatus(BaseModel):
     message: Optional[str] = None
 
-    status: Optional[IntrospectResponseConnectionStatus] = None
+    status: Optional[ConnectionStatusType] = None
 
 
 class AuthenticationMethods(BaseModel):

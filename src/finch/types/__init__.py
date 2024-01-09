@@ -7,8 +7,8 @@ from .income import Income as Income
 from .shared import (
     Paging as Paging,
     OperationSupport as OperationSupport,
+    ConnectionStatusType as ConnectionStatusType,
     OperationSupportMatrix as OperationSupportMatrix,
-    IntrospectResponseConnectionStatus as IntrospectResponseConnectionStatus,
 )
 from .location import Location as Location
 from .provider import Provider as Provider

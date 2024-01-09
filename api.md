@@ -1,12 +1,7 @@
 # Shared Types
 
 ```python
-from finch.types import (
-    IntrospectResponseConnectionStatus,
-    OperationSupport,
-    OperationSupportMatrix,
-    Paging,
-)
+from finch.types import ConnectionStatusType, OperationSupport, OperationSupportMatrix, Paging
 ```
 
 # Finch

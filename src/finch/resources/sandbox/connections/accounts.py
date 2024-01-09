@@ -15,7 +15,7 @@ from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...._base_client import (
     make_request_options,
 )
-from ....types.shared import IntrospectResponseConnectionStatus
+from ....types.shared import ConnectionStatusType
 from ....types.sandbox.connections import (
     AccountCreateResponse,
     AccountUpdateResponse,
@@ -80,7 +80,7 @@ class Accounts(SyncAPIResource):
     def update(
         self,
         *,
-        connection_status: IntrospectResponseConnectionStatus | NotGiven = NOT_GIVEN,
+        connection_status: ConnectionStatusType | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -166,7 +166,7 @@ class AsyncAccounts(AsyncAPIResource):
     async def update(
         self,
         *,
-        connection_status: IntrospectResponseConnectionStatus | NotGiven = NOT_GIVEN,
+        connection_status: ConnectionStatusType | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

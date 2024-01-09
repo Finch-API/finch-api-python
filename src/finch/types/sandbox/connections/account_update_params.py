@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from ...shared import IntrospectResponseConnectionStatus
+from ...shared import ConnectionStatusType
 
 __all__ = ["AccountUpdateParams"]
 
 
 class AccountUpdateParams(TypedDict, total=False):
-    connection_status: IntrospectResponseConnectionStatus
+    connection_status: ConnectionStatusType
