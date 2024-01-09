@@ -1,16 +1,31 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
+from .shared import IntrospectResponseConnectionStatus
 from .._models import BaseModel
 
-__all__ = ["Introspection"]
+__all__ = ["Introspection", "AuthenticationMethods", "AuthenticationMethodsConnectionStatus"]
+
+
+class AuthenticationMethodsConnectionStatus(BaseModel):
+    message: Optional[str] = None
+
+    status: Optional[IntrospectResponseConnectionStatus] = None
+
+
+class AuthenticationMethods(BaseModel):
+    connection_status: Optional[AuthenticationMethodsConnectionStatus] = None
+
+    type: Optional[str] = None
 
 
 class Introspection(BaseModel):
     account_id: str
     """The Finch uuid of the account used to connect this company."""
+
+    authentication_methods: AuthenticationMethods
 
     client_id: str
     """The client id of the application associated with the `access_token`."""
