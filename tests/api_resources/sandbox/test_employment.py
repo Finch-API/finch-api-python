@@ -94,7 +94,7 @@ class TestEmployment:
             manager={"id": "string"},
             middle_name="string",
             source_id="string",
-            start_date="string",
+            start_date="3/4/2020",
             title="string",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
@@ -188,7 +188,7 @@ class TestAsyncEmployment:
             manager={"id": "string"},
             middle_name="string",
             source_id="string",
-            start_date="string",
+            start_date="3/4/2020",
             title="string",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
