@@ -315,7 +315,7 @@ class TestFinch:
         client2 = Finch(base_url=base_url, access_token=None, _strict_response_validation=True)
         with pytest.raises(
             TypeError,
-            match="Could not resolve authentication method. Expected the access_token to be set. Or for the `Authorization` headers to be explicitly omitted",
+            match="Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted",
         ):
             client2._build_request(FinalRequestOptions(method="get", url="/foo"))
 
@@ -1050,7 +1050,7 @@ class TestAsyncFinch:
         client2 = AsyncFinch(base_url=base_url, access_token=None, _strict_response_validation=True)
         with pytest.raises(
             TypeError,
-            match="Could not resolve authentication method. Expected the access_token to be set. Or for the `Authorization` headers to be explicitly omitted",
+            match="Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted",
         ):
             client2._build_request(FinalRequestOptions(method="get", url="/foo"))
 
