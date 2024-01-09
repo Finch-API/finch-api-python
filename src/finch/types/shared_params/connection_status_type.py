@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-__all__ = ["IntrospectResponseConnectionStatus"]
+__all__ = ["ConnectionStatusType"]
 
-IntrospectResponseConnectionStatus = Literal[
+ConnectionStatusType = Literal[
     "pending", "processing", "connected", "error_no_account_setup", "error_permissions", "reauth"
 ]
