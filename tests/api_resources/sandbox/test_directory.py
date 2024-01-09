@@ -23,14 +23,14 @@ class TestDirectory:
     @parametrize
     def test_method_create(self, client: Finch) -> None:
         directory = client.sandbox.directory.create(
-            body=[{}, {}, {}],
+            body=[{}],
         )
         assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.sandbox.directory.with_raw_response.create(
-            body=[{}, {}, {}],
+            body=[{}],
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         directory = response.parse()
@@ -45,14 +45,14 @@ class TestAsyncDirectory:
     @parametrize
     async def test_method_create(self, client: AsyncFinch) -> None:
         directory = await client.sandbox.directory.create(
-            body=[{}, {}, {}],
+            body=[{}],
         )
         assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, client: AsyncFinch) -> None:
         response = await client.sandbox.directory.with_raw_response.create(
-            body=[{}, {}, {}],
+            body=[{}],
         )
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         directory = response.parse()
