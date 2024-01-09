@@ -58,7 +58,6 @@ class Finch(SyncAPIClient):
     webhooks: resources.Webhooks
     request_forwarding: resources.RequestForwarding
     jobs: resources.Jobs
-    auth: resources.Auth
     sandbox: resources.Sandbox
     with_raw_response: FinchWithRawResponse
 
@@ -66,6 +65,8 @@ class Finch(SyncAPIClient):
     access_token: str | None
     client_id: str | None
     client_secret: str | None
+    sandbox_client_id: str | None
+    sandbox_client_secret: str | None
     webhook_secret: str | None
 
     def __init__(
@@ -74,6 +75,8 @@ class Finch(SyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
+        sandbox_client_id: str | None = None,
+        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -103,6 +106,8 @@ class Finch(SyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
+        - `sandbox_client_id` from `FINCH_SANDBOX_CLIENT_ID`
+        - `sandbox_client_secret` from `FINCH_SANDBOX_CLIENT_SECRET`
         - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
         self.access_token = access_token
@@ -114,6 +119,14 @@ class Finch(SyncAPIClient):
         if client_secret is None:
             client_secret = os.environ.get("FINCH_CLIENT_SECRET")
         self.client_secret = client_secret
+
+        if sandbox_client_id is None:
+            sandbox_client_id = os.environ.get("FINCH_SANDBOX_CLIENT_ID")
+        self.sandbox_client_id = sandbox_client_id
+
+        if sandbox_client_secret is None:
+            sandbox_client_secret = os.environ.get("FINCH_SANDBOX_CLIENT_SECRET")
+        self.sandbox_client_secret = sandbox_client_secret
 
         if webhook_secret is None:
             webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
@@ -145,7 +158,6 @@ class Finch(SyncAPIClient):
         self.webhooks = resources.Webhooks(self)
         self.request_forwarding = resources.RequestForwarding(self)
         self.jobs = resources.Jobs(self)
-        self.auth = resources.Auth(self)
         self.sandbox = resources.Sandbox(self)
         self.with_raw_response = FinchWithRawResponse(self)
 
@@ -189,6 +201,8 @@ class Finch(SyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
+        sandbox_client_id: str | None = None,
+        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -244,6 +258,8 @@ class Finch(SyncAPIClient):
             access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
+            sandbox_client_id=sandbox_client_id or self.sandbox_client_id,
+            sandbox_client_secret=sandbox_client_secret or self.sandbox_client_secret,
             webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -369,7 +385,6 @@ class AsyncFinch(AsyncAPIClient):
     webhooks: resources.AsyncWebhooks
     request_forwarding: resources.AsyncRequestForwarding
     jobs: resources.AsyncJobs
-    auth: resources.AsyncAuth
     sandbox: resources.AsyncSandbox
     with_raw_response: AsyncFinchWithRawResponse
 
@@ -377,6 +392,8 @@ class AsyncFinch(AsyncAPIClient):
     access_token: str | None
     client_id: str | None
     client_secret: str | None
+    sandbox_client_id: str | None
+    sandbox_client_secret: str | None
     webhook_secret: str | None
 
     def __init__(
@@ -385,6 +402,8 @@ class AsyncFinch(AsyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
+        sandbox_client_id: str | None = None,
+        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -414,6 +433,8 @@ class AsyncFinch(AsyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
+        - `sandbox_client_id` from `FINCH_SANDBOX_CLIENT_ID`
+        - `sandbox_client_secret` from `FINCH_SANDBOX_CLIENT_SECRET`
         - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
         self.access_token = access_token
@@ -425,6 +446,14 @@ class AsyncFinch(AsyncAPIClient):
         if client_secret is None:
             client_secret = os.environ.get("FINCH_CLIENT_SECRET")
         self.client_secret = client_secret
+
+        if sandbox_client_id is None:
+            sandbox_client_id = os.environ.get("FINCH_SANDBOX_CLIENT_ID")
+        self.sandbox_client_id = sandbox_client_id
+
+        if sandbox_client_secret is None:
+            sandbox_client_secret = os.environ.get("FINCH_SANDBOX_CLIENT_SECRET")
+        self.sandbox_client_secret = sandbox_client_secret
 
         if webhook_secret is None:
             webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
@@ -456,7 +485,6 @@ class AsyncFinch(AsyncAPIClient):
         self.webhooks = resources.AsyncWebhooks(self)
         self.request_forwarding = resources.AsyncRequestForwarding(self)
         self.jobs = resources.AsyncJobs(self)
-        self.auth = resources.AsyncAuth(self)
         self.sandbox = resources.AsyncSandbox(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
 
@@ -500,6 +528,8 @@ class AsyncFinch(AsyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
+        sandbox_client_id: str | None = None,
+        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -555,6 +585,8 @@ class AsyncFinch(AsyncAPIClient):
             access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
+            sandbox_client_id=sandbox_client_id or self.sandbox_client_id,
+            sandbox_client_secret=sandbox_client_secret or self.sandbox_client_secret,
             webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -680,7 +712,6 @@ class FinchWithRawResponse:
         self.account = resources.AccountWithRawResponse(client.account)
         self.request_forwarding = resources.RequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.JobsWithRawResponse(client.jobs)
-        self.auth = resources.AuthWithRawResponse(client.auth)
         self.sandbox = resources.SandboxWithRawResponse(client.sandbox)
 
 
@@ -692,7 +723,6 @@ class AsyncFinchWithRawResponse:
         self.account = resources.AsyncAccountWithRawResponse(client.account)
         self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
-        self.auth = resources.AsyncAuthWithRawResponse(client.auth)
         self.sandbox = resources.AsyncSandboxWithRawResponse(client.sandbox)
 
 
