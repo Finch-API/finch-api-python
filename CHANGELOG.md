@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.11.0 (2024-01-11)
+
+Full Changelog: [v0.10.0...v0.11.0](https://github.com/Finch-API/finch-api-python/compare/v0.10.0...v0.11.0)
+
+### Features
+
+* **client:** hook up sandbox auth ([#256](https://github.com/Finch-API/finch-api-python/issues/256)) ([13f29d3](https://github.com/Finch-API/finch-api-python/commit/13f29d37dd22e9f83010434e63e5efe428d3dda0))
+* remove redundant endpoint, add sandbox client options (not yet used) ([#255](https://github.com/Finch-API/finch-api-python/issues/255)) ([3fbedde](https://github.com/Finch-API/finch-api-python/commit/3fbedde2c7eddc74193c6b60cc89021392b41c25))
+
+
+### Chores
+
+* **client:** improve debug logging for failed requests ([#257](https://github.com/Finch-API/finch-api-python/issues/257)) ([04a3069](https://github.com/Finch-API/finch-api-python/commit/04a306915f19ebdbad1ec25f90bc58bcfa9aff57))
+* **internal:** rename unreleased connection status type ([#253](https://github.com/Finch-API/finch-api-python/issues/253)) ([e7f4e7d](https://github.com/Finch-API/finch-api-python/commit/e7f4e7da44347de96e49e0a802ea335cce56ec20))
+
 ## 0.10.0 (2024-01-09)
 
 Full Changelog: [v0.9.5...v0.10.0](https://github.com/Finch-API/finch-api-python/compare/v0.9.5...v0.10.0)
