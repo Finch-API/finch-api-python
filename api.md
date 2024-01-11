@@ -179,9 +179,26 @@ Methods:
 
 # Webhooks
 
+Types:
+
+```python
+from finch.types import (
+    AccountUpdateEvent,
+    BaseWebhookEvent,
+    CompanyEvent,
+    DirectoryEvent,
+    EmploymentEvent,
+    IndividualEvent,
+    JobCompletionEvent,
+    PayStatementEvent,
+    PaymentEvent,
+    WebhookEvent,
+)
+```
+
 Methods:
 
-- <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
+- <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">unwrap</a>(\*args) -> WebhookEvent</code>
 - <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
 
 # RequestForwarding
