@@ -7,14 +7,17 @@ import json
 import math
 import base64
 import hashlib
+from typing import cast
 from datetime import datetime, timezone, timedelta
 
+from ..types import WebhookEvent
 from .._types import (
     HeadersLike,
 )
 from .._utils import (
     get_required_header,
 )
+from .._models import construct_type
 from .._resource import SyncAPIResource, AsyncAPIResource
 
 __all__ = ["Webhooks", "AsyncWebhooks"]
@@ -27,10 +30,16 @@ class Webhooks(SyncAPIResource):
         headers: HeadersLike,
         *,
         secret: str | None = None,
-    ) -> object:
+    ) -> WebhookEvent:
         """Validates that the given payload was sent by Finch and parses the payload."""
         self.verify_signature(payload=payload, headers=headers, secret=secret)
-        return json.loads(payload)
+        return cast(
+            WebhookEvent,
+            construct_type(
+                value=json.loads(payload),
+                type_=WebhookEvent,  # type: ignore[arg-type]
+            ),
+        )
 
     def verify_signature(
         self,
@@ -120,10 +129,16 @@ class AsyncWebhooks(AsyncAPIResource):
         headers: HeadersLike,
         *,
         secret: str | None = None,
-    ) -> object:
+    ) -> WebhookEvent:
         """Validates that the given payload was sent by Finch and parses the payload."""
         self.verify_signature(payload=payload, headers=headers, secret=secret)
-        return json.loads(payload)
+        return cast(
+            WebhookEvent,
+            construct_type(
+                value=json.loads(payload),
+                type_=WebhookEvent,  # type: ignore[arg-type]
+            ),
+        )
 
     def verify_signature(
         self,

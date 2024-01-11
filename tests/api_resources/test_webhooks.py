@@ -9,6 +9,7 @@ from datetime import datetime, timezone, timedelta
 
 import pytest
 import time_machine
+from pydantic import BaseModel
 
 from finch import Finch, AsyncFinch
 from finch._client import Finch, AsyncFinch
@@ -40,7 +41,8 @@ class TestWebhooks:
         headers = self.headers
         secret = self.secret
 
-        self.strict_client.webhooks.unwrap(payload, headers, secret=secret)
+        obj = self.strict_client.webhooks.unwrap(payload, headers, secret=secret)
+        assert isinstance(obj, BaseModel)
 
     @time_machine.travel(fake_now)
     def test_verify_signature(self) -> None:
@@ -140,7 +142,8 @@ class TestAsyncWebhooks:
         headers = self.headers
         secret = self.secret
 
-        self.strict_client.webhooks.unwrap(payload, headers, secret=secret)
+        obj = self.strict_client.webhooks.unwrap(payload, headers, secret=secret)
+        assert isinstance(obj, BaseModel)
 
     @time_machine.travel(fake_now)
     def test_verify_signature(self) -> None:
