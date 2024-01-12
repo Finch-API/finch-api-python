@@ -8,7 +8,7 @@ and offers both synchronous and asynchronous clients powered by [httpx](https://
 
 ## Documentation
 
-The API documentation can be found [in the Finch Documentation Center](https://developer.tryfinch.com/).
+The REST API documentation can be found [in the Finch Documentation Center](https://developer.tryfinch.com/). The full API of this library can be found in [api.md](https://www.github.com/Finch-API/finch-api-python/blob/main/api.md).
 
 ## Installation
 
