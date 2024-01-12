@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.12.0 (2024-01-12)
+
+Full Changelog: [v0.11.0...v0.12.0](https://github.com/Finch-API/finch-api-python/compare/v0.11.0...v0.12.0)
+
+### Features
+
+* **webhooks:** add types to the `unwrap` method ([#258](https://github.com/Finch-API/finch-api-python/issues/258)) ([9687a1e](https://github.com/Finch-API/finch-api-python/commit/9687a1e19097f89f1d671bac0d8c29496ab9c9f5))
+
+
+### Documentation
+
+* **readme:** improve api reference ([#260](https://github.com/Finch-API/finch-api-python/issues/260)) ([09ddece](https://github.com/Finch-API/finch-api-python/commit/09ddeceee4622e4f9ac9ac6f8eaa3ac3eb23a9e4))
+
 ## 0.11.0 (2024-01-11)
 
 Full Changelog: [v0.10.0...v0.11.0](https://github.com/Finch-API/finch-api-python/compare/v0.10.0...v0.11.0)
