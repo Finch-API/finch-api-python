@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -129,9 +130,31 @@ class TestCompany:
             primary_email="string",
             primary_phone_number="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
         assert_matches_type(CompanyUpdateResponse, company, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Finch) -> None:
+        with client.sandbox.company.with_streaming_response.update(
+            accounts=[{}, {}, {}],
+            departments=[{}, {}, {}],
+            ein="string",
+            entity={},
+            legal_name="string",
+            locations=[{}, {}, {}],
+            primary_email="string",
+            primary_phone_number="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(CompanyUpdateResponse, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCompany:
@@ -248,6 +271,28 @@ class TestAsyncCompany:
             primary_email="string",
             primary_phone_number="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
         assert_matches_type(CompanyUpdateResponse, company, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncFinch) -> None:
+        async with client.sandbox.company.with_streaming_response.update(
+            accounts=[{}, {}, {}],
+            departments=[{}, {}, {}],
+            ein="string",
+            entity={},
+            legal_name="string",
+            locations=[{}, {}, {}],
+            primary_email="string",
+            primary_phone_number="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(CompanyUpdateResponse, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

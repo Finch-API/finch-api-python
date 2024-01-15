@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -38,9 +39,27 @@ class TestAccessTokens:
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         access_token = response.parse()
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Finch) -> None:
+        with client.access_tokens.with_streaming_response.create(
+            client_id="<your_client_id>",
+            client_secret="<your_client_secret>",
+            code="<your_authorization_code>",
+            redirect_uri="https://example.com",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            access_token = response.parse()
+            assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncAccessTokens:
@@ -66,6 +85,24 @@ class TestAsyncAccessTokens:
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         access_token = response.parse()
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncFinch) -> None:
+        async with client.access_tokens.with_streaming_response.create(
+            client_id="<your_client_id>",
+            client_secret="<your_client_secret>",
+            code="<your_authorization_code>",
+            redirect_uri="https://example.com",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            access_token = await response.parse()
+            assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

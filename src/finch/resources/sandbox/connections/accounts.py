@@ -7,11 +7,12 @@ from typing_extensions import Literal
 
 import httpx
 
+from .... import _legacy_response
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
-from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...._base_client import (
     make_request_options,
 )
@@ -30,6 +31,10 @@ class Accounts(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountsWithRawResponse:
         return AccountsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AccountsWithStreamingResponse:
+        return AccountsWithStreamingResponse(self)
 
     def create(
         self,
@@ -117,6 +122,10 @@ class AsyncAccounts(AsyncAPIResource):
     def with_raw_response(self) -> AsyncAccountsWithRawResponse:
         return AsyncAccountsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncAccountsWithStreamingResponse:
+        return AsyncAccountsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -200,19 +209,39 @@ class AsyncAccounts(AsyncAPIResource):
 
 class AccountsWithRawResponse:
     def __init__(self, accounts: Accounts) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             accounts.create,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             accounts.update,
         )
 
 
 class AsyncAccountsWithRawResponse:
     def __init__(self, accounts: AsyncAccounts) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             accounts.create,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            accounts.update,
+        )
+
+
+class AccountsWithStreamingResponse:
+    def __init__(self, accounts: Accounts) -> None:
+        self.create = to_streamed_response_wrapper(
+            accounts.create,
+        )
+        self.update = to_streamed_response_wrapper(
+            accounts.update,
+        )
+
+
+class AsyncAccountsWithStreamingResponse:
+    def __init__(self, accounts: AsyncAccounts) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            accounts.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
             accounts.update,
         )

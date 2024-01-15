@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -48,9 +49,25 @@ class TestRequestForwarding:
             method="POST",
             route="/people/search",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         request_forwarding = response.parse()
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
+
+    @parametrize
+    def test_streaming_response_forward(self, client: Finch) -> None:
+        with client.request_forwarding.with_streaming_response.forward(
+            method="POST",
+            route="/people/search",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            request_forwarding = response.parse()
+            assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncRequestForwarding:
@@ -86,6 +103,22 @@ class TestAsyncRequestForwarding:
             method="POST",
             route="/people/search",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         request_forwarding = response.parse()
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_forward(self, client: AsyncFinch) -> None:
+        async with client.request_forwarding.with_streaming_response.forward(
+            method="POST",
+            route="/people/search",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            request_forwarding = await response.parse()
+            assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

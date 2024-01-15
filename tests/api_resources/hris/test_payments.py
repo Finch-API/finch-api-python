@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -36,9 +37,25 @@ class TestPayments:
             end_date=parse_date("2021-01-01"),
             start_date=parse_date("2021-01-01"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         payment = response.parse()
         assert_matches_type(SyncSinglePage[Payment], payment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Finch) -> None:
+        with client.hris.payments.with_streaming_response.list(
+            end_date=parse_date("2021-01-01"),
+            start_date=parse_date("2021-01-01"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            payment = response.parse()
+            assert_matches_type(SyncSinglePage[Payment], payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncPayments:
@@ -60,6 +77,22 @@ class TestAsyncPayments:
             end_date=parse_date("2021-01-01"),
             start_date=parse_date("2021-01-01"),
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         payment = response.parse()
         assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncFinch) -> None:
+        async with client.hris.payments.with_streaming_response.list(
+            end_date=parse_date("2021-01-01"),
+            start_date=parse_date("2021-01-01"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            payment = await response.parse()
+            assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

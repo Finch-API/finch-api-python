@@ -6,11 +6,12 @@ from typing import List
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -23,6 +24,10 @@ class Payment(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PaymentWithRawResponse:
         return PaymentWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PaymentWithStreamingResponse:
+        return PaymentWithStreamingResponse(self)
 
     def create(
         self,
@@ -71,6 +76,10 @@ class AsyncPayment(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPaymentWithRawResponse:
         return AsyncPaymentWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPaymentWithStreamingResponse:
+        return AsyncPaymentWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -115,13 +124,27 @@ class AsyncPayment(AsyncAPIResource):
 
 class PaymentWithRawResponse:
     def __init__(self, payment: Payment) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             payment.create,
         )
 
 
 class AsyncPaymentWithRawResponse:
     def __init__(self, payment: AsyncPayment) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            payment.create,
+        )
+
+
+class PaymentWithStreamingResponse:
+    def __init__(self, payment: Payment) -> None:
+        self.create = to_streamed_response_wrapper(
+            payment.create,
+        )
+
+
+class AsyncPaymentWithStreamingResponse:
+    def __init__(self, payment: AsyncPayment) -> None:
+        self.create = async_to_streamed_response_wrapper(
             payment.create,
         )

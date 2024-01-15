@@ -61,6 +61,7 @@ class Finch(SyncAPIClient):
     jobs: resources.Jobs
     sandbox: resources.Sandbox
     with_raw_response: FinchWithRawResponse
+    with_streaming_response: FinchWithStreamedResponse
 
     # client options
     access_token: str | None
@@ -161,6 +162,7 @@ class Finch(SyncAPIClient):
         self.jobs = resources.Jobs(self)
         self.sandbox = resources.Sandbox(self)
         self.with_raw_response = FinchWithRawResponse(self)
+        self.with_streaming_response = FinchWithStreamedResponse(self)
 
     @property
     @override
@@ -411,6 +413,7 @@ class AsyncFinch(AsyncAPIClient):
     jobs: resources.AsyncJobs
     sandbox: resources.AsyncSandbox
     with_raw_response: AsyncFinchWithRawResponse
+    with_streaming_response: AsyncFinchWithStreamedResponse
 
     # client options
     access_token: str | None
@@ -511,6 +514,7 @@ class AsyncFinch(AsyncAPIClient):
         self.jobs = resources.AsyncJobs(self)
         self.sandbox = resources.AsyncSandbox(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
+        self.with_streaming_response = AsyncFinchWithStreamedResponse(self)
 
     @property
     @override
@@ -771,6 +775,28 @@ class AsyncFinchWithRawResponse:
         self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
         self.sandbox = resources.AsyncSandboxWithRawResponse(client.sandbox)
+
+
+class FinchWithStreamedResponse:
+    def __init__(self, client: Finch) -> None:
+        self.access_tokens = resources.AccessTokensWithStreamingResponse(client.access_tokens)
+        self.hris = resources.HRISWithStreamingResponse(client.hris)
+        self.providers = resources.ProvidersWithStreamingResponse(client.providers)
+        self.account = resources.AccountWithStreamingResponse(client.account)
+        self.request_forwarding = resources.RequestForwardingWithStreamingResponse(client.request_forwarding)
+        self.jobs = resources.JobsWithStreamingResponse(client.jobs)
+        self.sandbox = resources.SandboxWithStreamingResponse(client.sandbox)
+
+
+class AsyncFinchWithStreamedResponse:
+    def __init__(self, client: AsyncFinch) -> None:
+        self.access_tokens = resources.AsyncAccessTokensWithStreamingResponse(client.access_tokens)
+        self.hris = resources.AsyncHRISWithStreamingResponse(client.hris)
+        self.providers = resources.AsyncProvidersWithStreamingResponse(client.providers)
+        self.account = resources.AsyncAccountWithStreamingResponse(client.account)
+        self.request_forwarding = resources.AsyncRequestForwardingWithStreamingResponse(client.request_forwarding)
+        self.jobs = resources.AsyncJobsWithStreamingResponse(client.jobs)
+        self.sandbox = resources.AsyncSandboxWithStreamingResponse(client.sandbox)
 
 
 Client = Finch

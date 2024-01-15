@@ -7,19 +7,58 @@ from .company import (
     AsyncCompanyResource,
     CompanyResourceWithRawResponse,
     AsyncCompanyResourceWithRawResponse,
+    CompanyResourceWithStreamingResponse,
+    AsyncCompanyResourceWithStreamingResponse,
 )
-from .benefits import Benefits, AsyncBenefits, BenefitsWithRawResponse, AsyncBenefitsWithRawResponse
-from .payments import Payments, AsyncPayments, PaymentsWithRawResponse, AsyncPaymentsWithRawResponse
+from .benefits import (
+    Benefits,
+    AsyncBenefits,
+    BenefitsWithRawResponse,
+    AsyncBenefitsWithRawResponse,
+    BenefitsWithStreamingResponse,
+    AsyncBenefitsWithStreamingResponse,
+)
+from .payments import (
+    Payments,
+    AsyncPayments,
+    PaymentsWithRawResponse,
+    AsyncPaymentsWithRawResponse,
+    PaymentsWithStreamingResponse,
+    AsyncPaymentsWithStreamingResponse,
+)
 from ..._compat import cached_property
-from .directory import Directory, AsyncDirectory, DirectoryWithRawResponse, AsyncDirectoryWithRawResponse
+from .directory import (
+    Directory,
+    AsyncDirectory,
+    DirectoryWithRawResponse,
+    AsyncDirectoryWithRawResponse,
+    DirectoryWithStreamingResponse,
+    AsyncDirectoryWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .employments import Employments, AsyncEmployments, EmploymentsWithRawResponse, AsyncEmploymentsWithRawResponse
-from .individuals import Individuals, AsyncIndividuals, IndividualsWithRawResponse, AsyncIndividualsWithRawResponse
+from .employments import (
+    Employments,
+    AsyncEmployments,
+    EmploymentsWithRawResponse,
+    AsyncEmploymentsWithRawResponse,
+    EmploymentsWithStreamingResponse,
+    AsyncEmploymentsWithStreamingResponse,
+)
+from .individuals import (
+    Individuals,
+    AsyncIndividuals,
+    IndividualsWithRawResponse,
+    AsyncIndividualsWithRawResponse,
+    IndividualsWithStreamingResponse,
+    AsyncIndividualsWithStreamingResponse,
+)
 from .pay_statements import (
     PayStatements,
     AsyncPayStatements,
     PayStatementsWithRawResponse,
     AsyncPayStatementsWithRawResponse,
+    PayStatementsWithStreamingResponse,
+    AsyncPayStatementsWithStreamingResponse,
 )
 from .benefits.benefits import Benefits, AsyncBenefits
 
@@ -59,6 +98,10 @@ class HRIS(SyncAPIResource):
     def with_raw_response(self) -> HRISWithRawResponse:
         return HRISWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> HRISWithStreamingResponse:
+        return HRISWithStreamingResponse(self)
+
 
 class AsyncHRIS(AsyncAPIResource):
     @cached_property
@@ -93,6 +136,10 @@ class AsyncHRIS(AsyncAPIResource):
     def with_raw_response(self) -> AsyncHRISWithRawResponse:
         return AsyncHRISWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncHRISWithStreamingResponse:
+        return AsyncHRISWithStreamingResponse(self)
+
 
 class HRISWithRawResponse:
     def __init__(self, hris: HRIS) -> None:
@@ -114,3 +161,25 @@ class AsyncHRISWithRawResponse:
         self.payments = AsyncPaymentsWithRawResponse(hris.payments)
         self.pay_statements = AsyncPayStatementsWithRawResponse(hris.pay_statements)
         self.benefits = AsyncBenefitsWithRawResponse(hris.benefits)
+
+
+class HRISWithStreamingResponse:
+    def __init__(self, hris: HRIS) -> None:
+        self.company = CompanyResourceWithStreamingResponse(hris.company)
+        self.directory = DirectoryWithStreamingResponse(hris.directory)
+        self.individuals = IndividualsWithStreamingResponse(hris.individuals)
+        self.employments = EmploymentsWithStreamingResponse(hris.employments)
+        self.payments = PaymentsWithStreamingResponse(hris.payments)
+        self.pay_statements = PayStatementsWithStreamingResponse(hris.pay_statements)
+        self.benefits = BenefitsWithStreamingResponse(hris.benefits)
+
+
+class AsyncHRISWithStreamingResponse:
+    def __init__(self, hris: AsyncHRIS) -> None:
+        self.company = AsyncCompanyResourceWithStreamingResponse(hris.company)
+        self.directory = AsyncDirectoryWithStreamingResponse(hris.directory)
+        self.individuals = AsyncIndividualsWithStreamingResponse(hris.individuals)
+        self.employments = AsyncEmploymentsWithStreamingResponse(hris.employments)
+        self.payments = AsyncPaymentsWithStreamingResponse(hris.payments)
+        self.pay_statements = AsyncPayStatementsWithStreamingResponse(hris.pay_statements)
+        self.benefits = AsyncBenefitsWithStreamingResponse(hris.benefits)

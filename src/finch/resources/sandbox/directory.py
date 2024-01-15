@@ -6,11 +6,12 @@ from typing import List
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -23,6 +24,10 @@ class Directory(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DirectoryWithRawResponse:
         return DirectoryWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> DirectoryWithStreamingResponse:
+        return DirectoryWithStreamingResponse(self)
 
     def create(
         self,
@@ -65,6 +70,10 @@ class AsyncDirectory(AsyncAPIResource):
     def with_raw_response(self) -> AsyncDirectoryWithRawResponse:
         return AsyncDirectoryWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncDirectoryWithStreamingResponse:
+        return AsyncDirectoryWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -103,13 +112,27 @@ class AsyncDirectory(AsyncAPIResource):
 
 class DirectoryWithRawResponse:
     def __init__(self, directory: Directory) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             directory.create,
         )
 
 
 class AsyncDirectoryWithRawResponse:
     def __init__(self, directory: AsyncDirectory) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            directory.create,
+        )
+
+
+class DirectoryWithStreamingResponse:
+    def __init__(self, directory: Directory) -> None:
+        self.create = to_streamed_response_wrapper(
+            directory.create,
+        )
+
+
+class AsyncDirectoryWithStreamingResponse:
+    def __init__(self, directory: AsyncDirectory) -> None:
+        self.create = async_to_streamed_response_wrapper(
             directory.create,
         )

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -29,9 +30,22 @@ class TestProviders:
     @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
         response = client.providers.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         provider = response.parse()
         assert_matches_type(SyncSinglePage[Provider], provider, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Finch) -> None:
+        with client.providers.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            provider = response.parse()
+            assert_matches_type(SyncSinglePage[Provider], provider, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncProviders:
@@ -47,6 +61,19 @@ class TestAsyncProviders:
     @parametrize
     async def test_raw_response_list(self, client: AsyncFinch) -> None:
         response = await client.providers.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         provider = response.parse()
         assert_matches_type(AsyncSinglePage[Provider], provider, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncFinch) -> None:
+        async with client.providers.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            provider = await response.parse()
+            assert_matches_type(AsyncSinglePage[Provider], provider, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

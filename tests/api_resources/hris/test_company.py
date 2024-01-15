@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -28,9 +29,22 @@ class TestCompany:
     @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.hris.company.with_raw_response.retrieve()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
         assert_matches_type(Company, company, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Finch) -> None:
+        with client.hris.company.with_streaming_response.retrieve() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = response.parse()
+            assert_matches_type(Company, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCompany:
@@ -46,6 +60,19 @@ class TestAsyncCompany:
     @parametrize
     async def test_raw_response_retrieve(self, client: AsyncFinch) -> None:
         response = await client.hris.company.with_raw_response.retrieve()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         company = response.parse()
         assert_matches_type(Company, company, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncFinch) -> None:
+        async with client.hris.company.with_streaming_response.retrieve() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            company = await response.parse()
+            assert_matches_type(Company, company, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

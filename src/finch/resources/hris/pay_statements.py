@@ -6,11 +6,12 @@ from typing import List
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import PayStatementResponse, pay_statement_retrieve_many_params
 from ..._base_client import (
@@ -25,6 +26,10 @@ class PayStatements(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PayStatementsWithRawResponse:
         return PayStatementsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PayStatementsWithStreamingResponse:
+        return PayStatementsWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -73,6 +78,10 @@ class AsyncPayStatements(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPayStatementsWithRawResponse:
         return AsyncPayStatementsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPayStatementsWithStreamingResponse:
+        return AsyncPayStatementsWithStreamingResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -117,13 +126,27 @@ class AsyncPayStatements(AsyncAPIResource):
 
 class PayStatementsWithRawResponse:
     def __init__(self, pay_statements: PayStatements) -> None:
-        self.retrieve_many = to_raw_response_wrapper(
+        self.retrieve_many = _legacy_response.to_raw_response_wrapper(
             pay_statements.retrieve_many,
         )
 
 
 class AsyncPayStatementsWithRawResponse:
     def __init__(self, pay_statements: AsyncPayStatements) -> None:
-        self.retrieve_many = async_to_raw_response_wrapper(
+        self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
+            pay_statements.retrieve_many,
+        )
+
+
+class PayStatementsWithStreamingResponse:
+    def __init__(self, pay_statements: PayStatements) -> None:
+        self.retrieve_many = to_streamed_response_wrapper(
+            pay_statements.retrieve_many,
+        )
+
+
+class AsyncPayStatementsWithStreamingResponse:
+    def __init__(self, pay_statements: AsyncPayStatements) -> None:
+        self.retrieve_many = async_to_streamed_response_wrapper(
             pay_statements.retrieve_many,
         )
