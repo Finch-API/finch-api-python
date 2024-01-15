@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...types.jobs import ManualAsyncJob
 from ..._base_client import (
     make_request_options,
@@ -20,6 +21,10 @@ class Manual(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ManualWithRawResponse:
         return ManualWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ManualWithStreamingResponse:
+        return ManualWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -60,6 +65,10 @@ class AsyncManual(AsyncAPIResource):
     def with_raw_response(self) -> AsyncManualWithRawResponse:
         return AsyncManualWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncManualWithStreamingResponse:
+        return AsyncManualWithStreamingResponse(self)
+
     async def retrieve(
         self,
         job_id: str,
@@ -96,13 +105,27 @@ class AsyncManual(AsyncAPIResource):
 
 class ManualWithRawResponse:
     def __init__(self, manual: Manual) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             manual.retrieve,
         )
 
 
 class AsyncManualWithRawResponse:
     def __init__(self, manual: AsyncManual) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+            manual.retrieve,
+        )
+
+
+class ManualWithStreamingResponse:
+    def __init__(self, manual: Manual) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            manual.retrieve,
+        )
+
+
+class AsyncManualWithStreamingResponse:
+    def __init__(self, manual: AsyncManual) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
             manual.retrieve,
         )

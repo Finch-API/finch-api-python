@@ -6,11 +6,12 @@ import typing_extensions
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncIndividualsPage, AsyncIndividualsPage
 from ...types.hris import IndividualInDirectory, directory_list_params
 from ..._base_client import (
@@ -25,6 +26,10 @@ class Directory(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DirectoryWithRawResponse:
         return DirectoryWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> DirectoryWithStreamingResponse:
+        return DirectoryWithStreamingResponse(self)
 
     def list(
         self,
@@ -117,6 +122,10 @@ class AsyncDirectory(AsyncAPIResource):
     def with_raw_response(self) -> AsyncDirectoryWithRawResponse:
         return AsyncDirectoryWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncDirectoryWithStreamingResponse:
+        return AsyncDirectoryWithStreamingResponse(self)
+
     def list(
         self,
         *,
@@ -205,19 +214,47 @@ class AsyncDirectory(AsyncAPIResource):
 
 class DirectoryWithRawResponse:
     def __init__(self, directory: Directory) -> None:
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             directory.list,
         )
-        self.list_individuals = to_raw_response_wrapper(  # pyright: ignore[reportDeprecated]
-            directory.list_individuals  # pyright: ignore[reportDeprecated],
+        self.list_individuals = (  # pyright: ignore[reportDeprecated]
+            _legacy_response.to_raw_response_wrapper(
+                directory.list_individuals  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
 class AsyncDirectoryWithRawResponse:
     def __init__(self, directory: AsyncDirectory) -> None:
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             directory.list,
         )
-        self.list_individuals = async_to_raw_response_wrapper(  # pyright: ignore[reportDeprecated]
-            directory.list_individuals  # pyright: ignore[reportDeprecated],
+        self.list_individuals = (  # pyright: ignore[reportDeprecated]
+            _legacy_response.async_to_raw_response_wrapper(
+                directory.list_individuals  # pyright: ignore[reportDeprecated],
+            )
+        )
+
+
+class DirectoryWithStreamingResponse:
+    def __init__(self, directory: Directory) -> None:
+        self.list = to_streamed_response_wrapper(
+            directory.list,
+        )
+        self.list_individuals = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                directory.list_individuals  # pyright: ignore[reportDeprecated],
+            )
+        )
+
+
+class AsyncDirectoryWithStreamingResponse:
+    def __init__(self, directory: AsyncDirectory) -> None:
+        self.list = async_to_streamed_response_wrapper(
+            directory.list,
+        )
+        self.list_individuals = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                directory.list_individuals  # pyright: ignore[reportDeprecated],
+            )
         )

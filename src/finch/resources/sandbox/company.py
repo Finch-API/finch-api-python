@@ -6,12 +6,13 @@ from typing import List, Optional
 
 import httpx
 
+from ... import _legacy_response
 from ...types import LocationParam
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -24,6 +25,10 @@ class Company(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CompanyWithRawResponse:
         return CompanyWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CompanyWithStreamingResponse:
+        return CompanyWithStreamingResponse(self)
 
     def update(
         self,
@@ -96,6 +101,10 @@ class AsyncCompany(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCompanyWithRawResponse:
         return AsyncCompanyWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCompanyWithStreamingResponse:
+        return AsyncCompanyWithStreamingResponse(self)
+
     async def update(
         self,
         *,
@@ -164,13 +173,27 @@ class AsyncCompany(AsyncAPIResource):
 
 class CompanyWithRawResponse:
     def __init__(self, company: Company) -> None:
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             company.update,
         )
 
 
 class AsyncCompanyWithRawResponse:
     def __init__(self, company: AsyncCompany) -> None:
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            company.update,
+        )
+
+
+class CompanyWithStreamingResponse:
+    def __init__(self, company: Company) -> None:
+        self.update = to_streamed_response_wrapper(
+            company.update,
+        )
+
+
+class AsyncCompanyWithStreamingResponse:
+    def __init__(self, company: AsyncCompany) -> None:
+        self.update = async_to_streamed_response_wrapper(
             company.update,
         )

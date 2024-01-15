@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...types.hris import Company
 from ..._base_client import (
     make_request_options,
@@ -20,6 +21,10 @@ class CompanyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CompanyResourceWithRawResponse:
         return CompanyResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CompanyResourceWithStreamingResponse:
+        return CompanyResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -46,6 +51,10 @@ class AsyncCompanyResource(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCompanyResourceWithRawResponse:
         return AsyncCompanyResourceWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCompanyResourceWithStreamingResponse:
+        return AsyncCompanyResourceWithStreamingResponse(self)
+
     async def retrieve(
         self,
         *,
@@ -68,13 +77,27 @@ class AsyncCompanyResource(AsyncAPIResource):
 
 class CompanyResourceWithRawResponse:
     def __init__(self, company: CompanyResource) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             company.retrieve,
         )
 
 
 class AsyncCompanyResourceWithRawResponse:
     def __init__(self, company: AsyncCompanyResource) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+            company.retrieve,
+        )
+
+
+class CompanyResourceWithStreamingResponse:
+    def __init__(self, company: CompanyResource) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            company.retrieve,
+        )
+
+
+class AsyncCompanyResourceWithStreamingResponse:
+    def __init__(self, company: AsyncCompanyResource) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
             company.retrieve,
         )

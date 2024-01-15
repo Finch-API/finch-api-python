@@ -6,11 +6,12 @@ from typing import List, Optional
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import IndividualResponse, individual_retrieve_many_params
 from ..._base_client import (
@@ -25,6 +26,10 @@ class Individuals(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> IndividualsWithRawResponse:
         return IndividualsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> IndividualsWithStreamingResponse:
+        return IndividualsWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -73,6 +78,10 @@ class AsyncIndividuals(AsyncAPIResource):
     def with_raw_response(self) -> AsyncIndividualsWithRawResponse:
         return AsyncIndividualsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncIndividualsWithStreamingResponse:
+        return AsyncIndividualsWithStreamingResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -117,13 +126,27 @@ class AsyncIndividuals(AsyncAPIResource):
 
 class IndividualsWithRawResponse:
     def __init__(self, individuals: Individuals) -> None:
-        self.retrieve_many = to_raw_response_wrapper(
+        self.retrieve_many = _legacy_response.to_raw_response_wrapper(
             individuals.retrieve_many,
         )
 
 
 class AsyncIndividualsWithRawResponse:
     def __init__(self, individuals: AsyncIndividuals) -> None:
-        self.retrieve_many = async_to_raw_response_wrapper(
+        self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
+            individuals.retrieve_many,
+        )
+
+
+class IndividualsWithStreamingResponse:
+    def __init__(self, individuals: Individuals) -> None:
+        self.retrieve_many = to_streamed_response_wrapper(
+            individuals.retrieve_many,
+        )
+
+
+class AsyncIndividualsWithStreamingResponse:
+    def __init__(self, individuals: AsyncIndividuals) -> None:
+        self.retrieve_many = async_to_streamed_response_wrapper(
             individuals.retrieve_many,
         )

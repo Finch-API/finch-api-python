@@ -2,16 +2,65 @@
 
 from __future__ import annotations
 
-from .jobs import Jobs, AsyncJobs, JobsWithRawResponse, AsyncJobsWithRawResponse
-from .company import Company, AsyncCompany, CompanyWithRawResponse, AsyncCompanyWithRawResponse
-from .payment import Payment, AsyncPayment, PaymentWithRawResponse, AsyncPaymentWithRawResponse
+from .jobs import (
+    Jobs,
+    AsyncJobs,
+    JobsWithRawResponse,
+    AsyncJobsWithRawResponse,
+    JobsWithStreamingResponse,
+    AsyncJobsWithStreamingResponse,
+)
+from .company import (
+    Company,
+    AsyncCompany,
+    CompanyWithRawResponse,
+    AsyncCompanyWithRawResponse,
+    CompanyWithStreamingResponse,
+    AsyncCompanyWithStreamingResponse,
+)
+from .payment import (
+    Payment,
+    AsyncPayment,
+    PaymentWithRawResponse,
+    AsyncPaymentWithRawResponse,
+    PaymentWithStreamingResponse,
+    AsyncPaymentWithStreamingResponse,
+)
 from ..._compat import cached_property
-from .directory import Directory, AsyncDirectory, DirectoryWithRawResponse, AsyncDirectoryWithRawResponse
+from .directory import (
+    Directory,
+    AsyncDirectory,
+    DirectoryWithRawResponse,
+    AsyncDirectoryWithRawResponse,
+    DirectoryWithStreamingResponse,
+    AsyncDirectoryWithStreamingResponse,
+)
 from .jobs.jobs import Jobs, AsyncJobs
-from .employment import Employment, AsyncEmployment, EmploymentWithRawResponse, AsyncEmploymentWithRawResponse
-from .individual import Individual, AsyncIndividual, IndividualWithRawResponse, AsyncIndividualWithRawResponse
+from .employment import (
+    Employment,
+    AsyncEmployment,
+    EmploymentWithRawResponse,
+    AsyncEmploymentWithRawResponse,
+    EmploymentWithStreamingResponse,
+    AsyncEmploymentWithStreamingResponse,
+)
+from .individual import (
+    Individual,
+    AsyncIndividual,
+    IndividualWithRawResponse,
+    AsyncIndividualWithRawResponse,
+    IndividualWithStreamingResponse,
+    AsyncIndividualWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .connections import Connections, AsyncConnections, ConnectionsWithRawResponse, AsyncConnectionsWithRawResponse
+from .connections import (
+    Connections,
+    AsyncConnections,
+    ConnectionsWithRawResponse,
+    AsyncConnectionsWithRawResponse,
+    ConnectionsWithStreamingResponse,
+    AsyncConnectionsWithStreamingResponse,
+)
 from .connections.connections import Connections, AsyncConnections
 
 __all__ = ["Sandbox", "AsyncSandbox"]
@@ -50,6 +99,10 @@ class Sandbox(SyncAPIResource):
     def with_raw_response(self) -> SandboxWithRawResponse:
         return SandboxWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> SandboxWithStreamingResponse:
+        return SandboxWithStreamingResponse(self)
+
 
 class AsyncSandbox(AsyncAPIResource):
     @cached_property
@@ -84,6 +137,10 @@ class AsyncSandbox(AsyncAPIResource):
     def with_raw_response(self) -> AsyncSandboxWithRawResponse:
         return AsyncSandboxWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncSandboxWithStreamingResponse:
+        return AsyncSandboxWithStreamingResponse(self)
+
 
 class SandboxWithRawResponse:
     def __init__(self, sandbox: Sandbox) -> None:
@@ -105,3 +162,25 @@ class AsyncSandboxWithRawResponse:
         self.employment = AsyncEmploymentWithRawResponse(sandbox.employment)
         self.payment = AsyncPaymentWithRawResponse(sandbox.payment)
         self.jobs = AsyncJobsWithRawResponse(sandbox.jobs)
+
+
+class SandboxWithStreamingResponse:
+    def __init__(self, sandbox: Sandbox) -> None:
+        self.connections = ConnectionsWithStreamingResponse(sandbox.connections)
+        self.company = CompanyWithStreamingResponse(sandbox.company)
+        self.directory = DirectoryWithStreamingResponse(sandbox.directory)
+        self.individual = IndividualWithStreamingResponse(sandbox.individual)
+        self.employment = EmploymentWithStreamingResponse(sandbox.employment)
+        self.payment = PaymentWithStreamingResponse(sandbox.payment)
+        self.jobs = JobsWithStreamingResponse(sandbox.jobs)
+
+
+class AsyncSandboxWithStreamingResponse:
+    def __init__(self, sandbox: AsyncSandbox) -> None:
+        self.connections = AsyncConnectionsWithStreamingResponse(sandbox.connections)
+        self.company = AsyncCompanyWithStreamingResponse(sandbox.company)
+        self.directory = AsyncDirectoryWithStreamingResponse(sandbox.directory)
+        self.individual = AsyncIndividualWithStreamingResponse(sandbox.individual)
+        self.employment = AsyncEmploymentWithStreamingResponse(sandbox.employment)
+        self.payment = AsyncPaymentWithStreamingResponse(sandbox.payment)
+        self.jobs = AsyncJobsWithStreamingResponse(sandbox.jobs)

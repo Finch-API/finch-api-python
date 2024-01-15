@@ -7,12 +7,13 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ...types import LocationParam
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -25,6 +26,10 @@ class Individual(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> IndividualWithRawResponse:
         return IndividualWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> IndividualWithStreamingResponse:
+        return IndividualWithStreamingResponse(self)
 
     def update(
         self,
@@ -126,6 +131,10 @@ class AsyncIndividual(AsyncAPIResource):
     def with_raw_response(self) -> AsyncIndividualWithRawResponse:
         return AsyncIndividualWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncIndividualWithStreamingResponse:
+        return AsyncIndividualWithStreamingResponse(self)
+
     async def update(
         self,
         individual_id: str,
@@ -223,13 +232,27 @@ class AsyncIndividual(AsyncAPIResource):
 
 class IndividualWithRawResponse:
     def __init__(self, individual: Individual) -> None:
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             individual.update,
         )
 
 
 class AsyncIndividualWithRawResponse:
     def __init__(self, individual: AsyncIndividual) -> None:
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            individual.update,
+        )
+
+
+class IndividualWithStreamingResponse:
+    def __init__(self, individual: Individual) -> None:
+        self.update = to_streamed_response_wrapper(
+            individual.update,
+        )
+
+
+class AsyncIndividualWithStreamingResponse:
+    def __init__(self, individual: AsyncIndividual) -> None:
+        self.update = async_to_streamed_response_wrapper(
             individual.update,
         )

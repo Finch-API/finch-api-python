@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -127,9 +128,22 @@ class TestPayment:
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.sandbox.payment.with_raw_response.create()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         payment = response.parse()
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Finch) -> None:
+        with client.sandbox.payment.with_streaming_response.create() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            payment = response.parse()
+            assert_matches_type(PaymentCreateResponse, payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncPayment:
@@ -244,6 +258,19 @@ class TestAsyncPayment:
     @parametrize
     async def test_raw_response_create(self, client: AsyncFinch) -> None:
         response = await client.sandbox.payment.with_raw_response.create()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         payment = response.parse()
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncFinch) -> None:
+        async with client.sandbox.payment.with_streaming_response.create() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            payment = await response.parse()
+            assert_matches_type(PaymentCreateResponse, payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

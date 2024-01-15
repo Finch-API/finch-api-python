@@ -6,12 +6,13 @@ from typing import List, Optional
 
 import httpx
 
+from ... import _legacy_response
 from ...types import IncomeParam, LocationParam
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -24,6 +25,10 @@ class Employment(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EmploymentWithRawResponse:
         return EmploymentWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> EmploymentWithStreamingResponse:
+        return EmploymentWithStreamingResponse(self)
 
     def update(
         self,
@@ -131,6 +136,10 @@ class AsyncEmployment(AsyncAPIResource):
     def with_raw_response(self) -> AsyncEmploymentWithRawResponse:
         return AsyncEmploymentWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncEmploymentWithStreamingResponse:
+        return AsyncEmploymentWithStreamingResponse(self)
+
     async def update(
         self,
         individual_id: str,
@@ -234,13 +243,27 @@ class AsyncEmployment(AsyncAPIResource):
 
 class EmploymentWithRawResponse:
     def __init__(self, employment: Employment) -> None:
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             employment.update,
         )
 
 
 class AsyncEmploymentWithRawResponse:
     def __init__(self, employment: AsyncEmployment) -> None:
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            employment.update,
+        )
+
+
+class EmploymentWithStreamingResponse:
+    def __init__(self, employment: Employment) -> None:
+        self.update = to_streamed_response_wrapper(
+            employment.update,
+        )
+
+
+class AsyncEmploymentWithStreamingResponse:
+    def __init__(self, employment: AsyncEmployment) -> None:
+        self.update = async_to_streamed_response_wrapper(
             employment.update,
         )

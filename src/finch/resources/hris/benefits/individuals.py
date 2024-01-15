@@ -6,11 +6,12 @@ from typing import List
 
 import httpx
 
+from .... import _legacy_response
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
-from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ....pagination import SyncSinglePage, AsyncSinglePage
 from ...._base_client import (
     AsyncPaginator,
@@ -33,6 +34,10 @@ class Individuals(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> IndividualsWithRawResponse:
         return IndividualsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> IndividualsWithStreamingResponse:
+        return IndividualsWithStreamingResponse(self)
 
     def enroll_many(
         self,
@@ -205,6 +210,10 @@ class AsyncIndividuals(AsyncAPIResource):
     def with_raw_response(self) -> AsyncIndividualsWithRawResponse:
         return AsyncIndividualsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncIndividualsWithStreamingResponse:
+        return AsyncIndividualsWithStreamingResponse(self)
+
     def enroll_many(
         self,
         benefit_id: str,
@@ -373,31 +382,63 @@ class AsyncIndividuals(AsyncAPIResource):
 
 class IndividualsWithRawResponse:
     def __init__(self, individuals: Individuals) -> None:
-        self.enroll_many = to_raw_response_wrapper(
+        self.enroll_many = _legacy_response.to_raw_response_wrapper(
             individuals.enroll_many,
         )
-        self.enrolled_ids = to_raw_response_wrapper(
+        self.enrolled_ids = _legacy_response.to_raw_response_wrapper(
             individuals.enrolled_ids,
         )
-        self.retrieve_many_benefits = to_raw_response_wrapper(
+        self.retrieve_many_benefits = _legacy_response.to_raw_response_wrapper(
             individuals.retrieve_many_benefits,
         )
-        self.unenroll_many = to_raw_response_wrapper(
+        self.unenroll_many = _legacy_response.to_raw_response_wrapper(
             individuals.unenroll_many,
         )
 
 
 class AsyncIndividualsWithRawResponse:
     def __init__(self, individuals: AsyncIndividuals) -> None:
-        self.enroll_many = async_to_raw_response_wrapper(
+        self.enroll_many = _legacy_response.async_to_raw_response_wrapper(
             individuals.enroll_many,
         )
-        self.enrolled_ids = async_to_raw_response_wrapper(
+        self.enrolled_ids = _legacy_response.async_to_raw_response_wrapper(
             individuals.enrolled_ids,
         )
-        self.retrieve_many_benefits = async_to_raw_response_wrapper(
+        self.retrieve_many_benefits = _legacy_response.async_to_raw_response_wrapper(
             individuals.retrieve_many_benefits,
         )
-        self.unenroll_many = async_to_raw_response_wrapper(
+        self.unenroll_many = _legacy_response.async_to_raw_response_wrapper(
+            individuals.unenroll_many,
+        )
+
+
+class IndividualsWithStreamingResponse:
+    def __init__(self, individuals: Individuals) -> None:
+        self.enroll_many = to_streamed_response_wrapper(
+            individuals.enroll_many,
+        )
+        self.enrolled_ids = to_streamed_response_wrapper(
+            individuals.enrolled_ids,
+        )
+        self.retrieve_many_benefits = to_streamed_response_wrapper(
+            individuals.retrieve_many_benefits,
+        )
+        self.unenroll_many = to_streamed_response_wrapper(
+            individuals.unenroll_many,
+        )
+
+
+class AsyncIndividualsWithStreamingResponse:
+    def __init__(self, individuals: AsyncIndividuals) -> None:
+        self.enroll_many = async_to_streamed_response_wrapper(
+            individuals.enroll_many,
+        )
+        self.enrolled_ids = async_to_streamed_response_wrapper(
+            individuals.enrolled_ids,
+        )
+        self.retrieve_many_benefits = async_to_streamed_response_wrapper(
+            individuals.retrieve_many_benefits,
+        )
+        self.unenroll_many = async_to_streamed_response_wrapper(
             individuals.unenroll_many,
         )
