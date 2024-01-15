@@ -6,11 +6,12 @@ from typing import List
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import EmploymentDataResponse, employment_retrieve_many_params
 from ..._base_client import (
@@ -25,6 +26,10 @@ class Employments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EmploymentsWithRawResponse:
         return EmploymentsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> EmploymentsWithStreamingResponse:
+        return EmploymentsWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -72,6 +77,10 @@ class AsyncEmployments(AsyncAPIResource):
     def with_raw_response(self) -> AsyncEmploymentsWithRawResponse:
         return AsyncEmploymentsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncEmploymentsWithStreamingResponse:
+        return AsyncEmploymentsWithStreamingResponse(self)
+
     def retrieve_many(
         self,
         *,
@@ -115,13 +124,27 @@ class AsyncEmployments(AsyncAPIResource):
 
 class EmploymentsWithRawResponse:
     def __init__(self, employments: Employments) -> None:
-        self.retrieve_many = to_raw_response_wrapper(
+        self.retrieve_many = _legacy_response.to_raw_response_wrapper(
             employments.retrieve_many,
         )
 
 
 class AsyncEmploymentsWithRawResponse:
     def __init__(self, employments: AsyncEmployments) -> None:
-        self.retrieve_many = async_to_raw_response_wrapper(
+        self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
+            employments.retrieve_many,
+        )
+
+
+class EmploymentsWithStreamingResponse:
+    def __init__(self, employments: Employments) -> None:
+        self.retrieve_many = to_streamed_response_wrapper(
+            employments.retrieve_many,
+        )
+
+
+class AsyncEmploymentsWithStreamingResponse:
+    def __init__(self, employments: AsyncEmployments) -> None:
+        self.retrieve_many = async_to_streamed_response_wrapper(
             employments.retrieve_many,
         )

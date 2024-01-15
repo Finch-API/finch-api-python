@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestDirectory:
         response = client.sandbox.directory.with_raw_response.create(
             body=[{}],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         directory = response.parse()
         assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Finch) -> None:
+        with client.sandbox.directory.with_streaming_response.create(
+            body=[{}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            directory = response.parse()
+            assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncDirectory:
@@ -54,6 +70,21 @@ class TestAsyncDirectory:
         response = await client.sandbox.directory.with_raw_response.create(
             body=[{}],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         directory = response.parse()
         assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncFinch) -> None:
+        async with client.sandbox.directory.with_streaming_response.create(
+            body=[{}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            directory = await response.parse()
+            assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

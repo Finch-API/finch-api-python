@@ -6,11 +6,12 @@ from typing_extensions import Literal
 
 import httpx
 
+from .... import _legacy_response
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
-from ...._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...._base_client import (
     make_request_options,
 )
@@ -23,6 +24,10 @@ class Configuration(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ConfigurationWithRawResponse:
         return ConfigurationWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ConfigurationWithStreamingResponse:
+        return ConfigurationWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -88,6 +93,10 @@ class AsyncConfiguration(AsyncAPIResource):
     def with_raw_response(self) -> AsyncConfigurationWithRawResponse:
         return AsyncConfigurationWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncConfigurationWithStreamingResponse:
+        return AsyncConfigurationWithStreamingResponse(self)
+
     async def retrieve(
         self,
         *,
@@ -149,19 +158,39 @@ class AsyncConfiguration(AsyncAPIResource):
 
 class ConfigurationWithRawResponse:
     def __init__(self, configuration: Configuration) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             configuration.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             configuration.update,
         )
 
 
 class AsyncConfigurationWithRawResponse:
     def __init__(self, configuration: AsyncConfiguration) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             configuration.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            configuration.update,
+        )
+
+
+class ConfigurationWithStreamingResponse:
+    def __init__(self, configuration: Configuration) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            configuration.retrieve,
+        )
+        self.update = to_streamed_response_wrapper(
+            configuration.update,
+        )
+
+
+class AsyncConfigurationWithStreamingResponse:
+    def __init__(self, configuration: AsyncConfiguration) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
+            configuration.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
             configuration.update,
         )

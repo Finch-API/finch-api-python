@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -28,9 +29,22 @@ class TestConfiguration:
     @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.sandbox.jobs.configuration.with_raw_response.retrieve()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
         assert_matches_type(ConfigurationRetrieveResponse, configuration, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Finch) -> None:
+        with client.sandbox.jobs.configuration.with_streaming_response.retrieve() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            configuration = response.parse()
+            assert_matches_type(ConfigurationRetrieveResponse, configuration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update(self, client: Finch) -> None:
@@ -46,9 +60,25 @@ class TestConfiguration:
             completion_status="complete",
             type="data_sync_all",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
         assert_matches_type(SandboxJobConfiguration, configuration, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Finch) -> None:
+        with client.sandbox.jobs.configuration.with_streaming_response.update(
+            completion_status="complete",
+            type="data_sync_all",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            configuration = response.parse()
+            assert_matches_type(SandboxJobConfiguration, configuration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncConfiguration:
@@ -64,9 +94,22 @@ class TestAsyncConfiguration:
     @parametrize
     async def test_raw_response_retrieve(self, client: AsyncFinch) -> None:
         response = await client.sandbox.jobs.configuration.with_raw_response.retrieve()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
         assert_matches_type(ConfigurationRetrieveResponse, configuration, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncFinch) -> None:
+        async with client.sandbox.jobs.configuration.with_streaming_response.retrieve() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            configuration = await response.parse()
+            assert_matches_type(ConfigurationRetrieveResponse, configuration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update(self, client: AsyncFinch) -> None:
@@ -82,6 +125,22 @@ class TestAsyncConfiguration:
             completion_status="complete",
             type="data_sync_all",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         configuration = response.parse()
         assert_matches_type(SandboxJobConfiguration, configuration, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncFinch) -> None:
+        async with client.sandbox.jobs.configuration.with_streaming_response.update(
+            completion_status="complete",
+            type="data_sync_all",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            configuration = await response.parse()
+            assert_matches_type(SandboxJobConfiguration, configuration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

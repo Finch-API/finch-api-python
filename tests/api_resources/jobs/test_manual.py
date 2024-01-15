@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestManual:
         response = client.jobs.manual.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         manual = response.parse()
         assert_matches_type(ManualAsyncJob, manual, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Finch) -> None:
+        with client.jobs.manual.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            manual = response.parse()
+            assert_matches_type(ManualAsyncJob, manual, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncManual:
@@ -54,6 +70,21 @@ class TestAsyncManual:
         response = await client.jobs.manual.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         manual = response.parse()
         assert_matches_type(ManualAsyncJob, manual, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncFinch) -> None:
+        async with client.jobs.manual.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            manual = await response.parse()
+            assert_matches_type(ManualAsyncJob, manual, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

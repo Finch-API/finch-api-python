@@ -7,11 +7,12 @@ from datetime import date
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncSinglePage, AsyncSinglePage
 from ...types.hris import Payment, payment_list_params
 from ..._base_client import (
@@ -26,6 +27,10 @@ class Payments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PaymentsWithRawResponse:
         return PaymentsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PaymentsWithStreamingResponse:
+        return PaymentsWithStreamingResponse(self)
 
     def list(
         self,
@@ -82,6 +87,10 @@ class AsyncPayments(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPaymentsWithRawResponse:
         return AsyncPaymentsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPaymentsWithStreamingResponse:
+        return AsyncPaymentsWithStreamingResponse(self)
+
     def list(
         self,
         *,
@@ -134,13 +143,27 @@ class AsyncPayments(AsyncAPIResource):
 
 class PaymentsWithRawResponse:
     def __init__(self, payments: Payments) -> None:
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             payments.list,
         )
 
 
 class AsyncPaymentsWithRawResponse:
     def __init__(self, payments: AsyncPayments) -> None:
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            payments.list,
+        )
+
+
+class PaymentsWithStreamingResponse:
+    def __init__(self, payments: Payments) -> None:
+        self.list = to_streamed_response_wrapper(
+            payments.list,
+        )
+
+
+class AsyncPaymentsWithStreamingResponse:
+    def __init__(self, payments: AsyncPayments) -> None:
+        self.list = async_to_streamed_response_wrapper(
             payments.list,
         )

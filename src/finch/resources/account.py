@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import Introspection, DisconnectResponse
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import (
     make_request_options,
 )
@@ -20,6 +21,10 @@ class Account(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountWithRawResponse:
         return AccountWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AccountWithStreamingResponse:
+        return AccountWithStreamingResponse(self)
 
     def disconnect(
         self,
@@ -69,6 +74,10 @@ class AsyncAccount(AsyncAPIResource):
     def with_raw_response(self) -> AsyncAccountWithRawResponse:
         return AsyncAccountWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncAccountWithStreamingResponse:
+        return AsyncAccountWithStreamingResponse(self)
+
     async def disconnect(
         self,
         *,
@@ -114,19 +123,39 @@ class AsyncAccount(AsyncAPIResource):
 
 class AccountWithRawResponse:
     def __init__(self, account: Account) -> None:
-        self.disconnect = to_raw_response_wrapper(
+        self.disconnect = _legacy_response.to_raw_response_wrapper(
             account.disconnect,
         )
-        self.introspect = to_raw_response_wrapper(
+        self.introspect = _legacy_response.to_raw_response_wrapper(
             account.introspect,
         )
 
 
 class AsyncAccountWithRawResponse:
     def __init__(self, account: AsyncAccount) -> None:
-        self.disconnect = async_to_raw_response_wrapper(
+        self.disconnect = _legacy_response.async_to_raw_response_wrapper(
             account.disconnect,
         )
-        self.introspect = async_to_raw_response_wrapper(
+        self.introspect = _legacy_response.async_to_raw_response_wrapper(
+            account.introspect,
+        )
+
+
+class AccountWithStreamingResponse:
+    def __init__(self, account: Account) -> None:
+        self.disconnect = to_streamed_response_wrapper(
+            account.disconnect,
+        )
+        self.introspect = to_streamed_response_wrapper(
+            account.introspect,
+        )
+
+
+class AsyncAccountWithStreamingResponse:
+    def __init__(self, account: AsyncAccount) -> None:
+        self.disconnect = async_to_streamed_response_wrapper(
+            account.disconnect,
+        )
+        self.introspect = async_to_streamed_response_wrapper(
             account.introspect,
         )

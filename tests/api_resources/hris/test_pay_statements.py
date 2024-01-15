@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -33,9 +34,24 @@ class TestPayStatements:
         response = client.hris.pay_statements.with_raw_response.retrieve_many(
             requests=[{"payment_id": "string"}],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pay_statement = response.parse()
         assert_matches_type(SyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve_many(self, client: Finch) -> None:
+        with client.hris.pay_statements.with_streaming_response.retrieve_many(
+            requests=[{"payment_id": "string"}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            pay_statement = response.parse()
+            assert_matches_type(SyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncPayStatements:
@@ -55,6 +71,21 @@ class TestAsyncPayStatements:
         response = await client.hris.pay_statements.with_raw_response.retrieve_many(
             requests=[{"payment_id": "string"}],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pay_statement = response.parse()
         assert_matches_type(AsyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve_many(self, client: AsyncFinch) -> None:
+        async with client.hris.pay_statements.with_streaming_response.retrieve_many(
+            requests=[{"payment_id": "string"}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            pay_statement = await response.parse()
+            assert_matches_type(AsyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

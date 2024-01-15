@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import CreateAccessTokenResponse, access_token_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import (
     make_request_options,
 )
@@ -21,6 +22,10 @@ class AccessTokens(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccessTokensWithRawResponse:
         return AccessTokensWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AccessTokensWithStreamingResponse:
+        return AccessTokensWithStreamingResponse(self)
 
     def create(
         self,
@@ -71,6 +76,10 @@ class AsyncAccessTokens(AsyncAPIResource):
     def with_raw_response(self) -> AsyncAccessTokensWithRawResponse:
         return AsyncAccessTokensWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncAccessTokensWithStreamingResponse:
+        return AsyncAccessTokensWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -117,13 +126,27 @@ class AsyncAccessTokens(AsyncAPIResource):
 
 class AccessTokensWithRawResponse:
     def __init__(self, access_tokens: AccessTokens) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             access_tokens.create,
         )
 
 
 class AsyncAccessTokensWithRawResponse:
     def __init__(self, access_tokens: AsyncAccessTokens) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            access_tokens.create,
+        )
+
+
+class AccessTokensWithStreamingResponse:
+    def __init__(self, access_tokens: AccessTokens) -> None:
+        self.create = to_streamed_response_wrapper(
+            access_tokens.create,
+        )
+
+
+class AsyncAccessTokensWithStreamingResponse:
+    def __init__(self, access_tokens: AsyncAccessTokens) -> None:
+        self.create = async_to_streamed_response_wrapper(
             access_tokens.create,
         )

@@ -1,22 +1,68 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from .hris import HRIS, AsyncHRIS, HRISWithRawResponse, AsyncHRISWithRawResponse
+from .hris import (
+    HRIS,
+    AsyncHRIS,
+    HRISWithRawResponse,
+    AsyncHRISWithRawResponse,
+    HRISWithStreamingResponse,
+    AsyncHRISWithStreamingResponse,
+)
 from .company import (
     CompanyResource,
     AsyncCompanyResource,
     CompanyResourceWithRawResponse,
     AsyncCompanyResourceWithRawResponse,
+    CompanyResourceWithStreamingResponse,
+    AsyncCompanyResourceWithStreamingResponse,
 )
-from .benefits import Benefits, AsyncBenefits, BenefitsWithRawResponse, AsyncBenefitsWithRawResponse
-from .payments import Payments, AsyncPayments, PaymentsWithRawResponse, AsyncPaymentsWithRawResponse
-from .directory import Directory, AsyncDirectory, DirectoryWithRawResponse, AsyncDirectoryWithRawResponse
-from .employments import Employments, AsyncEmployments, EmploymentsWithRawResponse, AsyncEmploymentsWithRawResponse
-from .individuals import Individuals, AsyncIndividuals, IndividualsWithRawResponse, AsyncIndividualsWithRawResponse
+from .benefits import (
+    Benefits,
+    AsyncBenefits,
+    BenefitsWithRawResponse,
+    AsyncBenefitsWithRawResponse,
+    BenefitsWithStreamingResponse,
+    AsyncBenefitsWithStreamingResponse,
+)
+from .payments import (
+    Payments,
+    AsyncPayments,
+    PaymentsWithRawResponse,
+    AsyncPaymentsWithRawResponse,
+    PaymentsWithStreamingResponse,
+    AsyncPaymentsWithStreamingResponse,
+)
+from .directory import (
+    Directory,
+    AsyncDirectory,
+    DirectoryWithRawResponse,
+    AsyncDirectoryWithRawResponse,
+    DirectoryWithStreamingResponse,
+    AsyncDirectoryWithStreamingResponse,
+)
+from .employments import (
+    Employments,
+    AsyncEmployments,
+    EmploymentsWithRawResponse,
+    AsyncEmploymentsWithRawResponse,
+    EmploymentsWithStreamingResponse,
+    AsyncEmploymentsWithStreamingResponse,
+)
+from .individuals import (
+    Individuals,
+    AsyncIndividuals,
+    IndividualsWithRawResponse,
+    AsyncIndividualsWithRawResponse,
+    IndividualsWithStreamingResponse,
+    AsyncIndividualsWithStreamingResponse,
+)
 from .pay_statements import (
     PayStatements,
     AsyncPayStatements,
     PayStatementsWithRawResponse,
     AsyncPayStatementsWithRawResponse,
+    PayStatementsWithStreamingResponse,
+    AsyncPayStatementsWithStreamingResponse,
 )
 
 __all__ = [
@@ -24,32 +70,48 @@ __all__ = [
     "AsyncCompanyResource",
     "CompanyResourceWithRawResponse",
     "AsyncCompanyResourceWithRawResponse",
+    "CompanyResourceWithStreamingResponse",
+    "AsyncCompanyResourceWithStreamingResponse",
     "Directory",
     "AsyncDirectory",
     "DirectoryWithRawResponse",
     "AsyncDirectoryWithRawResponse",
+    "DirectoryWithStreamingResponse",
+    "AsyncDirectoryWithStreamingResponse",
     "Individuals",
     "AsyncIndividuals",
     "IndividualsWithRawResponse",
     "AsyncIndividualsWithRawResponse",
+    "IndividualsWithStreamingResponse",
+    "AsyncIndividualsWithStreamingResponse",
     "Employments",
     "AsyncEmployments",
     "EmploymentsWithRawResponse",
     "AsyncEmploymentsWithRawResponse",
+    "EmploymentsWithStreamingResponse",
+    "AsyncEmploymentsWithStreamingResponse",
     "Payments",
     "AsyncPayments",
     "PaymentsWithRawResponse",
     "AsyncPaymentsWithRawResponse",
+    "PaymentsWithStreamingResponse",
+    "AsyncPaymentsWithStreamingResponse",
     "PayStatements",
     "AsyncPayStatements",
     "PayStatementsWithRawResponse",
     "AsyncPayStatementsWithRawResponse",
+    "PayStatementsWithStreamingResponse",
+    "AsyncPayStatementsWithStreamingResponse",
     "Benefits",
     "AsyncBenefits",
     "BenefitsWithRawResponse",
     "AsyncBenefitsWithRawResponse",
+    "BenefitsWithStreamingResponse",
+    "AsyncBenefitsWithStreamingResponse",
     "HRIS",
     "AsyncHRIS",
     "HRISWithRawResponse",
     "AsyncHRISWithRawResponse",
+    "HRISWithStreamingResponse",
+    "AsyncHRISWithStreamingResponse",
 ]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -86,9 +87,24 @@ class TestIndividual:
         response = client.sandbox.individual.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         individual = response.parse()
         assert_matches_type(IndividualUpdateResponse, individual, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Finch) -> None:
+        with client.sandbox.individual.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            individual = response.parse()
+            assert_matches_type(IndividualUpdateResponse, individual, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncIndividual:
@@ -162,6 +178,21 @@ class TestAsyncIndividual:
         response = await client.sandbox.individual.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         individual = response.parse()
         assert_matches_type(IndividualUpdateResponse, individual, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncFinch) -> None:
+        async with client.sandbox.individual.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            individual = await response.parse()
+            assert_matches_type(IndividualUpdateResponse, individual, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

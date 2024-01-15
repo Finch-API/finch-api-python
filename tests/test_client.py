@@ -211,6 +211,7 @@ class TestFinch:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
+                        "finch/_legacy_response.py",
                         "finch/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
                         "finch/_compat.py",
@@ -946,6 +947,7 @@ class TestAsyncFinch:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
+                        "finch/_legacy_response.py",
                         "finch/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
                         "finch/_compat.py",
