@@ -98,6 +98,8 @@ class Automated(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not job_id:
+            raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
         return self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
@@ -233,6 +235,8 @@ class AsyncAutomated(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not job_id:
+            raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
         return await self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
