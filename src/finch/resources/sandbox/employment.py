@@ -101,6 +101,8 @@ class Employment(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not individual_id:
+            raise ValueError(f"Expected a non-empty value for `individual_id` but received {individual_id!r}")
         return self._put(
             f"/sandbox/employment/{individual_id}",
             body=maybe_transform(
@@ -211,6 +213,8 @@ class AsyncEmployment(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not individual_id:
+            raise ValueError(f"Expected a non-empty value for `individual_id` but received {individual_id!r}")
         return await self._put(
             f"/sandbox/employment/{individual_id}",
             body=maybe_transform(

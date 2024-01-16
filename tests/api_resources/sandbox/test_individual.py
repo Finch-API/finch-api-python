@@ -106,6 +106,13 @@ class TestIndividual:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_update(self, client: Finch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `individual_id` but received ''"):
+            client.sandbox.individual.with_raw_response.update(
+                "",
+            )
+
 
 class TestAsyncIndividual:
     strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -196,3 +203,10 @@ class TestAsyncIndividual:
             assert_matches_type(IndividualUpdateResponse, individual, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, client: AsyncFinch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `individual_id` but received ''"):
+            await client.sandbox.individual.with_raw_response.update(
+                "",
+            )

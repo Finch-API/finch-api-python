@@ -52,6 +52,13 @@ class TestManual:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_retrieve(self, client: Finch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `job_id` but received ''"):
+            client.jobs.manual.with_raw_response.retrieve(
+                "",
+            )
+
 
 class TestAsyncManual:
     strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
@@ -88,3 +95,10 @@ class TestAsyncManual:
             assert_matches_type(ManualAsyncJob, manual, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, client: AsyncFinch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `job_id` but received ''"):
+            await client.jobs.manual.with_raw_response.retrieve(
+                "",
+            )
