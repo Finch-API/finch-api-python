@@ -123,6 +123,8 @@ class Benefits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get(
             f"/employer/benefits/{benefit_id}",
             options=make_request_options(
@@ -159,6 +161,8 @@ class Benefits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._post(
             f"/employer/benefits/{benefit_id}",
             body=maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
@@ -302,6 +306,8 @@ class AsyncBenefits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._get(
             f"/employer/benefits/{benefit_id}",
             options=make_request_options(
@@ -338,6 +344,8 @@ class AsyncBenefits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._post(
             f"/employer/benefits/{benefit_id}",
             body=maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),

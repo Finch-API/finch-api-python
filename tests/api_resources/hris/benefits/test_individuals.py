@@ -62,6 +62,14 @@ class TestIndividuals:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_enroll_many(self, client: Finch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            client.hris.benefits.individuals.with_raw_response.enroll_many(
+                "",
+                individuals=[{}],
+            )
+
+    @parametrize
     def test_method_enrolled_ids(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.enrolled_ids(
             "string",
@@ -91,6 +99,13 @@ class TestIndividuals:
             assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_enrolled_ids(self, client: Finch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            client.hris.benefits.individuals.with_raw_response.enrolled_ids(
+                "",
+            )
 
     @parametrize
     def test_method_retrieve_many_benefits(self, client: Finch) -> None:
@@ -132,6 +147,13 @@ class TestIndividuals:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve_many_benefits(self, client: Finch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            client.hris.benefits.individuals.with_raw_response.retrieve_many_benefits(
+                "",
+            )
+
+    @parametrize
     def test_method_unenroll_many(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.unenroll_many(
             "string",
@@ -169,6 +191,13 @@ class TestIndividuals:
             assert_matches_type(SyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_unenroll_many(self, client: Finch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            client.hris.benefits.individuals.with_raw_response.unenroll_many(
+                "",
+            )
 
 
 class TestAsyncIndividuals:
@@ -211,6 +240,14 @@ class TestAsyncIndividuals:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_enroll_many(self, client: AsyncFinch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            await client.hris.benefits.individuals.with_raw_response.enroll_many(
+                "",
+                individuals=[{}],
+            )
+
+    @parametrize
     async def test_method_enrolled_ids(self, client: AsyncFinch) -> None:
         individual = await client.hris.benefits.individuals.enrolled_ids(
             "string",
@@ -240,6 +277,13 @@ class TestAsyncIndividuals:
             assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_enrolled_ids(self, client: AsyncFinch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            await client.hris.benefits.individuals.with_raw_response.enrolled_ids(
+                "",
+            )
 
     @parametrize
     async def test_method_retrieve_many_benefits(self, client: AsyncFinch) -> None:
@@ -281,6 +325,13 @@ class TestAsyncIndividuals:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve_many_benefits(self, client: AsyncFinch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            await client.hris.benefits.individuals.with_raw_response.retrieve_many_benefits(
+                "",
+            )
+
+    @parametrize
     async def test_method_unenroll_many(self, client: AsyncFinch) -> None:
         individual = await client.hris.benefits.individuals.unenroll_many(
             "string",
@@ -318,3 +369,10 @@ class TestAsyncIndividuals:
             assert_matches_type(AsyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_unenroll_many(self, client: AsyncFinch) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
+            await client.hris.benefits.individuals.with_raw_response.unenroll_many(
+                "",
+            )

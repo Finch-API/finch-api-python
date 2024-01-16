@@ -74,6 +74,8 @@ class Individuals(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=SyncSinglePage[EnrolledIndividual],
@@ -110,6 +112,8 @@ class Individuals(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get(
             f"/employer/benefits/{benefit_id}/enrolled",
             options=make_request_options(
@@ -147,6 +151,8 @@ class Individuals(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=SyncSinglePage[IndividualBenefit],
@@ -191,6 +197,8 @@ class Individuals(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=SyncSinglePage[UnenrolledIndividual],
@@ -249,6 +257,8 @@ class AsyncIndividuals(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=AsyncSinglePage[EnrolledIndividual],
@@ -285,6 +295,8 @@ class AsyncIndividuals(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._get(
             f"/employer/benefits/{benefit_id}/enrolled",
             options=make_request_options(
@@ -322,6 +334,8 @@ class AsyncIndividuals(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=AsyncSinglePage[IndividualBenefit],
@@ -366,6 +380,8 @@ class AsyncIndividuals(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not benefit_id:
+            raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=AsyncSinglePage[UnenrolledIndividual],
