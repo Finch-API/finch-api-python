@@ -398,6 +398,8 @@ class AsyncIndividuals(AsyncAPIResource):
 
 class IndividualsWithRawResponse:
     def __init__(self, individuals: Individuals) -> None:
+        self._individuals = individuals
+
         self.enroll_many = _legacy_response.to_raw_response_wrapper(
             individuals.enroll_many,
         )
@@ -414,6 +416,8 @@ class IndividualsWithRawResponse:
 
 class AsyncIndividualsWithRawResponse:
     def __init__(self, individuals: AsyncIndividuals) -> None:
+        self._individuals = individuals
+
         self.enroll_many = _legacy_response.async_to_raw_response_wrapper(
             individuals.enroll_many,
         )
@@ -430,6 +434,8 @@ class AsyncIndividualsWithRawResponse:
 
 class IndividualsWithStreamingResponse:
     def __init__(self, individuals: Individuals) -> None:
+        self._individuals = individuals
+
         self.enroll_many = to_streamed_response_wrapper(
             individuals.enroll_many,
         )
@@ -446,6 +452,8 @@ class IndividualsWithStreamingResponse:
 
 class AsyncIndividualsWithStreamingResponse:
     def __init__(self, individuals: AsyncIndividuals) -> None:
+        self._individuals = individuals
+
         self.enroll_many = async_to_streamed_response_wrapper(
             individuals.enroll_many,
         )

@@ -236,6 +236,8 @@ class AsyncIndividual(AsyncAPIResource):
 
 class IndividualWithRawResponse:
     def __init__(self, individual: Individual) -> None:
+        self._individual = individual
+
         self.update = _legacy_response.to_raw_response_wrapper(
             individual.update,
         )
@@ -243,6 +245,8 @@ class IndividualWithRawResponse:
 
 class AsyncIndividualWithRawResponse:
     def __init__(self, individual: AsyncIndividual) -> None:
+        self._individual = individual
+
         self.update = _legacy_response.async_to_raw_response_wrapper(
             individual.update,
         )
@@ -250,6 +254,8 @@ class AsyncIndividualWithRawResponse:
 
 class IndividualWithStreamingResponse:
     def __init__(self, individual: Individual) -> None:
+        self._individual = individual
+
         self.update = to_streamed_response_wrapper(
             individual.update,
         )
@@ -257,6 +263,8 @@ class IndividualWithStreamingResponse:
 
 class AsyncIndividualWithStreamingResponse:
     def __init__(self, individual: AsyncIndividual) -> None:
+        self._individual = individual
+
         self.update = async_to_streamed_response_wrapper(
             individual.update,
         )

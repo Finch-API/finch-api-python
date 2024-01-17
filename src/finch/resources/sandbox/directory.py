@@ -112,6 +112,8 @@ class AsyncDirectory(AsyncAPIResource):
 
 class DirectoryWithRawResponse:
     def __init__(self, directory: Directory) -> None:
+        self._directory = directory
+
         self.create = _legacy_response.to_raw_response_wrapper(
             directory.create,
         )
@@ -119,6 +121,8 @@ class DirectoryWithRawResponse:
 
 class AsyncDirectoryWithRawResponse:
     def __init__(self, directory: AsyncDirectory) -> None:
+        self._directory = directory
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             directory.create,
         )
@@ -126,6 +130,8 @@ class AsyncDirectoryWithRawResponse:
 
 class DirectoryWithStreamingResponse:
     def __init__(self, directory: Directory) -> None:
+        self._directory = directory
+
         self.create = to_streamed_response_wrapper(
             directory.create,
         )
@@ -133,6 +139,8 @@ class DirectoryWithStreamingResponse:
 
 class AsyncDirectoryWithStreamingResponse:
     def __init__(self, directory: AsyncDirectory) -> None:
+        self._directory = directory
+
         self.create = async_to_streamed_response_wrapper(
             directory.create,
         )

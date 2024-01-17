@@ -174,6 +174,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
 
 class RequestForwardingWithRawResponse:
     def __init__(self, request_forwarding: RequestForwarding) -> None:
+        self._request_forwarding = request_forwarding
+
         self.forward = _legacy_response.to_raw_response_wrapper(
             request_forwarding.forward,
         )
@@ -181,6 +183,8 @@ class RequestForwardingWithRawResponse:
 
 class AsyncRequestForwardingWithRawResponse:
     def __init__(self, request_forwarding: AsyncRequestForwarding) -> None:
+        self._request_forwarding = request_forwarding
+
         self.forward = _legacy_response.async_to_raw_response_wrapper(
             request_forwarding.forward,
         )
@@ -188,6 +192,8 @@ class AsyncRequestForwardingWithRawResponse:
 
 class RequestForwardingWithStreamingResponse:
     def __init__(self, request_forwarding: RequestForwarding) -> None:
+        self._request_forwarding = request_forwarding
+
         self.forward = to_streamed_response_wrapper(
             request_forwarding.forward,
         )
@@ -195,6 +201,8 @@ class RequestForwardingWithStreamingResponse:
 
 class AsyncRequestForwardingWithStreamingResponse:
     def __init__(self, request_forwarding: AsyncRequestForwarding) -> None:
+        self._request_forwarding = request_forwarding
+
         self.forward = async_to_streamed_response_wrapper(
             request_forwarding.forward,
         )

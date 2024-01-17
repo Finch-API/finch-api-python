@@ -124,6 +124,8 @@ class AsyncEmployments(AsyncAPIResource):
 
 class EmploymentsWithRawResponse:
     def __init__(self, employments: Employments) -> None:
+        self._employments = employments
+
         self.retrieve_many = _legacy_response.to_raw_response_wrapper(
             employments.retrieve_many,
         )
@@ -131,6 +133,8 @@ class EmploymentsWithRawResponse:
 
 class AsyncEmploymentsWithRawResponse:
     def __init__(self, employments: AsyncEmployments) -> None:
+        self._employments = employments
+
         self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
             employments.retrieve_many,
         )
@@ -138,6 +142,8 @@ class AsyncEmploymentsWithRawResponse:
 
 class EmploymentsWithStreamingResponse:
     def __init__(self, employments: Employments) -> None:
+        self._employments = employments
+
         self.retrieve_many = to_streamed_response_wrapper(
             employments.retrieve_many,
         )
@@ -145,6 +151,8 @@ class EmploymentsWithStreamingResponse:
 
 class AsyncEmploymentsWithStreamingResponse:
     def __init__(self, employments: AsyncEmployments) -> None:
+        self._employments = employments
+
         self.retrieve_many = async_to_streamed_response_wrapper(
             employments.retrieve_many,
         )

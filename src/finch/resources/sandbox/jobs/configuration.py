@@ -158,6 +158,8 @@ class AsyncConfiguration(AsyncAPIResource):
 
 class ConfigurationWithRawResponse:
     def __init__(self, configuration: Configuration) -> None:
+        self._configuration = configuration
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             configuration.retrieve,
         )
@@ -168,6 +170,8 @@ class ConfigurationWithRawResponse:
 
 class AsyncConfigurationWithRawResponse:
     def __init__(self, configuration: AsyncConfiguration) -> None:
+        self._configuration = configuration
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             configuration.retrieve,
         )
@@ -178,6 +182,8 @@ class AsyncConfigurationWithRawResponse:
 
 class ConfigurationWithStreamingResponse:
     def __init__(self, configuration: Configuration) -> None:
+        self._configuration = configuration
+
         self.retrieve = to_streamed_response_wrapper(
             configuration.retrieve,
         )
@@ -188,6 +194,8 @@ class ConfigurationWithStreamingResponse:
 
 class AsyncConfigurationWithStreamingResponse:
     def __init__(self, configuration: AsyncConfiguration) -> None:
+        self._configuration = configuration
+
         self.retrieve = async_to_streamed_response_wrapper(
             configuration.retrieve,
         )

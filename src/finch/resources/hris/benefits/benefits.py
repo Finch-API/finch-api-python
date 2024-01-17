@@ -407,7 +407,7 @@ class AsyncBenefits(AsyncAPIResource):
 
 class BenefitsWithRawResponse:
     def __init__(self, benefits: Benefits) -> None:
-        self.individuals = IndividualsWithRawResponse(benefits.individuals)
+        self._benefits = benefits
 
         self.create = _legacy_response.to_raw_response_wrapper(
             benefits.create,
@@ -425,10 +425,14 @@ class BenefitsWithRawResponse:
             benefits.list_supported_benefits,
         )
 
+    @cached_property
+    def individuals(self) -> IndividualsWithRawResponse:
+        return IndividualsWithRawResponse(self._benefits.individuals)
+
 
 class AsyncBenefitsWithRawResponse:
     def __init__(self, benefits: AsyncBenefits) -> None:
-        self.individuals = AsyncIndividualsWithRawResponse(benefits.individuals)
+        self._benefits = benefits
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             benefits.create,
@@ -446,10 +450,14 @@ class AsyncBenefitsWithRawResponse:
             benefits.list_supported_benefits,
         )
 
+    @cached_property
+    def individuals(self) -> AsyncIndividualsWithRawResponse:
+        return AsyncIndividualsWithRawResponse(self._benefits.individuals)
+
 
 class BenefitsWithStreamingResponse:
     def __init__(self, benefits: Benefits) -> None:
-        self.individuals = IndividualsWithStreamingResponse(benefits.individuals)
+        self._benefits = benefits
 
         self.create = to_streamed_response_wrapper(
             benefits.create,
@@ -467,10 +475,14 @@ class BenefitsWithStreamingResponse:
             benefits.list_supported_benefits,
         )
 
+    @cached_property
+    def individuals(self) -> IndividualsWithStreamingResponse:
+        return IndividualsWithStreamingResponse(self._benefits.individuals)
+
 
 class AsyncBenefitsWithStreamingResponse:
     def __init__(self, benefits: AsyncBenefits) -> None:
-        self.individuals = AsyncIndividualsWithStreamingResponse(benefits.individuals)
+        self._benefits = benefits
 
         self.create = async_to_streamed_response_wrapper(
             benefits.create,
@@ -487,3 +499,7 @@ class AsyncBenefitsWithStreamingResponse:
         self.list_supported_benefits = async_to_streamed_response_wrapper(
             benefits.list_supported_benefits,
         )
+
+    @cached_property
+    def individuals(self) -> AsyncIndividualsWithStreamingResponse:
+        return AsyncIndividualsWithStreamingResponse(self._benefits.individuals)
