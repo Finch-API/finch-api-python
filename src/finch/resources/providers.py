@@ -81,6 +81,8 @@ class AsyncProviders(AsyncAPIResource):
 
 class ProvidersWithRawResponse:
     def __init__(self, providers: Providers) -> None:
+        self._providers = providers
+
         self.list = _legacy_response.to_raw_response_wrapper(
             providers.list,
         )
@@ -88,6 +90,8 @@ class ProvidersWithRawResponse:
 
 class AsyncProvidersWithRawResponse:
     def __init__(self, providers: AsyncProviders) -> None:
+        self._providers = providers
+
         self.list = _legacy_response.async_to_raw_response_wrapper(
             providers.list,
         )
@@ -95,6 +99,8 @@ class AsyncProvidersWithRawResponse:
 
 class ProvidersWithStreamingResponse:
     def __init__(self, providers: Providers) -> None:
+        self._providers = providers
+
         self.list = to_streamed_response_wrapper(
             providers.list,
         )
@@ -102,6 +108,8 @@ class ProvidersWithStreamingResponse:
 
 class AsyncProvidersWithStreamingResponse:
     def __init__(self, providers: AsyncProviders) -> None:
+        self._providers = providers
+
         self.list = async_to_streamed_response_wrapper(
             providers.list,
         )

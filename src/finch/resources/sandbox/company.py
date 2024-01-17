@@ -173,6 +173,8 @@ class AsyncCompany(AsyncAPIResource):
 
 class CompanyWithRawResponse:
     def __init__(self, company: Company) -> None:
+        self._company = company
+
         self.update = _legacy_response.to_raw_response_wrapper(
             company.update,
         )
@@ -180,6 +182,8 @@ class CompanyWithRawResponse:
 
 class AsyncCompanyWithRawResponse:
     def __init__(self, company: AsyncCompany) -> None:
+        self._company = company
+
         self.update = _legacy_response.async_to_raw_response_wrapper(
             company.update,
         )
@@ -187,6 +191,8 @@ class AsyncCompanyWithRawResponse:
 
 class CompanyWithStreamingResponse:
     def __init__(self, company: Company) -> None:
+        self._company = company
+
         self.update = to_streamed_response_wrapper(
             company.update,
         )
@@ -194,6 +200,8 @@ class CompanyWithStreamingResponse:
 
 class AsyncCompanyWithStreamingResponse:
     def __init__(self, company: AsyncCompany) -> None:
+        self._company = company
+
         self.update = async_to_streamed_response_wrapper(
             company.update,
         )

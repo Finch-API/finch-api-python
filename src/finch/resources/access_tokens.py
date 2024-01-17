@@ -126,6 +126,8 @@ class AsyncAccessTokens(AsyncAPIResource):
 
 class AccessTokensWithRawResponse:
     def __init__(self, access_tokens: AccessTokens) -> None:
+        self._access_tokens = access_tokens
+
         self.create = _legacy_response.to_raw_response_wrapper(
             access_tokens.create,
         )
@@ -133,6 +135,8 @@ class AccessTokensWithRawResponse:
 
 class AsyncAccessTokensWithRawResponse:
     def __init__(self, access_tokens: AsyncAccessTokens) -> None:
+        self._access_tokens = access_tokens
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             access_tokens.create,
         )
@@ -140,6 +144,8 @@ class AsyncAccessTokensWithRawResponse:
 
 class AccessTokensWithStreamingResponse:
     def __init__(self, access_tokens: AccessTokens) -> None:
+        self._access_tokens = access_tokens
+
         self.create = to_streamed_response_wrapper(
             access_tokens.create,
         )
@@ -147,6 +153,8 @@ class AccessTokensWithStreamingResponse:
 
 class AsyncAccessTokensWithStreamingResponse:
     def __init__(self, access_tokens: AsyncAccessTokens) -> None:
+        self._access_tokens = access_tokens
+
         self.create = async_to_streamed_response_wrapper(
             access_tokens.create,
         )

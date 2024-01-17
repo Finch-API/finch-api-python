@@ -126,6 +126,8 @@ class AsyncPayStatements(AsyncAPIResource):
 
 class PayStatementsWithRawResponse:
     def __init__(self, pay_statements: PayStatements) -> None:
+        self._pay_statements = pay_statements
+
         self.retrieve_many = _legacy_response.to_raw_response_wrapper(
             pay_statements.retrieve_many,
         )
@@ -133,6 +135,8 @@ class PayStatementsWithRawResponse:
 
 class AsyncPayStatementsWithRawResponse:
     def __init__(self, pay_statements: AsyncPayStatements) -> None:
+        self._pay_statements = pay_statements
+
         self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
             pay_statements.retrieve_many,
         )
@@ -140,6 +144,8 @@ class AsyncPayStatementsWithRawResponse:
 
 class PayStatementsWithStreamingResponse:
     def __init__(self, pay_statements: PayStatements) -> None:
+        self._pay_statements = pay_statements
+
         self.retrieve_many = to_streamed_response_wrapper(
             pay_statements.retrieve_many,
         )
@@ -147,6 +153,8 @@ class PayStatementsWithStreamingResponse:
 
 class AsyncPayStatementsWithStreamingResponse:
     def __init__(self, pay_statements: AsyncPayStatements) -> None:
+        self._pay_statements = pay_statements
+
         self.retrieve_many = async_to_streamed_response_wrapper(
             pay_statements.retrieve_many,
         )

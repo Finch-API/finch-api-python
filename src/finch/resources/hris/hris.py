@@ -143,43 +143,131 @@ class AsyncHRIS(AsyncAPIResource):
 
 class HRISWithRawResponse:
     def __init__(self, hris: HRIS) -> None:
-        self.company = CompanyResourceWithRawResponse(hris.company)
-        self.directory = DirectoryWithRawResponse(hris.directory)
-        self.individuals = IndividualsWithRawResponse(hris.individuals)
-        self.employments = EmploymentsWithRawResponse(hris.employments)
-        self.payments = PaymentsWithRawResponse(hris.payments)
-        self.pay_statements = PayStatementsWithRawResponse(hris.pay_statements)
-        self.benefits = BenefitsWithRawResponse(hris.benefits)
+        self._hris = hris
+
+    @cached_property
+    def company(self) -> CompanyResourceWithRawResponse:
+        return CompanyResourceWithRawResponse(self._hris.company)
+
+    @cached_property
+    def directory(self) -> DirectoryWithRawResponse:
+        return DirectoryWithRawResponse(self._hris.directory)
+
+    @cached_property
+    def individuals(self) -> IndividualsWithRawResponse:
+        return IndividualsWithRawResponse(self._hris.individuals)
+
+    @cached_property
+    def employments(self) -> EmploymentsWithRawResponse:
+        return EmploymentsWithRawResponse(self._hris.employments)
+
+    @cached_property
+    def payments(self) -> PaymentsWithRawResponse:
+        return PaymentsWithRawResponse(self._hris.payments)
+
+    @cached_property
+    def pay_statements(self) -> PayStatementsWithRawResponse:
+        return PayStatementsWithRawResponse(self._hris.pay_statements)
+
+    @cached_property
+    def benefits(self) -> BenefitsWithRawResponse:
+        return BenefitsWithRawResponse(self._hris.benefits)
 
 
 class AsyncHRISWithRawResponse:
     def __init__(self, hris: AsyncHRIS) -> None:
-        self.company = AsyncCompanyResourceWithRawResponse(hris.company)
-        self.directory = AsyncDirectoryWithRawResponse(hris.directory)
-        self.individuals = AsyncIndividualsWithRawResponse(hris.individuals)
-        self.employments = AsyncEmploymentsWithRawResponse(hris.employments)
-        self.payments = AsyncPaymentsWithRawResponse(hris.payments)
-        self.pay_statements = AsyncPayStatementsWithRawResponse(hris.pay_statements)
-        self.benefits = AsyncBenefitsWithRawResponse(hris.benefits)
+        self._hris = hris
+
+    @cached_property
+    def company(self) -> AsyncCompanyResourceWithRawResponse:
+        return AsyncCompanyResourceWithRawResponse(self._hris.company)
+
+    @cached_property
+    def directory(self) -> AsyncDirectoryWithRawResponse:
+        return AsyncDirectoryWithRawResponse(self._hris.directory)
+
+    @cached_property
+    def individuals(self) -> AsyncIndividualsWithRawResponse:
+        return AsyncIndividualsWithRawResponse(self._hris.individuals)
+
+    @cached_property
+    def employments(self) -> AsyncEmploymentsWithRawResponse:
+        return AsyncEmploymentsWithRawResponse(self._hris.employments)
+
+    @cached_property
+    def payments(self) -> AsyncPaymentsWithRawResponse:
+        return AsyncPaymentsWithRawResponse(self._hris.payments)
+
+    @cached_property
+    def pay_statements(self) -> AsyncPayStatementsWithRawResponse:
+        return AsyncPayStatementsWithRawResponse(self._hris.pay_statements)
+
+    @cached_property
+    def benefits(self) -> AsyncBenefitsWithRawResponse:
+        return AsyncBenefitsWithRawResponse(self._hris.benefits)
 
 
 class HRISWithStreamingResponse:
     def __init__(self, hris: HRIS) -> None:
-        self.company = CompanyResourceWithStreamingResponse(hris.company)
-        self.directory = DirectoryWithStreamingResponse(hris.directory)
-        self.individuals = IndividualsWithStreamingResponse(hris.individuals)
-        self.employments = EmploymentsWithStreamingResponse(hris.employments)
-        self.payments = PaymentsWithStreamingResponse(hris.payments)
-        self.pay_statements = PayStatementsWithStreamingResponse(hris.pay_statements)
-        self.benefits = BenefitsWithStreamingResponse(hris.benefits)
+        self._hris = hris
+
+    @cached_property
+    def company(self) -> CompanyResourceWithStreamingResponse:
+        return CompanyResourceWithStreamingResponse(self._hris.company)
+
+    @cached_property
+    def directory(self) -> DirectoryWithStreamingResponse:
+        return DirectoryWithStreamingResponse(self._hris.directory)
+
+    @cached_property
+    def individuals(self) -> IndividualsWithStreamingResponse:
+        return IndividualsWithStreamingResponse(self._hris.individuals)
+
+    @cached_property
+    def employments(self) -> EmploymentsWithStreamingResponse:
+        return EmploymentsWithStreamingResponse(self._hris.employments)
+
+    @cached_property
+    def payments(self) -> PaymentsWithStreamingResponse:
+        return PaymentsWithStreamingResponse(self._hris.payments)
+
+    @cached_property
+    def pay_statements(self) -> PayStatementsWithStreamingResponse:
+        return PayStatementsWithStreamingResponse(self._hris.pay_statements)
+
+    @cached_property
+    def benefits(self) -> BenefitsWithStreamingResponse:
+        return BenefitsWithStreamingResponse(self._hris.benefits)
 
 
 class AsyncHRISWithStreamingResponse:
     def __init__(self, hris: AsyncHRIS) -> None:
-        self.company = AsyncCompanyResourceWithStreamingResponse(hris.company)
-        self.directory = AsyncDirectoryWithStreamingResponse(hris.directory)
-        self.individuals = AsyncIndividualsWithStreamingResponse(hris.individuals)
-        self.employments = AsyncEmploymentsWithStreamingResponse(hris.employments)
-        self.payments = AsyncPaymentsWithStreamingResponse(hris.payments)
-        self.pay_statements = AsyncPayStatementsWithStreamingResponse(hris.pay_statements)
-        self.benefits = AsyncBenefitsWithStreamingResponse(hris.benefits)
+        self._hris = hris
+
+    @cached_property
+    def company(self) -> AsyncCompanyResourceWithStreamingResponse:
+        return AsyncCompanyResourceWithStreamingResponse(self._hris.company)
+
+    @cached_property
+    def directory(self) -> AsyncDirectoryWithStreamingResponse:
+        return AsyncDirectoryWithStreamingResponse(self._hris.directory)
+
+    @cached_property
+    def individuals(self) -> AsyncIndividualsWithStreamingResponse:
+        return AsyncIndividualsWithStreamingResponse(self._hris.individuals)
+
+    @cached_property
+    def employments(self) -> AsyncEmploymentsWithStreamingResponse:
+        return AsyncEmploymentsWithStreamingResponse(self._hris.employments)
+
+    @cached_property
+    def payments(self) -> AsyncPaymentsWithStreamingResponse:
+        return AsyncPaymentsWithStreamingResponse(self._hris.payments)
+
+    @cached_property
+    def pay_statements(self) -> AsyncPayStatementsWithStreamingResponse:
+        return AsyncPayStatementsWithStreamingResponse(self._hris.pay_statements)
+
+    @cached_property
+    def benefits(self) -> AsyncBenefitsWithStreamingResponse:
+        return AsyncBenefitsWithStreamingResponse(self._hris.benefits)
