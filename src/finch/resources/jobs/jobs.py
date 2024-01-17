@@ -62,23 +62,51 @@ class AsyncJobs(AsyncAPIResource):
 
 class JobsWithRawResponse:
     def __init__(self, jobs: Jobs) -> None:
-        self.automated = AutomatedWithRawResponse(jobs.automated)
-        self.manual = ManualWithRawResponse(jobs.manual)
+        self._jobs = jobs
+
+    @cached_property
+    def automated(self) -> AutomatedWithRawResponse:
+        return AutomatedWithRawResponse(self._jobs.automated)
+
+    @cached_property
+    def manual(self) -> ManualWithRawResponse:
+        return ManualWithRawResponse(self._jobs.manual)
 
 
 class AsyncJobsWithRawResponse:
     def __init__(self, jobs: AsyncJobs) -> None:
-        self.automated = AsyncAutomatedWithRawResponse(jobs.automated)
-        self.manual = AsyncManualWithRawResponse(jobs.manual)
+        self._jobs = jobs
+
+    @cached_property
+    def automated(self) -> AsyncAutomatedWithRawResponse:
+        return AsyncAutomatedWithRawResponse(self._jobs.automated)
+
+    @cached_property
+    def manual(self) -> AsyncManualWithRawResponse:
+        return AsyncManualWithRawResponse(self._jobs.manual)
 
 
 class JobsWithStreamingResponse:
     def __init__(self, jobs: Jobs) -> None:
-        self.automated = AutomatedWithStreamingResponse(jobs.automated)
-        self.manual = ManualWithStreamingResponse(jobs.manual)
+        self._jobs = jobs
+
+    @cached_property
+    def automated(self) -> AutomatedWithStreamingResponse:
+        return AutomatedWithStreamingResponse(self._jobs.automated)
+
+    @cached_property
+    def manual(self) -> ManualWithStreamingResponse:
+        return ManualWithStreamingResponse(self._jobs.manual)
 
 
 class AsyncJobsWithStreamingResponse:
     def __init__(self, jobs: AsyncJobs) -> None:
-        self.automated = AsyncAutomatedWithStreamingResponse(jobs.automated)
-        self.manual = AsyncManualWithStreamingResponse(jobs.manual)
+        self._jobs = jobs
+
+    @cached_property
+    def automated(self) -> AsyncAutomatedWithStreamingResponse:
+        return AsyncAutomatedWithStreamingResponse(self._jobs.automated)
+
+    @cached_property
+    def manual(self) -> AsyncManualWithStreamingResponse:
+        return AsyncManualWithStreamingResponse(self._jobs.manual)

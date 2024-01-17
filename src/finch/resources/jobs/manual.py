@@ -109,6 +109,8 @@ class AsyncManual(AsyncAPIResource):
 
 class ManualWithRawResponse:
     def __init__(self, manual: Manual) -> None:
+        self._manual = manual
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             manual.retrieve,
         )
@@ -116,6 +118,8 @@ class ManualWithRawResponse:
 
 class AsyncManualWithRawResponse:
     def __init__(self, manual: AsyncManual) -> None:
+        self._manual = manual
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             manual.retrieve,
         )
@@ -123,6 +127,8 @@ class AsyncManualWithRawResponse:
 
 class ManualWithStreamingResponse:
     def __init__(self, manual: Manual) -> None:
+        self._manual = manual
+
         self.retrieve = to_streamed_response_wrapper(
             manual.retrieve,
         )
@@ -130,6 +136,8 @@ class ManualWithStreamingResponse:
 
 class AsyncManualWithStreamingResponse:
     def __init__(self, manual: AsyncManual) -> None:
+        self._manual = manual
+
         self.retrieve = async_to_streamed_response_wrapper(
             manual.retrieve,
         )

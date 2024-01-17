@@ -144,43 +144,131 @@ class AsyncSandbox(AsyncAPIResource):
 
 class SandboxWithRawResponse:
     def __init__(self, sandbox: Sandbox) -> None:
-        self.connections = ConnectionsWithRawResponse(sandbox.connections)
-        self.company = CompanyWithRawResponse(sandbox.company)
-        self.directory = DirectoryWithRawResponse(sandbox.directory)
-        self.individual = IndividualWithRawResponse(sandbox.individual)
-        self.employment = EmploymentWithRawResponse(sandbox.employment)
-        self.payment = PaymentWithRawResponse(sandbox.payment)
-        self.jobs = JobsWithRawResponse(sandbox.jobs)
+        self._sandbox = sandbox
+
+    @cached_property
+    def connections(self) -> ConnectionsWithRawResponse:
+        return ConnectionsWithRawResponse(self._sandbox.connections)
+
+    @cached_property
+    def company(self) -> CompanyWithRawResponse:
+        return CompanyWithRawResponse(self._sandbox.company)
+
+    @cached_property
+    def directory(self) -> DirectoryWithRawResponse:
+        return DirectoryWithRawResponse(self._sandbox.directory)
+
+    @cached_property
+    def individual(self) -> IndividualWithRawResponse:
+        return IndividualWithRawResponse(self._sandbox.individual)
+
+    @cached_property
+    def employment(self) -> EmploymentWithRawResponse:
+        return EmploymentWithRawResponse(self._sandbox.employment)
+
+    @cached_property
+    def payment(self) -> PaymentWithRawResponse:
+        return PaymentWithRawResponse(self._sandbox.payment)
+
+    @cached_property
+    def jobs(self) -> JobsWithRawResponse:
+        return JobsWithRawResponse(self._sandbox.jobs)
 
 
 class AsyncSandboxWithRawResponse:
     def __init__(self, sandbox: AsyncSandbox) -> None:
-        self.connections = AsyncConnectionsWithRawResponse(sandbox.connections)
-        self.company = AsyncCompanyWithRawResponse(sandbox.company)
-        self.directory = AsyncDirectoryWithRawResponse(sandbox.directory)
-        self.individual = AsyncIndividualWithRawResponse(sandbox.individual)
-        self.employment = AsyncEmploymentWithRawResponse(sandbox.employment)
-        self.payment = AsyncPaymentWithRawResponse(sandbox.payment)
-        self.jobs = AsyncJobsWithRawResponse(sandbox.jobs)
+        self._sandbox = sandbox
+
+    @cached_property
+    def connections(self) -> AsyncConnectionsWithRawResponse:
+        return AsyncConnectionsWithRawResponse(self._sandbox.connections)
+
+    @cached_property
+    def company(self) -> AsyncCompanyWithRawResponse:
+        return AsyncCompanyWithRawResponse(self._sandbox.company)
+
+    @cached_property
+    def directory(self) -> AsyncDirectoryWithRawResponse:
+        return AsyncDirectoryWithRawResponse(self._sandbox.directory)
+
+    @cached_property
+    def individual(self) -> AsyncIndividualWithRawResponse:
+        return AsyncIndividualWithRawResponse(self._sandbox.individual)
+
+    @cached_property
+    def employment(self) -> AsyncEmploymentWithRawResponse:
+        return AsyncEmploymentWithRawResponse(self._sandbox.employment)
+
+    @cached_property
+    def payment(self) -> AsyncPaymentWithRawResponse:
+        return AsyncPaymentWithRawResponse(self._sandbox.payment)
+
+    @cached_property
+    def jobs(self) -> AsyncJobsWithRawResponse:
+        return AsyncJobsWithRawResponse(self._sandbox.jobs)
 
 
 class SandboxWithStreamingResponse:
     def __init__(self, sandbox: Sandbox) -> None:
-        self.connections = ConnectionsWithStreamingResponse(sandbox.connections)
-        self.company = CompanyWithStreamingResponse(sandbox.company)
-        self.directory = DirectoryWithStreamingResponse(sandbox.directory)
-        self.individual = IndividualWithStreamingResponse(sandbox.individual)
-        self.employment = EmploymentWithStreamingResponse(sandbox.employment)
-        self.payment = PaymentWithStreamingResponse(sandbox.payment)
-        self.jobs = JobsWithStreamingResponse(sandbox.jobs)
+        self._sandbox = sandbox
+
+    @cached_property
+    def connections(self) -> ConnectionsWithStreamingResponse:
+        return ConnectionsWithStreamingResponse(self._sandbox.connections)
+
+    @cached_property
+    def company(self) -> CompanyWithStreamingResponse:
+        return CompanyWithStreamingResponse(self._sandbox.company)
+
+    @cached_property
+    def directory(self) -> DirectoryWithStreamingResponse:
+        return DirectoryWithStreamingResponse(self._sandbox.directory)
+
+    @cached_property
+    def individual(self) -> IndividualWithStreamingResponse:
+        return IndividualWithStreamingResponse(self._sandbox.individual)
+
+    @cached_property
+    def employment(self) -> EmploymentWithStreamingResponse:
+        return EmploymentWithStreamingResponse(self._sandbox.employment)
+
+    @cached_property
+    def payment(self) -> PaymentWithStreamingResponse:
+        return PaymentWithStreamingResponse(self._sandbox.payment)
+
+    @cached_property
+    def jobs(self) -> JobsWithStreamingResponse:
+        return JobsWithStreamingResponse(self._sandbox.jobs)
 
 
 class AsyncSandboxWithStreamingResponse:
     def __init__(self, sandbox: AsyncSandbox) -> None:
-        self.connections = AsyncConnectionsWithStreamingResponse(sandbox.connections)
-        self.company = AsyncCompanyWithStreamingResponse(sandbox.company)
-        self.directory = AsyncDirectoryWithStreamingResponse(sandbox.directory)
-        self.individual = AsyncIndividualWithStreamingResponse(sandbox.individual)
-        self.employment = AsyncEmploymentWithStreamingResponse(sandbox.employment)
-        self.payment = AsyncPaymentWithStreamingResponse(sandbox.payment)
-        self.jobs = AsyncJobsWithStreamingResponse(sandbox.jobs)
+        self._sandbox = sandbox
+
+    @cached_property
+    def connections(self) -> AsyncConnectionsWithStreamingResponse:
+        return AsyncConnectionsWithStreamingResponse(self._sandbox.connections)
+
+    @cached_property
+    def company(self) -> AsyncCompanyWithStreamingResponse:
+        return AsyncCompanyWithStreamingResponse(self._sandbox.company)
+
+    @cached_property
+    def directory(self) -> AsyncDirectoryWithStreamingResponse:
+        return AsyncDirectoryWithStreamingResponse(self._sandbox.directory)
+
+    @cached_property
+    def individual(self) -> AsyncIndividualWithStreamingResponse:
+        return AsyncIndividualWithStreamingResponse(self._sandbox.individual)
+
+    @cached_property
+    def employment(self) -> AsyncEmploymentWithStreamingResponse:
+        return AsyncEmploymentWithStreamingResponse(self._sandbox.employment)
+
+    @cached_property
+    def payment(self) -> AsyncPaymentWithStreamingResponse:
+        return AsyncPaymentWithStreamingResponse(self._sandbox.payment)
+
+    @cached_property
+    def jobs(self) -> AsyncJobsWithStreamingResponse:
+        return AsyncJobsWithStreamingResponse(self._sandbox.jobs)

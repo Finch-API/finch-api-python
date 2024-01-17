@@ -46,19 +46,35 @@ class AsyncJobs(AsyncAPIResource):
 
 class JobsWithRawResponse:
     def __init__(self, jobs: Jobs) -> None:
-        self.configuration = ConfigurationWithRawResponse(jobs.configuration)
+        self._jobs = jobs
+
+    @cached_property
+    def configuration(self) -> ConfigurationWithRawResponse:
+        return ConfigurationWithRawResponse(self._jobs.configuration)
 
 
 class AsyncJobsWithRawResponse:
     def __init__(self, jobs: AsyncJobs) -> None:
-        self.configuration = AsyncConfigurationWithRawResponse(jobs.configuration)
+        self._jobs = jobs
+
+    @cached_property
+    def configuration(self) -> AsyncConfigurationWithRawResponse:
+        return AsyncConfigurationWithRawResponse(self._jobs.configuration)
 
 
 class JobsWithStreamingResponse:
     def __init__(self, jobs: Jobs) -> None:
-        self.configuration = ConfigurationWithStreamingResponse(jobs.configuration)
+        self._jobs = jobs
+
+    @cached_property
+    def configuration(self) -> ConfigurationWithStreamingResponse:
+        return ConfigurationWithStreamingResponse(self._jobs.configuration)
 
 
 class AsyncJobsWithStreamingResponse:
     def __init__(self, jobs: AsyncJobs) -> None:
-        self.configuration = AsyncConfigurationWithStreamingResponse(jobs.configuration)
+        self._jobs = jobs
+
+    @cached_property
+    def configuration(self) -> AsyncConfigurationWithStreamingResponse:
+        return AsyncConfigurationWithStreamingResponse(self._jobs.configuration)

@@ -298,6 +298,8 @@ class AsyncAutomated(AsyncAPIResource):
 
 class AutomatedWithRawResponse:
     def __init__(self, automated: Automated) -> None:
+        self._automated = automated
+
         self.create = _legacy_response.to_raw_response_wrapper(
             automated.create,
         )
@@ -311,6 +313,8 @@ class AutomatedWithRawResponse:
 
 class AsyncAutomatedWithRawResponse:
     def __init__(self, automated: AsyncAutomated) -> None:
+        self._automated = automated
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             automated.create,
         )
@@ -324,6 +328,8 @@ class AsyncAutomatedWithRawResponse:
 
 class AutomatedWithStreamingResponse:
     def __init__(self, automated: Automated) -> None:
+        self._automated = automated
+
         self.create = to_streamed_response_wrapper(
             automated.create,
         )
@@ -337,6 +343,8 @@ class AutomatedWithStreamingResponse:
 
 class AsyncAutomatedWithStreamingResponse:
     def __init__(self, automated: AsyncAutomated) -> None:
+        self._automated = automated
+
         self.create = async_to_streamed_response_wrapper(
             automated.create,
         )

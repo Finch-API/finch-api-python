@@ -209,6 +209,8 @@ class AsyncAccounts(AsyncAPIResource):
 
 class AccountsWithRawResponse:
     def __init__(self, accounts: Accounts) -> None:
+        self._accounts = accounts
+
         self.create = _legacy_response.to_raw_response_wrapper(
             accounts.create,
         )
@@ -219,6 +221,8 @@ class AccountsWithRawResponse:
 
 class AsyncAccountsWithRawResponse:
     def __init__(self, accounts: AsyncAccounts) -> None:
+        self._accounts = accounts
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             accounts.create,
         )
@@ -229,6 +233,8 @@ class AsyncAccountsWithRawResponse:
 
 class AccountsWithStreamingResponse:
     def __init__(self, accounts: Accounts) -> None:
+        self._accounts = accounts
+
         self.create = to_streamed_response_wrapper(
             accounts.create,
         )
@@ -239,6 +245,8 @@ class AccountsWithStreamingResponse:
 
 class AsyncAccountsWithStreamingResponse:
     def __init__(self, accounts: AsyncAccounts) -> None:
+        self._accounts = accounts
+
         self.create = async_to_streamed_response_wrapper(
             accounts.create,
         )
