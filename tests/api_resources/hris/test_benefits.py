@@ -9,7 +9,6 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
-from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncSinglePage, AsyncSinglePage
 from finch.types.hris import (
     CompanyBenefit,
@@ -19,13 +18,10 @@ from finch.types.hris import (
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "My Access Token"
 
 
 class TestBenefits:
-    strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Finch) -> None:
@@ -197,18 +193,16 @@ class TestBenefits:
 
 
 class TestAsyncBenefits:
-    strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.create()
+    async def test_method_create(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.create()
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.create(
             description="string",
             frequency="one_time",
             type="401k",
@@ -216,8 +210,8 @@ class TestAsyncBenefits:
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncFinch) -> None:
-        response = await client.hris.benefits.with_raw_response.create()
+    async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
+        response = await async_client.hris.benefits.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -225,8 +219,8 @@ class TestAsyncBenefits:
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncFinch) -> None:
-        async with client.hris.benefits.with_streaming_response.create() as response:
+    async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
+        async with async_client.hris.benefits.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -236,15 +230,15 @@ class TestAsyncBenefits:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_retrieve(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.retrieve(
+    async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.retrieve(
             "string",
         )
         assert_matches_type(CompanyBenefit, benefit, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, client: AsyncFinch) -> None:
-        response = await client.hris.benefits.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
+        response = await async_client.hris.benefits.with_raw_response.retrieve(
             "string",
         )
 
@@ -254,8 +248,8 @@ class TestAsyncBenefits:
         assert_matches_type(CompanyBenefit, benefit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, client: AsyncFinch) -> None:
-        async with client.hris.benefits.with_streaming_response.retrieve(
+    async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
+        async with async_client.hris.benefits.with_streaming_response.retrieve(
             "string",
         ) as response:
             assert not response.is_closed
@@ -267,30 +261,30 @@ class TestAsyncBenefits:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, client: AsyncFinch) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
-            await client.hris.benefits.with_raw_response.retrieve(
+            await async_client.hris.benefits.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    async def test_method_update(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.update(
+    async def test_method_update(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.update(
             "string",
         )
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
-    async def test_method_update_with_all_params(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.update(
+    async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.update(
             "string",
             description="string",
         )
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncFinch) -> None:
-        response = await client.hris.benefits.with_raw_response.update(
+    async def test_raw_response_update(self, async_client: AsyncFinch) -> None:
+        response = await async_client.hris.benefits.with_raw_response.update(
             "string",
         )
 
@@ -300,8 +294,8 @@ class TestAsyncBenefits:
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, client: AsyncFinch) -> None:
-        async with client.hris.benefits.with_streaming_response.update(
+    async def test_streaming_response_update(self, async_client: AsyncFinch) -> None:
+        async with async_client.hris.benefits.with_streaming_response.update(
             "string",
         ) as response:
             assert not response.is_closed
@@ -313,20 +307,20 @@ class TestAsyncBenefits:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, client: AsyncFinch) -> None:
+    async def test_path_params_update(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
-            await client.hris.benefits.with_raw_response.update(
+            await async_client.hris.benefits.with_raw_response.update(
                 "",
             )
 
     @parametrize
-    async def test_method_list(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.list()
+    async def test_method_list(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.list()
         assert_matches_type(AsyncSinglePage[CompanyBenefit], benefit, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncFinch) -> None:
-        response = await client.hris.benefits.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
+        response = await async_client.hris.benefits.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -334,8 +328,8 @@ class TestAsyncBenefits:
         assert_matches_type(AsyncSinglePage[CompanyBenefit], benefit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncFinch) -> None:
-        async with client.hris.benefits.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
+        async with async_client.hris.benefits.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -345,13 +339,13 @@ class TestAsyncBenefits:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_list_supported_benefits(self, client: AsyncFinch) -> None:
-        benefit = await client.hris.benefits.list_supported_benefits()
+    async def test_method_list_supported_benefits(self, async_client: AsyncFinch) -> None:
+        benefit = await async_client.hris.benefits.list_supported_benefits()
         assert_matches_type(AsyncSinglePage[SupportedBenefit], benefit, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_supported_benefits(self, client: AsyncFinch) -> None:
-        response = await client.hris.benefits.with_raw_response.list_supported_benefits()
+    async def test_raw_response_list_supported_benefits(self, async_client: AsyncFinch) -> None:
+        response = await async_client.hris.benefits.with_raw_response.list_supported_benefits()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -359,8 +353,8 @@ class TestAsyncBenefits:
         assert_matches_type(AsyncSinglePage[SupportedBenefit], benefit, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_supported_benefits(self, client: AsyncFinch) -> None:
-        async with client.hris.benefits.with_streaming_response.list_supported_benefits() as response:
+    async def test_streaming_response_list_supported_benefits(self, async_client: AsyncFinch) -> None:
+        async with async_client.hris.benefits.with_streaming_response.list_supported_benefits() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

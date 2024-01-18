@@ -12,16 +12,12 @@ import time_machine
 from pydantic import BaseModel
 
 from finch import Finch, AsyncFinch
-from finch._client import Finch, AsyncFinch
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "My Access Token"
 
 
 class TestWebhooks:
-    strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     timestamp = "1676312382"
     fake_now = datetime.fromtimestamp(float(timestamp), tz=timezone.utc)
@@ -36,21 +32,21 @@ class TestWebhooks:
     secret = "5WbX5kEWLlfzsGNjH64I8lOOqUB6e8FH"
 
     @time_machine.travel(fake_now)
-    def test_unwrap(self) -> None:
+    def test_unwrap(self, client: Finch) -> None:
         payload = self.payload
         headers = self.headers
         secret = self.secret
 
-        obj = self.strict_client.webhooks.unwrap(payload, headers, secret=secret)
+        obj = client.webhooks.unwrap(payload, headers, secret=secret)
         assert isinstance(obj, BaseModel)
 
     @time_machine.travel(fake_now)
-    def test_verify_signature(self) -> None:
+    def test_verify_signature(self, client: Finch) -> None:
         payload = self.payload
         headers = self.headers
         secret = self.secret
         signature = self.signature
-        verify = self.strict_client.webhooks.verify_signature
+        verify = client.webhooks.verify_signature
 
         assert verify(payload=payload, headers=headers, secret=secret) is None
 
@@ -120,9 +116,7 @@ class TestWebhooks:
 
 
 class TestAsyncWebhooks:
-    strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     timestamp = "1676312382"
     fake_now = datetime.fromtimestamp(float(timestamp), tz=timezone.utc)
@@ -137,21 +131,21 @@ class TestAsyncWebhooks:
     secret = "5WbX5kEWLlfzsGNjH64I8lOOqUB6e8FH"
 
     @time_machine.travel(fake_now)
-    def test_unwrap(self) -> None:
+    def test_unwrap(self, async_client: AsyncFinch) -> None:
         payload = self.payload
         headers = self.headers
         secret = self.secret
 
-        obj = self.strict_client.webhooks.unwrap(payload, headers, secret=secret)
+        obj = async_client.webhooks.unwrap(payload, headers, secret=secret)
         assert isinstance(obj, BaseModel)
 
     @time_machine.travel(fake_now)
-    def test_verify_signature(self) -> None:
+    def test_verify_signature(self, async_client: AsyncFinch) -> None:
         payload = self.payload
         headers = self.headers
         secret = self.secret
         signature = self.signature
-        verify = self.strict_client.webhooks.verify_signature
+        verify = async_client.webhooks.verify_signature
 
         assert verify(payload=payload, headers=headers, secret=secret) is None
 

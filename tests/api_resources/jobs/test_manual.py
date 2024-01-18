@@ -9,17 +9,13 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
-from finch._client import Finch, AsyncFinch
 from finch.types.jobs import ManualAsyncJob
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "My Access Token"
 
 
 class TestManual:
-    strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_retrieve(self, client: Finch) -> None:
@@ -61,20 +57,18 @@ class TestManual:
 
 
 class TestAsyncManual:
-    strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, client: AsyncFinch) -> None:
-        manual = await client.jobs.manual.retrieve(
+    async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
+        manual = await async_client.jobs.manual.retrieve(
             "string",
         )
         assert_matches_type(ManualAsyncJob, manual, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, client: AsyncFinch) -> None:
-        response = await client.jobs.manual.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
+        response = await async_client.jobs.manual.with_raw_response.retrieve(
             "string",
         )
 
@@ -84,8 +78,8 @@ class TestAsyncManual:
         assert_matches_type(ManualAsyncJob, manual, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, client: AsyncFinch) -> None:
-        async with client.jobs.manual.with_streaming_response.retrieve(
+    async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
+        async with async_client.jobs.manual.with_streaming_response.retrieve(
             "string",
         ) as response:
             assert not response.is_closed
@@ -97,8 +91,8 @@ class TestAsyncManual:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, client: AsyncFinch) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `job_id` but received ''"):
-            await client.jobs.manual.with_raw_response.retrieve(
+            await async_client.jobs.manual.with_raw_response.retrieve(
                 "",
             )
