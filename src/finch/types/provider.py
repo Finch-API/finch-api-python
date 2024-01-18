@@ -35,6 +35,7 @@ __all__ = [
     "AuthenticationMethodSupportedFieldsPayStatementPayStatements",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEarnings",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployeeDeductions",
+    "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerContributions",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerDeductions",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsTaxes",
     "AuthenticationMethodSupportedFieldsPayment",
@@ -288,6 +289,14 @@ class AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployeeDeduct
     type: Optional[bool] = None
 
 
+class AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerContributions(BaseModel):
+    amount: Optional[bool] = None
+
+    currency: Optional[bool] = None
+
+    name: Optional[bool] = None
+
+
 class AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerDeductions(BaseModel):
     amount: Optional[bool] = None
 
@@ -313,7 +322,12 @@ class AuthenticationMethodSupportedFieldsPayStatementPayStatements(BaseModel):
 
     employee_deductions: Optional[AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployeeDeductions] = None
 
+    employer_contributions: Optional[
+        AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerContributions
+    ] = None
+
     employer_deductions: Optional[AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerDeductions] = None
+    """[DEPRECATED] Use `employer_contributions` instead"""
 
     gross_pay: Optional[bool] = None
 
