@@ -9,17 +9,13 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
-from finch._client import Finch, AsyncFinch
 from finch.types.sandbox import EmploymentUpdateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "My Access Token"
 
 
 class TestEmployment:
-    strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_update(self, client: Finch) -> None:
@@ -133,20 +129,18 @@ class TestEmployment:
 
 
 class TestAsyncEmployment:
-    strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_update(self, client: AsyncFinch) -> None:
-        employment = await client.sandbox.employment.update(
+    async def test_method_update(self, async_client: AsyncFinch) -> None:
+        employment = await async_client.sandbox.employment.update(
             "string",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
-    async def test_method_update_with_all_params(self, client: AsyncFinch) -> None:
-        employment = await client.sandbox.employment.update(
+    async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
+        employment = await async_client.sandbox.employment.update(
             "string",
             class_code="string",
             custom_fields=[
@@ -217,8 +211,8 @@ class TestAsyncEmployment:
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncFinch) -> None:
-        response = await client.sandbox.employment.with_raw_response.update(
+    async def test_raw_response_update(self, async_client: AsyncFinch) -> None:
+        response = await async_client.sandbox.employment.with_raw_response.update(
             "string",
         )
 
@@ -228,8 +222,8 @@ class TestAsyncEmployment:
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, client: AsyncFinch) -> None:
-        async with client.sandbox.employment.with_streaming_response.update(
+    async def test_streaming_response_update(self, async_client: AsyncFinch) -> None:
+        async with async_client.sandbox.employment.with_streaming_response.update(
             "string",
         ) as response:
             assert not response.is_closed
@@ -241,8 +235,8 @@ class TestAsyncEmployment:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, client: AsyncFinch) -> None:
+    async def test_path_params_update(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `individual_id` but received ''"):
-            await client.sandbox.employment.with_raw_response.update(
+            await async_client.sandbox.employment.with_raw_response.update(
                 "",
             )

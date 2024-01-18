@@ -10,18 +10,14 @@ import pytest
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
 from finch._utils import parse_date
-from finch._client import Finch, AsyncFinch
 from finch.pagination import SyncSinglePage, AsyncSinglePage
 from finch.types.hris import Payment
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "My Access Token"
 
 
 class TestPayments:
-    strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_list(self, client: Finch) -> None:
@@ -59,21 +55,19 @@ class TestPayments:
 
 
 class TestAsyncPayments:
-    strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list(self, client: AsyncFinch) -> None:
-        payment = await client.hris.payments.list(
+    async def test_method_list(self, async_client: AsyncFinch) -> None:
+        payment = await async_client.hris.payments.list(
             end_date=parse_date("2021-01-01"),
             start_date=parse_date("2021-01-01"),
         )
         assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncFinch) -> None:
-        response = await client.hris.payments.with_raw_response.list(
+    async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
+        response = await async_client.hris.payments.with_raw_response.list(
             end_date=parse_date("2021-01-01"),
             start_date=parse_date("2021-01-01"),
         )
@@ -84,8 +78,8 @@ class TestAsyncPayments:
         assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncFinch) -> None:
-        async with client.hris.payments.with_streaming_response.list(
+    async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
+        async with async_client.hris.payments.with_streaming_response.list(
             end_date=parse_date("2021-01-01"),
             start_date=parse_date("2021-01-01"),
         ) as response:
