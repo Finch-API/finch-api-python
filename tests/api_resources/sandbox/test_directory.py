@@ -9,17 +9,13 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
-from finch._client import Finch, AsyncFinch
 from finch.types.sandbox import DirectoryCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-access_token = "My Access Token"
 
 
 class TestDirectory:
-    strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Finch) -> None:
@@ -54,20 +50,18 @@ class TestDirectory:
 
 
 class TestAsyncDirectory:
-    strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
-    loose_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncFinch) -> None:
-        directory = await client.sandbox.directory.create(
+    async def test_method_create(self, async_client: AsyncFinch) -> None:
+        directory = await async_client.sandbox.directory.create(
             body=[{}],
         )
         assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncFinch) -> None:
-        response = await client.sandbox.directory.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
+        response = await async_client.sandbox.directory.with_raw_response.create(
             body=[{}],
         )
 
@@ -77,8 +71,8 @@ class TestAsyncDirectory:
         assert_matches_type(DirectoryCreateResponse, directory, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncFinch) -> None:
-        async with client.sandbox.directory.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
+        async with async_client.sandbox.directory.with_streaming_response.create(
             body=[{}],
         ) as response:
             assert not response.is_closed
