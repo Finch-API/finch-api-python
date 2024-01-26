@@ -13,7 +13,7 @@ class ConnectionCreateResponse(BaseModel):
 
     account_id: str
 
-    authentication_type: Literal["credentials", "api_token", "oauth", "assisted"]
+    authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 
     company_id: str
 

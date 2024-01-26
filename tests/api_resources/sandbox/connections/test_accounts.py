@@ -35,7 +35,7 @@ class TestAccounts:
         account = client.sandbox.connections.accounts.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             provider_id="string",
-            authentication_type="credentials",
+            authentication_type="credential",
             products=["string", "string", "string"],
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
@@ -119,7 +119,7 @@ class TestAsyncAccounts:
         account = await async_client.sandbox.connections.accounts.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             provider_id="string",
-            authentication_type="credentials",
+            authentication_type="credential",
             products=["string", "string", "string"],
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
