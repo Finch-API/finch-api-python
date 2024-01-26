@@ -13,7 +13,7 @@ class AccountCreateParams(TypedDict, total=False):
 
     provider_id: Required[str]
 
-    authentication_type: Literal["credentials", "api_token", "oauth", "assisted"]
+    authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 
     products: List[str]
     """

@@ -41,7 +41,7 @@ class Accounts(SyncAPIResource):
         *,
         company_id: str,
         provider_id: str,
-        authentication_type: Literal["credentials", "api_token", "oauth", "assisted"] | NotGiven = NOT_GIVEN,
+        authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | NotGiven = NOT_GIVEN,
         products: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -131,7 +131,7 @@ class AsyncAccounts(AsyncAPIResource):
         *,
         company_id: str,
         provider_id: str,
-        authentication_type: Literal["credentials", "api_token", "oauth", "assisted"] | NotGiven = NOT_GIVEN,
+        authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | NotGiven = NOT_GIVEN,
         products: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

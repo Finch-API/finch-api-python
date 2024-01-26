@@ -11,7 +11,7 @@ __all__ = ["ConnectionCreateParams"]
 class ConnectionCreateParams(TypedDict, total=False):
     provider_id: Required[str]
 
-    authentication_type: Literal["credentials", "api_token", "oauth", "assisted"]
+    authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 
     employer_size: int
     """Optional: the size of the employer to be created with this connection.
