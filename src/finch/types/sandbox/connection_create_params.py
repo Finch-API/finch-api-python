@@ -13,7 +13,7 @@ class ConnectionCreateParams(TypedDict, total=False):
 
     authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 
-    employer_size: int
+    employee_size: int
     """Optional: the size of the employer to be created with this connection.
 
     Defaults to 20

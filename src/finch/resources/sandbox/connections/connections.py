@@ -47,7 +47,7 @@ class Connections(SyncAPIResource):
         *,
         provider_id: str,
         authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | NotGiven = NOT_GIVEN,
-        employer_size: int | NotGiven = NOT_GIVEN,
+        employee_size: int | NotGiven = NOT_GIVEN,
         products: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -60,7 +60,7 @@ class Connections(SyncAPIResource):
         Create a new connection (new company/provider pair) with a new account
 
         Args:
-          employer_size: Optional: the size of the employer to be created with this connection. Defaults
+          employee_size: Optional: the size of the employer to be created with this connection. Defaults
               to 20
 
           extra_headers: Send extra headers
@@ -77,7 +77,7 @@ class Connections(SyncAPIResource):
                 {
                     "provider_id": provider_id,
                     "authentication_type": authentication_type,
-                    "employer_size": employer_size,
+                    "employee_size": employee_size,
                     "products": products,
                 },
                 connection_create_params.ConnectionCreateParams,
@@ -107,7 +107,7 @@ class AsyncConnections(AsyncAPIResource):
         *,
         provider_id: str,
         authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | NotGiven = NOT_GIVEN,
-        employer_size: int | NotGiven = NOT_GIVEN,
+        employee_size: int | NotGiven = NOT_GIVEN,
         products: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -120,7 +120,7 @@ class AsyncConnections(AsyncAPIResource):
         Create a new connection (new company/provider pair) with a new account
 
         Args:
-          employer_size: Optional: the size of the employer to be created with this connection. Defaults
+          employee_size: Optional: the size of the employer to be created with this connection. Defaults
               to 20
 
           extra_headers: Send extra headers
@@ -137,7 +137,7 @@ class AsyncConnections(AsyncAPIResource):
                 {
                     "provider_id": provider_id,
                     "authentication_type": authentication_type,
-                    "employer_size": employer_size,
+                    "employee_size": employee_size,
                     "products": products,
                 },
                 connection_create_params.ConnectionCreateParams,
