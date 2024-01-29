@@ -31,7 +31,7 @@ class TestConnections:
         connection = client.sandbox.connections.create(
             provider_id="string",
             authentication_type="credential",
-            employer_size=0,
+            employee_size=0,
             products=["string", "string", "string"],
         )
         assert_matches_type(ConnectionCreateResponse, connection, path=["response"])
@@ -80,7 +80,7 @@ class TestAsyncConnections:
         connection = await async_client.sandbox.connections.create(
             provider_id="string",
             authentication_type="credential",
-            employer_size=0,
+            employee_size=0,
             products=["string", "string", "string"],
         )
         assert_matches_type(ConnectionCreateResponse, connection, path=["response"])
