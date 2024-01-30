@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.13.0 (2024-01-30)
+
+Full Changelog: [v0.12.0...v0.13.0](https://github.com/Finch-API/finch-api-python/compare/v0.12.0...v0.13.0)
+
+### Features
+
+* **api:** add employer_contributions field ([#270](https://github.com/Finch-API/finch-api-python/issues/270)) ([f1d513b](https://github.com/Finch-API/finch-api-python/commit/f1d513bb0883aca5ced29e4a59b44542abb680ad))
+* **client:** add support for streaming raw responses ([#261](https://github.com/Finch-API/finch-api-python/issues/261)) ([60bc727](https://github.com/Finch-API/finch-api-python/commit/60bc727188ed804cb48bfc2fc24d26da4d79a27c))
+* **client:** enable follow redirects by default ([#273](https://github.com/Finch-API/finch-api-python/issues/273)) ([72b922e](https://github.com/Finch-API/finch-api-python/commit/72b922ea3c73eb7a6d12b6634a6b7b265be4f692))
+* **client:** support parsing custom response types ([#277](https://github.com/Finch-API/finch-api-python/issues/277)) ([c36ff77](https://github.com/Finch-API/finch-api-python/commit/c36ff776522876c4688a205869a3e22e7aa6c976))
+
+
+### Bug Fixes
+
+* **api:** fix authentication_type enum ([#276](https://github.com/Finch-API/finch-api-python/issues/276)) ([85c0e90](https://github.com/Finch-API/finch-api-python/commit/85c0e90321b1f30868476fd2f4ae368cde5135bc))
+* **api:** update `employer_size` parameter to `employee_size` ([#278](https://github.com/Finch-API/finch-api-python/issues/278)) ([526eeab](https://github.com/Finch-API/finch-api-python/commit/526eeab21a6101d0e96f7cdabec0ce3edf621812))
+* **client:** ensure path params are non-empty ([#263](https://github.com/Finch-API/finch-api-python/issues/263)) ([c969f5b](https://github.com/Finch-API/finch-api-python/commit/c969f5b39878d410514728489a19725eba9fefaa))
+
+
+### Chores
+
+* add write_to_file binary helper method ([#265](https://github.com/Finch-API/finch-api-python/issues/265)) ([152fafc](https://github.com/Finch-API/finch-api-python/commit/152fafc6f7931407bd9669b1cca01b50ab381624))
+* **ci:** rely on Stainless GitHub App for releases ([#269](https://github.com/Finch-API/finch-api-python/issues/269)) ([864900e](https://github.com/Finch-API/finch-api-python/commit/864900e0e66bbc997a2bbcd42b2ebd99a2f6a782))
+* **internal:** add internal helpers ([#272](https://github.com/Finch-API/finch-api-python/issues/272)) ([c377864](https://github.com/Finch-API/finch-api-python/commit/c37786436fcb348933c7b186d9e2e4cd953e1dee))
+* **internal:** enable ruff type checking misuse lint rule ([#275](https://github.com/Finch-API/finch-api-python/issues/275)) ([7c8a13b](https://github.com/Finch-API/finch-api-python/commit/7c8a13bfe250c150a9aca72748f1b3d898ac29ae))
+* **internal:** fix typing util function ([#266](https://github.com/Finch-API/finch-api-python/issues/266)) ([1c716b1](https://github.com/Finch-API/finch-api-python/commit/1c716b1c143ccaf8ae5a43a6cb98f1a1f313ae70))
+* **internal:** share client instances between all tests ([#271](https://github.com/Finch-API/finch-api-python/issues/271)) ([23c95da](https://github.com/Finch-API/finch-api-python/commit/23c95da41afbb7315c7a8f00be52f5c53c369bd6))
+* **internal:** speculative retry-after-ms support ([#267](https://github.com/Finch-API/finch-api-python/issues/267)) ([1549d50](https://github.com/Finch-API/finch-api-python/commit/1549d5007158207b9d3c399e5d0a739b10f80184))
+* **internal:** support multipart data with overlapping keys ([#274](https://github.com/Finch-API/finch-api-python/issues/274)) ([cd412ed](https://github.com/Finch-API/finch-api-python/commit/cd412ed95b3925924f31ca86fdb882005685488c))
+* **internal:** updates to proxy helper ([#264](https://github.com/Finch-API/finch-api-python/issues/264)) ([6d1df20](https://github.com/Finch-API/finch-api-python/commit/6d1df207d81021c3e11cbec9a8d8a158f178895c))
+* lazy load raw resource class properties ([#268](https://github.com/Finch-API/finch-api-python/issues/268)) ([1f75530](https://github.com/Finch-API/finch-api-python/commit/1f755305f8842d6fa47464c4d18a935d5a47ea8b))
+
 ## 0.12.0 (2024-01-12)
 
 Full Changelog: [v0.11.0...v0.12.0](https://github.com/Finch-API/finch-api-python/compare/v0.11.0...v0.12.0)
