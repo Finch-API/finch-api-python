@@ -7,7 +7,7 @@ import httpx
 from .. import _legacy_response
 from ..types import CreateAccessTokenResponse, access_token_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import is_given, maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -30,10 +30,10 @@ class AccessTokens(SyncAPIResource):
     def create(
         self,
         *,
-        client_id: str,
-        client_secret: str,
         code: str,
         redirect_uri: str,
+        client_id: str | NotGiven = NOT_GIVEN,
+        client_secret: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -53,6 +53,20 @@ class AccessTokens(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(client_id):
+            if self._client.client_id is None:
+                raise ValueError(
+                    "client_id must be provided as an argument or with the FINCH_CLIENT_ID environment variable"
+                )
+            client_id = self._client.client_id
+
+        if not is_given(client_secret):
+            if self._client.client_secret is None:
+                raise ValueError(
+                    "client_secret must be provided as an argument or with the FINCH_CLIENT_SECRET environment variable"
+                )
+            client_secret = self._client.client_secret
+
         return self._post(
             "/auth/token",
             body=maybe_transform(
@@ -83,10 +97,10 @@ class AsyncAccessTokens(AsyncAPIResource):
     async def create(
         self,
         *,
-        client_id: str,
-        client_secret: str,
         code: str,
         redirect_uri: str,
+        client_id: str | NotGiven = NOT_GIVEN,
+        client_secret: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,6 +120,20 @@ class AsyncAccessTokens(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(client_id):
+            if self._client.client_id is None:
+                raise ValueError(
+                    "client_id must be provided as an argument or with the FINCH_CLIENT_ID environment variable"
+                )
+            client_id = self._client.client_id
+
+        if not is_given(client_secret):
+            if self._client.client_secret is None:
+                raise ValueError(
+                    "client_secret must be provided as an argument or with the FINCH_CLIENT_SECRET environment variable"
+                )
+            client_secret = self._client.client_secret
+
         return await self._post(
             "/auth/token",
             body=maybe_transform(

@@ -20,18 +20,24 @@ class TestAccessTokens:
     @parametrize
     def test_method_create(self, client: Finch) -> None:
         access_token = client.access_tokens.create(
-            client_id="<your_client_id>",
-            client_secret="<your_client_secret>",
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: Finch) -> None:
-        response = client.access_tokens.with_raw_response.create(
+    def test_method_create_with_all_params(self, client: Finch) -> None:
+        access_token = client.access_tokens.create(
+            code="<your_authorization_code>",
+            redirect_uri="https://example.com",
             client_id="<your_client_id>",
             client_secret="<your_client_secret>",
+        )
+        assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
+
+    @parametrize
+    def test_raw_response_create(self, client: Finch) -> None:
+        response = client.access_tokens.with_raw_response.create(
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         )
@@ -44,8 +50,6 @@ class TestAccessTokens:
     @parametrize
     def test_streaming_response_create(self, client: Finch) -> None:
         with client.access_tokens.with_streaming_response.create(
-            client_id="<your_client_id>",
-            client_secret="<your_client_secret>",
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         ) as response:
@@ -64,18 +68,24 @@ class TestAsyncAccessTokens:
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
         access_token = await async_client.access_tokens.create(
-            client_id="<your_client_id>",
-            client_secret="<your_client_secret>",
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
-        response = await async_client.access_tokens.with_raw_response.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
+        access_token = await async_client.access_tokens.create(
+            code="<your_authorization_code>",
+            redirect_uri="https://example.com",
             client_id="<your_client_id>",
             client_secret="<your_client_secret>",
+        )
+        assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
+        response = await async_client.access_tokens.with_raw_response.create(
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         )
@@ -88,8 +98,6 @@ class TestAsyncAccessTokens:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
         async with async_client.access_tokens.with_streaming_response.create(
-            client_id="<your_client_id>",
-            client_secret="<your_client_secret>",
             code="<your_authorization_code>",
             redirect_uri="https://example.com",
         ) as response:
