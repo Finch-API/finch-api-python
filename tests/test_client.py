@@ -27,6 +27,8 @@ from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = "My Access Token"
+client_id = "My Client ID"
+client_secret = "My Client Secret"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -36,7 +38,13 @@ def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
 
 
 class TestFinch:
-    client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+    client = Finch(
+        base_url=base_url,
+        access_token=access_token,
+        client_id=client_id,
+        client_secret=client_secret,
+        _strict_response_validation=True,
+    )
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -66,6 +74,14 @@ class TestFinch:
         assert copied.access_token == "another My Access Token"
         assert self.client.access_token == "My Access Token"
 
+        copied = self.client.copy(client_id="another My Client ID")
+        assert copied.client_id == "another My Client ID"
+        assert self.client.client_id == "My Client ID"
+
+        copied = self.client.copy(client_secret="another My Client Secret")
+        assert copied.client_secret == "another My Client Secret"
+        assert self.client.client_secret == "My Client Secret"
+
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
         copied = self.client.copy(max_retries=7)
@@ -86,6 +102,8 @@ class TestFinch:
         client = Finch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -121,7 +139,12 @@ class TestFinch:
 
     def test_copy_default_query(self) -> None:
         client = Finch(
-            base_url=base_url, access_token=access_token, _strict_response_validation=True, default_query={"foo": "bar"}
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+            default_query={"foo": "bar"},
         )
         assert _get_params(client)["foo"] == "bar"
 
@@ -246,7 +269,12 @@ class TestFinch:
 
     def test_client_timeout_option(self) -> None:
         client = Finch(
-            base_url=base_url, access_token=access_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+            timeout=httpx.Timeout(0),
         )
 
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -257,7 +285,12 @@ class TestFinch:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
             client = Finch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                http_client=http_client,
             )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -267,7 +300,12 @@ class TestFinch:
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
             client = Finch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                http_client=http_client,
             )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -277,7 +315,12 @@ class TestFinch:
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
             client = Finch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                http_client=http_client,
             )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -288,6 +331,8 @@ class TestFinch:
         client = Finch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -298,6 +343,8 @@ class TestFinch:
         client2 = Finch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -309,11 +356,23 @@ class TestFinch:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_validate_headers(self) -> None:
-        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {access_token}"
 
-        client2 = Finch(base_url=base_url, access_token=None, _strict_response_validation=True)
+        client2 = Finch(
+            base_url=base_url,
+            access_token=None,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         with pytest.raises(
             TypeError,
             match="Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted",
@@ -329,6 +388,8 @@ class TestFinch:
         client = Finch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -531,7 +592,11 @@ class TestFinch:
 
     def test_base_url_setter(self) -> None:
         client = Finch(
-            base_url="https://example.com/from_init", access_token=access_token, _strict_response_validation=True
+            base_url="https://example.com/from_init",
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
         )
         assert client.base_url == "https://example.com/from_init/"
 
@@ -541,7 +606,12 @@ class TestFinch:
 
     def test_base_url_env(self) -> None:
         with update_env(FINCH_BASE_URL="http://localhost:5000/from/env"):
-            client = Finch(access_token=access_token, _strict_response_validation=True)
+            client = Finch(
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+            )
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -550,11 +620,15 @@ class TestFinch:
             Finch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
             ),
             Finch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -577,11 +651,15 @@ class TestFinch:
             Finch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
             ),
             Finch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -604,11 +682,15 @@ class TestFinch:
             Finch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
             ),
             Finch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 http_client=httpx.Client(),
             ),
@@ -635,7 +717,12 @@ class TestFinch:
             )
 
             client = Finch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, transport=transport
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                transport=transport,
             )
 
             assert client._client._transport is transport
@@ -647,6 +734,8 @@ class TestFinch:
                     Finch(
                         base_url=base_url,
                         access_token=access_token,
+                        client_id=client_id,
+                        client_secret=client_secret,
                         _strict_response_validation=True,
                         transport=httpx.MockTransport(
                             lambda: None,  # type: ignore
@@ -666,6 +755,8 @@ class TestFinch:
             client = Finch(
                 base_url=base_url,
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 connection_pool_limits=connection_pool_limits,
             )
@@ -684,6 +775,8 @@ class TestFinch:
                     Finch(
                         base_url=base_url,
                         access_token=access_token,
+                        client_id=client_id,
+                        client_secret=client_secret,
                         _strict_response_validation=True,
                         connection_pool_limits=httpx.Limits(
                             max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
@@ -699,7 +792,12 @@ class TestFinch:
             proxies = "https://www.example.com/proxy"
 
             client = Finch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, proxies=proxies
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                proxies=proxies,
             )
 
             mounts = list(client._client._mounts.keys())
@@ -715,13 +813,21 @@ class TestFinch:
                     Finch(
                         base_url=base_url,
                         access_token=access_token,
+                        client_id=client_id,
+                        client_secret=client_secret,
                         _strict_response_validation=True,
                         proxies="https://www.example.com/proxy",
                         http_client=http_client,
                     )
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         assert not client.is_closed()
 
         copied = client.copy()
@@ -732,7 +838,13 @@ class TestFinch:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -758,12 +870,24 @@ class TestFinch:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        strict_client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
+        client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=False,
+        )
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -790,7 +914,13 @@ class TestFinch:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = Finch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = Finch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -799,7 +929,13 @@ class TestFinch:
 
 
 class TestAsyncFinch:
-    client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+    client = AsyncFinch(
+        base_url=base_url,
+        access_token=access_token,
+        client_id=client_id,
+        client_secret=client_secret,
+        _strict_response_validation=True,
+    )
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -831,6 +967,14 @@ class TestAsyncFinch:
         assert copied.access_token == "another My Access Token"
         assert self.client.access_token == "My Access Token"
 
+        copied = self.client.copy(client_id="another My Client ID")
+        assert copied.client_id == "another My Client ID"
+        assert self.client.client_id == "My Client ID"
+
+        copied = self.client.copy(client_secret="another My Client Secret")
+        assert copied.client_secret == "another My Client Secret"
+        assert self.client.client_secret == "My Client Secret"
+
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
         copied = self.client.copy(max_retries=7)
@@ -851,6 +995,8 @@ class TestAsyncFinch:
         client = AsyncFinch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -886,7 +1032,12 @@ class TestAsyncFinch:
 
     def test_copy_default_query(self) -> None:
         client = AsyncFinch(
-            base_url=base_url, access_token=access_token, _strict_response_validation=True, default_query={"foo": "bar"}
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+            default_query={"foo": "bar"},
         )
         assert _get_params(client)["foo"] == "bar"
 
@@ -1011,7 +1162,12 @@ class TestAsyncFinch:
 
     async def test_client_timeout_option(self) -> None:
         client = AsyncFinch(
-            base_url=base_url, access_token=access_token, _strict_response_validation=True, timeout=httpx.Timeout(0)
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+            timeout=httpx.Timeout(0),
         )
 
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1022,7 +1178,12 @@ class TestAsyncFinch:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
             client = AsyncFinch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                http_client=http_client,
             )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1032,7 +1193,12 @@ class TestAsyncFinch:
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
             client = AsyncFinch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                http_client=http_client,
             )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1042,7 +1208,12 @@ class TestAsyncFinch:
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
             client = AsyncFinch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, http_client=http_client
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                http_client=http_client,
             )
 
             request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1053,6 +1224,8 @@ class TestAsyncFinch:
         client = AsyncFinch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_headers={"X-Foo": "bar"},
         )
@@ -1063,6 +1236,8 @@ class TestAsyncFinch:
         client2 = AsyncFinch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_headers={
                 "X-Foo": "stainless",
@@ -1074,11 +1249,23 @@ class TestAsyncFinch:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_validate_headers(self) -> None:
-        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {access_token}"
 
-        client2 = AsyncFinch(base_url=base_url, access_token=None, _strict_response_validation=True)
+        client2 = AsyncFinch(
+            base_url=base_url,
+            access_token=None,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         with pytest.raises(
             TypeError,
             match="Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted",
@@ -1094,6 +1281,8 @@ class TestAsyncFinch:
         client = AsyncFinch(
             base_url=base_url,
             access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
             _strict_response_validation=True,
             default_query={"query_param": "bar"},
         )
@@ -1296,7 +1485,11 @@ class TestAsyncFinch:
 
     def test_base_url_setter(self) -> None:
         client = AsyncFinch(
-            base_url="https://example.com/from_init", access_token=access_token, _strict_response_validation=True
+            base_url="https://example.com/from_init",
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
         )
         assert client.base_url == "https://example.com/from_init/"
 
@@ -1306,7 +1499,12 @@ class TestAsyncFinch:
 
     def test_base_url_env(self) -> None:
         with update_env(FINCH_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncFinch(access_token=access_token, _strict_response_validation=True)
+            client = AsyncFinch(
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+            )
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
@@ -1315,11 +1513,15 @@ class TestAsyncFinch:
             AsyncFinch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
             ),
             AsyncFinch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1342,11 +1544,15 @@ class TestAsyncFinch:
             AsyncFinch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
             ),
             AsyncFinch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1369,11 +1575,15 @@ class TestAsyncFinch:
             AsyncFinch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
             ),
             AsyncFinch(
                 base_url="http://localhost:5000/custom/path/",
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 http_client=httpx.AsyncClient(),
             ),
@@ -1400,7 +1610,12 @@ class TestAsyncFinch:
             )
 
             client = AsyncFinch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, transport=transport
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                transport=transport,
             )
 
             assert client._client._transport is transport
@@ -1412,6 +1627,8 @@ class TestAsyncFinch:
                     AsyncFinch(
                         base_url=base_url,
                         access_token=access_token,
+                        client_id=client_id,
+                        client_secret=client_secret,
                         _strict_response_validation=True,
                         transport=httpx.MockTransport(
                             lambda: None,  # type: ignore
@@ -1431,6 +1648,8 @@ class TestAsyncFinch:
             client = AsyncFinch(
                 base_url=base_url,
                 access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
                 _strict_response_validation=True,
                 connection_pool_limits=connection_pool_limits,
             )
@@ -1449,6 +1668,8 @@ class TestAsyncFinch:
                     AsyncFinch(
                         base_url=base_url,
                         access_token=access_token,
+                        client_id=client_id,
+                        client_secret=client_secret,
                         _strict_response_validation=True,
                         connection_pool_limits=httpx.Limits(
                             max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
@@ -1464,7 +1685,12 @@ class TestAsyncFinch:
             proxies = "https://www.example.com/proxy"
 
             client = AsyncFinch(
-                base_url=base_url, access_token=access_token, _strict_response_validation=True, proxies=proxies
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                proxies=proxies,
             )
 
             mounts = list(client._client._mounts.keys())
@@ -1480,13 +1706,21 @@ class TestAsyncFinch:
                     AsyncFinch(
                         base_url=base_url,
                         access_token=access_token,
+                        client_id=client_id,
+                        client_secret=client_secret,
                         _strict_response_validation=True,
                         proxies="https://www.example.com/proxy",
                         http_client=http_client,
                     )
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1498,7 +1732,13 @@ class TestAsyncFinch:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1526,12 +1766,24 @@ class TestAsyncFinch:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        strict_client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=False)
+        client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=False,
+        )
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1559,7 +1811,13 @@ class TestAsyncFinch:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=True)
+        client = AsyncFinch(
+            base_url=base_url,
+            access_token=access_token,
+            client_id=client_id,
+            client_secret=client_secret,
+            _strict_response_validation=True,
+        )
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
