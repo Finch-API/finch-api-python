@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.14.0 (2024-02-02)
+
+Full Changelog: [v0.13.0...v0.14.0](https://github.com/Finch-API/finch-api-python/compare/v0.13.0...v0.14.0)
+
+### Features
+
+* **api:** create access token reads client opts if not provided ([#281](https://github.com/Finch-API/finch-api-python/issues/281)) ([ee9b890](https://github.com/Finch-API/finch-api-python/commit/ee9b8901448dc5bc6cb3d45312e3a69747766e4d))
+
+
+### Chores
+
+* **interal:** make link to api.md relative ([#282](https://github.com/Finch-API/finch-api-python/issues/282)) ([73dc78b](https://github.com/Finch-API/finch-api-python/commit/73dc78bea0ed2847d5bb19f229ffcfcaa9368af2))
+* **internal:** support pre-release versioning ([#279](https://github.com/Finch-API/finch-api-python/issues/279)) ([9700447](https://github.com/Finch-API/finch-api-python/commit/970044799cf5e05f7ea51e2b4cc98041eca8e129))
+
 ## 0.13.0 (2024-01-30)
 
 Full Changelog: [v0.12.0...v0.13.0](https://github.com/Finch-API/finch-api-python/compare/v0.12.0...v0.13.0)
