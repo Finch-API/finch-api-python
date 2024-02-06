@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import Iterable
 from typing_extensions import Required, TypedDict
 
 __all__ = ["EmploymentRetrieveManyParams", "Request"]
 
 
 class EmploymentRetrieveManyParams(TypedDict, total=False):
-    requests: Required[List[Request]]
+    requests: Required[Iterable[Request]]
     """The array of batch requests."""
 
 

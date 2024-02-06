@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 
 import httpx
 
@@ -33,12 +33,12 @@ class Company(SyncAPIResource):
     def update(
         self,
         *,
-        accounts: Optional[List[company_update_params.Account]],
-        departments: Optional[List[Optional[company_update_params.Department]]],
+        accounts: Optional[Iterable[company_update_params.Account]],
+        departments: Optional[Iterable[Optional[company_update_params.Department]]],
         ein: Optional[str],
         entity: Optional[company_update_params.Entity],
         legal_name: Optional[str],
-        locations: Optional[List[Optional[LocationParam]]],
+        locations: Optional[Iterable[Optional[LocationParam]]],
         primary_email: Optional[str],
         primary_phone_number: Optional[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -108,12 +108,12 @@ class AsyncCompany(AsyncAPIResource):
     async def update(
         self,
         *,
-        accounts: Optional[List[company_update_params.Account]],
-        departments: Optional[List[Optional[company_update_params.Department]]],
+        accounts: Optional[Iterable[company_update_params.Account]],
+        departments: Optional[Iterable[Optional[company_update_params.Department]]],
         ein: Optional[str],
         entity: Optional[company_update_params.Entity],
         legal_name: Optional[str],
-        locations: Optional[List[Optional[LocationParam]]],
+        locations: Optional[Iterable[Optional[LocationParam]]],
         primary_email: Optional[str],
         primary_phone_number: Optional[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
