@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -36,7 +36,7 @@ class Individual(SyncAPIResource):
         individual_id: str,
         *,
         dob: Optional[str] | NotGiven = NOT_GIVEN,
-        emails: Optional[List[individual_update_params.Email]] | NotGiven = NOT_GIVEN,
+        emails: Optional[Iterable[individual_update_params.Email]] | NotGiven = NOT_GIVEN,
         encrypted_ssn: Optional[str] | NotGiven = NOT_GIVEN,
         ethnicity: Optional[
             Literal[
@@ -55,7 +55,7 @@ class Individual(SyncAPIResource):
         gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | NotGiven = NOT_GIVEN,
         last_name: Optional[str] | NotGiven = NOT_GIVEN,
         middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        phone_numbers: Optional[List[Optional[individual_update_params.PhoneNumber]]] | NotGiven = NOT_GIVEN,
+        phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | NotGiven = NOT_GIVEN,
         preferred_name: Optional[str] | NotGiven = NOT_GIVEN,
         residence: Optional[LocationParam] | NotGiven = NOT_GIVEN,
         ssn: Optional[str] | NotGiven = NOT_GIVEN,
@@ -142,7 +142,7 @@ class AsyncIndividual(AsyncAPIResource):
         individual_id: str,
         *,
         dob: Optional[str] | NotGiven = NOT_GIVEN,
-        emails: Optional[List[individual_update_params.Email]] | NotGiven = NOT_GIVEN,
+        emails: Optional[Iterable[individual_update_params.Email]] | NotGiven = NOT_GIVEN,
         encrypted_ssn: Optional[str] | NotGiven = NOT_GIVEN,
         ethnicity: Optional[
             Literal[
@@ -161,7 +161,7 @@ class AsyncIndividual(AsyncAPIResource):
         gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | NotGiven = NOT_GIVEN,
         last_name: Optional[str] | NotGiven = NOT_GIVEN,
         middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        phone_numbers: Optional[List[Optional[individual_update_params.PhoneNumber]]] | NotGiven = NOT_GIVEN,
+        phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | NotGiven = NOT_GIVEN,
         preferred_name: Optional[str] | NotGiven = NOT_GIVEN,
         residence: Optional[LocationParam] | NotGiven = NOT_GIVEN,
         ssn: Optional[str] | NotGiven = NOT_GIVEN,

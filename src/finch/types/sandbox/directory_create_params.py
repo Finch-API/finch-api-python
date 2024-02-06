@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from ..income_param import IncomeParam
@@ -21,7 +21,7 @@ __all__ = [
 
 
 class DirectoryCreateParams(TypedDict, total=False):
-    body: Required[List[Body]]
+    body: Required[Iterable[Body]]
     """Array of individuals to create.
 
     Takes all combined fields from `/individual` and `/employment` endpoints. All
@@ -73,7 +73,7 @@ class Body(TypedDict, total=False):
     class_code: Optional[str]
     """Worker's compensation classification code for this employee"""
 
-    custom_fields: List[BodyCustomField]
+    custom_fields: Iterable[BodyCustomField]
     """Custom fields for the individual.
 
     These are fields which are defined by the employer in the system. Custom fields
@@ -85,7 +85,7 @@ class Body(TypedDict, total=False):
 
     dob: Optional[str]
 
-    emails: Optional[List[BodyEmail]]
+    emails: Optional[Iterable[BodyEmail]]
 
     employment: Optional[BodyEmployment]
     """The employment object."""
@@ -126,7 +126,7 @@ class Body(TypedDict, total=False):
     semi-monthly, daily, etc, depending on what information the provider returns.
     """
 
-    income_history: Optional[List[Optional[IncomeParam]]]
+    income_history: Optional[Iterable[Optional[IncomeParam]]]
     """The array of income history."""
 
     is_active: Optional[bool]
@@ -143,7 +143,7 @@ class Body(TypedDict, total=False):
     middle_name: Optional[str]
     """The legal middle name of the individual."""
 
-    phone_numbers: Optional[List[Optional[BodyPhoneNumber]]]
+    phone_numbers: Optional[Iterable[Optional[BodyPhoneNumber]]]
 
     preferred_name: Optional[str]
     """The preferred name of the individual."""

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..income_param import IncomeParam
@@ -15,7 +15,7 @@ class EmploymentUpdateParams(TypedDict, total=False):
     class_code: Optional[str]
     """Worker's compensation classification code for this employee"""
 
-    custom_fields: List[CustomField]
+    custom_fields: Iterable[CustomField]
     """Custom fields for the individual.
 
     These are fields which are defined by the employer in the system. Custom fields
@@ -40,7 +40,7 @@ class EmploymentUpdateParams(TypedDict, total=False):
     semi-monthly, daily, etc, depending on what information the provider returns.
     """
 
-    income_history: Optional[List[Optional[IncomeParam]]]
+    income_history: Optional[Iterable[Optional[IncomeParam]]]
     """The array of income history."""
 
     is_active: Optional[bool]

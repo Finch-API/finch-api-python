@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 
 import httpx
 
@@ -35,7 +35,7 @@ class Individuals(SyncAPIResource):
         self,
         *,
         options: Optional[individual_retrieve_many_params.Options] | NotGiven = NOT_GIVEN,
-        requests: List[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
+        requests: Iterable[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -86,7 +86,7 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         *,
         options: Optional[individual_retrieve_many_params.Options] | NotGiven = NOT_GIVEN,
-        requests: List[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
+        requests: Iterable[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

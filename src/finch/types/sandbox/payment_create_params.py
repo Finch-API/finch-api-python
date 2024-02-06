@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..hris import BenefitType
@@ -21,7 +21,7 @@ __all__ = [
 class PaymentCreateParams(TypedDict, total=False):
     end_date: str
 
-    pay_statements: List[PayStatement]
+    pay_statements: Iterable[PayStatement]
 
     start_date: str
 
@@ -112,13 +112,13 @@ class PayStatementTax(TypedDict, total=False):
 
 
 class PayStatement(TypedDict, total=False):
-    earnings: Optional[List[Optional[PayStatementEarning]]]
+    earnings: Optional[Iterable[Optional[PayStatementEarning]]]
     """The array of earnings objects associated with this pay statement"""
 
-    employee_deductions: Optional[List[Optional[PayStatementEmployeeDeduction]]]
+    employee_deductions: Optional[Iterable[Optional[PayStatementEmployeeDeduction]]]
     """The array of deductions objects associated with this pay statement."""
 
-    employer_contributions: Optional[List[Optional[PayStatementEmployerContribution]]]
+    employer_contributions: Optional[Iterable[Optional[PayStatementEmployerContribution]]]
 
     gross_pay: Optional[MoneyParam]
 
@@ -130,7 +130,7 @@ class PayStatement(TypedDict, total=False):
     payment_method: Optional[Literal["check", "direct_deposit"]]
     """The payment method."""
 
-    taxes: Optional[List[Optional[PayStatementTax]]]
+    taxes: Optional[Iterable[Optional[PayStatementTax]]]
     """The array of taxes objects associated with this pay statement."""
 
     total_hours: Optional[float]
