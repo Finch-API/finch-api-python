@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..location_param import LocationParam
@@ -13,7 +13,7 @@ __all__ = ["IndividualUpdateParams", "Email", "PhoneNumber"]
 class IndividualUpdateParams(TypedDict, total=False):
     dob: Optional[str]
 
-    emails: Optional[List[Email]]
+    emails: Optional[Iterable[Email]]
 
     encrypted_ssn: Optional[str]
     """Social Security Number of the individual in **encrypted** format.
@@ -48,7 +48,7 @@ class IndividualUpdateParams(TypedDict, total=False):
     middle_name: Optional[str]
     """The legal middle name of the individual."""
 
-    phone_numbers: Optional[List[Optional[PhoneNumber]]]
+    phone_numbers: Optional[Iterable[Optional[PhoneNumber]]]
 
     preferred_name: Optional[str]
     """The preferred name of the individual."""

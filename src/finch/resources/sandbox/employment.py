@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 
 import httpx
 
@@ -35,13 +35,13 @@ class Employment(SyncAPIResource):
         individual_id: str,
         *,
         class_code: Optional[str] | NotGiven = NOT_GIVEN,
-        custom_fields: List[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
+        custom_fields: Iterable[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
         department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
         employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
         end_date: Optional[str] | NotGiven = NOT_GIVEN,
         first_name: Optional[str] | NotGiven = NOT_GIVEN,
         income: Optional[IncomeParam] | NotGiven = NOT_GIVEN,
-        income_history: Optional[List[Optional[IncomeParam]]] | NotGiven = NOT_GIVEN,
+        income_history: Optional[Iterable[Optional[IncomeParam]]] | NotGiven = NOT_GIVEN,
         is_active: Optional[bool] | NotGiven = NOT_GIVEN,
         last_name: Optional[str] | NotGiven = NOT_GIVEN,
         location: Optional[LocationParam] | NotGiven = NOT_GIVEN,
@@ -147,13 +147,13 @@ class AsyncEmployment(AsyncAPIResource):
         individual_id: str,
         *,
         class_code: Optional[str] | NotGiven = NOT_GIVEN,
-        custom_fields: List[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
+        custom_fields: Iterable[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
         department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
         employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
         end_date: Optional[str] | NotGiven = NOT_GIVEN,
         first_name: Optional[str] | NotGiven = NOT_GIVEN,
         income: Optional[IncomeParam] | NotGiven = NOT_GIVEN,
-        income_history: Optional[List[Optional[IncomeParam]]] | NotGiven = NOT_GIVEN,
+        income_history: Optional[Iterable[Optional[IncomeParam]]] | NotGiven = NOT_GIVEN,
         is_active: Optional[bool] | NotGiven = NOT_GIVEN,
         last_name: Optional[str] | NotGiven = NOT_GIVEN,
         location: Optional[LocationParam] | NotGiven = NOT_GIVEN,

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from ..location_param import LocationParam
@@ -11,10 +11,10 @@ __all__ = ["CompanyUpdateParams", "Account", "Department", "DepartmentParent", "
 
 
 class CompanyUpdateParams(TypedDict, total=False):
-    accounts: Required[Optional[List[Account]]]
+    accounts: Required[Optional[Iterable[Account]]]
     """An array of bank account objects associated with the payroll/HRIS system."""
 
-    departments: Required[Optional[List[Optional[Department]]]]
+    departments: Required[Optional[Iterable[Optional[Department]]]]
     """The array of company departments."""
 
     ein: Required[Optional[str]]
@@ -26,7 +26,7 @@ class CompanyUpdateParams(TypedDict, total=False):
     legal_name: Required[Optional[str]]
     """The legal name of the company."""
 
-    locations: Required[Optional[List[Optional[LocationParam]]]]
+    locations: Required[Optional[Iterable[Optional[LocationParam]]]]
 
     primary_email: Required[Optional[str]]
     """The email of the main administrator on the account."""
