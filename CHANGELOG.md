@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.14.1 (2024-02-08)
+
+Full Changelog: [v0.14.0...v0.14.1](https://github.com/Finch-API/finch-api-python/compare/v0.14.0...v0.14.1)
+
+### Bug Fixes
+
+* prevent crash when platform.architecture() is not allowed ([#283](https://github.com/Finch-API/finch-api-python/issues/283)) ([ca5cf4c](https://github.com/Finch-API/finch-api-python/commit/ca5cf4c518e5899ab820f8082dc88f5d2dc7760e))
+* **types:** loosen most List params types to Iterable ([#288](https://github.com/Finch-API/finch-api-python/issues/288)) ([ed26c31](https://github.com/Finch-API/finch-api-python/commit/ed26c3167b8d3c5a1abca38beece3290e88a2940))
+
+
+### Chores
+
+* **internal:** add lint command ([#286](https://github.com/Finch-API/finch-api-python/issues/286)) ([0e6398c](https://github.com/Finch-API/finch-api-python/commit/0e6398ca1c2f07eca8b2c981df8575cbff11af2c))
+* **internal:** minor pagination restructuring ([#287](https://github.com/Finch-API/finch-api-python/issues/287)) ([440f9ba](https://github.com/Finch-API/finch-api-python/commit/440f9ba1b648a2496c105f9e95c3e46c2df8b701))
+* **internal:** support serialising iterable types ([#285](https://github.com/Finch-API/finch-api-python/issues/285)) ([759e3ef](https://github.com/Finch-API/finch-api-python/commit/759e3ef888c39319e60f9296cc22ef560583533c))
+
+
+### Documentation
+
+* add CONTRIBUTING.md ([#289](https://github.com/Finch-API/finch-api-python/issues/289)) ([7b48637](https://github.com/Finch-API/finch-api-python/commit/7b48637c23f509840ba1dcc7a56b5002cc0e7679))
+
 ## 0.14.0 (2024-02-02)
 
 Full Changelog: [v0.13.0...v0.14.0](https://github.com/Finch-API/finch-api-python/compare/v0.13.0...v0.14.0)
