@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.2 (2024-02-15)
+
+Full Changelog: [v0.14.1...v0.14.2](https://github.com/Finch-API/finch-api-python/compare/v0.14.1...v0.14.2)
+
+### Chores
+
+* **internal:** refactor release environment script ([#290](https://github.com/Finch-API/finch-api-python/issues/290)) ([006786a](https://github.com/Finch-API/finch-api-python/commit/006786ae6ca1daf077a3b60d1c8b0d543041f374))
+
 ## 0.14.1 (2024-02-08)
 
 Full Changelog: [v0.14.0...v0.14.1](https://github.com/Finch-API/finch-api-python/compare/v0.14.0...v0.14.1)
