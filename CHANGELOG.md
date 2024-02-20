@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.15.0 (2024-02-20)
+
+Full Changelog: [v0.14.2...v0.15.0](https://github.com/Finch-API/finch-api-python/compare/v0.14.2...v0.15.0)
+
+### Features
+
+* **api:** create new sandbox job ([#293](https://github.com/Finch-API/finch-api-python/issues/293)) ([ed50140](https://github.com/Finch-API/finch-api-python/commit/ed5014018543309e4995b1b2f468f8bf3a59c187))
+
+
+### Chores
+
+* **internal:** bump rye to v0.24.0 ([#295](https://github.com/Finch-API/finch-api-python/issues/295)) ([341bc81](https://github.com/Finch-API/finch-api-python/commit/341bc814ed5af19ce2b19bf378f94698b09cac30))
+
 ## 0.14.2 (2024-02-15)
 
 Full Changelog: [v0.14.1...v0.14.2](https://github.com/Finch-API/finch-api-python/compare/v0.14.1...v0.14.2)
