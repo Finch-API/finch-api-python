@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from .job_create_params import JobCreateParams as JobCreateParams
+from .job_create_response import JobCreateResponse as JobCreateResponse
 from .company_update_params import CompanyUpdateParams as CompanyUpdateParams
 from .payment_create_params import PaymentCreateParams as PaymentCreateParams
 from .company_update_response import CompanyUpdateResponse as CompanyUpdateResponse
