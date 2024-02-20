@@ -330,6 +330,16 @@ Methods:
 
 ## Jobs
 
+Types:
+
+```python
+from finch.types.sandbox import JobCreateResponse
+```
+
+Methods:
+
+- <code title="post /sandbox/jobs">client.sandbox.jobs.<a href="./src/finch/resources/sandbox/jobs/jobs.py">create</a>(\*\*<a href="src/finch/types/sandbox/job_create_params.py">params</a>) -> <a href="./src/finch/types/sandbox/job_create_response.py">JobCreateResponse</a></code>
+
 ### Configuration
 
 Types:
