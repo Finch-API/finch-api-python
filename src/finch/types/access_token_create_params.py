@@ -10,8 +10,8 @@ __all__ = ["AccessTokenCreateParams"]
 class AccessTokenCreateParams(TypedDict, total=False):
     code: Required[str]
 
-    redirect_uri: Required[str]
-
     client_id: str
 
     client_secret: str
+
+    redirect_uri: str

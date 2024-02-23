@@ -21,7 +21,6 @@ class TestAccessTokens:
     def test_method_create(self, client: Finch) -> None:
         access_token = client.access_tokens.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
 
@@ -29,9 +28,9 @@ class TestAccessTokens:
     def test_method_create_with_all_params(self, client: Finch) -> None:
         access_token = client.access_tokens.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
             client_id="<your_client_id>",
             client_secret="<your_client_secret>",
+            redirect_uri="https://example.com",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
 
@@ -39,7 +38,6 @@ class TestAccessTokens:
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.access_tokens.with_raw_response.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
         )
 
         assert response.is_closed is True
@@ -51,7 +49,6 @@ class TestAccessTokens:
     def test_streaming_response_create(self, client: Finch) -> None:
         with client.access_tokens.with_streaming_response.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -69,7 +66,6 @@ class TestAsyncAccessTokens:
     async def test_method_create(self, async_client: AsyncFinch) -> None:
         access_token = await async_client.access_tokens.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
 
@@ -77,9 +73,9 @@ class TestAsyncAccessTokens:
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         access_token = await async_client.access_tokens.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
             client_id="<your_client_id>",
             client_secret="<your_client_secret>",
+            redirect_uri="https://example.com",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
 
@@ -87,7 +83,6 @@ class TestAsyncAccessTokens:
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
         response = await async_client.access_tokens.with_raw_response.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
         )
 
         assert response.is_closed is True
@@ -99,7 +94,6 @@ class TestAsyncAccessTokens:
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
         async with async_client.access_tokens.with_streaming_response.create(
             code="<your_authorization_code>",
-            redirect_uri="https://example.com",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -305,7 +305,7 @@ class Finch(SyncAPIClient):
         self,
         code: str,
         *,
-        redirect_uri: str,
+        redirect_uri: str | None = None,
     ) -> str:
         """Returns an access token for the Finch API given an authorization code.
 
@@ -657,7 +657,7 @@ class AsyncFinch(AsyncAPIClient):
         self,
         code: str,
         *,
-        redirect_uri: str,
+        redirect_uri: str | None = None,
     ) -> str:
         """Returns an access token for the Finch API given an authorization code.
 
