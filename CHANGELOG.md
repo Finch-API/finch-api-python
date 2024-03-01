@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.16.0 (2024-03-01)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/Finch-API/finch-api-python/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** make redirect_uri optional ([#298](https://github.com/Finch-API/finch-api-python/issues/298)) ([8d42399](https://github.com/Finch-API/finch-api-python/commit/8d42399f838fc6274053977c4b648db181199bdf))
+
+
+### Chores
+
+* **client:** use anyio.sleep instead of asyncio.sleep ([#300](https://github.com/Finch-API/finch-api-python/issues/300)) ([3af8e4c](https://github.com/Finch-API/finch-api-python/commit/3af8e4ca2391a818c4bfafa9d7e0efbf7a7b0d67))
+* **docs:** mention install from git repo ([#303](https://github.com/Finch-API/finch-api-python/issues/303)) ([f4b2c3c](https://github.com/Finch-API/finch-api-python/commit/f4b2c3c217c226db6af3a8dd11892ae2a95efac6))
+* **internal:** bump pyright ([#299](https://github.com/Finch-API/finch-api-python/issues/299)) ([75e91f6](https://github.com/Finch-API/finch-api-python/commit/75e91f636e11472f298ed8796f318b97a15338cc))
+* **internal:** minor core client restructuring ([#301](https://github.com/Finch-API/finch-api-python/issues/301)) ([b2552a1](https://github.com/Finch-API/finch-api-python/commit/b2552a162373430d773de362982538a0b268dd1f))
+* **internal:** update deps ([#296](https://github.com/Finch-API/finch-api-python/issues/296)) ([6e94884](https://github.com/Finch-API/finch-api-python/commit/6e94884a9a9051c17d7c38686fcc182f48d5d805))
+
+
+### Documentation
+
+* **contributing:** improve wording ([#302](https://github.com/Finch-API/finch-api-python/issues/302)) ([46c5cba](https://github.com/Finch-API/finch-api-python/commit/46c5cba7021ca9af3dc0a741c72b3530c4be74f4))
+
 ## 0.15.0 (2024-02-20)
 
 Full Changelog: [v0.14.2...v0.15.0](https://github.com/Finch-API/finch-api-python/compare/v0.14.2...v0.15.0)
