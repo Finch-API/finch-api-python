@@ -13,6 +13,7 @@ The REST API documentation can be found [in the Finch Documentation Center](http
 ## Installation
 
 ```sh
+# install from PyPI
 pip install finch-api
 ```
 
