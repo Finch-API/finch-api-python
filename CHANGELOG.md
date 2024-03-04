@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.1 (2024-03-04)
+
+Full Changelog: [v0.16.0...v0.16.1](https://github.com/Finch-API/finch-api-python/compare/v0.16.0...v0.16.1)
+
+### Chores
+
+* **internal:** split up transforms into sync / async ([#304](https://github.com/Finch-API/finch-api-python/issues/304)) ([665c4de](https://github.com/Finch-API/finch-api-python/commit/665c4de271703a90b063ce955992d1c74fcca832))
+* **internal:** support more input types ([#306](https://github.com/Finch-API/finch-api-python/issues/306)) ([5c3f635](https://github.com/Finch-API/finch-api-python/commit/5c3f6355d8595517b16f2da8e82a71dea7a0e130))
+
 ## 0.16.0 (2024-03-01)
 
 Full Changelog: [v0.15.0...v0.16.0](https://github.com/Finch-API/finch-api-python/compare/v0.15.0...v0.16.0)
