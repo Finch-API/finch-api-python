@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.16.3 (2024-03-04)
+
+Full Changelog: [v0.16.2...v0.16.3](https://github.com/Finch-API/finch-api-python/compare/v0.16.2...v0.16.3)
+
+### Documentation
+
+* update some doc strings ([#309](https://github.com/Finch-API/finch-api-python/issues/309)) ([4997a5a](https://github.com/Finch-API/finch-api-python/commit/4997a5ae4b8c4934cab2f1eb4be939d829544b76))
+
 ## 0.16.2 (2024-03-04)
 
 Full Changelog: [v0.16.1...v0.16.2](https://github.com/Finch-API/finch-api-python/compare/v0.16.1...v0.16.2)
