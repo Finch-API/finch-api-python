@@ -8,7 +8,10 @@ import httpx
 
 from .... import _legacy_response
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import maybe_transform
+from ...._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ...._compat import cached_property
 from .individuals import (
     Individuals,
@@ -267,7 +270,7 @@ class AsyncBenefits(AsyncAPIResource):
         """
         return await self._post(
             "/employer/benefits",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "description": description,
                     "frequency": frequency,
@@ -348,7 +351,7 @@ class AsyncBenefits(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._post(
             f"/employer/benefits/{benefit_id}",
-            body=maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
+            body=await async_maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
