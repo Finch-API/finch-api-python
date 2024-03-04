@@ -45,10 +45,6 @@ class Employments(SyncAPIResource):
         """
         Read individual employment and income data
 
-        Note: Income information is returned as reported by the provider. This may not
-        always be annualized income, but may be in units of bi-weekly, semi-monthly,
-        daily, etc, depending on what information the provider returns.
-
         Args:
           requests: The array of batch requests.
 
@@ -94,10 +90,6 @@ class AsyncEmployments(AsyncAPIResource):
     ) -> AsyncPaginator[EmploymentDataResponse, AsyncResponsesPage[EmploymentDataResponse]]:
         """
         Read individual employment and income data
-
-        Note: Income information is returned as reported by the provider. This may not
-        always be annualized income, but may be in units of bi-weekly, semi-monthly,
-        daily, etc, depending on what information the provider returns.
 
         Args:
           requests: The array of batch requests.

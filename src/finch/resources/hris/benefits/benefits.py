@@ -68,11 +68,10 @@ class Benefits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreateCompanyBenefitsResponse:
-        """
-        **Availability: Automated and Assisted Benefits providers**
+        """Creates a new company-wide deduction or contribution.
 
-        Creates a new company-wide benefit. Please use the `/meta` endpoint to view
-        available types for each provider.
+        Please use the
+        `/providers` endpoint to view available types for each provider.
 
         Args:
           type: Type of benefit.
@@ -113,9 +112,7 @@ class Benefits(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CompanyBenefit:
         """
-        **Availability: Automated Benefits providers only**
-
-        Lists benefit information for a given benefit
+        Lists deductions and contributions information for a given item
 
         Args:
           extra_headers: Send extra headers
@@ -149,9 +146,7 @@ class Benefits(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> UpdateCompanyBenefitResponse:
         """
-        **Availability: Automated and Assisted Benefits providers**
-
-        Updates an existing company-wide benefit
+        Updates an existing company-wide deduction or contribution
 
         Args:
           description: Updated name or description.
@@ -185,11 +180,7 @@ class Benefits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[CompanyBenefit]:
-        """
-        **Availability: Automated Benefits providers only**
-
-        List all company-wide benefits.
-        """
+        """List all company-wide deductions and contributions."""
         return self._get_api_list(
             "/employer/benefits",
             page=SyncSinglePage[CompanyBenefit],
@@ -209,12 +200,7 @@ class Benefits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[SupportedBenefit]:
-        """
-        **Availability: Automated and Assisted Benefits providers**
-
-        Lists available types and configurations for the provider associated with the
-        access token.
-        """
+        """Get deductions metadata"""
         return self._get_api_list(
             "/employer/benefits/meta",
             page=SyncSinglePage[SupportedBenefit],
@@ -251,11 +237,10 @@ class AsyncBenefits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CreateCompanyBenefitsResponse:
-        """
-        **Availability: Automated and Assisted Benefits providers**
+        """Creates a new company-wide deduction or contribution.
 
-        Creates a new company-wide benefit. Please use the `/meta` endpoint to view
-        available types for each provider.
+        Please use the
+        `/providers` endpoint to view available types for each provider.
 
         Args:
           type: Type of benefit.
@@ -296,9 +281,7 @@ class AsyncBenefits(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CompanyBenefit:
         """
-        **Availability: Automated Benefits providers only**
-
-        Lists benefit information for a given benefit
+        Lists deductions and contributions information for a given item
 
         Args:
           extra_headers: Send extra headers
@@ -332,9 +315,7 @@ class AsyncBenefits(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> UpdateCompanyBenefitResponse:
         """
-        **Availability: Automated and Assisted Benefits providers**
-
-        Updates an existing company-wide benefit
+        Updates an existing company-wide deduction or contribution
 
         Args:
           description: Updated name or description.
@@ -368,11 +349,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[CompanyBenefit, AsyncSinglePage[CompanyBenefit]]:
-        """
-        **Availability: Automated Benefits providers only**
-
-        List all company-wide benefits.
-        """
+        """List all company-wide deductions and contributions."""
         return self._get_api_list(
             "/employer/benefits",
             page=AsyncSinglePage[CompanyBenefit],
@@ -392,12 +369,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[SupportedBenefit, AsyncSinglePage[SupportedBenefit]]:
-        """
-        **Availability: Automated and Assisted Benefits providers**
-
-        Lists available types and configurations for the provider associated with the
-        access token.
-        """
+        """Get deductions metadata"""
         return self._get_api_list(
             "/employer/benefits/meta",
             page=AsyncSinglePage[SupportedBenefit],

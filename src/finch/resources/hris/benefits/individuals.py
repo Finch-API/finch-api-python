@@ -51,17 +51,12 @@ class Individuals(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[EnrolledIndividual]:
-        """
-        **Availability: Automated and Assisted Benefits providers**
+        """Enroll an individual into a deduction or contribution.
 
-        Enroll an individual into a benefit. If the employee is already enrolled, the
-        enrollment amounts will be adjusted.
-
-        <!-- theme: warning -->
-
-        > Making changes to an individual's benefits may have tax consequences based on
-        > IRS regulations. Please consult a tax expert to ensure all changes being made
-        > to the system are compliant with local, state, and federal law.
+        This is an overwrite
+        operation. If the employee is already enrolled, the enrollment amounts will be
+        adjusted. Making the same request multiple times will not create new
+        enrollments, but will continue to set the state of the existing enrollment.
 
         Args:
           individuals: Array of the individual_id to enroll and a configuration object.
@@ -99,9 +94,7 @@ class Individuals(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> IndividualEnrolledIDsResponse:
         """
-        **Availability: Automated Benefits providers only**
-
-        Lists individuals currently enrolled in a given benefit.
+        Lists individuals currently enrolled in a given deduction.
 
         Args:
           extra_headers: Send extra headers
@@ -135,9 +128,7 @@ class Individuals(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[IndividualBenefit]:
         """
-        **Availability: Automated Benefits providers only**
-
-        Get enrolled benefit information for the given individuals.
+        Get enrollment information for the given individuals.
 
         Args:
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
@@ -182,9 +173,7 @@ class Individuals(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncSinglePage[UnenrolledIndividual]:
         """
-        **Availability: Automated and Assisted Benefits providers**
-
-        Unenroll individuals from a benefit
+        Unenroll individuals from a deduction or contribution
 
         Args:
           individual_ids: Array of individual_ids to unenroll.
@@ -234,17 +223,12 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[EnrolledIndividual, AsyncSinglePage[EnrolledIndividual]]:
-        """
-        **Availability: Automated and Assisted Benefits providers**
+        """Enroll an individual into a deduction or contribution.
 
-        Enroll an individual into a benefit. If the employee is already enrolled, the
-        enrollment amounts will be adjusted.
-
-        <!-- theme: warning -->
-
-        > Making changes to an individual's benefits may have tax consequences based on
-        > IRS regulations. Please consult a tax expert to ensure all changes being made
-        > to the system are compliant with local, state, and federal law.
+        This is an overwrite
+        operation. If the employee is already enrolled, the enrollment amounts will be
+        adjusted. Making the same request multiple times will not create new
+        enrollments, but will continue to set the state of the existing enrollment.
 
         Args:
           individuals: Array of the individual_id to enroll and a configuration object.
@@ -282,9 +266,7 @@ class AsyncIndividuals(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> IndividualEnrolledIDsResponse:
         """
-        **Availability: Automated Benefits providers only**
-
-        Lists individuals currently enrolled in a given benefit.
+        Lists individuals currently enrolled in a given deduction.
 
         Args:
           extra_headers: Send extra headers
@@ -318,9 +300,7 @@ class AsyncIndividuals(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[IndividualBenefit, AsyncSinglePage[IndividualBenefit]]:
         """
-        **Availability: Automated Benefits providers only**
-
-        Get enrolled benefit information for the given individuals.
+        Get enrollment information for the given individuals.
 
         Args:
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
@@ -365,9 +345,7 @@ class AsyncIndividuals(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[UnenrolledIndividual, AsyncSinglePage[UnenrolledIndividual]]:
         """
-        **Availability: Automated and Assisted Benefits providers**
-
-        Unenroll individuals from a benefit
+        Unenroll individuals from a deduction or contribution
 
         Args:
           individual_ids: Array of individual_ids to unenroll.
