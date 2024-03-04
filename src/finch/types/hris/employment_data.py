@@ -101,13 +101,4 @@ class EmploymentData(BaseModel):
     """The current title of the individual."""
 
     work_id: Optional[str] = None
-    """Note: This property is only available if enabled for your account.
-
-    Please reach out to your Finch representative if you would like access.
-    """
-
-    work_id_2: Optional[str] = None
-    """Note: This property is only available if enabled for your account.
-
-    Please reach out to your Finch representative if you would like access.
-    """
+    """This field is deprecated in favour of `source_id`"""
