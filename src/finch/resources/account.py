@@ -36,11 +36,7 @@ class Account(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DisconnectResponse:
-        """
-        Disconnect an employer from your application and invalidate all `access_token`s
-        associated with the employer. We require applications to implement the
-        Disconnect endpoint for billing and security purposes.
-        """
+        """Disconnect one or more `access_token`s from your application."""
         return self._post(
             "/disconnect",
             options=make_request_options(
@@ -88,11 +84,7 @@ class AsyncAccount(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> DisconnectResponse:
-        """
-        Disconnect an employer from your application and invalidate all `access_token`s
-        associated with the employer. We require applications to implement the
-        Disconnect endpoint for billing and security purposes.
-        """
+        """Disconnect one or more `access_token`s from your application."""
         return await self._post(
             "/disconnect",
             options=make_request_options(

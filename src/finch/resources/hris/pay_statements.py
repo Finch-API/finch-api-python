@@ -46,7 +46,7 @@ class PayStatements(SyncAPIResource):
         Read detailed pay statements for each individual.
 
         Deduction and contribution types are supported by the payroll systems that
-        support Benefits.
+        supports Benefits.
 
         Args:
           requests: The array of batch requests.
@@ -97,7 +97,7 @@ class AsyncPayStatements(AsyncAPIResource):
         Read detailed pay statements for each individual.
 
         Deduction and contribution types are supported by the payroll systems that
-        support Benefits.
+        supports Benefits.
 
         Args:
           requests: The array of batch requests.
