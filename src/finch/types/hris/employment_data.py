@@ -86,12 +86,6 @@ class EmploymentData(BaseModel):
     middle_name: Optional[str] = None
     """The legal middle name of the individual."""
 
-    pay_group_ids: Optional[List[str]] = None
-    """Note: This property is only available if enabled for your account.
-
-    Please reach out to your Finch representative if you would like access.
-    """
-
     source_id: Optional[str] = None
     """The source system's unique employment identifier for this individual"""
 
