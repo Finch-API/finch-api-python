@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.16.5 (2024-03-05)
+
+Full Changelog: [v0.16.4...v0.16.5](https://github.com/Finch-API/finch-api-python/compare/v0.16.4...v0.16.5)
+
+### Chores
+
+* remove internal-only field ([#313](https://github.com/Finch-API/finch-api-python/issues/313)) ([6795335](https://github.com/Finch-API/finch-api-python/commit/6795335eace57d73fcf212ce7d15e79571e66ff9))
+
 ## 0.16.4 (2024-03-05)
 
 Full Changelog: [v0.16.3...v0.16.4](https://github.com/Finch-API/finch-api-python/compare/v0.16.3...v0.16.4)
