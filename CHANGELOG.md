@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.16.4 (2024-03-05)
+
+Full Changelog: [v0.16.3...v0.16.4](https://github.com/Finch-API/finch-api-python/compare/v0.16.3...v0.16.4)
+
+### Chores
+
+* **client:** improve error message for invalid http_client argument ([#311](https://github.com/Finch-API/finch-api-python/issues/311)) ([905dffb](https://github.com/Finch-API/finch-api-python/commit/905dffb853739254ac57b197e96ec9a66b61c330))
+
 ## 0.16.3 (2024-03-04)
 
 Full Changelog: [v0.16.2...v0.16.3](https://github.com/Finch-API/finch-api-python/compare/v0.16.2...v0.16.3)
