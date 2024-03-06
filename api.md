@@ -8,7 +8,6 @@ from finch.types import ConnectionStatusType, OperationSupport, OperationSupport
 
 Methods:
 
-- <code>client.<a href="./src/finch/_client.py">get_access_token</a>(\*args) -> str</code>
 - <code>client.<a href="./src/finch/_client.py">get_auth_url</a>(\*args) -> str</code>
 - <code>client.<a href="./src/finch/_client.py">with_access_token</a>(\*args) -> Self</code>
 
