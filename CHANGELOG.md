@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.16.6 (2024-03-06)
+
+Full Changelog: [v0.16.5...v0.16.6](https://github.com/Finch-API/finch-api-python/compare/v0.16.5...v0.16.6)
+
+### Chores
+
+* **internal:** add core support for deserializing into number response ([#317](https://github.com/Finch-API/finch-api-python/issues/317)) ([f5f006a](https://github.com/Finch-API/finch-api-python/commit/f5f006ab750076ed55bd67dd9dc2041fb56e5a7c))
+
+
+### Documentation
+
+* deprecate old access token getter ([#315](https://github.com/Finch-API/finch-api-python/issues/315)) ([1abb098](https://github.com/Finch-API/finch-api-python/commit/1abb09833e57811ac46d695c6b4e5b291bdeb473))
+
 ## 0.16.5 (2024-03-05)
 
 Full Changelog: [v0.16.4...v0.16.5](https://github.com/Finch-API/finch-api-python/compare/v0.16.4...v0.16.5)
