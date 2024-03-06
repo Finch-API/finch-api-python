@@ -307,11 +307,7 @@ class Finch(SyncAPIClient):
         *,
         redirect_uri: str | None = None,
     ) -> str:
-        """Returns an access token for the Finch API given an authorization code.
-
-        An authorization code can be obtained by visiting the url returned by
-        get_auth_url().
-        """
+        """DEPRECATED: use client.access_tokens.create instead."""
         if self.client_id is None:
             raise ValueError("Expected client_id to be set in order to call get_access_token")
 
@@ -659,11 +655,7 @@ class AsyncFinch(AsyncAPIClient):
         *,
         redirect_uri: str | None = None,
     ) -> str:
-        """Returns an access token for the Finch API given an authorization code.
-
-        An authorization code can be obtained by visiting the url returned by
-        get_auth_url().
-        """
+        """DEPRECATED: use client.access_tokens.create instead."""
         if self.client_id is None:
             raise ValueError("Expected client_id to be set in order to call get_access_token")
 
