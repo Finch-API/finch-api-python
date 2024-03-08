@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.16.7 (2024-03-08)
+
+Full Changelog: [v0.16.6...v0.16.7](https://github.com/Finch-API/finch-api-python/compare/v0.16.6...v0.16.7)
+
+### Chores
+
+* export NOT_GIVEN sentinel value ([#321](https://github.com/Finch-API/finch-api-python/issues/321)) ([3091f44](https://github.com/Finch-API/finch-api-python/commit/3091f4411fe93b70ae8b2dcdeca9dae9f35b46ce))
+* **internal:** bump pyright ([#318](https://github.com/Finch-API/finch-api-python/issues/318)) ([0822881](https://github.com/Finch-API/finch-api-python/commit/082288138c7216f8ed7c4d499109201cf3aa626a))
+* **internal:** support parsing Annotated types ([#320](https://github.com/Finch-API/finch-api-python/issues/320)) ([6d2c896](https://github.com/Finch-API/finch-api-python/commit/6d2c896094ebcaf5a95a78d5d50bfe6094cc7305))
+
 ## 0.16.6 (2024-03-06)
 
 Full Changelog: [v0.16.5...v0.16.6](https://github.com/Finch-API/finch-api-python/compare/v0.16.5...v0.16.6)
