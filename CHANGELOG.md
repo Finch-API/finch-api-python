@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.16.8 (2024-03-11)
+
+Full Changelog: [v0.16.7...v0.16.8](https://github.com/Finch-API/finch-api-python/compare/v0.16.7...v0.16.8)
+
+### Chores
+
+* **internal:** improve deserialisation of discriminated unions ([#322](https://github.com/Finch-API/finch-api-python/issues/322)) ([9b37a82](https://github.com/Finch-API/finch-api-python/commit/9b37a82bf3c2d74d0bd848ea642d979af4965bd2))
+
 ## 0.16.7 (2024-03-08)
 
 Full Changelog: [v0.16.6...v0.16.7](https://github.com/Finch-API/finch-api-python/compare/v0.16.6...v0.16.7)
