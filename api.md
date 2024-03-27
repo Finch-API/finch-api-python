@@ -4,6 +4,13 @@
 from finch.types import ConnectionStatusType, OperationSupport, OperationSupportMatrix, Paging
 ```
 
+# Finch
+
+Methods:
+
+- <code>client.<a href="./src/finch/_client.py">get_auth_url</a>(\*args) -> str</code>
+- <code>client.<a href="./src/finch/_client.py">with_access_token</a>(\*args) -> Self</code>
+
 # AccessTokens
 
 Types:
@@ -187,6 +194,11 @@ from finch.types import (
     WebhookEvent,
 )
 ```
+
+Methods:
+
+- <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">unwrap</a>(\*args) -> WebhookEvent</code>
+- <code>client.webhooks.<a href="./src/finch/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
 
 # RequestForwarding
 
