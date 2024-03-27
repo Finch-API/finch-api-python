@@ -7,7 +7,10 @@ import httpx
 from .. import _legacy_response
 from ..types import CreateAccessTokenResponse, access_token_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import is_given, maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -53,27 +56,13 @@ class AccessTokens(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not is_given(client_id):
-            if self._client.client_id is None:
-                raise ValueError(
-                    "client_id must be provided as an argument or with the FINCH_CLIENT_ID environment variable"
-                )
-            client_id = self._client.client_id
-
-        if not is_given(client_secret):
-            if self._client.client_secret is None:
-                raise ValueError(
-                    "client_secret must be provided as an argument or with the FINCH_CLIENT_SECRET environment variable"
-                )
-            client_secret = self._client.client_secret
-
         return self._post(
             "/auth/token",
             body=maybe_transform(
                 {
+                    "code": code,
                     "client_id": client_id,
                     "client_secret": client_secret,
-                    "code": code,
                     "redirect_uri": redirect_uri,
                 },
                 access_token_create_params.AccessTokenCreateParams,
@@ -120,27 +109,13 @@ class AsyncAccessTokens(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not is_given(client_id):
-            if self._client.client_id is None:
-                raise ValueError(
-                    "client_id must be provided as an argument or with the FINCH_CLIENT_ID environment variable"
-                )
-            client_id = self._client.client_id
-
-        if not is_given(client_secret):
-            if self._client.client_secret is None:
-                raise ValueError(
-                    "client_secret must be provided as an argument or with the FINCH_CLIENT_SECRET environment variable"
-                )
-            client_secret = self._client.client_secret
-
         return await self._post(
             "/auth/token",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
+                    "code": code,
                     "client_id": client_id,
                     "client_secret": client_secret,
-                    "code": code,
                     "redirect_uri": redirect_uri,
                 },
                 access_token_create_params.AccessTokenCreateParams,
