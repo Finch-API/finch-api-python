@@ -56,6 +56,7 @@ class Finch(SyncAPIClient):
     hris: resources.HRIS
     providers: resources.Providers
     account: resources.Account
+    webhooks: resources.Webhooks
     request_forwarding: resources.RequestForwarding
     jobs: resources.Jobs
     sandbox: resources.Sandbox
@@ -156,6 +157,7 @@ class Finch(SyncAPIClient):
         self.hris = resources.HRIS(self)
         self.providers = resources.Providers(self)
         self.account = resources.Account(self)
+        self.webhooks = resources.Webhooks(self)
         self.request_forwarding = resources.RequestForwarding(self)
         self.jobs = resources.Jobs(self)
         self.sandbox = resources.Sandbox(self)
@@ -299,6 +301,70 @@ class Finch(SyncAPIClient):
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
 
+    def get_access_token(
+        self,
+        code: str,
+        *,
+        redirect_uri: str | None = None,
+    ) -> str:
+        """DEPRECATED: use client.access_tokens.create instead."""
+        if self.client_id is None:
+            raise ValueError("Expected client_id to be set in order to call get_access_token")
+
+        if self.client_secret is None:
+            raise ValueError("Expected client_secret to be set in order to call get_access_token")
+
+        response = self.post(
+            "/auth/token",
+            body={
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
+                "code": code,
+                "redirect_uri": redirect_uri,
+            },
+            options={"headers": {"Authorization": Omit()}},
+            cast_to=httpx.Response,
+        )
+        data = response.json()
+        return str(data["access_token"])
+
+    def get_auth_url(
+        self,
+        *,
+        products: str,
+        redirect_uri: str,
+        sandbox: bool,
+    ) -> str:
+        """
+        Returns the authorization url which can be visited in order to obtain an
+        authorization code from Finch. The authorization code can then be exchanged for
+        an access token for the Finch api by calling get_access_token().
+        """
+        if self.client_id is None:
+            raise ValueError("Expected the client_id to be set in order to call get_auth_url")
+
+        return str(
+            httpx.URL(
+                "https://connect.tryfinch.com/authorize",
+                params={
+                    "client_id": self.client_id,
+                    "products": products,
+                    "redirect_uri": redirect_uri,
+                    "sandbox": sandbox,
+                },
+            )
+        )
+
+    def with_access_token(
+        self,
+        access_token: str,
+    ) -> Self:
+        """
+        Returns a copy of the current Finch client with the given access token for
+        authentication.
+        """
+        return self.with_options(access_token=access_token)
+
     @override
     def _make_status_error(
         self,
@@ -338,6 +404,7 @@ class AsyncFinch(AsyncAPIClient):
     hris: resources.AsyncHRIS
     providers: resources.AsyncProviders
     account: resources.AsyncAccount
+    webhooks: resources.AsyncWebhooks
     request_forwarding: resources.AsyncRequestForwarding
     jobs: resources.AsyncJobs
     sandbox: resources.AsyncSandbox
@@ -438,6 +505,7 @@ class AsyncFinch(AsyncAPIClient):
         self.hris = resources.AsyncHRIS(self)
         self.providers = resources.AsyncProviders(self)
         self.account = resources.AsyncAccount(self)
+        self.webhooks = resources.AsyncWebhooks(self)
         self.request_forwarding = resources.AsyncRequestForwarding(self)
         self.jobs = resources.AsyncJobs(self)
         self.sandbox = resources.AsyncSandbox(self)
@@ -580,6 +648,70 @@ class AsyncFinch(AsyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    async def get_access_token(
+        self,
+        code: str,
+        *,
+        redirect_uri: str | None = None,
+    ) -> str:
+        """DEPRECATED: use client.access_tokens.create instead."""
+        if self.client_id is None:
+            raise ValueError("Expected client_id to be set in order to call get_access_token")
+
+        if self.client_secret is None:
+            raise ValueError("Expected client_secret to be set in order to call get_access_token")
+
+        response = await self.post(
+            "/auth/token",
+            body={
+                "client_id": self.client_id,
+                "client_secret": self.client_secret,
+                "code": code,
+                "redirect_uri": redirect_uri,
+            },
+            options={"headers": {"Authorization": Omit()}},
+            cast_to=httpx.Response,
+        )
+        data = response.json()
+        return str(data["access_token"])
+
+    def get_auth_url(
+        self,
+        *,
+        products: str,
+        redirect_uri: str,
+        sandbox: bool,
+    ) -> str:
+        """
+        Returns the authorization url which can be visited in order to obtain an
+        authorization code from Finch. The authorization code can then be exchanged for
+        an access token for the Finch api by calling get_access_token().
+        """
+        if self.client_id is None:
+            raise ValueError("Expected the client_id to be set in order to call get_auth_url")
+
+        return str(
+            httpx.URL(
+                "https://connect.tryfinch.com/authorize",
+                params={
+                    "client_id": self.client_id,
+                    "products": products,
+                    "redirect_uri": redirect_uri,
+                    "sandbox": sandbox,
+                },
+            )
+        )
+
+    def with_access_token(
+        self,
+        access_token: str,
+    ) -> Self:
+        """
+        Returns a copy of the current Finch client with the given access token for
+        authentication.
+        """
+        return self.with_options(access_token=access_token)
 
     @override
     def _make_status_error(

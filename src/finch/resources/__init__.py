@@ -32,6 +32,7 @@ from .sandbox import (
     SandboxWithStreamingResponse,
     AsyncSandboxWithStreamingResponse,
 )
+from .webhooks import Webhooks, AsyncWebhooks
 from .providers import (
     Providers,
     AsyncProviders,
@@ -82,6 +83,8 @@ __all__ = [
     "AsyncAccountWithRawResponse",
     "AccountWithStreamingResponse",
     "AsyncAccountWithStreamingResponse",
+    "Webhooks",
+    "AsyncWebhooks",
     "RequestForwarding",
     "AsyncRequestForwarding",
     "RequestForwardingWithRawResponse",

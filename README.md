@@ -142,6 +142,29 @@ page = client.hris.directory.list()
 print(page.page)
 ```
 
+## Webhook Verification
+
+We provide helper methods for verifying that a webhook request came from Finch, and not a malicious third party.
+
+You can use `finch.webhooks.verify_signature(body: string, headers, secret?) -> None` or `finch.webhooks.unwrap(body: string, headers, secret?) -> Payload`,
+both of which will raise an error if the signature is invalid.
+
+Note that the "body" parameter must be the raw JSON string sent from the server (do not parse it first).
+The `.unwrap()` method can parse this JSON for you into a `Payload` object.
+
+For example, in [FastAPI](https://fastapi.tiangolo.com/):
+
+```py
+@app.post('/my-webhook-handler')
+async def handler(request: Request):
+    body = await request.body()
+    secret = os.environ['FINCH_WEBHOOK_SECRET']  # env var used by default; explicit here.
+    payload = client.webhooks.unwrap(body, request.headers, secret)
+    print(payload)
+
+    return {'ok': True}
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `finch.APIConnectionError` is raised.
