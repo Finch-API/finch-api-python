@@ -1,6 +1,6 @@
 [project]
 name = "finch-api"
-version = "0.16.8"
+version = "0.17.0"
 description = "The official Python library for the Finch API"
 readme = "README.md"
 license = "Apache-2.0"
@@ -129,6 +129,7 @@ reportImplicitOverride = true
 
 reportImportCycles = false
 reportPrivateUsage = false
+
 
 [tool.ruff]
 line-length = 120
