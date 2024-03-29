@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.17.0 (2024-03-29)
+
+Full Changelog: [v0.16.8...v0.17.0](https://github.com/Finch-API/finch-api-python/compare/v0.16.8...v0.17.0)
+
+### Features
+
+* **package:** export default constants ([#334](https://github.com/Finch-API/finch-api-python/issues/334)) ([6ee4799](https://github.com/Finch-API/finch-api-python/commit/6ee479969a3ac25ed98d5e93bbcacf58d1171529))
+
+
+### Bug Fixes
+
+* **project:** use absolute github links on PyPi ([#335](https://github.com/Finch-API/finch-api-python/issues/335)) ([f44d11c](https://github.com/Finch-API/finch-api-python/commit/f44d11caf7c2869470d941025083e29b6104ef21))
+* revert regression with 3.7 support ([#332](https://github.com/Finch-API/finch-api-python/issues/332)) ([da0031c](https://github.com/Finch-API/finch-api-python/commit/da0031cd66a123f339a65ad63a731e97ad65383f))
+
+
+### Performance Improvements
+
+* cache TypeAdapters ([#324](https://github.com/Finch-API/finch-api-python/issues/324)) ([3bd22fe](https://github.com/Finch-API/finch-api-python/commit/3bd22fe8a9fe02f2700ac0b6387b00575cddc444))
+
+
+### Chores
+
+* **internal:** formatting change ([#330](https://github.com/Finch-API/finch-api-python/issues/330)) ([6b8829f](https://github.com/Finch-API/finch-api-python/commit/6b8829f4999a3e243d63f45126000b5ad2a6b9ef))
+* **internal:** loosen input type for util function ([#328](https://github.com/Finch-API/finch-api-python/issues/328)) ([3fdcf2e](https://github.com/Finch-API/finch-api-python/commit/3fdcf2e89f9ba3ef341e0402d3cfd528ad568af5))
+* **internal:** update generated pragma comment ([#327](https://github.com/Finch-API/finch-api-python/issues/327)) ([269569f](https://github.com/Finch-API/finch-api-python/commit/269569fdca6c03dc8202dab0b20e00c099020d65))
+* revert temporary commit ([7961a22](https://github.com/Finch-API/finch-api-python/commit/7961a22b10e052807d02fd09c9ae7d07c30391af))
+* temporary commit ([#333](https://github.com/Finch-API/finch-api-python/issues/333)) ([5e42474](https://github.com/Finch-API/finch-api-python/commit/5e42474c6a00a6ec3e8a11db753ffbecb6e9a1e3))
+
+
+### Documentation
+
+* **contributing:** fix typo ([#331](https://github.com/Finch-API/finch-api-python/issues/331)) ([15c71d5](https://github.com/Finch-API/finch-api-python/commit/15c71d5bc77fda5bb4b2f7aec53c75f49987ae3b))
+* fix typo in CONTRIBUTING.md ([#326](https://github.com/Finch-API/finch-api-python/issues/326)) ([98ba71b](https://github.com/Finch-API/finch-api-python/commit/98ba71b32ab2eaa1564b0fbab85cb2de9a0ea421))
+* **readme:** document how to make undocumented requests ([#329](https://github.com/Finch-API/finch-api-python/issues/329)) ([55bf27d](https://github.com/Finch-API/finch-api-python/commit/55bf27d677d81c1272b148ec37fdac8b5dd4fc68))
+
 ## 0.16.8 (2024-03-11)
 
 Full Changelog: [v0.16.7...v0.16.8](https://github.com/Finch-API/finch-api-python/compare/v0.16.7...v0.16.8)
