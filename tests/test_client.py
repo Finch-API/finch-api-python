@@ -875,6 +875,17 @@ class TestFinch:
 
         assert isinstance(exc.value.__cause__, ValidationError)
 
+    def test_client_max_retries_validation(self) -> None:
+        with pytest.raises(TypeError, match=r"max_retries cannot be None"):
+            Finch(
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                max_retries=cast(Any, None),
+            )
+
     @pytest.mark.respx(base_url=base_url)
     def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
         class Model(BaseModel):
@@ -1781,6 +1792,17 @@ class TestAsyncFinch:
             await self.client.get("/foo", cast_to=Model)
 
         assert isinstance(exc.value.__cause__, ValidationError)
+
+    async def test_client_max_retries_validation(self) -> None:
+        with pytest.raises(TypeError, match=r"max_retries cannot be None"):
+            AsyncFinch(
+                base_url=base_url,
+                access_token=access_token,
+                client_id=client_id,
+                client_secret=client_secret,
+                _strict_response_validation=True,
+                max_retries=cast(Any, None),
+            )
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
