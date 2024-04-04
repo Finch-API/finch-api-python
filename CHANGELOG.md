@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.17.1 (2024-04-04)
+
+Full Changelog: [v0.17.0...v0.17.1](https://github.com/Finch-API/finch-api-python/compare/v0.17.0...v0.17.1)
+
+### Chores
+
+* **api:** improve descriptions ([#341](https://github.com/Finch-API/finch-api-python/issues/341)) ([43c477f](https://github.com/Finch-API/finch-api-python/commit/43c477f4da8e71a6b28598993dd15b8557017641))
+* **client:** validate that max_retries is not None ([#337](https://github.com/Finch-API/finch-api-python/issues/337)) ([6558aeb](https://github.com/Finch-API/finch-api-python/commit/6558aebd5ea0c2716a5e321787e24420dd8f203a))
+* **internal:** defer model build for import latency ([#339](https://github.com/Finch-API/finch-api-python/issues/339)) ([8e383bc](https://github.com/Finch-API/finch-api-python/commit/8e383bc6893f3344256368c0de28b55f385a09d2))
+* **internal:** streaming updates ([#340](https://github.com/Finch-API/finch-api-python/issues/340)) ([71fca9d](https://github.com/Finch-API/finch-api-python/commit/71fca9d60e40b63ff14df78f4a0cbccaaa5fff18))
+
 ## 0.17.0 (2024-03-29)
 
 Full Changelog: [v0.16.8...v0.17.0](https://github.com/Finch-API/finch-api-python/compare/v0.16.8...v0.17.0)
