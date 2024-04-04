@@ -39,9 +39,8 @@ class Introspection(BaseModel):
     connection_type: Literal["provider", "finch"]
     """The type of the connection associated with the token.
 
-    `provider` - connection to an external provider
-
-    `finch` - finch-generated data.
+    - `provider` - connection to an external provider
+    - `finch` - finch-generated data.
     """
 
     manual: bool
