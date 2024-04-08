@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.0 (2024-04-08)
+
+Full Changelog: [v0.17.1...v0.18.0](https://github.com/Finch-API/finch-api-python/compare/v0.17.1...v0.18.0)
+
+### Features
+
+* **client:** add DefaultHttpxClient and DefaultAsyncHttpxClient ([#342](https://github.com/Finch-API/finch-api-python/issues/342)) ([399b634](https://github.com/Finch-API/finch-api-python/commit/399b634a14156f5d6cba68ed3cc74f49edf1920c))
+
 ## 0.17.1 (2024-04-04)
 
 Full Changelog: [v0.17.0...v0.17.1](https://github.com/Finch-API/finch-api-python/compare/v0.17.0...v0.17.1)
