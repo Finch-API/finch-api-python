@@ -20,7 +20,7 @@ class SupportedFeatures(BaseModel):
     This field will only be true for retirement benefits.
     """
 
-    company_contribution: Optional[List[Literal["fixed", "percent"]]] = None
+    company_contribution: Optional[List[Optional[Literal["fixed", "percent"]]]] = None
     """Supported contribution types.
 
     An empty array indicates contributions are not supported.
@@ -28,7 +28,7 @@ class SupportedFeatures(BaseModel):
 
     description: Optional[str] = None
 
-    employee_deduction: Optional[List[Literal["fixed", "percent"]]] = None
+    employee_deduction: Optional[List[Optional[Literal["fixed", "percent"]]]] = None
     """Supported deduction types.
 
     An empty array indicates deductions are not supported.
@@ -37,7 +37,7 @@ class SupportedFeatures(BaseModel):
     frequencies: Optional[List[Optional[BenefitFrequency]]] = None
     """The list of frequencies supported by the provider for this benefit"""
 
-    hsa_contribution_limit: Optional[List[Literal["individual", "family"]]] = None
+    hsa_contribution_limit: Optional[List[Optional[Literal["individual", "family"]]]] = None
     """Whether the provider supports HSA contribution limits.
 
     Empty if this feature is not supported for the benefit. This array only has
