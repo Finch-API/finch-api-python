@@ -43,7 +43,7 @@ class BodyDepartment(TypedDict, total=False):
 class BodyEmail(TypedDict, total=False):
     data: str
 
-    type: Literal["work", "personal"]
+    type: Optional[Literal["work", "personal"]]
 
 
 class BodyEmployment(TypedDict, total=False):
@@ -66,7 +66,7 @@ class BodyManager(TypedDict, total=False):
 class BodyPhoneNumber(TypedDict, total=False):
     data: str
 
-    type: Literal["work", "personal"]
+    type: Optional[Literal["work", "personal"]]
 
 
 class Body(TypedDict, total=False):
