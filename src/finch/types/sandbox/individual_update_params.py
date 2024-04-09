@@ -66,10 +66,10 @@ class IndividualUpdateParams(TypedDict, total=False):
 class Email(TypedDict, total=False):
     data: str
 
-    type: Literal["work", "personal"]
+    type: Optional[Literal["work", "personal"]]
 
 
 class PhoneNumber(TypedDict, total=False):
     data: str
 
-    type: Literal["work", "personal"]
+    type: Optional[Literal["work", "personal"]]
