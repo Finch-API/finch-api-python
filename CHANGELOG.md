@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.19.0 (2024-04-09)
+
+Full Changelog: [v0.18.0...v0.19.0](https://github.com/Finch-API/finch-api-python/compare/v0.18.0...v0.19.0)
+
+### Features
+
+* **api:** updates ([#346](https://github.com/Finch-API/finch-api-python/issues/346)) ([bce68bb](https://github.com/Finch-API/finch-api-python/commit/bce68bb11d184729df48387e789482bd812afb9d))
+* **models:** add to_dict & to_json helper methods ([#344](https://github.com/Finch-API/finch-api-python/issues/344)) ([9734174](https://github.com/Finch-API/finch-api-python/commit/9734174c4abd80bc2a47300e98d6556aabc0319a))
+
 ## 0.18.0 (2024-04-08)
 
 Full Changelog: [v0.17.1...v0.18.0](https://github.com/Finch-API/finch-api-python/compare/v0.17.1...v0.18.0)
