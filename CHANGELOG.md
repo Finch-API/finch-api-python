@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.19.1 (2024-04-10)
+
+Full Changelog: [v0.19.0...v0.19.1](https://github.com/Finch-API/finch-api-python/compare/v0.19.0...v0.19.1)
+
+### Chores
+
+* fix typo ([#347](https://github.com/Finch-API/finch-api-python/issues/347)) ([496db14](https://github.com/Finch-API/finch-api-python/commit/496db14f4bb8bfaf2e91f557a68d08b3139bc74d))
+
 ## 0.19.0 (2024-04-09)
 
 Full Changelog: [v0.18.0...v0.19.0](https://github.com/Finch-API/finch-api-python/compare/v0.18.0...v0.19.0)
