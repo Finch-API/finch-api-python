@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.20.0 (2024-04-12)
+
+Full Changelog: [v0.19.1...v0.20.0](https://github.com/Finch-API/finch-api-python/compare/v0.19.1...v0.20.0)
+
+### Features
+
+* **api:** updates ([#349](https://github.com/Finch-API/finch-api-python/issues/349)) ([c996e4a](https://github.com/Finch-API/finch-api-python/commit/c996e4a6a729b149805e630eeedec6fe29bea09c))
+
+
+### Chores
+
+* **internal:** formatting ([#351](https://github.com/Finch-API/finch-api-python/issues/351)) ([5a521ad](https://github.com/Finch-API/finch-api-python/commit/5a521ad9b2fe7d758e981bcec18f6bc569a2739a))
+
 ## 0.19.1 (2024-04-10)
 
 Full Changelog: [v0.19.0...v0.19.1](https://github.com/Finch-API/finch-api-python/compare/v0.19.0...v0.19.1)
