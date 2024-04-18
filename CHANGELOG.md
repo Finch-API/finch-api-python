@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.20.1 (2024-04-18)
+
+Full Changelog: [v0.20.0...v0.20.1](https://github.com/Finch-API/finch-api-python/compare/v0.20.0...v0.20.1)
+
+### Chores
+
+* **internal:** add lru_cache helper function ([#352](https://github.com/Finch-API/finch-api-python/issues/352)) ([2856451](https://github.com/Finch-API/finch-api-python/commit/2856451e956fa7bd70ddc9ff58cd1c7dba01f616))
+* **internal:** ban usage of lru_cache ([#354](https://github.com/Finch-API/finch-api-python/issues/354)) ([d909f7d](https://github.com/Finch-API/finch-api-python/commit/d909f7dd0dba483a4ce1fd4dbd842a5649091f99))
+* **internal:** bump pyright to 1.1.359 ([#355](https://github.com/Finch-API/finch-api-python/issues/355)) ([a489290](https://github.com/Finch-API/finch-api-python/commit/a489290f45562abf37ec58e01c911ab8c76dcf11))
+
 ## 0.20.0 (2024-04-12)
 
 Full Changelog: [v0.19.1...v0.20.0](https://github.com/Finch-API/finch-api-python/compare/v0.19.1...v0.20.0)
