@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.20.2 (2024-04-23)
+
+Full Changelog: [v0.20.1...v0.20.2](https://github.com/Finch-API/finch-api-python/compare/v0.20.1...v0.20.2)
+
+### Chores
+
+* **internal:** restructure imports ([#356](https://github.com/Finch-API/finch-api-python/issues/356)) ([a80c101](https://github.com/Finch-API/finch-api-python/commit/a80c101fd90ee058d822cf5e43fe45bad8306737))
+* rename resource types ([#358](https://github.com/Finch-API/finch-api-python/issues/358)) ([d6c394c](https://github.com/Finch-API/finch-api-python/commit/d6c394cd79712aaec50755f382705743a3082b2c))
+
 ## 0.20.1 (2024-04-18)
 
 Full Changelog: [v0.20.0...v0.20.1](https://github.com/Finch-API/finch-api-python/compare/v0.20.0...v0.20.1)
