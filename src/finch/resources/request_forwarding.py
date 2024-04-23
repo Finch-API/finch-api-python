@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from .. import _legacy_response
-from ..types import RequestForwardingForwardResponse, request_forwarding_forward_params
+from ..types import request_forwarding_forward_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,6 +19,7 @@ from .._response import to_streamed_response_wrapper, async_to_streamed_response
 from .._base_client import (
     make_request_options,
 )
+from ..types.request_forwarding_forward_response import RequestForwardingForwardResponse
 
 __all__ = ["RequestForwarding", "AsyncRequestForwarding"]
 

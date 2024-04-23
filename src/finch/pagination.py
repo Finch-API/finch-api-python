@@ -8,7 +8,7 @@ from httpx import Response
 from ._utils import is_mapping
 from ._models import BaseModel
 from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
-from .types.shared import Paging
+from .types.shared.paging import Paging
 
 __all__ = [
     "SyncSinglePage",

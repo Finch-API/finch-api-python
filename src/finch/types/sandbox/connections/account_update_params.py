@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from ...shared import ConnectionStatusType
+from ...shared.connection_status_type import ConnectionStatusType
 
 __all__ = ["AccountUpdateParams"]
 

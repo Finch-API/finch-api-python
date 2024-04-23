@@ -3,10 +3,10 @@
 from typing import Optional
 from typing_extensions import Literal
 
-from .hris import BenefitsSupport
-from .shared import ConnectionStatusType
 from .._models import BaseModel
 from .base_webhook_event import BaseWebhookEvent
+from .hris.benefits_support import BenefitsSupport
+from .shared.connection_status_type import ConnectionStatusType
 
 __all__ = [
     "AccountUpdateEvent",

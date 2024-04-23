@@ -9,7 +9,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
-from finch.types.sandbox import DirectoryCreateResponse
+from finch.types.sandbox.directory_create_response import DirectoryCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

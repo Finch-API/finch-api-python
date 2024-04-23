@@ -8,8 +8,9 @@ from typing import Any, cast
 import pytest
 
 from finch import Finch, AsyncFinch
-from finch.types import Introspection, DisconnectResponse
 from tests.utils import assert_matches_type
+from finch.types.introspection import Introspection
+from finch.types.disconnect_response import DisconnectResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

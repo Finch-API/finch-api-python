@@ -13,11 +13,12 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
-from ...types.hris import EmploymentDataResponse, employment_retrieve_many_params
+from ...types.hris import employment_retrieve_many_params
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ...types.hris.employment_data_response import EmploymentDataResponse
 
 __all__ = ["Employments", "AsyncEmployments"]
 
