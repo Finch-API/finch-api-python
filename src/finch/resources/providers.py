@@ -5,7 +5,6 @@ from __future__ import annotations
 import httpx
 
 from .. import _legacy_response
-from ..types import Provider
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -15,6 +14,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.provider import Provider
 
 __all__ = ["Providers", "AsyncProviders"]
 

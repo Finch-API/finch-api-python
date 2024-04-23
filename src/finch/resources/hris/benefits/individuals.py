@@ -18,14 +18,14 @@ from ...._base_client import (
     make_request_options,
 )
 from ....types.hris.benefits import (
-    IndividualBenefit,
-    EnrolledIndividual,
-    UnenrolledIndividual,
-    IndividualEnrolledIDsResponse,
     individual_enroll_many_params,
     individual_unenroll_many_params,
     individual_retrieve_many_benefits_params,
 )
+from ....types.hris.benefits.individual_benefit import IndividualBenefit
+from ....types.hris.benefits.enrolled_individual import EnrolledIndividual
+from ....types.hris.benefits.unenrolled_individual import UnenrolledIndividual
+from ....types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
 
 __all__ = ["Individuals", "AsyncIndividuals"]
 

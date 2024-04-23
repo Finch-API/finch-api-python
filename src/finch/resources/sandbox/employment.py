@@ -7,7 +7,6 @@ from typing import Iterable, Optional
 import httpx
 
 from ... import _legacy_response
-from ...types import IncomeParam, LocationParam
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -19,7 +18,10 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.sandbox import EmploymentUpdateResponse, employment_update_params
+from ...types.sandbox import employment_update_params
+from ...types.income_param import IncomeParam
+from ...types.location_param import LocationParam
+from ...types.sandbox.employment_update_response import EmploymentUpdateResponse
 
 __all__ = ["Employment", "AsyncEmployment"]
 

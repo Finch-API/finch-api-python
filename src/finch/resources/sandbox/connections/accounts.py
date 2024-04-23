@@ -19,13 +19,10 @@ from ...._response import to_streamed_response_wrapper, async_to_streamed_respon
 from ...._base_client import (
     make_request_options,
 )
-from ....types.shared import ConnectionStatusType
-from ....types.sandbox.connections import (
-    AccountCreateResponse,
-    AccountUpdateResponse,
-    account_create_params,
-    account_update_params,
-)
+from ....types.sandbox.connections import account_create_params, account_update_params
+from ....types.shared.connection_status_type import ConnectionStatusType
+from ....types.sandbox.connections.account_create_response import AccountCreateResponse
+from ....types.sandbox.connections.account_update_response import AccountUpdateResponse
 
 __all__ = ["Accounts", "AsyncAccounts"]
 

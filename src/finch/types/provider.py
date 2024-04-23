@@ -3,8 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from .hris import BenefitsSupport
 from .._models import BaseModel
+from .hris.benefits_support import BenefitsSupport
 
 __all__ = [
     "Provider",

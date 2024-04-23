@@ -18,7 +18,9 @@ from ...._response import to_streamed_response_wrapper, async_to_streamed_respon
 from ...._base_client import (
     make_request_options,
 )
-from ....types.sandbox.jobs import SandboxJobConfiguration, ConfigurationRetrieveResponse, configuration_update_params
+from ....types.sandbox.jobs import configuration_update_params
+from ....types.sandbox.jobs.sandbox_job_configuration import SandboxJobConfiguration
+from ....types.sandbox.jobs.configuration_retrieve_response import ConfigurationRetrieveResponse
 
 __all__ = ["Configuration", "AsyncConfiguration"]
 

@@ -8,7 +8,6 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import LocationParam
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -20,7 +19,9 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.sandbox import IndividualUpdateResponse, individual_update_params
+from ...types.sandbox import individual_update_params
+from ...types.location_param import LocationParam
+from ...types.sandbox.individual_update_response import IndividualUpdateResponse
 
 __all__ = ["Individual", "AsyncIndividual"]
 
