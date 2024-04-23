@@ -31,7 +31,7 @@ Types:
 from finch.types import Income, Location, Money
 ```
 
-## CompanyResource
+## Company
 
 Types:
 
