@@ -3,8 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from .shared import ConnectionStatusType
 from .._models import BaseModel
+from .shared.connection_status_type import ConnectionStatusType
 
 __all__ = ["Introspection", "AuthenticationMethods", "AuthenticationMethodsConnectionStatus"]
 

@@ -26,7 +26,8 @@ from .configuration import (
 from ...._base_client import (
     make_request_options,
 )
-from ....types.sandbox import JobCreateResponse, job_create_params
+from ....types.sandbox import job_create_params
+from ....types.sandbox.job_create_response import JobCreateResponse
 
 __all__ = ["Jobs", "AsyncJobs"]
 

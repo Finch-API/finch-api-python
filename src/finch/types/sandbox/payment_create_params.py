@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
-from ..hris import BenefitType
 from ..money_param import MoneyParam
+from ..hris.benefit_type import BenefitType
 
 __all__ = [
     "PaymentCreateParams",

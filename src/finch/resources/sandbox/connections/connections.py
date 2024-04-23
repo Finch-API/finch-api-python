@@ -27,7 +27,8 @@ from ...._response import to_streamed_response_wrapper, async_to_streamed_respon
 from ...._base_client import (
     make_request_options,
 )
-from ....types.sandbox import ConnectionCreateResponse, connection_create_params
+from ....types.sandbox import connection_create_params
+from ....types.sandbox.connection_create_response import ConnectionCreateResponse
 
 __all__ = ["Connections", "AsyncConnections"]
 
