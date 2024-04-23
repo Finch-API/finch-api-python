@@ -16,11 +16,13 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ...types.jobs import AutomatedAsyncJob, AutomatedCreateResponse, automated_list_params, automated_create_params
+from ...types.jobs import automated_list_params, automated_create_params
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ...types.jobs.automated_async_job import AutomatedAsyncJob
+from ...types.jobs.automated_create_response import AutomatedCreateResponse
 
 __all__ = ["Automated", "AsyncAutomated"]
 

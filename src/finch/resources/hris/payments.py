@@ -14,11 +14,12 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncSinglePage, AsyncSinglePage
-from ...types.hris import Payment, payment_list_params
+from ...types.hris import payment_list_params
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ...types.hris.payment import Payment
 
 __all__ = ["Payments", "AsyncPayments"]
 

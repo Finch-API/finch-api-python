@@ -13,11 +13,12 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
-from ...types.hris import IndividualResponse, individual_retrieve_many_params
+from ...types.hris import individual_retrieve_many_params
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ...types.hris.individual_response import IndividualResponse
 
 __all__ = ["Individuals", "AsyncIndividuals"]
 

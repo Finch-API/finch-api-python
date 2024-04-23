@@ -2,8 +2,8 @@
 
 from typing import Optional
 
-from ..shared import OperationSupportMatrix
 from ..._models import BaseModel
+from ..shared.operation_support_matrix import OperationSupportMatrix
 
 __all__ = ["SupportPerBenefitType"]
 

@@ -18,7 +18,8 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.sandbox import PaymentCreateResponse, payment_create_params
+from ...types.sandbox import payment_create_params
+from ...types.sandbox.payment_create_response import PaymentCreateResponse
 
 __all__ = ["Payment", "AsyncPayment"]
 

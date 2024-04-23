@@ -2,9 +2,9 @@
 
 from typing import List, Optional
 
-from ..shared import Paging
 from ..._models import BaseModel
 from .pay_statement import PayStatement
+from ..shared.paging import Paging
 
 __all__ = ["PayStatementResponseBody"]
 

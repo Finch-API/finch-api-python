@@ -18,7 +18,8 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.sandbox import DirectoryCreateResponse, directory_create_params
+from ...types.sandbox import directory_create_params
+from ...types.sandbox.directory_create_response import DirectoryCreateResponse
 
 __all__ = ["Directory", "AsyncDirectory"]
 
