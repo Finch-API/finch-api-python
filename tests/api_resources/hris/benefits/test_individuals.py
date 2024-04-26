@@ -10,10 +10,12 @@ import pytest
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
 from finch.pagination import SyncSinglePage, AsyncSinglePage
-from finch.types.hris.benefits.individual_benefit import IndividualBenefit
-from finch.types.hris.benefits.enrolled_individual import EnrolledIndividual
-from finch.types.hris.benefits.unenrolled_individual import UnenrolledIndividual
-from finch.types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
+from finch.types.hris.benefits import (
+    IndividualBenefit,
+    EnrolledIndividual,
+    UnenrolledIndividual,
+    IndividualEnrolledIDsResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
