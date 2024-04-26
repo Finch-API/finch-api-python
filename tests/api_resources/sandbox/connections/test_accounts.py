@@ -9,8 +9,10 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
-from finch.types.sandbox.connections.account_create_response import AccountCreateResponse
-from finch.types.sandbox.connections.account_update_response import AccountUpdateResponse
+from finch.types.sandbox.connections import (
+    AccountCreateResponse,
+    AccountUpdateResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
