@@ -10,7 +10,7 @@ import pytest
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
 from finch.pagination import SyncIndividualsPage, AsyncIndividualsPage
-from finch.types.hris.individual_in_directory import IndividualInDirectory
+from finch.types.hris import IndividualInDirectory
 
 # pyright: reportDeprecated=false
 

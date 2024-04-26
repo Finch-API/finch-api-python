@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from finch import Finch, AsyncFinch
+from finch.types import CreateAccessTokenResponse
 from tests.utils import assert_matches_type
-from finch.types.create_access_token_response import CreateAccessTokenResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
