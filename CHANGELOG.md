@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.20.3 (2024-05-01)
+
+Full Changelog: [v0.20.2...v0.20.3](https://github.com/Finch-API/finch-api-python/compare/v0.20.2...v0.20.3)
+
+### Bug Fixes
+
+* **docs:** doc improvements ([#359](https://github.com/Finch-API/finch-api-python/issues/359)) ([5fe6e56](https://github.com/Finch-API/finch-api-python/commit/5fe6e56f670aa7e528171f567fbf8e6c2aa6a7e5))
+
+
+### Chores
+
+* **client:** log response headers in debug mode ([#366](https://github.com/Finch-API/finch-api-python/issues/366)) ([5dcc0e5](https://github.com/Finch-API/finch-api-python/commit/5dcc0e5d62b6f334ca73c401dd4ce5e21dcb2d96))
+* **internal:** add link to openapi spec ([#367](https://github.com/Finch-API/finch-api-python/issues/367)) ([378727a](https://github.com/Finch-API/finch-api-python/commit/378727a8d21c89384d82a99dfcf64ac0091fcd84))
+* **internal:** add scripts/test, scripts/mock and add ci job ([#368](https://github.com/Finch-API/finch-api-python/issues/368)) ([ff132d5](https://github.com/Finch-API/finch-api-python/commit/ff132d5dca28c4910c6eaa9f6484d93b770bbffd))
+* **internal:** bump mock server version to ~5.8.0 ([#369](https://github.com/Finch-API/finch-api-python/issues/369)) ([ad0b12e](https://github.com/Finch-API/finch-api-python/commit/ad0b12e37c5c05876cae92cf474a5fd70ad52689))
+* **internal:** minor reformatting ([#365](https://github.com/Finch-API/finch-api-python/issues/365)) ([a7253ed](https://github.com/Finch-API/finch-api-python/commit/a7253edc76bad52f14d2c1f0fb876077b30128a9))
+* **internal:** reformat imports ([#364](https://github.com/Finch-API/finch-api-python/issues/364)) ([62a5f98](https://github.com/Finch-API/finch-api-python/commit/62a5f983d0b099535ba06cb9f1ee2a9490d98314))
+* **internal:** update test helper function ([#362](https://github.com/Finch-API/finch-api-python/issues/362)) ([5f9f330](https://github.com/Finch-API/finch-api-python/commit/5f9f330d00a95e390aa1f327afad354d97f0c52d))
+* **internal:** use actions/checkout@v4 for codeflow ([#361](https://github.com/Finch-API/finch-api-python/issues/361)) ([278962a](https://github.com/Finch-API/finch-api-python/commit/278962a5e7a278b46c309fbc3a003568d7938ab6))
+
+
+### Documentation
+
+* clarify behavior around employee_size ([#363](https://github.com/Finch-API/finch-api-python/issues/363)) ([f10523a](https://github.com/Finch-API/finch-api-python/commit/f10523a9fd09d306bc8405eea73311da8a9d8a3e))
+
 ## 0.20.2 (2024-04-23)
 
 Full Changelog: [v0.20.1...v0.20.2](https://github.com/Finch-API/finch-api-python/compare/v0.20.1...v0.20.2)
