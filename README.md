@@ -247,7 +247,7 @@ client = Finch(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).hris.directory.list()
+client.with_options(timeout=5.0).hris.directory.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
