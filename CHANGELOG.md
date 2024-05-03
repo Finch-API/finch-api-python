@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.4 (2024-05-03)
+
+Full Changelog: [v0.20.3...v0.20.4](https://github.com/Finch-API/finch-api-python/compare/v0.20.3...v0.20.4)
+
+### Documentation
+
+* **readme:** fix misleading timeout example value ([#370](https://github.com/Finch-API/finch-api-python/issues/370)) ([5dee4bb](https://github.com/Finch-API/finch-api-python/commit/5dee4bbae722e750bc08a221f9332f82be5ef801))
+
 ## 0.20.3 (2024-05-01)
 
 Full Changelog: [v0.20.2...v0.20.3](https://github.com/Finch-API/finch-api-python/compare/v0.20.2...v0.20.3)
