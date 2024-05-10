@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.5 (2024-05-10)
+
+Full Changelog: [v0.20.4...v0.20.5](https://github.com/Finch-API/finch-api-python/compare/v0.20.4...v0.20.5)
+
+### Chores
+
+* **docs:** add SECURITY.md ([#373](https://github.com/Finch-API/finch-api-python/issues/373)) ([e171ffc](https://github.com/Finch-API/finch-api-python/commit/e171ffc106ee99da6fc9d21ea6546ab9caaae55e))
+
 ## 0.20.4 (2024-05-03)
 
 Full Changelog: [v0.20.3...v0.20.4](https://github.com/Finch-API/finch-api-python/compare/v0.20.3...v0.20.4)
