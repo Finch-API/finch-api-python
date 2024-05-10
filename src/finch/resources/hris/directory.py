@@ -20,17 +20,17 @@ from ..._base_client import (
 )
 from ...types.hris.individual_in_directory import IndividualInDirectory
 
-__all__ = ["Directory", "AsyncDirectory"]
+__all__ = ["DirectoryResource", "AsyncDirectoryResource"]
 
 
-class Directory(SyncAPIResource):
+class DirectoryResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DirectoryWithRawResponse:
-        return DirectoryWithRawResponse(self)
+    def with_raw_response(self) -> DirectoryResourceWithRawResponse:
+        return DirectoryResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DirectoryWithStreamingResponse:
-        return DirectoryWithStreamingResponse(self)
+    def with_streaming_response(self) -> DirectoryResourceWithStreamingResponse:
+        return DirectoryResourceWithStreamingResponse(self)
 
     def list(
         self,
@@ -118,14 +118,14 @@ class Directory(SyncAPIResource):
         )
 
 
-class AsyncDirectory(AsyncAPIResource):
+class AsyncDirectoryResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDirectoryWithRawResponse:
-        return AsyncDirectoryWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDirectoryResourceWithRawResponse:
+        return AsyncDirectoryResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDirectoryWithStreamingResponse:
-        return AsyncDirectoryWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDirectoryResourceWithStreamingResponse:
+        return AsyncDirectoryResourceWithStreamingResponse(self)
 
     def list(
         self,
@@ -213,8 +213,8 @@ class AsyncDirectory(AsyncAPIResource):
         )
 
 
-class DirectoryWithRawResponse:
-    def __init__(self, directory: Directory) -> None:
+class DirectoryResourceWithRawResponse:
+    def __init__(self, directory: DirectoryResource) -> None:
         self._directory = directory
 
         self.list = _legacy_response.to_raw_response_wrapper(
@@ -227,8 +227,8 @@ class DirectoryWithRawResponse:
         )
 
 
-class AsyncDirectoryWithRawResponse:
-    def __init__(self, directory: AsyncDirectory) -> None:
+class AsyncDirectoryResourceWithRawResponse:
+    def __init__(self, directory: AsyncDirectoryResource) -> None:
         self._directory = directory
 
         self.list = _legacy_response.async_to_raw_response_wrapper(
@@ -241,8 +241,8 @@ class AsyncDirectoryWithRawResponse:
         )
 
 
-class DirectoryWithStreamingResponse:
-    def __init__(self, directory: Directory) -> None:
+class DirectoryResourceWithStreamingResponse:
+    def __init__(self, directory: DirectoryResource) -> None:
         self._directory = directory
 
         self.list = to_streamed_response_wrapper(
@@ -255,8 +255,8 @@ class DirectoryWithStreamingResponse:
         )
 
 
-class AsyncDirectoryWithStreamingResponse:
-    def __init__(self, directory: AsyncDirectory) -> None:
+class AsyncDirectoryResourceWithStreamingResponse:
+    def __init__(self, directory: AsyncDirectoryResource) -> None:
         self._directory = directory
 
         self.list = async_to_streamed_response_wrapper(

@@ -14,12 +14,12 @@ from ...._utils import (
 )
 from ...._compat import cached_property
 from .individuals import (
-    Individuals,
-    AsyncIndividuals,
-    IndividualsWithRawResponse,
-    AsyncIndividualsWithRawResponse,
-    IndividualsWithStreamingResponse,
-    AsyncIndividualsWithStreamingResponse,
+    IndividualsResource,
+    AsyncIndividualsResource,
+    IndividualsResourceWithRawResponse,
+    AsyncIndividualsResourceWithRawResponse,
+    IndividualsResourceWithStreamingResponse,
+    AsyncIndividualsResourceWithStreamingResponse,
 )
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -36,21 +36,21 @@ from ....types.hris.supported_benefit import SupportedBenefit
 from ....types.hris.update_company_benefit_response import UpdateCompanyBenefitResponse
 from ....types.hris.create_company_benefits_response import CreateCompanyBenefitsResponse
 
-__all__ = ["Benefits", "AsyncBenefits"]
+__all__ = ["BenefitsResource", "AsyncBenefitsResource"]
 
 
-class Benefits(SyncAPIResource):
+class BenefitsResource(SyncAPIResource):
     @cached_property
-    def individuals(self) -> Individuals:
-        return Individuals(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> BenefitsWithRawResponse:
-        return BenefitsWithRawResponse(self)
+    def individuals(self) -> IndividualsResource:
+        return IndividualsResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> BenefitsWithStreamingResponse:
-        return BenefitsWithStreamingResponse(self)
+    def with_raw_response(self) -> BenefitsResourceWithRawResponse:
+        return BenefitsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BenefitsResourceWithStreamingResponse:
+        return BenefitsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -208,18 +208,18 @@ class Benefits(SyncAPIResource):
         )
 
 
-class AsyncBenefits(AsyncAPIResource):
+class AsyncBenefitsResource(AsyncAPIResource):
     @cached_property
-    def individuals(self) -> AsyncIndividuals:
-        return AsyncIndividuals(self._client)
+    def individuals(self) -> AsyncIndividualsResource:
+        return AsyncIndividualsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncBenefitsWithRawResponse:
-        return AsyncBenefitsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncBenefitsResourceWithRawResponse:
+        return AsyncBenefitsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncBenefitsWithStreamingResponse:
-        return AsyncBenefitsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncBenefitsResourceWithStreamingResponse:
+        return AsyncBenefitsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -377,8 +377,8 @@ class AsyncBenefits(AsyncAPIResource):
         )
 
 
-class BenefitsWithRawResponse:
-    def __init__(self, benefits: Benefits) -> None:
+class BenefitsResourceWithRawResponse:
+    def __init__(self, benefits: BenefitsResource) -> None:
         self._benefits = benefits
 
         self.create = _legacy_response.to_raw_response_wrapper(
@@ -398,12 +398,12 @@ class BenefitsWithRawResponse:
         )
 
     @cached_property
-    def individuals(self) -> IndividualsWithRawResponse:
-        return IndividualsWithRawResponse(self._benefits.individuals)
+    def individuals(self) -> IndividualsResourceWithRawResponse:
+        return IndividualsResourceWithRawResponse(self._benefits.individuals)
 
 
-class AsyncBenefitsWithRawResponse:
-    def __init__(self, benefits: AsyncBenefits) -> None:
+class AsyncBenefitsResourceWithRawResponse:
+    def __init__(self, benefits: AsyncBenefitsResource) -> None:
         self._benefits = benefits
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
@@ -423,12 +423,12 @@ class AsyncBenefitsWithRawResponse:
         )
 
     @cached_property
-    def individuals(self) -> AsyncIndividualsWithRawResponse:
-        return AsyncIndividualsWithRawResponse(self._benefits.individuals)
+    def individuals(self) -> AsyncIndividualsResourceWithRawResponse:
+        return AsyncIndividualsResourceWithRawResponse(self._benefits.individuals)
 
 
-class BenefitsWithStreamingResponse:
-    def __init__(self, benefits: Benefits) -> None:
+class BenefitsResourceWithStreamingResponse:
+    def __init__(self, benefits: BenefitsResource) -> None:
         self._benefits = benefits
 
         self.create = to_streamed_response_wrapper(
@@ -448,12 +448,12 @@ class BenefitsWithStreamingResponse:
         )
 
     @cached_property
-    def individuals(self) -> IndividualsWithStreamingResponse:
-        return IndividualsWithStreamingResponse(self._benefits.individuals)
+    def individuals(self) -> IndividualsResourceWithStreamingResponse:
+        return IndividualsResourceWithStreamingResponse(self._benefits.individuals)
 
 
-class AsyncBenefitsWithStreamingResponse:
-    def __init__(self, benefits: AsyncBenefits) -> None:
+class AsyncBenefitsResourceWithStreamingResponse:
+    def __init__(self, benefits: AsyncBenefitsResource) -> None:
         self._benefits = benefits
 
         self.create = async_to_streamed_response_wrapper(
@@ -473,5 +473,5 @@ class AsyncBenefitsWithStreamingResponse:
         )
 
     @cached_property
-    def individuals(self) -> AsyncIndividualsWithStreamingResponse:
-        return AsyncIndividualsWithStreamingResponse(self._benefits.individuals)
+    def individuals(self) -> AsyncIndividualsResourceWithStreamingResponse:
+        return AsyncIndividualsResourceWithStreamingResponse(self._benefits.individuals)

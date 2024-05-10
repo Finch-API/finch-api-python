@@ -22,17 +22,17 @@ from ....types.sandbox.jobs import configuration_update_params
 from ....types.sandbox.jobs.sandbox_job_configuration import SandboxJobConfiguration
 from ....types.sandbox.jobs.configuration_retrieve_response import ConfigurationRetrieveResponse
 
-__all__ = ["Configuration", "AsyncConfiguration"]
+__all__ = ["ConfigurationResource", "AsyncConfigurationResource"]
 
 
-class Configuration(SyncAPIResource):
+class ConfigurationResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ConfigurationWithRawResponse:
-        return ConfigurationWithRawResponse(self)
+    def with_raw_response(self) -> ConfigurationResourceWithRawResponse:
+        return ConfigurationResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ConfigurationWithStreamingResponse:
-        return ConfigurationWithStreamingResponse(self)
+    def with_streaming_response(self) -> ConfigurationResourceWithStreamingResponse:
+        return ConfigurationResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -93,14 +93,14 @@ class Configuration(SyncAPIResource):
         )
 
 
-class AsyncConfiguration(AsyncAPIResource):
+class AsyncConfigurationResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncConfigurationWithRawResponse:
-        return AsyncConfigurationWithRawResponse(self)
+    def with_raw_response(self) -> AsyncConfigurationResourceWithRawResponse:
+        return AsyncConfigurationResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncConfigurationWithStreamingResponse:
-        return AsyncConfigurationWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncConfigurationResourceWithStreamingResponse:
+        return AsyncConfigurationResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -161,8 +161,8 @@ class AsyncConfiguration(AsyncAPIResource):
         )
 
 
-class ConfigurationWithRawResponse:
-    def __init__(self, configuration: Configuration) -> None:
+class ConfigurationResourceWithRawResponse:
+    def __init__(self, configuration: ConfigurationResource) -> None:
         self._configuration = configuration
 
         self.retrieve = _legacy_response.to_raw_response_wrapper(
@@ -173,8 +173,8 @@ class ConfigurationWithRawResponse:
         )
 
 
-class AsyncConfigurationWithRawResponse:
-    def __init__(self, configuration: AsyncConfiguration) -> None:
+class AsyncConfigurationResourceWithRawResponse:
+    def __init__(self, configuration: AsyncConfigurationResource) -> None:
         self._configuration = configuration
 
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
@@ -185,8 +185,8 @@ class AsyncConfigurationWithRawResponse:
         )
 
 
-class ConfigurationWithStreamingResponse:
-    def __init__(self, configuration: Configuration) -> None:
+class ConfigurationResourceWithStreamingResponse:
+    def __init__(self, configuration: ConfigurationResource) -> None:
         self._configuration = configuration
 
         self.retrieve = to_streamed_response_wrapper(
@@ -197,8 +197,8 @@ class ConfigurationWithStreamingResponse:
         )
 
 
-class AsyncConfigurationWithStreamingResponse:
-    def __init__(self, configuration: AsyncConfiguration) -> None:
+class AsyncConfigurationResourceWithStreamingResponse:
+    def __init__(self, configuration: AsyncConfigurationResource) -> None:
         self._configuration = configuration
 
         self.retrieve = async_to_streamed_response_wrapper(

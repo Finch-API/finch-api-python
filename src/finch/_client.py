@@ -19,7 +19,6 @@ from ._types import (
     NotGiven,
     Transport,
     ProxiesTypes,
-    AsyncTransport,
     RequestOptions,
 )
 from ._utils import (
@@ -31,11 +30,8 @@ from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
-    DEFAULT_CONNECTION_LIMITS,
     SyncAPIClient,
     AsyncAPIClient,
-    SyncHttpxClientWrapper,
-    AsyncHttpxClientWrapper,
 )
 
 __all__ = [
@@ -52,13 +48,13 @@ __all__ = [
 
 
 class Finch(SyncAPIClient):
-    access_tokens: resources.AccessTokens
-    hris: resources.HRIS
-    providers: resources.Providers
-    account: resources.Account
-    request_forwarding: resources.RequestForwarding
-    jobs: resources.Jobs
-    sandbox: resources.Sandbox
+    access_tokens: resources.AccessTokensResource
+    hris: resources.HRISResource
+    providers: resources.ProvidersResource
+    account: resources.AccountResource
+    request_forwarding: resources.RequestForwardingResource
+    jobs: resources.JobsResource
+    sandbox: resources.SandboxResource
     with_raw_response: FinchWithRawResponse
     with_streaming_response: FinchWithStreamedResponse
 
@@ -88,12 +84,6 @@ class Finch(SyncAPIClient):
         # We provide a `DefaultHttpxClient` class that you can pass to retain the default values we use for `limits`, `timeout` & `follow_redirects`.
         # See the [httpx documentation](https://www.python-httpx.org/api/#client) for more details.
         http_client: httpx.Client | None = None,
-        # See httpx documentation for [custom transports](https://www.python-httpx.org/advanced/#custom-transports)
-        transport: Transport | None = None,
-        # See httpx documentation for [proxies](https://www.python-httpx.org/advanced/#http-proxying)
-        proxies: ProxiesTypes | None = None,
-        # See httpx documentation for [limits](https://www.python-httpx.org/advanced/#pool-limit-configuration)
-        connection_pool_limits: httpx.Limits | None = None,
         # Enable or disable schema validation for data returned by the API.
         # When enabled an error APIResponseValidationError is raised
         # if the API responds with invalid data for the expected schema.
@@ -146,21 +136,18 @@ class Finch(SyncAPIClient):
             max_retries=max_retries,
             timeout=timeout,
             http_client=http_client,
-            transport=transport,
-            proxies=proxies,
-            limits=connection_pool_limits,
             custom_headers=default_headers,
             custom_query=default_query,
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.access_tokens = resources.AccessTokens(self)
-        self.hris = resources.HRIS(self)
-        self.providers = resources.Providers(self)
-        self.account = resources.Account(self)
-        self.request_forwarding = resources.RequestForwarding(self)
-        self.jobs = resources.Jobs(self)
-        self.sandbox = resources.Sandbox(self)
+        self.access_tokens = resources.AccessTokensResource(self)
+        self.hris = resources.HRISResource(self)
+        self.providers = resources.ProvidersResource(self)
+        self.account = resources.AccountResource(self)
+        self.request_forwarding = resources.RequestForwardingResource(self)
+        self.jobs = resources.JobsResource(self)
+        self.sandbox = resources.SandboxResource(self)
         self.with_raw_response = FinchWithRawResponse(self)
         self.with_streaming_response = FinchWithStreamedResponse(self)
 
@@ -233,7 +220,6 @@ class Finch(SyncAPIClient):
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
-        connection_pool_limits: httpx.Limits | None = None,
         max_retries: int | NotGiven = NOT_GIVEN,
         default_headers: Mapping[str, str] | None = None,
         set_default_headers: Mapping[str, str] | None = None,
@@ -262,24 +248,7 @@ class Finch(SyncAPIClient):
         elif set_default_query is not None:
             params = set_default_query
 
-        if connection_pool_limits is not None:
-            if http_client is not None:
-                raise ValueError("The 'http_client' argument is mutually exclusive with 'connection_pool_limits'")
-
-            if not isinstance(self._client, SyncHttpxClientWrapper):
-                raise ValueError(
-                    "A custom HTTP client has been set and is mutually exclusive with the 'connection_pool_limits' argument"
-                )
-
-            http_client = None
-        else:
-            if self._limits is not DEFAULT_CONNECTION_LIMITS:
-                connection_pool_limits = self._limits
-            else:
-                connection_pool_limits = None
-
-            http_client = http_client or self._client
-
+        http_client = http_client or self._client
         return self.__class__(
             access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
@@ -290,7 +259,6 @@ class Finch(SyncAPIClient):
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
-            connection_pool_limits=connection_pool_limits,
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
@@ -336,13 +304,13 @@ class Finch(SyncAPIClient):
 
 
 class AsyncFinch(AsyncAPIClient):
-    access_tokens: resources.AsyncAccessTokens
-    hris: resources.AsyncHRIS
-    providers: resources.AsyncProviders
-    account: resources.AsyncAccount
-    request_forwarding: resources.AsyncRequestForwarding
-    jobs: resources.AsyncJobs
-    sandbox: resources.AsyncSandbox
+    access_tokens: resources.AsyncAccessTokensResource
+    hris: resources.AsyncHRISResource
+    providers: resources.AsyncProvidersResource
+    account: resources.AsyncAccountResource
+    request_forwarding: resources.AsyncRequestForwardingResource
+    jobs: resources.AsyncJobsResource
+    sandbox: resources.AsyncSandboxResource
     with_raw_response: AsyncFinchWithRawResponse
     with_streaming_response: AsyncFinchWithStreamedResponse
 
@@ -372,12 +340,6 @@ class AsyncFinch(AsyncAPIClient):
         # We provide a `DefaultAsyncHttpxClient` class that you can pass to retain the default values we use for `limits`, `timeout` & `follow_redirects`.
         # See the [httpx documentation](https://www.python-httpx.org/api/#asyncclient) for more details.
         http_client: httpx.AsyncClient | None = None,
-        # See httpx documentation for [custom transports](https://www.python-httpx.org/advanced/#custom-transports)
-        transport: AsyncTransport | None = None,
-        # See httpx documentation for [proxies](https://www.python-httpx.org/advanced/#http-proxying)
-        proxies: ProxiesTypes | None = None,
-        # See httpx documentation for [limits](https://www.python-httpx.org/advanced/#pool-limit-configuration)
-        connection_pool_limits: httpx.Limits | None = None,
         # Enable or disable schema validation for data returned by the API.
         # When enabled an error APIResponseValidationError is raised
         # if the API responds with invalid data for the expected schema.
@@ -430,21 +392,18 @@ class AsyncFinch(AsyncAPIClient):
             max_retries=max_retries,
             timeout=timeout,
             http_client=http_client,
-            transport=transport,
-            proxies=proxies,
-            limits=connection_pool_limits,
             custom_headers=default_headers,
             custom_query=default_query,
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.access_tokens = resources.AsyncAccessTokens(self)
-        self.hris = resources.AsyncHRIS(self)
-        self.providers = resources.AsyncProviders(self)
-        self.account = resources.AsyncAccount(self)
-        self.request_forwarding = resources.AsyncRequestForwarding(self)
-        self.jobs = resources.AsyncJobs(self)
-        self.sandbox = resources.AsyncSandbox(self)
+        self.access_tokens = resources.AsyncAccessTokensResource(self)
+        self.hris = resources.AsyncHRISResource(self)
+        self.providers = resources.AsyncProvidersResource(self)
+        self.account = resources.AsyncAccountResource(self)
+        self.request_forwarding = resources.AsyncRequestForwardingResource(self)
+        self.jobs = resources.AsyncJobsResource(self)
+        self.sandbox = resources.AsyncSandboxResource(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
         self.with_streaming_response = AsyncFinchWithStreamedResponse(self)
 
@@ -517,7 +476,6 @@ class AsyncFinch(AsyncAPIClient):
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
-        connection_pool_limits: httpx.Limits | None = None,
         max_retries: int | NotGiven = NOT_GIVEN,
         default_headers: Mapping[str, str] | None = None,
         set_default_headers: Mapping[str, str] | None = None,
@@ -546,24 +504,7 @@ class AsyncFinch(AsyncAPIClient):
         elif set_default_query is not None:
             params = set_default_query
 
-        if connection_pool_limits is not None:
-            if http_client is not None:
-                raise ValueError("The 'http_client' argument is mutually exclusive with 'connection_pool_limits'")
-
-            if not isinstance(self._client, AsyncHttpxClientWrapper):
-                raise ValueError(
-                    "A custom HTTP client has been set and is mutually exclusive with the 'connection_pool_limits' argument"
-                )
-
-            http_client = None
-        else:
-            if self._limits is not DEFAULT_CONNECTION_LIMITS:
-                connection_pool_limits = self._limits
-            else:
-                connection_pool_limits = None
-
-            http_client = http_client or self._client
-
+        http_client = http_client or self._client
         return self.__class__(
             access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
@@ -574,7 +515,6 @@ class AsyncFinch(AsyncAPIClient):
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
-            connection_pool_limits=connection_pool_limits,
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
@@ -621,46 +561,48 @@ class AsyncFinch(AsyncAPIClient):
 
 class FinchWithRawResponse:
     def __init__(self, client: Finch) -> None:
-        self.access_tokens = resources.AccessTokensWithRawResponse(client.access_tokens)
-        self.hris = resources.HRISWithRawResponse(client.hris)
-        self.providers = resources.ProvidersWithRawResponse(client.providers)
-        self.account = resources.AccountWithRawResponse(client.account)
-        self.request_forwarding = resources.RequestForwardingWithRawResponse(client.request_forwarding)
-        self.jobs = resources.JobsWithRawResponse(client.jobs)
-        self.sandbox = resources.SandboxWithRawResponse(client.sandbox)
+        self.access_tokens = resources.AccessTokensResourceWithRawResponse(client.access_tokens)
+        self.hris = resources.HRISResourceWithRawResponse(client.hris)
+        self.providers = resources.ProvidersResourceWithRawResponse(client.providers)
+        self.account = resources.AccountResourceWithRawResponse(client.account)
+        self.request_forwarding = resources.RequestForwardingResourceWithRawResponse(client.request_forwarding)
+        self.jobs = resources.JobsResourceWithRawResponse(client.jobs)
+        self.sandbox = resources.SandboxResourceWithRawResponse(client.sandbox)
 
 
 class AsyncFinchWithRawResponse:
     def __init__(self, client: AsyncFinch) -> None:
-        self.access_tokens = resources.AsyncAccessTokensWithRawResponse(client.access_tokens)
-        self.hris = resources.AsyncHRISWithRawResponse(client.hris)
-        self.providers = resources.AsyncProvidersWithRawResponse(client.providers)
-        self.account = resources.AsyncAccountWithRawResponse(client.account)
-        self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
-        self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
-        self.sandbox = resources.AsyncSandboxWithRawResponse(client.sandbox)
+        self.access_tokens = resources.AsyncAccessTokensResourceWithRawResponse(client.access_tokens)
+        self.hris = resources.AsyncHRISResourceWithRawResponse(client.hris)
+        self.providers = resources.AsyncProvidersResourceWithRawResponse(client.providers)
+        self.account = resources.AsyncAccountResourceWithRawResponse(client.account)
+        self.request_forwarding = resources.AsyncRequestForwardingResourceWithRawResponse(client.request_forwarding)
+        self.jobs = resources.AsyncJobsResourceWithRawResponse(client.jobs)
+        self.sandbox = resources.AsyncSandboxResourceWithRawResponse(client.sandbox)
 
 
 class FinchWithStreamedResponse:
     def __init__(self, client: Finch) -> None:
-        self.access_tokens = resources.AccessTokensWithStreamingResponse(client.access_tokens)
-        self.hris = resources.HRISWithStreamingResponse(client.hris)
-        self.providers = resources.ProvidersWithStreamingResponse(client.providers)
-        self.account = resources.AccountWithStreamingResponse(client.account)
-        self.request_forwarding = resources.RequestForwardingWithStreamingResponse(client.request_forwarding)
-        self.jobs = resources.JobsWithStreamingResponse(client.jobs)
-        self.sandbox = resources.SandboxWithStreamingResponse(client.sandbox)
+        self.access_tokens = resources.AccessTokensResourceWithStreamingResponse(client.access_tokens)
+        self.hris = resources.HRISResourceWithStreamingResponse(client.hris)
+        self.providers = resources.ProvidersResourceWithStreamingResponse(client.providers)
+        self.account = resources.AccountResourceWithStreamingResponse(client.account)
+        self.request_forwarding = resources.RequestForwardingResourceWithStreamingResponse(client.request_forwarding)
+        self.jobs = resources.JobsResourceWithStreamingResponse(client.jobs)
+        self.sandbox = resources.SandboxResourceWithStreamingResponse(client.sandbox)
 
 
 class AsyncFinchWithStreamedResponse:
     def __init__(self, client: AsyncFinch) -> None:
-        self.access_tokens = resources.AsyncAccessTokensWithStreamingResponse(client.access_tokens)
-        self.hris = resources.AsyncHRISWithStreamingResponse(client.hris)
-        self.providers = resources.AsyncProvidersWithStreamingResponse(client.providers)
-        self.account = resources.AsyncAccountWithStreamingResponse(client.account)
-        self.request_forwarding = resources.AsyncRequestForwardingWithStreamingResponse(client.request_forwarding)
-        self.jobs = resources.AsyncJobsWithStreamingResponse(client.jobs)
-        self.sandbox = resources.AsyncSandboxWithStreamingResponse(client.sandbox)
+        self.access_tokens = resources.AsyncAccessTokensResourceWithStreamingResponse(client.access_tokens)
+        self.hris = resources.AsyncHRISResourceWithStreamingResponse(client.hris)
+        self.providers = resources.AsyncProvidersResourceWithStreamingResponse(client.providers)
+        self.account = resources.AsyncAccountResourceWithStreamingResponse(client.account)
+        self.request_forwarding = resources.AsyncRequestForwardingResourceWithStreamingResponse(
+            client.request_forwarding
+        )
+        self.jobs = resources.AsyncJobsResourceWithStreamingResponse(client.jobs)
+        self.sandbox = resources.AsyncSandboxResourceWithStreamingResponse(client.sandbox)
 
 
 Client = Finch

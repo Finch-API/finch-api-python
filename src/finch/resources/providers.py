@@ -16,17 +16,17 @@ from .._base_client import (
 )
 from ..types.provider import Provider
 
-__all__ = ["Providers", "AsyncProviders"]
+__all__ = ["ProvidersResource", "AsyncProvidersResource"]
 
 
-class Providers(SyncAPIResource):
+class ProvidersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ProvidersWithRawResponse:
-        return ProvidersWithRawResponse(self)
+    def with_raw_response(self) -> ProvidersResourceWithRawResponse:
+        return ProvidersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ProvidersWithStreamingResponse:
-        return ProvidersWithStreamingResponse(self)
+    def with_streaming_response(self) -> ProvidersResourceWithStreamingResponse:
+        return ProvidersResourceWithStreamingResponse(self)
 
     def list(
         self,
@@ -49,14 +49,14 @@ class Providers(SyncAPIResource):
         )
 
 
-class AsyncProviders(AsyncAPIResource):
+class AsyncProvidersResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncProvidersWithRawResponse:
-        return AsyncProvidersWithRawResponse(self)
+    def with_raw_response(self) -> AsyncProvidersResourceWithRawResponse:
+        return AsyncProvidersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncProvidersWithStreamingResponse:
-        return AsyncProvidersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncProvidersResourceWithStreamingResponse:
+        return AsyncProvidersResourceWithStreamingResponse(self)
 
     def list(
         self,
@@ -79,8 +79,8 @@ class AsyncProviders(AsyncAPIResource):
         )
 
 
-class ProvidersWithRawResponse:
-    def __init__(self, providers: Providers) -> None:
+class ProvidersResourceWithRawResponse:
+    def __init__(self, providers: ProvidersResource) -> None:
         self._providers = providers
 
         self.list = _legacy_response.to_raw_response_wrapper(
@@ -88,8 +88,8 @@ class ProvidersWithRawResponse:
         )
 
 
-class AsyncProvidersWithRawResponse:
-    def __init__(self, providers: AsyncProviders) -> None:
+class AsyncProvidersResourceWithRawResponse:
+    def __init__(self, providers: AsyncProvidersResource) -> None:
         self._providers = providers
 
         self.list = _legacy_response.async_to_raw_response_wrapper(
@@ -97,8 +97,8 @@ class AsyncProvidersWithRawResponse:
         )
 
 
-class ProvidersWithStreamingResponse:
-    def __init__(self, providers: Providers) -> None:
+class ProvidersResourceWithStreamingResponse:
+    def __init__(self, providers: ProvidersResource) -> None:
         self._providers = providers
 
         self.list = to_streamed_response_wrapper(
@@ -106,8 +106,8 @@ class ProvidersWithStreamingResponse:
         )
 
 
-class AsyncProvidersWithStreamingResponse:
-    def __init__(self, providers: AsyncProviders) -> None:
+class AsyncProvidersResourceWithStreamingResponse:
+    def __init__(self, providers: AsyncProvidersResource) -> None:
         self._providers = providers
 
         self.list = async_to_streamed_response_wrapper(

@@ -24,17 +24,17 @@ from ..._base_client import (
 from ...types.jobs.automated_async_job import AutomatedAsyncJob
 from ...types.jobs.automated_create_response import AutomatedCreateResponse
 
-__all__ = ["Automated", "AsyncAutomated"]
+__all__ = ["AutomatedResource", "AsyncAutomatedResource"]
 
 
-class Automated(SyncAPIResource):
+class AutomatedResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AutomatedWithRawResponse:
-        return AutomatedWithRawResponse(self)
+    def with_raw_response(self) -> AutomatedResourceWithRawResponse:
+        return AutomatedResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AutomatedWithStreamingResponse:
-        return AutomatedWithStreamingResponse(self)
+    def with_streaming_response(self) -> AutomatedResourceWithStreamingResponse:
+        return AutomatedResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -164,14 +164,14 @@ class Automated(SyncAPIResource):
         )
 
 
-class AsyncAutomated(AsyncAPIResource):
+class AsyncAutomatedResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAutomatedWithRawResponse:
-        return AsyncAutomatedWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAutomatedResourceWithRawResponse:
+        return AsyncAutomatedResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAutomatedWithStreamingResponse:
-        return AsyncAutomatedWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAutomatedResourceWithStreamingResponse:
+        return AsyncAutomatedResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -301,8 +301,8 @@ class AsyncAutomated(AsyncAPIResource):
         )
 
 
-class AutomatedWithRawResponse:
-    def __init__(self, automated: Automated) -> None:
+class AutomatedResourceWithRawResponse:
+    def __init__(self, automated: AutomatedResource) -> None:
         self._automated = automated
 
         self.create = _legacy_response.to_raw_response_wrapper(
@@ -316,8 +316,8 @@ class AutomatedWithRawResponse:
         )
 
 
-class AsyncAutomatedWithRawResponse:
-    def __init__(self, automated: AsyncAutomated) -> None:
+class AsyncAutomatedResourceWithRawResponse:
+    def __init__(self, automated: AsyncAutomatedResource) -> None:
         self._automated = automated
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
@@ -331,8 +331,8 @@ class AsyncAutomatedWithRawResponse:
         )
 
 
-class AutomatedWithStreamingResponse:
-    def __init__(self, automated: Automated) -> None:
+class AutomatedResourceWithStreamingResponse:
+    def __init__(self, automated: AutomatedResource) -> None:
         self._automated = automated
 
         self.create = to_streamed_response_wrapper(
@@ -346,8 +346,8 @@ class AutomatedWithStreamingResponse:
         )
 
 
-class AsyncAutomatedWithStreamingResponse:
-    def __init__(self, automated: AsyncAutomated) -> None:
+class AsyncAutomatedResourceWithStreamingResponse:
+    def __init__(self, automated: AsyncAutomatedResource) -> None:
         self._automated = automated
 
         self.create = async_to_streamed_response_wrapper(
