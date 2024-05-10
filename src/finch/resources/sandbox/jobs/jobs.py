@@ -16,12 +16,12 @@ from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .configuration import (
-    Configuration,
-    AsyncConfiguration,
-    ConfigurationWithRawResponse,
-    AsyncConfigurationWithRawResponse,
-    ConfigurationWithStreamingResponse,
-    AsyncConfigurationWithStreamingResponse,
+    ConfigurationResource,
+    AsyncConfigurationResource,
+    ConfigurationResourceWithRawResponse,
+    AsyncConfigurationResourceWithRawResponse,
+    ConfigurationResourceWithStreamingResponse,
+    AsyncConfigurationResourceWithStreamingResponse,
 )
 from ...._base_client import (
     make_request_options,
@@ -29,21 +29,21 @@ from ...._base_client import (
 from ....types.sandbox import job_create_params
 from ....types.sandbox.job_create_response import JobCreateResponse
 
-__all__ = ["Jobs", "AsyncJobs"]
+__all__ = ["JobsResource", "AsyncJobsResource"]
 
 
-class Jobs(SyncAPIResource):
+class JobsResource(SyncAPIResource):
     @cached_property
-    def configuration(self) -> Configuration:
-        return Configuration(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> JobsWithRawResponse:
-        return JobsWithRawResponse(self)
+    def configuration(self) -> ConfigurationResource:
+        return ConfigurationResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> JobsWithStreamingResponse:
-        return JobsWithStreamingResponse(self)
+    def with_raw_response(self) -> JobsResourceWithRawResponse:
+        return JobsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> JobsResourceWithStreamingResponse:
+        return JobsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -81,18 +81,18 @@ class Jobs(SyncAPIResource):
         )
 
 
-class AsyncJobs(AsyncAPIResource):
+class AsyncJobsResource(AsyncAPIResource):
     @cached_property
-    def configuration(self) -> AsyncConfiguration:
-        return AsyncConfiguration(self._client)
+    def configuration(self) -> AsyncConfigurationResource:
+        return AsyncConfigurationResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncJobsWithRawResponse:
-        return AsyncJobsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncJobsResourceWithRawResponse:
+        return AsyncJobsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncJobsWithStreamingResponse:
-        return AsyncJobsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncJobsResourceWithStreamingResponse:
+        return AsyncJobsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -130,8 +130,8 @@ class AsyncJobs(AsyncAPIResource):
         )
 
 
-class JobsWithRawResponse:
-    def __init__(self, jobs: Jobs) -> None:
+class JobsResourceWithRawResponse:
+    def __init__(self, jobs: JobsResource) -> None:
         self._jobs = jobs
 
         self.create = _legacy_response.to_raw_response_wrapper(
@@ -139,12 +139,12 @@ class JobsWithRawResponse:
         )
 
     @cached_property
-    def configuration(self) -> ConfigurationWithRawResponse:
-        return ConfigurationWithRawResponse(self._jobs.configuration)
+    def configuration(self) -> ConfigurationResourceWithRawResponse:
+        return ConfigurationResourceWithRawResponse(self._jobs.configuration)
 
 
-class AsyncJobsWithRawResponse:
-    def __init__(self, jobs: AsyncJobs) -> None:
+class AsyncJobsResourceWithRawResponse:
+    def __init__(self, jobs: AsyncJobsResource) -> None:
         self._jobs = jobs
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
@@ -152,12 +152,12 @@ class AsyncJobsWithRawResponse:
         )
 
     @cached_property
-    def configuration(self) -> AsyncConfigurationWithRawResponse:
-        return AsyncConfigurationWithRawResponse(self._jobs.configuration)
+    def configuration(self) -> AsyncConfigurationResourceWithRawResponse:
+        return AsyncConfigurationResourceWithRawResponse(self._jobs.configuration)
 
 
-class JobsWithStreamingResponse:
-    def __init__(self, jobs: Jobs) -> None:
+class JobsResourceWithStreamingResponse:
+    def __init__(self, jobs: JobsResource) -> None:
         self._jobs = jobs
 
         self.create = to_streamed_response_wrapper(
@@ -165,12 +165,12 @@ class JobsWithStreamingResponse:
         )
 
     @cached_property
-    def configuration(self) -> ConfigurationWithStreamingResponse:
-        return ConfigurationWithStreamingResponse(self._jobs.configuration)
+    def configuration(self) -> ConfigurationResourceWithStreamingResponse:
+        return ConfigurationResourceWithStreamingResponse(self._jobs.configuration)
 
 
-class AsyncJobsWithStreamingResponse:
-    def __init__(self, jobs: AsyncJobs) -> None:
+class AsyncJobsResourceWithStreamingResponse:
+    def __init__(self, jobs: AsyncJobsResource) -> None:
         self._jobs = jobs
 
         self.create = async_to_streamed_response_wrapper(
@@ -178,5 +178,5 @@ class AsyncJobsWithStreamingResponse:
         )
 
     @cached_property
-    def configuration(self) -> AsyncConfigurationWithStreamingResponse:
-        return AsyncConfigurationWithStreamingResponse(self._jobs.configuration)
+    def configuration(self) -> AsyncConfigurationResourceWithStreamingResponse:
+        return AsyncConfigurationResourceWithStreamingResponse(self._jobs.configuration)

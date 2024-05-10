@@ -9,12 +9,12 @@ import httpx
 
 from .... import _legacy_response
 from .accounts import (
-    Accounts,
-    AsyncAccounts,
-    AccountsWithRawResponse,
-    AsyncAccountsWithRawResponse,
-    AccountsWithStreamingResponse,
-    AsyncAccountsWithStreamingResponse,
+    AccountsResource,
+    AsyncAccountsResource,
+    AccountsResourceWithRawResponse,
+    AsyncAccountsResourceWithRawResponse,
+    AccountsResourceWithStreamingResponse,
+    AsyncAccountsResourceWithStreamingResponse,
 )
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import (
@@ -30,21 +30,21 @@ from ...._base_client import (
 from ....types.sandbox import connection_create_params
 from ....types.sandbox.connection_create_response import ConnectionCreateResponse
 
-__all__ = ["Connections", "AsyncConnections"]
+__all__ = ["ConnectionsResource", "AsyncConnectionsResource"]
 
 
-class Connections(SyncAPIResource):
+class ConnectionsResource(SyncAPIResource):
     @cached_property
-    def accounts(self) -> Accounts:
-        return Accounts(self._client)
-
-    @cached_property
-    def with_raw_response(self) -> ConnectionsWithRawResponse:
-        return ConnectionsWithRawResponse(self)
+    def accounts(self) -> AccountsResource:
+        return AccountsResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> ConnectionsWithStreamingResponse:
-        return ConnectionsWithStreamingResponse(self)
+    def with_raw_response(self) -> ConnectionsResourceWithRawResponse:
+        return ConnectionsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ConnectionsResourceWithStreamingResponse:
+        return ConnectionsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -94,18 +94,18 @@ class Connections(SyncAPIResource):
         )
 
 
-class AsyncConnections(AsyncAPIResource):
+class AsyncConnectionsResource(AsyncAPIResource):
     @cached_property
-    def accounts(self) -> AsyncAccounts:
-        return AsyncAccounts(self._client)
+    def accounts(self) -> AsyncAccountsResource:
+        return AsyncAccountsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncConnectionsWithRawResponse:
-        return AsyncConnectionsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncConnectionsResourceWithRawResponse:
+        return AsyncConnectionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncConnectionsWithStreamingResponse:
-        return AsyncConnectionsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncConnectionsResourceWithStreamingResponse:
+        return AsyncConnectionsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -155,8 +155,8 @@ class AsyncConnections(AsyncAPIResource):
         )
 
 
-class ConnectionsWithRawResponse:
-    def __init__(self, connections: Connections) -> None:
+class ConnectionsResourceWithRawResponse:
+    def __init__(self, connections: ConnectionsResource) -> None:
         self._connections = connections
 
         self.create = _legacy_response.to_raw_response_wrapper(
@@ -164,12 +164,12 @@ class ConnectionsWithRawResponse:
         )
 
     @cached_property
-    def accounts(self) -> AccountsWithRawResponse:
-        return AccountsWithRawResponse(self._connections.accounts)
+    def accounts(self) -> AccountsResourceWithRawResponse:
+        return AccountsResourceWithRawResponse(self._connections.accounts)
 
 
-class AsyncConnectionsWithRawResponse:
-    def __init__(self, connections: AsyncConnections) -> None:
+class AsyncConnectionsResourceWithRawResponse:
+    def __init__(self, connections: AsyncConnectionsResource) -> None:
         self._connections = connections
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
@@ -177,12 +177,12 @@ class AsyncConnectionsWithRawResponse:
         )
 
     @cached_property
-    def accounts(self) -> AsyncAccountsWithRawResponse:
-        return AsyncAccountsWithRawResponse(self._connections.accounts)
+    def accounts(self) -> AsyncAccountsResourceWithRawResponse:
+        return AsyncAccountsResourceWithRawResponse(self._connections.accounts)
 
 
-class ConnectionsWithStreamingResponse:
-    def __init__(self, connections: Connections) -> None:
+class ConnectionsResourceWithStreamingResponse:
+    def __init__(self, connections: ConnectionsResource) -> None:
         self._connections = connections
 
         self.create = to_streamed_response_wrapper(
@@ -190,12 +190,12 @@ class ConnectionsWithStreamingResponse:
         )
 
     @cached_property
-    def accounts(self) -> AccountsWithStreamingResponse:
-        return AccountsWithStreamingResponse(self._connections.accounts)
+    def accounts(self) -> AccountsResourceWithStreamingResponse:
+        return AccountsResourceWithStreamingResponse(self._connections.accounts)
 
 
-class AsyncConnectionsWithStreamingResponse:
-    def __init__(self, connections: AsyncConnections) -> None:
+class AsyncConnectionsResourceWithStreamingResponse:
+    def __init__(self, connections: AsyncConnectionsResource) -> None:
         self._connections = connections
 
         self.create = async_to_streamed_response_wrapper(
@@ -203,5 +203,5 @@ class AsyncConnectionsWithStreamingResponse:
         )
 
     @cached_property
-    def accounts(self) -> AsyncAccountsWithStreamingResponse:
-        return AsyncAccountsWithStreamingResponse(self._connections.accounts)
+    def accounts(self) -> AsyncAccountsResourceWithStreamingResponse:
+        return AsyncAccountsResourceWithStreamingResponse(self._connections.accounts)

@@ -23,17 +23,17 @@ from ...types.sandbox import individual_update_params
 from ...types.location_param import LocationParam
 from ...types.sandbox.individual_update_response import IndividualUpdateResponse
 
-__all__ = ["Individual", "AsyncIndividual"]
+__all__ = ["IndividualResource", "AsyncIndividualResource"]
 
 
-class Individual(SyncAPIResource):
+class IndividualResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> IndividualWithRawResponse:
-        return IndividualWithRawResponse(self)
+    def with_raw_response(self) -> IndividualResourceWithRawResponse:
+        return IndividualResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> IndividualWithStreamingResponse:
-        return IndividualWithStreamingResponse(self)
+    def with_streaming_response(self) -> IndividualResourceWithStreamingResponse:
+        return IndividualResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -132,14 +132,14 @@ class Individual(SyncAPIResource):
         )
 
 
-class AsyncIndividual(AsyncAPIResource):
+class AsyncIndividualResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncIndividualWithRawResponse:
-        return AsyncIndividualWithRawResponse(self)
+    def with_raw_response(self) -> AsyncIndividualResourceWithRawResponse:
+        return AsyncIndividualResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncIndividualWithStreamingResponse:
-        return AsyncIndividualWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncIndividualResourceWithStreamingResponse:
+        return AsyncIndividualResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -238,8 +238,8 @@ class AsyncIndividual(AsyncAPIResource):
         )
 
 
-class IndividualWithRawResponse:
-    def __init__(self, individual: Individual) -> None:
+class IndividualResourceWithRawResponse:
+    def __init__(self, individual: IndividualResource) -> None:
         self._individual = individual
 
         self.update = _legacy_response.to_raw_response_wrapper(
@@ -247,8 +247,8 @@ class IndividualWithRawResponse:
         )
 
 
-class AsyncIndividualWithRawResponse:
-    def __init__(self, individual: AsyncIndividual) -> None:
+class AsyncIndividualResourceWithRawResponse:
+    def __init__(self, individual: AsyncIndividualResource) -> None:
         self._individual = individual
 
         self.update = _legacy_response.async_to_raw_response_wrapper(
@@ -256,8 +256,8 @@ class AsyncIndividualWithRawResponse:
         )
 
 
-class IndividualWithStreamingResponse:
-    def __init__(self, individual: Individual) -> None:
+class IndividualResourceWithStreamingResponse:
+    def __init__(self, individual: IndividualResource) -> None:
         self._individual = individual
 
         self.update = to_streamed_response_wrapper(
@@ -265,8 +265,8 @@ class IndividualWithStreamingResponse:
         )
 
 
-class AsyncIndividualWithStreamingResponse:
-    def __init__(self, individual: AsyncIndividual) -> None:
+class AsyncIndividualResourceWithStreamingResponse:
+    def __init__(self, individual: AsyncIndividualResource) -> None:
         self._individual = individual
 
         self.update = async_to_streamed_response_wrapper(

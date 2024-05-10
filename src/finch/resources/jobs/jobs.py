@@ -3,110 +3,110 @@
 from __future__ import annotations
 
 from .manual import (
-    Manual,
-    AsyncManual,
-    ManualWithRawResponse,
-    AsyncManualWithRawResponse,
-    ManualWithStreamingResponse,
-    AsyncManualWithStreamingResponse,
+    ManualResource,
+    AsyncManualResource,
+    ManualResourceWithRawResponse,
+    AsyncManualResourceWithRawResponse,
+    ManualResourceWithStreamingResponse,
+    AsyncManualResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
 from .automated import (
-    Automated,
-    AsyncAutomated,
-    AutomatedWithRawResponse,
-    AsyncAutomatedWithRawResponse,
-    AutomatedWithStreamingResponse,
-    AsyncAutomatedWithStreamingResponse,
+    AutomatedResource,
+    AsyncAutomatedResource,
+    AutomatedResourceWithRawResponse,
+    AsyncAutomatedResourceWithRawResponse,
+    AutomatedResourceWithStreamingResponse,
+    AsyncAutomatedResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 
-__all__ = ["Jobs", "AsyncJobs"]
+__all__ = ["JobsResource", "AsyncJobsResource"]
 
 
-class Jobs(SyncAPIResource):
+class JobsResource(SyncAPIResource):
     @cached_property
-    def automated(self) -> Automated:
-        return Automated(self._client)
-
-    @cached_property
-    def manual(self) -> Manual:
-        return Manual(self._client)
+    def automated(self) -> AutomatedResource:
+        return AutomatedResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> JobsWithRawResponse:
-        return JobsWithRawResponse(self)
+    def manual(self) -> ManualResource:
+        return ManualResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> JobsWithStreamingResponse:
-        return JobsWithStreamingResponse(self)
-
-
-class AsyncJobs(AsyncAPIResource):
-    @cached_property
-    def automated(self) -> AsyncAutomated:
-        return AsyncAutomated(self._client)
+    def with_raw_response(self) -> JobsResourceWithRawResponse:
+        return JobsResourceWithRawResponse(self)
 
     @cached_property
-    def manual(self) -> AsyncManual:
-        return AsyncManual(self._client)
+    def with_streaming_response(self) -> JobsResourceWithStreamingResponse:
+        return JobsResourceWithStreamingResponse(self)
+
+
+class AsyncJobsResource(AsyncAPIResource):
+    @cached_property
+    def automated(self) -> AsyncAutomatedResource:
+        return AsyncAutomatedResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncJobsWithRawResponse:
-        return AsyncJobsWithRawResponse(self)
+    def manual(self) -> AsyncManualResource:
+        return AsyncManualResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncJobsWithStreamingResponse:
-        return AsyncJobsWithStreamingResponse(self)
+    def with_raw_response(self) -> AsyncJobsResourceWithRawResponse:
+        return AsyncJobsResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncJobsResourceWithStreamingResponse:
+        return AsyncJobsResourceWithStreamingResponse(self)
 
 
-class JobsWithRawResponse:
-    def __init__(self, jobs: Jobs) -> None:
+class JobsResourceWithRawResponse:
+    def __init__(self, jobs: JobsResource) -> None:
         self._jobs = jobs
 
     @cached_property
-    def automated(self) -> AutomatedWithRawResponse:
-        return AutomatedWithRawResponse(self._jobs.automated)
+    def automated(self) -> AutomatedResourceWithRawResponse:
+        return AutomatedResourceWithRawResponse(self._jobs.automated)
 
     @cached_property
-    def manual(self) -> ManualWithRawResponse:
-        return ManualWithRawResponse(self._jobs.manual)
+    def manual(self) -> ManualResourceWithRawResponse:
+        return ManualResourceWithRawResponse(self._jobs.manual)
 
 
-class AsyncJobsWithRawResponse:
-    def __init__(self, jobs: AsyncJobs) -> None:
+class AsyncJobsResourceWithRawResponse:
+    def __init__(self, jobs: AsyncJobsResource) -> None:
         self._jobs = jobs
 
     @cached_property
-    def automated(self) -> AsyncAutomatedWithRawResponse:
-        return AsyncAutomatedWithRawResponse(self._jobs.automated)
+    def automated(self) -> AsyncAutomatedResourceWithRawResponse:
+        return AsyncAutomatedResourceWithRawResponse(self._jobs.automated)
 
     @cached_property
-    def manual(self) -> AsyncManualWithRawResponse:
-        return AsyncManualWithRawResponse(self._jobs.manual)
+    def manual(self) -> AsyncManualResourceWithRawResponse:
+        return AsyncManualResourceWithRawResponse(self._jobs.manual)
 
 
-class JobsWithStreamingResponse:
-    def __init__(self, jobs: Jobs) -> None:
+class JobsResourceWithStreamingResponse:
+    def __init__(self, jobs: JobsResource) -> None:
         self._jobs = jobs
 
     @cached_property
-    def automated(self) -> AutomatedWithStreamingResponse:
-        return AutomatedWithStreamingResponse(self._jobs.automated)
+    def automated(self) -> AutomatedResourceWithStreamingResponse:
+        return AutomatedResourceWithStreamingResponse(self._jobs.automated)
 
     @cached_property
-    def manual(self) -> ManualWithStreamingResponse:
-        return ManualWithStreamingResponse(self._jobs.manual)
+    def manual(self) -> ManualResourceWithStreamingResponse:
+        return ManualResourceWithStreamingResponse(self._jobs.manual)
 
 
-class AsyncJobsWithStreamingResponse:
-    def __init__(self, jobs: AsyncJobs) -> None:
+class AsyncJobsResourceWithStreamingResponse:
+    def __init__(self, jobs: AsyncJobsResource) -> None:
         self._jobs = jobs
 
     @cached_property
-    def automated(self) -> AsyncAutomatedWithStreamingResponse:
-        return AsyncAutomatedWithStreamingResponse(self._jobs.automated)
+    def automated(self) -> AsyncAutomatedResourceWithStreamingResponse:
+        return AsyncAutomatedResourceWithStreamingResponse(self._jobs.automated)
 
     @cached_property
-    def manual(self) -> AsyncManualWithStreamingResponse:
-        return AsyncManualWithStreamingResponse(self._jobs.manual)
+    def manual(self) -> AsyncManualResourceWithStreamingResponse:
+        return AsyncManualResourceWithStreamingResponse(self._jobs.manual)

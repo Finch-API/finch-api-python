@@ -23,17 +23,17 @@ from ...types.income_param import IncomeParam
 from ...types.location_param import LocationParam
 from ...types.sandbox.employment_update_response import EmploymentUpdateResponse
 
-__all__ = ["Employment", "AsyncEmployment"]
+__all__ = ["EmploymentResource", "AsyncEmploymentResource"]
 
 
-class Employment(SyncAPIResource):
+class EmploymentResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> EmploymentWithRawResponse:
-        return EmploymentWithRawResponse(self)
+    def with_raw_response(self) -> EmploymentResourceWithRawResponse:
+        return EmploymentResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> EmploymentWithStreamingResponse:
-        return EmploymentWithStreamingResponse(self)
+    def with_streaming_response(self) -> EmploymentResourceWithStreamingResponse:
+        return EmploymentResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -138,14 +138,14 @@ class Employment(SyncAPIResource):
         )
 
 
-class AsyncEmployment(AsyncAPIResource):
+class AsyncEmploymentResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncEmploymentWithRawResponse:
-        return AsyncEmploymentWithRawResponse(self)
+    def with_raw_response(self) -> AsyncEmploymentResourceWithRawResponse:
+        return AsyncEmploymentResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncEmploymentWithStreamingResponse:
-        return AsyncEmploymentWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncEmploymentResourceWithStreamingResponse:
+        return AsyncEmploymentResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -250,8 +250,8 @@ class AsyncEmployment(AsyncAPIResource):
         )
 
 
-class EmploymentWithRawResponse:
-    def __init__(self, employment: Employment) -> None:
+class EmploymentResourceWithRawResponse:
+    def __init__(self, employment: EmploymentResource) -> None:
         self._employment = employment
 
         self.update = _legacy_response.to_raw_response_wrapper(
@@ -259,8 +259,8 @@ class EmploymentWithRawResponse:
         )
 
 
-class AsyncEmploymentWithRawResponse:
-    def __init__(self, employment: AsyncEmployment) -> None:
+class AsyncEmploymentResourceWithRawResponse:
+    def __init__(self, employment: AsyncEmploymentResource) -> None:
         self._employment = employment
 
         self.update = _legacy_response.async_to_raw_response_wrapper(
@@ -268,8 +268,8 @@ class AsyncEmploymentWithRawResponse:
         )
 
 
-class EmploymentWithStreamingResponse:
-    def __init__(self, employment: Employment) -> None:
+class EmploymentResourceWithStreamingResponse:
+    def __init__(self, employment: EmploymentResource) -> None:
         self._employment = employment
 
         self.update = to_streamed_response_wrapper(
@@ -277,8 +277,8 @@ class EmploymentWithStreamingResponse:
         )
 
 
-class AsyncEmploymentWithStreamingResponse:
-    def __init__(self, employment: AsyncEmployment) -> None:
+class AsyncEmploymentResourceWithStreamingResponse:
+    def __init__(self, employment: AsyncEmploymentResource) -> None:
         self._employment = employment
 
         self.update = async_to_streamed_response_wrapper(

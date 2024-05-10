@@ -21,17 +21,17 @@ from .._base_client import (
 )
 from ..types.request_forwarding_forward_response import RequestForwardingForwardResponse
 
-__all__ = ["RequestForwarding", "AsyncRequestForwarding"]
+__all__ = ["RequestForwardingResource", "AsyncRequestForwardingResource"]
 
 
-class RequestForwarding(SyncAPIResource):
+class RequestForwardingResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> RequestForwardingWithRawResponse:
-        return RequestForwardingWithRawResponse(self)
+    def with_raw_response(self) -> RequestForwardingResourceWithRawResponse:
+        return RequestForwardingResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> RequestForwardingWithStreamingResponse:
-        return RequestForwardingWithStreamingResponse(self)
+    def with_streaming_response(self) -> RequestForwardingResourceWithStreamingResponse:
+        return RequestForwardingResourceWithStreamingResponse(self)
 
     def forward(
         self,
@@ -100,14 +100,14 @@ class RequestForwarding(SyncAPIResource):
         )
 
 
-class AsyncRequestForwarding(AsyncAPIResource):
+class AsyncRequestForwardingResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncRequestForwardingWithRawResponse:
-        return AsyncRequestForwardingWithRawResponse(self)
+    def with_raw_response(self) -> AsyncRequestForwardingResourceWithRawResponse:
+        return AsyncRequestForwardingResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncRequestForwardingWithStreamingResponse:
-        return AsyncRequestForwardingWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncRequestForwardingResourceWithStreamingResponse:
+        return AsyncRequestForwardingResourceWithStreamingResponse(self)
 
     async def forward(
         self,
@@ -176,8 +176,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
         )
 
 
-class RequestForwardingWithRawResponse:
-    def __init__(self, request_forwarding: RequestForwarding) -> None:
+class RequestForwardingResourceWithRawResponse:
+    def __init__(self, request_forwarding: RequestForwardingResource) -> None:
         self._request_forwarding = request_forwarding
 
         self.forward = _legacy_response.to_raw_response_wrapper(
@@ -185,8 +185,8 @@ class RequestForwardingWithRawResponse:
         )
 
 
-class AsyncRequestForwardingWithRawResponse:
-    def __init__(self, request_forwarding: AsyncRequestForwarding) -> None:
+class AsyncRequestForwardingResourceWithRawResponse:
+    def __init__(self, request_forwarding: AsyncRequestForwardingResource) -> None:
         self._request_forwarding = request_forwarding
 
         self.forward = _legacy_response.async_to_raw_response_wrapper(
@@ -194,8 +194,8 @@ class AsyncRequestForwardingWithRawResponse:
         )
 
 
-class RequestForwardingWithStreamingResponse:
-    def __init__(self, request_forwarding: RequestForwarding) -> None:
+class RequestForwardingResourceWithStreamingResponse:
+    def __init__(self, request_forwarding: RequestForwardingResource) -> None:
         self._request_forwarding = request_forwarding
 
         self.forward = to_streamed_response_wrapper(
@@ -203,8 +203,8 @@ class RequestForwardingWithStreamingResponse:
         )
 
 
-class AsyncRequestForwardingWithStreamingResponse:
-    def __init__(self, request_forwarding: AsyncRequestForwarding) -> None:
+class AsyncRequestForwardingResourceWithStreamingResponse:
+    def __init__(self, request_forwarding: AsyncRequestForwardingResource) -> None:
         self._request_forwarding = request_forwarding
 
         self.forward = async_to_streamed_response_wrapper(

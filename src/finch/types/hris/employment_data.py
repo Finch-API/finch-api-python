@@ -78,6 +78,8 @@ class EmploymentData(BaseModel):
     last_name: Optional[str] = None
     """The legal last name of the individual."""
 
+    latest_rehire_date: Optional[str] = None
+
     location: Optional[Location] = None
 
     manager: Optional[Manager] = None

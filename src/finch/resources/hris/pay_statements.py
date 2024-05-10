@@ -20,17 +20,17 @@ from ..._base_client import (
 )
 from ...types.hris.pay_statement_response import PayStatementResponse
 
-__all__ = ["PayStatements", "AsyncPayStatements"]
+__all__ = ["PayStatementsResource", "AsyncPayStatementsResource"]
 
 
-class PayStatements(SyncAPIResource):
+class PayStatementsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> PayStatementsWithRawResponse:
-        return PayStatementsWithRawResponse(self)
+    def with_raw_response(self) -> PayStatementsResourceWithRawResponse:
+        return PayStatementsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> PayStatementsWithStreamingResponse:
-        return PayStatementsWithStreamingResponse(self)
+    def with_streaming_response(self) -> PayStatementsResourceWithStreamingResponse:
+        return PayStatementsResourceWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -74,14 +74,14 @@ class PayStatements(SyncAPIResource):
         )
 
 
-class AsyncPayStatements(AsyncAPIResource):
+class AsyncPayStatementsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncPayStatementsWithRawResponse:
-        return AsyncPayStatementsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncPayStatementsResourceWithRawResponse:
+        return AsyncPayStatementsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncPayStatementsWithStreamingResponse:
-        return AsyncPayStatementsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncPayStatementsResourceWithStreamingResponse:
+        return AsyncPayStatementsResourceWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -125,8 +125,8 @@ class AsyncPayStatements(AsyncAPIResource):
         )
 
 
-class PayStatementsWithRawResponse:
-    def __init__(self, pay_statements: PayStatements) -> None:
+class PayStatementsResourceWithRawResponse:
+    def __init__(self, pay_statements: PayStatementsResource) -> None:
         self._pay_statements = pay_statements
 
         self.retrieve_many = _legacy_response.to_raw_response_wrapper(
@@ -134,8 +134,8 @@ class PayStatementsWithRawResponse:
         )
 
 
-class AsyncPayStatementsWithRawResponse:
-    def __init__(self, pay_statements: AsyncPayStatements) -> None:
+class AsyncPayStatementsResourceWithRawResponse:
+    def __init__(self, pay_statements: AsyncPayStatementsResource) -> None:
         self._pay_statements = pay_statements
 
         self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
@@ -143,8 +143,8 @@ class AsyncPayStatementsWithRawResponse:
         )
 
 
-class PayStatementsWithStreamingResponse:
-    def __init__(self, pay_statements: PayStatements) -> None:
+class PayStatementsResourceWithStreamingResponse:
+    def __init__(self, pay_statements: PayStatementsResource) -> None:
         self._pay_statements = pay_statements
 
         self.retrieve_many = to_streamed_response_wrapper(
@@ -152,8 +152,8 @@ class PayStatementsWithStreamingResponse:
         )
 
 
-class AsyncPayStatementsWithStreamingResponse:
-    def __init__(self, pay_statements: AsyncPayStatements) -> None:
+class AsyncPayStatementsResourceWithStreamingResponse:
+    def __init__(self, pay_statements: AsyncPayStatementsResource) -> None:
         self._pay_statements = pay_statements
 
         self.retrieve_many = async_to_streamed_response_wrapper(

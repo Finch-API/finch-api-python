@@ -22,17 +22,17 @@ from ...types.sandbox import company_update_params
 from ...types.location_param import LocationParam
 from ...types.sandbox.company_update_response import CompanyUpdateResponse
 
-__all__ = ["Company", "AsyncCompany"]
+__all__ = ["CompanyResource", "AsyncCompanyResource"]
 
 
-class Company(SyncAPIResource):
+class CompanyResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CompanyWithRawResponse:
-        return CompanyWithRawResponse(self)
+    def with_raw_response(self) -> CompanyResourceWithRawResponse:
+        return CompanyResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CompanyWithStreamingResponse:
-        return CompanyWithStreamingResponse(self)
+    def with_streaming_response(self) -> CompanyResourceWithStreamingResponse:
+        return CompanyResourceWithStreamingResponse(self)
 
     def update(
         self,
@@ -100,14 +100,14 @@ class Company(SyncAPIResource):
         )
 
 
-class AsyncCompany(AsyncAPIResource):
+class AsyncCompanyResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCompanyWithRawResponse:
-        return AsyncCompanyWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCompanyResourceWithRawResponse:
+        return AsyncCompanyResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCompanyWithStreamingResponse:
-        return AsyncCompanyWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCompanyResourceWithStreamingResponse:
+        return AsyncCompanyResourceWithStreamingResponse(self)
 
     async def update(
         self,
@@ -175,8 +175,8 @@ class AsyncCompany(AsyncAPIResource):
         )
 
 
-class CompanyWithRawResponse:
-    def __init__(self, company: Company) -> None:
+class CompanyResourceWithRawResponse:
+    def __init__(self, company: CompanyResource) -> None:
         self._company = company
 
         self.update = _legacy_response.to_raw_response_wrapper(
@@ -184,8 +184,8 @@ class CompanyWithRawResponse:
         )
 
 
-class AsyncCompanyWithRawResponse:
-    def __init__(self, company: AsyncCompany) -> None:
+class AsyncCompanyResourceWithRawResponse:
+    def __init__(self, company: AsyncCompanyResource) -> None:
         self._company = company
 
         self.update = _legacy_response.async_to_raw_response_wrapper(
@@ -193,8 +193,8 @@ class AsyncCompanyWithRawResponse:
         )
 
 
-class CompanyWithStreamingResponse:
-    def __init__(self, company: Company) -> None:
+class CompanyResourceWithStreamingResponse:
+    def __init__(self, company: CompanyResource) -> None:
         self._company = company
 
         self.update = to_streamed_response_wrapper(
@@ -202,8 +202,8 @@ class CompanyWithStreamingResponse:
         )
 
 
-class AsyncCompanyWithStreamingResponse:
-    def __init__(self, company: AsyncCompany) -> None:
+class AsyncCompanyResourceWithStreamingResponse:
+    def __init__(self, company: AsyncCompanyResource) -> None:
         self._company = company
 
         self.update = async_to_streamed_response_wrapper(

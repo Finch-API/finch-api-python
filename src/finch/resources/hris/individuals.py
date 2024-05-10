@@ -20,17 +20,17 @@ from ..._base_client import (
 )
 from ...types.hris.individual_response import IndividualResponse
 
-__all__ = ["Individuals", "AsyncIndividuals"]
+__all__ = ["IndividualsResource", "AsyncIndividualsResource"]
 
 
-class Individuals(SyncAPIResource):
+class IndividualsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> IndividualsWithRawResponse:
-        return IndividualsWithRawResponse(self)
+    def with_raw_response(self) -> IndividualsResourceWithRawResponse:
+        return IndividualsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> IndividualsWithStreamingResponse:
-        return IndividualsWithStreamingResponse(self)
+    def with_streaming_response(self) -> IndividualsResourceWithStreamingResponse:
+        return IndividualsResourceWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -74,14 +74,14 @@ class Individuals(SyncAPIResource):
         )
 
 
-class AsyncIndividuals(AsyncAPIResource):
+class AsyncIndividualsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncIndividualsWithRawResponse:
-        return AsyncIndividualsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncIndividualsResourceWithRawResponse:
+        return AsyncIndividualsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncIndividualsWithStreamingResponse:
-        return AsyncIndividualsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncIndividualsResourceWithStreamingResponse:
+        return AsyncIndividualsResourceWithStreamingResponse(self)
 
     def retrieve_many(
         self,
@@ -125,8 +125,8 @@ class AsyncIndividuals(AsyncAPIResource):
         )
 
 
-class IndividualsWithRawResponse:
-    def __init__(self, individuals: Individuals) -> None:
+class IndividualsResourceWithRawResponse:
+    def __init__(self, individuals: IndividualsResource) -> None:
         self._individuals = individuals
 
         self.retrieve_many = _legacy_response.to_raw_response_wrapper(
@@ -134,8 +134,8 @@ class IndividualsWithRawResponse:
         )
 
 
-class AsyncIndividualsWithRawResponse:
-    def __init__(self, individuals: AsyncIndividuals) -> None:
+class AsyncIndividualsResourceWithRawResponse:
+    def __init__(self, individuals: AsyncIndividualsResource) -> None:
         self._individuals = individuals
 
         self.retrieve_many = _legacy_response.async_to_raw_response_wrapper(
@@ -143,8 +143,8 @@ class AsyncIndividualsWithRawResponse:
         )
 
 
-class IndividualsWithStreamingResponse:
-    def __init__(self, individuals: Individuals) -> None:
+class IndividualsResourceWithStreamingResponse:
+    def __init__(self, individuals: IndividualsResource) -> None:
         self._individuals = individuals
 
         self.retrieve_many = to_streamed_response_wrapper(
@@ -152,8 +152,8 @@ class IndividualsWithStreamingResponse:
         )
 
 
-class AsyncIndividualsWithStreamingResponse:
-    def __init__(self, individuals: AsyncIndividuals) -> None:
+class AsyncIndividualsResourceWithStreamingResponse:
+    def __init__(self, individuals: AsyncIndividualsResource) -> None:
         self._individuals = individuals
 
         self.retrieve_many = async_to_streamed_response_wrapper(

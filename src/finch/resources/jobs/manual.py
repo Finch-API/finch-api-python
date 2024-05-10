@@ -14,17 +14,17 @@ from ..._base_client import (
 )
 from ...types.jobs.manual_async_job import ManualAsyncJob
 
-__all__ = ["Manual", "AsyncManual"]
+__all__ = ["ManualResource", "AsyncManualResource"]
 
 
-class Manual(SyncAPIResource):
+class ManualResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ManualWithRawResponse:
-        return ManualWithRawResponse(self)
+    def with_raw_response(self) -> ManualResourceWithRawResponse:
+        return ManualResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ManualWithStreamingResponse:
-        return ManualWithStreamingResponse(self)
+    def with_streaming_response(self) -> ManualResourceWithStreamingResponse:
+        return ManualResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -62,14 +62,14 @@ class Manual(SyncAPIResource):
         )
 
 
-class AsyncManual(AsyncAPIResource):
+class AsyncManualResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncManualWithRawResponse:
-        return AsyncManualWithRawResponse(self)
+    def with_raw_response(self) -> AsyncManualResourceWithRawResponse:
+        return AsyncManualResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncManualWithStreamingResponse:
-        return AsyncManualWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncManualResourceWithStreamingResponse:
+        return AsyncManualResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -107,8 +107,8 @@ class AsyncManual(AsyncAPIResource):
         )
 
 
-class ManualWithRawResponse:
-    def __init__(self, manual: Manual) -> None:
+class ManualResourceWithRawResponse:
+    def __init__(self, manual: ManualResource) -> None:
         self._manual = manual
 
         self.retrieve = _legacy_response.to_raw_response_wrapper(
@@ -116,8 +116,8 @@ class ManualWithRawResponse:
         )
 
 
-class AsyncManualWithRawResponse:
-    def __init__(self, manual: AsyncManual) -> None:
+class AsyncManualResourceWithRawResponse:
+    def __init__(self, manual: AsyncManualResource) -> None:
         self._manual = manual
 
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
@@ -125,8 +125,8 @@ class AsyncManualWithRawResponse:
         )
 
 
-class ManualWithStreamingResponse:
-    def __init__(self, manual: Manual) -> None:
+class ManualResourceWithStreamingResponse:
+    def __init__(self, manual: ManualResource) -> None:
         self._manual = manual
 
         self.retrieve = to_streamed_response_wrapper(
@@ -134,8 +134,8 @@ class ManualWithStreamingResponse:
         )
 
 
-class AsyncManualWithStreamingResponse:
-    def __init__(self, manual: AsyncManual) -> None:
+class AsyncManualResourceWithStreamingResponse:
+    def __init__(self, manual: AsyncManualResource) -> None:
         self._manual = manual
 
         self.retrieve = async_to_streamed_response_wrapper(
