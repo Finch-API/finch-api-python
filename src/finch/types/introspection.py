@@ -6,17 +6,17 @@ from typing_extensions import Literal
 from .._models import BaseModel
 from .shared.connection_status_type import ConnectionStatusType
 
-__all__ = ["Introspection", "AuthenticationMethods", "AuthenticationMethodsConnectionStatus"]
+__all__ = ["Introspection", "AuthenticationMethod", "AuthenticationMethodConnectionStatus"]
 
 
-class AuthenticationMethodsConnectionStatus(BaseModel):
+class AuthenticationMethodConnectionStatus(BaseModel):
     message: Optional[str] = None
 
     status: Optional[ConnectionStatusType] = None
 
 
-class AuthenticationMethods(BaseModel):
-    connection_status: Optional[AuthenticationMethodsConnectionStatus] = None
+class AuthenticationMethod(BaseModel):
+    connection_status: Optional[AuthenticationMethodConnectionStatus] = None
 
     type: Optional[str] = None
 
@@ -25,7 +25,7 @@ class Introspection(BaseModel):
     account_id: str
     """The Finch uuid of the account used to connect this company."""
 
-    authentication_methods: AuthenticationMethods
+    authentication_methods: List[AuthenticationMethod]
 
     client_id: str
     """The client id of the application associated with the `access_token`."""
