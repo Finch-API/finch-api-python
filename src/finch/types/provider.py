@@ -413,6 +413,9 @@ class Provider(BaseModel):
     authentication_methods: Optional[List[AuthenticationMethod]] = None
     """The list of authentication methods supported by the provider."""
 
+    beta: Optional[bool] = None
+    """`true` if the integration is in a beta state, `false` otherwise"""
+
     display_name: Optional[str] = None
     """The display name of the payroll provider."""
 
