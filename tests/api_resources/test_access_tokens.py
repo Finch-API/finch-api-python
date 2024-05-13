@@ -28,7 +28,7 @@ class TestAccessTokens:
     def test_method_create_with_all_params(self, client: Finch) -> None:
         access_token = client.access_tokens.create(
             code="<your_authorization_code>",
-            client_id="<your_client_id>",
+            client_id="12345678-1234-1234-1234-123456789ABC",
             client_secret="<your_client_secret>",
             redirect_uri="https://example.com",
         )
@@ -73,7 +73,7 @@ class TestAsyncAccessTokens:
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         access_token = await async_client.access_tokens.create(
             code="<your_authorization_code>",
-            client_id="<your_client_id>",
+            client_id="12345678-1234-1234-1234-123456789ABC",
             client_secret="<your_client_secret>",
             redirect_uri="https://example.com",
         )
