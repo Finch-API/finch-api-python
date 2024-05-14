@@ -26,7 +26,7 @@ from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 access_token = "My Access Token"
-client_id = "My Client ID"
+client_id = "4ab15e51-11ad-49f4-acae-f343b7794375"
 client_secret = "My Client Secret"
 
 
@@ -73,9 +73,9 @@ class TestFinch:
         assert copied.access_token == "another My Access Token"
         assert self.client.access_token == "My Access Token"
 
-        copied = self.client.copy(client_id="another My Client ID")
-        assert copied.client_id == "another My Client ID"
-        assert self.client.client_id == "My Client ID"
+        copied = self.client.copy(client_id="another 4ab15e51-11ad-49f4-acae-f343b7794375")
+        assert copied.client_id == "another 4ab15e51-11ad-49f4-acae-f343b7794375"
+        assert self.client.client_id == "4ab15e51-11ad-49f4-acae-f343b7794375"
 
         copied = self.client.copy(client_secret="another My Client Secret")
         assert copied.client_secret == "another My Client Secret"
@@ -989,9 +989,9 @@ class TestAsyncFinch:
         assert copied.access_token == "another My Access Token"
         assert self.client.access_token == "My Access Token"
 
-        copied = self.client.copy(client_id="another My Client ID")
-        assert copied.client_id == "another My Client ID"
-        assert self.client.client_id == "My Client ID"
+        copied = self.client.copy(client_id="another 4ab15e51-11ad-49f4-acae-f343b7794375")
+        assert copied.client_id == "another 4ab15e51-11ad-49f4-acae-f343b7794375"
+        assert self.client.client_id == "4ab15e51-11ad-49f4-acae-f343b7794375"
 
         copied = self.client.copy(client_secret="another My Client Secret")
         assert copied.client_secret == "another My Client Secret"
