@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.20.7 (2024-05-14)
+
+Full Changelog: [v0.20.6...v0.20.7](https://github.com/Finch-API/finch-api-python/compare/v0.20.6...v0.20.7)
+
+### Chores
+
+* **internal:** add slightly better logging to scripts ([#383](https://github.com/Finch-API/finch-api-python/issues/383)) ([4c8a883](https://github.com/Finch-API/finch-api-python/commit/4c8a8837677f736d670ae614c3bc99756bcbafd7))
+
 ## 0.20.6 (2024-05-14)
 
 Full Changelog: [v0.20.5...v0.20.6](https://github.com/Finch-API/finch-api-python/compare/v0.20.5...v0.20.6)
