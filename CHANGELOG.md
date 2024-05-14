@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.20.6 (2024-05-14)
+
+Full Changelog: [v0.20.5...v0.20.6](https://github.com/Finch-API/finch-api-python/compare/v0.20.5...v0.20.6)
+
+### Bug Fixes
+
+* **api:** correct authentication methods type ([#381](https://github.com/Finch-API/finch-api-python/issues/381)) ([bcf80af](https://github.com/Finch-API/finch-api-python/commit/bcf80af518349e89c56f99ce70392e8c4ec8d6f0))
+
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#379](https://github.com/Finch-API/finch-api-python/issues/379)) ([fa53eb7](https://github.com/Finch-API/finch-api-python/commit/fa53eb76a06a88d4b007116c7794c0693438f784))
+* **internal:** minor updates ([#377](https://github.com/Finch-API/finch-api-python/issues/377)) ([f2f1236](https://github.com/Finch-API/finch-api-python/commit/f2f12364794b7da31f2cb80b395d36a80fa03ca3))
+* **tests:** update client ID example value ([#382](https://github.com/Finch-API/finch-api-python/issues/382)) ([56b9ec4](https://github.com/Finch-API/finch-api-python/commit/56b9ec415fed15123503ce1819d996d13813bb36))
+
 ## 0.20.5 (2024-05-10)
 
 Full Changelog: [v0.20.4...v0.20.5](https://github.com/Finch-API/finch-api-python/compare/v0.20.4...v0.20.5)
