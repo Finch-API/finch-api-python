@@ -27,7 +27,7 @@ def event_loop() -> Iterator[asyncio.AbstractEventLoop]:
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 access_token = "My Access Token"
-client_id = "My Client ID"
+client_id = "4ab15e51-11ad-49f4-acae-f343b7794375"
 client_secret = "My Client Secret"
 
 
