@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.20.9 (2024-05-24)
+
+Full Changelog: [v0.20.8...v0.20.9](https://github.com/Finch-API/finch-api-python/compare/v0.20.8...v0.20.9)
+
+### Chores
+
+* **ci:** update rye install location ([#389](https://github.com/Finch-API/finch-api-python/issues/389)) ([60cb43d](https://github.com/Finch-API/finch-api-python/commit/60cb43d309d500a4cf5e3b709a2211b467ca2670))
+* **ci:** update rye install location ([#391](https://github.com/Finch-API/finch-api-python/issues/391)) ([0d87713](https://github.com/Finch-API/finch-api-python/commit/0d87713a061143bdd42ce2445c43352dfc6c027f))
+* **internal:** bump pyright ([#393](https://github.com/Finch-API/finch-api-python/issues/393)) ([44e4df5](https://github.com/Finch-API/finch-api-python/commit/44e4df57a6096177f1538d185ad045391b24f0be))
+* **tests:** example client_id ([#392](https://github.com/Finch-API/finch-api-python/issues/392)) ([d4d0d9d](https://github.com/Finch-API/finch-api-python/commit/d4d0d9d753964820ebeeefe75ab121492a946c16))
+
+
+### Documentation
+
+* **contributing:** update references to rye-up.com ([#394](https://github.com/Finch-API/finch-api-python/issues/394)) ([a4a6db6](https://github.com/Finch-API/finch-api-python/commit/a4a6db65095bb0de34a810017da741ca7c337d28))
+
 ## 0.20.8 (2024-05-17)
 
 Full Changelog: [v0.20.7...v0.20.8](https://github.com/Finch-API/finch-api-python/compare/v0.20.7...v0.20.8)
