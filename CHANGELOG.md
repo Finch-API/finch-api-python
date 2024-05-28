@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.20.10 (2024-05-28)
+
+Full Changelog: [v0.20.9...v0.20.10](https://github.com/Finch-API/finch-api-python/compare/v0.20.9...v0.20.10)
+
+### Chores
+
+* add missing __all__ definitions ([8bd378e](https://github.com/Finch-API/finch-api-python/commit/8bd378e3aca65a94c9cff2d138bfbdc046806c14))
+* **internal:** update bootstrap script ([#397](https://github.com/Finch-API/finch-api-python/issues/397)) ([c0f4cef](https://github.com/Finch-API/finch-api-python/commit/c0f4cef730a53921e47c65bbd2f7fff68f8ec247))
+
 ## 0.20.9 (2024-05-24)
 
 Full Changelog: [v0.20.8...v0.20.9](https://github.com/Finch-API/finch-api-python/compare/v0.20.8...v0.20.9)
