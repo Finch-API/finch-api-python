@@ -4,5 +4,7 @@
 
 from .benefit_contribution import BenefitContribution
 
+__all__ = ["BenfitContribution"]
+
 BenfitContribution = BenefitContribution
 """use `BenefitContribution` instead"""
