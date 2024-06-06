@@ -351,3 +351,18 @@ Methods:
 
 - <code title="get /sandbox/jobs/configuration">client.sandbox.jobs.configuration.<a href="./src/finch/resources/sandbox/jobs/configuration.py">retrieve</a>() -> <a href="./src/finch/types/sandbox/jobs/configuration_retrieve_response.py">ConfigurationRetrieveResponse</a></code>
 - <code title="put /sandbox/jobs/configuration">client.sandbox.jobs.configuration.<a href="./src/finch/resources/sandbox/jobs/configuration.py">update</a>(\*\*<a href="src/finch/types/sandbox/jobs/configuration_update_params.py">params</a>) -> <a href="./src/finch/types/sandbox/jobs/sandbox_job_configuration.py">SandboxJobConfiguration</a></code>
+
+# Payroll
+
+## PayGroups
+
+Types:
+
+```python
+from finch.types.payroll import PayGroupRetrieveResponse, PayGroupListResponse
+```
+
+Methods:
+
+- <code title="get /employer/pay-group/{pay_group_id}">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">retrieve</a>(pay_group_id) -> <a href="./src/finch/types/payroll/pay_group_retrieve_response.py">PayGroupRetrieveResponse</a></code>
+- <code title="get /employer/pay-groups">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">list</a>(\*\*<a href="src/finch/types/payroll/pay_group_list_params.py">params</a>) -> <a href="./src/finch/types/payroll/pay_group_list_response.py">SyncSinglePage[PayGroupListResponse]</a></code>
