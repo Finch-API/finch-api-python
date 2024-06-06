@@ -60,6 +60,7 @@ class Finch(SyncAPIClient):
     request_forwarding: resources.RequestForwarding
     jobs: resources.Jobs
     sandbox: resources.Sandbox
+    payroll: resources.Payroll
     with_raw_response: FinchWithRawResponse
     with_streaming_response: FinchWithStreamedResponse
 
@@ -163,6 +164,7 @@ class Finch(SyncAPIClient):
         self.request_forwarding = resources.RequestForwarding(self)
         self.jobs = resources.Jobs(self)
         self.sandbox = resources.Sandbox(self)
+        self.payroll = resources.Payroll(self)
         self.with_raw_response = FinchWithRawResponse(self)
         self.with_streaming_response = FinchWithStreamedResponse(self)
 
@@ -410,6 +412,7 @@ class AsyncFinch(AsyncAPIClient):
     request_forwarding: resources.AsyncRequestForwarding
     jobs: resources.AsyncJobs
     sandbox: resources.AsyncSandbox
+    payroll: resources.AsyncPayroll
     with_raw_response: AsyncFinchWithRawResponse
     with_streaming_response: AsyncFinchWithStreamedResponse
 
@@ -513,6 +516,7 @@ class AsyncFinch(AsyncAPIClient):
         self.request_forwarding = resources.AsyncRequestForwarding(self)
         self.jobs = resources.AsyncJobs(self)
         self.sandbox = resources.AsyncSandbox(self)
+        self.payroll = resources.AsyncPayroll(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
         self.with_streaming_response = AsyncFinchWithStreamedResponse(self)
 
@@ -760,6 +764,7 @@ class FinchWithRawResponse:
         self.request_forwarding = resources.RequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.JobsWithRawResponse(client.jobs)
         self.sandbox = resources.SandboxWithRawResponse(client.sandbox)
+        self.payroll = resources.PayrollWithRawResponse(client.payroll)
 
 
 class AsyncFinchWithRawResponse:
@@ -771,6 +776,7 @@ class AsyncFinchWithRawResponse:
         self.request_forwarding = resources.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
         self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
         self.sandbox = resources.AsyncSandboxWithRawResponse(client.sandbox)
+        self.payroll = resources.AsyncPayrollWithRawResponse(client.payroll)
 
 
 class FinchWithStreamedResponse:
@@ -782,6 +788,7 @@ class FinchWithStreamedResponse:
         self.request_forwarding = resources.RequestForwardingWithStreamingResponse(client.request_forwarding)
         self.jobs = resources.JobsWithStreamingResponse(client.jobs)
         self.sandbox = resources.SandboxWithStreamingResponse(client.sandbox)
+        self.payroll = resources.PayrollWithStreamingResponse(client.payroll)
 
 
 class AsyncFinchWithStreamedResponse:
@@ -793,6 +800,7 @@ class AsyncFinchWithStreamedResponse:
         self.request_forwarding = resources.AsyncRequestForwardingWithStreamingResponse(client.request_forwarding)
         self.jobs = resources.AsyncJobsWithStreamingResponse(client.jobs)
         self.sandbox = resources.AsyncSandboxWithStreamingResponse(client.sandbox)
+        self.payroll = resources.AsyncPayrollWithStreamingResponse(client.payroll)
 
 
 Client = Finch
