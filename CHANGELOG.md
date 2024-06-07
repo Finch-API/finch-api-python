@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.1 (2024-06-07)
+
+Full Changelog: [v0.21.0...v0.21.1](https://github.com/Finch-API/finch-api-python/compare/v0.21.0...v0.21.1)
+
+### Bug Fixes
+
+* rename pay groups endpoint ([#400](https://github.com/Finch-API/finch-api-python/issues/400)) ([d653576](https://github.com/Finch-API/finch-api-python/commit/d653576e36c09c9f376add89c11fbf188abb3fdc))
+
 ## 0.21.0 (2024-06-06)
 
 Full Changelog: [v0.20.10...v0.21.0](https://github.com/Finch-API/finch-api-python/compare/v0.20.10...v0.21.0)
