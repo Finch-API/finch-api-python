@@ -59,7 +59,7 @@ class PayGroups(SyncAPIResource):
         if not pay_group_id:
             raise ValueError(f"Expected a non-empty value for `pay_group_id` but received {pay_group_id!r}")
         return self._get(
-            f"/employer/pay-group/{pay_group_id}",
+            f"/employer/pay-groups/{pay_group_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -145,7 +145,7 @@ class AsyncPayGroups(AsyncAPIResource):
         if not pay_group_id:
             raise ValueError(f"Expected a non-empty value for `pay_group_id` but received {pay_group_id!r}")
         return await self._get(
-            f"/employer/pay-group/{pay_group_id}",
+            f"/employer/pay-groups/{pay_group_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
