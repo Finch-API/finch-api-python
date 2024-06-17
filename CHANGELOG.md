@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.2 (2024-06-17)
+
+Full Changelog: [v0.21.1...v0.21.2](https://github.com/Finch-API/finch-api-python/compare/v0.21.1...v0.21.2)
+
+### Chores
+
+* **internal:** add a `default_query` method ([#402](https://github.com/Finch-API/finch-api-python/issues/402)) ([2afe0c6](https://github.com/Finch-API/finch-api-python/commit/2afe0c61507c7813f1b5479d209f5c52f21b5885))
+
 ## 0.21.1 (2024-06-07)
 
 Full Changelog: [v0.21.0...v0.21.1](https://github.com/Finch-API/finch-api-python/compare/v0.21.0...v0.21.1)
