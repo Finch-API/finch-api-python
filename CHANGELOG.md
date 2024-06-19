@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.3 (2024-06-19)
+
+Full Changelog: [v0.21.2...v0.21.3](https://github.com/Finch-API/finch-api-python/compare/v0.21.2...v0.21.3)
+
+### Bug Fixes
+
+* **client/async:** avoid blocking io call for platform headers ([#404](https://github.com/Finch-API/finch-api-python/issues/404)) ([8641632](https://github.com/Finch-API/finch-api-python/commit/86416328f3f6946815f1e91c03f5f54e76c9af30))
+
 ## 0.21.2 (2024-06-17)
 
 Full Changelog: [v0.21.1...v0.21.2](https://github.com/Finch-API/finch-api-python/compare/v0.21.1...v0.21.2)
