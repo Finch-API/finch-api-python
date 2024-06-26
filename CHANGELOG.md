@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.21.4 (2024-06-26)
+
+Full Changelog: [v0.21.3...v0.21.4](https://github.com/Finch-API/finch-api-python/compare/v0.21.3...v0.21.4)
+
+### Bug Fixes
+
+* **docs:** fix link to advanced python httpx docs ([#406](https://github.com/Finch-API/finch-api-python/issues/406)) ([a14561d](https://github.com/Finch-API/finch-api-python/commit/a14561d3f9dff785f34f4bc7dedca1b8164fe59a))
+* temporarily patch upstream version to fix broken release flow ([#408](https://github.com/Finch-API/finch-api-python/issues/408)) ([ab45400](https://github.com/Finch-API/finch-api-python/commit/ab45400b27020f5caf99e080def96c0e4daca85f))
+
 ## 0.21.3 (2024-06-19)
 
 Full Changelog: [v0.21.2...v0.21.3](https://github.com/Finch-API/finch-api-python/compare/v0.21.2...v0.21.3)
