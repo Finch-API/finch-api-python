@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.21.5 (2024-06-28)
+
+Full Changelog: [v0.21.4...v0.21.5](https://github.com/Finch-API/finch-api-python/compare/v0.21.4...v0.21.5)
+
+### Bug Fixes
+
+* **build:** include more files in sdist builds ([#409](https://github.com/Finch-API/finch-api-python/issues/409)) ([1508b49](https://github.com/Finch-API/finch-api-python/commit/1508b49756620d8fda71886beb750bc0bdc05d89))
+
+
+### Chores
+
+* **deps:** bump anyio to v4.4.0 ([#411](https://github.com/Finch-API/finch-api-python/issues/411)) ([45c5047](https://github.com/Finch-API/finch-api-python/commit/45c50471351af8213f414d60c269fbf3e2b4e4bd))
+* **internal:** add reflection helper function ([#412](https://github.com/Finch-API/finch-api-python/issues/412)) ([1e84873](https://github.com/Finch-API/finch-api-python/commit/1e848737d7505b57702604b8e95c3a8c85c75bc9))
+
 ## 0.21.4 (2024-06-26)
 
 Full Changelog: [v0.21.3...v0.21.4](https://github.com/Finch-API/finch-api-python/compare/v0.21.3...v0.21.4)
