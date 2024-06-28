@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.6 (2024-06-28)
+
+Full Changelog: [v0.21.5...v0.21.6](https://github.com/Finch-API/finch-api-python/compare/v0.21.5...v0.21.6)
+
+### Chores
+
+* gitignore test server logs ([#413](https://github.com/Finch-API/finch-api-python/issues/413)) ([45b7776](https://github.com/Finch-API/finch-api-python/commit/45b7776d5824c99433a109ef39b600460b297e3e))
+
 ## 0.21.5 (2024-06-28)
 
 Full Changelog: [v0.21.4...v0.21.5](https://github.com/Finch-API/finch-api-python/compare/v0.21.4...v0.21.5)
