@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.21.7 (2024-07-02)
+
+Full Changelog: [v0.21.6...v0.21.7](https://github.com/Finch-API/finch-api-python/compare/v0.21.6...v0.21.7)
+
+### Bug Fixes
+
+* **client:** always respect content-type multipart/form-data if provided ([#419](https://github.com/Finch-API/finch-api-python/issues/419)) ([08fabf4](https://github.com/Finch-API/finch-api-python/commit/08fabf4afe9e7e57624de9a98de740c45e927958))
+
+
+### Chores
+
+* **internal:** add helper method for constructing `BaseModel`s ([#418](https://github.com/Finch-API/finch-api-python/issues/418)) ([677ce86](https://github.com/Finch-API/finch-api-python/commit/677ce8617bcaae6835680360cbc1335b9c193a7a))
+* **internal:** add rich as a dev dependency ([#415](https://github.com/Finch-API/finch-api-python/issues/415)) ([ce1979c](https://github.com/Finch-API/finch-api-python/commit/ce1979cc0c2e7d02283c32802962cb2d83aa6b6c))
+* sync openapi spec ([#417](https://github.com/Finch-API/finch-api-python/issues/417)) ([a04f3d8](https://github.com/Finch-API/finch-api-python/commit/a04f3d8bda7735f35a6233a948896a56d0a94151))
+
 ## 0.21.6 (2024-06-28)
 
 Full Changelog: [v0.21.5...v0.21.6](https://github.com/Finch-API/finch-api-python/compare/v0.21.5...v0.21.6)
