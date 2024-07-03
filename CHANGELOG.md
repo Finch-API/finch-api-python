@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.8 (2024-07-03)
+
+Full Changelog: [v0.21.7...v0.21.8](https://github.com/Finch-API/finch-api-python/compare/v0.21.7...v0.21.8)
+
+### Chores
+
+* **ci:** update rye to v0.35.0 ([#420](https://github.com/Finch-API/finch-api-python/issues/420)) ([710444f](https://github.com/Finch-API/finch-api-python/commit/710444f9056fe1bfa3b1e6794dc13353c943a4d0))
+
 ## 0.21.7 (2024-07-02)
 
 Full Changelog: [v0.21.6...v0.21.7](https://github.com/Finch-API/finch-api-python/compare/v0.21.6...v0.21.7)
