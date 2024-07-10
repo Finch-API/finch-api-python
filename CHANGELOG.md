@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.21.9 (2024-07-10)
+
+Full Changelog: [v0.21.8...v0.21.9](https://github.com/Finch-API/finch-api-python/compare/v0.21.8...v0.21.9)
+
+### Chores
+
+* **internal:** add helper function ([#424](https://github.com/Finch-API/finch-api-python/issues/424)) ([a9a6206](https://github.com/Finch-API/finch-api-python/commit/a9a6206a74181a3d04fad5bcadf872c88ac4d13a))
+* **internal:** minor request options handling changes ([#422](https://github.com/Finch-API/finch-api-python/issues/422)) ([ed15e98](https://github.com/Finch-API/finch-api-python/commit/ed15e9847c8f2d5388526aa89847f5bed646e7bc))
+
 ## 0.21.8 (2024-07-03)
 
 Full Changelog: [v0.21.7...v0.21.8](https://github.com/Finch-API/finch-api-python/compare/v0.21.7...v0.21.8)
