@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.10 (2024-07-10)
+
+Full Changelog: [v0.21.9...v0.21.10](https://github.com/Finch-API/finch-api-python/compare/v0.21.9...v0.21.10)
+
+### Chores
+
+* **internal:** update mypy ([#425](https://github.com/Finch-API/finch-api-python/issues/425)) ([d5118a4](https://github.com/Finch-API/finch-api-python/commit/d5118a4afc8279553b33af0f9a200a3e988a13d2))
+
 ## 0.21.9 (2024-07-10)
 
 Full Changelog: [v0.21.8...v0.21.9](https://github.com/Finch-API/finch-api-python/compare/v0.21.8...v0.21.9)
