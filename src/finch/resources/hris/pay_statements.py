@@ -14,10 +14,7 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncResponsesPage, AsyncResponsesPage
 from ...types.hris import pay_statement_retrieve_many_params
-from ..._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.hris.pay_statement_response import PayStatementResponse
 
 __all__ = ["PayStatements", "AsyncPayStatements"]
