@@ -21,14 +21,14 @@ class TestPayGroups:
     @parametrize
     def test_method_retrieve(self, client: Finch) -> None:
         pay_group = client.payroll.pay_groups.retrieve(
-            "string",
+            "pay_group_id",
         )
         assert_matches_type(PayGroupRetrieveResponse, pay_group, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.payroll.pay_groups.with_raw_response.retrieve(
-            "string",
+            "pay_group_id",
         )
 
         assert response.is_closed is True
@@ -39,7 +39,7 @@ class TestPayGroups:
     @parametrize
     def test_streaming_response_retrieve(self, client: Finch) -> None:
         with client.payroll.pay_groups.with_streaming_response.retrieve(
-            "string",
+            "pay_group_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -96,14 +96,14 @@ class TestAsyncPayGroups:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
         pay_group = await async_client.payroll.pay_groups.retrieve(
-            "string",
+            "pay_group_id",
         )
         assert_matches_type(PayGroupRetrieveResponse, pay_group, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
         response = await async_client.payroll.pay_groups.with_raw_response.retrieve(
-            "string",
+            "pay_group_id",
         )
 
         assert response.is_closed is True
@@ -114,7 +114,7 @@ class TestAsyncPayGroups:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
         async with async_client.payroll.pay_groups.with_streaming_response.retrieve(
-            "string",
+            "pay_group_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

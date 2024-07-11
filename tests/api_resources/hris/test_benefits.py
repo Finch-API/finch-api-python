@@ -31,7 +31,7 @@ class TestBenefits:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         benefit = client.hris.benefits.create(
-            description="string",
+            description="description",
             frequency="one_time",
             type="401k",
         )
@@ -60,14 +60,14 @@ class TestBenefits:
     @parametrize
     def test_method_retrieve(self, client: Finch) -> None:
         benefit = client.hris.benefits.retrieve(
-            "string",
+            "benefit_id",
         )
         assert_matches_type(CompanyBenefit, benefit, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.hris.benefits.with_raw_response.retrieve(
-            "string",
+            "benefit_id",
         )
 
         assert response.is_closed is True
@@ -78,7 +78,7 @@ class TestBenefits:
     @parametrize
     def test_streaming_response_retrieve(self, client: Finch) -> None:
         with client.hris.benefits.with_streaming_response.retrieve(
-            "string",
+            "benefit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -98,22 +98,22 @@ class TestBenefits:
     @parametrize
     def test_method_update(self, client: Finch) -> None:
         benefit = client.hris.benefits.update(
-            "string",
+            benefit_id="benefit_id",
         )
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Finch) -> None:
         benefit = client.hris.benefits.update(
-            "string",
-            description="string",
+            benefit_id="benefit_id",
+            description="description",
         )
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Finch) -> None:
         response = client.hris.benefits.with_raw_response.update(
-            "string",
+            benefit_id="benefit_id",
         )
 
         assert response.is_closed is True
@@ -124,7 +124,7 @@ class TestBenefits:
     @parametrize
     def test_streaming_response_update(self, client: Finch) -> None:
         with client.hris.benefits.with_streaming_response.update(
-            "string",
+            benefit_id="benefit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -138,7 +138,7 @@ class TestBenefits:
     def test_path_params_update(self, client: Finch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
             client.hris.benefits.with_raw_response.update(
-                "",
+                benefit_id="",
             )
 
     @parametrize
@@ -203,7 +203,7 @@ class TestAsyncBenefits:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         benefit = await async_client.hris.benefits.create(
-            description="string",
+            description="description",
             frequency="one_time",
             type="401k",
         )
@@ -232,14 +232,14 @@ class TestAsyncBenefits:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
         benefit = await async_client.hris.benefits.retrieve(
-            "string",
+            "benefit_id",
         )
         assert_matches_type(CompanyBenefit, benefit, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.benefits.with_raw_response.retrieve(
-            "string",
+            "benefit_id",
         )
 
         assert response.is_closed is True
@@ -250,7 +250,7 @@ class TestAsyncBenefits:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.benefits.with_streaming_response.retrieve(
-            "string",
+            "benefit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -270,22 +270,22 @@ class TestAsyncBenefits:
     @parametrize
     async def test_method_update(self, async_client: AsyncFinch) -> None:
         benefit = await async_client.hris.benefits.update(
-            "string",
+            benefit_id="benefit_id",
         )
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
         benefit = await async_client.hris.benefits.update(
-            "string",
-            description="string",
+            benefit_id="benefit_id",
+            description="description",
         )
         assert_matches_type(UpdateCompanyBenefitResponse, benefit, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.benefits.with_raw_response.update(
-            "string",
+            benefit_id="benefit_id",
         )
 
         assert response.is_closed is True
@@ -296,7 +296,7 @@ class TestAsyncBenefits:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.benefits.with_streaming_response.update(
-            "string",
+            benefit_id="benefit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -310,7 +310,7 @@ class TestAsyncBenefits:
     async def test_path_params_update(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
             await async_client.hris.benefits.with_raw_response.update(
-                "",
+                benefit_id="",
             )
 
     @parametrize

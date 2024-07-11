@@ -25,7 +25,7 @@ class TestAccounts:
     def test_method_create(self, client: Finch) -> None:
         account = client.sandbox.connections.accounts.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
@@ -34,7 +34,7 @@ class TestAccounts:
     def test_method_create_with_all_params(self, client: Finch) -> None:
         account = client.sandbox.connections.accounts.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
             authentication_type="credential",
             products=["string", "string", "string"],
         )
@@ -45,7 +45,7 @@ class TestAccounts:
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.sandbox.connections.accounts.with_raw_response.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
         )
 
         assert response.is_closed is True
@@ -58,7 +58,7 @@ class TestAccounts:
     def test_streaming_response_create(self, client: Finch) -> None:
         with client.sandbox.connections.accounts.with_streaming_response.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -109,7 +109,7 @@ class TestAsyncAccounts:
     async def test_method_create(self, async_client: AsyncFinch) -> None:
         account = await async_client.sandbox.connections.accounts.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
@@ -118,7 +118,7 @@ class TestAsyncAccounts:
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         account = await async_client.sandbox.connections.accounts.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
             authentication_type="credential",
             products=["string", "string", "string"],
         )
@@ -129,7 +129,7 @@ class TestAsyncAccounts:
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
         response = await async_client.sandbox.connections.accounts.with_raw_response.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
         )
 
         assert response.is_closed is True
@@ -142,7 +142,7 @@ class TestAsyncAccounts:
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
         async with async_client.sandbox.connections.accounts.with_streaming_response.create(
             company_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            provider_id="string",
+            provider_id="provider_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
