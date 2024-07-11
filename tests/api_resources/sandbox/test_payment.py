@@ -25,7 +25,7 @@ class TestPayment:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         payment = client.sandbox.payment.create(
-            end_date="string",
+            end_date="end_date",
             pay_statements=[
                 {
                     "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
@@ -34,56 +34,56 @@ class TestPayment:
                     "total_hours": 0,
                     "gross_pay": {
                         "amount": 0,
-                        "currency": "string",
+                        "currency": "currency",
                     },
                     "net_pay": {
                         "amount": 0,
-                        "currency": "string",
+                        "currency": "currency",
                     },
                     "earnings": [
                         {
                             "type": "salary",
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "hours": 0,
                         },
                         {
                             "type": "salary",
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "hours": 0,
                         },
                         {
                             "type": "salary",
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "hours": 0,
                         },
                     ],
                     "taxes": [
                         {
                             "type": "state",
-                            "name": "string",
+                            "name": "name",
                             "employer": True,
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                         },
                         {
                             "type": "state",
-                            "name": "string",
+                            "name": "name",
                             "employer": True,
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                         },
                         {
                             "type": "state",
-                            "name": "string",
+                            "name": "name",
                             "employer": True,
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                         },
                     ],
                     "employee_deductions": [
@@ -97,27 +97,27 @@ class TestPayment:
                     ],
                     "employer_contributions": [
                         {
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "type": "401k",
                         },
                         {
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "type": "401k",
                         },
                         {
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "type": "401k",
                         },
                     ],
                 }
             ],
-            start_date="string",
+            start_date="start_date",
         )
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
 
@@ -153,7 +153,7 @@ class TestAsyncPayment:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         payment = await async_client.sandbox.payment.create(
-            end_date="string",
+            end_date="end_date",
             pay_statements=[
                 {
                     "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
@@ -162,56 +162,56 @@ class TestAsyncPayment:
                     "total_hours": 0,
                     "gross_pay": {
                         "amount": 0,
-                        "currency": "string",
+                        "currency": "currency",
                     },
                     "net_pay": {
                         "amount": 0,
-                        "currency": "string",
+                        "currency": "currency",
                     },
                     "earnings": [
                         {
                             "type": "salary",
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "hours": 0,
                         },
                         {
                             "type": "salary",
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "hours": 0,
                         },
                         {
                             "type": "salary",
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "hours": 0,
                         },
                     ],
                     "taxes": [
                         {
                             "type": "state",
-                            "name": "string",
+                            "name": "name",
                             "employer": True,
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                         },
                         {
                             "type": "state",
-                            "name": "string",
+                            "name": "name",
                             "employer": True,
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                         },
                         {
                             "type": "state",
-                            "name": "string",
+                            "name": "name",
                             "employer": True,
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                         },
                     ],
                     "employee_deductions": [
@@ -225,27 +225,27 @@ class TestAsyncPayment:
                     ],
                     "employer_contributions": [
                         {
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "type": "401k",
                         },
                         {
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "type": "401k",
                         },
                         {
-                            "name": "string",
+                            "name": "name",
                             "amount": 0,
-                            "currency": "string",
+                            "currency": "currency",
                             "type": "401k",
                         },
                     ],
                 }
             ],
-            start_date="string",
+            start_date="start_date",
         )
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
 
