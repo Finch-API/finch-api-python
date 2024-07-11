@@ -25,10 +25,7 @@ from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ....pagination import SyncSinglePage, AsyncSinglePage
 from ....types.hris import BenefitType, BenefitFrequency, benefit_create_params, benefit_update_params
-from ...._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.hris.benefit_type import BenefitType
 from ....types.hris.company_benefit import CompanyBenefit
 from ....types.hris.benefit_frequency import BenefitFrequency

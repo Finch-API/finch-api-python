@@ -16,9 +16,7 @@ from ...._utils import (
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.sandbox.connections import account_create_params, account_update_params
 from ....types.shared.connection_status_type import ConnectionStatusType
 from ....types.sandbox.connections.account_create_response import AccountCreateResponse
