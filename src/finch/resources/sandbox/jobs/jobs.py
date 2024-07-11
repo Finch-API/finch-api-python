@@ -23,9 +23,7 @@ from .configuration import (
     ConfigurationWithStreamingResponse,
     AsyncConfigurationWithStreamingResponse,
 )
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.sandbox import job_create_params
 from ....types.sandbox.job_create_response import JobCreateResponse
 
