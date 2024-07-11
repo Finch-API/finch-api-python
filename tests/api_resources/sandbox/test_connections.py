@@ -21,7 +21,7 @@ class TestConnections:
     @parametrize
     def test_method_create(self, client: Finch) -> None:
         connection = client.sandbox.connections.create(
-            provider_id="string",
+            provider_id="provider_id",
         )
         assert_matches_type(ConnectionCreateResponse, connection, path=["response"])
 
@@ -29,7 +29,7 @@ class TestConnections:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         connection = client.sandbox.connections.create(
-            provider_id="string",
+            provider_id="provider_id",
             authentication_type="credential",
             employee_size=0,
             products=["string", "string", "string"],
@@ -40,7 +40,7 @@ class TestConnections:
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.sandbox.connections.with_raw_response.create(
-            provider_id="string",
+            provider_id="provider_id",
         )
 
         assert response.is_closed is True
@@ -52,7 +52,7 @@ class TestConnections:
     @parametrize
     def test_streaming_response_create(self, client: Finch) -> None:
         with client.sandbox.connections.with_streaming_response.create(
-            provider_id="string",
+            provider_id="provider_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -70,7 +70,7 @@ class TestAsyncConnections:
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
         connection = await async_client.sandbox.connections.create(
-            provider_id="string",
+            provider_id="provider_id",
         )
         assert_matches_type(ConnectionCreateResponse, connection, path=["response"])
 
@@ -78,7 +78,7 @@ class TestAsyncConnections:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         connection = await async_client.sandbox.connections.create(
-            provider_id="string",
+            provider_id="provider_id",
             authentication_type="credential",
             employee_size=0,
             products=["string", "string", "string"],
@@ -89,7 +89,7 @@ class TestAsyncConnections:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
         response = await async_client.sandbox.connections.with_raw_response.create(
-            provider_id="string",
+            provider_id="provider_id",
         )
 
         assert response.is_closed is True
@@ -101,7 +101,7 @@ class TestAsyncConnections:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
         async with async_client.sandbox.connections.with_streaming_response.create(
-            provider_id="string",
+            provider_id="provider_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

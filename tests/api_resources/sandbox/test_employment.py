@@ -20,86 +20,86 @@ class TestEmployment:
     @parametrize
     def test_method_update(self, client: Finch) -> None:
         employment = client.sandbox.employment.update(
-            "string",
+            individual_id="individual_id",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Finch) -> None:
         employment = client.sandbox.employment.update(
-            "string",
-            class_code="string",
+            individual_id="individual_id",
+            class_code="class_code",
             custom_fields=[
                 {
-                    "name": "string",
+                    "name": "name",
                     "value": {},
                 },
                 {
-                    "name": "string",
+                    "name": "name",
                     "value": {},
                 },
                 {
-                    "name": "string",
+                    "name": "name",
                     "value": {},
                 },
             ],
-            department={"name": "string"},
+            department={"name": "name"},
             employment={
                 "type": "employee",
                 "subtype": "full_time",
             },
-            end_date="string",
-            first_name="string",
+            end_date="end_date",
+            first_name="first_name",
             income={
                 "unit": "yearly",
                 "amount": 0,
-                "currency": "string",
-                "effective_date": "string",
+                "currency": "currency",
+                "effective_date": "effective_date",
             },
             income_history=[
                 {
                     "unit": "yearly",
                     "amount": 0,
-                    "currency": "string",
-                    "effective_date": "string",
+                    "currency": "currency",
+                    "effective_date": "effective_date",
                 },
                 {
                     "unit": "yearly",
                     "amount": 0,
-                    "currency": "string",
-                    "effective_date": "string",
+                    "currency": "currency",
+                    "effective_date": "effective_date",
                 },
                 {
                     "unit": "yearly",
                     "amount": 0,
-                    "currency": "string",
-                    "effective_date": "string",
+                    "currency": "currency",
+                    "effective_date": "effective_date",
                 },
             ],
             is_active=True,
-            last_name="string",
+            last_name="last_name",
             location={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
-                "name": "string",
-                "source_id": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
+                "name": "name",
+                "source_id": "source_id",
             },
-            manager={"id": "string"},
-            middle_name="string",
-            source_id="string",
+            manager={"id": "id"},
+            middle_name="middle_name",
+            source_id="source_id",
             start_date="3/4/2020",
-            title="string",
+            title="title",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Finch) -> None:
         response = client.sandbox.employment.with_raw_response.update(
-            "string",
+            individual_id="individual_id",
         )
 
         assert response.is_closed is True
@@ -110,7 +110,7 @@ class TestEmployment:
     @parametrize
     def test_streaming_response_update(self, client: Finch) -> None:
         with client.sandbox.employment.with_streaming_response.update(
-            "string",
+            individual_id="individual_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,7 +124,7 @@ class TestEmployment:
     def test_path_params_update(self, client: Finch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `individual_id` but received ''"):
             client.sandbox.employment.with_raw_response.update(
-                "",
+                individual_id="",
             )
 
 
@@ -134,86 +134,86 @@ class TestAsyncEmployment:
     @parametrize
     async def test_method_update(self, async_client: AsyncFinch) -> None:
         employment = await async_client.sandbox.employment.update(
-            "string",
+            individual_id="individual_id",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
         employment = await async_client.sandbox.employment.update(
-            "string",
-            class_code="string",
+            individual_id="individual_id",
+            class_code="class_code",
             custom_fields=[
                 {
-                    "name": "string",
+                    "name": "name",
                     "value": {},
                 },
                 {
-                    "name": "string",
+                    "name": "name",
                     "value": {},
                 },
                 {
-                    "name": "string",
+                    "name": "name",
                     "value": {},
                 },
             ],
-            department={"name": "string"},
+            department={"name": "name"},
             employment={
                 "type": "employee",
                 "subtype": "full_time",
             },
-            end_date="string",
-            first_name="string",
+            end_date="end_date",
+            first_name="first_name",
             income={
                 "unit": "yearly",
                 "amount": 0,
-                "currency": "string",
-                "effective_date": "string",
+                "currency": "currency",
+                "effective_date": "effective_date",
             },
             income_history=[
                 {
                     "unit": "yearly",
                     "amount": 0,
-                    "currency": "string",
-                    "effective_date": "string",
+                    "currency": "currency",
+                    "effective_date": "effective_date",
                 },
                 {
                     "unit": "yearly",
                     "amount": 0,
-                    "currency": "string",
-                    "effective_date": "string",
+                    "currency": "currency",
+                    "effective_date": "effective_date",
                 },
                 {
                     "unit": "yearly",
                     "amount": 0,
-                    "currency": "string",
-                    "effective_date": "string",
+                    "currency": "currency",
+                    "effective_date": "effective_date",
                 },
             ],
             is_active=True,
-            last_name="string",
+            last_name="last_name",
             location={
-                "line1": "string",
-                "line2": "string",
-                "city": "string",
-                "state": "string",
-                "postal_code": "string",
-                "country": "string",
-                "name": "string",
-                "source_id": "string",
+                "line1": "line1",
+                "line2": "line2",
+                "city": "city",
+                "state": "state",
+                "postal_code": "postal_code",
+                "country": "country",
+                "name": "name",
+                "source_id": "source_id",
             },
-            manager={"id": "string"},
-            middle_name="string",
-            source_id="string",
+            manager={"id": "id"},
+            middle_name="middle_name",
+            source_id="source_id",
             start_date="3/4/2020",
-            title="string",
+            title="title",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncFinch) -> None:
         response = await async_client.sandbox.employment.with_raw_response.update(
-            "string",
+            individual_id="individual_id",
         )
 
         assert response.is_closed is True
@@ -224,7 +224,7 @@ class TestAsyncEmployment:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncFinch) -> None:
         async with async_client.sandbox.employment.with_streaming_response.update(
-            "string",
+            individual_id="individual_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -238,5 +238,5 @@ class TestAsyncEmployment:
     async def test_path_params_update(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `individual_id` but received ''"):
             await async_client.sandbox.employment.with_raw_response.update(
-                "",
+                individual_id="",
             )

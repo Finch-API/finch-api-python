@@ -20,14 +20,14 @@ class TestManual:
     @parametrize
     def test_method_retrieve(self, client: Finch) -> None:
         manual = client.jobs.manual.retrieve(
-            "string",
+            "job_id",
         )
         assert_matches_type(ManualAsyncJob, manual, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.jobs.manual.with_raw_response.retrieve(
-            "string",
+            "job_id",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestManual:
     @parametrize
     def test_streaming_response_retrieve(self, client: Finch) -> None:
         with client.jobs.manual.with_streaming_response.retrieve(
-            "string",
+            "job_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncManual:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
         manual = await async_client.jobs.manual.retrieve(
-            "string",
+            "job_id",
         )
         assert_matches_type(ManualAsyncJob, manual, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
         response = await async_client.jobs.manual.with_raw_response.retrieve(
-            "string",
+            "job_id",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncManual:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
         async with async_client.jobs.manual.with_streaming_response.retrieve(
-            "string",
+            "job_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
