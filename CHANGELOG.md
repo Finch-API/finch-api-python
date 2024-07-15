@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.21.11 (2024-07-15)
+
+Full Changelog: [v0.21.10...v0.21.11](https://github.com/Finch-API/finch-api-python/compare/v0.21.10...v0.21.11)
+
+### Chores
+
+* **ci:** also run workflows for PRs targeting `next` ([#427](https://github.com/Finch-API/finch-api-python/issues/427)) ([641b850](https://github.com/Finch-API/finch-api-python/commit/641b850a385c8e2ab0c7338b7f8d3f613fda6982))
+* **internal:** minor import restructuring ([#429](https://github.com/Finch-API/finch-api-python/issues/429)) ([fa85f33](https://github.com/Finch-API/finch-api-python/commit/fa85f33344ba1a67ec7a3f99e3c93bd7e1db8824))
+* **internal:** minor options / compat functions updates ([#431](https://github.com/Finch-API/finch-api-python/issues/431)) ([b74c798](https://github.com/Finch-API/finch-api-python/commit/b74c798cdefef33288ef19bc19d53f2109f372ab))
+
+
+### Documentation
+
+* **examples:** use named params more ([#430](https://github.com/Finch-API/finch-api-python/issues/430)) ([9186c5f](https://github.com/Finch-API/finch-api-python/commit/9186c5faa7cfe3809cb83a1aa51cd02a43205c95))
+
 ## 0.21.10 (2024-07-10)
 
 Full Changelog: [v0.21.9...v0.21.10](https://github.com/Finch-API/finch-api-python/compare/v0.21.9...v0.21.10)
