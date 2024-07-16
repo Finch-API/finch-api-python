@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.21.12 (2024-07-16)
+
+Full Changelog: [v0.21.11...v0.21.12](https://github.com/Finch-API/finch-api-python/compare/v0.21.11...v0.21.12)
+
+### Bug Fixes
+
+* **api:** remove unused fields ([#432](https://github.com/Finch-API/finch-api-python/issues/432)) ([1d00a32](https://github.com/Finch-API/finch-api-python/commit/1d00a3210dee1aaf3c88334c0acbccbd78b1c48f))
+
+
+### Chores
+
+* **docs:** minor update to formatting of API link in README ([#434](https://github.com/Finch-API/finch-api-python/issues/434)) ([178f659](https://github.com/Finch-API/finch-api-python/commit/178f659bcd0005c433548fcbc0611c5be5fac464))
+* **internal:** update formatting ([#435](https://github.com/Finch-API/finch-api-python/issues/435)) ([ae16b3a](https://github.com/Finch-API/finch-api-python/commit/ae16b3ae58e2fb9c987b553b27214ef64c66706e))
+* **internal:** update formatting ([#436](https://github.com/Finch-API/finch-api-python/issues/436)) ([67630b3](https://github.com/Finch-API/finch-api-python/commit/67630b392348670c88b3effdd62b8ad132de8b04))
+
 ## 0.21.11 (2024-07-15)
 
 Full Changelog: [v0.21.10...v0.21.11](https://github.com/Finch-API/finch-api-python/compare/v0.21.10...v0.21.11)
