@@ -18,7 +18,8 @@ class AuthenticationMethodConnectionStatus(BaseModel):
 class AuthenticationMethod(BaseModel):
     connection_status: Optional[AuthenticationMethodConnectionStatus] = None
 
-    type: Optional[str] = None
+    type: Optional[Literal["assisted", "credential", "api_token", "api_credential", "oauth"]] = None
+    """The type of authentication method."""
 
 
 class Introspection(BaseModel):
