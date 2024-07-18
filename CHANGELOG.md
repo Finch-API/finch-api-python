@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.14 (2024-07-18)
+
+Full Changelog: [v0.21.13...v0.21.14](https://github.com/Finch-API/finch-api-python/compare/v0.21.13...v0.21.14)
+
+### Chores
+
+* **docs:** document how to do per-request http client customization ([#440](https://github.com/Finch-API/finch-api-python/issues/440)) ([10b741f](https://github.com/Finch-API/finch-api-python/commit/10b741f8c047da09175cd32d712fd9eb7beb5500))
+
 ## 0.21.13 (2024-07-17)
 
 Full Changelog: [v0.21.12...v0.21.13](https://github.com/Finch-API/finch-api-python/compare/v0.21.12...v0.21.13)
