@@ -74,4 +74,5 @@ class IndividualUpdateResponse(BaseModel):
 
     This field is only available with the `ssn` scope enabled and the
     `options: { include: ['ssn'] }` param set in the body.
+    [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
     """

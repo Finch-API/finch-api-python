@@ -93,6 +93,7 @@ class Individual(SyncAPIResource):
           ssn: Social Security Number of the individual. This field is only available with the
               `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
               body.
+              [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
 
           extra_headers: Send extra headers
 
@@ -199,6 +200,7 @@ class AsyncIndividual(AsyncAPIResource):
           ssn: Social Security Number of the individual. This field is only available with the
               `ssn` scope enabled and the `options: { include: ['ssn'] }` param set in the
               body.
+              [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
 
           extra_headers: Send extra headers
 
