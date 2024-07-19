@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.22.0 (2024-07-19)
+
+Full Changelog: [v0.21.14...v0.22.0](https://github.com/Finch-API/finch-api-python/compare/v0.21.14...v0.22.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** authentication method type is an enum, not a plain string ([#442](https://github.com/Finch-API/finch-api-python/issues/442))
+
+### Bug Fixes
+
+* **api:** authentication method type is an enum, not a plain string ([#442](https://github.com/Finch-API/finch-api-python/issues/442)) ([697c5ad](https://github.com/Finch-API/finch-api-python/commit/697c5ad3225d900be6e158bde42cee65f8f498b4))
+
+
+### Chores
+
+* **ci:** limit release doctor target branches ([#444](https://github.com/Finch-API/finch-api-python/issues/444)) ([b49b944](https://github.com/Finch-API/finch-api-python/commit/b49b9446d1cf1347ff10130bf492798da3999046))
+* **docs:** improve docstrings ([#445](https://github.com/Finch-API/finch-api-python/issues/445)) ([0b40655](https://github.com/Finch-API/finch-api-python/commit/0b40655b37f63125a963de3d080326535ae4aba8))
+
 ## 0.21.14 (2024-07-18)
 
 Full Changelog: [v0.21.13...v0.21.14](https://github.com/Finch-API/finch-api-python/compare/v0.21.13...v0.21.14)
