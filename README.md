@@ -71,7 +71,7 @@ List methods in the Finch API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-import finch
+from finch import Finch
 
 client = Finch()
 
@@ -87,7 +87,7 @@ Or, asynchronously:
 
 ```python
 import asyncio
-import finch
+from finch import AsyncFinch
 
 client = AsyncFinch()
 
