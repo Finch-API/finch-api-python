@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.1 (2024-07-22)
+
+Full Changelog: [v0.22.0...v0.22.1](https://github.com/Finch-API/finch-api-python/compare/v0.22.0...v0.22.1)
+
+### Documentation
+
+* **readme:** fix example snippet imports ([#446](https://github.com/Finch-API/finch-api-python/issues/446)) ([32d3ebe](https://github.com/Finch-API/finch-api-python/commit/32d3ebecf5aed8168534f11dfdd60c44ad8216b1))
+
 ## 0.22.0 (2024-07-19)
 
 Full Changelog: [v0.21.14...v0.22.0](https://github.com/Finch-API/finch-api-python/compare/v0.21.14...v0.22.0)
