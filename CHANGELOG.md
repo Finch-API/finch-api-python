@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.2 (2024-07-23)
+
+Full Changelog: [v0.22.1...v0.22.2](https://github.com/Finch-API/finch-api-python/compare/v0.22.1...v0.22.2)
+
+### Chores
+
+* **tests:** update prism version ([#448](https://github.com/Finch-API/finch-api-python/issues/448)) ([0b47703](https://github.com/Finch-API/finch-api-python/commit/0b4770381cb78b3f432b356f95e454d490818de5))
+
 ## 0.22.1 (2024-07-22)
 
 Full Changelog: [v0.22.0...v0.22.1](https://github.com/Finch-API/finch-api-python/compare/v0.22.0...v0.22.1)
