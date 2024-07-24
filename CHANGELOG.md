@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.3 (2024-07-24)
+
+Full Changelog: [v0.22.2...v0.22.3](https://github.com/Finch-API/finch-api-python/compare/v0.22.2...v0.22.3)
+
+### Chores
+
+* fix error message import example ([#450](https://github.com/Finch-API/finch-api-python/issues/450)) ([776dba7](https://github.com/Finch-API/finch-api-python/commit/776dba76aec42879f05f1e7e335ecd59a4648a2d))
+
 ## 0.22.2 (2024-07-23)
 
 Full Changelog: [v0.22.1...v0.22.2](https://github.com/Finch-API/finch-api-python/compare/v0.22.1...v0.22.2)
