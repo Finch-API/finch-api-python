@@ -386,6 +386,10 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayment(BaseModel
 
     pay_date: Optional[bool] = None
 
+    pay_frequencies: Optional[bool] = None
+
+    pay_group_ids: Optional[bool] = None
+
     pay_period: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPaymentPayPeriod] = None
 
 
