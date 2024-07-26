@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.23.0 (2024-07-26)
+
+Full Changelog: [v0.22.3...v0.23.0](https://github.com/Finch-API/finch-api-python/compare/v0.22.3...v0.23.0)
+
+### Features
+
+* **api:** add 'payment frequencies' and 'pay group ids' to payment model ([#452](https://github.com/Finch-API/finch-api-python/issues/452)) ([8138a65](https://github.com/Finch-API/finch-api-python/commit/8138a657c14025c9df205377699af719118d01f3))
+
 ## 0.22.3 (2024-07-24)
 
 Full Changelog: [v0.22.2...v0.22.3](https://github.com/Finch-API/finch-api-python/compare/v0.22.2...v0.22.3)
