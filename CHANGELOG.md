@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.23.1 (2024-07-29)
+
+Full Changelog: [v0.23.0...v0.23.1](https://github.com/Finch-API/finch-api-python/compare/v0.23.0...v0.23.1)
+
+### Chores
+
+* **internal:** add type construction helper ([#454](https://github.com/Finch-API/finch-api-python/issues/454)) ([c059838](https://github.com/Finch-API/finch-api-python/commit/c059838b36925567cea13220c84c59c2d399513d))
+
 ## 0.23.0 (2024-07-26)
 
 Full Changelog: [v0.22.3...v0.23.0](https://github.com/Finch-API/finch-api-python/compare/v0.22.3...v0.23.0)
