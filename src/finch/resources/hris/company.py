@@ -34,7 +34,7 @@ class CompanyResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Company:
-        """Read basic company data."""
+        """Read basic company data"""
         return self._get(
             "/employer/company",
             options=make_request_options(
@@ -63,7 +63,7 @@ class AsyncCompanyResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> Company:
-        """Read basic company data."""
+        """Read basic company data"""
         return await self._get(
             "/employer/company",
             options=make_request_options(
