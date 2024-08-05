@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union
+from typing_extensions import TypeAlias
 
 from .company_event import CompanyEvent
 from .payment_event import PaymentEvent
@@ -13,7 +14,7 @@ from .job_completion_event import JobCompletionEvent
 
 __all__ = ["WebhookEvent"]
 
-WebhookEvent = Union[
+WebhookEvent: TypeAlias = Union[
     AccountUpdateEvent,
     JobCompletionEvent,
     CompanyEvent,

@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
+from typing_extensions import Literal, TypeAlias
 
 __all__ = ["ConnectionStatusType"]
 
-ConnectionStatusType = Literal[
+ConnectionStatusType: TypeAlias = Literal[
     "pending", "processing", "connected", "error_no_account_setup", "error_permissions", "reauth"
 ]
