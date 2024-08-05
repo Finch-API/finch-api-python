@@ -1,11 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from typing_extensions import Literal
+from typing_extensions import Literal, TypeAlias
 
 __all__ = ["BenefitType"]
 
-BenefitType = Optional[
+BenefitType: TypeAlias = Optional[
     Literal[
         "401k",
         "401k_roth",
