@@ -323,9 +323,9 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPaySt
 
 
 class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPayStatements(BaseModel):
-    earnings: Optional[
-        AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPayStatementsEarnings
-    ] = None
+    earnings: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPayStatementsEarnings] = (
+        None
+    )
 
     employee_deductions: Optional[
         AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployeeDeductions
