@@ -71,7 +71,7 @@ class Individuals(SyncAPIResource):
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=SyncSinglePage[EnrolledIndividual],
-            body=maybe_transform(individuals, individual_enroll_many_params.IndividualEnrollManyParams),
+            body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -243,7 +243,7 @@ class AsyncIndividuals(AsyncAPIResource):
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=AsyncSinglePage[EnrolledIndividual],
-            body=maybe_transform(individuals, individual_enroll_many_params.IndividualEnrollManyParams),
+            body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
