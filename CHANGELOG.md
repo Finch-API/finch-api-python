@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.1.0 (2024-08-07)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/Finch-API/finch-api-python/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **client:** add `retries_taken` to raw response class ([#462](https://github.com/Finch-API/finch-api-python/issues/462)) ([b62b180](https://github.com/Finch-API/finch-api-python/commit/b62b1809ac2c111db20af9b117409a2b4473997e))
+
+
+### Bug Fixes
+
+* **client:** correctly serialise array body params ([#466](https://github.com/Finch-API/finch-api-python/issues/466)) ([f94c81e](https://github.com/Finch-API/finch-api-python/commit/f94c81e1ffb396afdfbd7635b348adfd586cc038))
+
+
+### Chores
+
+* **internal:** bump pyright ([#461](https://github.com/Finch-API/finch-api-python/issues/461)) ([113a133](https://github.com/Finch-API/finch-api-python/commit/113a133eedd14d1bd579b710d41a7ea51a75f603))
+* **internal:** bump ruff version ([#464](https://github.com/Finch-API/finch-api-python/issues/464)) ([c440bcd](https://github.com/Finch-API/finch-api-python/commit/c440bcde1c636136baa2554b3e8ded69f604afdb))
+* **internal:** test updates ([#463](https://github.com/Finch-API/finch-api-python/issues/463)) ([19c58e6](https://github.com/Finch-API/finch-api-python/commit/19c58e6a2b1ec2a4cc3c103e911236a4f10af687))
+* **internal:** update pydantic compat helper function ([#465](https://github.com/Finch-API/finch-api-python/issues/465)) ([8656afe](https://github.com/Finch-API/finch-api-python/commit/8656afe878f85412712d85d52aa58068321ff792))
+* **internal:** use `TypeAlias` marker for type assignments ([#459](https://github.com/Finch-API/finch-api-python/issues/459)) ([3c0445a](https://github.com/Finch-API/finch-api-python/commit/3c0445a107202b107fec3ee73226f576824d8b40))
+
 ## 1.0.0 (2024-08-01)
 
 Full Changelog: [v0.23.1...v1.0.0](https://github.com/Finch-API/finch-api-python/compare/v0.23.1...v1.0.0)
