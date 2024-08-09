@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.2 (2024-08-09)
+
+Full Changelog: [v1.1.1...v1.1.2](https://github.com/Finch-API/finch-api-python/compare/v1.1.1...v1.1.2)
+
+### Chores
+
+* **ci:** bump prism mock server version ([#469](https://github.com/Finch-API/finch-api-python/issues/469)) ([70acca0](https://github.com/Finch-API/finch-api-python/commit/70acca07ca015392a2dfd5c4edca59abdadf9eb7))
+* **internal:** ensure package is importable in lint cmd ([#471](https://github.com/Finch-API/finch-api-python/issues/471)) ([0a64b8c](https://github.com/Finch-API/finch-api-python/commit/0a64b8c354224c82a92ed75ff98ffe72d9ea7556))
+
 ## 1.1.1 (2024-08-08)
 
 Full Changelog: [v1.1.0...v1.1.1](https://github.com/Finch-API/finch-api-python/compare/v1.1.0...v1.1.1)
