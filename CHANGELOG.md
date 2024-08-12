@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.3 (2024-08-12)
+
+Full Changelog: [v1.1.2...v1.1.3](https://github.com/Finch-API/finch-api-python/compare/v1.1.2...v1.1.3)
+
+### Chores
+
+* **examples:** minor formatting changes ([#472](https://github.com/Finch-API/finch-api-python/issues/472)) ([8a3230e](https://github.com/Finch-API/finch-api-python/commit/8a3230eaa8bf499f3dacd4ad6241d368a1cf81a4))
+
 ## 1.1.2 (2024-08-09)
 
 Full Changelog: [v1.1.1...v1.1.2](https://github.com/Finch-API/finch-api-python/compare/v1.1.1...v1.1.2)
