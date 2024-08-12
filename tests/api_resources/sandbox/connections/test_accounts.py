@@ -76,7 +76,7 @@ class TestAccounts:
     @parametrize
     def test_method_update_with_all_params(self, client: Finch) -> None:
         account = client.sandbox.connections.accounts.update(
-            connection_status="reauth",
+            connection_status="pending",
         )
         assert_matches_type(AccountUpdateResponse, account, path=["response"])
 
@@ -160,7 +160,7 @@ class TestAsyncAccounts:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
         account = await async_client.sandbox.connections.accounts.update(
-            connection_status="reauth",
+            connection_status="pending",
         )
         assert_matches_type(AccountUpdateResponse, account, path=["response"])
 
