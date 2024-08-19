@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1 (2024-08-19)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/Finch-API/finch-api-python/compare/v1.2.0...v1.2.1)
+
+### Chores
+
+* **internal:** use different 32bit detection method ([#477](https://github.com/Finch-API/finch-api-python/issues/477)) ([a0a62f8](https://github.com/Finch-API/finch-api-python/commit/a0a62f8a825a058aef0e22502b83f148415bbcae))
+
 ## 1.2.0 (2024-08-13)
 
 Full Changelog: [v1.1.3...v1.2.0](https://github.com/Finch-API/finch-api-python/compare/v1.1.3...v1.2.0)
