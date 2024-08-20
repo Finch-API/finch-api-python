@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.2 (2024-08-20)
+
+Full Changelog: [v1.2.1...v1.2.2](https://github.com/Finch-API/finch-api-python/compare/v1.2.1...v1.2.2)
+
+### Chores
+
+* **ci:** also run pydantic v1 tests ([#482](https://github.com/Finch-API/finch-api-python/issues/482)) ([c5e6131](https://github.com/Finch-API/finch-api-python/commit/c5e6131b3bc85894033bffc2f327bcc114d1b229))
+* **client:** fix parsing union responses when non-json is returned ([#480](https://github.com/Finch-API/finch-api-python/issues/480)) ([2665eea](https://github.com/Finch-API/finch-api-python/commit/2665eea2d8d3ae0a795f96e6f36fe1f109bf8f79))
+
 ## 1.2.1 (2024-08-19)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/Finch-API/finch-api-python/compare/v1.2.0...v1.2.1)
