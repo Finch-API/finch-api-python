@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (2024-08-28)
+
+Full Changelog: [v1.2.2...v1.3.0](https://github.com/Finch-API/finch-api-python/compare/v1.2.2...v1.3.0)
+
+### Features
+
+* chore: update reviewers for new teams ([#484](https://github.com/Finch-API/finch-api-python/issues/484)) ([b0d78df](https://github.com/Finch-API/finch-api-python/commit/b0d78df47b3b5455ee7e4f84616dde2f13414167))
+
 ## 1.2.2 (2024-08-20)
 
 Full Changelog: [v1.2.1...v1.2.2](https://github.com/Finch-API/finch-api-python/compare/v1.2.1...v1.2.2)
