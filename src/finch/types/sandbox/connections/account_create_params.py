@@ -12,6 +12,7 @@ class AccountCreateParams(TypedDict, total=False):
     company_id: Required[str]
 
     provider_id: Required[str]
+    """The provider associated with the `access_token`"""
 
     authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 

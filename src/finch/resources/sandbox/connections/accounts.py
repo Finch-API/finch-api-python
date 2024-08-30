@@ -52,6 +52,8 @@ class Accounts(SyncAPIResource):
         Create a new account for an existing connection (company/provider pair)
 
         Args:
+          provider_id: The provider associated with the `access_token`
+
           products: Optional, defaults to Organization products (`company`, `directory`,
               `employment`, `individual`)
 
@@ -142,6 +144,8 @@ class AsyncAccounts(AsyncAPIResource):
         Create a new account for an existing connection (company/provider pair)
 
         Args:
+          provider_id: The provider associated with the `access_token`
+
           products: Optional, defaults to Organization products (`company`, `directory`,
               `employment`, `individual`)
 
