@@ -10,6 +10,7 @@ __all__ = ["ConnectionCreateParams"]
 
 class ConnectionCreateParams(TypedDict, total=False):
     provider_id: Required[str]
+    """The provider associated with the connection"""
 
     authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 

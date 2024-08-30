@@ -10,15 +10,25 @@ __all__ = ["CreateAccessTokenResponse"]
 
 class CreateAccessTokenResponse(BaseModel):
     access_token: str
+    """The access token for the connection."""
 
     account_id: str
-    """The Finch uuid of the account used to connect this company."""
+    """
+    [DEPRECATED] Use `connection_id` to identify the connection instead of this
+    account ID.
+    """
 
     client_type: Literal["production", "development", "sandbox"]
     """The type of application associated with a token."""
 
     company_id: str
-    """The Finch uuid of the company associated with the `access_token`."""
+    """
+    [DEPRECATED] Use `connection_id` to identify the connection instead of this
+    company ID.
+    """
+
+    connection_id: str
+    """The Finch UUID of the connection associated with the `access_token`."""
 
     connection_type: Literal["provider", "finch"]
     """The type of the connection associated with the token.
@@ -31,4 +41,4 @@ class CreateAccessTokenResponse(BaseModel):
     """An array of the authorized products associated with the `access_token`."""
 
     provider_id: str
-    """The payroll provider associated with the `access_token`."""
+    """The ID of the provider associated with the `access_token`."""

@@ -62,6 +62,8 @@ class Connections(SyncAPIResource):
         Create a new connection (new company/provider pair) with a new account
 
         Args:
+          provider_id: The provider associated with the connection
+
           employee_size: Optional: the size of the employer to be created with this connection. Defaults
               to 20. Note that if this is higher than 100, historical payroll data will not be
               generated, and instead only one pay period will be created.
@@ -123,6 +125,8 @@ class AsyncConnections(AsyncAPIResource):
         Create a new connection (new company/provider pair) with a new account
 
         Args:
+          provider_id: The provider associated with the connection
+
           employee_size: Optional: the size of the employer to be created with this connection. Defaults
               to 20. Note that if this is higher than 100, historical payroll data will not be
               generated, and instead only one pay period will be created.
