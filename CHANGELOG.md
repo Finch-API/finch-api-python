@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0 (2024-09-03)
+
+Full Changelog: [v1.4.0...v1.5.0](https://github.com/Finch-API/finch-api-python/compare/v1.4.0...v1.5.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#490](https://github.com/Finch-API/finch-api-python/issues/490)) ([e064d98](https://github.com/Finch-API/finch-api-python/commit/e064d98c7aa6c6d9fba1b977d5c97e25df7385d8))
+
 ## 1.4.0 (2024-08-30)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/Finch-API/finch-api-python/compare/v1.3.0...v1.4.0)
