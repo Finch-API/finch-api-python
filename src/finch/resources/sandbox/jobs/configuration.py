@@ -26,10 +26,21 @@ __all__ = ["Configuration", "AsyncConfiguration"]
 class Configuration(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ConfigurationWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return ConfigurationWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ConfigurationWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return ConfigurationWithStreamingResponse(self)
 
     def retrieve(
@@ -94,10 +105,21 @@ class Configuration(SyncAPIResource):
 class AsyncConfiguration(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncConfigurationWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncConfigurationWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncConfigurationWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncConfigurationWithStreamingResponse(self)
 
     async def retrieve(
