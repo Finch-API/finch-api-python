@@ -96,10 +96,21 @@ class HRIS(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> HRISWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return HRISWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> HRISWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return HRISWithStreamingResponse(self)
 
 
@@ -134,10 +145,21 @@ class AsyncHRIS(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncHRISWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncHRISWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncHRISWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncHRISWithStreamingResponse(self)
 
 

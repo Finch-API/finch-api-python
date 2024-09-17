@@ -24,10 +24,21 @@ __all__ = ["Payments", "AsyncPayments"]
 class Payments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PaymentsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return PaymentsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PaymentsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return PaymentsWithStreamingResponse(self)
 
     def list(
@@ -83,10 +94,21 @@ class Payments(SyncAPIResource):
 class AsyncPayments(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPaymentsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncPaymentsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPaymentsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncPaymentsWithStreamingResponse(self)
 
     def list(
