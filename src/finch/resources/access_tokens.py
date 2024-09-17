@@ -23,10 +23,21 @@ __all__ = ["AccessTokens", "AsyncAccessTokens"]
 class AccessTokens(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccessTokensWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AccessTokensWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AccessTokensWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AccessTokensWithStreamingResponse(self)
 
     def create(
@@ -76,10 +87,21 @@ class AccessTokens(SyncAPIResource):
 class AsyncAccessTokens(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAccessTokensWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAccessTokensWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAccessTokensWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncAccessTokensWithStreamingResponse(self)
 
     async def create(

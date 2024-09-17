@@ -19,10 +19,21 @@ __all__ = ["Providers", "AsyncProviders"]
 class Providers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ProvidersWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return ProvidersWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ProvidersWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return ProvidersWithStreamingResponse(self)
 
     def list(
@@ -49,10 +60,21 @@ class Providers(SyncAPIResource):
 class AsyncProviders(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncProvidersWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncProvidersWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncProvidersWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncProvidersWithStreamingResponse(self)
 
     def list(
