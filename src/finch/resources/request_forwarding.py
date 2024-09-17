@@ -25,10 +25,21 @@ __all__ = ["RequestForwarding", "AsyncRequestForwarding"]
 class RequestForwarding(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RequestForwardingWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return RequestForwardingWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> RequestForwardingWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return RequestForwardingWithStreamingResponse(self)
 
     def forward(
@@ -101,10 +112,21 @@ class RequestForwarding(SyncAPIResource):
 class AsyncRequestForwarding(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncRequestForwardingWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncRequestForwardingWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncRequestForwardingWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncRequestForwardingWithStreamingResponse(self)
 
     async def forward(

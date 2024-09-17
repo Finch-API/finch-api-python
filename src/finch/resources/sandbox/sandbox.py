@@ -97,10 +97,21 @@ class Sandbox(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> SandboxWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return SandboxWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SandboxWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return SandboxWithStreamingResponse(self)
 
 
@@ -135,10 +146,21 @@ class AsyncSandbox(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncSandboxWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSandboxWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSandboxWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncSandboxWithStreamingResponse(self)
 
 

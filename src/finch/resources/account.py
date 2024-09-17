@@ -19,10 +19,21 @@ __all__ = ["Account", "AsyncAccount"]
 class Account(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AccountWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AccountWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AccountWithStreamingResponse(self)
 
     def disconnect(
@@ -67,10 +78,21 @@ class Account(SyncAPIResource):
 class AsyncAccount(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAccountWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAccountWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAccountWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncAccountWithStreamingResponse(self)
 
     async def disconnect(

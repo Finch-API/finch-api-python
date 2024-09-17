@@ -23,10 +23,21 @@ __all__ = ["Employments", "AsyncEmployments"]
 class Employments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EmploymentsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return EmploymentsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> EmploymentsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return EmploymentsWithStreamingResponse(self)
 
     def retrieve_many(
@@ -69,10 +80,21 @@ class Employments(SyncAPIResource):
 class AsyncEmployments(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncEmploymentsWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncEmploymentsWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncEmploymentsWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Finch-API/finch-api-python#with_streaming_response
+        """
         return AsyncEmploymentsWithStreamingResponse(self)
 
     def retrieve_many(
