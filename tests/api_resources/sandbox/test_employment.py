@@ -78,6 +78,7 @@ class TestEmployment:
             ],
             is_active=True,
             last_name="last_name",
+            latest_rehire_date="latest_rehire_date",
             location={
                 "city": "city",
                 "country": "country",
@@ -192,6 +193,7 @@ class TestAsyncEmployment:
             ],
             is_active=True,
             last_name="last_name",
+            latest_rehire_date="latest_rehire_date",
             location={
                 "city": "city",
                 "country": "country",
