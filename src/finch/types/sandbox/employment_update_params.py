@@ -49,6 +49,8 @@ class EmploymentUpdateParams(TypedDict, total=False):
     last_name: Optional[str]
     """The legal last name of the individual."""
 
+    latest_rehire_date: Optional[str]
+
     location: Optional[LocationParam]
 
     manager: Optional[Manager]
