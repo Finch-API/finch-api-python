@@ -974,6 +974,7 @@ class TestFinch:
         response = client.hris.directory.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("finch._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
@@ -996,6 +997,7 @@ class TestFinch:
 
         with client.hris.directory.with_streaming_response.list() as response:
             assert response.retries_taken == failures_before_success
+            assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
 
 class TestAsyncFinch:
@@ -1941,6 +1943,7 @@ class TestAsyncFinch:
         response = await client.hris.directory.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
     @mock.patch("finch._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
@@ -1964,3 +1967,4 @@ class TestAsyncFinch:
 
         async with client.hris.directory.with_streaming_response.list() as response:
             assert response.retries_taken == failures_before_success
+            assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
