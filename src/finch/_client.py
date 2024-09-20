@@ -61,6 +61,7 @@ class Finch(SyncAPIClient):
     jobs: resources.Jobs
     sandbox: resources.Sandbox
     payroll: resources.Payroll
+    connect: resources.Connect
     with_raw_response: FinchWithRawResponse
     with_streaming_response: FinchWithStreamedResponse
 
@@ -165,6 +166,7 @@ class Finch(SyncAPIClient):
         self.jobs = resources.Jobs(self)
         self.sandbox = resources.Sandbox(self)
         self.payroll = resources.Payroll(self)
+        self.connect = resources.Connect(self)
         self.with_raw_response = FinchWithRawResponse(self)
         self.with_streaming_response = FinchWithStreamedResponse(self)
 
@@ -413,6 +415,7 @@ class AsyncFinch(AsyncAPIClient):
     jobs: resources.AsyncJobs
     sandbox: resources.AsyncSandbox
     payroll: resources.AsyncPayroll
+    connect: resources.AsyncConnect
     with_raw_response: AsyncFinchWithRawResponse
     with_streaming_response: AsyncFinchWithStreamedResponse
 
@@ -517,6 +520,7 @@ class AsyncFinch(AsyncAPIClient):
         self.jobs = resources.AsyncJobs(self)
         self.sandbox = resources.AsyncSandbox(self)
         self.payroll = resources.AsyncPayroll(self)
+        self.connect = resources.AsyncConnect(self)
         self.with_raw_response = AsyncFinchWithRawResponse(self)
         self.with_streaming_response = AsyncFinchWithStreamedResponse(self)
 
@@ -765,6 +769,7 @@ class FinchWithRawResponse:
         self.jobs = resources.JobsWithRawResponse(client.jobs)
         self.sandbox = resources.SandboxWithRawResponse(client.sandbox)
         self.payroll = resources.PayrollWithRawResponse(client.payroll)
+        self.connect = resources.ConnectWithRawResponse(client.connect)
 
 
 class AsyncFinchWithRawResponse:
@@ -777,6 +782,7 @@ class AsyncFinchWithRawResponse:
         self.jobs = resources.AsyncJobsWithRawResponse(client.jobs)
         self.sandbox = resources.AsyncSandboxWithRawResponse(client.sandbox)
         self.payroll = resources.AsyncPayrollWithRawResponse(client.payroll)
+        self.connect = resources.AsyncConnectWithRawResponse(client.connect)
 
 
 class FinchWithStreamedResponse:
@@ -789,6 +795,7 @@ class FinchWithStreamedResponse:
         self.jobs = resources.JobsWithStreamingResponse(client.jobs)
         self.sandbox = resources.SandboxWithStreamingResponse(client.sandbox)
         self.payroll = resources.PayrollWithStreamingResponse(client.payroll)
+        self.connect = resources.ConnectWithStreamingResponse(client.connect)
 
 
 class AsyncFinchWithStreamedResponse:
@@ -801,6 +808,7 @@ class AsyncFinchWithStreamedResponse:
         self.jobs = resources.AsyncJobsWithStreamingResponse(client.jobs)
         self.sandbox = resources.AsyncSandboxWithStreamingResponse(client.sandbox)
         self.payroll = resources.AsyncPayrollWithStreamingResponse(client.payroll)
+        self.connect = resources.AsyncConnectWithStreamingResponse(client.connect)
 
 
 Client = Finch

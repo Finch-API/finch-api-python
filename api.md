@@ -366,3 +366,18 @@ Methods:
 
 - <code title="get /employer/pay-groups/{pay_group_id}">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">retrieve</a>(pay_group_id) -> <a href="./src/finch/types/payroll/pay_group_retrieve_response.py">PayGroupRetrieveResponse</a></code>
 - <code title="get /employer/pay-groups">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">list</a>(\*\*<a href="src/finch/types/payroll/pay_group_list_params.py">params</a>) -> <a href="./src/finch/types/payroll/pay_group_list_response.py">SyncSinglePage[PayGroupListResponse]</a></code>
+
+# Connect
+
+## Sessions
+
+Types:
+
+```python
+from finch.types.connect import SessionNewResponse, SessionReauthenticateResponse
+```
+
+Methods:
+
+- <code title="post /connect/sessions">client.connect.sessions.<a href="./src/finch/resources/connect/sessions.py">new</a>(\*\*<a href="src/finch/types/connect/session_new_params.py">params</a>) -> <a href="./src/finch/types/connect/session_new_response.py">SessionNewResponse</a></code>
+- <code title="post /connect/sessions/reauthenticate">client.connect.sessions.<a href="./src/finch/resources/connect/sessions.py">reauthenticate</a>(\*\*<a href="src/finch/types/connect/session_reauthenticate_params.py">params</a>) -> <a href="./src/finch/types/connect/session_reauthenticate_response.py">SessionReauthenticateResponse</a></code>
