@@ -24,6 +24,14 @@ from .account import (
     AccountWithStreamingResponse,
     AsyncAccountWithStreamingResponse,
 )
+from .connect import (
+    Connect,
+    AsyncConnect,
+    ConnectWithRawResponse,
+    AsyncConnectWithRawResponse,
+    ConnectWithStreamingResponse,
+    AsyncConnectWithStreamingResponse,
+)
 from .payroll import (
     Payroll,
     AsyncPayroll,
@@ -117,4 +125,10 @@ __all__ = [
     "AsyncPayrollWithRawResponse",
     "PayrollWithStreamingResponse",
     "AsyncPayrollWithStreamingResponse",
+    "Connect",
+    "AsyncConnect",
+    "ConnectWithRawResponse",
+    "AsyncConnectWithRawResponse",
+    "ConnectWithStreamingResponse",
+    "AsyncConnectWithStreamingResponse",
 ]
