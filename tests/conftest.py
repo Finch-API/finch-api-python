@@ -27,8 +27,6 @@ def event_loop() -> Iterator[asyncio.AbstractEventLoop]:
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 access_token = "My Access Token"
-client_id = "4ab15e51-11ad-49f4-acae-f343b7794375"
-client_secret = "My Client Secret"
 
 
 @pytest.fixture(scope="session")
@@ -37,13 +35,7 @@ def client(request: FixtureRequest) -> Iterator[Finch]:
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with Finch(
-        base_url=base_url,
-        access_token=access_token,
-        client_id=client_id,
-        client_secret=client_secret,
-        _strict_response_validation=strict,
-    ) as client:
+    with Finch(base_url=base_url, access_token=access_token, _strict_response_validation=strict) as client:
         yield client
 
 
@@ -53,11 +45,5 @@ async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncFinch]:
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncFinch(
-        base_url=base_url,
-        access_token=access_token,
-        client_id=client_id,
-        client_secret=client_secret,
-        _strict_response_validation=strict,
-    ) as client:
+    async with AsyncFinch(base_url=base_url, access_token=access_token, _strict_response_validation=strict) as client:
         yield client
