@@ -20,7 +20,6 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSessions:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_method_new(self, client: Finch) -> None:
         session = client.connect.sessions.new(
@@ -30,7 +29,6 @@ class TestSessions:
         )
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_method_new_with_all_params(self, client: Finch) -> None:
         session = client.connect.sessions.new(
@@ -49,7 +47,6 @@ class TestSessions:
         )
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_raw_response_new(self, client: Finch) -> None:
         response = client.connect.sessions.with_raw_response.new(
@@ -63,7 +60,6 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_streaming_response_new(self, client: Finch) -> None:
         with client.connect.sessions.with_streaming_response.new(
@@ -79,7 +75,6 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_method_reauthenticate(self, client: Finch) -> None:
         session = client.connect.sessions.reauthenticate(
@@ -87,7 +82,6 @@ class TestSessions:
         )
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_method_reauthenticate_with_all_params(self, client: Finch) -> None:
         session = client.connect.sessions.reauthenticate(
@@ -98,7 +92,6 @@ class TestSessions:
         )
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_raw_response_reauthenticate(self, client: Finch) -> None:
         response = client.connect.sessions.with_raw_response.reauthenticate(
@@ -110,7 +103,6 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     def test_streaming_response_reauthenticate(self, client: Finch) -> None:
         with client.connect.sessions.with_streaming_response.reauthenticate(
@@ -128,7 +120,6 @@ class TestSessions:
 class TestAsyncSessions:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_method_new(self, async_client: AsyncFinch) -> None:
         session = await async_client.connect.sessions.new(
@@ -138,7 +129,6 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_method_new_with_all_params(self, async_client: AsyncFinch) -> None:
         session = await async_client.connect.sessions.new(
@@ -157,7 +147,6 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_raw_response_new(self, async_client: AsyncFinch) -> None:
         response = await async_client.connect.sessions.with_raw_response.new(
@@ -171,7 +160,6 @@ class TestAsyncSessions:
         session = response.parse()
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_streaming_response_new(self, async_client: AsyncFinch) -> None:
         async with async_client.connect.sessions.with_streaming_response.new(
@@ -187,7 +175,6 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_method_reauthenticate(self, async_client: AsyncFinch) -> None:
         session = await async_client.connect.sessions.reauthenticate(
@@ -195,7 +182,6 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_method_reauthenticate_with_all_params(self, async_client: AsyncFinch) -> None:
         session = await async_client.connect.sessions.reauthenticate(
@@ -206,7 +192,6 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_raw_response_reauthenticate(self, async_client: AsyncFinch) -> None:
         response = await async_client.connect.sessions.with_raw_response.reauthenticate(
@@ -218,7 +203,6 @@ class TestAsyncSessions:
         session = response.parse()
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
 
-    @pytest.mark.skip(reason="authentication setup doesn't currently work with the mock server")
     @parametrize
     async def test_streaming_response_reauthenticate(self, async_client: AsyncFinch) -> None:
         async with async_client.connect.sessions.with_streaming_response.reauthenticate(

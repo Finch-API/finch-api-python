@@ -68,8 +68,6 @@ class Finch(SyncAPIClient):
     access_token: str | None
     client_id: str | None
     client_secret: str | None
-    sandbox_client_id: str | None
-    sandbox_client_secret: str | None
     webhook_secret: str | None
 
     def __init__(
@@ -78,8 +76,6 @@ class Finch(SyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
-        sandbox_client_id: str | None = None,
-        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -111,8 +107,6 @@ class Finch(SyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
-        - `sandbox_client_id` from `FINCH_SANDBOX_CLIENT_ID`
-        - `sandbox_client_secret` from `FINCH_SANDBOX_CLIENT_SECRET`
         - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
         self.access_token = access_token
@@ -124,14 +118,6 @@ class Finch(SyncAPIClient):
         if client_secret is None:
             client_secret = os.environ.get("FINCH_CLIENT_SECRET")
         self.client_secret = client_secret
-
-        if sandbox_client_id is None:
-            sandbox_client_id = os.environ.get("FINCH_SANDBOX_CLIENT_ID")
-        self.sandbox_client_id = sandbox_client_id
-
-        if sandbox_client_secret is None:
-            sandbox_client_secret = os.environ.get("FINCH_SANDBOX_CLIENT_SECRET")
-        self.sandbox_client_secret = sandbox_client_secret
 
         if webhook_secret is None:
             webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
@@ -191,11 +177,11 @@ class Finch(SyncAPIClient):
 
     @property
     def _basic_auth(self) -> dict[str, str]:
-        if self.sandbox_client_id is None:
+        if self.client_id is None:
             return {}
-        if self.sandbox_client_secret is None:
+        if self.client_secret is None:
             return {}
-        credentials = f"{self.sandbox_client_id}:{self.sandbox_client_secret}".encode("ascii")
+        credentials = f"{self.client_id}:{self.client_secret}".encode("ascii")
         header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
         return {"Authorization": header}
 
@@ -216,13 +202,13 @@ class Finch(SyncAPIClient):
         if isinstance(custom_headers.get("Authorization"), Omit):
             return
 
-        if self.sandbox_client_id and self.sandbox_client_secret and headers.get("Authorization"):
+        if self.client_id and self.client_secret and headers.get("Authorization"):
             return
         if isinstance(custom_headers.get("Authorization"), Omit):
             return
 
         raise TypeError(
-            '"Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
+            '"Could not resolve authentication method. Expected either access_token, client_id or client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
         )
 
     def copy(
@@ -231,8 +217,6 @@ class Finch(SyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
-        sandbox_client_id: str | None = None,
-        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -288,8 +272,6 @@ class Finch(SyncAPIClient):
             access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
-            sandbox_client_id=sandbox_client_id or self.sandbox_client_id,
-            sandbox_client_secret=sandbox_client_secret or self.sandbox_client_secret,
             webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -356,8 +338,6 @@ class AsyncFinch(AsyncAPIClient):
     access_token: str | None
     client_id: str | None
     client_secret: str | None
-    sandbox_client_id: str | None
-    sandbox_client_secret: str | None
     webhook_secret: str | None
 
     def __init__(
@@ -366,8 +346,6 @@ class AsyncFinch(AsyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
-        sandbox_client_id: str | None = None,
-        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -399,8 +377,6 @@ class AsyncFinch(AsyncAPIClient):
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
         - `client_secret` from `FINCH_CLIENT_SECRET`
-        - `sandbox_client_id` from `FINCH_SANDBOX_CLIENT_ID`
-        - `sandbox_client_secret` from `FINCH_SANDBOX_CLIENT_SECRET`
         - `webhook_secret` from `FINCH_WEBHOOK_SECRET`
         """
         self.access_token = access_token
@@ -412,14 +388,6 @@ class AsyncFinch(AsyncAPIClient):
         if client_secret is None:
             client_secret = os.environ.get("FINCH_CLIENT_SECRET")
         self.client_secret = client_secret
-
-        if sandbox_client_id is None:
-            sandbox_client_id = os.environ.get("FINCH_SANDBOX_CLIENT_ID")
-        self.sandbox_client_id = sandbox_client_id
-
-        if sandbox_client_secret is None:
-            sandbox_client_secret = os.environ.get("FINCH_SANDBOX_CLIENT_SECRET")
-        self.sandbox_client_secret = sandbox_client_secret
 
         if webhook_secret is None:
             webhook_secret = os.environ.get("FINCH_WEBHOOK_SECRET")
@@ -479,11 +447,11 @@ class AsyncFinch(AsyncAPIClient):
 
     @property
     def _basic_auth(self) -> dict[str, str]:
-        if self.sandbox_client_id is None:
+        if self.client_id is None:
             return {}
-        if self.sandbox_client_secret is None:
+        if self.client_secret is None:
             return {}
-        credentials = f"{self.sandbox_client_id}:{self.sandbox_client_secret}".encode("ascii")
+        credentials = f"{self.client_id}:{self.client_secret}".encode("ascii")
         header = f"Basic {base64.b64encode(credentials).decode('ascii')}"
         return {"Authorization": header}
 
@@ -504,13 +472,13 @@ class AsyncFinch(AsyncAPIClient):
         if isinstance(custom_headers.get("Authorization"), Omit):
             return
 
-        if self.sandbox_client_id and self.sandbox_client_secret and headers.get("Authorization"):
+        if self.client_id and self.client_secret and headers.get("Authorization"):
             return
         if isinstance(custom_headers.get("Authorization"), Omit):
             return
 
         raise TypeError(
-            '"Could not resolve authentication method. Expected either access_token, sandbox_client_id or sandbox_client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
+            '"Could not resolve authentication method. Expected either access_token, client_id or client_secret to be set. Or for one of the `Authorization` or `Authorization` headers to be explicitly omitted"'
         )
 
     def copy(
@@ -519,8 +487,6 @@ class AsyncFinch(AsyncAPIClient):
         access_token: str | None = None,
         client_id: str | None = None,
         client_secret: str | None = None,
-        sandbox_client_id: str | None = None,
-        sandbox_client_secret: str | None = None,
         webhook_secret: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -576,8 +542,6 @@ class AsyncFinch(AsyncAPIClient):
             access_token=access_token or self.access_token,
             client_id=client_id or self.client_id,
             client_secret=client_secret or self.client_secret,
-            sandbox_client_id=sandbox_client_id or self.sandbox_client_id,
-            sandbox_client_secret=sandbox_client_secret or self.sandbox_client_secret,
             webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
