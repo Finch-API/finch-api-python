@@ -20,7 +20,6 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestAccounts:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     def test_method_create(self, client: Finch) -> None:
         account = client.sandbox.connections.accounts.create(
@@ -29,7 +28,6 @@ class TestAccounts:
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         account = client.sandbox.connections.accounts.create(
@@ -40,7 +38,6 @@ class TestAccounts:
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.sandbox.connections.accounts.with_raw_response.create(
@@ -53,7 +50,6 @@ class TestAccounts:
         account = response.parse()
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     def test_streaming_response_create(self, client: Finch) -> None:
         with client.sandbox.connections.accounts.with_streaming_response.create(
@@ -104,7 +100,6 @@ class TestAccounts:
 class TestAsyncAccounts:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
         account = await async_client.sandbox.connections.accounts.create(
@@ -113,7 +108,6 @@ class TestAsyncAccounts:
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         account = await async_client.sandbox.connections.accounts.create(
@@ -124,7 +118,6 @@ class TestAsyncAccounts:
         )
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
         response = await async_client.sandbox.connections.accounts.with_raw_response.create(
@@ -137,7 +130,6 @@ class TestAsyncAccounts:
         account = response.parse()
         assert_matches_type(AccountCreateResponse, account, path=["response"])
 
-    @pytest.mark.skip(reason="Auth isn't setup correctly in this test")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
         async with async_client.sandbox.connections.accounts.with_streaming_response.create(
