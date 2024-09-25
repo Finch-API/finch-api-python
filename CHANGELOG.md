@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.6.0 (2024-09-25)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/Finch-API/finch-api-python/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **api:** manual updates ([#503](https://github.com/Finch-API/finch-api-python/issues/503)) ([0fd72d8](https://github.com/Finch-API/finch-api-python/commit/0fd72d872880e93a0f925b5d96166cbba09978d5))
+* **api:** manual updates ([#505](https://github.com/Finch-API/finch-api-python/issues/505)) ([5d63f1f](https://github.com/Finch-API/finch-api-python/commit/5d63f1fce9e852260bdbc946fd623ec524bb6dc0))
+* **api:** OpenAPI spec update via Stainless API ([#498](https://github.com/Finch-API/finch-api-python/issues/498)) ([1e0e4a1](https://github.com/Finch-API/finch-api-python/commit/1e0e4a19217910c2e91325b5e25fe7c1d3d53be6))
+* **client:** send retry count header ([#500](https://github.com/Finch-API/finch-api-python/issues/500)) ([a6a35ea](https://github.com/Finch-API/finch-api-python/commit/a6a35eafaef92bfb88834c4d51fe66f6c604c5f5))
+
+
+### Bug Fixes
+
+* **client:** handle domains with underscores ([#499](https://github.com/Finch-API/finch-api-python/issues/499)) ([9b3fa1e](https://github.com/Finch-API/finch-api-python/commit/9b3fa1ec8f269762dea5026c202430a8b4a3078a))
+* **internal:** update custom code related tests ([b7287e4](https://github.com/Finch-API/finch-api-python/commit/b7287e4843f047248326020ec187b6bb2a5f0334))
+
+
+### Chores
+
+* **internal:** bump pyright / mypy version ([#497](https://github.com/Finch-API/finch-api-python/issues/497)) ([85749d1](https://github.com/Finch-API/finch-api-python/commit/85749d1c2ddf4ea4984b32ea3723a79ad7cc6e99))
+* **internal:** bump ruff ([#496](https://github.com/Finch-API/finch-api-python/issues/496)) ([f1a7d3f](https://github.com/Finch-API/finch-api-python/commit/f1a7d3f788e0202c2094b5e60b089237a765ce5d))
+* **internal:** codegen related update ([#493](https://github.com/Finch-API/finch-api-python/issues/493)) ([590d384](https://github.com/Finch-API/finch-api-python/commit/590d38471e5703f6c17385971a9d9cb7e3d6a857))
+* **internal:** codegen related update ([#501](https://github.com/Finch-API/finch-api-python/issues/501)) ([ea96424](https://github.com/Finch-API/finch-api-python/commit/ea96424a4169593a26176f02a2440d27719e911e))
+* **internal:** codegen related update ([#506](https://github.com/Finch-API/finch-api-python/issues/506)) ([5aff0ca](https://github.com/Finch-API/finch-api-python/commit/5aff0ca1c62ccf162ffcd2e9fe3927eb06622d23))
+* **internal:** skip failing tests ([#502](https://github.com/Finch-API/finch-api-python/issues/502)) ([8d25365](https://github.com/Finch-API/finch-api-python/commit/8d253655360633edda36df8551b41355b6d68773))
+* **internal:** update pydantic v1 compat helpers ([#504](https://github.com/Finch-API/finch-api-python/issues/504)) ([17ba83b](https://github.com/Finch-API/finch-api-python/commit/17ba83b68ce8d0c20239f0388b6f1f9e42ce42f2))
+
+
+### Documentation
+
+* update CONTRIBUTING.md ([#495](https://github.com/Finch-API/finch-api-python/issues/495)) ([40d4f67](https://github.com/Finch-API/finch-api-python/commit/40d4f670d89118e1fd7df411ea2b8ecef135988e))
+
 ## 1.5.0 (2024-09-03)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/Finch-API/finch-api-python/compare/v1.4.0...v1.5.0)
