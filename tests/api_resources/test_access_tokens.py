@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, Iterator, AsyncIterator, cast
 
 import pytest
 
@@ -11,7 +11,36 @@ from finch import Finch, AsyncFinch
 from finch.types import CreateAccessTokenResponse
 from tests.utils import assert_matches_type
 
+if TYPE_CHECKING:
+    from _pytest.fixtures import FixtureRequest
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+client_id = "00000000-0000-0000-0000-000000000000"
+client_secret = "TEST"
+
+
+@pytest.fixture(scope="module")
+def client(request: FixtureRequest) -> Iterator[Finch]:
+    strict = getattr(request, "param", True)
+    if not isinstance(strict, bool):
+        raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
+
+    with Finch(
+        base_url=base_url, client_id=client_id, client_secret=client_secret, _strict_response_validation=strict
+    ) as client:
+        yield client
+
+
+@pytest.fixture(scope="module")
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncFinch]:
+    strict = getattr(request, "param", True)
+    if not isinstance(strict, bool):
+        raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
+
+    async with AsyncFinch(
+        base_url=base_url, client_id=client_id, client_secret=client_secret, _strict_response_validation=strict
+    ) as client:
+        yield client
 
 
 class TestAccessTokens:
