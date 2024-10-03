@@ -64,6 +64,24 @@ class Introspection(BaseModel):
     - `finch` - finch-generated data.
     """
 
+    customer_email: Optional[str] = None
+    """
+    The email of your customer you provided to Finch when a connect session was
+    created for this connection.
+    """
+
+    customer_id: Optional[str] = None
+    """
+    The ID of your customer you provided to Finch when a connect session was created
+    for this connection.
+    """
+
+    customer_name: Optional[str] = None
+    """
+    The name of your customer you provided to Finch when a connect session was
+    created for this connection.
+    """
+
     manual: bool
     """
     Whether the connection associated with the `access_token` uses the Assisted
