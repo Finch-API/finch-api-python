@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -42,3 +42,9 @@ class CreateAccessTokenResponse(BaseModel):
 
     provider_id: str
     """The ID of the provider associated with the `access_token`."""
+
+    customer_id: Optional[str] = None
+    """
+    The ID of your customer you provided to Finch when a connect session was created
+    for this connection.
+    """
