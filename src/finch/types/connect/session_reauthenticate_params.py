@@ -14,7 +14,7 @@ class SessionReauthenticateParams(TypedDict, total=False):
 
     minutes_to_expire: Optional[int]
     """
-    The number of minutes until the session expires (defaults to 10,080, which is 7
+    The number of minutes until the session expires (defaults to 20,160, which is 14
     days)
     """
 
