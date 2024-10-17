@@ -36,7 +36,6 @@ __all__ = [
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEarnings",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployeeDeductions",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerContributions",
-    "AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerDeductions",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatementsTaxes",
     "AuthenticationMethodSupportedFieldsPayment",
     "AuthenticationMethodSupportedFieldsPaymentPayPeriod",
@@ -297,14 +296,6 @@ class AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerContri
     name: Optional[bool] = None
 
 
-class AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerDeductions(BaseModel):
-    amount: Optional[bool] = None
-
-    currency: Optional[bool] = None
-
-    name: Optional[bool] = None
-
-
 class AuthenticationMethodSupportedFieldsPayStatementPayStatementsTaxes(BaseModel):
     amount: Optional[bool] = None
 
@@ -325,9 +316,6 @@ class AuthenticationMethodSupportedFieldsPayStatementPayStatements(BaseModel):
     employer_contributions: Optional[
         AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerContributions
     ] = None
-
-    employer_deductions: Optional[AuthenticationMethodSupportedFieldsPayStatementPayStatementsEmployerDeductions] = None
-    """[DEPRECATED] Use `employer_contributions` instead"""
 
     gross_pay: Optional[bool] = None
 
