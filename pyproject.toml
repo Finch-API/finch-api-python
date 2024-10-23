@@ -1,6 +1,6 @@
 [project]
 name = "finch-api"
-version = "1.7.0"
+version = "1.8.0"
 description = "The official Python library for the Finch API"
 dynamic = ["readme"]
 license = "Apache-2.0"
