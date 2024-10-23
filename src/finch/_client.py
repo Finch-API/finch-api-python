@@ -159,7 +159,7 @@ class Finch(SyncAPIClient):
     @property
     @override
     def qs(self) -> Querystring:
-        return Querystring(array_format="comma")
+        return Querystring(array_format="brackets")
 
     @property
     @override
@@ -495,7 +495,7 @@ class AsyncFinch(AsyncAPIClient):
     @property
     @override
     def qs(self) -> Querystring:
-        return Querystring(array_format="comma")
+        return Querystring(array_format="brackets")
 
     @property
     @override
