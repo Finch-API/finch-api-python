@@ -33,6 +33,7 @@ __all__ = [
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsIndividualEmails",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsIndividualPhoneNumbers",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsIndividualResidence",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayGroup",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatement",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPaging",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPayStatements",
@@ -263,6 +264,16 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFieldsIndividual(BaseMo
     ssn: Optional[bool] = None
 
 
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayGroup(BaseModel):
+    id: Optional[bool] = None
+
+    individual_ids: Optional[bool] = None
+
+    name: Optional[bool] = None
+
+    pay_frequencies: Optional[bool] = None
+
+
 class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPaging(BaseModel):
     count: bool
 
@@ -387,6 +398,8 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFields(BaseModel):
     employment: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsEmployment] = None
 
     individual: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsIndividual] = None
+
+    pay_group: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayGroup] = None
 
     pay_statement: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatement] = None
 

@@ -30,6 +30,7 @@ __all__ = [
     "AuthenticationMethodSupportedFieldsIndividualEmails",
     "AuthenticationMethodSupportedFieldsIndividualPhoneNumbers",
     "AuthenticationMethodSupportedFieldsIndividualResidence",
+    "AuthenticationMethodSupportedFieldsPayGroup",
     "AuthenticationMethodSupportedFieldsPayStatement",
     "AuthenticationMethodSupportedFieldsPayStatementPaging",
     "AuthenticationMethodSupportedFieldsPayStatementPayStatements",
@@ -260,6 +261,16 @@ class AuthenticationMethodSupportedFieldsIndividual(BaseModel):
     ssn: Optional[bool] = None
 
 
+class AuthenticationMethodSupportedFieldsPayGroup(BaseModel):
+    id: Optional[bool] = None
+
+    individual_ids: Optional[bool] = None
+
+    name: Optional[bool] = None
+
+    pay_frequencies: Optional[bool] = None
+
+
 class AuthenticationMethodSupportedFieldsPayStatementPaging(BaseModel):
     count: bool
 
@@ -378,6 +389,8 @@ class AuthenticationMethodSupportedFields(BaseModel):
     employment: Optional[AuthenticationMethodSupportedFieldsEmployment] = None
 
     individual: Optional[AuthenticationMethodSupportedFieldsIndividual] = None
+
+    pay_group: Optional[AuthenticationMethodSupportedFieldsPayGroup] = None
 
     pay_statement: Optional[AuthenticationMethodSupportedFieldsPayStatement] = None
 
