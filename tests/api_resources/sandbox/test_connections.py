@@ -30,7 +30,7 @@ class TestConnections:
             provider_id="provider_id",
             authentication_type="credential",
             employee_size=0,
-            products=["string", "string", "string"],
+            products=["string"],
         )
         assert_matches_type(ConnectionCreateResponse, connection, path=["response"])
 
@@ -75,7 +75,7 @@ class TestAsyncConnections:
             provider_id="provider_id",
             authentication_type="credential",
             employee_size=0,
-            products=["string", "string", "string"],
+            products=["string"],
         )
         assert_matches_type(ConnectionCreateResponse, connection, path=["response"])
 
