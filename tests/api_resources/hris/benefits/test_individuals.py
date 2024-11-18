@@ -160,7 +160,7 @@ class TestIndividuals:
     def test_method_unenroll_many_with_all_params(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.unenroll_many(
             benefit_id="benefit_id",
-            individual_ids=["string", "string", "string"],
+            individual_ids=["string"],
         )
         assert_matches_type(SyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 
@@ -336,7 +336,7 @@ class TestAsyncIndividuals:
     async def test_method_unenroll_many_with_all_params(self, async_client: AsyncFinch) -> None:
         individual = await async_client.hris.benefits.individuals.unenroll_many(
             benefit_id="benefit_id",
-            individual_ids=["string", "string", "string"],
+            individual_ids=["string"],
         )
         assert_matches_type(AsyncSinglePage[UnenrolledIndividual], individual, path=["response"])
 

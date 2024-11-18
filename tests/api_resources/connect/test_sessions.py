@@ -25,7 +25,7 @@ class TestSessions:
         session = client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
         )
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
@@ -34,7 +34,7 @@ class TestSessions:
         session = client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
             customer_email="dev@stainlessapi.com",
             integration={
                 "auth_method": "assisted",
@@ -52,7 +52,7 @@ class TestSessions:
         response = client.connect.sessions.with_raw_response.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
         )
 
         assert response.is_closed is True
@@ -65,7 +65,7 @@ class TestSessions:
         with client.connect.sessions.with_streaming_response.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -87,7 +87,7 @@ class TestSessions:
         session = client.connect.sessions.reauthenticate(
             connection_id="connection_id",
             minutes_to_expire=0,
-            products=["company", "directory", "individual"],
+            products=["company"],
             redirect_uri="https://example.com",
         )
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
@@ -125,7 +125,7 @@ class TestAsyncSessions:
         session = await async_client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
         )
         assert_matches_type(SessionNewResponse, session, path=["response"])
 
@@ -134,7 +134,7 @@ class TestAsyncSessions:
         session = await async_client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
             customer_email="dev@stainlessapi.com",
             integration={
                 "auth_method": "assisted",
@@ -152,7 +152,7 @@ class TestAsyncSessions:
         response = await async_client.connect.sessions.with_raw_response.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
         )
 
         assert response.is_closed is True
@@ -165,7 +165,7 @@ class TestAsyncSessions:
         async with async_client.connect.sessions.with_streaming_response.new(
             customer_id="x",
             customer_name="x",
-            products=["company", "directory", "individual"],
+            products=["company"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -187,7 +187,7 @@ class TestAsyncSessions:
         session = await async_client.connect.sessions.reauthenticate(
             connection_id="connection_id",
             minutes_to_expire=0,
-            products=["company", "directory", "individual"],
+            products=["company"],
             redirect_uri="https://example.com",
         )
         assert_matches_type(SessionReauthenticateResponse, session, path=["response"])

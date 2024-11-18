@@ -65,7 +65,7 @@ class TestPayGroups:
     def test_method_list_with_all_params(self, client: Finch) -> None:
         pay_group = client.payroll.pay_groups.list(
             individual_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            pay_frequencies=["string", "string", "string"],
+            pay_frequencies=["string"],
         )
         assert_matches_type(SyncSinglePage[PayGroupListResponse], pay_group, path=["response"])
 
@@ -140,7 +140,7 @@ class TestAsyncPayGroups:
     async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
         pay_group = await async_client.payroll.pay_groups.list(
             individual_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            pay_frequencies=["string", "string", "string"],
+            pay_frequencies=["string"],
         )
         assert_matches_type(AsyncSinglePage[PayGroupListResponse], pay_group, path=["response"])
 
