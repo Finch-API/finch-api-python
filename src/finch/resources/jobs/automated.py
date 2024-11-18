@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
+from typing_extensions import Literal, overload
 
 import httpx
 
 from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
+    required_args,
     maybe_transform,
     async_maybe_transform,
 )
@@ -44,6 +45,7 @@ class Automated(SyncAPIResource):
         """
         return AutomatedWithStreamingResponse(self)
 
+    @overload
     def create(
         self,
         *,
@@ -55,21 +57,24 @@ class Automated(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AutomatedCreateResponse:
-        """Enqueue an automated job.
+        """
+        Enqueue an automated job.
 
-        Currently, only the `data_sync_all` job type is
-        supported, which will enqueue a job to re-sync all data for a connection.
+        `data_sync_all`: Enqueue a job to re-sync all data for a connection.
         `data_sync_all` has a concurrency limit of 1 job at a time per connection. This
         means that if this endpoint is called while a job is already in progress for
         this connection, Finch will return the `job_id` of the job that is currently in
         progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
         per connection.
 
+        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
+        identified by `individual_id`. This feature is currently in beta.
+
         This endpoint is available for _Scale_ tier customers as an add-on. To request
         access to this endpoint, please contact your Finch account manager.
 
         Args:
-          type: The type of job to start. Currently the only supported type is `data_sync_all`
+          type: The type of job to start.
 
           extra_headers: Send extra headers
 
@@ -79,9 +84,74 @@ class Automated(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    def create(
+        self,
+        *,
+        individual_id: str,
+        type: Literal["w4_data_sync"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AutomatedCreateResponse:
+        """
+        Enqueue an automated job.
+
+        `data_sync_all`: Enqueue a job to re-sync all data for a connection.
+        `data_sync_all` has a concurrency limit of 1 job at a time per connection. This
+        means that if this endpoint is called while a job is already in progress for
+        this connection, Finch will return the `job_id` of the job that is currently in
+        progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
+        per connection.
+
+        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
+        identified by `individual_id`. This feature is currently in beta.
+
+        This endpoint is available for _Scale_ tier customers as an add-on. To request
+        access to this endpoint, please contact your Finch account manager.
+
+        Args:
+          individual_id: The unique ID of the individual for W-4 data sync.
+
+          type: The type of job to start.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["type"], ["individual_id", "type"])
+    def create(
+        self,
+        *,
+        type: Literal["data_sync_all"] | Literal["w4_data_sync"],
+        individual_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AutomatedCreateResponse:
         return self._post(
             "/jobs/automated",
-            body=maybe_transform({"type": type}, automated_create_params.AutomatedCreateParams),
+            body=maybe_transform(
+                {
+                    "type": type,
+                    "individual_id": individual_id,
+                },
+                automated_create_params.AutomatedCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -192,6 +262,7 @@ class AsyncAutomated(AsyncAPIResource):
         """
         return AsyncAutomatedWithStreamingResponse(self)
 
+    @overload
     async def create(
         self,
         *,
@@ -203,21 +274,24 @@ class AsyncAutomated(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AutomatedCreateResponse:
-        """Enqueue an automated job.
+        """
+        Enqueue an automated job.
 
-        Currently, only the `data_sync_all` job type is
-        supported, which will enqueue a job to re-sync all data for a connection.
+        `data_sync_all`: Enqueue a job to re-sync all data for a connection.
         `data_sync_all` has a concurrency limit of 1 job at a time per connection. This
         means that if this endpoint is called while a job is already in progress for
         this connection, Finch will return the `job_id` of the job that is currently in
         progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
         per connection.
 
+        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
+        identified by `individual_id`. This feature is currently in beta.
+
         This endpoint is available for _Scale_ tier customers as an add-on. To request
         access to this endpoint, please contact your Finch account manager.
 
         Args:
-          type: The type of job to start. Currently the only supported type is `data_sync_all`
+          type: The type of job to start.
 
           extra_headers: Send extra headers
 
@@ -227,9 +301,74 @@ class AsyncAutomated(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    async def create(
+        self,
+        *,
+        individual_id: str,
+        type: Literal["w4_data_sync"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AutomatedCreateResponse:
+        """
+        Enqueue an automated job.
+
+        `data_sync_all`: Enqueue a job to re-sync all data for a connection.
+        `data_sync_all` has a concurrency limit of 1 job at a time per connection. This
+        means that if this endpoint is called while a job is already in progress for
+        this connection, Finch will return the `job_id` of the job that is currently in
+        progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
+        per connection.
+
+        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
+        identified by `individual_id`. This feature is currently in beta.
+
+        This endpoint is available for _Scale_ tier customers as an add-on. To request
+        access to this endpoint, please contact your Finch account manager.
+
+        Args:
+          individual_id: The unique ID of the individual for W-4 data sync.
+
+          type: The type of job to start.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["type"], ["individual_id", "type"])
+    async def create(
+        self,
+        *,
+        type: Literal["data_sync_all"] | Literal["w4_data_sync"],
+        individual_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AutomatedCreateResponse:
         return await self._post(
             "/jobs/automated",
-            body=await async_maybe_transform({"type": type}, automated_create_params.AutomatedCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "type": type,
+                    "individual_id": individual_id,
+                },
+                automated_create_params.AutomatedCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

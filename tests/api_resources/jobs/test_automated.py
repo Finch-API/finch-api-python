@@ -19,14 +19,14 @@ class TestAutomated:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: Finch) -> None:
+    def test_method_create_overload_1(self, client: Finch) -> None:
         automated = client.jobs.automated.create(
             type="data_sync_all",
         )
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: Finch) -> None:
+    def test_raw_response_create_overload_1(self, client: Finch) -> None:
         response = client.jobs.automated.with_raw_response.create(
             type="data_sync_all",
         )
@@ -37,9 +37,43 @@ class TestAutomated:
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
 
     @parametrize
-    def test_streaming_response_create(self, client: Finch) -> None:
+    def test_streaming_response_create_overload_1(self, client: Finch) -> None:
         with client.jobs.automated.with_streaming_response.create(
             type="data_sync_all",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            automated = response.parse()
+            assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_create_overload_2(self, client: Finch) -> None:
+        automated = client.jobs.automated.create(
+            individual_id="individual_id",
+            type="w4_data_sync",
+        )
+        assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
+
+    @parametrize
+    def test_raw_response_create_overload_2(self, client: Finch) -> None:
+        response = client.jobs.automated.with_raw_response.create(
+            individual_id="individual_id",
+            type="w4_data_sync",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        automated = response.parse()
+        assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_overload_2(self, client: Finch) -> None:
+        with client.jobs.automated.with_streaming_response.create(
+            individual_id="individual_id",
+            type="w4_data_sync",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -125,14 +159,14 @@ class TestAsyncAutomated:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncFinch) -> None:
+    async def test_method_create_overload_1(self, async_client: AsyncFinch) -> None:
         automated = await async_client.jobs.automated.create(
             type="data_sync_all",
         )
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
+    async def test_raw_response_create_overload_1(self, async_client: AsyncFinch) -> None:
         response = await async_client.jobs.automated.with_raw_response.create(
             type="data_sync_all",
         )
@@ -143,9 +177,43 @@ class TestAsyncAutomated:
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
+    async def test_streaming_response_create_overload_1(self, async_client: AsyncFinch) -> None:
         async with async_client.jobs.automated.with_streaming_response.create(
             type="data_sync_all",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            automated = await response.parse()
+            assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_create_overload_2(self, async_client: AsyncFinch) -> None:
+        automated = await async_client.jobs.automated.create(
+            individual_id="individual_id",
+            type="w4_data_sync",
+        )
+        assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create_overload_2(self, async_client: AsyncFinch) -> None:
+        response = await async_client.jobs.automated.with_raw_response.create(
+            individual_id="individual_id",
+            type="w4_data_sync",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        automated = response.parse()
+        assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_overload_2(self, async_client: AsyncFinch) -> None:
+        async with async_client.jobs.automated.with_streaming_response.create(
+            individual_id="individual_id",
+            type="w4_data_sync",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
