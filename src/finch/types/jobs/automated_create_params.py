@@ -2,11 +2,23 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing import Union
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-__all__ = ["AutomatedCreateParams"]
+__all__ = ["AutomatedCreateParams", "DataSyncAll", "W4DataSync"]
 
 
-class AutomatedCreateParams(TypedDict, total=False):
+class DataSyncAll(TypedDict, total=False):
     type: Required[Literal["data_sync_all"]]
-    """The type of job to start. Currently the only supported type is `data_sync_all`"""
+    """The type of job to start."""
+
+
+class W4DataSync(TypedDict, total=False):
+    individual_id: Required[str]
+    """The unique ID of the individual for W-4 data sync."""
+
+    type: Required[Literal["w4_data_sync"]]
+    """The type of job to start."""
+
+
+AutomatedCreateParams: TypeAlias = Union[DataSyncAll, W4DataSync]
