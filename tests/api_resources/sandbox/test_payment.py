@@ -35,21 +35,7 @@ class TestPayment:
                             "hours": 0,
                             "name": "name",
                             "type": "salary",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "hours": 0,
-                            "name": "name",
-                            "type": "salary",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "hours": 0,
-                            "name": "name",
-                            "type": "salary",
-                        },
+                        }
                     ],
                     "employee_deductions": [
                         {
@@ -66,19 +52,7 @@ class TestPayment:
                             "currency": "currency",
                             "name": "name",
                             "type": "401k",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "401k",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "401k",
-                        },
+                        }
                     ],
                     "gross_pay": {
                         "amount": 0,
@@ -97,21 +71,7 @@ class TestPayment:
                             "employer": True,
                             "name": "name",
                             "type": "state",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "employer": True,
-                            "name": "name",
-                            "type": "state",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "employer": True,
-                            "name": "name",
-                            "type": "state",
-                        },
+                        }
                     ],
                     "total_hours": 0,
                     "type": "regular_payroll",
@@ -163,21 +123,7 @@ class TestAsyncPayment:
                             "hours": 0,
                             "name": "name",
                             "type": "salary",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "hours": 0,
-                            "name": "name",
-                            "type": "salary",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "hours": 0,
-                            "name": "name",
-                            "type": "salary",
-                        },
+                        }
                     ],
                     "employee_deductions": [
                         {
@@ -194,19 +140,7 @@ class TestAsyncPayment:
                             "currency": "currency",
                             "name": "name",
                             "type": "401k",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "401k",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "401k",
-                        },
+                        }
                     ],
                     "gross_pay": {
                         "amount": 0,
@@ -225,21 +159,7 @@ class TestAsyncPayment:
                             "employer": True,
                             "name": "name",
                             "type": "state",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "employer": True,
-                            "name": "name",
-                            "type": "state",
-                        },
-                        {
-                            "amount": 0,
-                            "currency": "currency",
-                            "employer": True,
-                            "name": "name",
-                            "type": "state",
-                        },
+                        }
                     ],
                     "total_hours": 0,
                     "type": "regular_payroll",

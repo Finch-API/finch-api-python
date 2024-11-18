@@ -33,15 +33,7 @@ class TestEmployment:
                 {
                     "name": "name",
                     "value": {},
-                },
-                {
-                    "name": "name",
-                    "value": {},
-                },
-                {
-                    "name": "name",
-                    "value": {},
-                },
+                }
             ],
             department={"name": "name"},
             employment={
@@ -62,19 +54,7 @@ class TestEmployment:
                     "currency": "currency",
                     "effective_date": "effective_date",
                     "unit": "yearly",
-                },
-                {
-                    "amount": 0,
-                    "currency": "currency",
-                    "effective_date": "effective_date",
-                    "unit": "yearly",
-                },
-                {
-                    "amount": 0,
-                    "currency": "currency",
-                    "effective_date": "effective_date",
-                    "unit": "yearly",
-                },
+                }
             ],
             is_active=True,
             last_name="last_name",
@@ -148,15 +128,7 @@ class TestAsyncEmployment:
                 {
                     "name": "name",
                     "value": {},
-                },
-                {
-                    "name": "name",
-                    "value": {},
-                },
-                {
-                    "name": "name",
-                    "value": {},
-                },
+                }
             ],
             department={"name": "name"},
             employment={
@@ -177,19 +149,7 @@ class TestAsyncEmployment:
                     "currency": "currency",
                     "effective_date": "effective_date",
                     "unit": "yearly",
-                },
-                {
-                    "amount": 0,
-                    "currency": "currency",
-                    "effective_date": "effective_date",
-                    "unit": "yearly",
-                },
-                {
-                    "amount": 0,
-                    "currency": "currency",
-                    "effective_date": "effective_date",
-                    "unit": "yearly",
-                },
+                }
             ],
             is_active=True,
             last_name="last_name",

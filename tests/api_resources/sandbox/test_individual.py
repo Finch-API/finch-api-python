@@ -33,15 +33,7 @@ class TestIndividual:
                 {
                     "data": "data",
                     "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
+                }
             ],
             encrypted_ssn="encrypted_ssn",
             ethnicity="asian",
@@ -53,15 +45,7 @@ class TestIndividual:
                 {
                     "data": "data",
                     "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
+                }
             ],
             preferred_name="preferred_name",
             residence={
@@ -129,15 +113,7 @@ class TestAsyncIndividual:
                 {
                     "data": "data",
                     "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
+                }
             ],
             encrypted_ssn="encrypted_ssn",
             ethnicity="asian",
@@ -149,15 +125,7 @@ class TestAsyncIndividual:
                 {
                     "data": "data",
                     "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
-                {
-                    "data": "data",
-                    "type": "work",
-                },
+                }
             ],
             preferred_name="preferred_name",
             residence={
