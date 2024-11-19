@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.10.0 (2024-11-19)
+
+Full Changelog: [v1.9.0...v1.10.0](https://github.com/Finch-API/finch-api-python/compare/v1.9.0...v1.10.0)
+
+### Features
+
+* **api:** api update ([#523](https://github.com/Finch-API/finch-api-python/issues/523)) ([ca6ca5b](https://github.com/Finch-API/finch-api-python/commit/ca6ca5b0f89596b54f69e73e74b3f88e7669abc1))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#518](https://github.com/Finch-API/finch-api-python/issues/518)) ([f5dc239](https://github.com/Finch-API/finch-api-python/commit/f5dc23934d7ccb9224addce2cabd5c5a040b0a25))
+* rebuild project due to codegen change ([#520](https://github.com/Finch-API/finch-api-python/issues/520)) ([e97a7aa](https://github.com/Finch-API/finch-api-python/commit/e97a7aa920db72359bef30c0be6b3e063c9f5ced))
+* rebuild project due to codegen change ([#521](https://github.com/Finch-API/finch-api-python/issues/521)) ([f324a8b](https://github.com/Finch-API/finch-api-python/commit/f324a8bf434f5412c3a357308e81bd83b1a827a1))
+* rebuild project due to codegen change ([#522](https://github.com/Finch-API/finch-api-python/issues/522)) ([dff3252](https://github.com/Finch-API/finch-api-python/commit/dff325218e25f5f74bb29338cfa02ef12450ea1a))
+
 ## 1.9.0 (2024-11-01)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/Finch-API/finch-api-python/compare/v1.8.0...v1.9.0)
