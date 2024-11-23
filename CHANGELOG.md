@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.10.1 (2024-11-23)
+
+Full Changelog: [v1.10.0...v1.10.1](https://github.com/Finch-API/finch-api-python/compare/v1.10.0...v1.10.1)
+
+### Chores
+
+* **internal:** fix compat model_dump method when warnings are passed ([#525](https://github.com/Finch-API/finch-api-python/issues/525)) ([6465256](https://github.com/Finch-API/finch-api-python/commit/6465256a5ea41a1d06645fb129fe03237a503ca6))
+
+
+### Documentation
+
+* add info log level to readme ([#527](https://github.com/Finch-API/finch-api-python/issues/527)) ([28ca9f0](https://github.com/Finch-API/finch-api-python/commit/28ca9f0f4ff5d727e7dbdd1affb6d65a3cf5c030))
+
 ## 1.10.0 (2024-11-19)
 
 Full Changelog: [v1.9.0...v1.10.0](https://github.com/Finch-API/finch-api-python/compare/v1.9.0...v1.10.0)
