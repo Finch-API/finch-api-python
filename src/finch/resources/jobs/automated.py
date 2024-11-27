@@ -67,8 +67,8 @@ class Automated(SyncAPIResource):
         progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
         per connection.
 
-        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
-        identified by `individual_id`. This feature is currently in beta.
+        `w4_form_employee_sync`: Enqueues a job for sync W-4 data for a particular
+        individual, identified by `individual_id`. This feature is currently in beta.
 
         This endpoint is available for _Scale_ tier customers as an add-on. To request
         access to this endpoint, please contact your Finch account manager.
@@ -91,7 +91,7 @@ class Automated(SyncAPIResource):
         self,
         *,
         individual_id: str,
-        type: Literal["w4_data_sync"],
+        type: Literal["w4_form_employee_sync"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -109,8 +109,8 @@ class Automated(SyncAPIResource):
         progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
         per connection.
 
-        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
-        identified by `individual_id`. This feature is currently in beta.
+        `w4_form_employee_sync`: Enqueues a job for sync W-4 data for a particular
+        individual, identified by `individual_id`. This feature is currently in beta.
 
         This endpoint is available for _Scale_ tier customers as an add-on. To request
         access to this endpoint, please contact your Finch account manager.
@@ -134,7 +134,7 @@ class Automated(SyncAPIResource):
     def create(
         self,
         *,
-        type: Literal["data_sync_all"] | Literal["w4_data_sync"],
+        type: Literal["data_sync_all"] | Literal["w4_form_employee_sync"],
         individual_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -284,8 +284,8 @@ class AsyncAutomated(AsyncAPIResource):
         progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
         per connection.
 
-        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
-        identified by `individual_id`. This feature is currently in beta.
+        `w4_form_employee_sync`: Enqueues a job for sync W-4 data for a particular
+        individual, identified by `individual_id`. This feature is currently in beta.
 
         This endpoint is available for _Scale_ tier customers as an add-on. To request
         access to this endpoint, please contact your Finch account manager.
@@ -308,7 +308,7 @@ class AsyncAutomated(AsyncAPIResource):
         self,
         *,
         individual_id: str,
-        type: Literal["w4_data_sync"],
+        type: Literal["w4_form_employee_sync"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -326,8 +326,8 @@ class AsyncAutomated(AsyncAPIResource):
         progress. Finch allows a fixed window rate limit of 1 forced refresh per hour
         per connection.
 
-        `w4_data_sync`: Enqueues a job for sync W-4 data for a particular individual,
-        identified by `individual_id`. This feature is currently in beta.
+        `w4_form_employee_sync`: Enqueues a job for sync W-4 data for a particular
+        individual, identified by `individual_id`. This feature is currently in beta.
 
         This endpoint is available for _Scale_ tier customers as an add-on. To request
         access to this endpoint, please contact your Finch account manager.
@@ -351,7 +351,7 @@ class AsyncAutomated(AsyncAPIResource):
     async def create(
         self,
         *,
-        type: Literal["data_sync_all"] | Literal["w4_data_sync"],
+        type: Literal["data_sync_all"] | Literal["w4_form_employee_sync"],
         individual_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
