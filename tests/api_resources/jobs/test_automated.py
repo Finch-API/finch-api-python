@@ -53,7 +53,7 @@ class TestAutomated:
     def test_method_create_overload_2(self, client: Finch) -> None:
         automated = client.jobs.automated.create(
             individual_id="individual_id",
-            type="w4_data_sync",
+            type="w4_form_employee_sync",
         )
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
 
@@ -61,7 +61,7 @@ class TestAutomated:
     def test_raw_response_create_overload_2(self, client: Finch) -> None:
         response = client.jobs.automated.with_raw_response.create(
             individual_id="individual_id",
-            type="w4_data_sync",
+            type="w4_form_employee_sync",
         )
 
         assert response.is_closed is True
@@ -73,7 +73,7 @@ class TestAutomated:
     def test_streaming_response_create_overload_2(self, client: Finch) -> None:
         with client.jobs.automated.with_streaming_response.create(
             individual_id="individual_id",
-            type="w4_data_sync",
+            type="w4_form_employee_sync",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -193,7 +193,7 @@ class TestAsyncAutomated:
     async def test_method_create_overload_2(self, async_client: AsyncFinch) -> None:
         automated = await async_client.jobs.automated.create(
             individual_id="individual_id",
-            type="w4_data_sync",
+            type="w4_form_employee_sync",
         )
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
 
@@ -201,7 +201,7 @@ class TestAsyncAutomated:
     async def test_raw_response_create_overload_2(self, async_client: AsyncFinch) -> None:
         response = await async_client.jobs.automated.with_raw_response.create(
             individual_id="individual_id",
-            type="w4_data_sync",
+            type="w4_form_employee_sync",
         )
 
         assert response.is_closed is True
@@ -213,7 +213,7 @@ class TestAsyncAutomated:
     async def test_streaming_response_create_overload_2(self, async_client: AsyncFinch) -> None:
         async with async_client.jobs.automated.with_streaming_response.create(
             individual_id="individual_id",
-            type="w4_data_sync",
+            type="w4_form_employee_sync",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
