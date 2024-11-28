@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.11.0 (2024-11-28)
+
+Full Changelog: [v1.10.1...v1.11.0](https://github.com/Finch-API/finch-api-python/compare/v1.10.1...v1.11.0)
+
+### Features
+
+* **api:** api update ([#532](https://github.com/Finch-API/finch-api-python/issues/532)) ([821a77f](https://github.com/Finch-API/finch-api-python/commit/821a77fa1011aa5caa323e451b344f66f36a48eb))
+
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#533](https://github.com/Finch-API/finch-api-python/issues/533)) ([f5e151c](https://github.com/Finch-API/finch-api-python/commit/f5e151cb90b0acc31a535a70b9b42ec98000c1e2))
+
+
+### Chores
+
+* **internal:** exclude mypy from running on tests ([#531](https://github.com/Finch-API/finch-api-python/issues/531)) ([a5ce0e7](https://github.com/Finch-API/finch-api-python/commit/a5ce0e704b29d58eee8d56174c949557d4cd1b74))
+* remove now unused `cached-property` dep ([#529](https://github.com/Finch-API/finch-api-python/issues/529)) ([7fdf9b7](https://github.com/Finch-API/finch-api-python/commit/7fdf9b7a507cd9c9a4b35f4af60b63d43f63581f))
+
 ## 1.10.1 (2024-11-23)
 
 Full Changelog: [v1.10.0...v1.10.1](https://github.com/Finch-API/finch-api-python/compare/v1.10.0...v1.10.1)
