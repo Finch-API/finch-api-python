@@ -57,6 +57,15 @@ class EmploymentData(BaseModel):
     employment: Optional[Employment] = None
     """The employment object."""
 
+    employment_status: Optional[
+        Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
+    ] = None
+    """The detailed employment status of the individual.
+
+    Available options: `active`, `deceased`, `leave`, `onboarding`, `prehire`,
+    `retired`, `terminated`.
+    """
+
     end_date: Optional[str] = None
 
     first_name: Optional[str] = None

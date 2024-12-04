@@ -184,6 +184,8 @@ class AuthenticationMethodSupportedFieldsEmployment(BaseModel):
 
     employment: Optional[AuthenticationMethodSupportedFieldsEmploymentEmployment] = None
 
+    employment_status: Optional[bool] = None
+
     end_date: Optional[bool] = None
 
     first_name: Optional[bool] = None
