@@ -187,6 +187,8 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFieldsEmployment(BaseMo
 
     employment: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsEmploymentEmployment] = None
 
+    employment_status: Optional[bool] = None
+
     end_date: Optional[bool] = None
 
     first_name: Optional[bool] = None
