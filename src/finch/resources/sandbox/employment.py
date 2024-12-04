@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -52,6 +53,10 @@ class Employment(SyncAPIResource):
         custom_fields: Iterable[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
         department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
         employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
+        employment_status: Optional[
+            Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
+        ]
+        | NotGiven = NOT_GIVEN,
         end_date: Optional[str] | NotGiven = NOT_GIVEN,
         first_name: Optional[str] | NotGiven = NOT_GIVEN,
         income: Optional[IncomeParam] | NotGiven = NOT_GIVEN,
@@ -85,6 +90,8 @@ class Employment(SyncAPIResource):
           department: The department object.
 
           employment: The employment object.
+
+          employment_status: The detailed employment status of the individual.
 
           first_name: The legal first name of the individual.
 
@@ -126,6 +133,7 @@ class Employment(SyncAPIResource):
                     "custom_fields": custom_fields,
                     "department": department,
                     "employment": employment,
+                    "employment_status": employment_status,
                     "end_date": end_date,
                     "first_name": first_name,
                     "income": income,
@@ -177,6 +185,10 @@ class AsyncEmployment(AsyncAPIResource):
         custom_fields: Iterable[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
         department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
         employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
+        employment_status: Optional[
+            Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
+        ]
+        | NotGiven = NOT_GIVEN,
         end_date: Optional[str] | NotGiven = NOT_GIVEN,
         first_name: Optional[str] | NotGiven = NOT_GIVEN,
         income: Optional[IncomeParam] | NotGiven = NOT_GIVEN,
@@ -210,6 +222,8 @@ class AsyncEmployment(AsyncAPIResource):
           department: The department object.
 
           employment: The employment object.
+
+          employment_status: The detailed employment status of the individual.
 
           first_name: The legal first name of the individual.
 
@@ -251,6 +265,7 @@ class AsyncEmployment(AsyncAPIResource):
                     "custom_fields": custom_fields,
                     "department": department,
                     "employment": employment,
+                    "employment_status": employment_status,
                     "end_date": end_date,
                     "first_name": first_name,
                     "income": income,

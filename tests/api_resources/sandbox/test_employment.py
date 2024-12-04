@@ -40,6 +40,7 @@ class TestEmployment:
                 "subtype": "full_time",
                 "type": "employee",
             },
+            employment_status="active",
             end_date="end_date",
             first_name="first_name",
             income={
@@ -135,6 +136,7 @@ class TestAsyncEmployment:
                 "subtype": "full_time",
                 "type": "employee",
             },
+            employment_status="active",
             end_date="end_date",
             first_name="first_name",
             income={
