@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.12.0 (2024-12-05)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/Finch-API/finch-api-python/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** api update ([#539](https://github.com/Finch-API/finch-api-python/issues/539)) ([8808bc2](https://github.com/Finch-API/finch-api-python/commit/8808bc28d454383cc3375261c5fd68040ba1f63e))
+
+
+### Chores
+
+* **internal:** bump pyright ([#537](https://github.com/Finch-API/finch-api-python/issues/537)) ([1233851](https://github.com/Finch-API/finch-api-python/commit/123385153a2babb6771c64bc3712f5f50a31c4cd))
+* **internal:** codegen related update ([#535](https://github.com/Finch-API/finch-api-python/issues/535)) ([9bd789d](https://github.com/Finch-API/finch-api-python/commit/9bd789d78363cb269be7e6b213de5d5ba40448cd))
+* make the `Omit` type public ([#538](https://github.com/Finch-API/finch-api-python/issues/538)) ([02a3af8](https://github.com/Finch-API/finch-api-python/commit/02a3af89c699d07d41c3ca28e8e92082935254ca))
+
 ## 1.11.0 (2024-11-28)
 
 Full Changelog: [v1.10.1...v1.11.0](https://github.com/Finch-API/finch-api-python/compare/v1.10.1...v1.11.0)

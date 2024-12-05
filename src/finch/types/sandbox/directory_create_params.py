@@ -90,6 +90,11 @@ class Body(TypedDict, total=False):
     employment: Optional[BodyEmployment]
     """The employment object."""
 
+    employment_status: Optional[
+        Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
+    ]
+    """The detailed employment status of the individual."""
+
     encrypted_ssn: Optional[str]
     """Social Security Number of the individual in **encrypted** format.
 
