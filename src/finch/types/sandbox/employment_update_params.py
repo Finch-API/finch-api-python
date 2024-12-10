@@ -28,6 +28,11 @@ class EmploymentUpdateParams(TypedDict, total=False):
     employment: Optional[Employment]
     """The employment object."""
 
+    employment_status: Optional[
+        Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
+    ]
+    """The detailed employment status of the individual."""
+
     end_date: Optional[str]
 
     first_name: Optional[str]
