@@ -48,3 +48,6 @@ class CreateAccessTokenResponse(BaseModel):
     The ID of your customer you provided to Finch when a connect session was created
     for this connection.
     """
+
+    token_type: Optional[str] = None
+    """The RFC 8693 token type (Finch uses `bearer` tokens)"""
