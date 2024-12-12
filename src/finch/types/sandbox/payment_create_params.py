@@ -5,7 +5,6 @@ from __future__ import annotations
 from typing import Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
-from ..money_param import MoneyParam
 from ..hris.benefit_type import BenefitType
 
 __all__ = [
@@ -120,12 +119,14 @@ class PayStatement(TypedDict, total=False):
 
     employer_contributions: Optional[Iterable[Optional[PayStatementEmployerContribution]]]
 
-    gross_pay: Optional[MoneyParam]
+    gross_pay: Optional[float]
+    """The gross pay for the pay period"""
 
     individual_id: str
     """A stable Finch `id` (UUID v4) for an individual in the company"""
 
-    net_pay: Optional[MoneyParam]
+    net_pay: Optional[float]
+    """The net pay for the pay period"""
 
     payment_method: Optional[Literal["check", "direct_deposit"]]
     """The payment method."""
