@@ -10,14 +10,6 @@ from .company import (
     CompanyResourceWithStreamingResponse,
     AsyncCompanyResourceWithStreamingResponse,
 )
-from .benefits import (
-    Benefits,
-    AsyncBenefits,
-    BenefitsWithRawResponse,
-    AsyncBenefitsWithRawResponse,
-    BenefitsWithStreamingResponse,
-    AsyncBenefitsWithStreamingResponse,
-)
 from .payments import (
     Payments,
     AsyncPayments,
@@ -60,7 +52,14 @@ from .pay_statements import (
     PayStatementsWithStreamingResponse,
     AsyncPayStatementsWithStreamingResponse,
 )
-from .benefits.benefits import Benefits, AsyncBenefits
+from .benefits.benefits import (
+    Benefits,
+    AsyncBenefits,
+    BenefitsWithRawResponse,
+    AsyncBenefitsWithRawResponse,
+    BenefitsWithStreamingResponse,
+    AsyncBenefitsWithStreamingResponse,
+)
 
 __all__ = ["HRIS", "AsyncHRIS"]
 
