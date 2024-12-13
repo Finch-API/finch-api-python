@@ -3,6 +3,7 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
+from ..money import Money
 from ..._models import BaseModel
 from .benefit_type import BenefitType
 
@@ -103,14 +104,12 @@ class PayStatement(BaseModel):
 
     employer_contributions: Optional[List[Optional[EmployerContribution]]] = None
 
-    gross_pay: Optional[float] = None
-    """The gross pay for the pay period"""
+    gross_pay: Optional[Money] = None
 
     individual_id: Optional[str] = None
     """A stable Finch `id` (UUID v4) for an individual in the company"""
 
-    net_pay: Optional[float] = None
-    """The net pay for the pay period"""
+    net_pay: Optional[Money] = None
 
     payment_method: Optional[Literal["check", "direct_deposit"]] = None
     """The payment method."""
