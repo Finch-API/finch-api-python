@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-from .jobs import (
-    Jobs,
-    AsyncJobs,
-    JobsWithRawResponse,
-    AsyncJobsWithRawResponse,
-    JobsWithStreamingResponse,
-    AsyncJobsWithStreamingResponse,
-)
 from .company import (
     Company,
     AsyncCompany,
@@ -35,7 +27,14 @@ from .directory import (
     DirectoryWithStreamingResponse,
     AsyncDirectoryWithStreamingResponse,
 )
-from .jobs.jobs import Jobs, AsyncJobs
+from .jobs.jobs import (
+    Jobs,
+    AsyncJobs,
+    JobsWithRawResponse,
+    AsyncJobsWithRawResponse,
+    JobsWithStreamingResponse,
+    AsyncJobsWithStreamingResponse,
+)
 from .employment import (
     Employment,
     AsyncEmployment,
@@ -53,7 +52,7 @@ from .individual import (
     AsyncIndividualWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .connections import (
+from .connections.connections import (
     Connections,
     AsyncConnections,
     ConnectionsWithRawResponse,
@@ -61,7 +60,6 @@ from .connections import (
     ConnectionsWithStreamingResponse,
     AsyncConnectionsWithStreamingResponse,
 )
-from .connections.connections import Connections, AsyncConnections
 
 __all__ = ["Sandbox", "AsyncSandbox"]
 
