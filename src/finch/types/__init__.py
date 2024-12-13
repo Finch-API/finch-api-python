@@ -12,6 +12,7 @@ from .shared import (
 )
 from .location import Location as Location
 from .provider import Provider as Provider
+from .money_param import MoneyParam as MoneyParam
 from .income_param import IncomeParam as IncomeParam
 from .company_event import CompanyEvent as CompanyEvent
 from .introspection import Introspection as Introspection
