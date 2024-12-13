@@ -54,9 +54,15 @@ class TestPayment:
                             "type": "401k",
                         }
                     ],
-                    "gross_pay": 0,
+                    "gross_pay": {
+                        "amount": 0,
+                        "currency": "currency",
+                    },
                     "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
-                    "net_pay": 0,
+                    "net_pay": {
+                        "amount": 0,
+                        "currency": "currency",
+                    },
                     "payment_method": "check",
                     "taxes": [
                         {
@@ -136,9 +142,15 @@ class TestAsyncPayment:
                             "type": "401k",
                         }
                     ],
-                    "gross_pay": 0,
+                    "gross_pay": {
+                        "amount": 0,
+                        "currency": "currency",
+                    },
                     "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
-                    "net_pay": 0,
+                    "net_pay": {
+                        "amount": 0,
+                        "currency": "currency",
+                    },
                     "payment_method": "check",
                     "taxes": [
                         {
