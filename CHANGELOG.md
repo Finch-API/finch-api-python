@@ -1,5 +1,36 @@
 # Changelog
 
+## 1.12.0 (2024-12-17)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/Finch-API/finch-api-python/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** api update ([#539](https://github.com/Finch-API/finch-api-python/issues/539)) ([8808bc2](https://github.com/Finch-API/finch-api-python/commit/8808bc28d454383cc3375261c5fd68040ba1f63e))
+* **api:** api update ([#542](https://github.com/Finch-API/finch-api-python/issues/542)) ([bf7e2d0](https://github.com/Finch-API/finch-api-python/commit/bf7e2d04a43f70b3dd034ea5d9aae240f21aa271))
+* **api:** api update ([#545](https://github.com/Finch-API/finch-api-python/issues/545)) ([838c2e1](https://github.com/Finch-API/finch-api-python/commit/838c2e12252ee85f1e01c54b18563190f2afa331))
+* **api:** api update ([#546](https://github.com/Finch-API/finch-api-python/issues/546)) ([3fc385f](https://github.com/Finch-API/finch-api-python/commit/3fc385f739eb1d566d3b93a738795f9a0cc76ddf))
+* **api:** api update ([#551](https://github.com/Finch-API/finch-api-python/issues/551)) ([de22285](https://github.com/Finch-API/finch-api-python/commit/de222853bcf92960f3fc27668d66f2df06d13c23))
+
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#544](https://github.com/Finch-API/finch-api-python/issues/544)) ([0b2d28e](https://github.com/Finch-API/finch-api-python/commit/0b2d28e6721227e13ff9f5a9f99cec896532d6cd))
+* **internal:** bump pydantic dependency ([#540](https://github.com/Finch-API/finch-api-python/issues/540)) ([a6bbbbf](https://github.com/Finch-API/finch-api-python/commit/a6bbbbfd913a3900b0d69dcbc0df6869c4e30f1d))
+* **internal:** bump pyright ([#537](https://github.com/Finch-API/finch-api-python/issues/537)) ([1233851](https://github.com/Finch-API/finch-api-python/commit/123385153a2babb6771c64bc3712f5f50a31c4cd))
+* **internal:** bump pyright ([#543](https://github.com/Finch-API/finch-api-python/issues/543)) ([3310b4b](https://github.com/Finch-API/finch-api-python/commit/3310b4bcf1a29c2a966b0c32b8acc91f6955db4e))
+* **internal:** codegen related update ([#535](https://github.com/Finch-API/finch-api-python/issues/535)) ([9bd789d](https://github.com/Finch-API/finch-api-python/commit/9bd789d78363cb269be7e6b213de5d5ba40448cd))
+* **internal:** fix some typos ([#552](https://github.com/Finch-API/finch-api-python/issues/552)) ([0f1f7c8](https://github.com/Finch-API/finch-api-python/commit/0f1f7c8bb990280d63ec21177f84b4cc7d431cff))
+* **internal:** remove some duplicated imports ([#547](https://github.com/Finch-API/finch-api-python/issues/547)) ([7bfcea0](https://github.com/Finch-API/finch-api-python/commit/7bfcea02a906fb2e2d811186b4bc2f46e1ac61e0))
+* **internal:** updated imports ([#548](https://github.com/Finch-API/finch-api-python/issues/548)) ([aa2ca67](https://github.com/Finch-API/finch-api-python/commit/aa2ca675334c9058759c96662219e2efc3d35aa8))
+* make the `Omit` type public ([#538](https://github.com/Finch-API/finch-api-python/issues/538)) ([02a3af8](https://github.com/Finch-API/finch-api-python/commit/02a3af89c699d07d41c3ca28e8e92082935254ca))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#550](https://github.com/Finch-API/finch-api-python/issues/550)) ([a5fff19](https://github.com/Finch-API/finch-api-python/commit/a5fff19f34774cef04415d99b744258f8e966c36))
+* **readme:** fix http client proxies example ([#541](https://github.com/Finch-API/finch-api-python/issues/541)) ([35049ae](https://github.com/Finch-API/finch-api-python/commit/35049aefde2604411e4ecc5b8abaf1cc9a327164))
+
 ## 1.11.0 (2024-11-28)
 
 Full Changelog: [v1.10.1...v1.11.0](https://github.com/Finch-API/finch-api-python/compare/v1.10.1...v1.11.0)
