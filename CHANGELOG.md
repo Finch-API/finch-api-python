@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.12.1 (2025-01-01)
+
+Full Changelog: [v1.12.0...v1.12.1](https://github.com/Finch-API/finch-api-python/compare/v1.12.0...v1.12.1)
+
+### Chores
+
+* **internal:** codegen related update ([#554](https://github.com/Finch-API/finch-api-python/issues/554)) ([5db22d6](https://github.com/Finch-API/finch-api-python/commit/5db22d66a864bac7e7caeae7d3f168cbd2d76c0d))
+
 ## 1.12.0 (2024-12-17)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/Finch-API/finch-api-python/compare/v1.11.0...v1.12.0)
