@@ -96,6 +96,25 @@ Methods:
 
 - <code title="post /employer/pay-statement">client.hris.pay_statements.<a href="./src/finch/resources/hris/pay_statements.py">retrieve_many</a>(\*\*<a href="src/finch/types/hris/pay_statement_retrieve_many_params.py">params</a>) -> <a href="./src/finch/types/hris/pay_statement_response.py">SyncResponsesPage[PayStatementResponse]</a></code>
 
+## Documents
+
+Types:
+
+```python
+from finch.types.hris import (
+    DocumentResponse,
+    W42005,
+    W42020,
+    DocumentListResponse,
+    DocumentRetreiveResponse,
+)
+```
+
+Methods:
+
+- <code title="get /employer/documents">client.hris.documents.<a href="./src/finch/resources/hris/documents.py">list</a>(\*\*<a href="src/finch/types/hris/document_list_params.py">params</a>) -> <a href="./src/finch/types/hris/document_list_response.py">DocumentListResponse</a></code>
+- <code title="get /employer/documents/{document_id}">client.hris.documents.<a href="./src/finch/resources/hris/documents.py">retreive</a>(document_id) -> <a href="./src/finch/types/hris/document_retreive_response.py">DocumentRetreiveResponse</a></code>
+
 ## Benefits
 
 Types:
