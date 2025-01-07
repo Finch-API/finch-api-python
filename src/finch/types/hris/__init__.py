@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from .w42005 import W42005 as W42005
+from .w42020 import W42020 as W42020
 from .company import Company as Company
 from .payment import Payment as Payment
 from .individual import Individual as Individual
@@ -11,18 +13,22 @@ from .company_benefit import CompanyBenefit as CompanyBenefit
 from .employment_data import EmploymentData as EmploymentData
 from .benefits_support import BenefitsSupport as BenefitsSupport
 from .benefit_frequency import BenefitFrequency as BenefitFrequency
+from .document_response import DocumentResponse as DocumentResponse
 from .supported_benefit import SupportedBenefit as SupportedBenefit
 from .benfit_contribution import BenfitContribution as BenfitContribution
 from .individual_response import IndividualResponse as IndividualResponse
 from .payment_list_params import PaymentListParams as PaymentListParams
 from .benefit_contribution import BenefitContribution as BenefitContribution
+from .document_list_params import DocumentListParams as DocumentListParams
 from .benefit_create_params import BenefitCreateParams as BenefitCreateParams
 from .benefit_update_params import BenefitUpdateParams as BenefitUpdateParams
 from .directory_list_params import DirectoryListParams as DirectoryListParams
+from .document_list_response import DocumentListResponse as DocumentListResponse
 from .pay_statement_response import PayStatementResponse as PayStatementResponse
 from .individual_in_directory import IndividualInDirectory as IndividualInDirectory
 from .employment_data_response import EmploymentDataResponse as EmploymentDataResponse
 from .support_per_benefit_type import SupportPerBenefitType as SupportPerBenefitType
+from .document_retreive_response import DocumentRetreiveResponse as DocumentRetreiveResponse
 from .pay_statement_response_body import PayStatementResponseBody as PayStatementResponseBody
 from .benefit_features_and_operations import BenefitFeaturesAndOperations as BenefitFeaturesAndOperations
 from .employment_retrieve_many_params import EmploymentRetrieveManyParams as EmploymentRetrieveManyParams

@@ -40,6 +40,14 @@ from .directory import (
     DirectoryWithStreamingResponse,
     AsyncDirectoryWithStreamingResponse,
 )
+from .documents import (
+    Documents,
+    AsyncDocuments,
+    DocumentsWithRawResponse,
+    AsyncDocumentsWithRawResponse,
+    DocumentsWithStreamingResponse,
+    AsyncDocumentsWithStreamingResponse,
+)
 from .employments import (
     Employments,
     AsyncEmployments,
@@ -102,6 +110,12 @@ __all__ = [
     "AsyncPayStatementsWithRawResponse",
     "PayStatementsWithStreamingResponse",
     "AsyncPayStatementsWithStreamingResponse",
+    "Documents",
+    "AsyncDocuments",
+    "DocumentsWithRawResponse",
+    "AsyncDocumentsWithRawResponse",
+    "DocumentsWithStreamingResponse",
+    "AsyncDocumentsWithStreamingResponse",
     "Benefits",
     "AsyncBenefits",
     "BenefitsWithRawResponse",
