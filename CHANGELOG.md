@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.12.1 (2025-01-07)
+
+Full Changelog: [v1.12.0...v1.12.1](https://github.com/Finch-API/finch-api-python/compare/v1.12.0...v1.12.1)
+
+### Chores
+
+* add missing isclass check ([#556](https://github.com/Finch-API/finch-api-python/issues/556)) ([4b82e52](https://github.com/Finch-API/finch-api-python/commit/4b82e52af15f1f22f5b6e0212700ac301d0bc782))
+* **internal:** bump httpx dependency ([#557](https://github.com/Finch-API/finch-api-python/issues/557)) ([22b533f](https://github.com/Finch-API/finch-api-python/commit/22b533ff97e4931dfb5a71e1e2d783ab843d0115))
+* **internal:** codegen related update ([#554](https://github.com/Finch-API/finch-api-python/issues/554)) ([5db22d6](https://github.com/Finch-API/finch-api-python/commit/5db22d66a864bac7e7caeae7d3f168cbd2d76c0d))
+
 ## 1.12.0 (2024-12-17)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/Finch-API/finch-api-python/compare/v1.11.0...v1.12.0)
