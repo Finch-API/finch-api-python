@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.13.0 (2025-01-07)
+
+Full Changelog: [v1.12.1...v1.13.0](https://github.com/Finch-API/finch-api-python/compare/v1.12.1...v1.13.0)
+
+### Features
+
+* **api:** manual updates ([#559](https://github.com/Finch-API/finch-api-python/issues/559)) ([10436fd](https://github.com/Finch-API/finch-api-python/commit/10436fd733810677d488b32feb4799801b9a8f90))
+
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#561](https://github.com/Finch-API/finch-api-python/issues/561)) ([679e438](https://github.com/Finch-API/finch-api-python/commit/679e4380cd91699210a45cc7b17129370a72f45c))
+
 ## 1.12.1 (2025-01-07)
 
 Full Changelog: [v1.12.0...v1.12.1](https://github.com/Finch-API/finch-api-python/compare/v1.12.0...v1.12.1)
