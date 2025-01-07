@@ -17,6 +17,7 @@ from typing_extensions import Literal
 
 import httpx
 import pytest
+import packaging.version as version
 from respx import MockRouter
 from pydantic import ValidationError
 
@@ -643,6 +644,10 @@ class TestFinch:
         )
         assert request.url == "https://myapi.com/foo"
 
+    @pytest.mark.skipif(
+        version.parse(httpx.__version__) >= version.parse("0.28.0"),
+        reason="Test is only relevant for httpx versions < 0.28.0",
+    )
     def test_transport_option_is_deprecated(self) -> None:
         with pytest.warns(
             DeprecationWarning,
@@ -672,6 +677,10 @@ class TestFinch:
                         http_client=http_client,
                     )
 
+    @pytest.mark.skipif(
+        version.parse(httpx.__version__) >= version.parse("0.28.0"),
+        reason="Test is only relevant for httpx versions < 0.28.0",
+    )
     def test_connection_pool_limits_option_is_deprecated(self) -> None:
         with pytest.warns(
             DeprecationWarning,
@@ -709,6 +718,10 @@ class TestFinch:
                         http_client=http_client,
                     )
 
+    @pytest.mark.skipif(
+        version.parse(httpx.__version__) >= version.parse("0.28.0"),
+        reason="Test is only relevant for httpx versions < 0.28.0",
+    )
     def test_proxies_option_is_deprecated(self) -> None:
         with pytest.warns(
             DeprecationWarning,
@@ -1527,6 +1540,10 @@ class TestAsyncFinch:
         )
         assert request.url == "https://myapi.com/foo"
 
+    @pytest.mark.skipif(
+        version.parse(httpx.__version__) >= version.parse("0.28.0"),
+        reason="Test is only relevant for httpx versions < 0.28.0",
+    )
     def test_transport_option_is_deprecated(self) -> None:
         with pytest.warns(
             DeprecationWarning,
@@ -1556,6 +1573,10 @@ class TestAsyncFinch:
                         http_client=http_client,
                     )
 
+    @pytest.mark.skipif(
+        version.parse(httpx.__version__) >= version.parse("0.28.0"),
+        reason="Test is only relevant for httpx versions < 0.28.0",
+    )
     def test_connection_pool_limits_option_is_deprecated(self) -> None:
         with pytest.warns(
             DeprecationWarning,
@@ -1593,6 +1614,10 @@ class TestAsyncFinch:
                         http_client=http_client,
                     )
 
+    @pytest.mark.skipif(
+        version.parse(httpx.__version__) >= version.parse("0.28.0"),
+        reason="Test is only relevant for httpx versions < 0.28.0",
+    )
     def test_proxies_option_is_deprecated(self) -> None:
         with pytest.warns(
             DeprecationWarning,
