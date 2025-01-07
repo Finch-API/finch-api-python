@@ -27,6 +27,14 @@ from .directory import (
     DirectoryWithStreamingResponse,
     AsyncDirectoryWithStreamingResponse,
 )
+from .documents import (
+    Documents,
+    AsyncDocuments,
+    DocumentsWithRawResponse,
+    AsyncDocumentsWithRawResponse,
+    DocumentsWithStreamingResponse,
+    AsyncDocumentsWithStreamingResponse,
+)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .employments import (
     Employments,
@@ -90,6 +98,10 @@ class HRIS(SyncAPIResource):
         return PayStatements(self._client)
 
     @cached_property
+    def documents(self) -> Documents:
+        return Documents(self._client)
+
+    @cached_property
     def benefits(self) -> Benefits:
         return Benefits(self._client)
 
@@ -137,6 +149,10 @@ class AsyncHRIS(AsyncAPIResource):
     @cached_property
     def pay_statements(self) -> AsyncPayStatements:
         return AsyncPayStatements(self._client)
+
+    @cached_property
+    def documents(self) -> AsyncDocuments:
+        return AsyncDocuments(self._client)
 
     @cached_property
     def benefits(self) -> AsyncBenefits:
@@ -191,6 +207,10 @@ class HRISWithRawResponse:
         return PayStatementsWithRawResponse(self._hris.pay_statements)
 
     @cached_property
+    def documents(self) -> DocumentsWithRawResponse:
+        return DocumentsWithRawResponse(self._hris.documents)
+
+    @cached_property
     def benefits(self) -> BenefitsWithRawResponse:
         return BenefitsWithRawResponse(self._hris.benefits)
 
@@ -222,6 +242,10 @@ class AsyncHRISWithRawResponse:
     @cached_property
     def pay_statements(self) -> AsyncPayStatementsWithRawResponse:
         return AsyncPayStatementsWithRawResponse(self._hris.pay_statements)
+
+    @cached_property
+    def documents(self) -> AsyncDocumentsWithRawResponse:
+        return AsyncDocumentsWithRawResponse(self._hris.documents)
 
     @cached_property
     def benefits(self) -> AsyncBenefitsWithRawResponse:
@@ -257,6 +281,10 @@ class HRISWithStreamingResponse:
         return PayStatementsWithStreamingResponse(self._hris.pay_statements)
 
     @cached_property
+    def documents(self) -> DocumentsWithStreamingResponse:
+        return DocumentsWithStreamingResponse(self._hris.documents)
+
+    @cached_property
     def benefits(self) -> BenefitsWithStreamingResponse:
         return BenefitsWithStreamingResponse(self._hris.benefits)
 
@@ -288,6 +316,10 @@ class AsyncHRISWithStreamingResponse:
     @cached_property
     def pay_statements(self) -> AsyncPayStatementsWithStreamingResponse:
         return AsyncPayStatementsWithStreamingResponse(self._hris.pay_statements)
+
+    @cached_property
+    def documents(self) -> AsyncDocumentsWithStreamingResponse:
+        return AsyncDocumentsWithStreamingResponse(self._hris.documents)
 
     @cached_property
     def benefits(self) -> AsyncBenefitsWithStreamingResponse:
