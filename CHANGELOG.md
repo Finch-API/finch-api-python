@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.13.1 (2025-01-08)
+
+Full Changelog: [v1.13.0...v1.13.1](https://github.com/Finch-API/finch-api-python/compare/v1.13.0...v1.13.1)
+
+### Chores
+
+* **internal:** codegen related update ([#567](https://github.com/Finch-API/finch-api-python/issues/567)) ([fde0502](https://github.com/Finch-API/finch-api-python/commit/fde0502ffd4a3a9bba553ae38e7763bb650c6e92))
+
+
+### Documentation
+
+* fix typos ([#564](https://github.com/Finch-API/finch-api-python/issues/564)) ([4f7491f](https://github.com/Finch-API/finch-api-python/commit/4f7491f59a349785250508c284d85a7d0aadd320))
+* more typo fixes ([#566](https://github.com/Finch-API/finch-api-python/issues/566)) ([1ebaf62](https://github.com/Finch-API/finch-api-python/commit/1ebaf6258ea3e9ca7a6401f9554aec548a4a0653))
+
 ## 1.13.0 (2025-01-07)
 
 Full Changelog: [v1.12.1...v1.13.0](https://github.com/Finch-API/finch-api-python/compare/v1.12.1...v1.13.0)
