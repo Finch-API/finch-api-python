@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.13.2 (2025-01-10)
+
+Full Changelog: [v1.13.1...v1.13.2](https://github.com/Finch-API/finch-api-python/compare/v1.13.1...v1.13.2)
+
+### Bug Fixes
+
+* correctly handle deserialising `cls` fields ([#569](https://github.com/Finch-API/finch-api-python/issues/569)) ([95dac49](https://github.com/Finch-API/finch-api-python/commit/95dac4927e34c6dd129bab416d890e148bef9b60))
+
 ## 1.13.1 (2025-01-08)
 
 Full Changelog: [v1.13.0...v1.13.1](https://github.com/Finch-API/finch-api-python/compare/v1.13.0...v1.13.1)
