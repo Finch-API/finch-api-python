@@ -26,7 +26,7 @@ class Payment(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PaymentWithRawResponse:
         """
-        This property can be used as a prefix for any HTTP method call to return the
+        This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
@@ -88,7 +88,7 @@ class AsyncPayment(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPaymentWithRawResponse:
         """
-        This property can be used as a prefix for any HTTP method call to return the
+        This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Finch-API/finch-api-python#accessing-raw-response-data-eg-headers
