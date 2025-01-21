@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.13.3 (2025-01-21)
+
+Full Changelog: [v1.13.2...v1.13.3](https://github.com/Finch-API/finch-api-python/compare/v1.13.2...v1.13.3)
+
+### Bug Fixes
+
+* **tests:** make test_get_platform less flaky ([#576](https://github.com/Finch-API/finch-api-python/issues/576)) ([6b6b36c](https://github.com/Finch-API/finch-api-python/commit/6b6b36cf740f3d403b8f874f9d6b6b56c9942fe4))
+
+
+### Chores
+
+* **internal:** avoid pytest-asyncio deprecation warning ([#577](https://github.com/Finch-API/finch-api-python/issues/577)) ([54f644a](https://github.com/Finch-API/finch-api-python/commit/54f644aacd018a5bbc7a76e530f4fe5ceec8d874))
+* **internal:** bump pyright dependency ([#574](https://github.com/Finch-API/finch-api-python/issues/574)) ([24ccfc8](https://github.com/Finch-API/finch-api-python/commit/24ccfc8732a8c6e9819b37a9d30651fe1ab565fd))
+* **internal:** minor style changes ([#578](https://github.com/Finch-API/finch-api-python/issues/578)) ([ed9a105](https://github.com/Finch-API/finch-api-python/commit/ed9a105b2ac4ee283a191fdecf26105ed4aa62ad))
+* **internal:** update deps ([#572](https://github.com/Finch-API/finch-api-python/issues/572)) ([40c663f](https://github.com/Finch-API/finch-api-python/commit/40c663f4be579ea1451ae489055e9d1b381f33d6))
+
+
+### Documentation
+
+* **raw responses:** fix duplicate `the` ([#575](https://github.com/Finch-API/finch-api-python/issues/575)) ([ae1b97a](https://github.com/Finch-API/finch-api-python/commit/ae1b97a538f2eb075a8ff1f38ab8ab2e9ec0e2b6))
+
 ## 1.13.2 (2025-01-10)
 
 Full Changelog: [v1.13.1...v1.13.2](https://github.com/Finch-API/finch-api-python/compare/v1.13.1...v1.13.2)
