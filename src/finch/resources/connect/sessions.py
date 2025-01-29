@@ -69,7 +69,7 @@ class Sessions(SyncAPIResource):
         Create a new connect session for an employer
 
         Args:
-          minutes_to_expire: The number of minutes until the session expires (defaults to 20,160, which is 14
+          minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
           extra_headers: Send extra headers
@@ -129,7 +129,7 @@ class Sessions(SyncAPIResource):
         Args:
           connection_id: The ID of the existing connection to reauthenticate
 
-          minutes_to_expire: The number of minutes until the session expires (defaults to 20,160, which is 14
+          minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
           products: The products to request access to (optional for reauthentication)
@@ -207,7 +207,7 @@ class AsyncSessions(AsyncAPIResource):
         Create a new connect session for an employer
 
         Args:
-          minutes_to_expire: The number of minutes until the session expires (defaults to 20,160, which is 14
+          minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
           extra_headers: Send extra headers
@@ -267,7 +267,7 @@ class AsyncSessions(AsyncAPIResource):
         Args:
           connection_id: The ID of the existing connection to reauthenticate
 
-          minutes_to_expire: The number of minutes until the session expires (defaults to 20,160, which is 14
+          minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
           products: The products to request access to (optional for reauthentication)
