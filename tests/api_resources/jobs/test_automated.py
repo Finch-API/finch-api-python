@@ -52,7 +52,7 @@ class TestAutomated:
     @parametrize
     def test_method_create_overload_2(self, client: Finch) -> None:
         automated = client.jobs.automated.create(
-            individual_id="individual_id",
+            params={"individual_id": "individual_id"},
             type="w4_form_employee_sync",
         )
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
@@ -60,7 +60,7 @@ class TestAutomated:
     @parametrize
     def test_raw_response_create_overload_2(self, client: Finch) -> None:
         response = client.jobs.automated.with_raw_response.create(
-            individual_id="individual_id",
+            params={"individual_id": "individual_id"},
             type="w4_form_employee_sync",
         )
 
@@ -72,7 +72,7 @@ class TestAutomated:
     @parametrize
     def test_streaming_response_create_overload_2(self, client: Finch) -> None:
         with client.jobs.automated.with_streaming_response.create(
-            individual_id="individual_id",
+            params={"individual_id": "individual_id"},
             type="w4_form_employee_sync",
         ) as response:
             assert not response.is_closed
@@ -192,7 +192,7 @@ class TestAsyncAutomated:
     @parametrize
     async def test_method_create_overload_2(self, async_client: AsyncFinch) -> None:
         automated = await async_client.jobs.automated.create(
-            individual_id="individual_id",
+            params={"individual_id": "individual_id"},
             type="w4_form_employee_sync",
         )
         assert_matches_type(AutomatedCreateResponse, automated, path=["response"])
@@ -200,7 +200,7 @@ class TestAsyncAutomated:
     @parametrize
     async def test_raw_response_create_overload_2(self, async_client: AsyncFinch) -> None:
         response = await async_client.jobs.automated.with_raw_response.create(
-            individual_id="individual_id",
+            params={"individual_id": "individual_id"},
             type="w4_form_employee_sync",
         )
 
@@ -212,7 +212,7 @@ class TestAsyncAutomated:
     @parametrize
     async def test_streaming_response_create_overload_2(self, async_client: AsyncFinch) -> None:
         async with async_client.jobs.automated.with_streaming_response.create(
-            individual_id="individual_id",
+            params={"individual_id": "individual_id"},
             type="w4_form_employee_sync",
         ) as response:
             assert not response.is_closed

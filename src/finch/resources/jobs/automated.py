@@ -90,7 +90,7 @@ class Automated(SyncAPIResource):
     def create(
         self,
         *,
-        individual_id: str,
+        params: automated_create_params.W4FormEmployeeSyncParams,
         type: Literal["w4_form_employee_sync"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -116,8 +116,6 @@ class Automated(SyncAPIResource):
         access to this endpoint, please contact your Finch account manager.
 
         Args:
-          individual_id: The unique ID of the individual for W-4 data sync.
-
           type: The type of job to start.
 
           extra_headers: Send extra headers
@@ -130,12 +128,12 @@ class Automated(SyncAPIResource):
         """
         ...
 
-    @required_args(["type"], ["individual_id", "type"])
+    @required_args(["type"], ["params", "type"])
     def create(
         self,
         *,
         type: Literal["data_sync_all"] | Literal["w4_form_employee_sync"],
-        individual_id: str | NotGiven = NOT_GIVEN,
+        params: automated_create_params.W4FormEmployeeSyncParams | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -148,7 +146,7 @@ class Automated(SyncAPIResource):
             body=maybe_transform(
                 {
                     "type": type,
-                    "individual_id": individual_id,
+                    "params": params,
                 },
                 automated_create_params.AutomatedCreateParams,
             ),
@@ -307,7 +305,7 @@ class AsyncAutomated(AsyncAPIResource):
     async def create(
         self,
         *,
-        individual_id: str,
+        params: automated_create_params.W4FormEmployeeSyncParams,
         type: Literal["w4_form_employee_sync"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -333,8 +331,6 @@ class AsyncAutomated(AsyncAPIResource):
         access to this endpoint, please contact your Finch account manager.
 
         Args:
-          individual_id: The unique ID of the individual for W-4 data sync.
-
           type: The type of job to start.
 
           extra_headers: Send extra headers
@@ -347,12 +343,12 @@ class AsyncAutomated(AsyncAPIResource):
         """
         ...
 
-    @required_args(["type"], ["individual_id", "type"])
+    @required_args(["type"], ["params", "type"])
     async def create(
         self,
         *,
         type: Literal["data_sync_all"] | Literal["w4_form_employee_sync"],
-        individual_id: str | NotGiven = NOT_GIVEN,
+        params: automated_create_params.W4FormEmployeeSyncParams | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -365,7 +361,7 @@ class AsyncAutomated(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "type": type,
-                    "individual_id": individual_id,
+                    "params": params,
                 },
                 automated_create_params.AutomatedCreateParams,
             ),
