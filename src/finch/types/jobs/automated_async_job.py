@@ -6,7 +6,12 @@ from typing_extensions import Literal
 
 from ..._models import BaseModel
 
-__all__ = ["AutomatedAsyncJob"]
+__all__ = ["AutomatedAsyncJob", "Params"]
+
+
+class Params(BaseModel):
+    individual_id: Optional[str] = None
+    """The ID of the individual that the job was completed for."""
 
 
 class AutomatedAsyncJob(BaseModel):
@@ -26,6 +31,9 @@ class AutomatedAsyncJob(BaseModel):
     job_url: str
     """The url that can be used to retrieve the job status"""
 
+    params: Optional[Params] = None
+    """The input parameters for the job."""
+
     scheduled_at: Optional[datetime] = None
     """The datetime a job is scheduled to be run.
 
@@ -38,5 +46,5 @@ class AutomatedAsyncJob(BaseModel):
 
     status: Literal["pending", "in_progress", "complete", "error", "reauth_error", "permissions_error"]
 
-    type: Literal["data_sync_all"]
-    """Only `data_sync_all` currently supported"""
+    type: Literal["data_sync_all", "w4_form_employee_sync"]
+    """The type of automated job"""
