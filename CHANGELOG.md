@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.14.0 (2025-02-06)
+
+Full Changelog: [v1.13.3...v1.14.0](https://github.com/Finch-API/finch-api-python/compare/v1.13.3...v1.14.0)
+
+### Features
+
+* **api:** api update ([#582](https://github.com/Finch-API/finch-api-python/issues/582)) ([1568147](https://github.com/Finch-API/finch-api-python/commit/1568147b9ba15f131b87d34fbb4b66f0049b160e))
+* **api:** api update ([#584](https://github.com/Finch-API/finch-api-python/issues/584)) ([79bb13f](https://github.com/Finch-API/finch-api-python/commit/79bb13f68f07f41ef9342110bf481f3d134644a4))
+* **api:** api update ([#585](https://github.com/Finch-API/finch-api-python/issues/585)) ([fe082cb](https://github.com/Finch-API/finch-api-python/commit/fe082cb9386df1bf4cd0e897505b8e7d750bd53b))
+* **client:** send `X-Stainless-Read-Timeout` header ([#588](https://github.com/Finch-API/finch-api-python/issues/588)) ([70ca350](https://github.com/Finch-API/finch-api-python/commit/70ca350878ae0e7b9f5c7ef4bbcd8f086cf91dd8))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#587](https://github.com/Finch-API/finch-api-python/issues/587)) ([592b7cc](https://github.com/Finch-API/finch-api-python/commit/592b7ccde3e2d8071aa030bde5cf24264b0d865b))
+* **internal:** change default timeout to an int ([#586](https://github.com/Finch-API/finch-api-python/issues/586)) ([4835451](https://github.com/Finch-API/finch-api-python/commit/4835451ae07ada92da7b531088d6a950f0009f63))
+* **internal:** codegen related update ([#583](https://github.com/Finch-API/finch-api-python/issues/583)) ([a26a626](https://github.com/Finch-API/finch-api-python/commit/a26a626a063c71cd055068a288ae53f543d73144))
+* **internal:** fix type traversing dictionary params ([#589](https://github.com/Finch-API/finch-api-python/issues/589)) ([b3157d7](https://github.com/Finch-API/finch-api-python/commit/b3157d73258d1a1976e6d9155f8b210e175de57c))
+* **internal:** minor formatting changes ([#580](https://github.com/Finch-API/finch-api-python/issues/580)) ([63a905c](https://github.com/Finch-API/finch-api-python/commit/63a905c643203ca1e525f02f66b73800ecd83416))
+* **internal:** minor type handling changes ([#590](https://github.com/Finch-API/finch-api-python/issues/590)) ([f37f226](https://github.com/Finch-API/finch-api-python/commit/f37f226ff334f387a6c1a5fe1f1fa18c31533a47))
+
 ## 1.13.3 (2025-01-21)
 
 Full Changelog: [v1.13.2...v1.13.3](https://github.com/Finch-API/finch-api-python/compare/v1.13.2...v1.13.3)
