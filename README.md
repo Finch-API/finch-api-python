@@ -31,7 +31,7 @@ client = Finch(
 )
 
 page = client.hris.directory.list()
-print(page.page)
+print(page.individuals)
 ```
 
 ## Async usage
@@ -49,7 +49,7 @@ client = AsyncFinch(
 
 async def main() -> None:
     page = await client.hris.directory.list()
-    print(page.page)
+    print(page.individuals)
 
 
 asyncio.run(main())
@@ -141,7 +141,7 @@ from finch import Finch
 client = Finch()
 
 page = client.hris.directory.list()
-print(page.page)
+print(page.individuals)
 ```
 
 ## Webhook Verification
