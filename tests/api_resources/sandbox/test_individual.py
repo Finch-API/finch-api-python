@@ -28,7 +28,7 @@ class TestIndividual:
     def test_method_update_with_all_params(self, client: Finch) -> None:
         individual = client.sandbox.individual.update(
             individual_id="individual_id",
-            dob="12/20/1989",
+            dob="dob",
             emails=[
                 {
                     "data": "data",
@@ -108,7 +108,7 @@ class TestAsyncIndividual:
     async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
         individual = await async_client.sandbox.individual.update(
             individual_id="individual_id",
-            dob="12/20/1989",
+            dob="dob",
             emails=[
                 {
                     "data": "data",
