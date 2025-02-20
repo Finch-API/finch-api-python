@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
 from ..income_param import IncomeParam
 from ..location_param import LocationParam
@@ -21,7 +21,7 @@ __all__ = [
 
 
 class DirectoryCreateParams(TypedDict, total=False):
-    body: Required[Iterable[Body]]
+    body: Iterable[Body]
     """Array of individuals to create.
 
     Takes all combined fields from `/individual` and `/employment` endpoints. All
