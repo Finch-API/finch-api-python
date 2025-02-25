@@ -31,6 +31,7 @@ class TestPayment:
                     "earnings": [
                         {
                             "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
                             "currency": "currency",
                             "hours": 0,
                             "name": "name",
@@ -39,9 +40,10 @@ class TestPayment:
                     ],
                     "employee_deductions": [
                         {
-                            "amount": 2000,
-                            "currency": "usd",
-                            "name": "401k test",
+                            "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
+                            "currency": "currency",
+                            "name": "name",
                             "pre_tax": True,
                             "type": "401k",
                         }
@@ -49,6 +51,7 @@ class TestPayment:
                     "employer_contributions": [
                         {
                             "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
                             "currency": "currency",
                             "name": "name",
                             "type": "401k",
@@ -58,7 +61,7 @@ class TestPayment:
                         "amount": 0,
                         "currency": "currency",
                     },
-                    "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
+                    "individual_id": "individual_id",
                     "net_pay": {
                         "amount": 0,
                         "currency": "currency",
@@ -67,6 +70,7 @@ class TestPayment:
                     "taxes": [
                         {
                             "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
                             "currency": "currency",
                             "employer": True,
                             "name": "name",
@@ -119,6 +123,7 @@ class TestAsyncPayment:
                     "earnings": [
                         {
                             "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
                             "currency": "currency",
                             "hours": 0,
                             "name": "name",
@@ -127,9 +132,10 @@ class TestAsyncPayment:
                     ],
                     "employee_deductions": [
                         {
-                            "amount": 2000,
-                            "currency": "usd",
-                            "name": "401k test",
+                            "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
+                            "currency": "currency",
+                            "name": "name",
                             "pre_tax": True,
                             "type": "401k",
                         }
@@ -137,6 +143,7 @@ class TestAsyncPayment:
                     "employer_contributions": [
                         {
                             "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
                             "currency": "currency",
                             "name": "name",
                             "type": "401k",
@@ -146,7 +153,7 @@ class TestAsyncPayment:
                         "amount": 0,
                         "currency": "currency",
                     },
-                    "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
+                    "individual_id": "individual_id",
                     "net_pay": {
                         "amount": 0,
                         "currency": "currency",
@@ -155,6 +162,7 @@ class TestAsyncPayment:
                     "taxes": [
                         {
                             "amount": 0,
+                            "attributes": {"metadata": {"foo": "bar"}},
                             "currency": "currency",
                             "employer": True,
                             "name": "name",
