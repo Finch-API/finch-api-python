@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = [
     "IndividualEnrollManyParams",
@@ -15,7 +15,7 @@ __all__ = [
 
 
 class IndividualEnrollManyParams(TypedDict, total=False):
-    individuals: Required[Iterable[Individual]]
+    individuals: Iterable[Individual]
     """Array of the individual_id to enroll and a configuration object."""
 
 

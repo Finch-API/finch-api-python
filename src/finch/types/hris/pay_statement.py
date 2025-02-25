@@ -1,18 +1,39 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from ..money import Money
 from ..._models import BaseModel
 from .benefit_type import BenefitType
 
-__all__ = ["PayStatement", "Earning", "EmployeeDeduction", "EmployerContribution", "Tax"]
+__all__ = [
+    "PayStatement",
+    "Earning",
+    "EarningAttributes",
+    "EmployeeDeduction",
+    "EmployeeDeductionAttributes",
+    "EmployerContribution",
+    "EmployerContributionAttributes",
+    "Tax",
+    "TaxAttributes",
+]
+
+
+class EarningAttributes(BaseModel):
+    metadata: Optional[Dict[str, object]] = None
+    """The metadata to be attached to the entity by existing rules.
+
+    It is a key-value pairs where the values can be of any type (string, number,
+    boolean, object, array, etc.).
+    """
 
 
 class Earning(BaseModel):
     amount: Optional[int] = None
     """The earnings amount in cents."""
+
+    attributes: Optional[EarningAttributes] = None
 
     currency: Optional[str] = None
     """The earnings currency code."""
@@ -47,9 +68,20 @@ class Earning(BaseModel):
     """The type of earning."""
 
 
+class EmployeeDeductionAttributes(BaseModel):
+    metadata: Optional[Dict[str, object]] = None
+    """The metadata to be attached to the entity by existing rules.
+
+    It is a key-value pairs where the values can be of any type (string, number,
+    boolean, object, array, etc.).
+    """
+
+
 class EmployeeDeduction(BaseModel):
     amount: Optional[int] = None
     """The deduction amount in cents."""
+
+    attributes: Optional[EmployeeDeductionAttributes] = None
 
     currency: Optional[str] = None
     """The deduction currency."""
@@ -64,9 +96,20 @@ class EmployeeDeduction(BaseModel):
     """Type of benefit."""
 
 
+class EmployerContributionAttributes(BaseModel):
+    metadata: Optional[Dict[str, object]] = None
+    """The metadata to be attached to the entity by existing rules.
+
+    It is a key-value pairs where the values can be of any type (string, number,
+    boolean, object, array, etc.).
+    """
+
+
 class EmployerContribution(BaseModel):
     amount: Optional[int] = None
     """The contribution amount in cents."""
+
+    attributes: Optional[EmployerContributionAttributes] = None
 
     currency: Optional[str] = None
     """The contribution currency."""
@@ -78,9 +121,20 @@ class EmployerContribution(BaseModel):
     """Type of benefit."""
 
 
+class TaxAttributes(BaseModel):
+    metadata: Optional[Dict[str, object]] = None
+    """The metadata to be attached to the entity by existing rules.
+
+    It is a key-value pairs where the values can be of any type (string, number,
+    boolean, object, array, etc.).
+    """
+
+
 class Tax(BaseModel):
     amount: Optional[int] = None
     """The tax amount in cents."""
+
+    attributes: Optional[TaxAttributes] = None
 
     currency: Optional[str] = None
     """The currency code."""
