@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.15.0 (2025-02-26)
+
+Full Changelog: [v1.14.2...v1.15.0](https://github.com/Finch-API/finch-api-python/compare/v1.14.2...v1.15.0)
+
+### Features
+
+* **api:** api update ([#602](https://github.com/Finch-API/finch-api-python/issues/602)) ([7b60c37](https://github.com/Finch-API/finch-api-python/commit/7b60c3799d7e28af677d7f040563f011acc8475b))
+* **client:** allow passing `NotGiven` for body ([#600](https://github.com/Finch-API/finch-api-python/issues/600)) ([29b8a08](https://github.com/Finch-API/finch-api-python/commit/29b8a08066e6f35ebde9625debb18ed91733618c))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([29b8a08](https://github.com/Finch-API/finch-api-python/commit/29b8a08066e6f35ebde9625debb18ed91733618c))
+
+
+### Chores
+
+* **internal:** codegen related update ([#598](https://github.com/Finch-API/finch-api-python/issues/598)) ([065fc91](https://github.com/Finch-API/finch-api-python/commit/065fc914bcbb3848fbdf62083d289e168f782acd))
+* **internal:** fix devcontainers setup ([#601](https://github.com/Finch-API/finch-api-python/issues/601)) ([c1c9f5a](https://github.com/Finch-API/finch-api-python/commit/c1c9f5a17fb7094d0f4c198473b7788089e08750))
+* **internal:** properly set __pydantic_private__ ([#603](https://github.com/Finch-API/finch-api-python/issues/603)) ([0119042](https://github.com/Finch-API/finch-api-python/commit/0119042284b4d0fbf4205f41eb8e08cece7889b6))
+
 ## 1.14.2 (2025-02-11)
 
 Full Changelog: [v1.14.1...v1.14.2](https://github.com/Finch-API/finch-api-python/compare/v1.14.1...v1.14.2)
