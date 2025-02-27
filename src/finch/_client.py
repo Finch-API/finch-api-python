@@ -435,7 +435,7 @@ class AsyncFinch(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async Finch client instance.
+        """Construct a new async AsyncFinch client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `client_id` from `FINCH_CLIENT_ID`
