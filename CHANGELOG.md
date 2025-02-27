@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.16.1 (2025-02-27)
+
+Full Changelog: [v1.16.0...v1.16.1](https://github.com/Finch-API/finch-api-python/compare/v1.16.0...v1.16.1)
+
+### Chores
+
+* **docs:** update client docstring ([#610](https://github.com/Finch-API/finch-api-python/issues/610)) ([2bae32b](https://github.com/Finch-API/finch-api-python/commit/2bae32b4504f2e17d53238d2ef7c6267c9d19636))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#608](https://github.com/Finch-API/finch-api-python/issues/608)) ([5df7857](https://github.com/Finch-API/finch-api-python/commit/5df78577187ab33565e3cc2b72fcd0a51c9531db))
+
 ## 1.16.0 (2025-02-27)
 
 Full Changelog: [v1.15.0...v1.16.0](https://github.com/Finch-API/finch-api-python/compare/v1.15.0...v1.16.0)
