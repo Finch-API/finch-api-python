@@ -35,7 +35,7 @@ class TestSessions:
             customer_id="x",
             customer_name="x",
             products=["company"],
-            customer_email="dev@stainlessapi.com",
+            customer_email="dev@stainless.com",
             integration={
                 "auth_method": "assisted",
                 "provider": "provider",
@@ -135,7 +135,7 @@ class TestAsyncSessions:
             customer_id="x",
             customer_name="x",
             products=["company"],
-            customer_email="dev@stainlessapi.com",
+            customer_email="dev@stainless.com",
             integration={
                 "auth_method": "assisted",
                 "provider": "provider",
