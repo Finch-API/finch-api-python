@@ -13,12 +13,16 @@ __all__ = [
     "PayStatement",
     "PayStatementEarning",
     "PayStatementEarningAttributes",
+    "PayStatementEarningAttributesMetadata",
     "PayStatementEmployeeDeduction",
     "PayStatementEmployeeDeductionAttributes",
+    "PayStatementEmployeeDeductionAttributesMetadata",
     "PayStatementEmployerContribution",
     "PayStatementEmployerContributionAttributes",
+    "PayStatementEmployerContributionAttributesMetadata",
     "PayStatementTax",
     "PayStatementTaxAttributes",
+    "PayStatementTaxAttributesMetadata",
 ]
 
 
@@ -30,13 +34,17 @@ class PaymentCreateParams(TypedDict, total=False):
     start_date: str
 
 
-class PayStatementEarningAttributes(TypedDict, total=False):
+class PayStatementEarningAttributesMetadata(TypedDict, total=False):
     metadata: Dict[str, object]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
+
+
+class PayStatementEarningAttributes(TypedDict, total=False):
+    metadata: PayStatementEarningAttributesMetadata
 
 
 class PayStatementEarning(TypedDict, total=False):
@@ -78,13 +86,17 @@ class PayStatementEarning(TypedDict, total=False):
     """The type of earning."""
 
 
-class PayStatementEmployeeDeductionAttributes(TypedDict, total=False):
+class PayStatementEmployeeDeductionAttributesMetadata(TypedDict, total=False):
     metadata: Dict[str, object]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
+
+
+class PayStatementEmployeeDeductionAttributes(TypedDict, total=False):
+    metadata: PayStatementEmployeeDeductionAttributesMetadata
 
 
 class PayStatementEmployeeDeduction(TypedDict, total=False):
@@ -106,13 +118,17 @@ class PayStatementEmployeeDeduction(TypedDict, total=False):
     """Type of benefit."""
 
 
-class PayStatementEmployerContributionAttributes(TypedDict, total=False):
+class PayStatementEmployerContributionAttributesMetadata(TypedDict, total=False):
     metadata: Dict[str, object]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
+
+
+class PayStatementEmployerContributionAttributes(TypedDict, total=False):
+    metadata: PayStatementEmployerContributionAttributesMetadata
 
 
 class PayStatementEmployerContribution(TypedDict, total=False):
@@ -131,13 +147,17 @@ class PayStatementEmployerContribution(TypedDict, total=False):
     """Type of benefit."""
 
 
-class PayStatementTaxAttributes(TypedDict, total=False):
+class PayStatementTaxAttributesMetadata(TypedDict, total=False):
     metadata: Dict[str, object]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
+
+
+class PayStatementTaxAttributes(TypedDict, total=False):
+    metadata: PayStatementTaxAttributesMetadata
 
 
 class PayStatementTax(TypedDict, total=False):
