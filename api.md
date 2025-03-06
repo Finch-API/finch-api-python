@@ -133,12 +133,12 @@ from finch.types.hris import (
     BenefitFrequency,
     BenefitType,
     BenefitsSupport,
-    BenfitContribution,
     CompanyBenefit,
     CreateCompanyBenefitsResponse,
     SupportPerBenefitType,
     SupportedBenefit,
     UpdateCompanyBenefitResponse,
+    BenfitContribution,
 )
 ```
 
