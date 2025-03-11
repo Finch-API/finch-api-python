@@ -238,14 +238,14 @@ Methods:
 Types:
 
 ```python
-from finch.types.jobs import AutomatedAsyncJob, AutomatedCreateResponse
+from finch.types.jobs import AutomatedAsyncJob, AutomatedCreateResponse, AutomatedListResponse
 ```
 
 Methods:
 
 - <code title="post /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">create</a>(\*\*<a href="src/finch/types/jobs/automated_create_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_create_response.py">AutomatedCreateResponse</a></code>
 - <code title="get /jobs/automated/{job_id}">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/automated_async_job.py">AutomatedAsyncJob</a></code>
-- <code title="get /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">list</a>(\*\*<a href="src/finch/types/jobs/automated_list_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_async_job.py">SyncPage[AutomatedAsyncJob]</a></code>
+- <code title="get /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">list</a>(\*\*<a href="src/finch/types/jobs/automated_list_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_list_response.py">AutomatedListResponse</a></code>
 
 ## Manual
 

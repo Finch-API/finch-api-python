@@ -6,4 +6,5 @@ from .manual_async_job import ManualAsyncJob as ManualAsyncJob
 from .automated_async_job import AutomatedAsyncJob as AutomatedAsyncJob
 from .automated_list_params import AutomatedListParams as AutomatedListParams
 from .automated_create_params import AutomatedCreateParams as AutomatedCreateParams
+from .automated_list_response import AutomatedListResponse as AutomatedListResponse
 from .automated_create_response import AutomatedCreateResponse as AutomatedCreateResponse
