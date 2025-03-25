@@ -60,16 +60,8 @@
     }
   ],
   "reviewers": [
-    "araujodavid",
-    "NandoSangenetto",
-    "delainerogers",
-    "ericpsimon",
     "jordanbrauer",
-    "vitorfreitas",
-    "miguel-finch",
-    "edkim-finch",
-    "bteodosioFinch",
-    "ashar-finch"
+    "minupalaniappan"
   ],
   "release-type": "python",
   "extra-files": [

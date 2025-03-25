@@ -1,8 +1,9 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Union
-from typing_extensions import TypeAlias
+from typing_extensions import Annotated, TypeAlias
 
+from .._utils import PropertyInfo
 from .company_event import CompanyEvent
 from .payment_event import PaymentEvent
 from .directory_event import DirectoryEvent
@@ -14,13 +15,16 @@ from .job_completion_event import JobCompletionEvent
 
 __all__ = ["WebhookEvent"]
 
-WebhookEvent: TypeAlias = Union[
-    AccountUpdateEvent,
-    JobCompletionEvent,
-    CompanyEvent,
-    DirectoryEvent,
-    EmploymentEvent,
-    IndividualEvent,
-    PaymentEvent,
-    PayStatementEvent,
+WebhookEvent: TypeAlias = Annotated[
+    Union[
+        AccountUpdateEvent,
+        JobCompletionEvent,
+        CompanyEvent,
+        DirectoryEvent,
+        EmploymentEvent,
+        IndividualEvent,
+        PaymentEvent,
+        PayStatementEvent,
+    ],
+    PropertyInfo(discriminator="event_type"),
 ]

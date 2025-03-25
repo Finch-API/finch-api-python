@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.17.0 (2025-03-25)
+
+Full Changelog: [v1.16.0...v1.17.0](https://github.com/Finch-API/finch-api-python/compare/v1.16.0...v1.17.0)
+
+### Features
+
+* **api:** api update ([#624](https://github.com/Finch-API/finch-api-python/issues/624)) ([6179f15](https://github.com/Finch-API/finch-api-python/commit/6179f1558884a9f1663f65496d7b15957b710ae8))
+* **api:** manual updates ([#612](https://github.com/Finch-API/finch-api-python/issues/612)) ([ac90061](https://github.com/Finch-API/finch-api-python/commit/ac900617af1bc37b728cbbc69ba22c5061ffddb7))
+
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#622](https://github.com/Finch-API/finch-api-python/issues/622)) ([bffb854](https://github.com/Finch-API/finch-api-python/commit/bffb8540f25ba56cfeb452d0c92dbadb291d88e9))
+* **ci:** remove publishing patch ([#623](https://github.com/Finch-API/finch-api-python/issues/623)) ([419c35a](https://github.com/Finch-API/finch-api-python/commit/419c35ad3f89c7da406c33a67069f0e8a7937aa4))
+* **types:** handle more discriminated union shapes ([#621](https://github.com/Finch-API/finch-api-python/issues/621)) ([971eac8](https://github.com/Finch-API/finch-api-python/commit/971eac8aef3ad9a5b87b70567726cb0c524b9251))
+
+
+### Chores
+
+* **docs:** update client docstring ([#610](https://github.com/Finch-API/finch-api-python/issues/610)) ([2bae32b](https://github.com/Finch-API/finch-api-python/commit/2bae32b4504f2e17d53238d2ef7c6267c9d19636))
+* **internal:** bump rye to 0.44.0 ([#619](https://github.com/Finch-API/finch-api-python/issues/619)) ([c62de3c](https://github.com/Finch-API/finch-api-python/commit/c62de3cf8821a5bfb814547c68939e78411d0681))
+* **internal:** codegen related update ([#611](https://github.com/Finch-API/finch-api-python/issues/611)) ([f397f20](https://github.com/Finch-API/finch-api-python/commit/f397f2097d2d349d16a46c2fbf79432c6d48290c))
+* **internal:** codegen related update ([#614](https://github.com/Finch-API/finch-api-python/issues/614)) ([6dd5f30](https://github.com/Finch-API/finch-api-python/commit/6dd5f30dfb8eb5b82500fd18e9472813b84bfdfc))
+* **internal:** codegen related update ([#615](https://github.com/Finch-API/finch-api-python/issues/615)) ([1ffccaf](https://github.com/Finch-API/finch-api-python/commit/1ffccafbb26c672fdea41495b91774babb9cdb06))
+* **internal:** codegen related update ([#617](https://github.com/Finch-API/finch-api-python/issues/617)) ([9c2b530](https://github.com/Finch-API/finch-api-python/commit/9c2b530e4a89d19276ba031558bc9f077069aa92))
+* **internal:** codegen related update ([#620](https://github.com/Finch-API/finch-api-python/issues/620)) ([735fb42](https://github.com/Finch-API/finch-api-python/commit/735fb42343c68e6e484a0ac962c0946fc4643659))
+* **internal:** remove extra empty newlines ([#618](https://github.com/Finch-API/finch-api-python/issues/618)) ([a18d4b5](https://github.com/Finch-API/finch-api-python/commit/a18d4b59192e8efdd5ce03d6e3e88fcc0135f9ec))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#608](https://github.com/Finch-API/finch-api-python/issues/608)) ([5df7857](https://github.com/Finch-API/finch-api-python/commit/5df78577187ab33565e3cc2b72fcd0a51c9531db))
+
 ## 1.16.0 (2025-02-27)
 
 Full Changelog: [v1.15.0...v1.16.0](https://github.com/Finch-API/finch-api-python/compare/v1.15.0...v1.16.0)
