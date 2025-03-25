@@ -26,7 +26,7 @@ class TestCompany:
             entity={},
             legal_name="legal_name",
             locations=[{}],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
         assert_matches_type(CompanyUpdateResponse, company, path=["response"])
@@ -67,7 +67,7 @@ class TestCompany:
                     "state": "state",
                 }
             ],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
         assert_matches_type(CompanyUpdateResponse, company, path=["response"])
@@ -81,7 +81,7 @@ class TestCompany:
             entity={},
             legal_name="legal_name",
             locations=[{}],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
 
@@ -99,7 +99,7 @@ class TestCompany:
             entity={},
             legal_name="legal_name",
             locations=[{}],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         ) as response:
             assert not response.is_closed
@@ -123,7 +123,7 @@ class TestAsyncCompany:
             entity={},
             legal_name="legal_name",
             locations=[{}],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
         assert_matches_type(CompanyUpdateResponse, company, path=["response"])
@@ -164,7 +164,7 @@ class TestAsyncCompany:
                     "state": "state",
                 }
             ],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
         assert_matches_type(CompanyUpdateResponse, company, path=["response"])
@@ -178,7 +178,7 @@ class TestAsyncCompany:
             entity={},
             legal_name="legal_name",
             locations=[{}],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
 
@@ -196,7 +196,7 @@ class TestAsyncCompany:
             entity={},
             legal_name="legal_name",
             locations=[{}],
-            primary_email="primary_email",
+            primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         ) as response:
             assert not response.is_closed

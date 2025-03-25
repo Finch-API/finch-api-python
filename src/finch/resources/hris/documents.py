@@ -60,8 +60,8 @@ class Documents(SyncAPIResource):
     ) -> DocumentListResponse:
         """**Beta:** This endpoint is in beta and may change.
 
-
-        Retrieve a list of company-wide documents.
+        Retrieve a list of
+        company-wide documents.
 
         Args:
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
@@ -115,8 +115,8 @@ class Documents(SyncAPIResource):
     ) -> DocumentRetreiveResponse:
         """**Beta:** This endpoint is in beta and may change.
 
-
-        Retrieve details of a specific document by its ID.
+        Retrieve details of a
+        specific document by its ID.
 
         Args:
           extra_headers: Send extra headers
@@ -179,8 +179,8 @@ class AsyncDocuments(AsyncAPIResource):
     ) -> DocumentListResponse:
         """**Beta:** This endpoint is in beta and may change.
 
-
-        Retrieve a list of company-wide documents.
+        Retrieve a list of
+        company-wide documents.
 
         Args:
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
@@ -234,8 +234,8 @@ class AsyncDocuments(AsyncAPIResource):
     ) -> DocumentRetreiveResponse:
         """**Beta:** This endpoint is in beta and may change.
 
-
-        Retrieve details of a specific document by its ID.
+        Retrieve details of a
+        specific document by its ID.
 
         Args:
           extra_headers: Send extra headers
