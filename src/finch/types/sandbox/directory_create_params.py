@@ -64,7 +64,7 @@ class BodyManager(TypedDict, total=False):
 
 
 class BodyPhoneNumber(TypedDict, total=False):
-    data: str
+    data: Optional[str]
 
     type: Optional[Literal["work", "personal"]]
 
