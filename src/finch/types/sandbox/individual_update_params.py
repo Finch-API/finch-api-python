@@ -71,6 +71,6 @@ class Email(TypedDict, total=False):
 
 
 class PhoneNumber(TypedDict, total=False):
-    data: str
+    data: Optional[str]
 
     type: Optional[Literal["work", "personal"]]
