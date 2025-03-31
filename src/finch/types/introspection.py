@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -26,6 +27,9 @@ class AuthenticationMethod(BaseModel):
 
 
 class ConnectionStatus(BaseModel):
+    last_successful_sync: Optional[datetime] = None
+    """The datetime when the connection was last successfully synced."""
+
     message: Optional[str] = None
 
     status: Optional[ConnectionStatusType] = None
