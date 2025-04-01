@@ -9,6 +9,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._utils import parse_date
 from finch.pagination import SyncSinglePage, AsyncSinglePage
 from finch.types.hris.benefits import (
     IndividualBenefit,
@@ -44,6 +45,7 @@ class TestIndividuals:
                             "amount": 400,
                             "type": "fixed",
                         },
+                        "effective_date": parse_date("2025-01-01"),
                         "employee_deduction": {
                             "amount": 1000,
                             "type": "fixed",
@@ -241,6 +243,7 @@ class TestAsyncIndividuals:
                             "amount": 400,
                             "type": "fixed",
                         },
+                        "effective_date": parse_date("2025-01-01"),
                         "employee_deduction": {
                             "amount": 1000,
                             "type": "fixed",
