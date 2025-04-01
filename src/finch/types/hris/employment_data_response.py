@@ -14,3 +14,4 @@ class EmploymentDataResponse(BaseModel):
     code: Optional[int] = None
 
     individual_id: Optional[str] = None
+    """A stable Finch `id` (UUID v4) for an individual in the company."""
