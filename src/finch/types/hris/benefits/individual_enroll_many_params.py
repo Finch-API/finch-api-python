@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
-from typing_extensions import Literal, TypedDict
+from typing import Union, Iterable, Optional
+from datetime import date
+from typing_extensions import Literal, Annotated, TypedDict
+
+from ...._utils import PropertyInfo
 
 __all__ = [
     "IndividualEnrollManyParams",
@@ -53,6 +56,9 @@ class IndividualConfiguration(TypedDict, total=False):
     """For retirement benefits only - whether catch up contributions are enabled"""
 
     company_contribution: IndividualConfigurationCompanyContribution
+
+    effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The date the enrollment will take effect"""
 
     employee_deduction: IndividualConfigurationEmployeeDeduction
 
