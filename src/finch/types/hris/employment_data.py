@@ -40,7 +40,7 @@ class Manager(BaseModel):
 
 class EmploymentData(BaseModel):
     id: Optional[str] = None
-    """string A stable Finch `id` (UUID v4) for an individual in the company."""
+    """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     class_code: Optional[str] = None
     """Worker's compensation classification code for this employee"""
