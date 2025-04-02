@@ -8,3 +8,4 @@ __all__ = ["CreateCompanyBenefitsResponse"]
 
 class CreateCompanyBenefitsResponse(BaseModel):
     benefit_id: str
+    """The id of the benefit."""

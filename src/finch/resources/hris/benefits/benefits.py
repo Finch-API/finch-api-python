@@ -83,6 +83,8 @@ class Benefits(SyncAPIResource):
               limiting this to <30 characters due to limitations in specific providers (e.g.
               Justworks).
 
+          frequency: The frequency of the benefit deduction/contribution.
+
           type: Type of benefit.
 
           extra_headers: Send extra headers
@@ -266,6 +268,8 @@ class AsyncBenefits(AsyncAPIResource):
           description: Name of the benefit as it appears in the provider and pay statements. Recommend
               limiting this to <30 characters due to limitations in specific providers (e.g.
               Justworks).
+
+          frequency: The frequency of the benefit deduction/contribution.
 
           type: Type of benefit.
 
