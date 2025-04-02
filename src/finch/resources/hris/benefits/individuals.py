@@ -21,7 +21,6 @@ from ....types.hris.benefits import (
 )
 from ....types.hris.benefits.individual_benefit import IndividualBenefit
 from ....types.hris.benefits.enrolled_individual import EnrolledIndividual
-from ....types.hris.benefits.unenrolled_individual import UnenrolledIndividual
 from ....types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
 
 __all__ = ["Individuals", "AsyncIndividuals"]
@@ -179,7 +178,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncSinglePage[UnenrolledIndividual]:
+    ) -> SyncSinglePage[object]:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -198,14 +197,14 @@ class Individuals(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=SyncSinglePage[UnenrolledIndividual],
+            page=SyncSinglePage[object],
             body=maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=UnenrolledIndividual,
+            model=object,
             method="delete",
         )
 
@@ -362,7 +361,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[UnenrolledIndividual, AsyncSinglePage[UnenrolledIndividual]]:
+    ) -> AsyncPaginator[object, AsyncSinglePage[object]]:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -381,14 +380,14 @@ class AsyncIndividuals(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=AsyncSinglePage[UnenrolledIndividual],
+            page=AsyncSinglePage[object],
             body=maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=UnenrolledIndividual,
+            model=object,
             method="delete",
         )
 

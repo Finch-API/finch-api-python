@@ -10,7 +10,7 @@ __all__ = ["EnrolledIndividual", "Body"]
 
 class Body(BaseModel):
     finch_code: Optional[str] = None
-    """A descriptive identifier for the response"""
+    """A descriptive identifier for the response."""
 
     message: Optional[str] = None
     """Short description in English that provides more information about the response."""
