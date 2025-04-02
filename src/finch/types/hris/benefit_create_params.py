@@ -20,6 +20,7 @@ class BenefitCreateParams(TypedDict, total=False):
     """
 
     frequency: Optional[BenefitFrequency]
+    """The frequency of the benefit deduction/contribution."""
 
     type: Optional[BenefitType]
     """Type of benefit."""
