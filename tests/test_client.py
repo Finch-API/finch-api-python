@@ -1640,7 +1640,7 @@ class TestAsyncFinch:
         import threading
 
         from finch._utils import asyncify
-        from finch._base_client import get_platform 
+        from finch._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
