@@ -41,7 +41,39 @@ from finch.types.hris import Company
 
 Methods:
 
-- <code title="get /employer/company">client.hris.company.<a href="./src/finch/resources/hris/company.py">retrieve</a>() -> <a href="./src/finch/types/hris/company.py">Company</a></code>
+- <code title="get /employer/company">client.hris.company.<a href="./src/finch/resources/hris/company/company.py">retrieve</a>() -> <a href="./src/finch/types/hris/company/company.py">Company</a></code>
+
+### PayStatementItem
+
+Types:
+
+```python
+from finch.types.hris.company import PayStatementItemListResponse
+```
+
+Methods:
+
+- <code title="get /employer/pay-statement-item">client.hris.company.pay_statement_item.<a href="./src/finch/resources/hris/company/pay_statement_item/pay_statement_item.py">list</a>(\*\*<a href="src/finch/types/hris/company/pay_statement_item_list_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item_list_response.py">SyncResponsesPage[PayStatementItemListResponse]</a></code>
+
+#### Rules
+
+Types:
+
+```python
+from finch.types.hris.company.pay_statement_item import (
+    RuleCreateResponse,
+    RuleUpdateResponse,
+    RuleListResponse,
+    RuleDeleteResponse,
+)
+```
+
+Methods:
+
+- <code title="post /employer/pay-statement-item/rule">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">create</a>(\*\*<a href="src/finch/types/hris/company/pay_statement_item/rule_create_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_create_response.py">RuleCreateResponse</a></code>
+- <code title="put /employer/pay-statement-item/rule/{rule_id}">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">update</a>(rule_id, \*\*<a href="src/finch/types/hris/company/pay_statement_item/rule_update_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_update_response.py">RuleUpdateResponse</a></code>
+- <code title="get /employer/pay-statement-item/rule">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">list</a>() -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_list_response.py">SyncResponsesPage[RuleListResponse]</a></code>
+- <code title="delete /employer/pay-statement-item/rule/{rule_id}">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">delete</a>(rule_id) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_delete_response.py">RuleDeleteResponse</a></code>
 
 ## Directory
 

@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-from .company import (
-    CompanyResource,
-    AsyncCompanyResource,
-    CompanyResourceWithRawResponse,
-    AsyncCompanyResourceWithRawResponse,
-    CompanyResourceWithStreamingResponse,
-    AsyncCompanyResourceWithStreamingResponse,
-)
 from .payments import (
     Payments,
     AsyncPayments,
@@ -59,6 +51,14 @@ from .pay_statements import (
     AsyncPayStatementsWithRawResponse,
     PayStatementsWithStreamingResponse,
     AsyncPayStatementsWithStreamingResponse,
+)
+from .company.company import (
+    CompanyResource,
+    AsyncCompanyResource,
+    CompanyResourceWithRawResponse,
+    AsyncCompanyResourceWithRawResponse,
+    CompanyResourceWithStreamingResponse,
+    AsyncCompanyResourceWithStreamingResponse,
 )
 from .benefits.benefits import (
     Benefits,
