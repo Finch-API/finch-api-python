@@ -123,7 +123,7 @@ class AsyncResponsesPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     individuals: List[_T]
     """The array of employees."""
-    paging: Optional[Paging] = None
+    paging: Paging
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -135,7 +135,7 @@ class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     @override
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:
                 offset = self.paging.offset
         if offset is None:
@@ -145,7 +145,7 @@ class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         current_count = offset + length
 
         count = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.count is not None:
                 count = self.paging.count
         if count is None:
@@ -160,7 +160,7 @@ class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     individuals: List[_T]
     """The array of employees."""
-    paging: Optional[Paging] = None
+    paging: Paging
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -172,7 +172,7 @@ class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     @override
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:
                 offset = self.paging.offset
         if offset is None:
@@ -182,7 +182,7 @@ class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         current_count = offset + length
 
         count = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.count is not None:
                 count = self.paging.count
         if count is None:
@@ -196,7 +196,7 @@ class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
 class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     data: List[_T]
-    paging: Optional[Paging] = None
+    paging: Paging
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -208,7 +208,7 @@ class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     @override
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:
                 offset = self.paging.offset
         if offset is None:
@@ -218,7 +218,7 @@ class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         current_count = offset + length
 
         count = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.count is not None:
                 count = self.paging.count
         if count is None:
@@ -232,7 +232,7 @@ class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
 class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     data: List[_T]
-    paging: Optional[Paging] = None
+    paging: Paging
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -244,7 +244,7 @@ class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     @override
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:
                 offset = self.paging.offset
         if offset is None:
@@ -254,7 +254,7 @@ class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         current_count = offset + length
 
         count = None
-        if self.paging is not None:
+        if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.count is not None:
                 count = self.paging.count
         if count is None:
