@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.20.0 (2025-04-04)
+
+Full Changelog: [v1.19.0...v1.20.0](https://github.com/Finch-API/finch-api-python/compare/v1.19.0...v1.20.0)
+
+### Features
+
+* **api:** add new endpoints for pay statement items ([#638](https://github.com/Finch-API/finch-api-python/issues/638)) ([f7ec780](https://github.com/Finch-API/finch-api-python/commit/f7ec780012d94be05afb1b65cbbbcc1930be2c55))
+* **api:** api update ([#633](https://github.com/Finch-API/finch-api-python/issues/633)) ([cb0dc56](https://github.com/Finch-API/finch-api-python/commit/cb0dc5609828467bfc647badf208f7b3ca05b763))
+* **api:** api update ([#635](https://github.com/Finch-API/finch-api-python/issues/635)) ([9accf06](https://github.com/Finch-API/finch-api-python/commit/9accf06c45b602cc333ba1b47ad615b159c23080))
+* **api:** api update ([#636](https://github.com/Finch-API/finch-api-python/issues/636)) ([4b822a0](https://github.com/Finch-API/finch-api-python/commit/4b822a0d837333d0a6e4ac0c5b20a4226b64097b))
+* **api:** manual updates ([#639](https://github.com/Finch-API/finch-api-python/issues/639)) ([fd1f40b](https://github.com/Finch-API/finch-api-python/commit/fd1f40b4103d43758bb682c4e1178e73c123b713))
+
+
+### Chores
+
+* **internal:** remove trailing character ([#637](https://github.com/Finch-API/finch-api-python/issues/637)) ([0334e6e](https://github.com/Finch-API/finch-api-python/commit/0334e6ec5e2051ff57a862135399ab2ea1ff2496))
+
 ## 1.19.0 (2025-03-31)
 
 Full Changelog: [v1.18.0...v1.19.0](https://github.com/Finch-API/finch-api-python/compare/v1.18.0...v1.19.0)
