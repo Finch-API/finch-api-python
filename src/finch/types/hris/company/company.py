@@ -3,8 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from ..._models import BaseModel
-from ..location import Location
+from ...._models import BaseModel
+from ...location import Location
 
 __all__ = ["Company", "Account", "Department", "DepartmentParent", "Entity"]
 

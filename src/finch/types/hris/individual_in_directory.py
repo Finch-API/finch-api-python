@@ -19,7 +19,7 @@ class Manager(BaseModel):
 
 class IndividualInDirectory(BaseModel):
     id: Optional[str] = None
-    """A stable Finch id (UUID v4) for an individual in the company."""
+    """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     department: Optional[Department] = None
     """The department object."""

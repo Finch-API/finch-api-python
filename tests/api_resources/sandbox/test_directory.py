@@ -79,7 +79,7 @@ class TestDirectory:
                         "source_id": "source_id",
                         "state": "state",
                     },
-                    "manager": {"id": "id"},
+                    "manager": {"id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
                     "middle_name": "middle_name",
                     "phone_numbers": [
                         {
@@ -193,7 +193,7 @@ class TestAsyncDirectory:
                         "source_id": "source_id",
                         "state": "state",
                     },
-                    "manager": {"id": "id"},
+                    "manager": {"id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
                     "middle_name": "middle_name",
                     "phone_numbers": [
                         {

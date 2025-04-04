@@ -9,5 +9,6 @@ __all__ = ["IndividualEnrolledIDsResponse"]
 
 class IndividualEnrolledIDsResponse(BaseModel):
     benefit_id: str
+    """The id of the benefit."""
 
     individual_ids: List[str]
