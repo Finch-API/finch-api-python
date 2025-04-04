@@ -4,18 +4,30 @@ from __future__ import annotations
 
 import httpx
 
-from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ..._base_client import make_request_options
-from ...types.hris.company import Company
+from .... import _legacy_response
+from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ...._base_client import make_request_options
+from ....types.hris.company.company import Company
+from .pay_statement_item.pay_statement_item import (
+    PayStatementItem,
+    AsyncPayStatementItem,
+    PayStatementItemWithRawResponse,
+    AsyncPayStatementItemWithRawResponse,
+    PayStatementItemWithStreamingResponse,
+    AsyncPayStatementItemWithStreamingResponse,
+)
 
 __all__ = ["CompanyResource", "AsyncCompanyResource"]
 
 
 class CompanyResource(SyncAPIResource):
+    @cached_property
+    def pay_statement_item(self) -> PayStatementItem:
+        return PayStatementItem(self._client)
+
     @cached_property
     def with_raw_response(self) -> CompanyResourceWithRawResponse:
         """
@@ -56,6 +68,10 @@ class CompanyResource(SyncAPIResource):
 
 
 class AsyncCompanyResource(AsyncAPIResource):
+    @cached_property
+    def pay_statement_item(self) -> AsyncPayStatementItem:
+        return AsyncPayStatementItem(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncCompanyResourceWithRawResponse:
         """
@@ -103,6 +119,10 @@ class CompanyResourceWithRawResponse:
             company.retrieve,
         )
 
+    @cached_property
+    def pay_statement_item(self) -> PayStatementItemWithRawResponse:
+        return PayStatementItemWithRawResponse(self._company.pay_statement_item)
+
 
 class AsyncCompanyResourceWithRawResponse:
     def __init__(self, company: AsyncCompanyResource) -> None:
@@ -111,6 +131,10 @@ class AsyncCompanyResourceWithRawResponse:
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             company.retrieve,
         )
+
+    @cached_property
+    def pay_statement_item(self) -> AsyncPayStatementItemWithRawResponse:
+        return AsyncPayStatementItemWithRawResponse(self._company.pay_statement_item)
 
 
 class CompanyResourceWithStreamingResponse:
@@ -121,6 +145,10 @@ class CompanyResourceWithStreamingResponse:
             company.retrieve,
         )
 
+    @cached_property
+    def pay_statement_item(self) -> PayStatementItemWithStreamingResponse:
+        return PayStatementItemWithStreamingResponse(self._company.pay_statement_item)
+
 
 class AsyncCompanyResourceWithStreamingResponse:
     def __init__(self, company: AsyncCompanyResource) -> None:
@@ -129,3 +157,7 @@ class AsyncCompanyResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             company.retrieve,
         )
+
+    @cached_property
+    def pay_statement_item(self) -> AsyncPayStatementItemWithStreamingResponse:
+        return AsyncPayStatementItemWithStreamingResponse(self._company.pay_statement_item)
