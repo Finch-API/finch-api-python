@@ -145,11 +145,7 @@ class Finch(SyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
-        if self._bearer_auth:
-            return self._bearer_auth
-        if self._basic_auth:
-            return self._basic_auth
-        return {}
+        return {**self._bearer_auth, **self._basic_auth}
 
     @property
     def _bearer_auth(self) -> dict[str, str]:
@@ -387,11 +383,7 @@ class AsyncFinch(AsyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
-        if self._bearer_auth:
-            return self._bearer_auth
-        if self._basic_auth:
-            return self._basic_auth
-        return {}
+        return {**self._bearer_auth, **self._basic_auth}
 
     @property
     def _bearer_auth(self) -> dict[str, str]:
