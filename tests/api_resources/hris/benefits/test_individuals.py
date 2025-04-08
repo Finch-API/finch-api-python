@@ -43,12 +43,12 @@ class TestIndividuals:
                         "catch_up": False,
                         "company_contribution": {
                             "amount": 400,
-                            "type": "fixed",
+                            "type": "percent",
                         },
                         "effective_date": parse_date("2025-01-01"),
                         "employee_deduction": {
                             "amount": 1000,
-                            "type": "fixed",
+                            "type": "percent",
                         },
                     },
                     "individual_id": "d02a6346-1f08-4312-a064-49ff3cafaa7a",
@@ -241,12 +241,12 @@ class TestAsyncIndividuals:
                         "catch_up": False,
                         "company_contribution": {
                             "amount": 400,
-                            "type": "fixed",
+                            "type": "percent",
                         },
                         "effective_date": parse_date("2025-01-01"),
                         "employee_deduction": {
                             "amount": 1000,
-                            "type": "fixed",
+                            "type": "percent",
                         },
                     },
                     "individual_id": "d02a6346-1f08-4312-a064-49ff3cafaa7a",
