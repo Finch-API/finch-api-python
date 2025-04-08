@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.20.1 (2025-04-08)
+
+Full Changelog: [v1.20.0...v1.20.1](https://github.com/Finch-API/finch-api-python/compare/v1.20.0...v1.20.1)
+
+### Bug Fixes
+
+* **client:** send all configured auth headers ([#643](https://github.com/Finch-API/finch-api-python/issues/643)) ([b91fc64](https://github.com/Finch-API/finch-api-python/commit/b91fc64410c673f9a078eef8084743ea05cada0b))
+
+
+### Chores
+
+* **internal:** codegen related update ([#641](https://github.com/Finch-API/finch-api-python/issues/641)) ([89df119](https://github.com/Finch-API/finch-api-python/commit/89df119f02f94e79d7fa75ba2a78b568624328bc))
+* **internal:** slight transform perf improvement ([#644](https://github.com/Finch-API/finch-api-python/issues/644)) ([e6e04cc](https://github.com/Finch-API/finch-api-python/commit/e6e04cc0dfce27441214d1f0781cec1b56c0243b))
+* **tests:** improve enum examples ([#645](https://github.com/Finch-API/finch-api-python/issues/645)) ([8e81d76](https://github.com/Finch-API/finch-api-python/commit/8e81d760fc7761ef583d3407eaa9640d6301ea8c))
+
 ## 1.20.0 (2025-04-04)
 
 Full Changelog: [v1.19.0...v1.20.0](https://github.com/Finch-API/finch-api-python/compare/v1.19.0...v1.20.0)
