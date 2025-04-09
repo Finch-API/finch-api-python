@@ -24,8 +24,8 @@ from ....types.hris.benefits import (
 )
 from ....types.hris.benefits.individual_benefit import IndividualBenefit
 from ....types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
-from ....types.hris.benefits.individual_unenroll_many_response import IndividualUnenrollManyResponse
 from ....types.hris.benefits.enrolled_individual_benefit_response import EnrolledIndividualBenefitResponse
+from ....types.hris.benefits.unenrolled_individual_benefit_response import UnenrolledIndividualBenefitResponse
 
 __all__ = ["Individuals", "AsyncIndividuals"]
 
@@ -180,7 +180,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IndividualUnenrollManyResponse:
+    ) -> UnenrolledIndividualBenefitResponse:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -205,7 +205,7 @@ class Individuals(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IndividualUnenrollManyResponse,
+            cast_to=UnenrolledIndividualBenefitResponse,
         )
 
 
@@ -359,7 +359,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IndividualUnenrollManyResponse:
+    ) -> UnenrolledIndividualBenefitResponse:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -384,7 +384,7 @@ class AsyncIndividuals(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IndividualUnenrollManyResponse,
+            cast_to=UnenrolledIndividualBenefitResponse,
         )
 
 

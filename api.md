@@ -184,8 +184,8 @@ Types:
 from finch.types.hris.benefits import (
     EnrolledIndividualBenefitResponse,
     IndividualBenefit,
+    UnenrolledIndividualBenefitResponse,
     IndividualEnrolledIDsResponse,
-    IndividualUnenrollManyResponse,
 )
 ```
 
@@ -194,7 +194,7 @@ Methods:
 - <code title="post /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_enroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/enrolled_individual_benefit_response.py">EnrolledIndividualBenefitResponse</a></code>
 - <code title="get /employer/benefits/{benefit_id}/enrolled">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enrolled_ids</a>(benefit_id) -> <a href="./src/finch/types/hris/benefits/individual_enrolled_ids_response.py">IndividualEnrolledIDsResponse</a></code>
 - <code title="get /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">retrieve_many_benefits</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_retrieve_many_benefits_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/individual_benefit.py">SyncSinglePage[IndividualBenefit]</a></code>
-- <code title="delete /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">unenroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_unenroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/individual_unenroll_many_response.py">IndividualUnenrollManyResponse</a></code>
+- <code title="delete /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">unenroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_unenroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/unenrolled_individual_benefit_response.py">UnenrolledIndividualBenefitResponse</a></code>
 
 # Providers
 
