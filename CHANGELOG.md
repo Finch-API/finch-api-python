@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.21.0 (2025-04-09)
+
+Full Changelog: [v1.20.1...v1.21.0](https://github.com/Finch-API/finch-api-python/compare/v1.20.1...v1.21.0)
+
+### Features
+
+* **api:** add models for hrs benefits individuals async responses ([6452c2c](https://github.com/Finch-API/finch-api-python/commit/6452c2ce11111b2eba1c2cb941ccd32fdd1c5a82))
+* **api:** api update ([#646](https://github.com/Finch-API/finch-api-python/issues/646)) ([7ac8751](https://github.com/Finch-API/finch-api-python/commit/7ac875106bdcfb8bfb097b971f48ecd88d06c26a))
+* **api:** benefits mutation API endpoints (create benefit, update benefit, enroll individual, unenroll individual) now properly return async response types ([#649](https://github.com/Finch-API/finch-api-python/issues/649)) ([4109f6c](https://github.com/Finch-API/finch-api-python/commit/4109f6cd3a880cab1e7ca9d90d8a29cf0ce737f4))
+
+
+### Chores
+
+* fix typo ([8772010](https://github.com/Finch-API/finch-api-python/commit/8772010e01df66a41bae7b5689bf7af20f2c0411))
+* fix typo ([#650](https://github.com/Finch-API/finch-api-python/issues/650)) ([17dc2ea](https://github.com/Finch-API/finch-api-python/commit/17dc2ea50995d6883ad07a77a4c039a8c097253f))
+* **internal:** expand CI branch coverage ([#648](https://github.com/Finch-API/finch-api-python/issues/648)) ([bc6c22d](https://github.com/Finch-API/finch-api-python/commit/bc6c22d497fe8bb886e34095b01016904fe8258d))
+* **internal:** reduce CI branch coverage ([bad1202](https://github.com/Finch-API/finch-api-python/commit/bad1202ad8b8e73fb4ae4c8624405997c2ad33e2))
+
 ## 1.20.1 (2025-04-08)
 
 Full Changelog: [v1.20.0...v1.20.1](https://github.com/Finch-API/finch-api-python/compare/v1.20.0...v1.20.1)
