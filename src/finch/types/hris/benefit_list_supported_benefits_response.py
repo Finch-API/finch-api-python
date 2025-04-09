@@ -4,13 +4,12 @@ from typing import List, Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
-from .benefit_type import BenefitType
 from .benefit_frequency import BenefitFrequency
 
-__all__ = ["SupportedBenefit"]
+__all__ = ["BenefitListSupportedBenefitsResponse"]
 
 
-class SupportedBenefit(BaseModel):
+class BenefitListSupportedBenefitsResponse(BaseModel):
     annual_maximum: Optional[bool] = None
     """Whether the provider supports an annual maximum for this benefit."""
 
@@ -43,6 +42,3 @@ class SupportedBenefit(BaseModel):
     Empty if this feature is not supported for the benefit. This array only has
     values for HSA benefits.
     """
-
-    type: Optional[BenefitType] = None
-    """Type of benefit."""

@@ -8,7 +8,10 @@ import httpx
 
 from .... import _legacy_response
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import maybe_transform
+from ...._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -20,8 +23,7 @@ from ....types.hris.benefits import (
     individual_retrieve_many_benefits_params,
 )
 from ....types.hris.benefits.individual_benefit import IndividualBenefit
-from ....types.hris.benefits.enrolled_individual import EnrolledIndividual
-from ....types.hris.benefits.unenrolled_individual import UnenrolledIndividual
+from ....types.hris.benefits.individual_enroll_many_response import IndividualEnrollManyResponse
 from ....types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
 
 __all__ = ["Individuals", "AsyncIndividuals"]
@@ -58,7 +60,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncSinglePage[EnrolledIndividual]:
+    ) -> IndividualEnrollManyResponse:
         """Enroll an individual into a deduction or contribution.
 
         This is an overwrite
@@ -79,15 +81,13 @@ class Individuals(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        return self._get_api_list(
+        return self._post(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=SyncSinglePage[EnrolledIndividual],
             body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=EnrolledIndividual,
-            method="post",
+            cast_to=IndividualEnrollManyResponse,
         )
 
     def enrolled_ids(
@@ -179,7 +179,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncSinglePage[UnenrolledIndividual]:
+    ) -> SyncSinglePage[object]:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -198,14 +198,14 @@ class Individuals(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=SyncSinglePage[UnenrolledIndividual],
+            page=SyncSinglePage[object],
             body=maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=UnenrolledIndividual,
+            model=object,
             method="delete",
         )
 
@@ -230,7 +230,7 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         return AsyncIndividualsWithStreamingResponse(self)
 
-    def enroll_many(
+    async def enroll_many(
         self,
         benefit_id: str,
         *,
@@ -241,7 +241,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[EnrolledIndividual, AsyncSinglePage[EnrolledIndividual]]:
+    ) -> IndividualEnrollManyResponse:
         """Enroll an individual into a deduction or contribution.
 
         This is an overwrite
@@ -262,15 +262,13 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        return self._get_api_list(
+        return await self._post(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=AsyncSinglePage[EnrolledIndividual],
-            body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
+            body=await async_maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=EnrolledIndividual,
-            method="post",
+            cast_to=IndividualEnrollManyResponse,
         )
 
     async def enrolled_ids(
@@ -362,7 +360,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[UnenrolledIndividual, AsyncSinglePage[UnenrolledIndividual]]:
+    ) -> AsyncPaginator[object, AsyncSinglePage[object]]:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -381,14 +379,14 @@ class AsyncIndividuals(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=AsyncSinglePage[UnenrolledIndividual],
+            page=AsyncSinglePage[object],
             body=maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=UnenrolledIndividual,
+            model=object,
             method="delete",
         )
 
