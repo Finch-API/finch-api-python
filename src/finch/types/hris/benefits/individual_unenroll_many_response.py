@@ -3,8 +3,8 @@
 
 from ...._models import BaseModel
 
-__all__ = ["IndividualEnrollManyResponse"]
+__all__ = ["IndividualUnenrollManyResponse"]
 
 
-class IndividualEnrollManyResponse(BaseModel):
+class IndividualUnenrollManyResponse(BaseModel):
     job_id: str

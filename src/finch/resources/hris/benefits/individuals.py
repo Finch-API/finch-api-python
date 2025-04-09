@@ -23,8 +23,9 @@ from ....types.hris.benefits import (
     individual_retrieve_many_benefits_params,
 )
 from ....types.hris.benefits.individual_benefit import IndividualBenefit
-from ....types.hris.benefits.individual_enroll_many_response import IndividualEnrollManyResponse
+from ....types.hris.benefits.enrolled_individual_benifit import EnrolledIndividualBenifit
 from ....types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
+from ....types.hris.benefits.individual_unenroll_many_response import IndividualUnenrollManyResponse
 
 __all__ = ["Individuals", "AsyncIndividuals"]
 
@@ -60,7 +61,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IndividualEnrollManyResponse:
+    ) -> EnrolledIndividualBenifit:
         """Enroll an individual into a deduction or contribution.
 
         This is an overwrite
@@ -87,7 +88,7 @@ class Individuals(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IndividualEnrollManyResponse,
+            cast_to=EnrolledIndividualBenifit,
         )
 
     def enrolled_ids(
@@ -179,7 +180,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncSinglePage[object]:
+    ) -> IndividualUnenrollManyResponse:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -196,17 +197,15 @@ class Individuals(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        return self._get_api_list(
+        return self._delete(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=SyncSinglePage[object],
             body=maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=object,
-            method="delete",
+            cast_to=IndividualUnenrollManyResponse,
         )
 
 
@@ -241,7 +240,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> IndividualEnrollManyResponse:
+    ) -> EnrolledIndividualBenifit:
         """Enroll an individual into a deduction or contribution.
 
         This is an overwrite
@@ -268,7 +267,7 @@ class AsyncIndividuals(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=IndividualEnrollManyResponse,
+            cast_to=EnrolledIndividualBenifit,
         )
 
     async def enrolled_ids(
@@ -349,7 +348,7 @@ class AsyncIndividuals(AsyncAPIResource):
             model=IndividualBenefit,
         )
 
-    def unenroll_many(
+    async def unenroll_many(
         self,
         benefit_id: str,
         *,
@@ -360,7 +359,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[object, AsyncSinglePage[object]]:
+    ) -> IndividualUnenrollManyResponse:
         """
         Unenroll individuals from a deduction or contribution
 
@@ -377,17 +376,15 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        return self._get_api_list(
+        return await self._delete(
             f"/employer/benefits/{benefit_id}/individuals",
-            page=AsyncSinglePage[object],
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=object,
-            method="delete",
+            cast_to=IndividualUnenrollManyResponse,
         )
 
 
