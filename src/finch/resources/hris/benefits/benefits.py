@@ -29,9 +29,9 @@ from ...._base_client import AsyncPaginator, make_request_options
 from ....types.hris.benefit_type import BenefitType
 from ....types.hris.company_benefit import CompanyBenefit
 from ....types.hris.benefit_frequency import BenefitFrequency
-from ....types.hris.supported_benefit import SupportedBenefit
 from ....types.hris.update_company_benefit_response import UpdateCompanyBenefitResponse
 from ....types.hris.create_company_benefits_response import CreateCompanyBenefitsResponse
+from ....types.hris.benefit_list_supported_benefits_response import BenefitListSupportedBenefitsResponse
 
 __all__ = ["Benefits", "AsyncBenefits"]
 
@@ -210,15 +210,15 @@ class Benefits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncSinglePage[SupportedBenefit]:
+    ) -> SyncSinglePage[BenefitListSupportedBenefitsResponse]:
         """Get deductions metadata"""
         return self._get_api_list(
             "/employer/benefits/meta",
-            page=SyncSinglePage[SupportedBenefit],
+            page=SyncSinglePage[BenefitListSupportedBenefitsResponse],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=SupportedBenefit,
+            model=BenefitListSupportedBenefitsResponse,
         )
 
 
@@ -396,15 +396,15 @@ class AsyncBenefits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[SupportedBenefit, AsyncSinglePage[SupportedBenefit]]:
+    ) -> AsyncPaginator[BenefitListSupportedBenefitsResponse, AsyncSinglePage[BenefitListSupportedBenefitsResponse]]:
         """Get deductions metadata"""
         return self._get_api_list(
             "/employer/benefits/meta",
-            page=AsyncSinglePage[SupportedBenefit],
+            page=AsyncSinglePage[BenefitListSupportedBenefitsResponse],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=SupportedBenefit,
+            model=BenefitListSupportedBenefitsResponse,
         )
 
 
