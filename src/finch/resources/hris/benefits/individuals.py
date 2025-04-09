@@ -23,7 +23,7 @@ from ....types.hris.benefits import (
     individual_retrieve_many_benefits_params,
 )
 from ....types.hris.benefits.individual_benefit import IndividualBenefit
-from ....types.hris.benefits.enrolled_individual_benifit import EnrolledIndividualBenifit
+from ....types.hris.benefits.enrolled_individual_benefit import EnrolledIndividualBenefit
 from ....types.hris.benefits.individual_enrolled_ids_response import IndividualEnrolledIDsResponse
 from ....types.hris.benefits.individual_unenroll_many_response import IndividualUnenrollManyResponse
 
@@ -61,7 +61,7 @@ class Individuals(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EnrolledIndividualBenifit:
+    ) -> EnrolledIndividualBenefit:
         """Enroll an individual into a deduction or contribution.
 
         This is an overwrite
@@ -88,7 +88,7 @@ class Individuals(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EnrolledIndividualBenifit,
+            cast_to=EnrolledIndividualBenefit,
         )
 
     def enrolled_ids(
@@ -240,7 +240,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EnrolledIndividualBenifit:
+    ) -> EnrolledIndividualBenefit:
         """Enroll an individual into a deduction or contribution.
 
         This is an overwrite
@@ -267,7 +267,7 @@ class AsyncIndividuals(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=EnrolledIndividualBenifit,
+            cast_to=EnrolledIndividualBenefit,
         )
 
     async def enrolled_ids(

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from .individual_benefit import IndividualBenefit as IndividualBenefit
-from .enrolled_individual_benifit import EnrolledIndividualBenifit as EnrolledIndividualBenifit
+from .enrolled_individual_benefit import EnrolledIndividualBenefit as EnrolledIndividualBenefit
 from .individual_enroll_many_params import IndividualEnrollManyParams as IndividualEnrollManyParams
 from .individual_unenroll_many_params import IndividualUnenrollManyParams as IndividualUnenrollManyParams
 from .individual_enrolled_ids_response import IndividualEnrolledIDsResponse as IndividualEnrolledIDsResponse
