@@ -170,6 +170,7 @@ from finch.types.hris import (
     SupportPerBenefitType,
     SupportedBenefit,
     UpdateCompanyBenefitResponse,
+    BenefitListSupportedBenefitsResponse,
     BenfitContribution,
 )
 ```
@@ -180,7 +181,7 @@ Methods:
 - <code title="get /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">retrieve</a>(benefit_id) -> <a href="./src/finch/types/hris/company_benefit.py">CompanyBenefit</a></code>
 - <code title="post /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">update</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefit_update_params.py">params</a>) -> <a href="./src/finch/types/hris/update_company_benefit_response.py">UpdateCompanyBenefitResponse</a></code>
 - <code title="get /employer/benefits">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list</a>() -> <a href="./src/finch/types/hris/company_benefit.py">SyncSinglePage[CompanyBenefit]</a></code>
-- <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>() -> <a href="./src/finch/types/hris/supported_benefit.py">SyncSinglePage[SupportedBenefit]</a></code>
+- <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>() -> <a href="./src/finch/types/hris/benefit_list_supported_benefits_response.py">SyncSinglePage[BenefitListSupportedBenefitsResponse]</a></code>
 
 ### Individuals
 
@@ -188,19 +189,19 @@ Types:
 
 ```python
 from finch.types.hris.benefits import (
-    EnrolledIndividual,
+    EnrolledIndividualBenefitResponse,
     IndividualBenefit,
-    UnenrolledIndividual,
+    UnenrolledIndividualBenefitResponse,
     IndividualEnrolledIDsResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_enroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/enrolled_individual.py">SyncSinglePage[EnrolledIndividual]</a></code>
+- <code title="post /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_enroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/enrolled_individual_benefit_response.py">EnrolledIndividualBenefitResponse</a></code>
 - <code title="get /employer/benefits/{benefit_id}/enrolled">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enrolled_ids</a>(benefit_id) -> <a href="./src/finch/types/hris/benefits/individual_enrolled_ids_response.py">IndividualEnrolledIDsResponse</a></code>
 - <code title="get /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">retrieve_many_benefits</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_retrieve_many_benefits_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/individual_benefit.py">SyncSinglePage[IndividualBenefit]</a></code>
-- <code title="delete /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">unenroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_unenroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/unenrolled_individual.py">SyncSinglePage[UnenrolledIndividual]</a></code>
+- <code title="delete /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">unenroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_unenroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/unenrolled_individual_benefit_response.py">UnenrolledIndividualBenefitResponse</a></code>
 
 # Providers
 
