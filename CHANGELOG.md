@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.21.1 (2025-04-11)
+
+Full Changelog: [v1.21.0...v1.21.1](https://github.com/Finch-API/finch-api-python/compare/v1.21.0...v1.21.1)
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([4fe846e](https://github.com/Finch-API/finch-api-python/commit/4fe846ea14d90fb142eb1d2b3d7fa259326604f8))
+* **perf:** skip traversing types for NotGiven values ([c6df147](https://github.com/Finch-API/finch-api-python/commit/c6df1471d194dcad32a5ab771f8a7fe19e904f9f))
+
 ## 1.21.0 (2025-04-09)
 
 Full Changelog: [v1.20.1...v1.21.0](https://github.com/Finch-API/finch-api-python/compare/v1.20.1...v1.21.0)
