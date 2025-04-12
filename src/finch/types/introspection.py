@@ -36,6 +36,9 @@ class ConnectionStatus(BaseModel):
 
 
 class Introspection(BaseModel):
+    id: str
+    """The Finch UUID of the token being introspected."""
+
     account_id: str
     """
     [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
