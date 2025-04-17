@@ -1,4 +1,4 @@
 configured_endpoints: 46
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/finch%2Ffinch-ff61a38530dfae03860bceb49379e84bfc7434eeb5d2f1dc9677cb162014faf1.yml
-openapi_spec_hash: df3bdaf4acf575bb07767cae7ca24d69
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/finch%2Ffinch-388b6200908d48b0f759495ec489b5f7ffda61549b3faedad9a537104223ecdc.yml
+openapi_spec_hash: c47f17807131ac97532dfd69c1970104
 config_hash: 53778a0b839c4f6ad34fbba051f5e8a6
