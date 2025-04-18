@@ -32,7 +32,10 @@ class CompanyUpdateParams(TypedDict, total=False):
     """The email of the main administrator on the account."""
 
     primary_phone_number: Required[Optional[str]]
-    """The phone number of the main administrator on the account. Format: `XXXXXXXXXX`"""
+    """The phone number of the main administrator on the account.
+
+    Format: E.164, with extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
+    """
 
 
 class Account(TypedDict, total=False):
