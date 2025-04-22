@@ -47,7 +47,18 @@ class Sessions(SyncAPIResource):
         customer_id: str,
         customer_name: str,
         products: List[
-            Literal["company", "directory", "individual", "employment", "payment", "pay_statement", "benefits", "ssn"]
+            Literal[
+                "company",
+                "directory",
+                "individual",
+                "employment",
+                "payment",
+                "pay_statement",
+                "benefits",
+                "ssn",
+                "deduction",
+                "documents",
+            ]
         ],
         customer_email: Optional[str] | NotGiven = NOT_GIVEN,
         integration: Optional[session_new_params.Integration] | NotGiven = NOT_GIVEN,
@@ -107,7 +118,16 @@ class Sessions(SyncAPIResource):
         products: Optional[
             List[
                 Literal[
-                    "company", "directory", "individual", "employment", "payment", "pay_statement", "benefits", "ssn"
+                    "company",
+                    "directory",
+                    "individual",
+                    "employment",
+                    "payment",
+                    "pay_statement",
+                    "benefits",
+                    "ssn",
+                    "deduction",
+                    "documents",
                 ]
             ]
         ]
@@ -185,7 +205,18 @@ class AsyncSessions(AsyncAPIResource):
         customer_id: str,
         customer_name: str,
         products: List[
-            Literal["company", "directory", "individual", "employment", "payment", "pay_statement", "benefits", "ssn"]
+            Literal[
+                "company",
+                "directory",
+                "individual",
+                "employment",
+                "payment",
+                "pay_statement",
+                "benefits",
+                "ssn",
+                "deduction",
+                "documents",
+            ]
         ],
         customer_email: Optional[str] | NotGiven = NOT_GIVEN,
         integration: Optional[session_new_params.Integration] | NotGiven = NOT_GIVEN,
@@ -245,7 +276,16 @@ class AsyncSessions(AsyncAPIResource):
         products: Optional[
             List[
                 Literal[
-                    "company", "directory", "individual", "employment", "payment", "pay_statement", "benefits", "ssn"
+                    "company",
+                    "directory",
+                    "individual",
+                    "employment",
+                    "payment",
+                    "pay_statement",
+                    "benefits",
+                    "ssn",
+                    "deduction",
+                    "documents",
                 ]
             ]
         ]

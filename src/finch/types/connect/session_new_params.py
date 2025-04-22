@@ -14,7 +14,20 @@ class SessionNewParams(TypedDict, total=False):
     customer_name: Required[str]
 
     products: Required[
-        List[Literal["company", "directory", "individual", "employment", "payment", "pay_statement", "benefits", "ssn"]]
+        List[
+            Literal[
+                "company",
+                "directory",
+                "individual",
+                "employment",
+                "payment",
+                "pay_statement",
+                "benefits",
+                "ssn",
+                "deduction",
+                "documents",
+            ]
+        ]
     ]
 
     customer_email: Optional[str]
