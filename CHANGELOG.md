@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.23.0 (2025-04-21)
+
+Full Changelog: [v1.22.0...v1.23.0](https://github.com/Finch-API/finch-api-python/compare/v1.22.0...v1.23.0)
+
+### Features
+
+* **api:** api update ([6355866](https://github.com/Finch-API/finch-api-python/commit/6355866b36eba70636f458528a9db94d24b38998))
+
+
+### Bug Fixes
+
+* **internal:** fix fixture import lint ([a4d1919](https://github.com/Finch-API/finch-api-python/commit/a4d19190d65a235e57eb1895645059b01df3332b))
+
+
+### Chores
+
+* **internal:** base client updates ([dd645de](https://github.com/Finch-API/finch-api-python/commit/dd645de5788da66d69a639904ab95c72eae09a48))
+* **internal:** bump pyright version ([9a19507](https://github.com/Finch-API/finch-api-python/commit/9a1950770cb00259bf703f270065252b2a5858b6))
+* **internal:** update models test ([8fca672](https://github.com/Finch-API/finch-api-python/commit/8fca67214e73ed85bb66e9fbec2dd2e9454538ac))
+
 ## 1.22.0 (2025-04-14)
 
 Full Changelog: [v1.21.1...v1.22.0](https://github.com/Finch-API/finch-api-python/compare/v1.21.1...v1.22.0)

@@ -77,7 +77,8 @@ class Company(SyncAPIResource):
 
           primary_email: The email of the main administrator on the account.
 
-          primary_phone_number: The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
+          primary_phone_number: The phone number of the main administrator on the account. Format: E.164, with
+              extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
 
           extra_headers: Send extra headers
 
@@ -163,7 +164,8 @@ class AsyncCompany(AsyncAPIResource):
 
           primary_email: The email of the main administrator on the account.
 
-          primary_phone_number: The phone number of the main administrator on the account. Format: `XXXXXXXXXX`
+          primary_phone_number: The phone number of the main administrator on the account. Format: E.164, with
+              extension where applicable, e.g. `+NNNNNNNNNNN xExtension`
 
           extra_headers: Send extra headers
 

@@ -1,6 +1,6 @@
 [project]
 name = "finch-api"
-version = "1.22.0"
+version = "1.23.0"
 description = "The official Python library for the Finch API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -42,7 +42,7 @@ Repository = "https://github.com/Finch-API/finch-api-python"
 managed = true
 # version pins are in requirements-dev.lock
 dev-dependencies = [
-    "pyright>=1.1.359",
+    "pyright==1.1.399",
     "mypy",
     "respx",
     "pytest",
