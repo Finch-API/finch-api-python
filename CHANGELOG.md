@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.24.0 (2025-04-22)
+
+Full Changelog: [v1.23.1...v1.24.0](https://github.com/Finch-API/finch-api-python/compare/v1.23.1...v1.24.0)
+
+### Features
+
+* **api:** api update ([413f186](https://github.com/Finch-API/finch-api-python/commit/413f186d7136681b6c7a99fe65255d9ca1fea927))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([2371362](https://github.com/Finch-API/finch-api-python/commit/2371362a02516444916f738f2be85d97fdf1297a))
+* **internal:** import reformatting ([e3c3f1e](https://github.com/Finch-API/finch-api-python/commit/e3c3f1ea2e693e1732b77b3b392548e77e646190))
+
 ## 1.23.1 (2025-04-22)
 
 Full Changelog: [v1.23.0...v1.23.1](https://github.com/Finch-API/finch-api-python/compare/v1.23.0...v1.23.1)
