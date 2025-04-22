@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.23.1 (2025-04-22)
+
+Full Changelog: [v1.23.0...v1.23.1](https://github.com/Finch-API/finch-api-python/compare/v1.23.0...v1.23.1)
+
+### Bug Fixes
+
+* **client:** revert "send all configured auth headers" ([8a2045e](https://github.com/Finch-API/finch-api-python/commit/8a2045ebf381fe2081ced51d743dfd5687171133))
+
 ## 1.23.0 (2025-04-21)
 
 Full Changelog: [v1.22.0...v1.23.0](https://github.com/Finch-API/finch-api-python/compare/v1.22.0...v1.23.0)
