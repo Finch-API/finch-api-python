@@ -19,7 +19,20 @@ class SessionReauthenticateParams(TypedDict, total=False):
     """
 
     products: Optional[
-        List[Literal["company", "directory", "individual", "employment", "payment", "pay_statement", "benefits", "ssn"]]
+        List[
+            Literal[
+                "company",
+                "directory",
+                "individual",
+                "employment",
+                "payment",
+                "pay_statement",
+                "benefits",
+                "ssn",
+                "deduction",
+                "documents",
+            ]
+        ]
     ]
     """The products to request access to (optional for reauthentication)"""
 
