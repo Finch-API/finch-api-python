@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import Dict, Optional
 from typing_extensions import Literal
 
 from ...._models import BaseModel
@@ -15,7 +15,7 @@ class Attributes(BaseModel):
     This field is only available for taxes.
     """
 
-    metadata: Optional[object] = None
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata of the pay statement item derived by the rules engine if available.
 
     Each attribute will be a key-value pair defined by a rule.
