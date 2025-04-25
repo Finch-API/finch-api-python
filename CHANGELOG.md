@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.25.0 (2025-04-23)
+
+Full Changelog: [v1.24.0...v1.25.0](https://github.com/Finch-API/finch-api-python/compare/v1.24.0...v1.25.0)
+
+### Features
+
+* **api:** api update ([176d774](https://github.com/Finch-API/finch-api-python/commit/176d774f1ae10f0b37dd430c7f51cff4dd664db0))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([579eedd](https://github.com/Finch-API/finch-api-python/commit/579eeddd1fcbbe147add3aa929ee4767e2b43e83))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([2864fa8](https://github.com/Finch-API/finch-api-python/commit/2864fa89555340d8e654cd17bdc3ee089eaee3a3))
+* **ci:** only use depot for staging repos ([e8a6836](https://github.com/Finch-API/finch-api-python/commit/e8a6836f06bd970a5ac10189753aa1778feea6ef))
+* **ci:** run on more branches and use depot runners ([5203afe](https://github.com/Finch-API/finch-api-python/commit/5203afee32ed62d01217ee6bddc41770fb1deccd))
+* **internal:** fix list file params ([42ed0b1](https://github.com/Finch-API/finch-api-python/commit/42ed0b1e0e0e5791b90f5ca9c09fd3614bf86067))
+* **internal:** minor formatting changes ([f517369](https://github.com/Finch-API/finch-api-python/commit/f5173692369bdbf1223d2b89be54cc43fe95e50a))
+* **internal:** refactor retries to not use recursion ([64f0107](https://github.com/Finch-API/finch-api-python/commit/64f01072073a9ffc71e2fe274179df4f372953f0))
+
 ## 1.24.0 (2025-04-22)
 
 Full Changelog: [v1.23.1...v1.24.0](https://github.com/Finch-API/finch-api-python/compare/v1.23.1...v1.24.0)
