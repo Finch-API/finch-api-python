@@ -20,12 +20,12 @@ class Location(BaseModel):
     line2: Optional[str] = None
     """Apartment, suite, unit, or building."""
 
-    name: Optional[str] = None
-
     postal_code: Optional[str] = None
     """The postal code or zip code."""
 
-    source_id: Optional[str] = None
-
     state: Optional[str] = None
     """The state code."""
+
+    name: Optional[str] = None
+
+    source_id: Optional[str] = None
