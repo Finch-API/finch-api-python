@@ -6,13 +6,7 @@ from typing_extensions import Literal
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["Individual", "Email", "PhoneNumber"]
-
-
-class Email(BaseModel):
-    data: Optional[str] = None
-
-    type: Optional[Literal["work", "personal"]] = None
+__all__ = ["Individual", "PhoneNumber", "Email"]
 
 
 class PhoneNumber(BaseModel):
@@ -21,20 +15,17 @@ class PhoneNumber(BaseModel):
     type: Optional[Literal["work", "personal"]] = None
 
 
+class Email(BaseModel):
+    data: str
+
+    type: Optional[Literal["work", "personal"]] = None
+
+
 class Individual(BaseModel):
-    id: Optional[str] = None
+    id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     dob: Optional[str] = None
-
-    emails: Optional[List[Email]] = None
-
-    encrypted_ssn: Optional[str] = None
-    """Social Security Number of the individual in **encrypted** format.
-
-    This field is only available with the `ssn` scope enabled and the
-    `options: { include: ['ssn'] }` param set in the body.
-    """
 
     ethnicity: Optional[
         Literal[
@@ -68,6 +59,15 @@ class Individual(BaseModel):
     """The preferred name of the individual."""
 
     residence: Optional[Location] = None
+
+    emails: Optional[List[Email]] = None
+
+    encrypted_ssn: Optional[str] = None
+    """Social Security Number of the individual in **encrypted** format.
+
+    This field is only available with the `ssn` scope enabled and the
+    `options: { include: ['ssn'] }` param set in the body.
+    """
 
     ssn: Optional[str] = None
     """Social Security Number of the individual.
