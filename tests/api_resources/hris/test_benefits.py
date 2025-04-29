@@ -31,6 +31,15 @@ class TestBenefits:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         benefit = client.hris.benefits.create(
+            company_contribution={
+                "tiers": [
+                    {
+                        "match": 1,
+                        "threshold": 1,
+                    }
+                ],
+                "type": "match",
+            },
             description="description",
             frequency="one_time",
             type="401k",
@@ -203,6 +212,15 @@ class TestAsyncBenefits:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         benefit = await async_client.hris.benefits.create(
+            company_contribution={
+                "tiers": [
+                    {
+                        "match": 1,
+                        "threshold": 1,
+                    }
+                ],
+                "type": "match",
+            },
             description="description",
             frequency="one_time",
             type="401k",

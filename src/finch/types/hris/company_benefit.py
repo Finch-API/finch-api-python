@@ -11,9 +11,9 @@ __all__ = ["CompanyBenefit", "CompanyContribution", "CompanyContributionTier"]
 
 
 class CompanyContributionTier(BaseModel):
-    match: Optional[float] = None
+    match: Optional[int] = None
 
-    threshold: Optional[float] = None
+    threshold: Optional[int] = None
 
 
 class CompanyContribution(BaseModel):
