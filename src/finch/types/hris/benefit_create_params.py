@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
-from typing import Optional
-from typing_extensions import TypedDict
+from typing import Iterable, Optional
+from typing_extensions import Literal, TypedDict
 
 from .benefit_type import BenefitType
 from .benefit_frequency import BenefitFrequency
 
-__all__ = ["BenefitCreateParams"]
+__all__ = ["BenefitCreateParams", "CompanyContribution", "CompanyContributionTier"]
 
 
 class BenefitCreateParams(TypedDict, total=False):
+    company_contribution: Optional[CompanyContribution]
+    """The company match for this benefit."""
+
     description: str
     """Name of the benefit as it appears in the provider and pay statements.
 
@@ -24,3 +27,15 @@ class BenefitCreateParams(TypedDict, total=False):
 
     type: Optional[BenefitType]
     """Type of benefit."""
+
+
+class CompanyContributionTier(TypedDict, total=False):
+    match: int
+
+    threshold: int
+
+
+class CompanyContribution(TypedDict, total=False):
+    tiers: Iterable[CompanyContributionTier]
+
+    type: Literal["match"]
