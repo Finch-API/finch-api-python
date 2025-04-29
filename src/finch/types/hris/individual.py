@@ -6,7 +6,7 @@ from typing_extensions import Literal, TypeAlias
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["Individual", "UnionMember0", "UnionMember0PhoneNumber", "UnionMember0Email", "UnionMember1"]
+__all__ = ["Individual", "UnionMember0", "UnionMember0PhoneNumber", "UnionMember0Email", "BatchError"]
 
 
 class UnionMember0PhoneNumber(BaseModel):
@@ -78,7 +78,7 @@ class UnionMember0(BaseModel):
     """
 
 
-class UnionMember1(BaseModel):
+class BatchError(BaseModel):
     code: float
 
     message: str
@@ -88,4 +88,4 @@ class UnionMember1(BaseModel):
     finch_code: Optional[str] = None
 
 
-Individual: TypeAlias = Union[UnionMember0, UnionMember1]
+Individual: TypeAlias = Union[UnionMember0, BatchError]
