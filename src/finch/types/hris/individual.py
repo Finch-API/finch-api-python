@@ -1,27 +1,27 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["Individual", "PhoneNumber", "Email"]
+__all__ = ["Individual", "UnionMember0", "UnionMember0PhoneNumber", "UnionMember0Email", "UnionMember1"]
 
 
-class PhoneNumber(BaseModel):
+class UnionMember0PhoneNumber(BaseModel):
     data: Optional[str] = None
 
     type: Optional[Literal["work", "personal"]] = None
 
 
-class Email(BaseModel):
+class UnionMember0Email(BaseModel):
     data: str
 
     type: Optional[Literal["work", "personal"]] = None
 
 
-class Individual(BaseModel):
+class UnionMember0(BaseModel):
     id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
@@ -53,14 +53,14 @@ class Individual(BaseModel):
     middle_name: Optional[str] = None
     """The legal middle name of the individual."""
 
-    phone_numbers: Optional[List[Optional[PhoneNumber]]] = None
+    phone_numbers: Optional[List[Optional[UnionMember0PhoneNumber]]] = None
 
     preferred_name: Optional[str] = None
     """The preferred name of the individual."""
 
     residence: Optional[Location] = None
 
-    emails: Optional[List[Email]] = None
+    emails: Optional[List[UnionMember0Email]] = None
 
     encrypted_ssn: Optional[str] = None
     """Social Security Number of the individual in **encrypted** format.
@@ -76,3 +76,16 @@ class Individual(BaseModel):
     `options: { include: ['ssn'] }` param set in the body.
     [Click here to learn more about enabling the SSN field](/developer-resources/Enable-SSN-Field).
     """
+
+
+class UnionMember1(BaseModel):
+    code: float
+
+    message: str
+
+    name: str
+
+    finch_code: Optional[str] = None
+
+
+Individual: TypeAlias = Union[UnionMember0, UnionMember1]
