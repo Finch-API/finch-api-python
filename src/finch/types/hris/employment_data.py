@@ -1,27 +1,35 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from ..income import Income
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["EmploymentData", "CustomField", "Department", "Employment", "Manager"]
+__all__ = [
+    "EmploymentData",
+    "UnionMember0",
+    "UnionMember0CustomField",
+    "UnionMember0Department",
+    "UnionMember0Employment",
+    "UnionMember0Manager",
+    "BatchError",
+]
 
 
-class CustomField(BaseModel):
+class UnionMember0CustomField(BaseModel):
     name: Optional[str] = None
 
-    value: Optional[object] = None
+    value: Union[str, List[object], float, bool, object, None] = None
 
 
-class Department(BaseModel):
+class UnionMember0Department(BaseModel):
     name: Optional[str] = None
     """The name of the department associated with the individual."""
 
 
-class Employment(BaseModel):
+class UnionMember0Employment(BaseModel):
     subtype: Optional[Literal["full_time", "intern", "part_time", "temp", "seasonal", "individual_contractor"]] = None
     """The secondary employment type of the individual.
 
@@ -33,28 +41,28 @@ class Employment(BaseModel):
     """The main employment type of the individual."""
 
 
-class Manager(BaseModel):
-    id: Optional[str] = None
+class UnionMember0Manager(BaseModel):
+    id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
 
-class EmploymentData(BaseModel):
-    id: Optional[str] = None
+class UnionMember0(BaseModel):
+    id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     class_code: Optional[str] = None
     """Worker's compensation classification code for this employee"""
 
-    custom_fields: Optional[List[CustomField]] = None
+    custom_fields: Optional[List[UnionMember0CustomField]] = None
     """Custom fields for the individual.
 
     These are fields which are defined by the employer in the system.
     """
 
-    department: Optional[Department] = None
+    department: Optional[UnionMember0Department] = None
     """The department object."""
 
-    employment: Optional[Employment] = None
+    employment: Optional[UnionMember0Employment] = None
     """The employment object."""
 
     employment_status: Optional[
@@ -71,16 +79,6 @@ class EmploymentData(BaseModel):
     first_name: Optional[str] = None
     """The legal first name of the individual."""
 
-    income_history: Optional[List[Optional[Income]]] = None
-    """The array of income history."""
-
-    income: Optional[Income] = None
-    """The employee's income as reported by the provider.
-
-    This may not always be annualized income, but may be in units of bi-weekly,
-    semi-monthly, daily, etc, depending on what information the provider returns.
-    """
-
     is_active: Optional[bool] = None
     """`true` if the individual an an active employee or contractor at the company."""
 
@@ -91,7 +89,7 @@ class EmploymentData(BaseModel):
 
     location: Optional[Location] = None
 
-    manager: Optional[Manager] = None
+    manager: Optional[UnionMember0Manager] = None
     """The manager object representing the manager of the individual within the org."""
 
     middle_name: Optional[str] = None
@@ -107,3 +105,26 @@ class EmploymentData(BaseModel):
 
     work_id: Optional[str] = None
     """This field is deprecated in favour of `source_id`"""
+
+    income_history: Optional[List[Optional[Income]]] = None
+    """The array of income history."""
+
+    income: Optional[Income] = None
+    """The employee's income as reported by the provider.
+
+    This may not always be annualized income, but may be in units of bi-weekly,
+    semi-monthly, daily, etc, depending on what information the provider returns.
+    """
+
+
+class BatchError(BaseModel):
+    code: float
+
+    message: str
+
+    name: str
+
+    finch_code: Optional[str] = None
+
+
+EmploymentData: TypeAlias = Union[UnionMember0, BatchError]
