@@ -1,7 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
-
 from ..._models import BaseModel
 from .employment_data import EmploymentData
 
@@ -9,9 +7,9 @@ __all__ = ["EmploymentDataResponse"]
 
 
 class EmploymentDataResponse(BaseModel):
-    body: Optional[EmploymentData] = None
+    body: EmploymentData
 
-    code: Optional[int] = None
+    code: int
 
-    individual_id: Optional[str] = None
+    individual_id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
