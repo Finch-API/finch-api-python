@@ -25,7 +25,7 @@ __all__ = [
 
 
 class EarningAttributesMetadata(BaseModel):
-    metadata: Optional[Dict[str, object]] = None
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -77,7 +77,7 @@ class Earning(BaseModel):
 
 
 class EmployeeDeductionAttributesMetadata(BaseModel):
-    metadata: Optional[Dict[str, object]] = None
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -109,7 +109,7 @@ class EmployeeDeduction(BaseModel):
 
 
 class EmployerContributionAttributesMetadata(BaseModel):
-    metadata: Optional[Dict[str, object]] = None
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -138,7 +138,7 @@ class EmployerContribution(BaseModel):
 
 
 class TaxAttributesMetadata(BaseModel):
-    metadata: Optional[Dict[str, object]] = None
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,

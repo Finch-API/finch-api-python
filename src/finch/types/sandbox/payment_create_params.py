@@ -35,7 +35,7 @@ class PaymentCreateParams(TypedDict, total=False):
 
 
 class PayStatementEarningAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, object]
+    metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -87,7 +87,7 @@ class PayStatementEarning(TypedDict, total=False):
 
 
 class PayStatementEmployeeDeductionAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, object]
+    metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -119,7 +119,7 @@ class PayStatementEmployeeDeduction(TypedDict, total=False):
 
 
 class PayStatementEmployerContributionAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, object]
+    metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -148,7 +148,7 @@ class PayStatementEmployerContribution(TypedDict, total=False):
 
 
 class PayStatementTaxAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, object]
+    metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
