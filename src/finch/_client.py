@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import os
 import base64
-from typing import Any, Union, Mapping
+from typing import TYPE_CHECKING, Any, Union, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -22,8 +22,8 @@ from ._types import (
     RequestOptions,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import account, providers, access_tokens, request_forwarding
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -31,28 +31,23 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.hris import hris
-from .resources.jobs import jobs
-from .resources.connect import connect
-from .resources.payroll import payroll
-from .resources.sandbox import sandbox
+
+if TYPE_CHECKING:
+    from .resources import hris, jobs, account, connect, payroll, sandbox, providers, access_tokens, request_forwarding
+    from .resources.account import Account, AsyncAccount
+    from .resources.hris.hris import HRIS, AsyncHRIS
+    from .resources.jobs.jobs import Jobs, AsyncJobs
+    from .resources.providers import Providers, AsyncProviders
+    from .resources.access_tokens import AccessTokens, AsyncAccessTokens
+    from .resources.connect.connect import Connect, AsyncConnect
+    from .resources.payroll.payroll import Payroll, AsyncPayroll
+    from .resources.sandbox.sandbox import Sandbox, AsyncSandbox
+    from .resources.request_forwarding import RequestForwarding, AsyncRequestForwarding
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Finch", "AsyncFinch", "Client", "AsyncClient"]
 
 
 class Finch(SyncAPIClient):
-    access_tokens: access_tokens.AccessTokens
-    hris: hris.HRIS
-    providers: providers.Providers
-    account: account.Account
-    request_forwarding: request_forwarding.RequestForwarding
-    jobs: jobs.Jobs
-    sandbox: sandbox.Sandbox
-    payroll: payroll.Payroll
-    connect: connect.Connect
-    with_raw_response: FinchWithRawResponse
-    with_streaming_response: FinchWithStreamedResponse
-
     # client options
     access_token: str | None
     client_id: str | None
@@ -122,17 +117,67 @@ class Finch(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.access_tokens = access_tokens.AccessTokens(self)
-        self.hris = hris.HRIS(self)
-        self.providers = providers.Providers(self)
-        self.account = account.Account(self)
-        self.request_forwarding = request_forwarding.RequestForwarding(self)
-        self.jobs = jobs.Jobs(self)
-        self.sandbox = sandbox.Sandbox(self)
-        self.payroll = payroll.Payroll(self)
-        self.connect = connect.Connect(self)
-        self.with_raw_response = FinchWithRawResponse(self)
-        self.with_streaming_response = FinchWithStreamedResponse(self)
+    @cached_property
+    def access_tokens(self) -> AccessTokens:
+        from .resources.access_tokens import AccessTokens
+
+        return AccessTokens(self)
+
+    @cached_property
+    def hris(self) -> HRIS:
+        from .resources.hris import HRIS
+
+        return HRIS(self)
+
+    @cached_property
+    def providers(self) -> Providers:
+        from .resources.providers import Providers
+
+        return Providers(self)
+
+    @cached_property
+    def account(self) -> Account:
+        from .resources.account import Account
+
+        return Account(self)
+
+    @cached_property
+    def request_forwarding(self) -> RequestForwarding:
+        from .resources.request_forwarding import RequestForwarding
+
+        return RequestForwarding(self)
+
+    @cached_property
+    def jobs(self) -> Jobs:
+        from .resources.jobs import Jobs
+
+        return Jobs(self)
+
+    @cached_property
+    def sandbox(self) -> Sandbox:
+        from .resources.sandbox import Sandbox
+
+        return Sandbox(self)
+
+    @cached_property
+    def payroll(self) -> Payroll:
+        from .resources.payroll import Payroll
+
+        return Payroll(self)
+
+    @cached_property
+    def connect(self) -> Connect:
+        from .resources.connect import Connect
+
+        return Connect(self)
+
+    @cached_property
+    def with_raw_response(self) -> FinchWithRawResponse:
+        return FinchWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> FinchWithStreamedResponse:
+        return FinchWithStreamedResponse(self)
 
     @property
     @override
@@ -279,18 +324,6 @@ class Finch(SyncAPIClient):
 
 
 class AsyncFinch(AsyncAPIClient):
-    access_tokens: access_tokens.AsyncAccessTokens
-    hris: hris.AsyncHRIS
-    providers: providers.AsyncProviders
-    account: account.AsyncAccount
-    request_forwarding: request_forwarding.AsyncRequestForwarding
-    jobs: jobs.AsyncJobs
-    sandbox: sandbox.AsyncSandbox
-    payroll: payroll.AsyncPayroll
-    connect: connect.AsyncConnect
-    with_raw_response: AsyncFinchWithRawResponse
-    with_streaming_response: AsyncFinchWithStreamedResponse
-
     # client options
     access_token: str | None
     client_id: str | None
@@ -360,17 +393,67 @@ class AsyncFinch(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.access_tokens = access_tokens.AsyncAccessTokens(self)
-        self.hris = hris.AsyncHRIS(self)
-        self.providers = providers.AsyncProviders(self)
-        self.account = account.AsyncAccount(self)
-        self.request_forwarding = request_forwarding.AsyncRequestForwarding(self)
-        self.jobs = jobs.AsyncJobs(self)
-        self.sandbox = sandbox.AsyncSandbox(self)
-        self.payroll = payroll.AsyncPayroll(self)
-        self.connect = connect.AsyncConnect(self)
-        self.with_raw_response = AsyncFinchWithRawResponse(self)
-        self.with_streaming_response = AsyncFinchWithStreamedResponse(self)
+    @cached_property
+    def access_tokens(self) -> AsyncAccessTokens:
+        from .resources.access_tokens import AsyncAccessTokens
+
+        return AsyncAccessTokens(self)
+
+    @cached_property
+    def hris(self) -> AsyncHRIS:
+        from .resources.hris import AsyncHRIS
+
+        return AsyncHRIS(self)
+
+    @cached_property
+    def providers(self) -> AsyncProviders:
+        from .resources.providers import AsyncProviders
+
+        return AsyncProviders(self)
+
+    @cached_property
+    def account(self) -> AsyncAccount:
+        from .resources.account import AsyncAccount
+
+        return AsyncAccount(self)
+
+    @cached_property
+    def request_forwarding(self) -> AsyncRequestForwarding:
+        from .resources.request_forwarding import AsyncRequestForwarding
+
+        return AsyncRequestForwarding(self)
+
+    @cached_property
+    def jobs(self) -> AsyncJobs:
+        from .resources.jobs import AsyncJobs
+
+        return AsyncJobs(self)
+
+    @cached_property
+    def sandbox(self) -> AsyncSandbox:
+        from .resources.sandbox import AsyncSandbox
+
+        return AsyncSandbox(self)
+
+    @cached_property
+    def payroll(self) -> AsyncPayroll:
+        from .resources.payroll import AsyncPayroll
+
+        return AsyncPayroll(self)
+
+    @cached_property
+    def connect(self) -> AsyncConnect:
+        from .resources.connect import AsyncConnect
+
+        return AsyncConnect(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncFinchWithRawResponse:
+        return AsyncFinchWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncFinchWithStreamedResponse:
+        return AsyncFinchWithStreamedResponse(self)
 
     @property
     @override
@@ -517,57 +600,247 @@ class AsyncFinch(AsyncAPIClient):
 
 
 class FinchWithRawResponse:
+    _client: Finch
+
     def __init__(self, client: Finch) -> None:
-        self.access_tokens = access_tokens.AccessTokensWithRawResponse(client.access_tokens)
-        self.hris = hris.HRISWithRawResponse(client.hris)
-        self.providers = providers.ProvidersWithRawResponse(client.providers)
-        self.account = account.AccountWithRawResponse(client.account)
-        self.request_forwarding = request_forwarding.RequestForwardingWithRawResponse(client.request_forwarding)
-        self.jobs = jobs.JobsWithRawResponse(client.jobs)
-        self.sandbox = sandbox.SandboxWithRawResponse(client.sandbox)
-        self.payroll = payroll.PayrollWithRawResponse(client.payroll)
-        self.connect = connect.ConnectWithRawResponse(client.connect)
+        self._client = client
+
+    @cached_property
+    def access_tokens(self) -> access_tokens.AccessTokensWithRawResponse:
+        from .resources.access_tokens import AccessTokensWithRawResponse
+
+        return AccessTokensWithRawResponse(self._client.access_tokens)
+
+    @cached_property
+    def hris(self) -> hris.HRISWithRawResponse:
+        from .resources.hris import HRISWithRawResponse
+
+        return HRISWithRawResponse(self._client.hris)
+
+    @cached_property
+    def providers(self) -> providers.ProvidersWithRawResponse:
+        from .resources.providers import ProvidersWithRawResponse
+
+        return ProvidersWithRawResponse(self._client.providers)
+
+    @cached_property
+    def account(self) -> account.AccountWithRawResponse:
+        from .resources.account import AccountWithRawResponse
+
+        return AccountWithRawResponse(self._client.account)
+
+    @cached_property
+    def request_forwarding(self) -> request_forwarding.RequestForwardingWithRawResponse:
+        from .resources.request_forwarding import RequestForwardingWithRawResponse
+
+        return RequestForwardingWithRawResponse(self._client.request_forwarding)
+
+    @cached_property
+    def jobs(self) -> jobs.JobsWithRawResponse:
+        from .resources.jobs import JobsWithRawResponse
+
+        return JobsWithRawResponse(self._client.jobs)
+
+    @cached_property
+    def sandbox(self) -> sandbox.SandboxWithRawResponse:
+        from .resources.sandbox import SandboxWithRawResponse
+
+        return SandboxWithRawResponse(self._client.sandbox)
+
+    @cached_property
+    def payroll(self) -> payroll.PayrollWithRawResponse:
+        from .resources.payroll import PayrollWithRawResponse
+
+        return PayrollWithRawResponse(self._client.payroll)
+
+    @cached_property
+    def connect(self) -> connect.ConnectWithRawResponse:
+        from .resources.connect import ConnectWithRawResponse
+
+        return ConnectWithRawResponse(self._client.connect)
 
 
 class AsyncFinchWithRawResponse:
+    _client: AsyncFinch
+
     def __init__(self, client: AsyncFinch) -> None:
-        self.access_tokens = access_tokens.AsyncAccessTokensWithRawResponse(client.access_tokens)
-        self.hris = hris.AsyncHRISWithRawResponse(client.hris)
-        self.providers = providers.AsyncProvidersWithRawResponse(client.providers)
-        self.account = account.AsyncAccountWithRawResponse(client.account)
-        self.request_forwarding = request_forwarding.AsyncRequestForwardingWithRawResponse(client.request_forwarding)
-        self.jobs = jobs.AsyncJobsWithRawResponse(client.jobs)
-        self.sandbox = sandbox.AsyncSandboxWithRawResponse(client.sandbox)
-        self.payroll = payroll.AsyncPayrollWithRawResponse(client.payroll)
-        self.connect = connect.AsyncConnectWithRawResponse(client.connect)
+        self._client = client
+
+    @cached_property
+    def access_tokens(self) -> access_tokens.AsyncAccessTokensWithRawResponse:
+        from .resources.access_tokens import AsyncAccessTokensWithRawResponse
+
+        return AsyncAccessTokensWithRawResponse(self._client.access_tokens)
+
+    @cached_property
+    def hris(self) -> hris.AsyncHRISWithRawResponse:
+        from .resources.hris import AsyncHRISWithRawResponse
+
+        return AsyncHRISWithRawResponse(self._client.hris)
+
+    @cached_property
+    def providers(self) -> providers.AsyncProvidersWithRawResponse:
+        from .resources.providers import AsyncProvidersWithRawResponse
+
+        return AsyncProvidersWithRawResponse(self._client.providers)
+
+    @cached_property
+    def account(self) -> account.AsyncAccountWithRawResponse:
+        from .resources.account import AsyncAccountWithRawResponse
+
+        return AsyncAccountWithRawResponse(self._client.account)
+
+    @cached_property
+    def request_forwarding(self) -> request_forwarding.AsyncRequestForwardingWithRawResponse:
+        from .resources.request_forwarding import AsyncRequestForwardingWithRawResponse
+
+        return AsyncRequestForwardingWithRawResponse(self._client.request_forwarding)
+
+    @cached_property
+    def jobs(self) -> jobs.AsyncJobsWithRawResponse:
+        from .resources.jobs import AsyncJobsWithRawResponse
+
+        return AsyncJobsWithRawResponse(self._client.jobs)
+
+    @cached_property
+    def sandbox(self) -> sandbox.AsyncSandboxWithRawResponse:
+        from .resources.sandbox import AsyncSandboxWithRawResponse
+
+        return AsyncSandboxWithRawResponse(self._client.sandbox)
+
+    @cached_property
+    def payroll(self) -> payroll.AsyncPayrollWithRawResponse:
+        from .resources.payroll import AsyncPayrollWithRawResponse
+
+        return AsyncPayrollWithRawResponse(self._client.payroll)
+
+    @cached_property
+    def connect(self) -> connect.AsyncConnectWithRawResponse:
+        from .resources.connect import AsyncConnectWithRawResponse
+
+        return AsyncConnectWithRawResponse(self._client.connect)
 
 
 class FinchWithStreamedResponse:
+    _client: Finch
+
     def __init__(self, client: Finch) -> None:
-        self.access_tokens = access_tokens.AccessTokensWithStreamingResponse(client.access_tokens)
-        self.hris = hris.HRISWithStreamingResponse(client.hris)
-        self.providers = providers.ProvidersWithStreamingResponse(client.providers)
-        self.account = account.AccountWithStreamingResponse(client.account)
-        self.request_forwarding = request_forwarding.RequestForwardingWithStreamingResponse(client.request_forwarding)
-        self.jobs = jobs.JobsWithStreamingResponse(client.jobs)
-        self.sandbox = sandbox.SandboxWithStreamingResponse(client.sandbox)
-        self.payroll = payroll.PayrollWithStreamingResponse(client.payroll)
-        self.connect = connect.ConnectWithStreamingResponse(client.connect)
+        self._client = client
+
+    @cached_property
+    def access_tokens(self) -> access_tokens.AccessTokensWithStreamingResponse:
+        from .resources.access_tokens import AccessTokensWithStreamingResponse
+
+        return AccessTokensWithStreamingResponse(self._client.access_tokens)
+
+    @cached_property
+    def hris(self) -> hris.HRISWithStreamingResponse:
+        from .resources.hris import HRISWithStreamingResponse
+
+        return HRISWithStreamingResponse(self._client.hris)
+
+    @cached_property
+    def providers(self) -> providers.ProvidersWithStreamingResponse:
+        from .resources.providers import ProvidersWithStreamingResponse
+
+        return ProvidersWithStreamingResponse(self._client.providers)
+
+    @cached_property
+    def account(self) -> account.AccountWithStreamingResponse:
+        from .resources.account import AccountWithStreamingResponse
+
+        return AccountWithStreamingResponse(self._client.account)
+
+    @cached_property
+    def request_forwarding(self) -> request_forwarding.RequestForwardingWithStreamingResponse:
+        from .resources.request_forwarding import RequestForwardingWithStreamingResponse
+
+        return RequestForwardingWithStreamingResponse(self._client.request_forwarding)
+
+    @cached_property
+    def jobs(self) -> jobs.JobsWithStreamingResponse:
+        from .resources.jobs import JobsWithStreamingResponse
+
+        return JobsWithStreamingResponse(self._client.jobs)
+
+    @cached_property
+    def sandbox(self) -> sandbox.SandboxWithStreamingResponse:
+        from .resources.sandbox import SandboxWithStreamingResponse
+
+        return SandboxWithStreamingResponse(self._client.sandbox)
+
+    @cached_property
+    def payroll(self) -> payroll.PayrollWithStreamingResponse:
+        from .resources.payroll import PayrollWithStreamingResponse
+
+        return PayrollWithStreamingResponse(self._client.payroll)
+
+    @cached_property
+    def connect(self) -> connect.ConnectWithStreamingResponse:
+        from .resources.connect import ConnectWithStreamingResponse
+
+        return ConnectWithStreamingResponse(self._client.connect)
 
 
 class AsyncFinchWithStreamedResponse:
+    _client: AsyncFinch
+
     def __init__(self, client: AsyncFinch) -> None:
-        self.access_tokens = access_tokens.AsyncAccessTokensWithStreamingResponse(client.access_tokens)
-        self.hris = hris.AsyncHRISWithStreamingResponse(client.hris)
-        self.providers = providers.AsyncProvidersWithStreamingResponse(client.providers)
-        self.account = account.AsyncAccountWithStreamingResponse(client.account)
-        self.request_forwarding = request_forwarding.AsyncRequestForwardingWithStreamingResponse(
-            client.request_forwarding
-        )
-        self.jobs = jobs.AsyncJobsWithStreamingResponse(client.jobs)
-        self.sandbox = sandbox.AsyncSandboxWithStreamingResponse(client.sandbox)
-        self.payroll = payroll.AsyncPayrollWithStreamingResponse(client.payroll)
-        self.connect = connect.AsyncConnectWithStreamingResponse(client.connect)
+        self._client = client
+
+    @cached_property
+    def access_tokens(self) -> access_tokens.AsyncAccessTokensWithStreamingResponse:
+        from .resources.access_tokens import AsyncAccessTokensWithStreamingResponse
+
+        return AsyncAccessTokensWithStreamingResponse(self._client.access_tokens)
+
+    @cached_property
+    def hris(self) -> hris.AsyncHRISWithStreamingResponse:
+        from .resources.hris import AsyncHRISWithStreamingResponse
+
+        return AsyncHRISWithStreamingResponse(self._client.hris)
+
+    @cached_property
+    def providers(self) -> providers.AsyncProvidersWithStreamingResponse:
+        from .resources.providers import AsyncProvidersWithStreamingResponse
+
+        return AsyncProvidersWithStreamingResponse(self._client.providers)
+
+    @cached_property
+    def account(self) -> account.AsyncAccountWithStreamingResponse:
+        from .resources.account import AsyncAccountWithStreamingResponse
+
+        return AsyncAccountWithStreamingResponse(self._client.account)
+
+    @cached_property
+    def request_forwarding(self) -> request_forwarding.AsyncRequestForwardingWithStreamingResponse:
+        from .resources.request_forwarding import AsyncRequestForwardingWithStreamingResponse
+
+        return AsyncRequestForwardingWithStreamingResponse(self._client.request_forwarding)
+
+    @cached_property
+    def jobs(self) -> jobs.AsyncJobsWithStreamingResponse:
+        from .resources.jobs import AsyncJobsWithStreamingResponse
+
+        return AsyncJobsWithStreamingResponse(self._client.jobs)
+
+    @cached_property
+    def sandbox(self) -> sandbox.AsyncSandboxWithStreamingResponse:
+        from .resources.sandbox import AsyncSandboxWithStreamingResponse
+
+        return AsyncSandboxWithStreamingResponse(self._client.sandbox)
+
+    @cached_property
+    def payroll(self) -> payroll.AsyncPayrollWithStreamingResponse:
+        from .resources.payroll import AsyncPayrollWithStreamingResponse
+
+        return AsyncPayrollWithStreamingResponse(self._client.payroll)
+
+    @cached_property
+    def connect(self) -> connect.AsyncConnectWithStreamingResponse:
+        from .resources.connect import AsyncConnectWithStreamingResponse
+
+        return AsyncConnectWithStreamingResponse(self._client.connect)
 
 
 Client = Finch
