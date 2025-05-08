@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.26.0 (2025-05-08)
+
+Full Changelog: [v1.25.0...v1.26.0](https://github.com/Finch-API/finch-api-python/compare/v1.25.0...v1.26.0)
+
+### Features
+
+* **api:** api update ([bbaa065](https://github.com/Finch-API/finch-api-python/commit/bbaa0656797f95c979a20dfeeaf0a36eec93c72b))
+* **api:** api update ([435d475](https://github.com/Finch-API/finch-api-python/commit/435d47510c5746b63fa7693e1b844a010655e58d))
+* **api:** api update ([1fbbcfa](https://github.com/Finch-API/finch-api-python/commit/1fbbcfadaf74e098cca60988083ffb341a35d26b))
+* **api:** api update ([a6df7d1](https://github.com/Finch-API/finch-api-python/commit/a6df7d18bd6f1bf7333c12f4ab6da43c1a2d9a7e))
+* **api:** api update ([ebbed03](https://github.com/Finch-API/finch-api-python/commit/ebbed03e8849ea81a316fdf22cacbf048e4acc99))
+* **api:** api update ([d47842a](https://github.com/Finch-API/finch-api-python/commit/d47842a1a0fe6524649c6f159a23a5679a840c19))
+* **api:** api update ([24da06a](https://github.com/Finch-API/finch-api-python/commit/24da06a214b10d46594f6256c538d39ceca8352f))
+* **api:** api update ([388e39c](https://github.com/Finch-API/finch-api-python/commit/388e39c6adc5a39690220b7be5b8a754a845c4ca))
+* **api:** api update ([f4f6ed4](https://github.com/Finch-API/finch-api-python/commit/f4f6ed4f068f0e46f2f5b62e70c021bfb43e22f5))
+* **api:** api update ([4cd4be9](https://github.com/Finch-API/finch-api-python/commit/4cd4be9d82bfd0faea1fe30aac7dbbb9d54ac76b))
+* **api:** api update ([61ef456](https://github.com/Finch-API/finch-api-python/commit/61ef4565dfd90805361c46842bf0a41eb69b0aef))
+* **api:** api update ([f07e754](https://github.com/Finch-API/finch-api-python/commit/f07e754efdb1eade0ec73525e1f49db5e65eded6))
+* **api:** api update ([8a699b4](https://github.com/Finch-API/finch-api-python/commit/8a699b4a44565c24703ea63f7be16a1f50fea188))
+* **api:** api update ([53a339f](https://github.com/Finch-API/finch-api-python/commit/53a339f1f21f456dbfd5d94337cf8c5f710cd80f))
+* **api:** api update ([2954f3e](https://github.com/Finch-API/finch-api-python/commit/2954f3ef8117a57b656ce493806c906d91f86c43))
+* **api:** api update ([55b0723](https://github.com/Finch-API/finch-api-python/commit/55b0723e8791d0ef8414c30443946920e8e54c9b))
+* **api:** api update ([21a0e16](https://github.com/Finch-API/finch-api-python/commit/21a0e160732aa8524f8a086314e9ab2297f08843))
+
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([9fb0e38](https://github.com/Finch-API/finch-api-python/commit/9fb0e3875bfc23d6a26ee0dbaf58049c4ee09b37))
+* use lazy imports for resources ([1279854](https://github.com/Finch-API/finch-api-python/commit/1279854fd435932e1e52c8106f11f8440c8ffb48))
+
 ## 1.25.0 (2025-04-23)
 
 Full Changelog: [v1.24.0...v1.25.0](https://github.com/Finch-API/finch-api-python/compare/v1.24.0...v1.25.0)
