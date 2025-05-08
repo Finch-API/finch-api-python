@@ -13,12 +13,12 @@ class Department(BaseModel):
 
 
 class Manager(BaseModel):
-    id: Optional[str] = None
+    id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
 
 class IndividualInDirectory(BaseModel):
-    id: Optional[str] = None
+    id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     department: Optional[Department] = None

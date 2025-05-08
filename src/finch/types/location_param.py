@@ -3,30 +3,30 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["LocationParam"]
 
 
 class LocationParam(TypedDict, total=False):
-    city: Optional[str]
+    city: Required[Optional[str]]
     """City, district, suburb, town, or village."""
 
-    country: Optional[str]
+    country: Required[Optional[str]]
     """The 2-letter ISO 3166 country code."""
 
-    line1: Optional[str]
+    line1: Required[Optional[str]]
     """Street address or PO box."""
 
-    line2: Optional[str]
+    line2: Required[Optional[str]]
     """Apartment, suite, unit, or building."""
+
+    postal_code: Required[Optional[str]]
+    """The postal code or zip code."""
+
+    state: Required[Optional[str]]
+    """The state code."""
 
     name: Optional[str]
 
-    postal_code: Optional[str]
-    """The postal code or zip code."""
-
     source_id: Optional[str]
-
-    state: Optional[str]
-    """The state code."""

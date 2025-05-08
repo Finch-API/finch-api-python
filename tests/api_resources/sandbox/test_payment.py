@@ -31,7 +31,7 @@ class TestPayment:
                     "earnings": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "hours": 0,
                             "name": "name",
@@ -41,7 +41,7 @@ class TestPayment:
                     "employee_deductions": [
                         {
                             "amount": 2000,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "usd",
                             "name": "401k test",
                             "pre_tax": True,
@@ -51,7 +51,7 @@ class TestPayment:
                     "employer_contributions": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "name": "name",
                             "type": "401k",
@@ -70,7 +70,7 @@ class TestPayment:
                     "taxes": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "employer": True,
                             "name": "name",
@@ -123,7 +123,7 @@ class TestAsyncPayment:
                     "earnings": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "hours": 0,
                             "name": "name",
@@ -133,7 +133,7 @@ class TestAsyncPayment:
                     "employee_deductions": [
                         {
                             "amount": 2000,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "usd",
                             "name": "401k test",
                             "pre_tax": True,
@@ -143,7 +143,7 @@ class TestAsyncPayment:
                     "employer_contributions": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "name": "name",
                             "type": "401k",
@@ -162,7 +162,7 @@ class TestAsyncPayment:
                     "taxes": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": "bar"}}},
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "employer": True,
                             "name": "name",

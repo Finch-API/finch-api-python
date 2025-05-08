@@ -8,8 +8,8 @@ __all__ = ["Paging"]
 
 
 class Paging(BaseModel):
+    offset: int
+    """The current start index of the returned list of elements"""
+
     count: Optional[int] = None
     """The total number of elements for the entire query (not just the given page)"""
-
-    offset: Optional[int] = None
-    """The current start index of the returned list of elements"""

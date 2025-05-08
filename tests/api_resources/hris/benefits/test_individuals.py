@@ -39,16 +39,16 @@ class TestIndividuals:
                 {
                     "configuration": {
                         "annual_contribution_limit": "individual",
-                        "annual_maximum": 500000,
-                        "catch_up": False,
+                        "annual_maximum": None,
+                        "catch_up": True,
                         "company_contribution": {
-                            "amount": 400,
-                            "type": "percent",
+                            "amount": 0,
+                            "type": "fixed",
                         },
-                        "effective_date": parse_date("2025-01-01"),
+                        "effective_date": parse_date("2019-12-27"),
                         "employee_deduction": {
-                            "amount": 1000,
-                            "type": "percent",
+                            "amount": 10000,
+                            "type": "fixed",
                         },
                     },
                     "individual_id": "d02a6346-1f08-4312-a064-49ff3cafaa7a",
@@ -237,16 +237,16 @@ class TestAsyncIndividuals:
                 {
                     "configuration": {
                         "annual_contribution_limit": "individual",
-                        "annual_maximum": 500000,
-                        "catch_up": False,
+                        "annual_maximum": None,
+                        "catch_up": True,
                         "company_contribution": {
-                            "amount": 400,
-                            "type": "percent",
+                            "amount": 0,
+                            "type": "fixed",
                         },
-                        "effective_date": parse_date("2025-01-01"),
+                        "effective_date": parse_date("2019-12-27"),
                         "employee_deduction": {
-                            "amount": 1000,
-                            "type": "percent",
+                            "amount": 10000,
+                            "type": "fixed",
                         },
                     },
                     "individual_id": "d02a6346-1f08-4312-a064-49ff3cafaa7a",

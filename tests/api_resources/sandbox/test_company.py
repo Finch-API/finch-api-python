@@ -25,7 +25,16 @@ class TestCompany:
             ein="ein",
             entity={},
             legal_name="legal_name",
-            locations=[{}],
+            locations=[
+                {
+                    "city": "city",
+                    "country": "country",
+                    "line1": "line1",
+                    "line2": "line2",
+                    "postal_code": "postal_code",
+                    "state": "state",
+                }
+            ],
             primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
@@ -61,10 +70,10 @@ class TestCompany:
                     "country": "country",
                     "line1": "line1",
                     "line2": "line2",
-                    "name": "name",
                     "postal_code": "postal_code",
-                    "source_id": "source_id",
                     "state": "state",
+                    "name": "name",
+                    "source_id": "source_id",
                 }
             ],
             primary_email="dev@stainless.com",
@@ -80,7 +89,16 @@ class TestCompany:
             ein="ein",
             entity={},
             legal_name="legal_name",
-            locations=[{}],
+            locations=[
+                {
+                    "city": "city",
+                    "country": "country",
+                    "line1": "line1",
+                    "line2": "line2",
+                    "postal_code": "postal_code",
+                    "state": "state",
+                }
+            ],
             primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
@@ -98,7 +116,16 @@ class TestCompany:
             ein="ein",
             entity={},
             legal_name="legal_name",
-            locations=[{}],
+            locations=[
+                {
+                    "city": "city",
+                    "country": "country",
+                    "line1": "line1",
+                    "line2": "line2",
+                    "postal_code": "postal_code",
+                    "state": "state",
+                }
+            ],
             primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         ) as response:
@@ -122,7 +149,16 @@ class TestAsyncCompany:
             ein="ein",
             entity={},
             legal_name="legal_name",
-            locations=[{}],
+            locations=[
+                {
+                    "city": "city",
+                    "country": "country",
+                    "line1": "line1",
+                    "line2": "line2",
+                    "postal_code": "postal_code",
+                    "state": "state",
+                }
+            ],
             primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
@@ -158,10 +194,10 @@ class TestAsyncCompany:
                     "country": "country",
                     "line1": "line1",
                     "line2": "line2",
-                    "name": "name",
                     "postal_code": "postal_code",
-                    "source_id": "source_id",
                     "state": "state",
+                    "name": "name",
+                    "source_id": "source_id",
                 }
             ],
             primary_email="dev@stainless.com",
@@ -177,7 +213,16 @@ class TestAsyncCompany:
             ein="ein",
             entity={},
             legal_name="legal_name",
-            locations=[{}],
+            locations=[
+                {
+                    "city": "city",
+                    "country": "country",
+                    "line1": "line1",
+                    "line2": "line2",
+                    "postal_code": "postal_code",
+                    "state": "state",
+                }
+            ],
             primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         )
@@ -195,7 +240,16 @@ class TestAsyncCompany:
             ein="ein",
             entity={},
             legal_name="legal_name",
-            locations=[{}],
+            locations=[
+                {
+                    "city": "city",
+                    "country": "country",
+                    "line1": "line1",
+                    "line2": "line2",
+                    "postal_code": "postal_code",
+                    "state": "state",
+                }
+            ],
             primary_email="dev@stainless.com",
             primary_phone_number="primary_phone_number",
         ) as response:

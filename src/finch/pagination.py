@@ -136,10 +136,8 @@ class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            if self.paging.offset is not None:
+            if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
-        if offset is None:
-            return None
 
         length = len(self._get_page_items())
         current_count = offset + length
@@ -173,10 +171,8 @@ class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            if self.paging.offset is not None:
+            if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
-        if offset is None:
-            return None
 
         length = len(self._get_page_items())
         current_count = offset + length
@@ -209,10 +205,8 @@ class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            if self.paging.offset is not None:
+            if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
-        if offset is None:
-            return None
 
         length = len(self._get_page_items())
         current_count = offset + length
@@ -245,10 +239,8 @@ class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     def next_page_info(self) -> Optional[PageInfo]:
         offset = None
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
-            if self.paging.offset is not None:
+            if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
-        if offset is None:
-            return None
 
         length = len(self._get_page_items())
         current_count = offset + length

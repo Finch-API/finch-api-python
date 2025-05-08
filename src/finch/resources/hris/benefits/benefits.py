@@ -60,6 +60,7 @@ class Benefits(SyncAPIResource):
     def create(
         self,
         *,
+        company_contribution: Optional[benefit_create_params.CompanyContribution] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         frequency: Optional[BenefitFrequency] | NotGiven = NOT_GIVEN,
         type: Optional[BenefitType] | NotGiven = NOT_GIVEN,
@@ -76,6 +77,8 @@ class Benefits(SyncAPIResource):
         `/providers` endpoint to view available types for each provider.
 
         Args:
+          company_contribution: The company match for this benefit.
+
           description: Name of the benefit as it appears in the provider and pay statements. Recommend
               limiting this to <30 characters due to limitations in specific providers (e.g.
               Justworks).
@@ -96,6 +99,7 @@ class Benefits(SyncAPIResource):
             "/employer/benefits",
             body=maybe_transform(
                 {
+                    "company_contribution": company_contribution,
                     "description": description,
                     "frequency": frequency,
                     "type": type,
@@ -246,6 +250,7 @@ class AsyncBenefits(AsyncAPIResource):
     async def create(
         self,
         *,
+        company_contribution: Optional[benefit_create_params.CompanyContribution] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         frequency: Optional[BenefitFrequency] | NotGiven = NOT_GIVEN,
         type: Optional[BenefitType] | NotGiven = NOT_GIVEN,
@@ -262,6 +267,8 @@ class AsyncBenefits(AsyncAPIResource):
         `/providers` endpoint to view available types for each provider.
 
         Args:
+          company_contribution: The company match for this benefit.
+
           description: Name of the benefit as it appears in the provider and pay statements. Recommend
               limiting this to <30 characters due to limitations in specific providers (e.g.
               Justworks).
@@ -282,6 +289,7 @@ class AsyncBenefits(AsyncAPIResource):
             "/employer/benefits",
             body=await async_maybe_transform(
                 {
+                    "company_contribution": company_contribution,
                     "description": description,
                     "frequency": frequency,
                     "type": type,
