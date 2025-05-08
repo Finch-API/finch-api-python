@@ -131,19 +131,6 @@ for directory in first_page.individuals:
 # Remove `await` for non-async usage.
 ```
 
-## Nested params
-
-Nested parameters are dictionaries, typed using `TypedDict`, for example:
-
-```python
-from finch import Finch
-
-client = Finch()
-
-page = client.hris.directory.list()
-print(page.individuals)
-```
-
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `finch.APIConnectionError` is raised.
