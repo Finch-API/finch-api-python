@@ -131,19 +131,6 @@ for directory in first_page.individuals:
 # Remove `await` for non-async usage.
 ```
 
-## Nested params
-
-Nested parameters are dictionaries, typed using `TypedDict`, for example:
-
-```python
-from finch import Finch
-
-client = Finch()
-
-page = client.hris.directory.list()
-print(page.individuals)
-```
-
 ## Webhook Verification
 
 We provide helper methods for verifying that a webhook request came from Finch, and not a malicious third party.

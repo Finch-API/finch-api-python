@@ -33,7 +33,18 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import hris, jobs, webhooks, account, connect, payroll, sandbox, providers, access_tokens, request_forwarding
+    from .resources import (
+        hris,
+        jobs,
+        account,
+        connect,
+        payroll,
+        sandbox,
+        webhooks,
+        providers,
+        access_tokens,
+        request_forwarding,
+    )
     from .resources.account import Account, AsyncAccount
     from .resources.hris.hris import HRIS, AsyncHRIS
     from .resources.jobs.jobs import Jobs, AsyncJobs

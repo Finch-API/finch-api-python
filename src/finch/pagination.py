@@ -138,6 +138,8 @@ class SyncIndividualsPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
+        if offset is None:
+            return None  # type: ignore[unreachable]
 
         length = len(self._get_page_items())
         current_count = offset + length
@@ -173,6 +175,8 @@ class AsyncIndividualsPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
+        if offset is None:
+            return None  # type: ignore[unreachable]
 
         length = len(self._get_page_items())
         current_count = offset + length
@@ -207,6 +211,8 @@ class SyncPage(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
+        if offset is None:
+            return None  # type: ignore[unreachable]
 
         length = len(self._get_page_items())
         current_count = offset + length
@@ -241,6 +247,8 @@ class AsyncPage(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         if self.paging is not None:  # pyright: ignore[reportUnnecessaryComparison]
             if self.paging.offset is not None:  # pyright: ignore[reportUnnecessaryComparison]
                 offset = self.paging.offset
+        if offset is None:
+            return None  # type: ignore[unreachable]
 
         length = len(self._get_page_items())
         current_count = offset + length
