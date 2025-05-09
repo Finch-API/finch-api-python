@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.26.1 (2025-05-09)
+
+Full Changelog: [v1.26.0...v1.26.1](https://github.com/Finch-API/finch-api-python/compare/v1.26.0...v1.26.1)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([d2062bb](https://github.com/Finch-API/finch-api-python/commit/d2062bbf18bd0345c9e53019661359198f970a57))
+
+
+### Chores
+
+* fix formatting ([75885aa](https://github.com/Finch-API/finch-api-python/commit/75885aa2ab70df9b3916ceb3444b943b4df22153))
+* **internal:** avoid lint errors in pagination expressions ([5dce648](https://github.com/Finch-API/finch-api-python/commit/5dce648eafef19e583d80f71dfa95af0b7235640))
+
+
+### Documentation
+
+* remove or fix invalid readme examples ([e3d4bfd](https://github.com/Finch-API/finch-api-python/commit/e3d4bfd1ad22f6422739b7aefc3c0fc4a7d1b6e7))
+
 ## 1.26.0 (2025-05-08)
 
 Full Changelog: [v1.25.0...v1.26.0](https://github.com/Finch-API/finch-api-python/compare/v1.25.0...v1.26.0)
