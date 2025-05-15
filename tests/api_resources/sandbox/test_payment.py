@@ -31,37 +31,37 @@ class TestPayment:
                     "earnings": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "hours": 0,
                             "name": "name",
                             "type": "salary",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "employee_deductions": [
                         {
-                            "amount": 2000,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "usd",
-                            "name": "401k test",
+                            "amount": 0,
+                            "currency": "currency",
+                            "name": "name",
                             "pre_tax": True,
-                            "type": "401k",
+                            "type": "457",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "employer_contributions": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "name": "name",
-                            "type": "401k",
+                            "type": "457",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "gross_pay": {
                         "amount": 0,
                         "currency": "currency",
                     },
-                    "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
+                    "individual_id": "individual_id",
                     "net_pay": {
                         "amount": 0,
                         "currency": "currency",
@@ -70,11 +70,11 @@ class TestPayment:
                     "taxes": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "employer": True,
                             "name": "name",
                             "type": "state",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "total_hours": 0,
@@ -123,37 +123,37 @@ class TestAsyncPayment:
                     "earnings": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "hours": 0,
                             "name": "name",
                             "type": "salary",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "employee_deductions": [
                         {
-                            "amount": 2000,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "usd",
-                            "name": "401k test",
+                            "amount": 0,
+                            "currency": "currency",
+                            "name": "name",
                             "pre_tax": True,
-                            "type": "401k",
+                            "type": "457",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "employer_contributions": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "name": "name",
-                            "type": "401k",
+                            "type": "457",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "gross_pay": {
                         "amount": 0,
                         "currency": "currency",
                     },
-                    "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
+                    "individual_id": "individual_id",
                     "net_pay": {
                         "amount": 0,
                         "currency": "currency",
@@ -162,11 +162,11 @@ class TestAsyncPayment:
                     "taxes": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                             "currency": "currency",
                             "employer": True,
                             "name": "name",
                             "type": "state",
+                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "total_hours": 0,
