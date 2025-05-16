@@ -61,7 +61,11 @@ class EmploymentUpdateResponse(BaseModel):
     employment_status: Optional[
         Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
     ] = None
-    """The detailed employment status of the individual."""
+    """The detailed employment status of the individual.
+
+    Available options: `active`, `deceased`, `leave`, `onboarding`, `prehire`,
+    `retired`, `terminated`.
+    """
 
     end_date: Optional[str] = None
 

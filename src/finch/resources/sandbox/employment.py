@@ -47,7 +47,7 @@ class Employment(SyncAPIResource):
         individual_id: str,
         *,
         class_code: Optional[str] | NotGiven = NOT_GIVEN,
-        custom_fields: Iterable[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
+        custom_fields: Optional[Iterable[employment_update_params.CustomField]] | NotGiven = NOT_GIVEN,
         department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
         employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
         employment_status: Optional[
@@ -64,7 +64,7 @@ class Employment(SyncAPIResource):
         location: Optional[LocationParam] | NotGiven = NOT_GIVEN,
         manager: Optional[employment_update_params.Manager] | NotGiven = NOT_GIVEN,
         middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        source_id: str | NotGiven = NOT_GIVEN,
+        source_id: Optional[str] | NotGiven = NOT_GIVEN,
         start_date: Optional[str] | NotGiven = NOT_GIVEN,
         title: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -88,7 +88,8 @@ class Employment(SyncAPIResource):
 
           employment: The employment object.
 
-          employment_status: The detailed employment status of the individual.
+          employment_status: The detailed employment status of the individual. Available options: `active`,
+              `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
 
           first_name: The legal first name of the individual.
 
@@ -179,7 +180,7 @@ class AsyncEmployment(AsyncAPIResource):
         individual_id: str,
         *,
         class_code: Optional[str] | NotGiven = NOT_GIVEN,
-        custom_fields: Iterable[employment_update_params.CustomField] | NotGiven = NOT_GIVEN,
+        custom_fields: Optional[Iterable[employment_update_params.CustomField]] | NotGiven = NOT_GIVEN,
         department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
         employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
         employment_status: Optional[
@@ -196,7 +197,7 @@ class AsyncEmployment(AsyncAPIResource):
         location: Optional[LocationParam] | NotGiven = NOT_GIVEN,
         manager: Optional[employment_update_params.Manager] | NotGiven = NOT_GIVEN,
         middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        source_id: str | NotGiven = NOT_GIVEN,
+        source_id: Optional[str] | NotGiven = NOT_GIVEN,
         start_date: Optional[str] | NotGiven = NOT_GIVEN,
         title: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -220,7 +221,8 @@ class AsyncEmployment(AsyncAPIResource):
 
           employment: The employment object.
 
-          employment_status: The detailed employment status of the individual.
+          employment_status: The detailed employment status of the individual. Available options: `active`,
+              `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
 
           first_name: The legal first name of the individual.
 
