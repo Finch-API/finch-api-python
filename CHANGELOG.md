@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.27.0 (2025-05-16)
+
+Full Changelog: [v1.26.1...v1.27.0](https://github.com/Finch-API/finch-api-python/compare/v1.26.1...v1.27.0)
+
+### Features
+
+* **api:** api update ([abc60a2](https://github.com/Finch-API/finch-api-python/commit/abc60a28fc9fe40464299491ae8209259f8bca78))
+* **api:** api update ([fd20b60](https://github.com/Finch-API/finch-api-python/commit/fd20b60e775673b78edeb40771d8af7f7a55bb08))
+* **api:** api update ([0af1c84](https://github.com/Finch-API/finch-api-python/commit/0af1c8443ffd922047b0f4f892f712668c9f54c9))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([ac6a9d8](https://github.com/Finch-API/finch-api-python/commit/ac6a9d8edf95f3343dd38f09693fc7ff22cebd91))
+* **ci:** upload sdks to package manager ([c867997](https://github.com/Finch-API/finch-api-python/commit/c86799760455e97fca934c83e2eef0986d7f8e89))
+
 ## 1.26.1 (2025-05-09)
 
 Full Changelog: [v1.26.0...v1.26.1](https://github.com/Finch-API/finch-api-python/compare/v1.26.0...v1.26.1)
