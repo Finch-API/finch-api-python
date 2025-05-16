@@ -15,7 +15,7 @@ class EmploymentUpdateParams(TypedDict, total=False):
     class_code: Optional[str]
     """Worker's compensation classification code for this employee"""
 
-    custom_fields: Iterable[CustomField]
+    custom_fields: Optional[Iterable[CustomField]]
     """Custom fields for the individual.
 
     These are fields which are defined by the employer in the system. Custom fields
@@ -31,7 +31,11 @@ class EmploymentUpdateParams(TypedDict, total=False):
     employment_status: Optional[
         Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
     ]
-    """The detailed employment status of the individual."""
+    """The detailed employment status of the individual.
+
+    Available options: `active`, `deceased`, `leave`, `onboarding`, `prehire`,
+    `retired`, `terminated`.
+    """
 
     end_date: Optional[str]
 
@@ -64,7 +68,7 @@ class EmploymentUpdateParams(TypedDict, total=False):
     middle_name: Optional[str]
     """The legal middle name of the individual."""
 
-    source_id: str
+    source_id: Optional[str]
     """The source system's unique employment identifier for this individual"""
 
     start_date: Optional[str]

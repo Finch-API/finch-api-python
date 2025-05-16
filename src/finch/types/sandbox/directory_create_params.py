@@ -73,7 +73,7 @@ class Body(TypedDict, total=False):
     class_code: Optional[str]
     """Worker's compensation classification code for this employee"""
 
-    custom_fields: Iterable[BodyCustomField]
+    custom_fields: Optional[Iterable[BodyCustomField]]
     """Custom fields for the individual.
 
     These are fields which are defined by the employer in the system. Custom fields
@@ -93,7 +93,11 @@ class Body(TypedDict, total=False):
     employment_status: Optional[
         Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
     ]
-    """The detailed employment status of the individual."""
+    """The detailed employment status of the individual.
+
+    Available options: `active`, `deceased`, `leave`, `onboarding`, `prehire`,
+    `retired`, `terminated`.
+    """
 
     encrypted_ssn: Optional[str]
     """Social Security Number of the individual in **encrypted** format.
@@ -157,7 +161,7 @@ class Body(TypedDict, total=False):
 
     residence: Optional[LocationParam]
 
-    source_id: str
+    source_id: Optional[str]
     """The source system's unique employment identifier for this individual"""
 
     ssn: Optional[str]
