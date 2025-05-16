@@ -11,4 +11,4 @@ class Money(BaseModel):
     amount: Optional[int] = None
     """Amount for money object (in cents)"""
 
-    currency: str
+    currency: Optional[str] = None

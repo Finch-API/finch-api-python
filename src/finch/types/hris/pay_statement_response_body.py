@@ -4,19 +4,13 @@ from typing import List, Optional
 
 from ..._models import BaseModel
 from .pay_statement import PayStatement
+from ..shared.paging import Paging
 
-__all__ = ["PayStatementResponseBody", "Paging"]
-
-
-class Paging(BaseModel):
-    offset: int
-    """The current start index of the returned list of elements"""
-
-    count: Optional[int] = None
-    """The total number of elements for the entire query (not just the given page)"""
+__all__ = ["PayStatementResponseBody"]
 
 
 class PayStatementResponseBody(BaseModel):
-    paging: Paging
+    paging: Optional[Paging] = None
 
-    pay_statements: List[PayStatement]
+    pay_statements: Optional[List[PayStatement]] = None
+    """The array of pay statements for the current payment."""

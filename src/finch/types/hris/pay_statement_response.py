@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
+
 from ..._models import BaseModel
 from .pay_statement_response_body import PayStatementResponseBody
 
@@ -7,8 +9,8 @@ __all__ = ["PayStatementResponse"]
 
 
 class PayStatementResponse(BaseModel):
-    body: PayStatementResponseBody
+    body: Optional[PayStatementResponseBody] = None
 
-    code: int
+    code: Optional[int] = None
 
-    payment_id: str
+    payment_id: Optional[str] = None

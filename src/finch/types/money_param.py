@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import TypedDict
 
 __all__ = ["MoneyParam"]
 
 
 class MoneyParam(TypedDict, total=False):
-    amount: Required[Optional[int]]
+    amount: Optional[int]
     """Amount for money object (in cents)"""
 
-    currency: Required[str]
+    currency: str

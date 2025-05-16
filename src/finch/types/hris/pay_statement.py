@@ -25,7 +25,7 @@ __all__ = [
 
 
 class EarningAttributesMetadata(BaseModel):
-    metadata: Dict[str, Optional[object]]
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -34,12 +34,14 @@ class EarningAttributesMetadata(BaseModel):
 
 
 class EarningAttributes(BaseModel):
-    metadata: EarningAttributesMetadata
+    metadata: Optional[EarningAttributesMetadata] = None
 
 
 class Earning(BaseModel):
     amount: Optional[int] = None
     """The earnings amount in cents."""
+
+    attributes: Optional[EarningAttributes] = None
 
     currency: Optional[str] = None
     """The earnings currency code."""
@@ -73,11 +75,9 @@ class Earning(BaseModel):
     ] = None
     """The type of earning."""
 
-    attributes: Optional[EarningAttributes] = None
-
 
 class EmployeeDeductionAttributesMetadata(BaseModel):
-    metadata: Dict[str, Optional[object]]
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -86,12 +86,14 @@ class EmployeeDeductionAttributesMetadata(BaseModel):
 
 
 class EmployeeDeductionAttributes(BaseModel):
-    metadata: EmployeeDeductionAttributesMetadata
+    metadata: Optional[EmployeeDeductionAttributesMetadata] = None
 
 
 class EmployeeDeduction(BaseModel):
     amount: Optional[int] = None
     """The deduction amount in cents."""
+
+    attributes: Optional[EmployeeDeductionAttributes] = None
 
     currency: Optional[str] = None
     """The deduction currency."""
@@ -105,11 +107,9 @@ class EmployeeDeduction(BaseModel):
     type: Optional[BenefitType] = None
     """Type of benefit."""
 
-    attributes: Optional[EmployeeDeductionAttributes] = None
-
 
 class EmployerContributionAttributesMetadata(BaseModel):
-    metadata: Dict[str, Optional[object]]
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -118,12 +118,14 @@ class EmployerContributionAttributesMetadata(BaseModel):
 
 
 class EmployerContributionAttributes(BaseModel):
-    metadata: EmployerContributionAttributesMetadata
+    metadata: Optional[EmployerContributionAttributesMetadata] = None
 
 
 class EmployerContribution(BaseModel):
     amount: Optional[int] = None
     """The contribution amount in cents."""
+
+    attributes: Optional[EmployerContributionAttributes] = None
 
     currency: Optional[str] = None
     """The contribution currency."""
@@ -134,11 +136,9 @@ class EmployerContribution(BaseModel):
     type: Optional[BenefitType] = None
     """Type of benefit."""
 
-    attributes: Optional[EmployerContributionAttributes] = None
-
 
 class TaxAttributesMetadata(BaseModel):
-    metadata: Dict[str, Optional[object]]
+    metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
@@ -147,12 +147,14 @@ class TaxAttributesMetadata(BaseModel):
 
 
 class TaxAttributes(BaseModel):
-    metadata: TaxAttributesMetadata
+    metadata: Optional[TaxAttributesMetadata] = None
 
 
 class Tax(BaseModel):
     amount: Optional[int] = None
     """The tax amount in cents."""
+
+    attributes: Optional[TaxAttributes] = None
 
     currency: Optional[str] = None
     """The currency code."""
@@ -166,8 +168,6 @@ class Tax(BaseModel):
     type: Optional[Literal["state", "federal", "local", "fica"]] = None
     """The type of taxes."""
 
-    attributes: Optional[TaxAttributes] = None
-
 
 class PayStatement(BaseModel):
     earnings: Optional[List[Optional[Earning]]] = None
@@ -180,7 +180,7 @@ class PayStatement(BaseModel):
 
     gross_pay: Optional[Money] = None
 
-    individual_id: str
+    individual_id: Optional[str] = None
     """A stable Finch `id` (UUID v4) for an individual in the company"""
 
     net_pay: Optional[Money] = None
