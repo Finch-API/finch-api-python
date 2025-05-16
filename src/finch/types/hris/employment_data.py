@@ -95,9 +95,6 @@ class UnionMember0(BaseModel):
     middle_name: Optional[str] = None
     """The legal middle name of the individual."""
 
-    source_id: Optional[str] = None
-    """The source system's unique employment identifier for this individual"""
-
     start_date: Optional[str] = None
 
     title: Optional[str] = None
@@ -115,6 +112,9 @@ class UnionMember0(BaseModel):
     This may not always be annualized income, but may be in units of bi-weekly,
     semi-monthly, daily, etc, depending on what information the provider returns.
     """
+
+    source_id: Optional[str] = None
+    """The source system's unique employment identifier for this individual"""
 
 
 class BatchError(BaseModel):
