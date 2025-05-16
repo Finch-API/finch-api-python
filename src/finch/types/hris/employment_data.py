@@ -21,7 +21,7 @@ __all__ = [
 class UnionMember0CustomField(BaseModel):
     name: Optional[str] = None
 
-    value: Union[str, List[object], float, bool, object, None] = None
+    value: Union[Optional[str], Optional[List[object]], Optional[float], Optional[bool], Optional[object], None] = None
 
 
 class UnionMember0Department(BaseModel):
@@ -56,7 +56,8 @@ class UnionMember0(BaseModel):
     custom_fields: Optional[List[UnionMember0CustomField]] = None
     """Custom fields for the individual.
 
-    These are fields which are defined by the employer in the system.
+    These are fields which are defined by the employer in the system. Custom fields
+    are not currently supported for assisted connections.
     """
 
     department: Optional[UnionMember0Department] = None
