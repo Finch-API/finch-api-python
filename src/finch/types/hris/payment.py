@@ -16,7 +16,7 @@ class PayPeriod(BaseModel):
 
 
 class Payment(BaseModel):
-    id: str
+    id: Optional[str] = None
     """The unique id for the payment."""
 
     company_debit: Optional[Money] = None
@@ -40,14 +40,14 @@ class Payment(BaseModel):
         List[
             Literal[
                 "annually",
-                "bi_weekly",
-                "daily",
-                "monthly",
-                "other",
-                "quarterly",
                 "semi_annually",
+                "quarterly",
+                "monthly",
                 "semi_monthly",
+                "bi_weekly",
                 "weekly",
+                "daily",
+                "other",
             ]
         ]
     ] = None

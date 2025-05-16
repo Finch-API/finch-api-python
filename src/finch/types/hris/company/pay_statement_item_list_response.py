@@ -9,16 +9,16 @@ __all__ = ["PayStatementItemListResponse", "Attributes"]
 
 
 class Attributes(BaseModel):
-    metadata: Optional[Dict[str, Optional[object]]] = None
-    """The metadata of the pay statement item derived by the rules engine if available.
-
-    Each attribute will be a key-value pair defined by a rule.
-    """
-
     employer: Optional[bool] = None
     """`true` if the amount is paid by the employers.
 
     This field is only available for taxes.
+    """
+
+    metadata: Optional[Dict[str, Optional[object]]] = None
+    """The metadata of the pay statement item derived by the rules engine if available.
+
+    Each attribute will be a key-value pair defined by a rule.
     """
 
     pre_tax: Optional[bool] = None
@@ -32,11 +32,11 @@ class Attributes(BaseModel):
 
 
 class PayStatementItemListResponse(BaseModel):
-    attributes: Attributes
+    attributes: Optional[Attributes] = None
     """The attributes of the pay statement item."""
 
-    category: Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]
+    category: Optional[Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]] = None
     """The category of the pay statement item."""
 
-    name: str
+    name: Optional[str] = None
     """The name of the pay statement item."""
