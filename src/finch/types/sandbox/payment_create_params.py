@@ -195,7 +195,7 @@ class PayStatement(TypedDict, total=False):
 
     net_pay: Optional[MoneyParam]
 
-    payment_method: Optional[Literal["check", "direct_deposit"]]
+    payment_method: Optional[Literal["check", "direct_deposit", "other"]]
     """The payment method."""
 
     taxes: Optional[Iterable[Optional[PayStatementTax]]]

@@ -185,7 +185,7 @@ class PayStatement(BaseModel):
 
     net_pay: Optional[Money] = None
 
-    payment_method: Optional[Literal["check", "direct_deposit"]] = None
+    payment_method: Optional[Literal["check", "direct_deposit", "other"]] = None
     """The payment method."""
 
     taxes: Optional[List[Optional[Tax]]] = None
