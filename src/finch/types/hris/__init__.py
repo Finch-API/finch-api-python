@@ -8,7 +8,6 @@ from .company import Company as Company
 from .payment import Payment as Payment
 from .individual import Individual as Individual
 from .benefit_type import BenefitType as BenefitType
-from .pay_statement import PayStatement as PayStatement
 from .company_benefit import CompanyBenefit as CompanyBenefit
 from .employment_data import EmploymentData as EmploymentData
 from .benefits_support import BenefitsSupport as BenefitsSupport
