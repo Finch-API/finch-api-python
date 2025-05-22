@@ -38,8 +38,8 @@ class SessionNewParams(TypedDict, total=False):
 
     minutes_to_expire: Optional[float]
     """
-    The number of minutes until the session expires (defaults to 43,200, which is 30
-    days)
+    The number of minutes until the session expires (defaults to 129,600, which is
+    90 days)
     """
 
     redirect_uri: Optional[str]
