@@ -77,8 +77,8 @@ class Sessions(SyncAPIResource):
         Create a new connect session for an employer
 
         Args:
-          minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
-              days)
+          minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
+              90 days)
 
           extra_headers: Send extra headers
 
@@ -235,8 +235,8 @@ class AsyncSessions(AsyncAPIResource):
         Create a new connect session for an employer
 
         Args:
-          minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
-              days)
+          minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
+              90 days)
 
           extra_headers: Send extra headers
 
