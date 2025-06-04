@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.30.0 (2025-06-04)
+
+Full Changelog: [v1.29.0...v1.30.0](https://github.com/Finch-API/finch-api-python/compare/v1.29.0...v1.30.0)
+
+### Features
+
+* **api:** api update ([a31325e](https://github.com/Finch-API/finch-api-python/commit/a31325e6eeb04cfa725ceee5637b869dd02be1a8))
+* **api:** api update ([b95ac19](https://github.com/Finch-API/finch-api-python/commit/b95ac1971a10372d70fc7ccdb3cf63f4411e9d2e))
+* **client:** add follow_redirects request option ([f9bdda7](https://github.com/Finch-API/finch-api-python/commit/f9bdda77ef1fcb1460594a16f1b8726bbaad2b52))
+
+
+### Bug Fixes
+
+* **client:** fix PayStatementResponse body ([edcea6c](https://github.com/Finch-API/finch-api-python/commit/edcea6c7ac55661d3e46aec1c42576988b510dfc))
+* **client:** manual fix ([d1dc8a4](https://github.com/Finch-API/finch-api-python/commit/d1dc8a4aa3df7a0199ab04958a766b56b3be0dc5))
+
+
+### Chores
+
+* **docs:** grammar improvements ([2d4a30e](https://github.com/Finch-API/finch-api-python/commit/2d4a30edc2f84fc7effc9b7719aae8ed51646338))
+* **docs:** remove reference to rye shell ([2b6929f](https://github.com/Finch-API/finch-api-python/commit/2b6929f8eca16bff688b19907f38e05ad2d2b092))
+* **tests:** skip endpoints with basic auth ([9548dd5](https://github.com/Finch-API/finch-api-python/commit/9548dd59525baf33a8d1977b132e93b2fe1d7f96))
+
 ## 1.29.0 (2025-05-16)
 
 Full Changelog: [v1.28.0...v1.29.0](https://github.com/Finch-API/finch-api-python/compare/v1.28.0...v1.29.0)

@@ -10,18 +10,12 @@ from ..location import Location
 __all__ = [
     "EmploymentData",
     "UnionMember0",
-    "UnionMember0CustomField",
     "UnionMember0Department",
     "UnionMember0Employment",
     "UnionMember0Manager",
+    "UnionMember0CustomField",
     "BatchError",
 ]
-
-
-class UnionMember0CustomField(BaseModel):
-    name: Optional[str] = None
-
-    value: Union[Optional[str], Optional[List[object]], Optional[float], Optional[bool], Optional[object], None] = None
 
 
 class UnionMember0Department(BaseModel):
@@ -46,19 +40,18 @@ class UnionMember0Manager(BaseModel):
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
 
+class UnionMember0CustomField(BaseModel):
+    name: Optional[str] = None
+
+    value: Union[Optional[str], Optional[List[object]], Optional[float], Optional[bool], Optional[object], None] = None
+
+
 class UnionMember0(BaseModel):
     id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
     class_code: Optional[str] = None
     """Worker's compensation classification code for this employee"""
-
-    custom_fields: Optional[List[UnionMember0CustomField]] = None
-    """Custom fields for the individual.
-
-    These are fields which are defined by the employer in the system. Custom fields
-    are not currently supported for assisted connections.
-    """
 
     department: Optional[UnionMember0Department] = None
     """The department object."""
@@ -101,8 +94,12 @@ class UnionMember0(BaseModel):
     title: Optional[str] = None
     """The current title of the individual."""
 
-    work_id: Optional[str] = None
-    """This field is deprecated in favour of `source_id`"""
+    custom_fields: Optional[List[UnionMember0CustomField]] = None
+    """Custom fields for the individual.
+
+    These are fields which are defined by the employer in the system. Custom fields
+    are not currently supported for assisted connections.
+    """
 
     income_history: Optional[List[Optional[Income]]] = None
     """The array of income history."""
@@ -116,6 +113,9 @@ class UnionMember0(BaseModel):
 
     source_id: Optional[str] = None
     """The source system's unique employment identifier for this individual"""
+
+    work_id: Optional[str] = None
+    """This field is deprecated in favour of `source_id`"""
 
 
 class BatchError(BaseModel):

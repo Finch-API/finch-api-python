@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import Literal
 
 from ..._models import BaseModel
@@ -9,25 +9,15 @@ __all__ = ["PayGroupListResponse"]
 
 
 class PayGroupListResponse(BaseModel):
-    id: Optional[str] = None
+    id: str
     """Finch id (uuidv4) for the pay group"""
 
-    name: Optional[str] = None
+    name: str
     """Name of the pay group"""
 
-    pay_frequencies: Optional[
-        List[
-            Literal[
-                "annually",
-                "semi_annually",
-                "quarterly",
-                "monthly",
-                "semi_monthly",
-                "bi_weekly",
-                "weekly",
-                "daily",
-                "other",
-            ]
+    pay_frequencies: List[
+        Literal[
+            "annually", "bi_weekly", "daily", "monthly", "other", "quarterly", "semi_annually", "semi_monthly", "weekly"
         ]
-    ] = None
+    ]
     """List of pay frequencies associated with this pay group"""
