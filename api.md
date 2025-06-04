@@ -175,7 +175,6 @@ from finch.types.hris import (
     SupportPerBenefitType,
     SupportedBenefit,
     UpdateCompanyBenefitResponse,
-    BenefitListSupportedBenefitsResponse,
     BenfitContribution,
 )
 ```
@@ -186,7 +185,7 @@ Methods:
 - <code title="get /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">retrieve</a>(benefit_id) -> <a href="./src/finch/types/hris/company_benefit.py">CompanyBenefit</a></code>
 - <code title="post /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">update</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefit_update_params.py">params</a>) -> <a href="./src/finch/types/hris/update_company_benefit_response.py">UpdateCompanyBenefitResponse</a></code>
 - <code title="get /employer/benefits">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list</a>() -> <a href="./src/finch/types/hris/company_benefit.py">SyncSinglePage[CompanyBenefit]</a></code>
-- <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>() -> <a href="./src/finch/types/hris/benefit_list_supported_benefits_response.py">SyncSinglePage[BenefitListSupportedBenefitsResponse]</a></code>
+- <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>() -> <a href="./src/finch/types/hris/supported_benefit.py">SyncSinglePage[SupportedBenefit]</a></code>
 
 ### Individuals
 
