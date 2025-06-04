@@ -121,7 +121,12 @@ Methods:
 Types:
 
 ```python
-from finch.types.hris import PayStatementResponse, PayStatementResponseBody
+from finch.types.hris import (
+    PayStatement,
+    PayStatementDataSyncInProgress,
+    PayStatementResponse,
+    PayStatementResponseBody,
+)
 ```
 
 Methods:
