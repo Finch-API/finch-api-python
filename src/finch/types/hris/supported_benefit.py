@@ -6,10 +6,10 @@ from typing_extensions import Literal
 from ..._models import BaseModel
 from .benefit_frequency import BenefitFrequency
 
-__all__ = ["BenefitListSupportedBenefitsResponse"]
+__all__ = ["SupportedBenefit"]
 
 
-class BenefitListSupportedBenefitsResponse(BaseModel):
+class SupportedBenefit(BaseModel):
     annual_maximum: Optional[bool] = None
     """Whether the provider supports an annual maximum for this benefit."""
 
