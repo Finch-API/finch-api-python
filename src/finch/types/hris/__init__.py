@@ -8,6 +8,7 @@ from .company import Company as Company
 from .payment import Payment as Payment
 from .individual import Individual as Individual
 from .benefit_type import BenefitType as BenefitType
+from .pay_statement import PayStatement as PayStatement
 from .company_benefit import CompanyBenefit as CompanyBenefit
 from .employment_data import EmploymentData as EmploymentData
 from .benefits_support import BenefitsSupport as BenefitsSupport
@@ -15,6 +16,7 @@ from .benefit_frequency import BenefitFrequency as BenefitFrequency
 from .document_response import DocumentResponse as DocumentResponse
 from .benfit_contribution import BenfitContribution as BenfitContribution
 from .individual_response import IndividualResponse as IndividualResponse
+from .pay_statement_param import PayStatementParam as PayStatementParam
 from .payment_list_params import PaymentListParams as PaymentListParams
 from .benefit_contribution import BenefitContribution as BenefitContribution
 from .document_list_params import DocumentListParams as DocumentListParams
@@ -35,6 +37,7 @@ from .update_company_benefit_response import UpdateCompanyBenefitResponse as Upd
 from .create_company_benefits_response import CreateCompanyBenefitsResponse as CreateCompanyBenefitsResponse
 from .directory_list_individuals_params import DirectoryListIndividualsParams as DirectoryListIndividualsParams
 from .pay_statement_retrieve_many_params import PayStatementRetrieveManyParams as PayStatementRetrieveManyParams
+from .pay_statement_data_sync_in_progress import PayStatementDataSyncInProgress as PayStatementDataSyncInProgress
 from .benefit_list_supported_benefits_response import (
     BenefitListSupportedBenefitsResponse as BenefitListSupportedBenefitsResponse,
 )
