@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from datetime import date
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -15,7 +16,7 @@ class Income(BaseModel):
     currency: Optional[str] = None
     """The currency code."""
 
-    effective_date: Optional[str] = None
+    effective_date: Optional[date] = None
     """The date the income amount went into effect."""
 
     unit: Optional[
