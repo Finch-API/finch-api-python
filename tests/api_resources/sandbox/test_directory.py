@@ -9,6 +9,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._utils import parse_date
 from finch.types.sandbox import DirectoryCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -55,14 +56,14 @@ class TestDirectory:
                     "income": {
                         "amount": 0,
                         "currency": "currency",
-                        "effective_date": "effective_date",
+                        "effective_date": parse_date("2019-12-27"),
                         "unit": "yearly",
                     },
                     "income_history": [
                         {
                             "amount": 0,
                             "currency": "currency",
-                            "effective_date": "effective_date",
+                            "effective_date": parse_date("2019-12-27"),
                             "unit": "yearly",
                         }
                     ],
@@ -169,14 +170,14 @@ class TestAsyncDirectory:
                     "income": {
                         "amount": 0,
                         "currency": "currency",
-                        "effective_date": "effective_date",
+                        "effective_date": parse_date("2019-12-27"),
                         "unit": "yearly",
                     },
                     "income_history": [
                         {
                             "amount": 0,
                             "currency": "currency",
-                            "effective_date": "effective_date",
+                            "effective_date": parse_date("2019-12-27"),
                             "unit": "yearly",
                         }
                     ],
