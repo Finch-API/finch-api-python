@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Union, Iterable
+from datetime import date
 
 import httpx
 
@@ -14,7 +15,6 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.sandbox import payment_create_params
-from ...types.hris.pay_statement_param import PayStatementParam
 from ...types.sandbox.payment_create_response import PaymentCreateResponse
 
 __all__ = ["Payment", "AsyncPayment"]
@@ -43,9 +43,9 @@ class Payment(SyncAPIResource):
     def create(
         self,
         *,
-        end_date: str | NotGiven = NOT_GIVEN,
-        pay_statements: Iterable[PayStatementParam] | NotGiven = NOT_GIVEN,
-        start_date: str | NotGiven = NOT_GIVEN,
+        end_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        pay_statements: Iterable[payment_create_params.PayStatement] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -57,6 +57,8 @@ class Payment(SyncAPIResource):
         Add a new sandbox payment
 
         Args:
+          pay_statements: Array of pay statements to include in the payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -105,9 +107,9 @@ class AsyncPayment(AsyncAPIResource):
     async def create(
         self,
         *,
-        end_date: str | NotGiven = NOT_GIVEN,
-        pay_statements: Iterable[PayStatementParam] | NotGiven = NOT_GIVEN,
-        start_date: str | NotGiven = NOT_GIVEN,
+        end_date: Union[str, date] | NotGiven = NOT_GIVEN,
+        pay_statements: Iterable[payment_create_params.PayStatement] | NotGiven = NOT_GIVEN,
+        start_date: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -119,6 +121,8 @@ class AsyncPayment(AsyncAPIResource):
         Add a new sandbox payment
 
         Args:
+          pay_statements: Array of pay statements to include in the payment.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

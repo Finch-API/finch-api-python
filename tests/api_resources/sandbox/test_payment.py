@@ -9,6 +9,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._utils import parse_date
 from finch.types.sandbox import PaymentCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -25,63 +26,49 @@ class TestPayment:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         payment = client.sandbox.payment.create(
-            end_date="end_date",
+            end_date=parse_date("2019-12-27"),
             pay_statements=[
                 {
+                    "individual_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     "earnings": [
                         {
                             "amount": 0,
-                            "currency": "currency",
                             "hours": 0,
-                            "name": "name",
-                            "type": "salary",
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
+                            "name": "x",
+                            "type": "bonus",
                         }
                     ],
                     "employee_deductions": [
                         {
                             "amount": 0,
-                            "currency": "currency",
-                            "name": "name",
+                            "name": "x",
                             "pre_tax": True,
                             "type": "457",
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "employer_contributions": [
                         {
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "457",
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
+                            "name": "x",
+                            "type": "457",
                         }
                     ],
-                    "gross_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
-                    "individual_id": "individual_id",
-                    "net_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
+                    "gross_pay": 1,
+                    "net_pay": 9007199254740991,
                     "payment_method": "check",
                     "taxes": [
                         {
-                            "currency": "currency",
-                            "employer": True,
-                            "name": "name",
-                            "type": "state",
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
+                            "employer": True,
+                            "name": "x",
+                            "type": "federal",
                         }
                     ],
-                    "total_hours": 0,
+                    "total_hours": 1,
                     "type": "off_cycle_payroll",
                 }
             ],
-            start_date="start_date",
+            start_date=parse_date("2019-12-27"),
         )
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
 
@@ -117,63 +104,49 @@ class TestAsyncPayment:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         payment = await async_client.sandbox.payment.create(
-            end_date="end_date",
+            end_date=parse_date("2019-12-27"),
             pay_statements=[
                 {
+                    "individual_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     "earnings": [
                         {
                             "amount": 0,
-                            "currency": "currency",
                             "hours": 0,
-                            "name": "name",
-                            "type": "salary",
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
+                            "name": "x",
+                            "type": "bonus",
                         }
                     ],
                     "employee_deductions": [
                         {
                             "amount": 0,
-                            "currency": "currency",
-                            "name": "name",
+                            "name": "x",
                             "pre_tax": True,
                             "type": "457",
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
                         }
                     ],
                     "employer_contributions": [
                         {
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "457",
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
+                            "name": "x",
+                            "type": "457",
                         }
                     ],
-                    "gross_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
-                    "individual_id": "individual_id",
-                    "net_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
+                    "gross_pay": 1,
+                    "net_pay": 9007199254740991,
                     "payment_method": "check",
                     "taxes": [
                         {
-                            "currency": "currency",
-                            "employer": True,
-                            "name": "name",
-                            "type": "state",
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
+                            "employer": True,
+                            "name": "x",
+                            "type": "federal",
                         }
                     ],
-                    "total_hours": 0,
+                    "total_hours": 1,
                     "type": "off_cycle_payroll",
                 }
             ],
-            start_date="start_date",
+            start_date=parse_date("2019-12-27"),
         )
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
 
