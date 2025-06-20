@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import Union, Optional
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["IncomeParam"]
 
@@ -15,7 +18,7 @@ class IncomeParam(TypedDict, total=False):
     currency: Required[Optional[str]]
     """The currency code."""
 
-    effective_date: Required[Optional[str]]
+    effective_date: Required[Annotated[Union[str, date, None], PropertyInfo(format="iso8601")]]
     """The date the income amount went into effect."""
 
     unit: Required[

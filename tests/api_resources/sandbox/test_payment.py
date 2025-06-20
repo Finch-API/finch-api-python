@@ -9,6 +9,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._utils import parse_date
 from finch.types.sandbox import PaymentCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -25,63 +26,49 @@ class TestPayment:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         payment = client.sandbox.payment.create(
-            end_date="end_date",
+            end_date=parse_date("2019-12-27"),
             pay_statements=[
                 {
+                    "individual_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     "earnings": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "currency",
                             "hours": 0,
-                            "name": "name",
-                            "type": "salary",
+                            "name": "x",
+                            "type": "bonus",
                         }
                     ],
                     "employee_deductions": [
                         {
-                            "amount": 2000,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "usd",
-                            "name": "401k test",
+                            "amount": 0,
+                            "name": "x",
                             "pre_tax": True,
-                            "type": "401k",
+                            "type": "457",
                         }
                     ],
                     "employer_contributions": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "401k",
+                            "name": "x",
+                            "type": "457",
                         }
                     ],
-                    "gross_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
-                    "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
-                    "net_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
+                    "gross_pay": 1,
+                    "net_pay": 9007199254740991,
                     "payment_method": "check",
                     "taxes": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "currency",
                             "employer": True,
-                            "name": "name",
-                            "type": "state",
+                            "name": "x",
+                            "type": "federal",
                         }
                     ],
-                    "total_hours": 0,
-                    "type": "regular_payroll",
+                    "total_hours": 1,
+                    "type": "off_cycle_payroll",
                 }
             ],
-            start_date="start_date",
+            start_date=parse_date("2019-12-27"),
         )
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
 
@@ -107,7 +94,9 @@ class TestPayment:
 
 
 class TestAsyncPayment:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
@@ -117,63 +106,49 @@ class TestAsyncPayment:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         payment = await async_client.sandbox.payment.create(
-            end_date="end_date",
+            end_date=parse_date("2019-12-27"),
             pay_statements=[
                 {
+                    "individual_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                     "earnings": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "currency",
                             "hours": 0,
-                            "name": "name",
-                            "type": "salary",
+                            "name": "x",
+                            "type": "bonus",
                         }
                     ],
                     "employee_deductions": [
                         {
-                            "amount": 2000,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "usd",
-                            "name": "401k test",
+                            "amount": 0,
+                            "name": "x",
                             "pre_tax": True,
-                            "type": "401k",
+                            "type": "457",
                         }
                     ],
                     "employer_contributions": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "currency",
-                            "name": "name",
-                            "type": "401k",
+                            "name": "x",
+                            "type": "457",
                         }
                     ],
-                    "gross_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
-                    "individual_id": "b2338cfb-472f-4f72-9faa-e028c083144a",
-                    "net_pay": {
-                        "amount": 0,
-                        "currency": "currency",
-                    },
+                    "gross_pay": 1,
+                    "net_pay": 9007199254740991,
                     "payment_method": "check",
                     "taxes": [
                         {
                             "amount": 0,
-                            "attributes": {"metadata": {"metadata": {"foo": {}}}},
-                            "currency": "currency",
                             "employer": True,
-                            "name": "name",
-                            "type": "state",
+                            "name": "x",
+                            "type": "federal",
                         }
                     ],
-                    "total_hours": 0,
-                    "type": "regular_payroll",
+                    "total_hours": 1,
+                    "type": "off_cycle_payroll",
                 }
             ],
-            start_date="start_date",
+            start_date=parse_date("2019-12-27"),
         )
         assert_matches_type(PaymentCreateResponse, payment, path=["response"])
 
