@@ -19,7 +19,7 @@ class PayGroupRetrieveResponse(BaseModel):
 
     pay_frequencies: List[
         Literal[
-            "annually", "semi_annually", "quarterly", "monthly", "semi_monthly", "bi_weekly", "weekly", "daily", "other"
+            "annually", "bi_weekly", "daily", "monthly", "other", "quarterly", "semi_annually", "semi_monthly", "weekly"
         ]
     ]
     """List of pay frequencies associated with this pay group"""

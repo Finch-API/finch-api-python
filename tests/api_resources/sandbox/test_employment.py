@@ -9,6 +9,7 @@ import pytest
 
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
+from finch._utils import parse_date
 from finch.types.sandbox import EmploymentUpdateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -46,14 +47,14 @@ class TestEmployment:
             income={
                 "amount": 0,
                 "currency": "currency",
-                "effective_date": "effective_date",
+                "effective_date": parse_date("2019-12-27"),
                 "unit": "yearly",
             },
             income_history=[
                 {
                     "amount": 0,
                     "currency": "currency",
-                    "effective_date": "effective_date",
+                    "effective_date": parse_date("2019-12-27"),
                     "unit": "yearly",
                 }
             ],
@@ -111,7 +112,9 @@ class TestEmployment:
 
 
 class TestAsyncEmployment:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_update(self, async_client: AsyncFinch) -> None:
@@ -142,14 +145,14 @@ class TestAsyncEmployment:
             income={
                 "amount": 0,
                 "currency": "currency",
-                "effective_date": "effective_date",
+                "effective_date": parse_date("2019-12-27"),
                 "unit": "yearly",
             },
             income_history=[
                 {
                     "amount": 0,
                     "currency": "currency",
-                    "effective_date": "effective_date",
+                    "effective_date": parse_date("2019-12-27"),
                     "unit": "yearly",
                 }
             ],
