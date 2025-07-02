@@ -1,5 +1,48 @@
 # Changelog
 
+## 1.30.0 (2025-07-02)
+
+Full Changelog: [v1.29.0...v1.30.0](https://github.com/Finch-API/finch-api-python/compare/v1.29.0...v1.30.0)
+
+### Features
+
+* **api:** api update ([97ef62d](https://github.com/Finch-API/finch-api-python/commit/97ef62d11c21650cb6f34a69f3309cdbf034df86))
+* **api:** api update ([68ed0de](https://github.com/Finch-API/finch-api-python/commit/68ed0de62a49c340a1ee7dc71d941d71b6d780c4))
+* **api:** api update ([a31325e](https://github.com/Finch-API/finch-api-python/commit/a31325e6eeb04cfa725ceee5637b869dd02be1a8))
+* **api:** api update ([b95ac19](https://github.com/Finch-API/finch-api-python/commit/b95ac1971a10372d70fc7ccdb3cf63f4411e9d2e))
+* **client:** add follow_redirects request option ([f9bdda7](https://github.com/Finch-API/finch-api-python/commit/f9bdda77ef1fcb1460594a16f1b8726bbaad2b52))
+* **client:** add support for aiohttp ([9529a96](https://github.com/Finch-API/finch-api-python/commit/9529a960260e47e147e10a9fec012f279089628b))
+
+
+### Bug Fixes
+
+* **ci:** correct conditional ([5bd88a7](https://github.com/Finch-API/finch-api-python/commit/5bd88a7228b013e66794a9731e3d3669d1a43321))
+* **ci:** release-doctor — report correct token name ([d424f44](https://github.com/Finch-API/finch-api-python/commit/d424f44c05c5c05bf31b43e1da74acea40324553))
+* **client:** correctly parse binary response | stream ([260c761](https://github.com/Finch-API/finch-api-python/commit/260c761024d36f0bb4efc3cf5a5e0e3c22b5f83e))
+* **client:** fix PayStatementResponse body ([edcea6c](https://github.com/Finch-API/finch-api-python/commit/edcea6c7ac55661d3e46aec1c42576988b510dfc))
+* **client:** manual fix ([d1dc8a4](https://github.com/Finch-API/finch-api-python/commit/d1dc8a4aa3df7a0199ab04958a766b56b3be0dc5))
+
+
+### Chores
+
+* **ci:** change upload type ([2d63eed](https://github.com/Finch-API/finch-api-python/commit/2d63eeda7540306cf29e14ac475c6f5cc740d768))
+* **ci:** enable for pull requests ([3a05f2a](https://github.com/Finch-API/finch-api-python/commit/3a05f2a17a2f0067486b6c8427b2d50c18a79a80))
+* **ci:** only run for pushes and fork pull requests ([398de61](https://github.com/Finch-API/finch-api-python/commit/398de612e40086b2814a79c2fcdd0d73bba289fc))
+* **docs:** grammar improvements ([2d4a30e](https://github.com/Finch-API/finch-api-python/commit/2d4a30edc2f84fc7effc9b7719aae8ed51646338))
+* **docs:** remove reference to rye shell ([2b6929f](https://github.com/Finch-API/finch-api-python/commit/2b6929f8eca16bff688b19907f38e05ad2d2b092))
+* fix access tokens test ([8411cf6](https://github.com/Finch-API/finch-api-python/commit/8411cf6e5185b4f2dd70ac030d30d7c9808e55b5))
+* **internal:** update conftest.py ([ed2f82d](https://github.com/Finch-API/finch-api-python/commit/ed2f82d6ecc8662e4717c9f7b75d912226c5df25))
+* **readme:** update badges ([e27f6d8](https://github.com/Finch-API/finch-api-python/commit/e27f6d80e9b9bdbb23fa3a6c9cc84ecbbf790638))
+* **tests:** add tests for httpx client instantiation & proxies ([e51c8f7](https://github.com/Finch-API/finch-api-python/commit/e51c8f78bb45e0c3dbce5dc67401390078a2fd33))
+* **tests:** run tests in parallel ([25017c4](https://github.com/Finch-API/finch-api-python/commit/25017c43233e726dd80d1e7ca41eb02ec9456871))
+* **tests:** skip endpoints with basic auth ([9548dd5](https://github.com/Finch-API/finch-api-python/commit/9548dd59525baf33a8d1977b132e93b2fe1d7f96))
+* **tests:** skip some failing tests on the latest python versions ([668de92](https://github.com/Finch-API/finch-api-python/commit/668de928c9cd69af00755b2a201f3e26a24f9630))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([c17f081](https://github.com/Finch-API/finch-api-python/commit/c17f0817149ae17fe866bc79f8613cbccc0ded72))
+
 ## 1.29.0 (2025-05-16)
 
 Full Changelog: [v1.28.0...v1.29.0](https://github.com/Finch-API/finch-api-python/compare/v1.28.0...v1.29.0)

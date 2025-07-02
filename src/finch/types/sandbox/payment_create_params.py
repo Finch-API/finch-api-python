@@ -2,207 +2,140 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, Optional
-from typing_extensions import Literal, TypedDict
+from typing import Union, Iterable, Optional
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
-from ..money_param import MoneyParam
-from ..hris.benefit_type import BenefitType
+from ..._utils import PropertyInfo
 
 __all__ = [
     "PaymentCreateParams",
     "PayStatement",
     "PayStatementEarning",
-    "PayStatementEarningAttributes",
-    "PayStatementEarningAttributesMetadata",
     "PayStatementEmployeeDeduction",
-    "PayStatementEmployeeDeductionAttributes",
-    "PayStatementEmployeeDeductionAttributesMetadata",
     "PayStatementEmployerContribution",
-    "PayStatementEmployerContributionAttributes",
-    "PayStatementEmployerContributionAttributesMetadata",
     "PayStatementTax",
-    "PayStatementTaxAttributes",
-    "PayStatementTaxAttributesMetadata",
 ]
 
 
 class PaymentCreateParams(TypedDict, total=False):
-    end_date: str
+    end_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
 
     pay_statements: Iterable[PayStatement]
+    """Array of pay statements to include in the payment."""
 
-    start_date: str
-
-
-class PayStatementEarningAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, Optional[object]]
-    """The metadata to be attached to the entity by existing rules.
-
-    It is a key-value pairs where the values can be of any type (string, number,
-    boolean, object, array, etc.).
-    """
-
-
-class PayStatementEarningAttributes(TypedDict, total=False):
-    metadata: PayStatementEarningAttributesMetadata
+    start_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
 
 
 class PayStatementEarning(TypedDict, total=False):
-    amount: Optional[int]
-    """The earnings amount in cents."""
+    amount: int
 
-    attributes: Optional[PayStatementEarningAttributes]
+    hours: float
 
-    currency: Optional[str]
-    """The earnings currency code."""
+    name: str
 
-    hours: Optional[float]
-    """The number of hours associated with this earning.
-
-    (For salaried employees, this could be hours per pay period, `0` or `null`,
-    depending on the provider).
-    """
-
-    name: Optional[str]
-    """The exact name of the deduction from the pay statement."""
-
-    type: Optional[
-        Literal[
-            "salary",
-            "wage",
-            "reimbursement",
-            "overtime",
-            "severance",
-            "double_overtime",
-            "pto",
-            "sick",
-            "bonus",
-            "commission",
-            "tips",
-            "1099",
-            "other",
-        ]
+    type: Literal[
+        "bonus",
+        "commission",
+        "double_overtime",
+        "other",
+        "overtime",
+        "pto",
+        "reimbursement",
+        "salary",
+        "severance",
+        "sick",
+        "tips",
+        "wage",
+        "1099",
     ]
-    """The type of earning."""
-
-
-class PayStatementEmployeeDeductionAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, Optional[object]]
-    """The metadata to be attached to the entity by existing rules.
-
-    It is a key-value pairs where the values can be of any type (string, number,
-    boolean, object, array, etc.).
-    """
-
-
-class PayStatementEmployeeDeductionAttributes(TypedDict, total=False):
-    metadata: PayStatementEmployeeDeductionAttributesMetadata
 
 
 class PayStatementEmployeeDeduction(TypedDict, total=False):
-    amount: Optional[int]
-    """The deduction amount in cents."""
+    amount: int
 
-    attributes: Optional[PayStatementEmployeeDeductionAttributes]
+    name: str
 
-    currency: Optional[str]
-    """The deduction currency."""
+    pre_tax: bool
 
-    name: Optional[str]
-    """The deduction name from the pay statement."""
-
-    pre_tax: Optional[bool]
-    """Boolean indicating if the deduction is pre-tax."""
-
-    type: Optional[BenefitType]
-    """Type of benefit."""
-
-
-class PayStatementEmployerContributionAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, Optional[object]]
-    """The metadata to be attached to the entity by existing rules.
-
-    It is a key-value pairs where the values can be of any type (string, number,
-    boolean, object, array, etc.).
-    """
-
-
-class PayStatementEmployerContributionAttributes(TypedDict, total=False):
-    metadata: PayStatementEmployerContributionAttributesMetadata
+    type: Literal[
+        "457",
+        "401k",
+        "401k_roth",
+        "401k_loan",
+        "403b",
+        "403b_roth",
+        "457_roth",
+        "commuter",
+        "custom_post_tax",
+        "custom_pre_tax",
+        "fsa_dependent_care",
+        "fsa_medical",
+        "hsa_post",
+        "hsa_pre",
+        "s125_dental",
+        "s125_medical",
+        "s125_vision",
+        "simple",
+        "simple_ira",
+    ]
 
 
 class PayStatementEmployerContribution(TypedDict, total=False):
-    amount: Optional[int]
-    """The contribution amount in cents."""
+    amount: int
 
-    attributes: Optional[PayStatementEmployerContributionAttributes]
+    name: str
 
-    currency: Optional[str]
-    """The contribution currency."""
-
-    name: Optional[str]
-    """The contribution name from the pay statement."""
-
-    type: Optional[BenefitType]
-    """Type of benefit."""
-
-
-class PayStatementTaxAttributesMetadata(TypedDict, total=False):
-    metadata: Dict[str, Optional[object]]
-    """The metadata to be attached to the entity by existing rules.
-
-    It is a key-value pairs where the values can be of any type (string, number,
-    boolean, object, array, etc.).
-    """
-
-
-class PayStatementTaxAttributes(TypedDict, total=False):
-    metadata: PayStatementTaxAttributesMetadata
+    type: Literal[
+        "457",
+        "401k",
+        "401k_roth",
+        "401k_loan",
+        "403b",
+        "403b_roth",
+        "457_roth",
+        "commuter",
+        "custom_post_tax",
+        "custom_pre_tax",
+        "fsa_dependent_care",
+        "fsa_medical",
+        "hsa_post",
+        "hsa_pre",
+        "s125_dental",
+        "s125_medical",
+        "s125_vision",
+        "simple",
+        "simple_ira",
+    ]
 
 
 class PayStatementTax(TypedDict, total=False):
-    amount: Optional[int]
-    """The tax amount in cents."""
+    amount: int
 
-    attributes: Optional[PayStatementTaxAttributes]
+    employer: bool
 
-    currency: Optional[str]
-    """The currency code."""
+    name: str
 
-    employer: Optional[bool]
-    """`true` if the amount is paid by the employers."""
-
-    name: Optional[str]
-    """The exact name of tax from the pay statement."""
-
-    type: Optional[Literal["state", "federal", "local", "fica"]]
-    """The type of taxes."""
+    type: Literal["federal", "fica", "local", "state"]
 
 
 class PayStatement(TypedDict, total=False):
-    earnings: Optional[Iterable[Optional[PayStatementEarning]]]
-    """The array of earnings objects associated with this pay statement"""
+    individual_id: Required[str]
 
-    employee_deductions: Optional[Iterable[Optional[PayStatementEmployeeDeduction]]]
-    """The array of deductions objects associated with this pay statement."""
+    earnings: Iterable[PayStatementEarning]
 
-    employer_contributions: Optional[Iterable[Optional[PayStatementEmployerContribution]]]
+    employee_deductions: Iterable[PayStatementEmployeeDeduction]
 
-    gross_pay: Optional[MoneyParam]
+    employer_contributions: Iterable[PayStatementEmployerContribution]
 
-    individual_id: str
-    """A stable Finch `id` (UUID v4) for an individual in the company"""
+    gross_pay: int
 
-    net_pay: Optional[MoneyParam]
+    net_pay: int
 
     payment_method: Optional[Literal["check", "direct_deposit", "other"]]
-    """The payment method."""
 
-    taxes: Optional[Iterable[Optional[PayStatementTax]]]
-    """The array of taxes objects associated with this pay statement."""
+    taxes: Iterable[PayStatementTax]
 
-    total_hours: Optional[float]
-    """The number of hours worked for this pay period"""
+    total_hours: float
 
-    type: Optional[Literal["regular_payroll", "off_cycle_payroll", "one_time_payment"]]
-    """The type of the payment associated with the pay statement."""
+    type: Optional[Literal["off_cycle_payroll", "one_time_payment", "regular_payroll"]]
