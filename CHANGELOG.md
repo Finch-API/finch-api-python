@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.30.1 (2025-07-08)
+
+Full Changelog: [v1.30.0...v1.30.1](https://github.com/Finch-API/finch-api-python/compare/v1.30.0...v1.30.1)
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([5054292](https://github.com/Finch-API/finch-api-python/commit/505429238bdae903b720cd5d5a3cebf2f48d79ae))
+* **internal:** codegen related update ([a65ea95](https://github.com/Finch-API/finch-api-python/commit/a65ea95987347ea607ed0b809223bb51860bf0d7))
+
 ## 1.30.0 (2025-07-02)
 
 Full Changelog: [v1.29.0...v1.30.0](https://github.com/Finch-API/finch-api-python/compare/v1.29.0...v1.30.0)
