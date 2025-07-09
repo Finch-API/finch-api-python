@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.30.2 (2025-07-09)
+
+Full Changelog: [v1.30.1...v1.30.2](https://github.com/Finch-API/finch-api-python/compare/v1.30.1...v1.30.2)
+
+### Bug Fixes
+
+* **parsing:** correctly handle nested discriminated unions ([28bdcad](https://github.com/Finch-API/finch-api-python/commit/28bdcad5d94a336a9585c1ba646feee058143d88))
+
+
+### Chores
+
+* **package:** mark python 3.13 as supported ([837dbdf](https://github.com/Finch-API/finch-api-python/commit/837dbdf09c38f2472a3fcdab561a2a378c715ad8))
+
 ## 1.30.1 (2025-07-08)
 
 Full Changelog: [v1.30.0...v1.30.1](https://github.com/Finch-API/finch-api-python/compare/v1.30.0...v1.30.1)
