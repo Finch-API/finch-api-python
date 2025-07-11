@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.30.3 (2025-07-11)
+
+Full Changelog: [v1.30.2...v1.30.3](https://github.com/Finch-API/finch-api-python/compare/v1.30.2...v1.30.3)
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([f1fd42e](https://github.com/Finch-API/finch-api-python/commit/f1fd42e0dd7b4818b3d7fb73e2907b65fbc3889a))
+
+
+### Chores
+
+* **readme:** fix version rendering on pypi ([25058bc](https://github.com/Finch-API/finch-api-python/commit/25058bcdc9cfc70711c709bf452fb8a9819a571d))
+
 ## 1.30.2 (2025-07-09)
 
 Full Changelog: [v1.30.1...v1.30.2](https://github.com/Finch-API/finch-api-python/compare/v1.30.1...v1.30.2)
