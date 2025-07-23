@@ -41,7 +41,7 @@ class TestBenefits:
                 "type": "match",
             },
             description="description",
-            frequency="one_time",
+            frequency="every_paycheck",
             type="457",
         )
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])
@@ -224,7 +224,7 @@ class TestAsyncBenefits:
                 "type": "match",
             },
             description="description",
-            frequency="one_time",
+            frequency="every_paycheck",
             type="457",
         )
         assert_matches_type(CreateCompanyBenefitsResponse, benefit, path=["response"])

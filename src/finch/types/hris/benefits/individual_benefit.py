@@ -1,15 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
-from typing_extensions import Literal
+from typing import Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from ...._models import BaseModel
 from ..benefit_contribution import BenefitContribution
 
-__all__ = ["IndividualBenefit", "Body"]
+__all__ = ["IndividualBenefit", "Body", "BodyUnionMember0", "BodyBatchError"]
 
 
-class Body(BaseModel):
+class BodyUnionMember0(BaseModel):
     annual_maximum: Optional[int] = None
     """
     If the benefit supports annual maximum, the amount in cents for this individual.
@@ -29,9 +29,22 @@ class Body(BaseModel):
     """Type for HSA contribution limit if the benefit is a HSA."""
 
 
+class BodyBatchError(BaseModel):
+    code: float
+
+    message: str
+
+    name: str
+
+    finch_code: Optional[str] = None
+
+
+Body: TypeAlias = Union[BodyUnionMember0, BodyBatchError]
+
+
 class IndividualBenefit(BaseModel):
-    body: Optional[Body] = None
+    body: Body
 
-    code: Optional[int] = None
+    code: int
 
-    individual_id: Optional[str] = None
+    individual_id: str

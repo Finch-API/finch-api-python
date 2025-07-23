@@ -5,4 +5,4 @@ from typing_extensions import Literal, TypeAlias
 
 __all__ = ["BenefitFrequency"]
 
-BenefitFrequency: TypeAlias = Optional[Literal["one_time", "every_paycheck", "monthly"]]
+BenefitFrequency: TypeAlias = Optional[Literal["every_paycheck", "monthly", "one_time"]]

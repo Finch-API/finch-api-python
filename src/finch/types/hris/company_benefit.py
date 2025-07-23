@@ -11,23 +11,20 @@ __all__ = ["CompanyBenefit", "CompanyContribution", "CompanyContributionTier"]
 
 
 class CompanyContributionTier(BaseModel):
-    match: Optional[int] = None
+    match: int
 
-    threshold: Optional[int] = None
+    threshold: int
 
 
 class CompanyContribution(BaseModel):
-    tiers: Optional[List[CompanyContributionTier]] = None
+    tiers: List[CompanyContributionTier]
 
-    type: Optional[Literal["match"]] = None
+    type: Literal["match"]
 
 
 class CompanyBenefit(BaseModel):
     benefit_id: str
     """The id of the benefit."""
-
-    company_contribution: Optional[CompanyContribution] = None
-    """The company match for this benefit."""
 
     description: Optional[str] = None
 
@@ -36,3 +33,6 @@ class CompanyBenefit(BaseModel):
 
     type: Optional[BenefitType] = None
     """Type of benefit."""
+
+    company_contribution: Optional[CompanyContribution] = None
+    """The company match for this benefit."""

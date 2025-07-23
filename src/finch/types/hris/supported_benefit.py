@@ -13,12 +13,6 @@ class SupportedBenefit(BaseModel):
     annual_maximum: Optional[bool] = None
     """Whether the provider supports an annual maximum for this benefit."""
 
-    catch_up: Optional[bool] = None
-    """Whether the provider supports catch up for this benefit.
-
-    This field will only be true for retirement benefits.
-    """
-
     company_contribution: Optional[List[Optional[Literal["fixed", "percent"]]]] = None
     """Supported contribution types.
 
@@ -33,10 +27,16 @@ class SupportedBenefit(BaseModel):
     An empty array indicates deductions are not supported.
     """
 
-    frequencies: Optional[List[Optional[BenefitFrequency]]] = None
+    frequencies: List[Optional[BenefitFrequency]]
     """The list of frequencies supported by the provider for this benefit"""
 
-    hsa_contribution_limit: Optional[List[Optional[Literal["individual", "family"]]]] = None
+    catch_up: Optional[bool] = None
+    """Whether the provider supports catch up for this benefit.
+
+    This field will only be true for retirement benefits.
+    """
+
+    hsa_contribution_limit: Optional[List[Optional[Literal["family", "individual"]]]] = None
     """Whether the provider supports HSA contribution limits.
 
     Empty if this feature is not supported for the benefit. This array only has
