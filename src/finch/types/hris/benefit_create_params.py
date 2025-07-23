@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 from .benefit_type import BenefitType
 from .benefit_frequency import BenefitFrequency
@@ -30,12 +30,12 @@ class BenefitCreateParams(TypedDict, total=False):
 
 
 class CompanyContributionTier(TypedDict, total=False):
-    match: int
+    match: Required[int]
 
-    threshold: int
+    threshold: Required[int]
 
 
 class CompanyContribution(TypedDict, total=False):
-    tiers: Iterable[CompanyContributionTier]
+    tiers: Required[Iterable[CompanyContributionTier]]
 
-    type: Literal["match"]
+    type: Required[Literal["match"]]
