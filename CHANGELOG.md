@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.31.0 (2025-07-24)
+
+Full Changelog: [v1.30.3...v1.31.0](https://github.com/Finch-API/finch-api-python/compare/v1.30.3...v1.31.0)
+
+### Features
+
+* **api:** api update ([1dd1ffa](https://github.com/Finch-API/finch-api-python/commit/1dd1fface4ca9b49a92bc319b233b7689f23b006))
+* **api:** api update ([d0c7fd2](https://github.com/Finch-API/finch-api-python/commit/d0c7fd2ada777eba81f483ce11340c01aca1abe0))
+
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([acaec4b](https://github.com/Finch-API/finch-api-python/commit/acaec4b1fffcb4323e950cb393707724f2fa7e62))
+* **parsing:** parse extra field types ([d14c906](https://github.com/Finch-API/finch-api-python/commit/d14c9060175c9a1e345f5507a9634c6d81683395))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([a2c4c2a](https://github.com/Finch-API/finch-api-python/commit/a2c4c2a8d81e8086dd8c8962806415f087b132c5))
+
 ## 1.30.3 (2025-07-11)
 
 Full Changelog: [v1.30.2...v1.30.3](https://github.com/Finch-API/finch-api-python/compare/v1.30.2...v1.30.3)
