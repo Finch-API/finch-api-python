@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.32.0 (2025-08-05)
+
+Full Changelog: [v1.31.0...v1.32.0](https://github.com/Finch-API/finch-api-python/compare/v1.31.0...v1.32.0)
+
+### Features
+
+* **client:** support file upload requests ([d9be991](https://github.com/Finch-API/finch-api-python/commit/d9be991d91bed955eef215b0e5cd7256e803a66c))
+
+
+### Chores
+
+* **internal:** fix ruff target version ([7ae6fe6](https://github.com/Finch-API/finch-api-python/commit/7ae6fe67280401bc237ec7efdf3ce89e99a00484))
+
 ## 1.31.0 (2025-07-24)
 
 Full Changelog: [v1.30.3...v1.31.0](https://github.com/Finch-API/finch-api-python/compare/v1.30.3...v1.31.0)
