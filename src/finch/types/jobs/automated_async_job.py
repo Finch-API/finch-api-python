@@ -38,7 +38,7 @@ class AutomatedAsyncJob(BaseModel):
     """The datetime a job is scheduled to be run.
 
     For scheduled jobs, this datetime can be in the future if the job has not yet
-    been enqueued. For ad-hoc jobs, this field will be null.
+    been enqueued. For ad-hoc jobs, this field will be null.
     """
 
     started_at: Optional[datetime] = None
