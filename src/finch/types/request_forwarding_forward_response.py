@@ -42,15 +42,15 @@ class Request(BaseModel):
 class RequestForwardingForwardResponse(BaseModel):
     data: Optional[str] = None
     """
-    A string representation of the HTTP response body of the forwarded request’s
-    response received from the underlying integration’s API. This field may be null
-    in the case where the upstream system’s response is empty.
+    A string representation of the HTTP response body of the forwarded request's
+    response received from the underlying integration's API. This field may be null
+    in the case where the upstream system's response is empty.
     """
 
     headers: Optional[object] = None
     """
-    The HTTP headers of the forwarded request’s response, exactly as received from
-    the underlying integration’s API.
+    The HTTP headers of the forwarded request's response, exactly as received from
+    the underlying integration's API.
     """
 
     request: Request
@@ -61,6 +61,6 @@ class RequestForwardingForwardResponse(BaseModel):
 
     status_code: int = FieldInfo(alias="statusCode")
     """
-    The HTTP status code of the forwarded request’s response, exactly received from
-    the underlying integration’s API. This value will be returned as an integer.
+    The HTTP status code of the forwarded request's response, exactly received from
+    the underlying integration's API. This value will be returned as an integer.
     """

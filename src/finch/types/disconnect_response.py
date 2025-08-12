@@ -7,4 +7,4 @@ __all__ = ["DisconnectResponse"]
 
 class DisconnectResponse(BaseModel):
     status: str
-    """If the request is successful, Finch will return “success” (HTTP 200 status)."""
+    """If the request is successful, Finch will return "success" (HTTP 200 status)."""

@@ -57,8 +57,8 @@ class RequestForwarding(SyncAPIResource):
         """The Forward API allows you to make direct requests to an employment system.
 
         If
-        Finch’s unified API doesn’t have a data model that cleanly fits your needs, then
-        Forward allows you to push or pull data models directly against an integration’s
+        Finch's unified API doesn't have a data model that cleanly fits your needs, then
+        Forward allows you to push or pull data models directly against an integration's
         API.
 
         Args:
@@ -144,8 +144,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
         """The Forward API allows you to make direct requests to an employment system.
 
         If
-        Finch’s unified API doesn’t have a data model that cleanly fits your needs, then
-        Forward allows you to push or pull data models directly against an integration’s
+        Finch's unified API doesn't have a data model that cleanly fits your needs, then
+        Forward allows you to push or pull data models directly against an integration's
         API.
 
         Args:
