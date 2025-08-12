@@ -4,19 +4,13 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["AutomatedListParams"]
+__all__ = ["AutomatedRetrieveParams"]
 
 
-class AutomatedListParams(TypedDict, total=False):
+class AutomatedRetrieveParams(TypedDict, total=False):
     entity_id: str
     """The entity ID to use when authenticating with a multi-account token.
 
     Required when using a multi-account token to specify which entity's data to
     access. Example: `123e4567-e89b-12d3-a456-426614174000`
     """
-
-    limit: int
-    """Number of items to return"""
-
-    offset: int
-    """Index to start from (defaults to 0)"""
