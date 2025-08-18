@@ -9,7 +9,7 @@ __all__ = ["ManualAsyncJob"]
 
 
 class ManualAsyncJob(BaseModel):
-    body: Optional[List[object]] = None
+    body: Optional[List[Optional[object]]] = None
     """Specific information about the job, such as individual statuses for batch jobs."""
 
     job_id: str

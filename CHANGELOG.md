@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.33.0 (2025-08-12)
+
+Full Changelog: [v1.32.0...v1.33.0](https://github.com/Finch-API/finch-api-python/compare/v1.32.0...v1.33.0)
+
+### Features
+
+* **api:** api update ([030c07d](https://github.com/Finch-API/finch-api-python/commit/030c07d05d08d04d4732134e285c51f74ce06d5a))
+* **api:** api update ([00792da](https://github.com/Finch-API/finch-api-python/commit/00792da673687c39f2f15a522b00cd54508a956c))
+
+
+### Chores
+
+* **internal:** update comment in script ([9efeb7a](https://github.com/Finch-API/finch-api-python/commit/9efeb7a90337849c2cf09fc40884f8943d31714c))
+* update @stainless-api/prism-cli to v5.15.0 ([0a5c874](https://github.com/Finch-API/finch-api-python/commit/0a5c874efeed941fa4fca1f5237ffee632b00ba0))
+
 ## 1.32.0 (2025-08-05)
 
 Full Changelog: [v1.31.0...v1.32.0](https://github.com/Finch-API/finch-api-python/compare/v1.31.0...v1.32.0)
