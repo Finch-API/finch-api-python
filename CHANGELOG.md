@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.34.0 (2025-08-20)
+
+Full Changelog: [v1.33.0...v1.34.0](https://github.com/Finch-API/finch-api-python/compare/v1.33.0...v1.34.0)
+
+### Features
+
+* **api:** api update ([250dd73](https://github.com/Finch-API/finch-api-python/commit/250dd7334ae72a1e6c6b1c2e4578e796aa9a87ff))
+
 ## 1.33.0 (2025-08-12)
 
 Full Changelog: [v1.32.0...v1.33.0](https://github.com/Finch-API/finch-api-python/compare/v1.32.0...v1.33.0)
