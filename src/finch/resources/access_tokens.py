@@ -40,9 +40,9 @@ class AccessTokens(SyncAPIResource):
     def create(
         self,
         *,
+        client_id: str,
+        client_secret: str,
         code: str,
-        client_id: str | NotGiven = NOT_GIVEN,
-        client_secret: str | NotGiven = NOT_GIVEN,
         redirect_uri: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -55,6 +55,14 @@ class AccessTokens(SyncAPIResource):
         Exchange the authorization code for an access token
 
         Args:
+          client_id: The client ID for your application
+
+          client_secret: The client secret for your application
+
+          code: The authorization code received from the authorization server
+
+          redirect_uri: The redirect URI used in the authorization request (optional)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -118,9 +126,9 @@ class AsyncAccessTokens(AsyncAPIResource):
     async def create(
         self,
         *,
+        client_id: str,
+        client_secret: str,
         code: str,
-        client_id: str | NotGiven = NOT_GIVEN,
-        client_secret: str | NotGiven = NOT_GIVEN,
         redirect_uri: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -133,6 +141,14 @@ class AsyncAccessTokens(AsyncAPIResource):
         Exchange the authorization code for an access token
 
         Args:
+          client_id: The client ID for your application
+
+          client_secret: The client secret for your application
+
+          code: The authorization code received from the authorization server
+
+          redirect_uri: The redirect URI used in the authorization request (optional)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
