@@ -241,7 +241,7 @@ class DirectoryWithRawResponse:
         )
         self.list_individuals = (  # pyright: ignore[reportDeprecated]
             _legacy_response.to_raw_response_wrapper(
-                directory.list_individuals  # pyright: ignore[reportDeprecated],
+                directory.list_individuals,  # pyright: ignore[reportDeprecated],
             )
         )
 
@@ -255,7 +255,7 @@ class AsyncDirectoryWithRawResponse:
         )
         self.list_individuals = (  # pyright: ignore[reportDeprecated]
             _legacy_response.async_to_raw_response_wrapper(
-                directory.list_individuals  # pyright: ignore[reportDeprecated],
+                directory.list_individuals,  # pyright: ignore[reportDeprecated],
             )
         )
 
@@ -269,7 +269,7 @@ class DirectoryWithStreamingResponse:
         )
         self.list_individuals = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
-                directory.list_individuals  # pyright: ignore[reportDeprecated],
+                directory.list_individuals,  # pyright: ignore[reportDeprecated],
             )
         )
 
@@ -283,6 +283,6 @@ class AsyncDirectoryWithStreamingResponse:
         )
         self.list_individuals = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(
-                directory.list_individuals  # pyright: ignore[reportDeprecated],
+                directory.list_individuals,  # pyright: ignore[reportDeprecated],
             )
         )
