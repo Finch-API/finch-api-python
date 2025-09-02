@@ -5,11 +5,13 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, TypedDict
 
+from ..._types import SequenceNotStr
+
 __all__ = ["DocumentListParams"]
 
 
 class DocumentListParams(TypedDict, total=False):
-    individual_ids: List[str]
+    individual_ids: SequenceNotStr[str]
     """Comma-delimited list of stable Finch uuids for each individual.
 
     If empty, defaults to all individuals

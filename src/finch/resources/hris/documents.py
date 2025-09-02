@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,7 +44,7 @@ class Documents(SyncAPIResource):
     def list(
         self,
         *,
-        individual_ids: List[str] | NotGiven = NOT_GIVEN,
+        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         types: List[Literal["w4_2020", "w4_2005"]] | NotGiven = NOT_GIVEN,
@@ -163,7 +163,7 @@ class AsyncDocuments(AsyncAPIResource):
     async def list(
         self,
         *,
-        individual_ids: List[str] | NotGiven = NOT_GIVEN,
+        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         offset: int | NotGiven = NOT_GIVEN,
         types: List[Literal["w4_2020", "w4_2005"]] | NotGiven = NOT_GIVEN,
