@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.35.0 (2025-09-02)
+
+Full Changelog: [v1.34.0...v1.35.0](https://github.com/Finch-API/finch-api-python/compare/v1.34.0...v1.35.0)
+
+### Features
+
+* **api:** api update ([7f1f3fc](https://github.com/Finch-API/finch-api-python/commit/7f1f3fcb12b896ae43df668d6825e6de895a0843))
+* **types:** replace List[str] with SequenceNotStr in params ([7d41d8f](https://github.com/Finch-API/finch-api-python/commit/7d41d8fe116a14351d2f6aa569733c039f9a071f))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([c180618](https://github.com/Finch-API/finch-api-python/commit/c18061816f2c5d81d958cbf0fd7fd16b95fa7371))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([1c99d3a](https://github.com/Finch-API/finch-api-python/commit/1c99d3a79c85da901f81bfc94daa64317aedef19))
+* **internal:** change ci workflow machines ([825d163](https://github.com/Finch-API/finch-api-python/commit/825d1637f7058c3d80092b6b07146653cc76432f))
+* **internal:** minor formatting change ([7f1c96d](https://github.com/Finch-API/finch-api-python/commit/7f1c96d1ef47db7be85a93e602bfa612e50f04c1))
+* **internal:** update pyright exclude list ([7b620cc](https://github.com/Finch-API/finch-api-python/commit/7b620cc5f0a89e2d1aab02065ff0af4e87b022ff))
+* update github action ([5067831](https://github.com/Finch-API/finch-api-python/commit/50678319366698ef0d8ea19b6ae6d383e8b3725c))
+
 ## 1.34.0 (2025-08-20)
 
 Full Changelog: [v1.33.0...v1.34.0](https://github.com/Finch-API/finch-api-python/compare/v1.33.0...v1.34.0)
