@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import Iterable, Optional
 from typing_extensions import TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["IndividualRetrieveManyParams", "Options", "Request"]
 
@@ -15,7 +17,7 @@ class IndividualRetrieveManyParams(TypedDict, total=False):
 
 
 class Options(TypedDict, total=False):
-    include: List[str]
+    include: SequenceNotStr[str]
 
 
 class Request(TypedDict, total=False):
