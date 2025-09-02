@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["PayGroupListParams"]
 
@@ -11,4 +12,4 @@ __all__ = ["PayGroupListParams"]
 class PayGroupListParams(TypedDict, total=False):
     individual_id: str
 
-    pay_frequencies: List[str]
+    pay_frequencies: SequenceNotStr[str]

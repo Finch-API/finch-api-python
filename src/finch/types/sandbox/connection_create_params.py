@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["ConnectionCreateParams"]
 
@@ -21,4 +22,4 @@ class ConnectionCreateParams(TypedDict, total=False):
     will not be generated, and instead only one pay period will be created.
     """
 
-    products: List[str]
+    products: SequenceNotStr[str]

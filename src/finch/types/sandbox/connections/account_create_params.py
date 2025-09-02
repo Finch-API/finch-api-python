@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
+
+from ...._types import SequenceNotStr
 
 __all__ = ["AccountCreateParams"]
 
@@ -16,7 +17,7 @@ class AccountCreateParams(TypedDict, total=False):
 
     authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 
-    products: List[str]
+    products: SequenceNotStr[str]
     """
     Optional, defaults to Organization products (`company`, `directory`,
     `employment`, `individual`)
