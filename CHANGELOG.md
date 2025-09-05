@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.36.0 (2025-09-05)
+
+Full Changelog: [v1.35.0...v1.36.0](https://github.com/Finch-API/finch-api-python/compare/v1.35.0...v1.36.0)
+
+### Features
+
+* improve future compat with pydantic v3 ([63bba93](https://github.com/Finch-API/finch-api-python/commit/63bba9314b61750f842622948e3a199bdc3c37d5))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([05aeaa7](https://github.com/Finch-API/finch-api-python/commit/05aeaa7b4c0a8558d075a0e67b678233888ca3fa))
+* **tests:** simplify `get_platform` test ([13e718b](https://github.com/Finch-API/finch-api-python/commit/13e718b341b76e05c7c53bb4e0d92c6ccf69503f))
+
 ## 1.35.0 (2025-09-02)
 
 Full Changelog: [v1.34.0...v1.35.0](https://github.com/Finch-API/finch-api-python/compare/v1.34.0...v1.35.0)
