@@ -20,8 +20,6 @@ class TestAccessTokens:
     @parametrize
     def test_method_create(self, client: Finch) -> None:
         access_token = client.access_tokens.create(
-            client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            client_secret="client_secret",
             code="code",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
@@ -29,9 +27,9 @@ class TestAccessTokens:
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
         access_token = client.access_tokens.create(
+            code="code",
             client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             client_secret="client_secret",
-            code="code",
             redirect_uri="redirect_uri",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
@@ -39,8 +37,6 @@ class TestAccessTokens:
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
         response = client.access_tokens.with_raw_response.create(
-            client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            client_secret="client_secret",
             code="code",
         )
 
@@ -52,8 +48,6 @@ class TestAccessTokens:
     @parametrize
     def test_streaming_response_create(self, client: Finch) -> None:
         with client.access_tokens.with_streaming_response.create(
-            client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            client_secret="client_secret",
             code="code",
         ) as response:
             assert not response.is_closed
@@ -73,8 +67,6 @@ class TestAsyncAccessTokens:
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
         access_token = await async_client.access_tokens.create(
-            client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            client_secret="client_secret",
             code="code",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
@@ -82,9 +74,9 @@ class TestAsyncAccessTokens:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         access_token = await async_client.access_tokens.create(
+            code="code",
             client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             client_secret="client_secret",
-            code="code",
             redirect_uri="redirect_uri",
         )
         assert_matches_type(CreateAccessTokenResponse, access_token, path=["response"])
@@ -92,8 +84,6 @@ class TestAsyncAccessTokens:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
         response = await async_client.access_tokens.with_raw_response.create(
-            client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            client_secret="client_secret",
             code="code",
         )
 
@@ -105,8 +95,6 @@ class TestAsyncAccessTokens:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
         async with async_client.access_tokens.with_streaming_response.create(
-            client_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            client_secret="client_secret",
             code="code",
         ) as response:
             assert not response.is_closed
