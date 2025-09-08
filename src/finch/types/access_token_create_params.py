@@ -8,14 +8,14 @@ __all__ = ["AccessTokenCreateParams"]
 
 
 class AccessTokenCreateParams(TypedDict, total=False):
-    client_id: Required[str]
-    """The client ID for your application"""
-
-    client_secret: Required[str]
-    """The client secret for your application"""
-
     code: Required[str]
     """The authorization code received from the authorization server"""
+
+    client_id: str
+    """The client ID for your application"""
+
+    client_secret: str
+    """The client secret for your application"""
 
     redirect_uri: str
     """The redirect URI used in the authorization request (optional)"""
