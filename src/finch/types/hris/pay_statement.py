@@ -11,30 +11,22 @@ __all__ = [
     "PayStatement",
     "Earning",
     "EarningAttributes",
-    "EarningAttributesMetadata",
     "EmployeeDeduction",
     "EmployeeDeductionAttributes",
-    "EmployeeDeductionAttributesMetadata",
     "EmployerContribution",
     "EmployerContributionAttributes",
-    "EmployerContributionAttributesMetadata",
     "Tax",
     "TaxAttributes",
-    "TaxAttributesMetadata",
 ]
 
 
-class EarningAttributesMetadata(BaseModel):
+class EarningAttributes(BaseModel):
     metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
-
-
-class EarningAttributes(BaseModel):
-    metadata: EarningAttributesMetadata
 
 
 class Earning(BaseModel):
@@ -76,17 +68,13 @@ class Earning(BaseModel):
     attributes: Optional[EarningAttributes] = None
 
 
-class EmployeeDeductionAttributesMetadata(BaseModel):
+class EmployeeDeductionAttributes(BaseModel):
     metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
-
-
-class EmployeeDeductionAttributes(BaseModel):
-    metadata: EmployeeDeductionAttributesMetadata
 
 
 class EmployeeDeduction(BaseModel):
@@ -108,17 +96,13 @@ class EmployeeDeduction(BaseModel):
     attributes: Optional[EmployeeDeductionAttributes] = None
 
 
-class EmployerContributionAttributesMetadata(BaseModel):
+class EmployerContributionAttributes(BaseModel):
     metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
-
-
-class EmployerContributionAttributes(BaseModel):
-    metadata: EmployerContributionAttributesMetadata
 
 
 class EmployerContribution(BaseModel):
@@ -137,17 +121,13 @@ class EmployerContribution(BaseModel):
     attributes: Optional[EmployerContributionAttributes] = None
 
 
-class TaxAttributesMetadata(BaseModel):
+class TaxAttributes(BaseModel):
     metadata: Dict[str, Optional[object]]
     """The metadata to be attached to the entity by existing rules.
 
     It is a key-value pairs where the values can be of any type (string, number,
     boolean, object, array, etc.).
     """
-
-
-class TaxAttributes(BaseModel):
-    metadata: TaxAttributesMetadata
 
 
 class Tax(BaseModel):
