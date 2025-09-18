@@ -7,7 +7,7 @@ from typing import Iterable, Optional
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -43,14 +43,14 @@ class Individuals(SyncAPIResource):
     def retrieve_many(
         self,
         *,
-        options: Optional[individual_retrieve_many_params.Options] | NotGiven = NOT_GIVEN,
-        requests: Iterable[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
+        options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
+        requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncResponsesPage[IndividualResponse]:
         """
         Read individual data, excluding income and employment data
@@ -105,14 +105,14 @@ class AsyncIndividuals(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
-        options: Optional[individual_retrieve_many_params.Options] | NotGiven = NOT_GIVEN,
-        requests: Iterable[individual_retrieve_many_params.Request] | NotGiven = NOT_GIVEN,
+        options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
+        requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[IndividualResponse, AsyncResponsesPage[IndividualResponse]]:
         """
         Read individual data, excluding income and employment data

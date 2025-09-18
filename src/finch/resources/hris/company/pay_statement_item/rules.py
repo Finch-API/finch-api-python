@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..... import _legacy_response
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -47,17 +47,17 @@ class Rules(SyncAPIResource):
     def create(
         self,
         *,
-        attributes: rule_create_params.Attributes | NotGiven = NOT_GIVEN,
-        conditions: Iterable[rule_create_params.Condition] | NotGiven = NOT_GIVEN,
-        effective_end_date: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_start_date: Optional[str] | NotGiven = NOT_GIVEN,
-        entity_type: Literal["pay_statement_item"] | NotGiven = NOT_GIVEN,
+        attributes: rule_create_params.Attributes | Omit = omit,
+        conditions: Iterable[rule_create_params.Condition] | Omit = omit,
+        effective_end_date: Optional[str] | Omit = omit,
+        effective_start_date: Optional[str] | Omit = omit,
+        entity_type: Literal["pay_statement_item"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleCreateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -106,13 +106,13 @@ class Rules(SyncAPIResource):
         self,
         rule_id: str,
         *,
-        optional_property: object | NotGiven = NOT_GIVEN,
+        optional_property: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleUpdateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -146,7 +146,7 @@ class Rules(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncResponsesPage[RuleListResponse]:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -170,7 +170,7 @@ class Rules(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleDeleteResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -219,17 +219,17 @@ class AsyncRules(AsyncAPIResource):
     async def create(
         self,
         *,
-        attributes: rule_create_params.Attributes | NotGiven = NOT_GIVEN,
-        conditions: Iterable[rule_create_params.Condition] | NotGiven = NOT_GIVEN,
-        effective_end_date: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_start_date: Optional[str] | NotGiven = NOT_GIVEN,
-        entity_type: Literal["pay_statement_item"] | NotGiven = NOT_GIVEN,
+        attributes: rule_create_params.Attributes | Omit = omit,
+        conditions: Iterable[rule_create_params.Condition] | Omit = omit,
+        effective_end_date: Optional[str] | Omit = omit,
+        effective_start_date: Optional[str] | Omit = omit,
+        entity_type: Literal["pay_statement_item"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleCreateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -278,13 +278,13 @@ class AsyncRules(AsyncAPIResource):
         self,
         rule_id: str,
         *,
-        optional_property: object | NotGiven = NOT_GIVEN,
+        optional_property: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleUpdateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -320,7 +320,7 @@ class AsyncRules(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RuleListResponse, AsyncResponsesPage[RuleListResponse]]:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -344,7 +344,7 @@ class AsyncRules(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleDeleteResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and

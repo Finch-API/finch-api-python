@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -42,13 +42,13 @@ class Directory(SyncAPIResource):
     def create(
         self,
         *,
-        body: Iterable[directory_create_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[directory_create_params.Body] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DirectoryCreateResponse:
         """
         Add new individuals to a sandbox company
@@ -98,13 +98,13 @@ class AsyncDirectory(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: Iterable[directory_create_params.Body] | NotGiven = NOT_GIVEN,
+        body: Iterable[directory_create_params.Body] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DirectoryCreateResponse:
         """
         Add new individuals to a sandbox company
