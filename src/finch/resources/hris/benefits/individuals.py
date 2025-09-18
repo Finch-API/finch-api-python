@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from .... import _legacy_response
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -51,13 +51,13 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individuals: Iterable[individual_enroll_many_params.Individual] | NotGiven = NOT_GIVEN,
+        individuals: Iterable[individual_enroll_many_params.Individual] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EnrolledIndividualBenefitResponse:
         """Enroll an individual into a deduction or contribution.
 
@@ -97,7 +97,7 @@ class Individuals(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndividualEnrolledIDsResponse:
         """
         Lists individuals currently enrolled in a given deduction.
@@ -125,13 +125,13 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: str | NotGiven = NOT_GIVEN,
+        individual_ids: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[IndividualBenefit]:
         """
         Get enrollment information for the given individuals.
@@ -170,13 +170,13 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        individual_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UnenrolledIndividualBenefitResponse:
         """
         Unenroll individuals from a deduction or contribution
@@ -230,13 +230,13 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individuals: Iterable[individual_enroll_many_params.Individual] | NotGiven = NOT_GIVEN,
+        individuals: Iterable[individual_enroll_many_params.Individual] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EnrolledIndividualBenefitResponse:
         """Enroll an individual into a deduction or contribution.
 
@@ -276,7 +276,7 @@ class AsyncIndividuals(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndividualEnrolledIDsResponse:
         """
         Lists individuals currently enrolled in a given deduction.
@@ -304,13 +304,13 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: str | NotGiven = NOT_GIVEN,
+        individual_ids: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[IndividualBenefit, AsyncSinglePage[IndividualBenefit]]:
         """
         Get enrollment information for the given individuals.
@@ -349,13 +349,13 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        individual_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UnenrolledIndividualBenefitResponse:
         """
         Unenroll individuals from a deduction or contribution

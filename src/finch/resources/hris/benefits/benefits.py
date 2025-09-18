@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from .... import _legacy_response
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from .individuals import (
@@ -60,16 +60,16 @@ class Benefits(SyncAPIResource):
     def create(
         self,
         *,
-        company_contribution: Optional[benefit_create_params.CompanyContribution] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        frequency: Optional[BenefitFrequency] | NotGiven = NOT_GIVEN,
-        type: Optional[BenefitType] | NotGiven = NOT_GIVEN,
+        company_contribution: Optional[benefit_create_params.CompanyContribution] | Omit = omit,
+        description: str | Omit = omit,
+        frequency: Optional[BenefitFrequency] | Omit = omit,
+        type: Optional[BenefitType] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreateCompanyBenefitsResponse:
         """Creates a new company-wide deduction or contribution.
 
@@ -121,7 +121,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyBenefit:
         """
         Lists deductions and contributions information for a given item
@@ -149,13 +149,13 @@ class Benefits(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        description: str | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UpdateCompanyBenefitResponse:
         """
         Updates an existing company-wide deduction or contribution
@@ -190,7 +190,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[CompanyBenefit]:
         """List all company-wide deductions and contributions."""
         return self._get_api_list(
@@ -210,7 +210,7 @@ class Benefits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[SupportedBenefit]:
         """Get deductions metadata"""
         return self._get_api_list(
@@ -250,16 +250,16 @@ class AsyncBenefits(AsyncAPIResource):
     async def create(
         self,
         *,
-        company_contribution: Optional[benefit_create_params.CompanyContribution] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        frequency: Optional[BenefitFrequency] | NotGiven = NOT_GIVEN,
-        type: Optional[BenefitType] | NotGiven = NOT_GIVEN,
+        company_contribution: Optional[benefit_create_params.CompanyContribution] | Omit = omit,
+        description: str | Omit = omit,
+        frequency: Optional[BenefitFrequency] | Omit = omit,
+        type: Optional[BenefitType] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CreateCompanyBenefitsResponse:
         """Creates a new company-wide deduction or contribution.
 
@@ -311,7 +311,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CompanyBenefit:
         """
         Lists deductions and contributions information for a given item
@@ -339,13 +339,13 @@ class AsyncBenefits(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        description: str | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UpdateCompanyBenefitResponse:
         """
         Updates an existing company-wide deduction or contribution
@@ -380,7 +380,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyBenefit, AsyncSinglePage[CompanyBenefit]]:
         """List all company-wide deductions and contributions."""
         return self._get_api_list(
@@ -400,7 +400,7 @@ class AsyncBenefits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SupportedBenefit, AsyncSinglePage[SupportedBenefit]]:
         """Get deductions metadata"""
         return self._get_api_list(

@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -48,7 +48,7 @@ class PayGroups(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PayGroupRetrieveResponse:
         """
         Read information from a single pay group
@@ -75,14 +75,14 @@ class PayGroups(SyncAPIResource):
     def list(
         self,
         *,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        pay_frequencies: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        individual_id: str | Omit = omit,
+        pay_frequencies: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[PayGroupListResponse]:
         """
         Read company pay groups and frequencies
@@ -145,7 +145,7 @@ class AsyncPayGroups(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PayGroupRetrieveResponse:
         """
         Read information from a single pay group
@@ -172,14 +172,14 @@ class AsyncPayGroups(AsyncAPIResource):
     def list(
         self,
         *,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        pay_frequencies: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        individual_id: str | Omit = omit,
+        pay_frequencies: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PayGroupListResponse, AsyncSinglePage[PayGroupListResponse]]:
         """
         Read company pay groups and frequencies
