@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Dict, Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["RequestForwardingForwardParams"]
@@ -28,14 +28,14 @@ class RequestForwardingForwardParams(TypedDict, total=False):
     This value must be specified as either a string or a valid JSON object.
     """
 
-    headers: Optional[object]
+    headers: Optional[Dict[str, Optional[object]]]
     """The HTTP headers to include on the forwarded request.
 
     This value must be specified as an object of key-value pairs. Example:
     `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
     """
 
-    params: Optional[object]
+    params: Optional[Dict[str, Optional[object]]]
     """The query parameters for the forwarded request.
 
     This value must be specified as a valid JSON object rather than a query string.
