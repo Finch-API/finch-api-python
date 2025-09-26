@@ -20,30 +20,27 @@ class TestRequestForwarding:
     @parametrize
     def test_method_forward(self, client: Finch) -> None:
         request_forwarding = client.request_forwarding.forward(
-            method="POST",
-            route="/people/search",
+            method="method",
+            route="route",
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
     @parametrize
     def test_method_forward_with_all_params(self, client: Finch) -> None:
         request_forwarding = client.request_forwarding.forward(
-            method="POST",
-            route="/people/search",
-            data=None,
-            headers={"content-type": "application/json"},
-            params={
-                "showInactive": True,
-                "humanReadable": True,
-            },
+            method="method",
+            route="route",
+            data="data",
+            headers={"foo": "bar"},
+            params={"foo": "bar"},
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
     @parametrize
     def test_raw_response_forward(self, client: Finch) -> None:
         response = client.request_forwarding.with_raw_response.forward(
-            method="POST",
-            route="/people/search",
+            method="method",
+            route="route",
         )
 
         assert response.is_closed is True
@@ -54,8 +51,8 @@ class TestRequestForwarding:
     @parametrize
     def test_streaming_response_forward(self, client: Finch) -> None:
         with client.request_forwarding.with_streaming_response.forward(
-            method="POST",
-            route="/people/search",
+            method="method",
+            route="route",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,30 +71,27 @@ class TestAsyncRequestForwarding:
     @parametrize
     async def test_method_forward(self, async_client: AsyncFinch) -> None:
         request_forwarding = await async_client.request_forwarding.forward(
-            method="POST",
-            route="/people/search",
+            method="method",
+            route="route",
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
     @parametrize
     async def test_method_forward_with_all_params(self, async_client: AsyncFinch) -> None:
         request_forwarding = await async_client.request_forwarding.forward(
-            method="POST",
-            route="/people/search",
-            data=None,
-            headers={"content-type": "application/json"},
-            params={
-                "showInactive": True,
-                "humanReadable": True,
-            },
+            method="method",
+            route="route",
+            data="data",
+            headers={"foo": "bar"},
+            params={"foo": "bar"},
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
     @parametrize
     async def test_raw_response_forward(self, async_client: AsyncFinch) -> None:
         response = await async_client.request_forwarding.with_raw_response.forward(
-            method="POST",
-            route="/people/search",
+            method="method",
+            route="route",
         )
 
         assert response.is_closed is True
@@ -108,8 +102,8 @@ class TestAsyncRequestForwarding:
     @parametrize
     async def test_streaming_response_forward(self, async_client: AsyncFinch) -> None:
         async with async_client.request_forwarding.with_streaming_response.forward(
-            method="POST",
-            route="/people/search",
+            method="method",
+            route="route",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

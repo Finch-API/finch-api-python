@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Dict, Optional
 
 import httpx
 
@@ -45,8 +45,8 @@ class RequestForwarding(SyncAPIResource):
         method: str,
         route: str,
         data: Optional[str] | Omit = omit,
-        headers: Optional[object] | Omit = omit,
-        params: Optional[object] | Omit = omit,
+        headers: Optional[Dict[str, Optional[object]]] | Omit = omit,
+        params: Optional[Dict[str, Optional[object]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -132,8 +132,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
         method: str,
         route: str,
         data: Optional[str] | Omit = omit,
-        headers: Optional[object] | Omit = omit,
-        params: Optional[object] | Omit = omit,
+        headers: Optional[Dict[str, Optional[object]]] | Omit = omit,
+        params: Optional[Dict[str, Optional[object]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

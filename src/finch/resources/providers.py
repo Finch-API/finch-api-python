@@ -11,7 +11,7 @@ from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncSinglePage, AsyncSinglePage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.provider import Provider
+from ..types.provider_list_response import ProviderListResponse
 
 __all__ = ["Providers", "AsyncProviders"]
 
@@ -45,15 +45,15 @@ class Providers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncSinglePage[Provider]:
+    ) -> SyncSinglePage[ProviderListResponse]:
         """Return details on all available payroll and HR systems."""
         return self._get_api_list(
             "/providers",
-            page=SyncSinglePage[Provider],
+            page=SyncSinglePage[ProviderListResponse],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=Provider,
+            model=ProviderListResponse,
         )
 
 
@@ -86,15 +86,15 @@ class AsyncProviders(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Provider, AsyncSinglePage[Provider]]:
+    ) -> AsyncPaginator[ProviderListResponse, AsyncSinglePage[ProviderListResponse]]:
         """Return details on all available payroll and HR systems."""
         return self._get_api_list(
             "/providers",
-            page=AsyncSinglePage[Provider],
+            page=AsyncSinglePage[ProviderListResponse],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=Provider,
+            model=ProviderListResponse,
         )
 
 

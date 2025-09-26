@@ -205,12 +205,12 @@ Methods:
 Types:
 
 ```python
-from finch.types import Provider
+from finch.types import Provider, ProviderListResponse
 ```
 
 Methods:
 
-- <code title="get /providers">client.providers.<a href="./src/finch/resources/providers.py">list</a>() -> <a href="./src/finch/types/provider.py">SyncSinglePage[Provider]</a></code>
+- <code title="get /providers">client.providers.<a href="./src/finch/resources/providers.py">list</a>() -> <a href="./src/finch/types/provider_list_response.py">SyncSinglePage[ProviderListResponse]</a></code>
 
 # Account
 
