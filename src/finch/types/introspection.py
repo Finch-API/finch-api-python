@@ -98,12 +98,6 @@ class Introspection(BaseModel):
     created for this connection
     """
 
-    entity_ids: Optional[List[str]] = None
-    """Array of entity IDs associated with this connection."""
-
-    entity_mode: Optional[Literal["single", "multi"]] = None
-    """Indicates whether this connection manages a single entity or multiple entities."""
-
     manual: Optional[bool] = None
     """
     Whether the connection associated with the `access_token` uses the Assisted
