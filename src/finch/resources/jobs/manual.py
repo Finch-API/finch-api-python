@@ -5,12 +5,10 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.jobs import manual_retrieve_params
 from ..._base_client import make_request_options
 from ...types.jobs.manual_async_job import ManualAsyncJob
 
@@ -41,7 +39,6 @@ class Manual(SyncAPIResource):
         self,
         job_id: str,
         *,
-        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -55,10 +52,6 @@ class Manual(SyncAPIResource):
         Assisted Benefits jobs.
 
         Args:
-          entity_id: The entity ID to use when authenticating with a multi-account token. Required
-              when using a multi-account token to specify which entity's data to access.
-              Example: `123e4567-e89b-12d3-a456-426614174000`
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -72,11 +65,7 @@ class Manual(SyncAPIResource):
         return self._get(
             f"/jobs/manual/{job_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"entity_id": entity_id}, manual_retrieve_params.ManualRetrieveParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ManualAsyncJob,
         )
@@ -106,7 +95,6 @@ class AsyncManual(AsyncAPIResource):
         self,
         job_id: str,
         *,
-        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -120,10 +108,6 @@ class AsyncManual(AsyncAPIResource):
         Assisted Benefits jobs.
 
         Args:
-          entity_id: The entity ID to use when authenticating with a multi-account token. Required
-              when using a multi-account token to specify which entity's data to access.
-              Example: `123e4567-e89b-12d3-a456-426614174000`
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -137,13 +121,7 @@ class AsyncManual(AsyncAPIResource):
         return await self._get(
             f"/jobs/manual/{job_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"entity_id": entity_id}, manual_retrieve_params.ManualRetrieveParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ManualAsyncJob,
         )

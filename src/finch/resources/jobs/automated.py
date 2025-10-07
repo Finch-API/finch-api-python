@@ -12,7 +12,7 @@ from ..._utils import required_args, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.jobs import automated_list_params, automated_create_params, automated_retrieve_params
+from ...types.jobs import automated_list_params, automated_create_params
 from ..._base_client import make_request_options
 from ...types.jobs.automated_async_job import AutomatedAsyncJob
 from ...types.jobs.automated_list_response import AutomatedListResponse
@@ -156,7 +156,6 @@ class Automated(SyncAPIResource):
         self,
         job_id: str,
         *,
-        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -168,10 +167,6 @@ class Automated(SyncAPIResource):
         Get an automated job by `job_id`.
 
         Args:
-          entity_id: The entity ID to use when authenticating with a multi-account token. Required
-              when using a multi-account token to specify which entity's data to access.
-              Example: `123e4567-e89b-12d3-a456-426614174000`
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -185,11 +180,7 @@ class Automated(SyncAPIResource):
         return self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"entity_id": entity_id}, automated_retrieve_params.AutomatedRetrieveParams),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=AutomatedAsyncJob,
         )
@@ -197,7 +188,6 @@ class Automated(SyncAPIResource):
     def list(
         self,
         *,
-        entity_id: str | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -214,10 +204,6 @@ class Automated(SyncAPIResource):
         as data syncs, only the next scheduled job is shown.
 
         Args:
-          entity_id: The entity ID to use when authenticating with a multi-account token. Required
-              when using a multi-account token to specify which entity's data to access.
-              Example: `123e4567-e89b-12d3-a456-426614174000`
-
           limit: Number of items to return
 
           offset: Index to start from (defaults to 0)
@@ -239,7 +225,6 @@ class Automated(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "entity_id": entity_id,
                         "limit": limit,
                         "offset": offset,
                     },
@@ -385,7 +370,6 @@ class AsyncAutomated(AsyncAPIResource):
         self,
         job_id: str,
         *,
-        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -397,10 +381,6 @@ class AsyncAutomated(AsyncAPIResource):
         Get an automated job by `job_id`.
 
         Args:
-          entity_id: The entity ID to use when authenticating with a multi-account token. Required
-              when using a multi-account token to specify which entity's data to access.
-              Example: `123e4567-e89b-12d3-a456-426614174000`
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -414,13 +394,7 @@ class AsyncAutomated(AsyncAPIResource):
         return await self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"entity_id": entity_id}, automated_retrieve_params.AutomatedRetrieveParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=AutomatedAsyncJob,
         )
@@ -428,7 +402,6 @@ class AsyncAutomated(AsyncAPIResource):
     async def list(
         self,
         *,
-        entity_id: str | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -445,10 +418,6 @@ class AsyncAutomated(AsyncAPIResource):
         as data syncs, only the next scheduled job is shown.
 
         Args:
-          entity_id: The entity ID to use when authenticating with a multi-account token. Required
-              when using a multi-account token to specify which entity's data to access.
-              Example: `123e4567-e89b-12d3-a456-426614174000`
-
           limit: Number of items to return
 
           offset: Index to start from (defaults to 0)
@@ -470,7 +439,6 @@ class AsyncAutomated(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "entity_id": entity_id,
                         "limit": limit,
                         "offset": offset,
                     },
