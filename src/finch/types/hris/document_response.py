@@ -9,7 +9,7 @@ __all__ = ["DocumentResponse"]
 
 
 class DocumentResponse(BaseModel):
-    id: Optional[str] = None
+    id: str
     """A stable Finch id for the document."""
 
     individual_id: Optional[str] = None
@@ -18,14 +18,14 @@ class DocumentResponse(BaseModel):
     This will be null for employer-level documents.
     """
 
-    type: Optional[Literal["w4_2020", "w4_2005"]] = None
+    type: Literal["w4_2020", "w4_2005"]
     """The type of document."""
 
-    url: Optional[str] = None
+    url: str
     """A URL to access the document.
 
     Format: `https://api.tryfinch.com/employer/documents/:document_id`.
     """
 
-    year: Optional[float] = None
+    year: float
     """The year the document applies to, if available."""

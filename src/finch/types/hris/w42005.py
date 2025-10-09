@@ -9,7 +9,7 @@ __all__ = ["W42005", "Data"]
 
 
 class Data(BaseModel):
-    additional_withholding: Optional[int] = None
+    additional_withholding: int
     """Additional withholding amount (in cents)."""
 
     exemption: Optional[Literal["exempt", "non_exempt"]] = None
@@ -18,19 +18,19 @@ class Data(BaseModel):
     filing_status: Optional[Literal["married", "married_but_withhold_at_higher_single_rate", "single"]] = None
     """The individual's filing status for tax purposes."""
 
-    individual_id: Optional[str] = None
+    individual_id: str
     """The unique identifier for the individual associated with this 2005 W4 form."""
 
-    total_number_of_allowances: Optional[int] = None
+    total_number_of_allowances: int
     """Total number of allowances claimed (in cents)."""
 
 
 class W42005(BaseModel):
-    data: Optional[Data] = None
+    data: Data
     """Detailed information specific to the 2005 W4 form."""
 
-    type: Optional[Literal["w4_2005"]] = None
+    type: Literal["w4_2005"]
     """Specifies the form type, indicating that this document is a 2005 W4 form."""
 
-    year: Optional[float] = None
+    year: float
     """The tax year this W4 document applies to."""

@@ -9,19 +9,19 @@ __all__ = ["W42020", "Data"]
 
 
 class Data(BaseModel):
-    amount_for_other_dependents: Optional[int] = None
+    amount_for_other_dependents: int
     """
     Amount claimed for dependents other than qualifying children under 17 (in
     cents).
     """
 
-    amount_for_qualifying_children_under_17: Optional[int] = None
+    amount_for_qualifying_children_under_17: int
     """Amount claimed for dependents under 17 years old (in cents)."""
 
-    deductions: Optional[int] = None
+    deductions: int
     """Deductible expenses (in cents)."""
 
-    extra_withholding: Optional[int] = None
+    extra_withholding: int
     """Additional withholding amount (in cents)."""
 
     filing_status: Optional[
@@ -33,22 +33,22 @@ class Data(BaseModel):
     ] = None
     """The individual's filing status for tax purposes."""
 
-    individual_id: Optional[str] = None
+    individual_id: str
     """The unique identifier for the individual associated with this document."""
 
-    other_income: Optional[int] = None
+    other_income: int
     """Additional income from sources outside of primary employment (in cents)."""
 
-    total_claim_dependent_and_other_credits: Optional[int] = None
+    total_claim_dependent_and_other_credits: int
     """Total amount claimed for dependents and other credits (in cents)."""
 
 
 class W42020(BaseModel):
-    data: Optional[Data] = None
+    data: Data
     """Detailed information specific to the 2020 W4 form."""
 
-    type: Optional[Literal["w4_2020"]] = None
+    type: Literal["w4_2020"]
     """Specifies the form type, indicating that this document is a 2020 W4 form."""
 
-    year: Optional[float] = None
+    year: float
     """The tax year this W4 document applies to."""
