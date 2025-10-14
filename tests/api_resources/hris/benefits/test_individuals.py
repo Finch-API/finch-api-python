@@ -43,6 +43,12 @@ class TestIndividuals:
                         "catch_up": True,
                         "company_contribution": {
                             "amount": 0,
+                            "tiers": [
+                                {
+                                    "match": 0,
+                                    "threshold": 0,
+                                }
+                            ],
                             "type": "fixed",
                         },
                         "effective_date": parse_date("2019-12-27"),
@@ -243,6 +249,12 @@ class TestAsyncIndividuals:
                         "catch_up": True,
                         "company_contribution": {
                             "amount": 0,
+                            "tiers": [
+                                {
+                                    "match": 0,
+                                    "threshold": 0,
+                                }
+                            ],
                             "type": "fixed",
                         },
                         "effective_date": parse_date("2019-12-27"),
