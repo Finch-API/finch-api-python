@@ -13,7 +13,7 @@ class SupportedBenefit(BaseModel):
     annual_maximum: Optional[bool] = None
     """Whether the provider supports an annual maximum for this benefit."""
 
-    company_contribution: Optional[List[Optional[Literal["fixed", "percent"]]]] = None
+    company_contribution: Optional[List[Optional[Literal["fixed", "percent", "tiered"]]]] = None
     """Supported contribution types.
 
     An empty array indicates contributions are not supported.
