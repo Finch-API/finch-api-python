@@ -7,7 +7,7 @@ import typing_extensions
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -43,6 +43,7 @@ class Directory(SyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -56,6 +57,8 @@ class Directory(SyncAPIResource):
         Read company directory and organization structure
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           limit: Number of employees to return (defaults to all)
 
           offset: Index to start from (defaults to 0)
@@ -78,6 +81,7 @@ class Directory(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "limit": limit,
                         "offset": offset,
                     },
@@ -91,6 +95,7 @@ class Directory(SyncAPIResource):
     def list_individuals(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -104,6 +109,8 @@ class Directory(SyncAPIResource):
         Read company directory and organization structure
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           limit: Number of employees to return (defaults to all)
 
           offset: Index to start from (defaults to 0)
@@ -117,6 +124,7 @@ class Directory(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self.list(
+            entity_ids=entity_ids,
             limit=limit,
             offset=offset,
             extra_headers=extra_headers,
@@ -149,6 +157,7 @@ class AsyncDirectory(AsyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -162,6 +171,8 @@ class AsyncDirectory(AsyncAPIResource):
         Read company directory and organization structure
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           limit: Number of employees to return (defaults to all)
 
           offset: Index to start from (defaults to 0)
@@ -184,6 +195,7 @@ class AsyncDirectory(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "limit": limit,
                         "offset": offset,
                     },
@@ -197,6 +209,7 @@ class AsyncDirectory(AsyncAPIResource):
     def list_individuals(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -210,6 +223,8 @@ class AsyncDirectory(AsyncAPIResource):
         Read company directory and organization structure
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           limit: Number of employees to return (defaults to all)
 
           offset: Index to start from (defaults to 0)
@@ -223,6 +238,7 @@ class AsyncDirectory(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self.list(
+            entity_ids=entity_ids,
             limit=limit,
             offset=offset,
             extra_headers=extra_headers,

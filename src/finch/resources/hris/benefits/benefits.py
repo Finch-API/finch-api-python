@@ -7,7 +7,7 @@ from typing import Optional
 import httpx
 
 from .... import _legacy_response
-from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from .individuals import (
@@ -21,7 +21,15 @@ from .individuals import (
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ....pagination import SyncSinglePage, AsyncSinglePage
-from ....types.hris import BenefitType, BenefitFrequency, benefit_create_params, benefit_update_params
+from ....types.hris import (
+    BenefitType,
+    BenefitFrequency,
+    benefit_list_params,
+    benefit_create_params,
+    benefit_update_params,
+    benefit_retrieve_params,
+    benefit_list_supported_benefits_params,
+)
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.hris.benefit_type import BenefitType
 from ....types.hris.company_benefit import CompanyBenefit
@@ -60,6 +68,7 @@ class Benefits(SyncAPIResource):
     def create(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         company_contribution: Optional[benefit_create_params.CompanyContribution] | Omit = omit,
         description: str | Omit = omit,
         frequency: Optional[BenefitFrequency] | Omit = omit,
@@ -77,6 +86,8 @@ class Benefits(SyncAPIResource):
         `/providers` endpoint to view available types for each provider.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           company_contribution: The company match for this benefit.
 
           description: Name of the benefit as it appears in the provider and pay statements. Recommend
@@ -107,7 +118,11 @@ class Benefits(SyncAPIResource):
                 benefit_create_params.BenefitCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, benefit_create_params.BenefitCreateParams),
             ),
             cast_to=CreateCompanyBenefitsResponse,
         )
@@ -116,6 +131,7 @@ class Benefits(SyncAPIResource):
         self,
         benefit_id: str,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,6 +143,8 @@ class Benefits(SyncAPIResource):
         Lists deductions and contributions information for a given item
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -140,7 +158,11 @@ class Benefits(SyncAPIResource):
         return self._get(
             f"/employer/benefits/{benefit_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, benefit_retrieve_params.BenefitRetrieveParams),
             ),
             cast_to=CompanyBenefit,
         )
@@ -149,6 +171,7 @@ class Benefits(SyncAPIResource):
         self,
         benefit_id: str,
         *,
+        entity_ids: SequenceNotStr[str],
         description: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -161,6 +184,8 @@ class Benefits(SyncAPIResource):
         Updates an existing company-wide deduction or contribution
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           description: Updated name or description.
 
           extra_headers: Send extra headers
@@ -177,7 +202,11 @@ class Benefits(SyncAPIResource):
             f"/employer/benefits/{benefit_id}",
             body=maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, benefit_update_params.BenefitUpdateParams),
             ),
             cast_to=UpdateCompanyBenefitResponse,
         )
@@ -185,6 +214,7 @@ class Benefits(SyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -192,12 +222,29 @@ class Benefits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[CompanyBenefit]:
-        """List all company-wide deductions and contributions."""
+        """
+        List all company-wide deductions and contributions.
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get_api_list(
             "/employer/benefits",
             page=SyncSinglePage[CompanyBenefit],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, benefit_list_params.BenefitListParams),
             ),
             model=CompanyBenefit,
         )
@@ -205,6 +252,7 @@ class Benefits(SyncAPIResource):
     def list_supported_benefits(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -212,12 +260,32 @@ class Benefits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[SupportedBenefit]:
-        """Get deductions metadata"""
+        """
+        Get deductions metadata
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get_api_list(
             "/employer/benefits/meta",
             page=SyncSinglePage[SupportedBenefit],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids},
+                    benefit_list_supported_benefits_params.BenefitListSupportedBenefitsParams,
+                ),
             ),
             model=SupportedBenefit,
         )
@@ -250,6 +318,7 @@ class AsyncBenefits(AsyncAPIResource):
     async def create(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         company_contribution: Optional[benefit_create_params.CompanyContribution] | Omit = omit,
         description: str | Omit = omit,
         frequency: Optional[BenefitFrequency] | Omit = omit,
@@ -267,6 +336,8 @@ class AsyncBenefits(AsyncAPIResource):
         `/providers` endpoint to view available types for each provider.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           company_contribution: The company match for this benefit.
 
           description: Name of the benefit as it appears in the provider and pay statements. Recommend
@@ -297,7 +368,13 @@ class AsyncBenefits(AsyncAPIResource):
                 benefit_create_params.BenefitCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, benefit_create_params.BenefitCreateParams
+                ),
             ),
             cast_to=CreateCompanyBenefitsResponse,
         )
@@ -306,6 +383,7 @@ class AsyncBenefits(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -317,6 +395,8 @@ class AsyncBenefits(AsyncAPIResource):
         Lists deductions and contributions information for a given item
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -330,7 +410,13 @@ class AsyncBenefits(AsyncAPIResource):
         return await self._get(
             f"/employer/benefits/{benefit_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, benefit_retrieve_params.BenefitRetrieveParams
+                ),
             ),
             cast_to=CompanyBenefit,
         )
@@ -339,6 +425,7 @@ class AsyncBenefits(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
+        entity_ids: SequenceNotStr[str],
         description: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -351,6 +438,8 @@ class AsyncBenefits(AsyncAPIResource):
         Updates an existing company-wide deduction or contribution
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           description: Updated name or description.
 
           extra_headers: Send extra headers
@@ -367,7 +456,13 @@ class AsyncBenefits(AsyncAPIResource):
             f"/employer/benefits/{benefit_id}",
             body=await async_maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, benefit_update_params.BenefitUpdateParams
+                ),
             ),
             cast_to=UpdateCompanyBenefitResponse,
         )
@@ -375,6 +470,7 @@ class AsyncBenefits(AsyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,12 +478,29 @@ class AsyncBenefits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CompanyBenefit, AsyncSinglePage[CompanyBenefit]]:
-        """List all company-wide deductions and contributions."""
+        """
+        List all company-wide deductions and contributions.
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get_api_list(
             "/employer/benefits",
             page=AsyncSinglePage[CompanyBenefit],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, benefit_list_params.BenefitListParams),
             ),
             model=CompanyBenefit,
         )
@@ -395,6 +508,7 @@ class AsyncBenefits(AsyncAPIResource):
     def list_supported_benefits(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -402,12 +516,32 @@ class AsyncBenefits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SupportedBenefit, AsyncSinglePage[SupportedBenefit]]:
-        """Get deductions metadata"""
+        """
+        Get deductions metadata
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get_api_list(
             "/employer/benefits/meta",
             page=AsyncSinglePage[SupportedBenefit],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids},
+                    benefit_list_supported_benefits_params.BenefitListSupportedBenefitsParams,
+                ),
             ),
             model=SupportedBenefit,
         )

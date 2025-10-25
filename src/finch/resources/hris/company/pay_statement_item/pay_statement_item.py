@@ -17,7 +17,7 @@ from .rules import (
     RulesWithStreamingResponse,
     AsyncRulesWithStreamingResponse,
 )
-from ....._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ....._utils import maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -57,6 +57,7 @@ class PayStatementItem(SyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         categories: List[Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]] | Omit = omit,
         end_date: Union[str, date] | Omit = omit,
         name: str | Omit = omit,
@@ -75,6 +76,8 @@ class PayStatementItem(SyncAPIResource):
         items for the access token's connection account.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           categories: Comma-delimited list of pay statement item categories to filter on. If empty,
               defaults to all categories.
 
@@ -106,6 +109,7 @@ class PayStatementItem(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "categories": categories,
                         "end_date": end_date,
                         "name": name,
@@ -146,6 +150,7 @@ class AsyncPayStatementItem(AsyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         categories: List[Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]] | Omit = omit,
         end_date: Union[str, date] | Omit = omit,
         name: str | Omit = omit,
@@ -164,6 +169,8 @@ class AsyncPayStatementItem(AsyncAPIResource):
         items for the access token's connection account.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           categories: Comma-delimited list of pay statement item categories to filter on. If empty,
               defaults to all categories.
 
@@ -195,6 +202,7 @@ class AsyncPayStatementItem(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "categories": categories,
                         "end_date": end_date,
                         "name": name,

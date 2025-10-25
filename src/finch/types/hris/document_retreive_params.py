@@ -6,13 +6,9 @@ from typing_extensions import Required, TypedDict
 
 from ..._types import SequenceNotStr
 
-__all__ = ["PayGroupListParams"]
+__all__ = ["DocumentRetreiveParams"]
 
 
-class PayGroupListParams(TypedDict, total=False):
+class DocumentRetreiveParams(TypedDict, total=False):
     entity_ids: Required[SequenceNotStr[str]]
     """The entity IDs to specify which entities' data to access."""
-
-    individual_id: str
-
-    pay_frequencies: SequenceNotStr[str]

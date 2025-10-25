@@ -4,14 +4,18 @@ from __future__ import annotations
 
 from typing import List, Union
 from datetime import date
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
 __all__ = ["PayStatementItemListParams"]
 
 
 class PayStatementItemListParams(TypedDict, total=False):
+    entity_ids: Required[SequenceNotStr[str]]
+    """The entity IDs to specify which entities' data to access."""
+
     categories: List[Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]]
     """Comma-delimited list of pay statement item categories to filter on.
 

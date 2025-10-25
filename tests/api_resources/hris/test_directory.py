@@ -22,12 +22,15 @@ class TestDirectory:
 
     @parametrize
     def test_method_list(self, client: Finch) -> None:
-        directory = client.hris.directory.list()
+        directory = client.hris.directory.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Finch) -> None:
         directory = client.hris.directory.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             limit=0,
             offset=0,
         )
@@ -35,7 +38,9 @@ class TestDirectory:
 
     @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
-        response = client.hris.directory.with_raw_response.list()
+        response = client.hris.directory.with_raw_response.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -44,7 +49,9 @@ class TestDirectory:
 
     @parametrize
     def test_streaming_response_list(self, client: Finch) -> None:
-        with client.hris.directory.with_streaming_response.list() as response:
+        with client.hris.directory.with_streaming_response.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -56,7 +63,9 @@ class TestDirectory:
     @parametrize
     def test_method_list_individuals(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
-            directory = client.hris.directory.list_individuals()
+            directory = client.hris.directory.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+            )
 
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
@@ -64,6 +73,7 @@ class TestDirectory:
     def test_method_list_individuals_with_all_params(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
             directory = client.hris.directory.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
                 limit=0,
                 offset=0,
             )
@@ -73,7 +83,9 @@ class TestDirectory:
     @parametrize
     def test_raw_response_list_individuals(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
-            response = client.hris.directory.with_raw_response.list_individuals()
+            response = client.hris.directory.with_raw_response.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -83,7 +95,9 @@ class TestDirectory:
     @parametrize
     def test_streaming_response_list_individuals(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
-            with client.hris.directory.with_streaming_response.list_individuals() as response:
+            with client.hris.directory.with_streaming_response.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+            ) as response:
                 assert not response.is_closed
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -100,12 +114,15 @@ class TestAsyncDirectory:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncFinch) -> None:
-        directory = await async_client.hris.directory.list()
+        directory = await async_client.hris.directory.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
         directory = await async_client.hris.directory.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             limit=0,
             offset=0,
         )
@@ -113,7 +130,9 @@ class TestAsyncDirectory:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.directory.with_raw_response.list()
+        response = await async_client.hris.directory.with_raw_response.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -122,7 +141,9 @@ class TestAsyncDirectory:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.directory.with_streaming_response.list() as response:
+        async with async_client.hris.directory.with_streaming_response.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -134,7 +155,9 @@ class TestAsyncDirectory:
     @parametrize
     async def test_method_list_individuals(self, async_client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
-            directory = await async_client.hris.directory.list_individuals()
+            directory = await async_client.hris.directory.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+            )
 
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
@@ -142,6 +165,7 @@ class TestAsyncDirectory:
     async def test_method_list_individuals_with_all_params(self, async_client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
             directory = await async_client.hris.directory.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
                 limit=0,
                 offset=0,
             )
@@ -151,7 +175,9 @@ class TestAsyncDirectory:
     @parametrize
     async def test_raw_response_list_individuals(self, async_client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
-            response = await async_client.hris.directory.with_raw_response.list_individuals()
+            response = await async_client.hris.directory.with_raw_response.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -161,7 +187,9 @@ class TestAsyncDirectory:
     @parametrize
     async def test_streaming_response_list_individuals(self, async_client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
-            async with async_client.hris.directory.with_streaming_response.list_individuals() as response:
+            async with async_client.hris.directory.with_streaming_response.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+            ) as response:
                 assert not response.is_closed
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

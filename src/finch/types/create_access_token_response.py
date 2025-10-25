@@ -25,6 +25,9 @@ class CreateAccessTokenResponse(BaseModel):
     - `finch` - finch-generated data.
     """
 
+    entity_ids: List[str]
+    """An array of entity IDs that can be accessed with this access token"""
+
     products: List[str]
     """An array of the authorized products associated with the `access_token`"""
 

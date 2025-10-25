@@ -2,12 +2,17 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
+
+from ...._types import SequenceNotStr
 
 __all__ = ["IndividualRetrieveManyBenefitsParams"]
 
 
 class IndividualRetrieveManyBenefitsParams(TypedDict, total=False):
+    entity_ids: Required[SequenceNotStr[str]]
+    """The entity IDs to specify which entities' data to access."""
+
     individual_ids: str
     """comma-delimited list of stable Finch uuids for each individual.
 

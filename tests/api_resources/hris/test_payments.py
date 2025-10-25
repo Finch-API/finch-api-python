@@ -23,6 +23,7 @@ class TestPayments:
     def test_method_list(self, client: Finch) -> None:
         payment = client.hris.payments.list(
             end_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             start_date=parse_date("2021-01-01"),
         )
         assert_matches_type(SyncSinglePage[Payment], payment, path=["response"])
@@ -31,6 +32,7 @@ class TestPayments:
     def test_raw_response_list(self, client: Finch) -> None:
         response = client.hris.payments.with_raw_response.list(
             end_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             start_date=parse_date("2021-01-01"),
         )
 
@@ -43,6 +45,7 @@ class TestPayments:
     def test_streaming_response_list(self, client: Finch) -> None:
         with client.hris.payments.with_streaming_response.list(
             end_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             start_date=parse_date("2021-01-01"),
         ) as response:
             assert not response.is_closed
@@ -63,6 +66,7 @@ class TestAsyncPayments:
     async def test_method_list(self, async_client: AsyncFinch) -> None:
         payment = await async_client.hris.payments.list(
             end_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             start_date=parse_date("2021-01-01"),
         )
         assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
@@ -71,6 +75,7 @@ class TestAsyncPayments:
     async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.payments.with_raw_response.list(
             end_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             start_date=parse_date("2021-01-01"),
         )
 
@@ -83,6 +88,7 @@ class TestAsyncPayments:
     async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.payments.with_streaming_response.list(
             end_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             start_date=parse_date("2021-01-01"),
         ) as response:
             assert not response.is_closed

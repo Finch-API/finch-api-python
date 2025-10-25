@@ -7,7 +7,7 @@ from typing import Iterable, Optional
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -43,6 +43,7 @@ class Individuals(SyncAPIResource):
     def retrieve_many(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
         requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -56,6 +57,8 @@ class Individuals(SyncAPIResource):
         Read individual data, excluding income and employment data
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -75,7 +78,13 @@ class Individuals(SyncAPIResource):
                 individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, individual_retrieve_many_params.IndividualRetrieveManyParams
+                ),
             ),
             model=IndividualResponse,
             method="post",
@@ -105,6 +114,7 @@ class AsyncIndividuals(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
         requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -118,6 +128,8 @@ class AsyncIndividuals(AsyncAPIResource):
         Read individual data, excluding income and employment data
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -137,7 +149,13 @@ class AsyncIndividuals(AsyncAPIResource):
                 individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, individual_retrieve_many_params.IndividualRetrieveManyParams
+                ),
             ),
             model=IndividualResponse,
             method="post",

@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -43,6 +43,7 @@ class PayStatements(SyncAPIResource):
     def retrieve_many(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         requests: Iterable[pay_statement_retrieve_many_params.Request],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -58,6 +59,8 @@ class PayStatements(SyncAPIResource):
         supports Benefits.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           requests: The array of batch requests.
 
           extra_headers: Send extra headers
@@ -75,7 +78,13 @@ class PayStatements(SyncAPIResource):
                 {"requests": requests}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
+                ),
             ),
             model=PayStatementResponse,
             method="post",
@@ -105,6 +114,7 @@ class AsyncPayStatements(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         requests: Iterable[pay_statement_retrieve_many_params.Request],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -120,6 +130,8 @@ class AsyncPayStatements(AsyncAPIResource):
         supports Benefits.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           requests: The array of batch requests.
 
           extra_headers: Send extra headers
@@ -137,7 +149,13 @@ class AsyncPayStatements(AsyncAPIResource):
                 {"requests": requests}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
+                ),
             ),
             model=PayStatementResponse,
             method="post",

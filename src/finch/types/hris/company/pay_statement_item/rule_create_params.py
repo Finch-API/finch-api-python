@@ -3,12 +3,17 @@
 from __future__ import annotations
 
 from typing import Dict, Iterable, Optional
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
+
+from ....._types import SequenceNotStr
 
 __all__ = ["RuleCreateParams", "Attributes", "Condition"]
 
 
 class RuleCreateParams(TypedDict, total=False):
+    entity_ids: Required[SequenceNotStr[str]]
+    """The entity IDs to create the rule for."""
+
     attributes: Attributes
     """Specifies the fields to be applied when the condition is met."""
 

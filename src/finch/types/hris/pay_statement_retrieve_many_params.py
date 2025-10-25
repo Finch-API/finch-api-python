@@ -5,10 +5,15 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Required, TypedDict
 
+from ..._types import SequenceNotStr
+
 __all__ = ["PayStatementRetrieveManyParams", "Request"]
 
 
 class PayStatementRetrieveManyParams(TypedDict, total=False):
+    entity_ids: Required[SequenceNotStr[str]]
+    """The entity IDs to specify which entities' data to access."""
+
     requests: Required[Iterable[Request]]
     """The array of batch requests."""
 
