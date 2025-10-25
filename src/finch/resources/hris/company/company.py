@@ -5,10 +5,12 @@ from __future__ import annotations
 import httpx
 
 from .... import _legacy_response
-from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
+from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ....types.hris import company_retrieve_params
 from ...._base_client import make_request_options
 from ....types.hris.company.company import Company
 from .pay_statement_item.pay_statement_item import (
@@ -50,6 +52,7 @@ class CompanyResource(SyncAPIResource):
     def retrieve(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -57,11 +60,28 @@ class CompanyResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Company:
-        """Read basic company data"""
+        """
+        Read basic company data
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             "/employer/company",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, company_retrieve_params.CompanyRetrieveParams),
             ),
             cast_to=Company,
         )
@@ -94,6 +114,7 @@ class AsyncCompanyResource(AsyncAPIResource):
     async def retrieve(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,11 +122,30 @@ class AsyncCompanyResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Company:
-        """Read basic company data"""
+        """
+        Read basic company data
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             "/employer/company",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, company_retrieve_params.CompanyRetrieveParams
+                ),
             ),
             cast_to=Company,
         )

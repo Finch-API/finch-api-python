@@ -21,6 +21,7 @@ class TestEmployments:
     @parametrize
     def test_method_retrieve_many(self, client: Finch) -> None:
         employment = client.hris.employments.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             requests=[{"individual_id": "individual_id"}],
         )
         assert_matches_type(SyncResponsesPage[EmploymentDataResponse], employment, path=["response"])
@@ -28,6 +29,7 @@ class TestEmployments:
     @parametrize
     def test_raw_response_retrieve_many(self, client: Finch) -> None:
         response = client.hris.employments.with_raw_response.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             requests=[{"individual_id": "individual_id"}],
         )
 
@@ -39,6 +41,7 @@ class TestEmployments:
     @parametrize
     def test_streaming_response_retrieve_many(self, client: Finch) -> None:
         with client.hris.employments.with_streaming_response.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             requests=[{"individual_id": "individual_id"}],
         ) as response:
             assert not response.is_closed
@@ -58,6 +61,7 @@ class TestAsyncEmployments:
     @parametrize
     async def test_method_retrieve_many(self, async_client: AsyncFinch) -> None:
         employment = await async_client.hris.employments.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             requests=[{"individual_id": "individual_id"}],
         )
         assert_matches_type(AsyncResponsesPage[EmploymentDataResponse], employment, path=["response"])
@@ -65,6 +69,7 @@ class TestAsyncEmployments:
     @parametrize
     async def test_raw_response_retrieve_many(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.employments.with_raw_response.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             requests=[{"individual_id": "individual_id"}],
         )
 
@@ -76,6 +81,7 @@ class TestAsyncEmployments:
     @parametrize
     async def test_streaming_response_retrieve_many(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.employments.with_streaming_response.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             requests=[{"individual_id": "individual_id"}],
         ) as response:
             assert not response.is_closed

@@ -13,7 +13,7 @@ from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.hris import document_list_params
+from ...types.hris import document_list_params, document_retreive_params
 from ..._base_client import make_request_options
 from ...types.hris.document_list_response import DocumentListResponse
 from ...types.hris.document_retreive_response import DocumentRetreiveResponse
@@ -44,6 +44,7 @@ class Documents(SyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         individual_ids: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -61,6 +62,8 @@ class Documents(SyncAPIResource):
         company-wide documents.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
 
@@ -88,6 +91,7 @@ class Documents(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "individual_ids": individual_ids,
                         "limit": limit,
                         "offset": offset,
@@ -103,6 +107,7 @@ class Documents(SyncAPIResource):
         self,
         document_id: str,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -116,6 +121,8 @@ class Documents(SyncAPIResource):
         specific document by its ID.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -131,7 +138,11 @@ class Documents(SyncAPIResource):
             self._get(
                 f"/employer/documents/{document_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform({"entity_ids": entity_ids}, document_retreive_params.DocumentRetreiveParams),
                 ),
                 cast_to=cast(
                     Any, DocumentRetreiveResponse
@@ -163,6 +174,7 @@ class AsyncDocuments(AsyncAPIResource):
     async def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str],
         individual_ids: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
@@ -180,6 +192,8 @@ class AsyncDocuments(AsyncAPIResource):
         company-wide documents.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
 
@@ -207,6 +221,7 @@ class AsyncDocuments(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "individual_ids": individual_ids,
                         "limit": limit,
                         "offset": offset,
@@ -222,6 +237,7 @@ class AsyncDocuments(AsyncAPIResource):
         self,
         document_id: str,
         *,
+        entity_ids: SequenceNotStr[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,6 +251,8 @@ class AsyncDocuments(AsyncAPIResource):
         specific document by its ID.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -250,7 +268,13 @@ class AsyncDocuments(AsyncAPIResource):
             await self._get(
                 f"/employer/documents/{document_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform(
+                        {"entity_ids": entity_ids}, document_retreive_params.DocumentRetreiveParams
+                    ),
                 ),
                 cast_to=cast(
                     Any, DocumentRetreiveResponse

@@ -8,7 +8,7 @@ from datetime import date
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -45,6 +45,7 @@ class Payments(SyncAPIResource):
         self,
         *,
         end_date: Union[str, date],
+        entity_ids: SequenceNotStr[str],
         start_date: Union[str, date],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -59,6 +60,8 @@ class Payments(SyncAPIResource):
         Args:
           end_date: The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
               format.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           start_date: The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
               format.
@@ -82,6 +85,7 @@ class Payments(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "end_date": end_date,
+                        "entity_ids": entity_ids,
                         "start_date": start_date,
                     },
                     payment_list_params.PaymentListParams,
@@ -115,6 +119,7 @@ class AsyncPayments(AsyncAPIResource):
         self,
         *,
         end_date: Union[str, date],
+        entity_ids: SequenceNotStr[str],
         start_date: Union[str, date],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -129,6 +134,8 @@ class AsyncPayments(AsyncAPIResource):
         Args:
           end_date: The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
               format.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           start_date: The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
               format.
@@ -152,6 +159,7 @@ class AsyncPayments(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "end_date": end_date,
+                        "entity_ids": entity_ids,
                         "start_date": start_date,
                     },
                     payment_list_params.PaymentListParams,

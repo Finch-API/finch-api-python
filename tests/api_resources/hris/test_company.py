@@ -19,12 +19,16 @@ class TestCompany:
 
     @parametrize
     def test_method_retrieve(self, client: Finch) -> None:
-        company = client.hris.company.retrieve()
+        company = client.hris.company.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
         assert_matches_type(Company, company, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
-        response = client.hris.company.with_raw_response.retrieve()
+        response = client.hris.company.with_raw_response.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -33,7 +37,9 @@ class TestCompany:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Finch) -> None:
-        with client.hris.company.with_streaming_response.retrieve() as response:
+        with client.hris.company.with_streaming_response.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -50,12 +56,16 @@ class TestAsyncCompany:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
-        company = await async_client.hris.company.retrieve()
+        company = await async_client.hris.company.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
         assert_matches_type(Company, company, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.with_raw_response.retrieve()
+        response = await async_client.hris.company.with_raw_response.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,7 +74,9 @@ class TestAsyncCompany:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.with_streaming_response.retrieve() as response:
+        async with async_client.hris.company.with_streaming_response.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

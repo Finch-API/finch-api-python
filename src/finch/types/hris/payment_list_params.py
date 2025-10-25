@@ -6,6 +6,7 @@ from typing import Union
 from datetime import date
 from typing_extensions import Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["PaymentListParams"]
@@ -17,6 +18,9 @@ class PaymentListParams(TypedDict, total=False):
     The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
     format.
     """
+
+    entity_ids: Required[SequenceNotStr[str]]
+    """The entity IDs to specify which entities' data to access."""
 
     start_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """

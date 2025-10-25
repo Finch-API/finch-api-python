@@ -6,6 +6,7 @@ from typing import Union, Iterable, Optional
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
 __all__ = [
@@ -19,6 +20,9 @@ __all__ = [
 
 
 class IndividualEnrollManyParams(TypedDict, total=False):
+    entity_ids: Required[SequenceNotStr[str]]
+    """The entity IDs to specify which entities' data to access."""
+
     individuals: Iterable[Individual]
     """Array of the individual_id to enroll and a configuration object."""
 
