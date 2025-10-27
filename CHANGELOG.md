@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.37.0 (2025-10-27)
+
+Full Changelog: [v1.36.0...v1.37.0](https://github.com/Finch-API/finch-api-python/compare/v1.36.0...v1.37.0)
+
+### Features
+
+* **api:** api update ([87b2d65](https://github.com/Finch-API/finch-api-python/commit/87b2d65bc501fe885839ba1d6c5942cc01d203c9))
+* **api:** api update ([831b170](https://github.com/Finch-API/finch-api-python/commit/831b170668e868574307830fc6eb419d4c281cc2))
+* **api:** api update ([93a72d4](https://github.com/Finch-API/finch-api-python/commit/93a72d479f74907ce25e4117a225e76082ef6c9e))
+* **api:** api update ([b676295](https://github.com/Finch-API/finch-api-python/commit/b676295b15b012c8388ca679ab9815e34ce457df))
+* **api:** api update ([3b99127](https://github.com/Finch-API/finch-api-python/commit/3b9912772396d97b16f2b5dec275ffd5c46fc4ea))
+* **api:** api update ([9885ba4](https://github.com/Finch-API/finch-api-python/commit/9885ba4aba34ab023117ed8cb03bf38bb8baaef2))
+* **api:** api update ([8d08d1b](https://github.com/Finch-API/finch-api-python/commit/8d08d1b5226654243854f230bb34727ec5ac430b))
+* **api:** api update ([647e7c6](https://github.com/Finch-API/finch-api-python/commit/647e7c62de07d1b7ee16e76592f3594b7bba373d))
+* **api:** api update ([e014b8b](https://github.com/Finch-API/finch-api-python/commit/e014b8be6ee16d732b597dd93bcd5f0573c87254))
+
+
+### Bug Fixes
+
+* **compat:** compat with `pydantic&lt;2.8.0` when using additional fields ([2d12ad9](https://github.com/Finch-API/finch-api-python/commit/2d12ad9207864192d9166bdf21d61effeabc6ae9))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([993af10](https://github.com/Finch-API/finch-api-python/commit/993af10b90d38c53229108e40f1ebb657003d9d6))
+* do not install brew dependencies in ./scripts/bootstrap by default ([d9ac7ed](https://github.com/Finch-API/finch-api-python/commit/d9ac7edae7fdda865513b488caa03bd305b29b58))
+* **internal:** detect missing future annotations with ruff ([c1e5e28](https://github.com/Finch-API/finch-api-python/commit/c1e5e2841ec38f9d290169abd6320fb0b8438f2f))
+* **internal:** update pydantic dependency ([1e72324](https://github.com/Finch-API/finch-api-python/commit/1e723242d8a86affd25c23a009318ed4da5e3374))
+* **types:** change optional parameter type from NotGiven to Omit ([ae486ab](https://github.com/Finch-API/finch-api-python/commit/ae486abd5198b2aa15615108ef70281b1194666c))
+
 ## 1.36.0 (2025-09-08)
 
 Full Changelog: [v1.35.0...v1.36.0](https://github.com/Finch-API/finch-api-python/compare/v1.35.0...v1.36.0)
