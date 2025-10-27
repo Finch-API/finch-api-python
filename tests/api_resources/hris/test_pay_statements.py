@@ -26,6 +26,20 @@ class TestPayStatements:
         assert_matches_type(SyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
 
     @parametrize
+    def test_method_retrieve_many_with_all_params(self, client: Finch) -> None:
+        pay_statement = client.hris.pay_statements.retrieve_many(
+            requests=[
+                {
+                    "payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    "limit": 50,
+                    "offset": 0,
+                }
+            ],
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
+        assert_matches_type(SyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve_many(self, client: Finch) -> None:
         response = client.hris.pay_statements.with_raw_response.retrieve_many(
             requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
@@ -59,6 +73,20 @@ class TestAsyncPayStatements:
     async def test_method_retrieve_many(self, async_client: AsyncFinch) -> None:
         pay_statement = await async_client.hris.pay_statements.retrieve_many(
             requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+        )
+        assert_matches_type(AsyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_many_with_all_params(self, async_client: AsyncFinch) -> None:
+        pay_statement = await async_client.hris.pay_statements.retrieve_many(
+            requests=[
+                {
+                    "payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+                    "limit": 50,
+                    "offset": 0,
+                }
+            ],
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(AsyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
 

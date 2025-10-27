@@ -8,7 +8,7 @@ from datetime import date
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,12 +46,13 @@ class Payments(SyncAPIResource):
         *,
         end_date: Union[str, date],
         start_date: Union[str, date],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[Payment]:
         """
         Read payroll and contractor related payments by the company.
@@ -62,6 +63,8 @@ class Payments(SyncAPIResource):
 
           start_date: The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
               format.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
 
@@ -83,6 +86,7 @@ class Payments(SyncAPIResource):
                     {
                         "end_date": end_date,
                         "start_date": start_date,
+                        "entity_ids": entity_ids,
                     },
                     payment_list_params.PaymentListParams,
                 ),
@@ -116,12 +120,13 @@ class AsyncPayments(AsyncAPIResource):
         *,
         end_date: Union[str, date],
         start_date: Union[str, date],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Payment, AsyncSinglePage[Payment]]:
         """
         Read payroll and contractor related payments by the company.
@@ -132,6 +137,8 @@ class AsyncPayments(AsyncAPIResource):
 
           start_date: The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
               format.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
 
@@ -153,6 +160,7 @@ class AsyncPayments(AsyncAPIResource):
                     {
                         "end_date": end_date,
                         "start_date": start_date,
+                        "entity_ids": entity_ids,
                     },
                     payment_list_params.PaymentListParams,
                 ),

@@ -10,5 +10,8 @@ __all__ = ["IndividualUnenrollManyParams"]
 
 
 class IndividualUnenrollManyParams(TypedDict, total=False):
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
+
     individual_ids: SequenceNotStr[str]
     """Array of individual_ids to unenroll."""

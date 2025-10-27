@@ -9,45 +9,55 @@ __all__ = ["SessionNewParams", "Integration"]
 
 
 class SessionNewParams(TypedDict, total=False):
+    customer_email: Required[Optional[str]]
+    """Email address of the customer"""
+
     customer_id: Required[str]
+    """Unique identifier for the customer"""
 
     customer_name: Required[str]
+    """Name of the customer"""
 
-    products: Required[
-        List[
-            Literal[
-                "company",
-                "directory",
-                "individual",
-                "employment",
-                "payment",
-                "pay_statement",
-                "benefits",
-                "ssn",
-                "deduction",
-                "documents",
-            ]
-        ]
-    ]
+    integration: Required[Optional[Integration]]
+    """Integration configuration for the connect session"""
 
-    customer_email: Optional[str]
+    manual: Required[Optional[bool]]
+    """Enable manual authentication mode"""
 
-    integration: Optional[Integration]
-
-    manual: Optional[bool]
-
-    minutes_to_expire: Optional[float]
+    minutes_to_expire: Required[Optional[float]]
     """
     The number of minutes until the session expires (defaults to 129,600, which is
     90 days)
     """
 
-    redirect_uri: Optional[str]
+    products: Required[
+        List[
+            Literal[
+                "benefits",
+                "company",
+                "deduction",
+                "directory",
+                "documents",
+                "employment",
+                "individual",
+                "payment",
+                "pay_statement",
+                "ssn",
+            ]
+        ]
+    ]
+    """The Finch products to request access to"""
 
-    sandbox: Optional[Literal["finch", "provider"]]
+    redirect_uri: Required[Optional[str]]
+    """The URI to redirect to after the Connect flow is completed"""
+
+    sandbox: Required[Optional[Literal["finch", "provider"]]]
+    """Sandbox mode for testing"""
 
 
 class Integration(TypedDict, total=False):
-    auth_method: Optional[Literal["assisted", "credential", "oauth", "api_token"]]
+    auth_method: Required[Optional[Literal["assisted", "credential", "oauth", "api_token"]]]
+    """The authentication method to use"""
 
-    provider: Optional[str]
+    provider: Required[Optional[str]]
+    """The provider to integrate with"""

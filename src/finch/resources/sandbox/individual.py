@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -45,9 +45,9 @@ class Individual(SyncAPIResource):
         self,
         individual_id: str,
         *,
-        dob: Optional[str] | NotGiven = NOT_GIVEN,
-        emails: Optional[Iterable[individual_update_params.Email]] | NotGiven = NOT_GIVEN,
-        encrypted_ssn: Optional[str] | NotGiven = NOT_GIVEN,
+        dob: Optional[str] | Omit = omit,
+        emails: Optional[Iterable[individual_update_params.Email]] | Omit = omit,
+        encrypted_ssn: Optional[str] | Omit = omit,
         ethnicity: Optional[
             Literal[
                 "asian",
@@ -60,21 +60,21 @@ class Individual(SyncAPIResource):
                 "decline_to_specify",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        first_name: Optional[str] | NotGiven = NOT_GIVEN,
-        gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | NotGiven = NOT_GIVEN,
-        last_name: Optional[str] | NotGiven = NOT_GIVEN,
-        middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | NotGiven = NOT_GIVEN,
-        preferred_name: Optional[str] | NotGiven = NOT_GIVEN,
-        residence: Optional[LocationParam] | NotGiven = NOT_GIVEN,
-        ssn: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        first_name: Optional[str] | Omit = omit,
+        gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | Omit = omit,
+        last_name: Optional[str] | Omit = omit,
+        middle_name: Optional[str] | Omit = omit,
+        phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | Omit = omit,
+        preferred_name: Optional[str] | Omit = omit,
+        residence: Optional[LocationParam] | Omit = omit,
+        ssn: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndividualUpdateResponse:
         """
         Update sandbox individual
@@ -163,9 +163,9 @@ class AsyncIndividual(AsyncAPIResource):
         self,
         individual_id: str,
         *,
-        dob: Optional[str] | NotGiven = NOT_GIVEN,
-        emails: Optional[Iterable[individual_update_params.Email]] | NotGiven = NOT_GIVEN,
-        encrypted_ssn: Optional[str] | NotGiven = NOT_GIVEN,
+        dob: Optional[str] | Omit = omit,
+        emails: Optional[Iterable[individual_update_params.Email]] | Omit = omit,
+        encrypted_ssn: Optional[str] | Omit = omit,
         ethnicity: Optional[
             Literal[
                 "asian",
@@ -178,21 +178,21 @@ class AsyncIndividual(AsyncAPIResource):
                 "decline_to_specify",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        first_name: Optional[str] | NotGiven = NOT_GIVEN,
-        gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | NotGiven = NOT_GIVEN,
-        last_name: Optional[str] | NotGiven = NOT_GIVEN,
-        middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | NotGiven = NOT_GIVEN,
-        preferred_name: Optional[str] | NotGiven = NOT_GIVEN,
-        residence: Optional[LocationParam] | NotGiven = NOT_GIVEN,
-        ssn: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        first_name: Optional[str] | Omit = omit,
+        gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | Omit = omit,
+        last_name: Optional[str] | Omit = omit,
+        middle_name: Optional[str] | Omit = omit,
+        phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | Omit = omit,
+        preferred_name: Optional[str] | Omit = omit,
+        residence: Optional[LocationParam] | Omit = omit,
+        ssn: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndividualUpdateResponse:
         """
         Update sandbox individual

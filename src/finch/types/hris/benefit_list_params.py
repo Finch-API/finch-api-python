@@ -6,12 +6,9 @@ from typing_extensions import TypedDict
 
 from ..._types import SequenceNotStr
 
-__all__ = ["BenefitUpdateParams"]
+__all__ = ["BenefitListParams"]
 
 
-class BenefitUpdateParams(TypedDict, total=False):
+class BenefitListParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
-
-    description: str
-    """Updated name or description."""

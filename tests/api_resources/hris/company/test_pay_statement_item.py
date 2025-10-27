@@ -29,6 +29,7 @@ class TestPayStatementItem:
         pay_statement_item = client.hris.company.pay_statement_item.list(
             categories=["earnings"],
             end_date=parse_date("2024-07-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             name="name",
             start_date=parse_date("2024-01-01"),
             type="base_compensation",
@@ -71,6 +72,7 @@ class TestAsyncPayStatementItem:
         pay_statement_item = await async_client.hris.company.pay_statement_item.list(
             categories=["earnings"],
             end_date=parse_date("2024-07-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             name="name",
             start_date=parse_date("2024-01-01"),
             type="base_compensation",

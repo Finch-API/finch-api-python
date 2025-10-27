@@ -153,10 +153,10 @@ class PayStatement(BaseModel):
     earnings: Optional[List[Optional[Earning]]] = None
     """The array of earnings objects associated with this pay statement"""
 
-    employee_deductions: Optional[List[Optional[EmployeeDeduction]]] = None
+    employee_deductions: Optional[List[EmployeeDeduction]] = None
     """The array of deductions objects associated with this pay statement."""
 
-    employer_contributions: Optional[List[Optional[EmployerContribution]]] = None
+    employer_contributions: Optional[List[EmployerContribution]] = None
 
     gross_pay: Optional[Money] = None
 
@@ -168,7 +168,7 @@ class PayStatement(BaseModel):
     payment_method: Optional[Literal["check", "direct_deposit", "other"]] = None
     """The payment method."""
 
-    taxes: Optional[List[Optional[Tax]]] = None
+    taxes: Optional[List[Tax]] = None
     """The array of taxes objects associated with this pay statement."""
 
     total_hours: Optional[float] = None

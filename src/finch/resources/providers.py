@@ -5,13 +5,13 @@ from __future__ import annotations
 import httpx
 
 from .. import _legacy_response
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Query, Headers, NotGiven, not_given
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncSinglePage, AsyncSinglePage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.provider import Provider
+from ..types.provider_list_response import ProviderListResponse
 
 __all__ = ["Providers", "AsyncProviders"]
 
@@ -44,16 +44,16 @@ class Providers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncSinglePage[Provider]:
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SyncSinglePage[ProviderListResponse]:
         """Return details on all available payroll and HR systems."""
         return self._get_api_list(
             "/providers",
-            page=SyncSinglePage[Provider],
+            page=SyncSinglePage[ProviderListResponse],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=Provider,
+            model=ProviderListResponse,
         )
 
 
@@ -85,16 +85,16 @@ class AsyncProviders(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[Provider, AsyncSinglePage[Provider]]:
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncPaginator[ProviderListResponse, AsyncSinglePage[ProviderListResponse]]:
         """Return details on all available payroll and HR systems."""
         return self._get_api_list(
             "/providers",
-            page=AsyncSinglePage[Provider],
+            page=AsyncSinglePage[ProviderListResponse],
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            model=Provider,
+            model=ProviderListResponse,
         )
 
 

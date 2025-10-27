@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from .... import _legacy_response
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -16,6 +16,7 @@ from ....pagination import SyncSinglePage, AsyncSinglePage
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.hris.benefits import (
     individual_enroll_many_params,
+    individual_enrolled_ids_params,
     individual_unenroll_many_params,
     individual_retrieve_many_benefits_params,
 )
@@ -51,13 +52,14 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individuals: Iterable[individual_enroll_many_params.Individual] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individuals: Iterable[individual_enroll_many_params.Individual] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EnrolledIndividualBenefitResponse:
         """Enroll an individual into a deduction or contribution.
 
@@ -67,6 +69,8 @@ class Individuals(SyncAPIResource):
         enrollments, but will continue to set the state of the existing enrollment.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individuals: Array of the individual_id to enroll and a configuration object.
 
           extra_headers: Send extra headers
@@ -83,7 +87,13 @@ class Individuals(SyncAPIResource):
             f"/employer/benefits/{benefit_id}/individuals",
             body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, individual_enroll_many_params.IndividualEnrollManyParams
+                ),
             ),
             cast_to=EnrolledIndividualBenefitResponse,
         )
@@ -92,17 +102,20 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndividualEnrolledIDsResponse:
         """
         Lists individuals currently enrolled in a given deduction.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -116,7 +129,13 @@ class Individuals(SyncAPIResource):
         return self._get(
             f"/employer/benefits/{benefit_id}/enrolled",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, individual_enrolled_ids_params.IndividualEnrolledIDsParams
+                ),
             ),
             cast_to=IndividualEnrolledIDsResponse,
         )
@@ -125,18 +144,21 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: str | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_ids: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[IndividualBenefit]:
         """
         Get enrollment information for the given individuals.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
 
@@ -159,7 +181,10 @@ class Individuals(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"individual_ids": individual_ids},
+                    {
+                        "entity_ids": entity_ids,
+                        "individual_ids": individual_ids,
+                    },
                     individual_retrieve_many_benefits_params.IndividualRetrieveManyBenefitsParams,
                 ),
             ),
@@ -170,18 +195,21 @@ class Individuals(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UnenrolledIndividualBenefitResponse:
         """
         Unenroll individuals from a deduction or contribution
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: Array of individual_ids to unenroll.
 
           extra_headers: Send extra headers
@@ -200,7 +228,13 @@ class Individuals(SyncAPIResource):
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
+                ),
             ),
             cast_to=UnenrolledIndividualBenefitResponse,
         )
@@ -230,13 +264,14 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individuals: Iterable[individual_enroll_many_params.Individual] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individuals: Iterable[individual_enroll_many_params.Individual] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EnrolledIndividualBenefitResponse:
         """Enroll an individual into a deduction or contribution.
 
@@ -246,6 +281,8 @@ class AsyncIndividuals(AsyncAPIResource):
         enrollments, but will continue to set the state of the existing enrollment.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individuals: Array of the individual_id to enroll and a configuration object.
 
           extra_headers: Send extra headers
@@ -262,7 +299,13 @@ class AsyncIndividuals(AsyncAPIResource):
             f"/employer/benefits/{benefit_id}/individuals",
             body=await async_maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, individual_enroll_many_params.IndividualEnrollManyParams
+                ),
             ),
             cast_to=EnrolledIndividualBenefitResponse,
         )
@@ -271,17 +314,20 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> IndividualEnrolledIDsResponse:
         """
         Lists individuals currently enrolled in a given deduction.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -295,7 +341,13 @@ class AsyncIndividuals(AsyncAPIResource):
         return await self._get(
             f"/employer/benefits/{benefit_id}/enrolled",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, individual_enrolled_ids_params.IndividualEnrolledIDsParams
+                ),
             ),
             cast_to=IndividualEnrolledIDsResponse,
         )
@@ -304,18 +356,21 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: str | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_ids: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[IndividualBenefit, AsyncSinglePage[IndividualBenefit]]:
         """
         Get enrollment information for the given individuals.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
 
@@ -338,7 +393,10 @@ class AsyncIndividuals(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"individual_ids": individual_ids},
+                    {
+                        "entity_ids": entity_ids,
+                        "individual_ids": individual_ids,
+                    },
                     individual_retrieve_many_benefits_params.IndividualRetrieveManyBenefitsParams,
                 ),
             ),
@@ -349,18 +407,21 @@ class AsyncIndividuals(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UnenrolledIndividualBenefitResponse:
         """
         Unenroll individuals from a deduction or contribution
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: Array of individual_ids to unenroll.
 
           extra_headers: Send extra headers
@@ -379,7 +440,13 @@ class AsyncIndividuals(AsyncAPIResource):
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
+                ),
             ),
             cast_to=UnenrolledIndividualBenefitResponse,
         )

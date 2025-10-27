@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,18 +44,21 @@ class Employments(SyncAPIResource):
         self,
         *,
         requests: Iterable[employment_retrieve_many_params.Request],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncResponsesPage[EmploymentDataResponse]:
         """
         Read individual employment and income data
 
         Args:
           requests: The array of batch requests.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
 
@@ -70,7 +73,13 @@ class Employments(SyncAPIResource):
             page=SyncResponsesPage[EmploymentDataResponse],
             body=maybe_transform({"requests": requests}, employment_retrieve_many_params.EmploymentRetrieveManyParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, employment_retrieve_many_params.EmploymentRetrieveManyParams
+                ),
             ),
             model=EmploymentDataResponse,
             method="post",
@@ -101,18 +110,21 @@ class AsyncEmployments(AsyncAPIResource):
         self,
         *,
         requests: Iterable[employment_retrieve_many_params.Request],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EmploymentDataResponse, AsyncResponsesPage[EmploymentDataResponse]]:
         """
         Read individual employment and income data
 
         Args:
           requests: The array of batch requests.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
 
@@ -127,7 +139,13 @@ class AsyncEmployments(AsyncAPIResource):
             page=AsyncResponsesPage[EmploymentDataResponse],
             body=maybe_transform({"requests": requests}, employment_retrieve_many_params.EmploymentRetrieveManyParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"entity_ids": entity_ids}, employment_retrieve_many_params.EmploymentRetrieveManyParams
+                ),
             ),
             model=EmploymentDataResponse,
             method="post",

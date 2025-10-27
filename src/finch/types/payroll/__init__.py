@@ -4,4 +4,5 @@ from __future__ import annotations
 
 from .pay_group_list_params import PayGroupListParams as PayGroupListParams
 from .pay_group_list_response import PayGroupListResponse as PayGroupListResponse
+from .pay_group_retrieve_params import PayGroupRetrieveParams as PayGroupRetrieveParams
 from .pay_group_retrieve_response import PayGroupRetrieveResponse as PayGroupRetrieveResponse

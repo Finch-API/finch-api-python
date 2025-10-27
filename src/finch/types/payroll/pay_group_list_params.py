@@ -10,6 +10,9 @@ __all__ = ["PayGroupListParams"]
 
 
 class PayGroupListParams(TypedDict, total=False):
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
+
     individual_id: str
 
     pay_frequencies: SequenceNotStr[str]

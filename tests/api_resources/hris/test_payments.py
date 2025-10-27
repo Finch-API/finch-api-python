@@ -28,6 +28,15 @@ class TestPayments:
         assert_matches_type(SyncSinglePage[Payment], payment, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Finch) -> None:
+        payment = client.hris.payments.list(
+            end_date=parse_date("2021-01-01"),
+            start_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
+        assert_matches_type(SyncSinglePage[Payment], payment, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
         response = client.hris.payments.with_raw_response.list(
             end_date=parse_date("2021-01-01"),
@@ -64,6 +73,15 @@ class TestAsyncPayments:
         payment = await async_client.hris.payments.list(
             end_date=parse_date("2021-01-01"),
             start_date=parse_date("2021-01-01"),
+        )
+        assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
+        payment = await async_client.hris.payments.list(
+            end_date=parse_date("2021-01-01"),
+            start_date=parse_date("2021-01-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(AsyncSinglePage[Payment], payment, path=["response"])
 

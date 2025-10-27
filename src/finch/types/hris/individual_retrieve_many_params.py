@@ -11,6 +11,9 @@ __all__ = ["IndividualRetrieveManyParams", "Options", "Request"]
 
 
 class IndividualRetrieveManyParams(TypedDict, total=False):
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
+
     options: Optional[Options]
 
     requests: Iterable[Request]

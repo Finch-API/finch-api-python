@@ -28,6 +28,7 @@ class TestDirectory:
     @parametrize
     def test_method_list_with_all_params(self, client: Finch) -> None:
         directory = client.hris.directory.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             limit=0,
             offset=0,
         )
@@ -64,6 +65,7 @@ class TestDirectory:
     def test_method_list_individuals_with_all_params(self, client: Finch) -> None:
         with pytest.warns(DeprecationWarning):
             directory = client.hris.directory.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
                 limit=0,
                 offset=0,
             )
@@ -106,6 +108,7 @@ class TestAsyncDirectory:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
         directory = await async_client.hris.directory.list(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             limit=0,
             offset=0,
         )
@@ -142,6 +145,7 @@ class TestAsyncDirectory:
     async def test_method_list_individuals_with_all_params(self, async_client: AsyncFinch) -> None:
         with pytest.warns(DeprecationWarning):
             directory = await async_client.hris.directory.list_individuals(
+                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
                 limit=0,
                 offset=0,
             )

@@ -5,14 +5,14 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
-from ..._utils import maybe_transform
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncSinglePage, AsyncSinglePage
 from ..._base_client import AsyncPaginator, make_request_options
-from ...types.payroll import pay_group_list_params
+from ...types.payroll import pay_group_list_params, pay_group_retrieve_params
 from ...types.payroll.pay_group_list_response import PayGroupListResponse
 from ...types.payroll.pay_group_retrieve_response import PayGroupRetrieveResponse
 
@@ -43,17 +43,20 @@ class PayGroups(SyncAPIResource):
         self,
         pay_group_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PayGroupRetrieveResponse:
         """
         Read information from a single pay group
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -67,7 +70,11 @@ class PayGroups(SyncAPIResource):
         return self._get(
             f"/employer/pay-groups/{pay_group_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, pay_group_retrieve_params.PayGroupRetrieveParams),
             ),
             cast_to=PayGroupRetrieveResponse,
         )
@@ -75,19 +82,22 @@ class PayGroups(SyncAPIResource):
     def list(
         self,
         *,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        pay_frequencies: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_id: str | Omit = omit,
+        pay_frequencies: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[PayGroupListResponse]:
         """
         Read company pay groups and frequencies
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -106,6 +116,7 @@ class PayGroups(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "individual_id": individual_id,
                         "pay_frequencies": pay_frequencies,
                     },
@@ -140,17 +151,20 @@ class AsyncPayGroups(AsyncAPIResource):
         self,
         pay_group_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PayGroupRetrieveResponse:
         """
         Read information from a single pay group
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -164,7 +178,13 @@ class AsyncPayGroups(AsyncAPIResource):
         return await self._get(
             f"/employer/pay-groups/{pay_group_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, pay_group_retrieve_params.PayGroupRetrieveParams
+                ),
             ),
             cast_to=PayGroupRetrieveResponse,
         )
@@ -172,19 +192,22 @@ class AsyncPayGroups(AsyncAPIResource):
     def list(
         self,
         *,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        pay_frequencies: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_id: str | Omit = omit,
+        pay_frequencies: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PayGroupListResponse, AsyncSinglePage[PayGroupListResponse]]:
         """
         Read company pay groups and frequencies
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -203,6 +226,7 @@ class AsyncPayGroups(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "individual_id": individual_id,
                         "pay_frequencies": pay_frequencies,
                     },

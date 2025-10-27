@@ -4,8 +4,9 @@ from __future__ import annotations
 
 from typing import Union, Iterable, Optional
 from datetime import date
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ...._types import SequenceNotStr
 from ...._utils import PropertyInfo
 
 __all__ = [
@@ -13,13 +14,25 @@ __all__ = [
     "Individual",
     "IndividualConfiguration",
     "IndividualConfigurationCompanyContribution",
+    "IndividualConfigurationCompanyContributionTier",
     "IndividualConfigurationEmployeeDeduction",
 ]
 
 
 class IndividualEnrollManyParams(TypedDict, total=False):
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
+
     individuals: Iterable[Individual]
     """Array of the individual_id to enroll and a configuration object."""
+
+
+class IndividualConfigurationCompanyContributionTier(TypedDict, total=False):
+    match: Required[int]
+    """The employer match percentage in basis points (0-10000 = 0-100%)"""
+
+    threshold: Required[int]
+    """The employee contribution threshold in basis points (0-10000 = 0-100%)"""
 
 
 class IndividualConfigurationCompanyContribution(TypedDict, total=False):
@@ -29,7 +42,13 @@ class IndividualConfigurationCompanyContribution(TypedDict, total=False):
     percent type
     """
 
-    type: Literal["fixed", "percent"]
+    tiers: Iterable[IndividualConfigurationCompanyContributionTier]
+    """
+    Array of tier objects for tiered contribution matching (required when type is
+    tiered)
+    """
+
+    type: Literal["fixed", "percent", "tiered"]
 
 
 class IndividualConfigurationEmployeeDeduction(TypedDict, total=False):

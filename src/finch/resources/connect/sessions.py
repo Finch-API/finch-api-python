@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Query, Headers, NotGiven, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,41 +44,57 @@ class Sessions(SyncAPIResource):
     def new(
         self,
         *,
+        customer_email: Optional[str],
         customer_id: str,
         customer_name: str,
+        integration: Optional[session_new_params.Integration],
+        manual: Optional[bool],
+        minutes_to_expire: Optional[float],
         products: List[
             Literal[
+                "benefits",
                 "company",
+                "deduction",
                 "directory",
-                "individual",
+                "documents",
                 "employment",
+                "individual",
                 "payment",
                 "pay_statement",
-                "benefits",
                 "ssn",
-                "deduction",
-                "documents",
             ]
         ],
-        customer_email: Optional[str] | NotGiven = NOT_GIVEN,
-        integration: Optional[session_new_params.Integration] | NotGiven = NOT_GIVEN,
-        manual: Optional[bool] | NotGiven = NOT_GIVEN,
-        minutes_to_expire: Optional[float] | NotGiven = NOT_GIVEN,
-        redirect_uri: Optional[str] | NotGiven = NOT_GIVEN,
-        sandbox: Optional[Literal["finch", "provider"]] | NotGiven = NOT_GIVEN,
+        redirect_uri: Optional[str],
+        sandbox: Optional[Literal["finch", "provider"]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionNewResponse:
         """
         Create a new connect session for an employer
 
         Args:
+          customer_email: Email address of the customer
+
+          customer_id: Unique identifier for the customer
+
+          customer_name: Name of the customer
+
+          integration: Integration configuration for the connect session
+
+          manual: Enable manual authentication mode
+
           minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
               90 days)
+
+          products: The Finch products to request access to
+
+          redirect_uri: The URI to redirect to after the Connect flow is completed
+
+          sandbox: Sandbox mode for testing
 
           extra_headers: Send extra headers
 
@@ -92,13 +108,13 @@ class Sessions(SyncAPIResource):
             "/connect/sessions",
             body=maybe_transform(
                 {
+                    "customer_email": customer_email,
                     "customer_id": customer_id,
                     "customer_name": customer_name,
-                    "products": products,
-                    "customer_email": customer_email,
                     "integration": integration,
                     "manual": manual,
                     "minutes_to_expire": minutes_to_expire,
+                    "products": products,
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
@@ -114,31 +130,30 @@ class Sessions(SyncAPIResource):
         self,
         *,
         connection_id: str,
-        minutes_to_expire: Optional[int] | NotGiven = NOT_GIVEN,
+        minutes_to_expire: int,
         products: Optional[
             List[
                 Literal[
+                    "benefits",
                     "company",
+                    "deduction",
                     "directory",
-                    "individual",
+                    "documents",
                     "employment",
+                    "individual",
                     "payment",
                     "pay_statement",
-                    "benefits",
                     "ssn",
-                    "deduction",
-                    "documents",
                 ]
             ]
-        ]
-        | NotGiven = NOT_GIVEN,
-        redirect_uri: Optional[str] | NotGiven = NOT_GIVEN,
+        ],
+        redirect_uri: Optional[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionReauthenticateResponse:
         """
         Create a new Connect session for reauthenticating an existing connection
@@ -202,41 +217,57 @@ class AsyncSessions(AsyncAPIResource):
     async def new(
         self,
         *,
+        customer_email: Optional[str],
         customer_id: str,
         customer_name: str,
+        integration: Optional[session_new_params.Integration],
+        manual: Optional[bool],
+        minutes_to_expire: Optional[float],
         products: List[
             Literal[
+                "benefits",
                 "company",
+                "deduction",
                 "directory",
-                "individual",
+                "documents",
                 "employment",
+                "individual",
                 "payment",
                 "pay_statement",
-                "benefits",
                 "ssn",
-                "deduction",
-                "documents",
             ]
         ],
-        customer_email: Optional[str] | NotGiven = NOT_GIVEN,
-        integration: Optional[session_new_params.Integration] | NotGiven = NOT_GIVEN,
-        manual: Optional[bool] | NotGiven = NOT_GIVEN,
-        minutes_to_expire: Optional[float] | NotGiven = NOT_GIVEN,
-        redirect_uri: Optional[str] | NotGiven = NOT_GIVEN,
-        sandbox: Optional[Literal["finch", "provider"]] | NotGiven = NOT_GIVEN,
+        redirect_uri: Optional[str],
+        sandbox: Optional[Literal["finch", "provider"]],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionNewResponse:
         """
         Create a new connect session for an employer
 
         Args:
+          customer_email: Email address of the customer
+
+          customer_id: Unique identifier for the customer
+
+          customer_name: Name of the customer
+
+          integration: Integration configuration for the connect session
+
+          manual: Enable manual authentication mode
+
           minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
               90 days)
+
+          products: The Finch products to request access to
+
+          redirect_uri: The URI to redirect to after the Connect flow is completed
+
+          sandbox: Sandbox mode for testing
 
           extra_headers: Send extra headers
 
@@ -250,13 +281,13 @@ class AsyncSessions(AsyncAPIResource):
             "/connect/sessions",
             body=await async_maybe_transform(
                 {
+                    "customer_email": customer_email,
                     "customer_id": customer_id,
                     "customer_name": customer_name,
-                    "products": products,
-                    "customer_email": customer_email,
                     "integration": integration,
                     "manual": manual,
                     "minutes_to_expire": minutes_to_expire,
+                    "products": products,
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
@@ -272,31 +303,30 @@ class AsyncSessions(AsyncAPIResource):
         self,
         *,
         connection_id: str,
-        minutes_to_expire: Optional[int] | NotGiven = NOT_GIVEN,
+        minutes_to_expire: int,
         products: Optional[
             List[
                 Literal[
+                    "benefits",
                     "company",
+                    "deduction",
                     "directory",
-                    "individual",
+                    "documents",
                     "employment",
+                    "individual",
                     "payment",
                     "pay_statement",
-                    "benefits",
                     "ssn",
-                    "deduction",
-                    "documents",
                 ]
             ]
-        ]
-        | NotGiven = NOT_GIVEN,
-        redirect_uri: Optional[str] | NotGiven = NOT_GIVEN,
+        ],
+        redirect_uri: Optional[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionReauthenticateResponse:
         """
         Create a new Connect session for reauthenticating an existing connection

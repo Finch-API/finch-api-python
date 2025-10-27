@@ -4,10 +4,15 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
+from ..._types import SequenceNotStr
+
 __all__ = ["DirectoryListIndividualsParams"]
 
 
 class DirectoryListIndividualsParams(TypedDict, total=False):
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
+
     limit: int
     """Number of employees to return (defaults to all)"""
 

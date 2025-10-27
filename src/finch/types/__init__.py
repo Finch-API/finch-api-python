@@ -11,7 +11,6 @@ from .shared import (
     OperationSupportMatrix as OperationSupportMatrix,
 )
 from .location import Location as Location
-from .provider import Provider as Provider
 from .income_param import IncomeParam as IncomeParam
 from .company_event import CompanyEvent as CompanyEvent
 from .introspection import Introspection as Introspection
@@ -26,6 +25,7 @@ from .disconnect_response import DisconnectResponse as DisconnectResponse
 from .pay_statement_event import PayStatementEvent as PayStatementEvent
 from .account_update_event import AccountUpdateEvent as AccountUpdateEvent
 from .job_completion_event import JobCompletionEvent as JobCompletionEvent
+from .provider_list_response import ProviderListResponse as ProviderListResponse
 from .access_token_create_params import AccessTokenCreateParams as AccessTokenCreateParams
 from .create_access_token_response import CreateAccessTokenResponse as CreateAccessTokenResponse
 from .request_forwarding_forward_params import RequestForwardingForwardParams as RequestForwardingForwardParams

@@ -7,7 +7,13 @@ from typing_extensions import Literal
 from .._models import BaseModel
 from .shared.connection_status_type import ConnectionStatusType
 
-__all__ = ["Introspection", "ConnectionStatus", "AuthenticationMethod", "AuthenticationMethodConnectionStatus"]
+__all__ = [
+    "Introspection",
+    "ConnectionStatus",
+    "AuthenticationMethod",
+    "AuthenticationMethodConnectionStatus",
+    "Entity",
+]
 
 
 class ConnectionStatus(BaseModel):
@@ -36,6 +42,20 @@ class AuthenticationMethod(BaseModel):
 
     products: Optional[List[str]] = None
     """An array of the authorized products associated with the `access_token`"""
+
+
+class Entity(BaseModel):
+    id: str
+    """The connection account ID for this entity"""
+
+    name: Optional[str] = None
+    """The name of the entity (payroll provider company name)"""
+
+    source_id: Optional[str] = None
+    """The source ID of the entity"""
+
+    type: Optional[str] = None
+    """The type of entity"""
 
 
 class Introspection(BaseModel):
@@ -98,11 +118,11 @@ class Introspection(BaseModel):
     created for this connection
     """
 
-    entity_ids: Optional[List[str]] = None
-    """Array of entity IDs associated with this connection."""
-
-    entity_mode: Optional[Literal["single", "multi"]] = None
-    """Indicates whether this connection manages a single entity or multiple entities."""
+    entities: Optional[List[Entity]] = None
+    """
+    Array of detailed entity information for each connected account in multi-account
+    mode
+    """
 
     manual: Optional[bool] = None
     """

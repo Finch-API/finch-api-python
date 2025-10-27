@@ -8,14 +8,19 @@ from typing_extensions import Literal
 import httpx
 
 from ..... import _legacy_response
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .....pagination import SyncResponsesPage, AsyncResponsesPage
 from ....._base_client import AsyncPaginator, make_request_options
-from .....types.hris.company.pay_statement_item import rule_create_params, rule_update_params
+from .....types.hris.company.pay_statement_item import (
+    rule_list_params,
+    rule_create_params,
+    rule_delete_params,
+    rule_update_params,
+)
 from .....types.hris.company.pay_statement_item.rule_list_response import RuleListResponse
 from .....types.hris.company.pay_statement_item.rule_create_response import RuleCreateResponse
 from .....types.hris.company.pay_statement_item.rule_delete_response import RuleDeleteResponse
@@ -47,17 +52,18 @@ class Rules(SyncAPIResource):
     def create(
         self,
         *,
-        attributes: rule_create_params.Attributes | NotGiven = NOT_GIVEN,
-        conditions: Iterable[rule_create_params.Condition] | NotGiven = NOT_GIVEN,
-        effective_end_date: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_start_date: Optional[str] | NotGiven = NOT_GIVEN,
-        entity_type: Literal["pay_statement_item"] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        attributes: rule_create_params.Attributes | Omit = omit,
+        conditions: Iterable[rule_create_params.Condition] | Omit = omit,
+        effective_end_date: Optional[str] | Omit = omit,
+        effective_start_date: Optional[str] | Omit = omit,
+        entity_type: Literal["pay_statement_item"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleCreateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -68,6 +74,8 @@ class Rules(SyncAPIResource):
         information is available.
 
         Args:
+          entity_ids: The entity IDs to create the rule for.
+
           attributes: Specifies the fields to be applied when the condition is met.
 
           effective_end_date: Specifies when the rules should stop applying rules based on the date.
@@ -97,7 +105,11 @@ class Rules(SyncAPIResource):
                 rule_create_params.RuleCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, rule_create_params.RuleCreateParams),
             ),
             cast_to=RuleCreateResponse,
         )
@@ -106,19 +118,22 @@ class Rules(SyncAPIResource):
         self,
         rule_id: str,
         *,
-        optional_property: object | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        optional_property: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleUpdateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
         historical support will be added soon Update a rule for a pay statement item.
 
         Args:
+          entity_ids: The entity IDs to update the rule for.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -133,7 +148,11 @@ class Rules(SyncAPIResource):
             f"/employer/pay-statement-item/rule/{rule_id}",
             body=maybe_transform({"optional_property": optional_property}, rule_update_params.RuleUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, rule_update_params.RuleUpdateParams),
             ),
             cast_to=RuleUpdateResponse,
         )
@@ -141,22 +160,38 @@ class Rules(SyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncResponsesPage[RuleListResponse]:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
         historical support will be added soon List all rules of a connection account.
+
+        Args:
+          entity_ids: The entity IDs to retrieve rules for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/employer/pay-statement-item/rule",
             page=SyncResponsesPage[RuleListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, rule_list_params.RuleListParams),
             ),
             model=RuleListResponse,
         )
@@ -165,18 +200,21 @@ class Rules(SyncAPIResource):
         self,
         rule_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleDeleteResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
         historical support will be added soon Delete a rule for a pay statement item.
 
         Args:
+          entity_ids: The entity IDs to delete the rule for.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -190,7 +228,11 @@ class Rules(SyncAPIResource):
         return self._delete(
             f"/employer/pay-statement-item/rule/{rule_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, rule_delete_params.RuleDeleteParams),
             ),
             cast_to=RuleDeleteResponse,
         )
@@ -219,17 +261,18 @@ class AsyncRules(AsyncAPIResource):
     async def create(
         self,
         *,
-        attributes: rule_create_params.Attributes | NotGiven = NOT_GIVEN,
-        conditions: Iterable[rule_create_params.Condition] | NotGiven = NOT_GIVEN,
-        effective_end_date: Optional[str] | NotGiven = NOT_GIVEN,
-        effective_start_date: Optional[str] | NotGiven = NOT_GIVEN,
-        entity_type: Literal["pay_statement_item"] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        attributes: rule_create_params.Attributes | Omit = omit,
+        conditions: Iterable[rule_create_params.Condition] | Omit = omit,
+        effective_end_date: Optional[str] | Omit = omit,
+        effective_start_date: Optional[str] | Omit = omit,
+        entity_type: Literal["pay_statement_item"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleCreateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
@@ -240,6 +283,8 @@ class AsyncRules(AsyncAPIResource):
         information is available.
 
         Args:
+          entity_ids: The entity IDs to create the rule for.
+
           attributes: Specifies the fields to be applied when the condition is met.
 
           effective_end_date: Specifies when the rules should stop applying rules based on the date.
@@ -269,7 +314,11 @@ class AsyncRules(AsyncAPIResource):
                 rule_create_params.RuleCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"entity_ids": entity_ids}, rule_create_params.RuleCreateParams),
             ),
             cast_to=RuleCreateResponse,
         )
@@ -278,19 +327,22 @@ class AsyncRules(AsyncAPIResource):
         self,
         rule_id: str,
         *,
-        optional_property: object | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        optional_property: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleUpdateResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
         historical support will be added soon Update a rule for a pay statement item.
 
         Args:
+          entity_ids: The entity IDs to update the rule for.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -307,7 +359,11 @@ class AsyncRules(AsyncAPIResource):
                 {"optional_property": optional_property}, rule_update_params.RuleUpdateParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"entity_ids": entity_ids}, rule_update_params.RuleUpdateParams),
             ),
             cast_to=RuleUpdateResponse,
         )
@@ -315,22 +371,38 @@ class AsyncRules(AsyncAPIResource):
     def list(
         self,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RuleListResponse, AsyncResponsesPage[RuleListResponse]]:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
         historical support will be added soon List all rules of a connection account.
+
+        Args:
+          entity_ids: The entity IDs to retrieve rules for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/employer/pay-statement-item/rule",
             page=AsyncResponsesPage[RuleListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, rule_list_params.RuleListParams),
             ),
             model=RuleListResponse,
         )
@@ -339,18 +411,21 @@ class AsyncRules(AsyncAPIResource):
         self,
         rule_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleDeleteResponse:
         """
         **Beta:** this endpoint currently serves employers onboarded after March 4th and
         historical support will be added soon Delete a rule for a pay statement item.
 
         Args:
+          entity_ids: The entity IDs to delete the rule for.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -364,7 +439,11 @@ class AsyncRules(AsyncAPIResource):
         return await self._delete(
             f"/employer/pay-statement-item/rule/{rule_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"entity_ids": entity_ids}, rule_delete_params.RuleDeleteParams),
             ),
             cast_to=RuleDeleteResponse,
         )

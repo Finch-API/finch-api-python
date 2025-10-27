@@ -23,6 +23,13 @@ class TestCompany:
         assert_matches_type(Company, company, path=["response"])
 
     @parametrize
+    def test_method_retrieve_with_all_params(self, client: Finch) -> None:
+        company = client.hris.company.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
+        assert_matches_type(Company, company, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.hris.company.with_raw_response.retrieve()
 
@@ -51,6 +58,13 @@ class TestAsyncCompany:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
         company = await async_client.hris.company.retrieve()
+        assert_matches_type(Company, company, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncFinch) -> None:
+        company = await async_client.hris.company.retrieve(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
+        )
         assert_matches_type(Company, company, path=["response"])
 
     @parametrize

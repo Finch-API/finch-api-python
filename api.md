@@ -41,7 +41,7 @@ from finch.types.hris import Company
 
 Methods:
 
-- <code title="get /employer/company">client.hris.company.<a href="./src/finch/resources/hris/company/company.py">retrieve</a>() -> <a href="./src/finch/types/hris/company/company.py">Company</a></code>
+- <code title="get /employer/company">client.hris.company.<a href="./src/finch/resources/hris/company/company.py">retrieve</a>(\*\*<a href="src/finch/types/hris/company_retrieve_params.py">params</a>) -> <a href="./src/finch/types/hris/company/company.py">Company</a></code>
 
 ### PayStatementItem
 
@@ -72,8 +72,8 @@ Methods:
 
 - <code title="post /employer/pay-statement-item/rule">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">create</a>(\*\*<a href="src/finch/types/hris/company/pay_statement_item/rule_create_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_create_response.py">RuleCreateResponse</a></code>
 - <code title="put /employer/pay-statement-item/rule/{rule_id}">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">update</a>(rule_id, \*\*<a href="src/finch/types/hris/company/pay_statement_item/rule_update_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_update_response.py">RuleUpdateResponse</a></code>
-- <code title="get /employer/pay-statement-item/rule">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">list</a>() -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_list_response.py">SyncResponsesPage[RuleListResponse]</a></code>
-- <code title="delete /employer/pay-statement-item/rule/{rule_id}">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">delete</a>(rule_id) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_delete_response.py">RuleDeleteResponse</a></code>
+- <code title="get /employer/pay-statement-item/rule">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">list</a>(\*\*<a href="src/finch/types/hris/company/pay_statement_item/rule_list_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_list_response.py">SyncResponsesPage[RuleListResponse]</a></code>
+- <code title="delete /employer/pay-statement-item/rule/{rule_id}">client.hris.company.pay_statement_item.rules.<a href="./src/finch/resources/hris/company/pay_statement_item/rules.py">delete</a>(rule_id, \*\*<a href="src/finch/types/hris/company/pay_statement_item/rule_delete_params.py">params</a>) -> <a href="./src/finch/types/hris/company/pay_statement_item/rule_delete_response.py">RuleDeleteResponse</a></code>
 
 ## Directory
 
@@ -157,7 +157,7 @@ from finch.types.hris import (
 Methods:
 
 - <code title="get /employer/documents">client.hris.documents.<a href="./src/finch/resources/hris/documents.py">list</a>(\*\*<a href="src/finch/types/hris/document_list_params.py">params</a>) -> <a href="./src/finch/types/hris/document_list_response.py">DocumentListResponse</a></code>
-- <code title="get /employer/documents/{document_id}">client.hris.documents.<a href="./src/finch/resources/hris/documents.py">retreive</a>(document_id) -> <a href="./src/finch/types/hris/document_retreive_response.py">DocumentRetreiveResponse</a></code>
+- <code title="get /employer/documents/{document_id}">client.hris.documents.<a href="./src/finch/resources/hris/documents.py">retreive</a>(document_id, \*\*<a href="src/finch/types/hris/document_retreive_params.py">params</a>) -> <a href="./src/finch/types/hris/document_retreive_response.py">DocumentRetreiveResponse</a></code>
 
 ## Benefits
 
@@ -182,10 +182,10 @@ from finch.types.hris import (
 Methods:
 
 - <code title="post /employer/benefits">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">create</a>(\*\*<a href="src/finch/types/hris/benefit_create_params.py">params</a>) -> <a href="./src/finch/types/hris/create_company_benefits_response.py">CreateCompanyBenefitsResponse</a></code>
-- <code title="get /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">retrieve</a>(benefit_id) -> <a href="./src/finch/types/hris/company_benefit.py">CompanyBenefit</a></code>
+- <code title="get /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">retrieve</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefit_retrieve_params.py">params</a>) -> <a href="./src/finch/types/hris/company_benefit.py">CompanyBenefit</a></code>
 - <code title="post /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">update</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefit_update_params.py">params</a>) -> <a href="./src/finch/types/hris/update_company_benefit_response.py">UpdateCompanyBenefitResponse</a></code>
-- <code title="get /employer/benefits">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list</a>() -> <a href="./src/finch/types/hris/company_benefit.py">SyncSinglePage[CompanyBenefit]</a></code>
-- <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>() -> <a href="./src/finch/types/hris/supported_benefit.py">SyncSinglePage[SupportedBenefit]</a></code>
+- <code title="get /employer/benefits">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list</a>(\*\*<a href="src/finch/types/hris/benefit_list_params.py">params</a>) -> <a href="./src/finch/types/hris/company_benefit.py">SyncSinglePage[CompanyBenefit]</a></code>
+- <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>(\*\*<a href="src/finch/types/hris/benefit_list_supported_benefits_params.py">params</a>) -> <a href="./src/finch/types/hris/supported_benefit.py">SyncSinglePage[SupportedBenefit]</a></code>
 
 ### Individuals
 
@@ -203,7 +203,7 @@ from finch.types.hris.benefits import (
 Methods:
 
 - <code title="post /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_enroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/enrolled_individual_benefit_response.py">EnrolledIndividualBenefitResponse</a></code>
-- <code title="get /employer/benefits/{benefit_id}/enrolled">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enrolled_ids</a>(benefit_id) -> <a href="./src/finch/types/hris/benefits/individual_enrolled_ids_response.py">IndividualEnrolledIDsResponse</a></code>
+- <code title="get /employer/benefits/{benefit_id}/enrolled">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">enrolled_ids</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_enrolled_ids_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/individual_enrolled_ids_response.py">IndividualEnrolledIDsResponse</a></code>
 - <code title="get /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">retrieve_many_benefits</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_retrieve_many_benefits_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/individual_benefit.py">SyncSinglePage[IndividualBenefit]</a></code>
 - <code title="delete /employer/benefits/{benefit_id}/individuals">client.hris.benefits.individuals.<a href="./src/finch/resources/hris/benefits/individuals.py">unenroll_many</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefits/individual_unenroll_many_params.py">params</a>) -> <a href="./src/finch/types/hris/benefits/unenrolled_individual_benefit_response.py">UnenrolledIndividualBenefitResponse</a></code>
 
@@ -212,12 +212,12 @@ Methods:
 Types:
 
 ```python
-from finch.types import Provider
+from finch.types import Provider, ProviderListResponse
 ```
 
 Methods:
 
-- <code title="get /providers">client.providers.<a href="./src/finch/resources/providers.py">list</a>() -> <a href="./src/finch/types/provider.py">SyncSinglePage[Provider]</a></code>
+- <code title="get /providers">client.providers.<a href="./src/finch/resources/providers.py">list</a>() -> <a href="./src/finch/types/provider_list_response.py">SyncSinglePage[ProviderListResponse]</a></code>
 
 # Account
 
@@ -281,7 +281,7 @@ from finch.types.jobs import AutomatedAsyncJob, AutomatedCreateResponse, Automat
 Methods:
 
 - <code title="post /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">create</a>(\*\*<a href="src/finch/types/jobs/automated_create_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_create_response.py">AutomatedCreateResponse</a></code>
-- <code title="get /jobs/automated/{job_id}">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">retrieve</a>(job_id, \*\*<a href="src/finch/types/jobs/automated_retrieve_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_async_job.py">AutomatedAsyncJob</a></code>
+- <code title="get /jobs/automated/{job_id}">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/automated_async_job.py">AutomatedAsyncJob</a></code>
 - <code title="get /jobs/automated">client.jobs.automated.<a href="./src/finch/resources/jobs/automated.py">list</a>(\*\*<a href="src/finch/types/jobs/automated_list_params.py">params</a>) -> <a href="./src/finch/types/jobs/automated_list_response.py">AutomatedListResponse</a></code>
 
 ## Manual
@@ -294,7 +294,7 @@ from finch.types.jobs import ManualAsyncJob
 
 Methods:
 
-- <code title="get /jobs/manual/{job_id}">client.jobs.manual.<a href="./src/finch/resources/jobs/manual.py">retrieve</a>(job_id, \*\*<a href="src/finch/types/jobs/manual_retrieve_params.py">params</a>) -> <a href="./src/finch/types/jobs/manual_async_job.py">ManualAsyncJob</a></code>
+- <code title="get /jobs/manual/{job_id}">client.jobs.manual.<a href="./src/finch/resources/jobs/manual.py">retrieve</a>(job_id) -> <a href="./src/finch/types/jobs/manual_async_job.py">ManualAsyncJob</a></code>
 
 # Sandbox
 
@@ -420,7 +420,7 @@ from finch.types.payroll import PayGroupRetrieveResponse, PayGroupListResponse
 
 Methods:
 
-- <code title="get /employer/pay-groups/{pay_group_id}">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">retrieve</a>(pay_group_id) -> <a href="./src/finch/types/payroll/pay_group_retrieve_response.py">PayGroupRetrieveResponse</a></code>
+- <code title="get /employer/pay-groups/{pay_group_id}">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">retrieve</a>(pay_group_id, \*\*<a href="src/finch/types/payroll/pay_group_retrieve_params.py">params</a>) -> <a href="./src/finch/types/payroll/pay_group_retrieve_response.py">PayGroupRetrieveResponse</a></code>
 - <code title="get /employer/pay-groups">client.payroll.pay_groups.<a href="./src/finch/resources/payroll/pay_groups.py">list</a>(\*\*<a href="src/finch/types/payroll/pay_group_list_params.py">params</a>) -> <a href="./src/finch/types/payroll/pay_group_list_response.py">SyncSinglePage[PayGroupListResponse]</a></code>
 
 # Connect

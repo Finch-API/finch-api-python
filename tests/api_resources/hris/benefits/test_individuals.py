@@ -35,6 +35,7 @@ class TestIndividuals:
     def test_method_enroll_many_with_all_params(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.enroll_many(
             benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             individuals=[
                 {
                     "configuration": {
@@ -43,6 +44,12 @@ class TestIndividuals:
                         "catch_up": True,
                         "company_contribution": {
                             "amount": 0,
+                            "tiers": [
+                                {
+                                    "match": 0,
+                                    "threshold": 0,
+                                }
+                            ],
                             "type": "fixed",
                         },
                         "effective_date": parse_date("2019-12-27"),
@@ -91,14 +98,22 @@ class TestIndividuals:
     @parametrize
     def test_method_enrolled_ids(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.enrolled_ids(
-            "benefit_id",
+            benefit_id="benefit_id",
+        )
+        assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
+
+    @parametrize
+    def test_method_enrolled_ids_with_all_params(self, client: Finch) -> None:
+        individual = client.hris.benefits.individuals.enrolled_ids(
+            benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
 
     @parametrize
     def test_raw_response_enrolled_ids(self, client: Finch) -> None:
         response = client.hris.benefits.individuals.with_raw_response.enrolled_ids(
-            "benefit_id",
+            benefit_id="benefit_id",
         )
 
         assert response.is_closed is True
@@ -109,7 +124,7 @@ class TestIndividuals:
     @parametrize
     def test_streaming_response_enrolled_ids(self, client: Finch) -> None:
         with client.hris.benefits.individuals.with_streaming_response.enrolled_ids(
-            "benefit_id",
+            benefit_id="benefit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -123,7 +138,7 @@ class TestIndividuals:
     def test_path_params_enrolled_ids(self, client: Finch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
             client.hris.benefits.individuals.with_raw_response.enrolled_ids(
-                "",
+                benefit_id="",
             )
 
     @parametrize
@@ -137,6 +152,7 @@ class TestIndividuals:
     def test_method_retrieve_many_benefits_with_all_params(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.retrieve_many_benefits(
             benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             individual_ids="d675d2b7-6d7b-41a8-b2d3-001eb3fb88f6,d02a6346-1f08-4312-a064-49ff3cafaa7a",
         )
         assert_matches_type(SyncSinglePage[IndividualBenefit], individual, path=["response"])
@@ -183,6 +199,7 @@ class TestIndividuals:
     def test_method_unenroll_many_with_all_params(self, client: Finch) -> None:
         individual = client.hris.benefits.individuals.unenroll_many(
             benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             individual_ids=["string"],
         )
         assert_matches_type(UnenrolledIndividualBenefitResponse, individual, path=["response"])
@@ -235,6 +252,7 @@ class TestAsyncIndividuals:
     async def test_method_enroll_many_with_all_params(self, async_client: AsyncFinch) -> None:
         individual = await async_client.hris.benefits.individuals.enroll_many(
             benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             individuals=[
                 {
                     "configuration": {
@@ -243,6 +261,12 @@ class TestAsyncIndividuals:
                         "catch_up": True,
                         "company_contribution": {
                             "amount": 0,
+                            "tiers": [
+                                {
+                                    "match": 0,
+                                    "threshold": 0,
+                                }
+                            ],
                             "type": "fixed",
                         },
                         "effective_date": parse_date("2019-12-27"),
@@ -291,14 +315,22 @@ class TestAsyncIndividuals:
     @parametrize
     async def test_method_enrolled_ids(self, async_client: AsyncFinch) -> None:
         individual = await async_client.hris.benefits.individuals.enrolled_ids(
-            "benefit_id",
+            benefit_id="benefit_id",
+        )
+        assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
+
+    @parametrize
+    async def test_method_enrolled_ids_with_all_params(self, async_client: AsyncFinch) -> None:
+        individual = await async_client.hris.benefits.individuals.enrolled_ids(
+            benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(IndividualEnrolledIDsResponse, individual, path=["response"])
 
     @parametrize
     async def test_raw_response_enrolled_ids(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.benefits.individuals.with_raw_response.enrolled_ids(
-            "benefit_id",
+            benefit_id="benefit_id",
         )
 
         assert response.is_closed is True
@@ -309,7 +341,7 @@ class TestAsyncIndividuals:
     @parametrize
     async def test_streaming_response_enrolled_ids(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.benefits.individuals.with_streaming_response.enrolled_ids(
-            "benefit_id",
+            benefit_id="benefit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -323,7 +355,7 @@ class TestAsyncIndividuals:
     async def test_path_params_enrolled_ids(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `benefit_id` but received ''"):
             await async_client.hris.benefits.individuals.with_raw_response.enrolled_ids(
-                "",
+                benefit_id="",
             )
 
     @parametrize
@@ -337,6 +369,7 @@ class TestAsyncIndividuals:
     async def test_method_retrieve_many_benefits_with_all_params(self, async_client: AsyncFinch) -> None:
         individual = await async_client.hris.benefits.individuals.retrieve_many_benefits(
             benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             individual_ids="d675d2b7-6d7b-41a8-b2d3-001eb3fb88f6,d02a6346-1f08-4312-a064-49ff3cafaa7a",
         )
         assert_matches_type(AsyncSinglePage[IndividualBenefit], individual, path=["response"])
@@ -383,6 +416,7 @@ class TestAsyncIndividuals:
     async def test_method_unenroll_many_with_all_params(self, async_client: AsyncFinch) -> None:
         individual = await async_client.hris.benefits.individuals.unenroll_many(
             benefit_id="benefit_id",
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             individual_ids=["string"],
         )
         assert_matches_type(UnenrolledIndividualBenefitResponse, individual, path=["response"])

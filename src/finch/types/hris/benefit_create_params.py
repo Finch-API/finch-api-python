@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .benefit_type import BenefitType
 from .benefit_frequency import BenefitFrequency
 
@@ -12,6 +13,9 @@ __all__ = ["BenefitCreateParams", "CompanyContribution", "CompanyContributionTie
 
 
 class BenefitCreateParams(TypedDict, total=False):
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
+
     company_contribution: Optional[CompanyContribution]
     """The company match for this benefit."""
 

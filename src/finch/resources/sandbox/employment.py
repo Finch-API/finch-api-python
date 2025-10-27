@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,33 +46,33 @@ class Employment(SyncAPIResource):
         self,
         individual_id: str,
         *,
-        class_code: Optional[str] | NotGiven = NOT_GIVEN,
-        custom_fields: Optional[Iterable[employment_update_params.CustomField]] | NotGiven = NOT_GIVEN,
-        department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
-        employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
+        class_code: Optional[str] | Omit = omit,
+        custom_fields: Optional[Iterable[employment_update_params.CustomField]] | Omit = omit,
+        department: Optional[employment_update_params.Department] | Omit = omit,
+        employment: Optional[employment_update_params.Employment] | Omit = omit,
         employment_status: Optional[
             Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
         ]
-        | NotGiven = NOT_GIVEN,
-        end_date: Optional[str] | NotGiven = NOT_GIVEN,
-        first_name: Optional[str] | NotGiven = NOT_GIVEN,
-        income: Optional[IncomeParam] | NotGiven = NOT_GIVEN,
-        income_history: Optional[Iterable[Optional[IncomeParam]]] | NotGiven = NOT_GIVEN,
-        is_active: Optional[bool] | NotGiven = NOT_GIVEN,
-        last_name: Optional[str] | NotGiven = NOT_GIVEN,
-        latest_rehire_date: Optional[str] | NotGiven = NOT_GIVEN,
-        location: Optional[LocationParam] | NotGiven = NOT_GIVEN,
-        manager: Optional[employment_update_params.Manager] | NotGiven = NOT_GIVEN,
-        middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        source_id: Optional[str] | NotGiven = NOT_GIVEN,
-        start_date: Optional[str] | NotGiven = NOT_GIVEN,
-        title: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        end_date: Optional[str] | Omit = omit,
+        first_name: Optional[str] | Omit = omit,
+        income: Optional[IncomeParam] | Omit = omit,
+        income_history: Optional[Iterable[Optional[IncomeParam]]] | Omit = omit,
+        is_active: Optional[bool] | Omit = omit,
+        last_name: Optional[str] | Omit = omit,
+        latest_rehire_date: Optional[str] | Omit = omit,
+        location: Optional[LocationParam] | Omit = omit,
+        manager: Optional[employment_update_params.Manager] | Omit = omit,
+        middle_name: Optional[str] | Omit = omit,
+        source_id: Optional[str] | Omit = omit,
+        start_date: Optional[str] | Omit = omit,
+        title: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmploymentUpdateResponse:
         """
         Update sandbox employment
@@ -179,33 +179,33 @@ class AsyncEmployment(AsyncAPIResource):
         self,
         individual_id: str,
         *,
-        class_code: Optional[str] | NotGiven = NOT_GIVEN,
-        custom_fields: Optional[Iterable[employment_update_params.CustomField]] | NotGiven = NOT_GIVEN,
-        department: Optional[employment_update_params.Department] | NotGiven = NOT_GIVEN,
-        employment: Optional[employment_update_params.Employment] | NotGiven = NOT_GIVEN,
+        class_code: Optional[str] | Omit = omit,
+        custom_fields: Optional[Iterable[employment_update_params.CustomField]] | Omit = omit,
+        department: Optional[employment_update_params.Department] | Omit = omit,
+        employment: Optional[employment_update_params.Employment] | Omit = omit,
         employment_status: Optional[
             Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
         ]
-        | NotGiven = NOT_GIVEN,
-        end_date: Optional[str] | NotGiven = NOT_GIVEN,
-        first_name: Optional[str] | NotGiven = NOT_GIVEN,
-        income: Optional[IncomeParam] | NotGiven = NOT_GIVEN,
-        income_history: Optional[Iterable[Optional[IncomeParam]]] | NotGiven = NOT_GIVEN,
-        is_active: Optional[bool] | NotGiven = NOT_GIVEN,
-        last_name: Optional[str] | NotGiven = NOT_GIVEN,
-        latest_rehire_date: Optional[str] | NotGiven = NOT_GIVEN,
-        location: Optional[LocationParam] | NotGiven = NOT_GIVEN,
-        manager: Optional[employment_update_params.Manager] | NotGiven = NOT_GIVEN,
-        middle_name: Optional[str] | NotGiven = NOT_GIVEN,
-        source_id: Optional[str] | NotGiven = NOT_GIVEN,
-        start_date: Optional[str] | NotGiven = NOT_GIVEN,
-        title: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        end_date: Optional[str] | Omit = omit,
+        first_name: Optional[str] | Omit = omit,
+        income: Optional[IncomeParam] | Omit = omit,
+        income_history: Optional[Iterable[Optional[IncomeParam]]] | Omit = omit,
+        is_active: Optional[bool] | Omit = omit,
+        last_name: Optional[str] | Omit = omit,
+        latest_rehire_date: Optional[str] | Omit = omit,
+        location: Optional[LocationParam] | Omit = omit,
+        manager: Optional[employment_update_params.Manager] | Omit = omit,
+        middle_name: Optional[str] | Omit = omit,
+        source_id: Optional[str] | Omit = omit,
+        start_date: Optional[str] | Omit = omit,
+        title: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmploymentUpdateResponse:
         """
         Update sandbox employment

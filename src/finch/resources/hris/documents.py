@@ -8,12 +8,12 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from ...types.hris import document_list_params
+from ...types.hris import document_list_params, document_retreive_params
 from ..._base_client import make_request_options
 from ...types.hris.document_list_response import DocumentListResponse
 from ...types.hris.document_retreive_response import DocumentRetreiveResponse
@@ -44,16 +44,17 @@ class Documents(SyncAPIResource):
     def list(
         self,
         *,
-        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
-        types: List[Literal["w4_2020", "w4_2005"]] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_ids: SequenceNotStr[str] | Omit = omit,
+        limit: int | Omit = omit,
+        offset: int | Omit = omit,
+        types: List[Literal["w4_2020", "w4_2005"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentListResponse:
         """**Beta:** This endpoint is in beta and may change.
 
@@ -61,6 +62,8 @@ class Documents(SyncAPIResource):
         company-wide documents.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
 
@@ -88,6 +91,7 @@ class Documents(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "individual_ids": individual_ids,
                         "limit": limit,
                         "offset": offset,
@@ -103,12 +107,13 @@ class Documents(SyncAPIResource):
         self,
         document_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentRetreiveResponse:
         """**Beta:** This endpoint is in beta and may change.
 
@@ -116,6 +121,8 @@ class Documents(SyncAPIResource):
         specific document by its ID.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -131,7 +138,11 @@ class Documents(SyncAPIResource):
             self._get(
                 f"/employer/documents/{document_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform({"entity_ids": entity_ids}, document_retreive_params.DocumentRetreiveParams),
                 ),
                 cast_to=cast(
                     Any, DocumentRetreiveResponse
@@ -163,16 +174,17 @@ class AsyncDocuments(AsyncAPIResource):
     async def list(
         self,
         *,
-        individual_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
-        types: List[Literal["w4_2020", "w4_2005"]] | NotGiven = NOT_GIVEN,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        individual_ids: SequenceNotStr[str] | Omit = omit,
+        limit: int | Omit = omit,
+        offset: int | Omit = omit,
+        types: List[Literal["w4_2020", "w4_2005"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentListResponse:
         """**Beta:** This endpoint is in beta and may change.
 
@@ -180,6 +192,8 @@ class AsyncDocuments(AsyncAPIResource):
         company-wide documents.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
 
@@ -207,6 +221,7 @@ class AsyncDocuments(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "entity_ids": entity_ids,
                         "individual_ids": individual_ids,
                         "limit": limit,
                         "offset": offset,
@@ -222,12 +237,13 @@ class AsyncDocuments(AsyncAPIResource):
         self,
         document_id: str,
         *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentRetreiveResponse:
         """**Beta:** This endpoint is in beta and may change.
 
@@ -235,6 +251,8 @@ class AsyncDocuments(AsyncAPIResource):
         specific document by its ID.
 
         Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -250,7 +268,13 @@ class AsyncDocuments(AsyncAPIResource):
             await self._get(
                 f"/employer/documents/{document_id}",
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform(
+                        {"entity_ids": entity_ids}, document_retreive_params.DocumentRetreiveParams
+                    ),
                 ),
                 cast_to=cast(
                     Any, DocumentRetreiveResponse

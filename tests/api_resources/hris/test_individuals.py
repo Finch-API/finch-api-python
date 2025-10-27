@@ -26,6 +26,7 @@ class TestIndividuals:
     @parametrize
     def test_method_retrieve_many_with_all_params(self, client: Finch) -> None:
         individual = client.hris.individuals.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             options={"include": ["string"]},
             requests=[{"individual_id": "individual_id"}],
         )
@@ -65,6 +66,7 @@ class TestAsyncIndividuals:
     @parametrize
     async def test_method_retrieve_many_with_all_params(self, async_client: AsyncFinch) -> None:
         individual = await async_client.hris.individuals.retrieve_many(
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             options={"include": ["string"]},
             requests=[{"individual_id": "individual_id"}],
         )
