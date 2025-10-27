@@ -11,11 +11,11 @@ __all__ = ["PayStatementRetrieveManyParams", "Request"]
 
 
 class PayStatementRetrieveManyParams(TypedDict, total=False):
-    entity_ids: Required[SequenceNotStr[str]]
-    """The entity IDs to specify which entities' data to access."""
-
     requests: Required[Iterable[Request]]
     """The array of batch requests."""
+
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""
 
 
 class Request(TypedDict, total=False):

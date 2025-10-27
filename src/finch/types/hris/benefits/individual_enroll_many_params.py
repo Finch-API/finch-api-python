@@ -20,7 +20,7 @@ __all__ = [
 
 
 class IndividualEnrollManyParams(TypedDict, total=False):
-    entity_ids: Required[SequenceNotStr[str]]
+    entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
 
     individuals: Iterable[Individual]

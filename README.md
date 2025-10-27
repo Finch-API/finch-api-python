@@ -31,9 +31,7 @@ client = Finch(
     access_token="My Access Token",
 )
 
-page = client.hris.directory.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-)
+page = client.hris.directory.list()
 print(page.individuals)
 ```
 
@@ -51,9 +49,7 @@ client = AsyncFinch(
 
 
 async def main() -> None:
-    page = await client.hris.directory.list(
-        entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-    )
+    page = await client.hris.directory.list()
     print(page.individuals)
 
 
@@ -86,9 +82,7 @@ async def main() -> None:
         access_token="My Access Token",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        page = await client.hris.directory.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        page = await client.hris.directory.list()
         print(page.individuals)
 
 
@@ -117,9 +111,7 @@ client = Finch()
 
 all_directories = []
 # Automatically fetches more pages as needed.
-for directory in client.hris.directory.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-):
+for directory in client.hris.directory.list():
     # Do something with directory here
     all_directories.append(directory)
 print(all_directories)
@@ -137,9 +129,7 @@ client = AsyncFinch()
 async def main() -> None:
     all_directories = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for directory in client.hris.directory.list(
-        entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-    ):
+    async for directory in client.hris.directory.list():
         all_directories.append(directory)
     print(all_directories)
 
@@ -150,9 +140,7 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.hris.directory.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-)
+first_page = await client.hris.directory.list()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -164,9 +152,7 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.hris.directory.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-)
+first_page = await client.hris.directory.list()
 
 print(
     f"the current start offset for this page: {first_page.paging.offset}"
@@ -216,9 +202,7 @@ from finch import Finch
 client = Finch()
 
 try:
-    client.hris.company.retrieve(
-        entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-    )
+    client.hris.company.retrieve()
 except finch.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
@@ -261,9 +245,7 @@ client = Finch(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).hris.directory.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-)
+client.with_options(max_retries=5).hris.directory.list()
 ```
 
 ### Timeouts
@@ -286,9 +268,7 @@ client = Finch(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).hris.directory.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-)
+client.with_options(timeout=5.0).hris.directory.list()
 ```
 
 On timeout, an `APITimeoutError` is thrown.
@@ -345,9 +325,7 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from finch import Finch
 
 client = Finch()
-response = client.hris.directory.with_raw_response.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-)
+response = client.hris.directory.with_raw_response.list()
 print(response.headers.get('X-My-Header'))
 
 directory = response.parse()  # get the object that `hris.directory.list()` would have returned
@@ -372,9 +350,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 As such, `.with_streaming_response` methods return a different [`APIResponse`](https://github.com/Finch-API/finch-api-python/tree/main/src/finch/_response.py) object, and the async client returns an [`AsyncAPIResponse`](https://github.com/Finch-API/finch-api-python/tree/main/src/finch/_response.py) object.
 
 ```python
-with client.hris.directory.with_streaming_response.list(
-    entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-) as response:
+with client.hris.directory.with_streaming_response.list() as response:
     print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():

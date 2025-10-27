@@ -57,9 +57,9 @@ class PayStatementItem(SyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
         categories: List[Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]] | Omit = omit,
         end_date: Union[str, date] | Omit = omit,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         name: str | Omit = omit,
         start_date: Union[str, date] | Omit = omit,
         type: str | Omit = omit,
@@ -76,13 +76,13 @@ class PayStatementItem(SyncAPIResource):
         items for the access token's connection account.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
-
           categories: Comma-delimited list of pay statement item categories to filter on. If empty,
               defaults to all categories.
 
           end_date: The end date to retrieve pay statement items by via their last seen pay date in
               `YYYY-MM-DD` format.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           name: Case-insensitive partial match search by pay statement item name.
 
@@ -109,9 +109,9 @@ class PayStatementItem(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "entity_ids": entity_ids,
                         "categories": categories,
                         "end_date": end_date,
+                        "entity_ids": entity_ids,
                         "name": name,
                         "start_date": start_date,
                         "type": type,
@@ -150,9 +150,9 @@ class AsyncPayStatementItem(AsyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
         categories: List[Literal["earnings", "taxes", "employee_deductions", "employer_contributions"]] | Omit = omit,
         end_date: Union[str, date] | Omit = omit,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         name: str | Omit = omit,
         start_date: Union[str, date] | Omit = omit,
         type: str | Omit = omit,
@@ -169,13 +169,13 @@ class AsyncPayStatementItem(AsyncAPIResource):
         items for the access token's connection account.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
-
           categories: Comma-delimited list of pay statement item categories to filter on. If empty,
               defaults to all categories.
 
           end_date: The end date to retrieve pay statement items by via their last seen pay date in
               `YYYY-MM-DD` format.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           name: Case-insensitive partial match search by pay statement item name.
 
@@ -202,9 +202,9 @@ class AsyncPayStatementItem(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "entity_ids": entity_ids,
                         "categories": categories,
                         "end_date": end_date,
+                        "entity_ids": entity_ids,
                         "name": name,
                         "start_date": start_date,
                         "type": type,

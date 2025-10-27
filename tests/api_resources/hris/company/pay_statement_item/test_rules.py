@@ -25,9 +25,7 @@ class TestRules:
 
     @parametrize
     def test_method_create(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.create(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        rule = client.hris.company.pay_statement_item.rules.create()
         assert_matches_type(RuleCreateResponse, rule, path=["response"])
 
     @parametrize
@@ -50,9 +48,7 @@ class TestRules:
 
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.rules.with_raw_response.create(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = client.hris.company.pay_statement_item.rules.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -61,9 +57,7 @@ class TestRules:
 
     @parametrize
     def test_streaming_response_create(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.rules.with_streaming_response.create(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        with client.hris.company.pay_statement_item.rules.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -76,7 +70,6 @@ class TestRules:
     def test_method_update(self, client: Finch) -> None:
         rule = client.hris.company.pay_statement_item.rules.update(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(RuleUpdateResponse, rule, path=["response"])
 
@@ -93,7 +86,6 @@ class TestRules:
     def test_raw_response_update(self, client: Finch) -> None:
         response = client.hris.company.pay_statement_item.rules.with_raw_response.update(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
 
         assert response.is_closed is True
@@ -105,7 +97,6 @@ class TestRules:
     def test_streaming_response_update(self, client: Finch) -> None:
         with client.hris.company.pay_statement_item.rules.with_streaming_response.update(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -120,11 +111,15 @@ class TestRules:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
             client.hris.company.pay_statement_item.rules.with_raw_response.update(
                 rule_id="",
-                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             )
 
     @parametrize
     def test_method_list(self, client: Finch) -> None:
+        rule = client.hris.company.pay_statement_item.rules.list()
+        assert_matches_type(SyncResponsesPage[RuleListResponse], rule, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Finch) -> None:
         rule = client.hris.company.pay_statement_item.rules.list(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
@@ -132,9 +127,7 @@ class TestRules:
 
     @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.rules.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = client.hris.company.pay_statement_item.rules.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -143,9 +136,7 @@ class TestRules:
 
     @parametrize
     def test_streaming_response_list(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.rules.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        with client.hris.company.pay_statement_item.rules.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -158,6 +149,13 @@ class TestRules:
     def test_method_delete(self, client: Finch) -> None:
         rule = client.hris.company.pay_statement_item.rules.delete(
             rule_id="rule_id",
+        )
+        assert_matches_type(RuleDeleteResponse, rule, path=["response"])
+
+    @parametrize
+    def test_method_delete_with_all_params(self, client: Finch) -> None:
+        rule = client.hris.company.pay_statement_item.rules.delete(
+            rule_id="rule_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(RuleDeleteResponse, rule, path=["response"])
@@ -166,7 +164,6 @@ class TestRules:
     def test_raw_response_delete(self, client: Finch) -> None:
         response = client.hris.company.pay_statement_item.rules.with_raw_response.delete(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
 
         assert response.is_closed is True
@@ -178,7 +175,6 @@ class TestRules:
     def test_streaming_response_delete(self, client: Finch) -> None:
         with client.hris.company.pay_statement_item.rules.with_streaming_response.delete(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -193,7 +189,6 @@ class TestRules:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
             client.hris.company.pay_statement_item.rules.with_raw_response.delete(
                 rule_id="",
-                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             )
 
 
@@ -204,9 +199,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.create(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        rule = await async_client.hris.company.pay_statement_item.rules.create()
         assert_matches_type(RuleCreateResponse, rule, path=["response"])
 
     @parametrize
@@ -229,9 +222,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.create(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -240,9 +231,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.create(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -255,7 +244,6 @@ class TestAsyncRules:
     async def test_method_update(self, async_client: AsyncFinch) -> None:
         rule = await async_client.hris.company.pay_statement_item.rules.update(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(RuleUpdateResponse, rule, path=["response"])
 
@@ -272,7 +260,6 @@ class TestAsyncRules:
     async def test_raw_response_update(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.update(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
 
         assert response.is_closed is True
@@ -284,7 +271,6 @@ class TestAsyncRules:
     async def test_streaming_response_update(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.update(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -299,11 +285,15 @@ class TestAsyncRules:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
             await async_client.hris.company.pay_statement_item.rules.with_raw_response.update(
                 rule_id="",
-                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncFinch) -> None:
+        rule = await async_client.hris.company.pay_statement_item.rules.list()
+        assert_matches_type(AsyncResponsesPage[RuleListResponse], rule, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
         rule = await async_client.hris.company.pay_statement_item.rules.list(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
@@ -311,9 +301,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -322,9 +310,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -337,6 +323,13 @@ class TestAsyncRules:
     async def test_method_delete(self, async_client: AsyncFinch) -> None:
         rule = await async_client.hris.company.pay_statement_item.rules.delete(
             rule_id="rule_id",
+        )
+        assert_matches_type(RuleDeleteResponse, rule, path=["response"])
+
+    @parametrize
+    async def test_method_delete_with_all_params(self, async_client: AsyncFinch) -> None:
+        rule = await async_client.hris.company.pay_statement_item.rules.delete(
+            rule_id="rule_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(RuleDeleteResponse, rule, path=["response"])
@@ -345,7 +338,6 @@ class TestAsyncRules:
     async def test_raw_response_delete(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.delete(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
 
         assert response.is_closed is True
@@ -357,7 +349,6 @@ class TestAsyncRules:
     async def test_streaming_response_delete(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.delete(
             rule_id="rule_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -372,5 +363,4 @@ class TestAsyncRules:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
             await async_client.hris.company.pay_statement_item.rules.with_raw_response.delete(
                 rule_id="",
-                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             )

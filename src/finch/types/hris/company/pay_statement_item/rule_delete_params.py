@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import TypedDict
 
 from ....._types import SequenceNotStr
 
@@ -10,5 +10,5 @@ __all__ = ["RuleDeleteParams"]
 
 
 class RuleDeleteParams(TypedDict, total=False):
-    entity_ids: Required[SequenceNotStr[str]]
+    entity_ids: SequenceNotStr[str]
     """The entity IDs to delete the rule for."""

@@ -52,7 +52,7 @@ class Rules(SyncAPIResource):
     def create(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         attributes: rule_create_params.Attributes | Omit = omit,
         conditions: Iterable[rule_create_params.Condition] | Omit = omit,
         effective_end_date: Optional[str] | Omit = omit,
@@ -118,7 +118,7 @@ class Rules(SyncAPIResource):
         self,
         rule_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         optional_property: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -160,7 +160,7 @@ class Rules(SyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -200,7 +200,7 @@ class Rules(SyncAPIResource):
         self,
         rule_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -261,7 +261,7 @@ class AsyncRules(AsyncAPIResource):
     async def create(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         attributes: rule_create_params.Attributes | Omit = omit,
         conditions: Iterable[rule_create_params.Condition] | Omit = omit,
         effective_end_date: Optional[str] | Omit = omit,
@@ -327,7 +327,7 @@ class AsyncRules(AsyncAPIResource):
         self,
         rule_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         optional_property: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -371,7 +371,7 @@ class AsyncRules(AsyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -411,7 +411,7 @@ class AsyncRules(AsyncAPIResource):
         self,
         rule_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
