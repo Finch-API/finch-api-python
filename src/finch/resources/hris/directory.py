@@ -43,7 +43,7 @@ class Directory(SyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -95,7 +95,7 @@ class Directory(SyncAPIResource):
     def list_individuals(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -157,7 +157,7 @@ class AsyncDirectory(AsyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -209,7 +209,7 @@ class AsyncDirectory(AsyncAPIResource):
     def list_individuals(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         limit: int | Omit = omit,
         offset: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

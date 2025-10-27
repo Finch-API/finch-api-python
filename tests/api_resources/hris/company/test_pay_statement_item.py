@@ -21,17 +21,15 @@ class TestPayStatementItem:
 
     @parametrize
     def test_method_list(self, client: Finch) -> None:
-        pay_statement_item = client.hris.company.pay_statement_item.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        pay_statement_item = client.hris.company.pay_statement_item.list()
         assert_matches_type(SyncResponsesPage[PayStatementItemListResponse], pay_statement_item, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Finch) -> None:
         pay_statement_item = client.hris.company.pay_statement_item.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             categories=["earnings"],
             end_date=parse_date("2024-07-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             name="name",
             start_date=parse_date("2024-01-01"),
             type="base_compensation",
@@ -40,9 +38,7 @@ class TestPayStatementItem:
 
     @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = client.hris.company.pay_statement_item.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -51,9 +47,7 @@ class TestPayStatementItem:
 
     @parametrize
     def test_streaming_response_list(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        with client.hris.company.pay_statement_item.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -70,17 +64,15 @@ class TestAsyncPayStatementItem:
 
     @parametrize
     async def test_method_list(self, async_client: AsyncFinch) -> None:
-        pay_statement_item = await async_client.hris.company.pay_statement_item.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        pay_statement_item = await async_client.hris.company.pay_statement_item.list()
         assert_matches_type(AsyncResponsesPage[PayStatementItemListResponse], pay_statement_item, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
         pay_statement_item = await async_client.hris.company.pay_statement_item.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             categories=["earnings"],
             end_date=parse_date("2024-07-01"),
+            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             name="name",
             start_date=parse_date("2024-01-01"),
             type="base_compensation",
@@ -89,9 +81,7 @@ class TestAsyncPayStatementItem:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = await async_client.hris.company.pay_statement_item.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -100,9 +90,7 @@ class TestAsyncPayStatementItem:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        async with async_client.hris.company.pay_statement_item.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

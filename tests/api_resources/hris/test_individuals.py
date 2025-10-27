@@ -20,9 +20,7 @@ class TestIndividuals:
 
     @parametrize
     def test_method_retrieve_many(self, client: Finch) -> None:
-        individual = client.hris.individuals.retrieve_many(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        individual = client.hris.individuals.retrieve_many()
         assert_matches_type(SyncResponsesPage[IndividualResponse], individual, path=["response"])
 
     @parametrize
@@ -36,9 +34,7 @@ class TestIndividuals:
 
     @parametrize
     def test_raw_response_retrieve_many(self, client: Finch) -> None:
-        response = client.hris.individuals.with_raw_response.retrieve_many(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = client.hris.individuals.with_raw_response.retrieve_many()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -47,9 +43,7 @@ class TestIndividuals:
 
     @parametrize
     def test_streaming_response_retrieve_many(self, client: Finch) -> None:
-        with client.hris.individuals.with_streaming_response.retrieve_many(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        with client.hris.individuals.with_streaming_response.retrieve_many() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -66,9 +60,7 @@ class TestAsyncIndividuals:
 
     @parametrize
     async def test_method_retrieve_many(self, async_client: AsyncFinch) -> None:
-        individual = await async_client.hris.individuals.retrieve_many(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        individual = await async_client.hris.individuals.retrieve_many()
         assert_matches_type(AsyncResponsesPage[IndividualResponse], individual, path=["response"])
 
     @parametrize
@@ -82,9 +74,7 @@ class TestAsyncIndividuals:
 
     @parametrize
     async def test_raw_response_retrieve_many(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.individuals.with_raw_response.retrieve_many(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = await async_client.hris.individuals.with_raw_response.retrieve_many()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -93,9 +83,7 @@ class TestAsyncIndividuals:
 
     @parametrize
     async def test_streaming_response_retrieve_many(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.individuals.with_streaming_response.retrieve_many(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        async with async_client.hris.individuals.with_streaming_response.retrieve_many() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

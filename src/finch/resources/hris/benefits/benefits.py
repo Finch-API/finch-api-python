@@ -68,7 +68,7 @@ class Benefits(SyncAPIResource):
     def create(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         company_contribution: Optional[benefit_create_params.CompanyContribution] | Omit = omit,
         description: str | Omit = omit,
         frequency: Optional[BenefitFrequency] | Omit = omit,
@@ -131,7 +131,7 @@ class Benefits(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -171,7 +171,7 @@ class Benefits(SyncAPIResource):
         self,
         benefit_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         description: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -214,7 +214,7 @@ class Benefits(SyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -252,7 +252,7 @@ class Benefits(SyncAPIResource):
     def list_supported_benefits(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -318,7 +318,7 @@ class AsyncBenefits(AsyncAPIResource):
     async def create(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         company_contribution: Optional[benefit_create_params.CompanyContribution] | Omit = omit,
         description: str | Omit = omit,
         frequency: Optional[BenefitFrequency] | Omit = omit,
@@ -383,7 +383,7 @@ class AsyncBenefits(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -425,7 +425,7 @@ class AsyncBenefits(AsyncAPIResource):
         self,
         benefit_id: str,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         description: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -470,7 +470,7 @@ class AsyncBenefits(AsyncAPIResource):
     def list(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -508,7 +508,7 @@ class AsyncBenefits(AsyncAPIResource):
     def list_supported_benefits(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

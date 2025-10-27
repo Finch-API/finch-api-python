@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import TypedDict
 
 from ..._types import SequenceNotStr
 
@@ -11,7 +11,7 @@ __all__ = ["IndividualRetrieveManyParams", "Options", "Request"]
 
 
 class IndividualRetrieveManyParams(TypedDict, total=False):
-    entity_ids: Required[SequenceNotStr[str]]
+    entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
 
     options: Optional[Options]

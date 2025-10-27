@@ -7,7 +7,7 @@ from typing import Iterable
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -43,8 +43,8 @@ class PayStatements(SyncAPIResource):
     def retrieve_many(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
         requests: Iterable[pay_statement_retrieve_many_params.Request],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -59,9 +59,9 @@ class PayStatements(SyncAPIResource):
         supports Benefits.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
-
           requests: The array of batch requests.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
 
@@ -114,8 +114,8 @@ class AsyncPayStatements(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
         requests: Iterable[pay_statement_retrieve_many_params.Request],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,9 +130,9 @@ class AsyncPayStatements(AsyncAPIResource):
         supports Benefits.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
-
           requests: The array of batch requests.
+
+          entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
 

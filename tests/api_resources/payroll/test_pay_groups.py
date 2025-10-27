@@ -25,6 +25,13 @@ class TestPayGroups:
     def test_method_retrieve(self, client: Finch) -> None:
         pay_group = client.payroll.pay_groups.retrieve(
             pay_group_id="pay_group_id",
+        )
+        assert_matches_type(PayGroupRetrieveResponse, pay_group, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Finch) -> None:
+        pay_group = client.payroll.pay_groups.retrieve(
+            pay_group_id="pay_group_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(PayGroupRetrieveResponse, pay_group, path=["response"])
@@ -33,7 +40,6 @@ class TestPayGroups:
     def test_raw_response_retrieve(self, client: Finch) -> None:
         response = client.payroll.pay_groups.with_raw_response.retrieve(
             pay_group_id="pay_group_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
 
         assert response.is_closed is True
@@ -45,7 +51,6 @@ class TestPayGroups:
     def test_streaming_response_retrieve(self, client: Finch) -> None:
         with client.payroll.pay_groups.with_streaming_response.retrieve(
             pay_group_id="pay_group_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -60,14 +65,11 @@ class TestPayGroups:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pay_group_id` but received ''"):
             client.payroll.pay_groups.with_raw_response.retrieve(
                 pay_group_id="",
-                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             )
 
     @parametrize
     def test_method_list(self, client: Finch) -> None:
-        pay_group = client.payroll.pay_groups.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        pay_group = client.payroll.pay_groups.list()
         assert_matches_type(SyncSinglePage[PayGroupListResponse], pay_group, path=["response"])
 
     @parametrize
@@ -81,9 +83,7 @@ class TestPayGroups:
 
     @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
-        response = client.payroll.pay_groups.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = client.payroll.pay_groups.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,9 +92,7 @@ class TestPayGroups:
 
     @parametrize
     def test_streaming_response_list(self, client: Finch) -> None:
-        with client.payroll.pay_groups.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        with client.payroll.pay_groups.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -113,6 +111,13 @@ class TestAsyncPayGroups:
     async def test_method_retrieve(self, async_client: AsyncFinch) -> None:
         pay_group = await async_client.payroll.pay_groups.retrieve(
             pay_group_id="pay_group_id",
+        )
+        assert_matches_type(PayGroupRetrieveResponse, pay_group, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncFinch) -> None:
+        pay_group = await async_client.payroll.pay_groups.retrieve(
+            pay_group_id="pay_group_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(PayGroupRetrieveResponse, pay_group, path=["response"])
@@ -121,7 +126,6 @@ class TestAsyncPayGroups:
     async def test_raw_response_retrieve(self, async_client: AsyncFinch) -> None:
         response = await async_client.payroll.pay_groups.with_raw_response.retrieve(
             pay_group_id="pay_group_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
 
         assert response.is_closed is True
@@ -133,7 +137,6 @@ class TestAsyncPayGroups:
     async def test_streaming_response_retrieve(self, async_client: AsyncFinch) -> None:
         async with async_client.payroll.pay_groups.with_streaming_response.retrieve(
             pay_group_id="pay_group_id",
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,14 +151,11 @@ class TestAsyncPayGroups:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pay_group_id` but received ''"):
             await async_client.payroll.pay_groups.with_raw_response.retrieve(
                 pay_group_id="",
-                entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncFinch) -> None:
-        pay_group = await async_client.payroll.pay_groups.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        pay_group = await async_client.payroll.pay_groups.list()
         assert_matches_type(AsyncSinglePage[PayGroupListResponse], pay_group, path=["response"])
 
     @parametrize
@@ -169,9 +169,7 @@ class TestAsyncPayGroups:
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
-        response = await async_client.payroll.pay_groups.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        )
+        response = await async_client.payroll.pay_groups.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -180,9 +178,7 @@ class TestAsyncPayGroups:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
-        async with async_client.payroll.pay_groups.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-        ) as response:
+        async with async_client.payroll.pay_groups.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

@@ -13,7 +13,7 @@ __all__ = ["BenefitCreateParams", "CompanyContribution", "CompanyContributionTie
 
 
 class BenefitCreateParams(TypedDict, total=False):
-    entity_ids: Required[SequenceNotStr[str]]
+    entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
 
     company_contribution: Optional[CompanyContribution]

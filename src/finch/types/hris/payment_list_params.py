@@ -19,11 +19,11 @@ class PaymentListParams(TypedDict, total=False):
     format.
     """
 
-    entity_ids: Required[SequenceNotStr[str]]
-    """The entity IDs to specify which entities' data to access."""
-
     start_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """
     The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
     format.
     """
+
+    entity_ids: SequenceNotStr[str]
+    """The entity IDs to specify which entities' data to access."""

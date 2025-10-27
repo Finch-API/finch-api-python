@@ -765,7 +765,7 @@ class TestFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        response = client.hris.directory.with_raw_response.list(entity_ids=["550e8400-e29b-41d4-a716-446655440000"])
+        response = client.hris.directory.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -787,9 +787,7 @@ class TestFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        response = client.hris.directory.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"], extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = client.hris.directory.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -812,9 +810,7 @@ class TestFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        response = client.hris.directory.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"], extra_headers={"x-stainless-retry-count": "42"}
-        )
+        response = client.hris.directory.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -837,9 +833,7 @@ class TestFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        with client.hris.directory.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"]
-        ) as response:
+        with client.hris.directory.with_streaming_response.list() as response:
             assert response.retries_taken == failures_before_success
             assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
@@ -1615,9 +1609,7 @@ class TestAsyncFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        response = await client.hris.directory.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"]
-        )
+        response = await client.hris.directory.with_raw_response.list()
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1642,9 +1634,7 @@ class TestAsyncFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        response = await client.hris.directory.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"], extra_headers={"x-stainless-retry-count": Omit()}
-        )
+        response = await client.hris.directory.with_raw_response.list(extra_headers={"x-stainless-retry-count": Omit()})
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
@@ -1668,9 +1658,7 @@ class TestAsyncFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        response = await client.hris.directory.with_raw_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"], extra_headers={"x-stainless-retry-count": "42"}
-        )
+        response = await client.hris.directory.with_raw_response.list(extra_headers={"x-stainless-retry-count": "42"})
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
@@ -1694,9 +1682,7 @@ class TestAsyncFinch:
 
         respx_mock.get("/employer/directory").mock(side_effect=retry_handler)
 
-        async with client.hris.directory.with_streaming_response.list(
-            entity_ids=["550e8400-e29b-41d4-a716-446655440000"]
-        ) as response:
+        async with client.hris.directory.with_streaming_response.list() as response:
             assert response.retries_taken == failures_before_success
             assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 

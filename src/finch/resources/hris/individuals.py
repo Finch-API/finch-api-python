@@ -43,7 +43,7 @@ class Individuals(SyncAPIResource):
     def retrieve_many(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
         requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -114,7 +114,7 @@ class AsyncIndividuals(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
         requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

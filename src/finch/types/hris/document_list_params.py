@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
 from ..._types import SequenceNotStr
 
@@ -11,7 +11,7 @@ __all__ = ["DocumentListParams"]
 
 
 class DocumentListParams(TypedDict, total=False):
-    entity_ids: Required[SequenceNotStr[str]]
+    entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
 
     individual_ids: SequenceNotStr[str]

@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from .... import _legacy_response
-from ...._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -52,7 +52,7 @@ class CompanyResource(SyncAPIResource):
     def retrieve(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -114,7 +114,7 @@ class AsyncCompanyResource(AsyncAPIResource):
     async def retrieve(
         self,
         *,
-        entity_ids: SequenceNotStr[str],
+        entity_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
