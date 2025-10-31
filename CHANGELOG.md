@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.37.1 (2025-10-31)
+
+Full Changelog: [v1.37.0...v1.37.1](https://github.com/Finch-API/finch-api-python/compare/v1.37.0...v1.37.1)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([b614e0b](https://github.com/Finch-API/finch-api-python/commit/b614e0babf5c210ef96365d996a3bf0f72c5cd4c))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([f0b4163](https://github.com/Finch-API/finch-api-python/commit/f0b4163bb201412cdd322238191b74376670a05e))
+* **ownership:** move from data to platform team ([#676](https://github.com/Finch-API/finch-api-python/issues/676)) ([b95a421](https://github.com/Finch-API/finch-api-python/commit/b95a421af86e436c2952b3c915b5cd9fadbd1330))
+
 ## 1.37.0 (2025-10-27)
 
 Full Changelog: [v1.36.0...v1.37.0](https://github.com/Finch-API/finch-api-python/compare/v1.36.0...v1.37.0)
