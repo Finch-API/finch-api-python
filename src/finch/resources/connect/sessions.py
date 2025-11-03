@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,12 +44,8 @@ class Sessions(SyncAPIResource):
     def new(
         self,
         *,
-        customer_email: Optional[str],
         customer_id: str,
         customer_name: str,
-        integration: Optional[session_new_params.Integration],
-        manual: Optional[bool],
-        minutes_to_expire: Optional[float],
         products: List[
             Literal[
                 "benefits",
@@ -64,8 +60,12 @@ class Sessions(SyncAPIResource):
                 "ssn",
             ]
         ],
-        redirect_uri: Optional[str],
-        sandbox: Optional[Literal["finch", "provider"]],
+        customer_email: Optional[str] | Omit = omit,
+        integration: Optional[session_new_params.Integration] | Omit = omit,
+        manual: Optional[bool] | Omit = omit,
+        minutes_to_expire: Optional[float] | Omit = omit,
+        redirect_uri: Optional[str] | Omit = omit,
+        sandbox: Optional[Literal["finch", "provider"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -77,11 +77,13 @@ class Sessions(SyncAPIResource):
         Create a new connect session for an employer
 
         Args:
-          customer_email: Email address of the customer
-
           customer_id: Unique identifier for the customer
 
           customer_name: Name of the customer
+
+          products: The Finch products to request access to
+
+          customer_email: Email address of the customer
 
           integration: Integration configuration for the connect session
 
@@ -89,8 +91,6 @@ class Sessions(SyncAPIResource):
 
           minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
               90 days)
-
-          products: The Finch products to request access to
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
@@ -108,13 +108,13 @@ class Sessions(SyncAPIResource):
             "/connect/sessions",
             body=maybe_transform(
                 {
-                    "customer_email": customer_email,
                     "customer_id": customer_id,
                     "customer_name": customer_name,
+                    "products": products,
+                    "customer_email": customer_email,
                     "integration": integration,
                     "manual": manual,
                     "minutes_to_expire": minutes_to_expire,
-                    "products": products,
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
@@ -130,7 +130,7 @@ class Sessions(SyncAPIResource):
         self,
         *,
         connection_id: str,
-        minutes_to_expire: int,
+        minutes_to_expire: int | Omit = omit,
         products: Optional[
             List[
                 Literal[
@@ -146,8 +146,9 @@ class Sessions(SyncAPIResource):
                     "ssn",
                 ]
             ]
-        ],
-        redirect_uri: Optional[str],
+        ]
+        | Omit = omit,
+        redirect_uri: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -217,12 +218,8 @@ class AsyncSessions(AsyncAPIResource):
     async def new(
         self,
         *,
-        customer_email: Optional[str],
         customer_id: str,
         customer_name: str,
-        integration: Optional[session_new_params.Integration],
-        manual: Optional[bool],
-        minutes_to_expire: Optional[float],
         products: List[
             Literal[
                 "benefits",
@@ -237,8 +234,12 @@ class AsyncSessions(AsyncAPIResource):
                 "ssn",
             ]
         ],
-        redirect_uri: Optional[str],
-        sandbox: Optional[Literal["finch", "provider"]],
+        customer_email: Optional[str] | Omit = omit,
+        integration: Optional[session_new_params.Integration] | Omit = omit,
+        manual: Optional[bool] | Omit = omit,
+        minutes_to_expire: Optional[float] | Omit = omit,
+        redirect_uri: Optional[str] | Omit = omit,
+        sandbox: Optional[Literal["finch", "provider"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -250,11 +251,13 @@ class AsyncSessions(AsyncAPIResource):
         Create a new connect session for an employer
 
         Args:
-          customer_email: Email address of the customer
-
           customer_id: Unique identifier for the customer
 
           customer_name: Name of the customer
+
+          products: The Finch products to request access to
+
+          customer_email: Email address of the customer
 
           integration: Integration configuration for the connect session
 
@@ -262,8 +265,6 @@ class AsyncSessions(AsyncAPIResource):
 
           minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
               90 days)
-
-          products: The Finch products to request access to
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
@@ -281,13 +282,13 @@ class AsyncSessions(AsyncAPIResource):
             "/connect/sessions",
             body=await async_maybe_transform(
                 {
-                    "customer_email": customer_email,
                     "customer_id": customer_id,
                     "customer_name": customer_name,
+                    "products": products,
+                    "customer_email": customer_email,
                     "integration": integration,
                     "manual": manual,
                     "minutes_to_expire": minutes_to_expire,
-                    "products": products,
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
@@ -303,7 +304,7 @@ class AsyncSessions(AsyncAPIResource):
         self,
         *,
         connection_id: str,
-        minutes_to_expire: int,
+        minutes_to_expire: int | Omit = omit,
         products: Optional[
             List[
                 Literal[
@@ -319,8 +320,9 @@ class AsyncSessions(AsyncAPIResource):
                     "ssn",
                 ]
             ]
-        ],
-        redirect_uri: Optional[str],
+        ]
+        | Omit = omit,
+        redirect_uri: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
