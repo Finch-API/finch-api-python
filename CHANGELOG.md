@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.38.0 (2025-11-03)
+
+Full Changelog: [v1.37.1...v1.38.0](https://github.com/Finch-API/finch-api-python/compare/v1.37.1...v1.38.0)
+
+### Features
+
+* **api:** api update ([08974d3](https://github.com/Finch-API/finch-api-python/commit/08974d35364590545c1cb9865f9cde672dac4a45))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([2e947bc](https://github.com/Finch-API/finch-api-python/commit/2e947bc6d5917242e878e9863cfcd777059bf345))
+
 ## 1.37.1 (2025-10-31)
 
 Full Changelog: [v1.37.0...v1.37.1](https://github.com/Finch-API/finch-api-python/compare/v1.37.0...v1.37.1)
