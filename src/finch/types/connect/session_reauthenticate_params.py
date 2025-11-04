@@ -12,31 +12,29 @@ class SessionReauthenticateParams(TypedDict, total=False):
     connection_id: Required[str]
     """The ID of the existing connection to reauthenticate"""
 
-    minutes_to_expire: Required[int]
+    minutes_to_expire: int
     """
     The number of minutes until the session expires (defaults to 43,200, which is 30
     days)
     """
 
-    products: Required[
-        Optional[
-            List[
-                Literal[
-                    "benefits",
-                    "company",
-                    "deduction",
-                    "directory",
-                    "documents",
-                    "employment",
-                    "individual",
-                    "payment",
-                    "pay_statement",
-                    "ssn",
-                ]
+    products: Optional[
+        List[
+            Literal[
+                "benefits",
+                "company",
+                "deduction",
+                "directory",
+                "documents",
+                "employment",
+                "individual",
+                "payment",
+                "pay_statement",
+                "ssn",
             ]
         ]
     ]
     """The products to request access to (optional for reauthentication)"""
 
-    redirect_uri: Required[Optional[str]]
+    redirect_uri: Optional[str]
     """The URI to redirect to after the Connect flow is completed"""

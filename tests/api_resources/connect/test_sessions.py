@@ -24,16 +24,26 @@ class TestSessions:
     @parametrize
     def test_method_new(self, client: Finch) -> None:
         session = client.connect.sessions.new(
-            customer_email="dev@stainless.com",
             customer_id="x",
             customer_name="x",
+            products=["benefits"],
+        )
+        assert_matches_type(SessionNewResponse, session, path=["response"])
+
+    @pytest.mark.skip(reason="prism tests are broken")
+    @parametrize
+    def test_method_new_with_all_params(self, client: Finch) -> None:
+        session = client.connect.sessions.new(
+            customer_id="x",
+            customer_name="x",
+            products=["benefits"],
+            customer_email="dev@stainless.com",
             integration={
-                "auth_method": "assisted",
                 "provider": "provider",
+                "auth_method": "assisted",
             },
             manual=True,
             minutes_to_expire=1,
-            products=["benefits"],
             redirect_uri="redirect_uri",
             sandbox="finch",
         )
@@ -43,18 +53,9 @@ class TestSessions:
     @parametrize
     def test_raw_response_new(self, client: Finch) -> None:
         response = client.connect.sessions.with_raw_response.new(
-            customer_email="dev@stainless.com",
             customer_id="x",
             customer_name="x",
-            integration={
-                "auth_method": "assisted",
-                "provider": "provider",
-            },
-            manual=True,
-            minutes_to_expire=1,
             products=["benefits"],
-            redirect_uri="redirect_uri",
-            sandbox="finch",
         )
 
         assert response.is_closed is True
@@ -66,18 +67,9 @@ class TestSessions:
     @parametrize
     def test_streaming_response_new(self, client: Finch) -> None:
         with client.connect.sessions.with_streaming_response.new(
-            customer_email="dev@stainless.com",
             customer_id="x",
             customer_name="x",
-            integration={
-                "auth_method": "assisted",
-                "provider": "provider",
-            },
-            manual=True,
-            minutes_to_expire=1,
             products=["benefits"],
-            redirect_uri="redirect_uri",
-            sandbox="finch",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,6 +84,14 @@ class TestSessions:
     def test_method_reauthenticate(self, client: Finch) -> None:
         session = client.connect.sessions.reauthenticate(
             connection_id="connection_id",
+        )
+        assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
+
+    @pytest.mark.skip(reason="prism tests are broken")
+    @parametrize
+    def test_method_reauthenticate_with_all_params(self, client: Finch) -> None:
+        session = client.connect.sessions.reauthenticate(
+            connection_id="connection_id",
             minutes_to_expire=0,
             products=["benefits"],
             redirect_uri="https://example.com",
@@ -103,9 +103,6 @@ class TestSessions:
     def test_raw_response_reauthenticate(self, client: Finch) -> None:
         response = client.connect.sessions.with_raw_response.reauthenticate(
             connection_id="connection_id",
-            minutes_to_expire=0,
-            products=["benefits"],
-            redirect_uri="https://example.com",
         )
 
         assert response.is_closed is True
@@ -118,9 +115,6 @@ class TestSessions:
     def test_streaming_response_reauthenticate(self, client: Finch) -> None:
         with client.connect.sessions.with_streaming_response.reauthenticate(
             connection_id="connection_id",
-            minutes_to_expire=0,
-            products=["benefits"],
-            redirect_uri="https://example.com",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,16 +134,26 @@ class TestAsyncSessions:
     @parametrize
     async def test_method_new(self, async_client: AsyncFinch) -> None:
         session = await async_client.connect.sessions.new(
-            customer_email="dev@stainless.com",
             customer_id="x",
             customer_name="x",
+            products=["benefits"],
+        )
+        assert_matches_type(SessionNewResponse, session, path=["response"])
+
+    @pytest.mark.skip(reason="prism tests are broken")
+    @parametrize
+    async def test_method_new_with_all_params(self, async_client: AsyncFinch) -> None:
+        session = await async_client.connect.sessions.new(
+            customer_id="x",
+            customer_name="x",
+            products=["benefits"],
+            customer_email="dev@stainless.com",
             integration={
-                "auth_method": "assisted",
                 "provider": "provider",
+                "auth_method": "assisted",
             },
             manual=True,
             minutes_to_expire=1,
-            products=["benefits"],
             redirect_uri="redirect_uri",
             sandbox="finch",
         )
@@ -159,18 +163,9 @@ class TestAsyncSessions:
     @parametrize
     async def test_raw_response_new(self, async_client: AsyncFinch) -> None:
         response = await async_client.connect.sessions.with_raw_response.new(
-            customer_email="dev@stainless.com",
             customer_id="x",
             customer_name="x",
-            integration={
-                "auth_method": "assisted",
-                "provider": "provider",
-            },
-            manual=True,
-            minutes_to_expire=1,
             products=["benefits"],
-            redirect_uri="redirect_uri",
-            sandbox="finch",
         )
 
         assert response.is_closed is True
@@ -182,18 +177,9 @@ class TestAsyncSessions:
     @parametrize
     async def test_streaming_response_new(self, async_client: AsyncFinch) -> None:
         async with async_client.connect.sessions.with_streaming_response.new(
-            customer_email="dev@stainless.com",
             customer_id="x",
             customer_name="x",
-            integration={
-                "auth_method": "assisted",
-                "provider": "provider",
-            },
-            manual=True,
-            minutes_to_expire=1,
             products=["benefits"],
-            redirect_uri="redirect_uri",
-            sandbox="finch",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -208,6 +194,14 @@ class TestAsyncSessions:
     async def test_method_reauthenticate(self, async_client: AsyncFinch) -> None:
         session = await async_client.connect.sessions.reauthenticate(
             connection_id="connection_id",
+        )
+        assert_matches_type(SessionReauthenticateResponse, session, path=["response"])
+
+    @pytest.mark.skip(reason="prism tests are broken")
+    @parametrize
+    async def test_method_reauthenticate_with_all_params(self, async_client: AsyncFinch) -> None:
+        session = await async_client.connect.sessions.reauthenticate(
+            connection_id="connection_id",
             minutes_to_expire=0,
             products=["benefits"],
             redirect_uri="https://example.com",
@@ -219,9 +213,6 @@ class TestAsyncSessions:
     async def test_raw_response_reauthenticate(self, async_client: AsyncFinch) -> None:
         response = await async_client.connect.sessions.with_raw_response.reauthenticate(
             connection_id="connection_id",
-            minutes_to_expire=0,
-            products=["benefits"],
-            redirect_uri="https://example.com",
         )
 
         assert response.is_closed is True
@@ -234,9 +225,6 @@ class TestAsyncSessions:
     async def test_streaming_response_reauthenticate(self, async_client: AsyncFinch) -> None:
         async with async_client.connect.sessions.with_streaming_response.reauthenticate(
             connection_id="connection_id",
-            minutes_to_expire=0,
-            products=["benefits"],
-            redirect_uri="https://example.com",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

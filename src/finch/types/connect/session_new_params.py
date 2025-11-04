@@ -9,26 +9,11 @@ __all__ = ["SessionNewParams", "Integration"]
 
 
 class SessionNewParams(TypedDict, total=False):
-    customer_email: Required[Optional[str]]
-    """Email address of the customer"""
-
     customer_id: Required[str]
     """Unique identifier for the customer"""
 
     customer_name: Required[str]
     """Name of the customer"""
-
-    integration: Required[Optional[Integration]]
-    """Integration configuration for the connect session"""
-
-    manual: Required[Optional[bool]]
-    """Enable manual authentication mode"""
-
-    minutes_to_expire: Required[Optional[float]]
-    """
-    The number of minutes until the session expires (defaults to 129,600, which is
-    90 days)
-    """
 
     products: Required[
         List[
@@ -48,16 +33,31 @@ class SessionNewParams(TypedDict, total=False):
     ]
     """The Finch products to request access to"""
 
-    redirect_uri: Required[Optional[str]]
+    customer_email: Optional[str]
+    """Email address of the customer"""
+
+    integration: Optional[Integration]
+    """Integration configuration for the connect session"""
+
+    manual: Optional[bool]
+    """Enable manual authentication mode"""
+
+    minutes_to_expire: Optional[float]
+    """
+    The number of minutes until the session expires (defaults to 129,600, which is
+    90 days)
+    """
+
+    redirect_uri: Optional[str]
     """The URI to redirect to after the Connect flow is completed"""
 
-    sandbox: Required[Optional[Literal["finch", "provider"]]]
+    sandbox: Optional[Literal["finch", "provider"]]
     """Sandbox mode for testing"""
 
 
 class Integration(TypedDict, total=False):
-    auth_method: Required[Optional[Literal["assisted", "credential", "oauth", "api_token"]]]
-    """The authentication method to use"""
-
-    provider: Required[Optional[str]]
+    provider: Required[str]
     """The provider to integrate with"""
+
+    auth_method: Optional[Literal["assisted", "credential", "oauth", "api_token"]]
+    """The authentication method to use"""
