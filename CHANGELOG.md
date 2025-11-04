@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.39.0 (2025-11-04)
+
+Full Changelog: [v1.38.0...v1.39.0](https://github.com/Finch-API/finch-api-python/compare/v1.38.0...v1.39.0)
+
+### Features
+
+* **api:** update automated code reviewer selection ([aba7591](https://github.com/Finch-API/finch-api-python/commit/aba7591ef727511db9db8cd4ebd6f0574e9e0da5))
+
 ## 1.38.0 (2025-11-03)
 
 Full Changelog: [v1.37.1...v1.38.0](https://github.com/Finch-API/finch-api-python/compare/v1.37.1...v1.38.0)
