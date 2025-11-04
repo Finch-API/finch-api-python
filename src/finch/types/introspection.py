@@ -54,9 +54,6 @@ class Entity(BaseModel):
     source_id: Optional[str] = None
     """The source ID of the entity"""
 
-    type: Optional[str] = None
-    """The type of entity"""
-
 
 class Introspection(BaseModel):
     id: str
