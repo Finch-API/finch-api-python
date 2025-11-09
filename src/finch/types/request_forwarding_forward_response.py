@@ -22,7 +22,7 @@ class Request(BaseModel):
     data: Union[str, Dict[str, Optional[object]], None] = None
     """The body that was specified for the forwarded request."""
 
-    headers: Optional[Dict[str, Optional[object]]] = None
+    headers: Optional[Dict[str, str]] = None
     """The HTTP headers that were specified for the forwarded request."""
 
     params: Optional[Dict[str, Optional[object]]] = None
