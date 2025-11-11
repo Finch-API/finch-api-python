@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.41.1 (2025-11-11)
+
+Full Changelog: [v1.41.0...v1.41.1](https://github.com/Finch-API/finch-api-python/compare/v1.41.0...v1.41.1)
+
+### Bug Fixes
+
+* compat with Python 3.14 ([f4fd112](https://github.com/Finch-API/finch-api-python/commit/f4fd112653743b2c8b3b69a3d743afac56795f66))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([089dfda](https://github.com/Finch-API/finch-api-python/commit/089dfda7f9f34b736c6f3647c23a035da644d785))
+
+
+### Chores
+
+* **package:** drop Python 3.8 support ([17b56ad](https://github.com/Finch-API/finch-api-python/commit/17b56ad3b5b044e772adc4a6d1508cb1f532e41d))
+
 ## 1.41.0 (2025-11-09)
 
 Full Changelog: [v1.40.0...v1.41.0](https://github.com/Finch-API/finch-api-python/compare/v1.40.0...v1.41.0)
