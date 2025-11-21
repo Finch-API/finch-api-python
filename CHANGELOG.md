@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.42.0 (2025-11-21)
+
+Full Changelog: [v1.41.2...v1.42.0](https://github.com/Finch-API/finch-api-python/compare/v1.41.2...v1.42.0)
+
+### Features
+
+* **api:** manual updates ([a00107b](https://github.com/Finch-API/finch-api-python/commit/a00107bb227b9dfa7daa3858fb06063d5b053e68))
+
+
+### Bug Fixes
+
+* **java:** Resolve name collisions ([b43172b](https://github.com/Finch-API/finch-api-python/commit/b43172be04510b5a760a1446d3b302e9487cf3ab))
+
 ## 1.41.2 (2025-11-21)
 
 Full Changelog: [v1.41.1...v1.41.2](https://github.com/Finch-API/finch-api-python/compare/v1.41.1...v1.41.2)
