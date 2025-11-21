@@ -45,8 +45,8 @@ class RequestForwarding(SyncAPIResource):
         method: str,
         route: str,
         data: Optional[str] | Omit = omit,
-        headers: Optional[Dict[str, Optional[object]]] | Omit = omit,
         params: Optional[Dict[str, Optional[object]]] | Omit = omit,
+        request_headers: Optional[Dict[str, Optional[object]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -72,12 +72,12 @@ class RequestForwarding(SyncAPIResource):
           data: The body for the forwarded request. This value must be specified as either a
               string or a valid JSON object.
 
-          headers: The HTTP headers to include on the forwarded request. This value must be
-              specified as an object of key-value pairs. Example:
-              `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
-
           params: The query parameters for the forwarded request. This value must be specified as
               a valid JSON object rather than a query string.
+
+          request_headers: The HTTP headers to include on the forwarded request. This value must be
+              specified as an object of key-value pairs. Example:
+              `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
 
           extra_headers: Send extra headers
 
@@ -94,8 +94,8 @@ class RequestForwarding(SyncAPIResource):
                     "method": method,
                     "route": route,
                     "data": data,
-                    "headers": headers,
                     "params": params,
+                    "request_headers": request_headers,
                 },
                 request_forwarding_forward_params.RequestForwardingForwardParams,
             ),
@@ -132,8 +132,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
         method: str,
         route: str,
         data: Optional[str] | Omit = omit,
-        headers: Optional[Dict[str, Optional[object]]] | Omit = omit,
         params: Optional[Dict[str, Optional[object]]] | Omit = omit,
+        request_headers: Optional[Dict[str, Optional[object]]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -159,12 +159,12 @@ class AsyncRequestForwarding(AsyncAPIResource):
           data: The body for the forwarded request. This value must be specified as either a
               string or a valid JSON object.
 
-          headers: The HTTP headers to include on the forwarded request. This value must be
-              specified as an object of key-value pairs. Example:
-              `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
-
           params: The query parameters for the forwarded request. This value must be specified as
               a valid JSON object rather than a query string.
+
+          request_headers: The HTTP headers to include on the forwarded request. This value must be
+              specified as an object of key-value pairs. Example:
+              `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
 
           extra_headers: Send extra headers
 
@@ -181,8 +181,8 @@ class AsyncRequestForwarding(AsyncAPIResource):
                     "method": method,
                     "route": route,
                     "data": data,
-                    "headers": headers,
                     "params": params,
+                    "request_headers": request_headers,
                 },
                 request_forwarding_forward_params.RequestForwardingForwardParams,
             ),
