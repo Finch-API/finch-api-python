@@ -10,7 +10,7 @@ import pytest
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
 from finch.types.connect import (
-    SessionConnectResponse,
+    SessionNewResponse,
     SessionReauthenticateResponse,
 )
 
@@ -22,18 +22,18 @@ class TestSessions:
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    def test_method_connect(self, client: Finch) -> None:
-        session = client.connect.sessions.connect(
+    def test_method_new(self, client: Finch) -> None:
+        session = client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
         )
-        assert_matches_type(SessionConnectResponse, session, path=["response"])
+        assert_matches_type(SessionNewResponse, session, path=["response"])
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    def test_method_connect_with_all_params(self, client: Finch) -> None:
-        session = client.connect.sessions.connect(
+    def test_method_new_with_all_params(self, client: Finch) -> None:
+        session = client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
@@ -47,12 +47,12 @@ class TestSessions:
             redirect_uri="redirect_uri",
             sandbox="finch",
         )
-        assert_matches_type(SessionConnectResponse, session, path=["response"])
+        assert_matches_type(SessionNewResponse, session, path=["response"])
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    def test_raw_response_connect(self, client: Finch) -> None:
-        response = client.connect.sessions.with_raw_response.connect(
+    def test_raw_response_new(self, client: Finch) -> None:
+        response = client.connect.sessions.with_raw_response.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
@@ -61,12 +61,12 @@ class TestSessions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         session = response.parse()
-        assert_matches_type(SessionConnectResponse, session, path=["response"])
+        assert_matches_type(SessionNewResponse, session, path=["response"])
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    def test_streaming_response_connect(self, client: Finch) -> None:
-        with client.connect.sessions.with_streaming_response.connect(
+    def test_streaming_response_new(self, client: Finch) -> None:
+        with client.connect.sessions.with_streaming_response.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
@@ -75,7 +75,7 @@ class TestSessions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             session = response.parse()
-            assert_matches_type(SessionConnectResponse, session, path=["response"])
+            assert_matches_type(SessionNewResponse, session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -132,18 +132,18 @@ class TestAsyncSessions:
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    async def test_method_connect(self, async_client: AsyncFinch) -> None:
-        session = await async_client.connect.sessions.connect(
+    async def test_method_new(self, async_client: AsyncFinch) -> None:
+        session = await async_client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
         )
-        assert_matches_type(SessionConnectResponse, session, path=["response"])
+        assert_matches_type(SessionNewResponse, session, path=["response"])
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    async def test_method_connect_with_all_params(self, async_client: AsyncFinch) -> None:
-        session = await async_client.connect.sessions.connect(
+    async def test_method_new_with_all_params(self, async_client: AsyncFinch) -> None:
+        session = await async_client.connect.sessions.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
@@ -157,12 +157,12 @@ class TestAsyncSessions:
             redirect_uri="redirect_uri",
             sandbox="finch",
         )
-        assert_matches_type(SessionConnectResponse, session, path=["response"])
+        assert_matches_type(SessionNewResponse, session, path=["response"])
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    async def test_raw_response_connect(self, async_client: AsyncFinch) -> None:
-        response = await async_client.connect.sessions.with_raw_response.connect(
+    async def test_raw_response_new(self, async_client: AsyncFinch) -> None:
+        response = await async_client.connect.sessions.with_raw_response.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
@@ -171,12 +171,12 @@ class TestAsyncSessions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         session = response.parse()
-        assert_matches_type(SessionConnectResponse, session, path=["response"])
+        assert_matches_type(SessionNewResponse, session, path=["response"])
 
     @pytest.mark.skip(reason="prism tests are broken")
     @parametrize
-    async def test_streaming_response_connect(self, async_client: AsyncFinch) -> None:
-        async with async_client.connect.sessions.with_streaming_response.connect(
+    async def test_streaming_response_new(self, async_client: AsyncFinch) -> None:
+        async with async_client.connect.sessions.with_streaming_response.new(
             customer_id="x",
             customer_name="x",
             products=["benefits"],
@@ -185,7 +185,7 @@ class TestAsyncSessions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             session = await response.parse()
-            assert_matches_type(SessionConnectResponse, session, path=["response"])
+            assert_matches_type(SessionNewResponse, session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -430,10 +430,10 @@ Methods:
 Types:
 
 ```python
-from finch.types.connect import SessionConnectResponse, SessionReauthenticateResponse
+from finch.types.connect import SessionNewResponse, SessionReauthenticateResponse
 ```
 
 Methods:
 
-- <code title="post /connect/sessions">client.connect.sessions.<a href="./src/finch/resources/connect/sessions.py">connect</a>(\*\*<a href="src/finch/types/connect/session_connect_params.py">params</a>) -> <a href="./src/finch/types/connect/session_connect_response.py">SessionConnectResponse</a></code>
+- <code title="post /connect/sessions">client.connect.sessions.<a href="./src/finch/resources/connect/sessions.py">new</a>(\*\*<a href="src/finch/types/connect/session_new_params.py">params</a>) -> <a href="./src/finch/types/connect/session_new_response.py">SessionNewResponse</a></code>
 - <code title="post /connect/sessions/reauthenticate">client.connect.sessions.<a href="./src/finch/resources/connect/sessions.py">reauthenticate</a>(\*\*<a href="src/finch/types/connect/session_reauthenticate_params.py">params</a>) -> <a href="./src/finch/types/connect/session_reauthenticate_response.py">SessionReauthenticateResponse</a></code>
