@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.41.2 (2025-11-21)
+
+Full Changelog: [v1.41.1...v1.41.2](https://github.com/Finch-API/finch-api-python/compare/v1.41.1...v1.41.2)
+
+### Chores
+
+* add Python 3.14 classifier and testing ([6fd7abd](https://github.com/Finch-API/finch-api-python/commit/6fd7abdab86b3c8572605a278c793189b11cb5fd))
+
 ## 1.41.1 (2025-11-11)
 
 Full Changelog: [v1.41.0...v1.41.1](https://github.com/Finch-API/finch-api-python/compare/v1.41.0...v1.41.1)
