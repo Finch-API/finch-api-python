@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["SessionConnectParams", "Integration"]
+__all__ = ["SessionNewParams", "Integration"]
 
 
-class SessionConnectParams(TypedDict, total=False):
+class SessionNewParams(TypedDict, total=False):
     customer_id: Required[str]
     """Unique identifier for the customer"""
 

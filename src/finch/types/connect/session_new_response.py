@@ -2,10 +2,10 @@
 
 from ..._models import BaseModel
 
-__all__ = ["SessionConnectResponse"]
+__all__ = ["SessionNewResponse"]
 
 
-class SessionConnectResponse(BaseModel):
+class SessionNewResponse(BaseModel):
     connect_url: str
     """The Connect URL to redirect the user to for authentication"""
 
