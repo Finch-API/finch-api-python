@@ -31,8 +31,8 @@ class TestRequestForwarding:
             method="method",
             route="route",
             data="data",
-            headers={"foo": "bar"},
             params={"foo": "bar"},
+            request_headers={"foo": "bar"},
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 
@@ -82,8 +82,8 @@ class TestAsyncRequestForwarding:
             method="method",
             route="route",
             data="data",
-            headers={"foo": "bar"},
             params={"foo": "bar"},
+            request_headers={"foo": "bar"},
         )
         assert_matches_type(RequestForwardingForwardResponse, request_forwarding, path=["response"])
 

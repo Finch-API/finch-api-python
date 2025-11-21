@@ -14,8 +14,8 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
-from ...types.connect import session_new_params, session_reauthenticate_params
-from ...types.connect.session_new_response import SessionNewResponse
+from ...types.connect import session_connect_params, session_reauthenticate_params
+from ...types.connect.session_connect_response import SessionConnectResponse
 from ...types.connect.session_reauthenticate_response import SessionReauthenticateResponse
 
 __all__ = ["Sessions", "AsyncSessions"]
@@ -41,7 +41,7 @@ class Sessions(SyncAPIResource):
         """
         return SessionsWithStreamingResponse(self)
 
-    def new(
+    def connect(
         self,
         *,
         customer_id: str,
@@ -61,7 +61,7 @@ class Sessions(SyncAPIResource):
             ]
         ],
         customer_email: Optional[str] | Omit = omit,
-        integration: Optional[session_new_params.Integration] | Omit = omit,
+        integration: Optional[session_connect_params.Integration] | Omit = omit,
         manual: Optional[bool] | Omit = omit,
         minutes_to_expire: Optional[float] | Omit = omit,
         redirect_uri: Optional[str] | Omit = omit,
@@ -72,7 +72,7 @@ class Sessions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SessionNewResponse:
+    ) -> SessionConnectResponse:
         """
         Create a new connect session for an employer
 
@@ -118,12 +118,12 @@ class Sessions(SyncAPIResource):
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
-                session_new_params.SessionNewParams,
+                session_connect_params.SessionConnectParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SessionNewResponse,
+            cast_to=SessionConnectResponse,
         )
 
     def reauthenticate(
@@ -215,7 +215,7 @@ class AsyncSessions(AsyncAPIResource):
         """
         return AsyncSessionsWithStreamingResponse(self)
 
-    async def new(
+    async def connect(
         self,
         *,
         customer_id: str,
@@ -235,7 +235,7 @@ class AsyncSessions(AsyncAPIResource):
             ]
         ],
         customer_email: Optional[str] | Omit = omit,
-        integration: Optional[session_new_params.Integration] | Omit = omit,
+        integration: Optional[session_connect_params.Integration] | Omit = omit,
         manual: Optional[bool] | Omit = omit,
         minutes_to_expire: Optional[float] | Omit = omit,
         redirect_uri: Optional[str] | Omit = omit,
@@ -246,7 +246,7 @@ class AsyncSessions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SessionNewResponse:
+    ) -> SessionConnectResponse:
         """
         Create a new connect session for an employer
 
@@ -292,12 +292,12 @@ class AsyncSessions(AsyncAPIResource):
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
-                session_new_params.SessionNewParams,
+                session_connect_params.SessionConnectParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SessionNewResponse,
+            cast_to=SessionConnectResponse,
         )
 
     async def reauthenticate(
@@ -373,8 +373,8 @@ class SessionsWithRawResponse:
     def __init__(self, sessions: Sessions) -> None:
         self._sessions = sessions
 
-        self.new = _legacy_response.to_raw_response_wrapper(
-            sessions.new,
+        self.connect = _legacy_response.to_raw_response_wrapper(
+            sessions.connect,
         )
         self.reauthenticate = _legacy_response.to_raw_response_wrapper(
             sessions.reauthenticate,
@@ -385,8 +385,8 @@ class AsyncSessionsWithRawResponse:
     def __init__(self, sessions: AsyncSessions) -> None:
         self._sessions = sessions
 
-        self.new = _legacy_response.async_to_raw_response_wrapper(
-            sessions.new,
+        self.connect = _legacy_response.async_to_raw_response_wrapper(
+            sessions.connect,
         )
         self.reauthenticate = _legacy_response.async_to_raw_response_wrapper(
             sessions.reauthenticate,
@@ -397,8 +397,8 @@ class SessionsWithStreamingResponse:
     def __init__(self, sessions: Sessions) -> None:
         self._sessions = sessions
 
-        self.new = to_streamed_response_wrapper(
-            sessions.new,
+        self.connect = to_streamed_response_wrapper(
+            sessions.connect,
         )
         self.reauthenticate = to_streamed_response_wrapper(
             sessions.reauthenticate,
@@ -409,8 +409,8 @@ class AsyncSessionsWithStreamingResponse:
     def __init__(self, sessions: AsyncSessions) -> None:
         self._sessions = sessions
 
-        self.new = async_to_streamed_response_wrapper(
-            sessions.new,
+        self.connect = async_to_streamed_response_wrapper(
+            sessions.connect,
         )
         self.reauthenticate = async_to_streamed_response_wrapper(
             sessions.reauthenticate,
