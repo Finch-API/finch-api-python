@@ -55,6 +55,7 @@ class PayStatementEmployeeDeduction(TypedDict, total=False):
     amount: int
 
     name: str
+    """The deduction name. Required when type is specified."""
 
     pre_tax: bool
 
@@ -85,6 +86,7 @@ class PayStatementEmployerContribution(TypedDict, total=False):
     amount: int
 
     name: str
+    """The contribution name. Required when type is specified."""
 
     type: Literal[
         "457",
