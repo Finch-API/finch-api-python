@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.42.0 (2025-12-02)
+
+Full Changelog: [v1.41.2...v1.42.0](https://github.com/Finch-API/finch-api-python/compare/v1.41.2...v1.42.0)
+
+### Features
+
+* **api:** api update ([f730687](https://github.com/Finch-API/finch-api-python/commit/f7306871020ec264ad289455f31b942d0251809e))
+* **api:** manual updates ([a00107b](https://github.com/Finch-API/finch-api-python/commit/a00107bb227b9dfa7daa3858fb06063d5b053e68))
+
+
+### Bug Fixes
+
+* ensure streams are always closed ([3b90188](https://github.com/Finch-API/finch-api-python/commit/3b90188ae6b7c3029cdd649d96ce4a07418584e2))
+* **java:** Resolve name collisions ([b43172b](https://github.com/Finch-API/finch-api-python/commit/b43172be04510b5a760a1446d3b302e9487cf3ab))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([f37f836](https://github.com/Finch-API/finch-api-python/commit/f37f836bfcafc6eca093e2158eaaf874350f52ee))
+* update lockfile ([2b0384b](https://github.com/Finch-API/finch-api-python/commit/2b0384bce698659f8349abaa89c4c72fecc83b68))
+
 ## 1.41.2 (2025-11-21)
 
 Full Changelog: [v1.41.1...v1.41.2](https://github.com/Finch-API/finch-api-python/compare/v1.41.1...v1.41.2)

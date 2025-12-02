@@ -28,15 +28,15 @@ class RequestForwardingForwardParams(TypedDict, total=False):
     This value must be specified as either a string or a valid JSON object.
     """
 
-    headers: Optional[Dict[str, Optional[object]]]
-    """The HTTP headers to include on the forwarded request.
-
-    This value must be specified as an object of key-value pairs. Example:
-    `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
-    """
-
     params: Optional[Dict[str, Optional[object]]]
     """The query parameters for the forwarded request.
 
     This value must be specified as a valid JSON object rather than a query string.
+    """
+
+    request_headers: Optional[Dict[str, Optional[object]]]
+    """The HTTP headers to include on the forwarded request.
+
+    This value must be specified as an object of key-value pairs. Example:
+    `{"Content-Type": "application/xml", "X-API-Version": "v1" }`
     """
