@@ -11,6 +11,11 @@ __all__ = ["BenefitsSupport"]
 
 
 class BenefitsSupport(BaseModel):
+    """Each benefit type and their supported features.
+
+    If the benefit type is not supported, the property will be null
+    """
+
     commuter: Optional[BenefitFeaturesAndOperations] = None
 
     custom_post_tax: Optional[BenefitFeaturesAndOperations] = None

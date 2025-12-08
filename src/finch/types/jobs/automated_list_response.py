@@ -15,6 +15,11 @@ class MetaQuotasDataSyncAll(BaseModel):
 
 
 class MetaQuotas(BaseModel):
+    """Information about remaining quotas for this connection.
+
+    Only applicable for customers opted in to use Finch's Data Sync Refresh endpoint (`POST /jobs/automated`). Please contact a Finch representative for more details.
+    """
+
     data_sync_all: Optional[MetaQuotasDataSyncAll] = None
 
 

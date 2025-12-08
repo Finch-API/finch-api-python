@@ -19,11 +19,15 @@ __all__ = [
 
 
 class UnionMember0Department(BaseModel):
+    """The department object."""
+
     name: Optional[str] = None
     """The name of the department associated with the individual."""
 
 
 class UnionMember0Employment(BaseModel):
+    """The employment object."""
+
     subtype: Optional[Literal["full_time", "intern", "part_time", "temp", "seasonal", "individual_contractor"]] = None
     """The secondary employment type of the individual.
 
@@ -36,6 +40,8 @@ class UnionMember0Employment(BaseModel):
 
 
 class UnionMember0Manager(BaseModel):
+    """The manager object representing the manager of the individual within the org."""
+
     id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 

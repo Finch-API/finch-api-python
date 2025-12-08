@@ -17,11 +17,15 @@ class CustomField(BaseModel):
 
 
 class Department(BaseModel):
+    """The department object."""
+
     name: Optional[str] = None
     """The name of the department associated with the individual."""
 
 
 class Employment(BaseModel):
+    """The employment object."""
+
     subtype: Optional[Literal["full_time", "intern", "part_time", "temp", "seasonal", "individual_contractor"]] = None
     """The secondary employment type of the individual.
 
@@ -34,6 +38,8 @@ class Employment(BaseModel):
 
 
 class Manager(BaseModel):
+    """The manager object representing the manager of the individual within the org."""
+
     id: Optional[str] = None
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 

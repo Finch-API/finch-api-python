@@ -30,6 +30,8 @@ class Account(BaseModel):
 
 
 class DepartmentParent(BaseModel):
+    """The parent department, if present."""
+
     name: Optional[str] = None
     """The parent department's name."""
 
@@ -43,6 +45,8 @@ class Department(BaseModel):
 
 
 class Entity(BaseModel):
+    """The entity type object."""
+
     subtype: Optional[Literal["s_corporation", "c_corporation", "b_corporation"]] = None
     """The tax payer subtype of the company."""
 

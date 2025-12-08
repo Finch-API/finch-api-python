@@ -10,6 +10,10 @@ __all__ = ["RequestForwardingForwardResponse", "Request"]
 
 
 class Request(BaseModel):
+    """
+    An object containing details of your original forwarded request, for your ease of reference.
+    """
+
     method: str
     """The HTTP method that was specified for the forwarded request.
 
