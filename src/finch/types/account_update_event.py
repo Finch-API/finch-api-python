@@ -393,6 +393,8 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayment(BaseModel
 
 
 class AccountUpdateEventDataAuthenticationMethodSupportedFields(BaseModel):
+    """The supported data fields returned by our HR and payroll endpoints"""
+
     company: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsCompany] = None
 
     directory: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsDirectory] = None

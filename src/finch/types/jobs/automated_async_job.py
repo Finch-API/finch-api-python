@@ -10,6 +10,8 @@ __all__ = ["AutomatedAsyncJob", "Params"]
 
 
 class Params(BaseModel):
+    """The input parameters for the job."""
+
     individual_id: Optional[str] = None
     """The ID of the individual that the job was completed for."""
 

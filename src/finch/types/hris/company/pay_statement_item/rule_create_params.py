@@ -30,6 +30,8 @@ class RuleCreateParams(TypedDict, total=False):
 
 
 class Attributes(TypedDict, total=False):
+    """Specifies the fields to be applied when the condition is met."""
+
     metadata: Dict[str, object]
     """The metadata to be attached in the entity.
 

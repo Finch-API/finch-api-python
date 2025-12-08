@@ -40,6 +40,8 @@ class CompanyContributionTier(TypedDict, total=False):
 
 
 class CompanyContribution(TypedDict, total=False):
+    """The company match for this benefit."""
+
     tiers: Required[Iterable[CompanyContributionTier]]
 
     type: Required[Literal["match"]]

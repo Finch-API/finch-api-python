@@ -59,6 +59,8 @@ class Account(TypedDict, total=False):
 
 
 class DepartmentParent(TypedDict, total=False):
+    """The parent department, if present."""
+
     name: Optional[str]
     """The parent department's name."""
 
@@ -72,6 +74,8 @@ class Department(TypedDict, total=False):
 
 
 class Entity(TypedDict, total=False):
+    """The entity type object."""
+
     subtype: Optional[Literal["s_corporation", "c_corporation", "b_corporation"]]
     """The tax payer subtype of the company."""
 

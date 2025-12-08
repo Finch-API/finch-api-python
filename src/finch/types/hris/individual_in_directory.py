@@ -8,11 +8,15 @@ __all__ = ["IndividualInDirectory", "Department", "Manager"]
 
 
 class Department(BaseModel):
+    """The department object."""
+
     name: Optional[str] = None
     """The name of the department."""
 
 
 class Manager(BaseModel):
+    """The manager object."""
+
     id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 

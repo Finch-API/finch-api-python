@@ -9,6 +9,8 @@ __all__ = ["PayStatementItemListResponse", "Attributes"]
 
 
 class Attributes(BaseModel):
+    """The attributes of the pay statement item."""
+
     metadata: Optional[Dict[str, Optional[object]]] = None
     """The metadata of the pay statement item derived by the rules engine if available.
 

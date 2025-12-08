@@ -17,6 +17,8 @@ class CompanyContributionTier(BaseModel):
 
 
 class CompanyContribution(BaseModel):
+    """The company match for this benefit."""
+
     tiers: List[CompanyContributionTier]
 
     type: Literal["match"]
