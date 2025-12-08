@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.42.1 (2025-12-08)
+
+Full Changelog: [v1.42.0...v1.42.1](https://github.com/Finch-API/finch-api-python/compare/v1.42.0...v1.42.1)
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([1a8a50a](https://github.com/Finch-API/finch-api-python/commit/1a8a50ab8b4a8398d00be2659827de0191067fbb))
+
 ## 1.42.0 (2025-12-02)
 
 Full Changelog: [v1.41.2...v1.42.0](https://github.com/Finch-API/finch-api-python/compare/v1.41.2...v1.42.0)
