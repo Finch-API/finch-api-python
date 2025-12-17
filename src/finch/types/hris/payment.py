@@ -10,6 +10,8 @@ __all__ = ["Payment", "PayPeriod"]
 
 
 class PayPeriod(BaseModel):
+    """The pay period object."""
+
     end_date: Optional[str] = None
 
     start_date: Optional[str] = None

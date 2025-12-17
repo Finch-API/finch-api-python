@@ -9,6 +9,8 @@ __all__ = ["W42005", "Data"]
 
 
 class Data(BaseModel):
+    """Detailed information specific to the 2005 W4 form."""
+
     additional_withholding: int
     """Additional withholding amount (in cents)."""
 
@@ -26,6 +28,10 @@ class Data(BaseModel):
 
 
 class W42005(BaseModel):
+    """
+    A 2005 version of the W-4 tax form containing information on an individual's filing status, dependents, and withholding details.
+    """
+
     data: Data
     """Detailed information specific to the 2005 W4 form."""
 

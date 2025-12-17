@@ -10,6 +10,8 @@ __all__ = ["RuleDeleteResponse", "Attributes", "Condition"]
 
 
 class Attributes(BaseModel):
+    """Specifies the fields to be applied when the condition is met."""
+
     metadata: Optional[Dict[str, object]] = None
     """The metadata to be attached in the entity.
 

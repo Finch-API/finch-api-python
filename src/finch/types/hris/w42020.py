@@ -9,6 +9,8 @@ __all__ = ["W42020", "Data"]
 
 
 class Data(BaseModel):
+    """Detailed information specific to the 2020 W4 form."""
+
     amount_for_other_dependents: int
     """
     Amount claimed for dependents other than qualifying children under 17 (in
@@ -44,6 +46,10 @@ class Data(BaseModel):
 
 
 class W42020(BaseModel):
+    """
+    A 2020 version of the W-4 tax form containing information on an individual's filing status, dependents, and withholding details.
+    """
+
     data: Data
     """Detailed information specific to the 2020 W4 form."""
 

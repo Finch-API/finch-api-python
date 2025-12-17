@@ -10,6 +10,11 @@ __all__ = ["Income"]
 
 
 class Income(BaseModel):
+    """The employee's income as reported by the provider.
+
+    This may not always be annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc, depending on what information the provider returns.
+    """
+
     amount: Optional[int] = None
     """The income amount in cents."""
 

@@ -56,6 +56,8 @@ class SessionNewParams(TypedDict, total=False):
 
 
 class Integration(TypedDict, total=False):
+    """Integration configuration for the connect session"""
+
     provider: Required[str]
     """The provider to integrate with"""
 
