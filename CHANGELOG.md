@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.42.2 (2025-12-17)
+
+Full Changelog: [v1.42.1...v1.42.2](https://github.com/Finch-API/finch-api-python/compare/v1.42.1...v1.42.2)
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([4a91924](https://github.com/Finch-API/finch-api-python/commit/4a91924e1a39f14de1f91f01e3d1c4c86d30e9d0))
+
+
+### Chores
+
+* add missing docstrings ([0e4c89b](https://github.com/Finch-API/finch-api-python/commit/0e4c89bc8bb32e44f0bdfbf3c3d349c5d33c033d))
+* **internal:** add missing files argument to base client ([ff3e0f5](https://github.com/Finch-API/finch-api-python/commit/ff3e0f57959407b4cd0ee2263db1d945acfb6178))
+
 ## 1.42.1 (2025-12-08)
 
 Full Changelog: [v1.42.0...v1.42.1](https://github.com/Finch-API/finch-api-python/compare/v1.42.0...v1.42.1)
