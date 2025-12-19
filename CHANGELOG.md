@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.42.3 (2025-12-19)
+
+Full Changelog: [v1.42.2...v1.42.3](https://github.com/Finch-API/finch-api-python/compare/v1.42.2...v1.42.3)
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([3ae3b64](https://github.com/Finch-API/finch-api-python/commit/3ae3b64ba8111d8fef71acb6ab1cf61da2b542b5))
+
 ## 1.42.2 (2025-12-17)
 
 Full Changelog: [v1.42.1...v1.42.2](https://github.com/Finch-API/finch-api-python/compare/v1.42.1...v1.42.2)
