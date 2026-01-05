@@ -22,6 +22,9 @@ class AccountCreateResponse(BaseModel):
     connection_id: str
     """The ID of the new connection"""
 
+    entity_id: str
+    """The ID of the entity for this connection"""
+
     products: List[str]
 
     provider_id: str
