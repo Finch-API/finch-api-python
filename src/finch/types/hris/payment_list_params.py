@@ -16,13 +16,13 @@ class PaymentListParams(TypedDict, total=False):
     end_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """
     The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-    format.
+    format. Filters payments by their **pay_date** field.
     """
 
     start_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """
     The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-    format.
+    format. Filters payments by their **pay_date** field.
     """
 
     entity_ids: SequenceNotStr[str]

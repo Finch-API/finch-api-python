@@ -71,9 +71,8 @@ class PayStatementItem(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncResponsesPage[PayStatementItemListResponse]:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Retrieve a list of detailed pay statement
-        items for the access token's connection account.
+        Retrieve a list of detailed pay statement items for the access token's
+        connection account.
 
         Args:
           categories: Comma-delimited list of pay statement item categories to filter on. If empty,
@@ -164,9 +163,8 @@ class AsyncPayStatementItem(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PayStatementItemListResponse, AsyncResponsesPage[PayStatementItemListResponse]]:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Retrieve a list of detailed pay statement
-        items for the access token's connection account.
+        Retrieve a list of detailed pay statement items for the access token's
+        connection account.
 
         Args:
           categories: Comma-delimited list of pay statement item categories to filter on. If empty,
