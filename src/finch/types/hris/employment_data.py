@@ -68,11 +68,7 @@ class UnionMember0(BaseModel):
     employment_status: Optional[
         Literal["active", "deceased", "leave", "onboarding", "prehire", "retired", "terminated"]
     ] = None
-    """The detailed employment status of the individual.
-
-    Available options: `active`, `deceased`, `leave`, `onboarding`, `prehire`,
-    `retired`, `terminated`.
-    """
+    """The detailed employment status of the individual."""
 
     end_date: Optional[str] = None
 

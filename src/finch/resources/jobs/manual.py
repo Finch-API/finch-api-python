@@ -46,10 +46,10 @@ class Manual(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManualAsyncJob:
-        """Get a manual job by `job_id`.
+        """Check the status and outcome of a job by `job_id`.
 
-        Manual jobs are completed by a human and include
-        Assisted Benefits jobs.
+        This includes all deductions
+        jobs including those for both automated and assisted integrations.
 
         Args:
           extra_headers: Send extra headers
@@ -102,10 +102,10 @@ class AsyncManual(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManualAsyncJob:
-        """Get a manual job by `job_id`.
+        """Check the status and outcome of a job by `job_id`.
 
-        Manual jobs are completed by a human and include
-        Assisted Benefits jobs.
+        This includes all deductions
+        jobs including those for both automated and assisted integrations.
 
         Args:
           extra_headers: Send extra headers

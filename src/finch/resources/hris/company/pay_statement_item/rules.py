@@ -66,12 +66,10 @@ class Rules(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleCreateResponse:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Custom rules can be created to associate
-        specific attributes to pay statement items depending on the use case. For
-        example, pay statement items that meet certain conditions can be labeled as a
-        pre-tax 401k. This metadata can be retrieved where pay statement item
-        information is available.
+        Custom rules can be created to associate specific attributes to pay statement
+        items depending on the use case. For example, pay statement items that meet
+        certain conditions can be labeled as a pre-tax 401k. This metadata can be
+        retrieved where pay statement item information is available.
 
         Args:
           entity_ids: The entity IDs to create the rule for.
@@ -128,8 +126,7 @@ class Rules(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleUpdateResponse:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Update a rule for a pay statement item.
+        Update a rule for a pay statement item.
 
         Args:
           entity_ids: The entity IDs to update the rule for.
@@ -169,8 +166,7 @@ class Rules(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncResponsesPage[RuleListResponse]:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon List all rules of a connection account.
+        List all rules of a connection account.
 
         Args:
           entity_ids: The entity IDs to retrieve rules for.
@@ -209,8 +205,7 @@ class Rules(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleDeleteResponse:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Delete a rule for a pay statement item.
+        Delete a rule for a pay statement item.
 
         Args:
           entity_ids: The entity IDs to delete the rule for.
@@ -275,12 +270,10 @@ class AsyncRules(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleCreateResponse:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Custom rules can be created to associate
-        specific attributes to pay statement items depending on the use case. For
-        example, pay statement items that meet certain conditions can be labeled as a
-        pre-tax 401k. This metadata can be retrieved where pay statement item
-        information is available.
+        Custom rules can be created to associate specific attributes to pay statement
+        items depending on the use case. For example, pay statement items that meet
+        certain conditions can be labeled as a pre-tax 401k. This metadata can be
+        retrieved where pay statement item information is available.
 
         Args:
           entity_ids: The entity IDs to create the rule for.
@@ -337,8 +330,7 @@ class AsyncRules(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleUpdateResponse:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Update a rule for a pay statement item.
+        Update a rule for a pay statement item.
 
         Args:
           entity_ids: The entity IDs to update the rule for.
@@ -380,8 +372,7 @@ class AsyncRules(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RuleListResponse, AsyncResponsesPage[RuleListResponse]]:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon List all rules of a connection account.
+        List all rules of a connection account.
 
         Args:
           entity_ids: The entity IDs to retrieve rules for.
@@ -420,8 +411,7 @@ class AsyncRules(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RuleDeleteResponse:
         """
-        **Beta:** this endpoint currently serves employers onboarded after March 4th and
-        historical support will be added soon Delete a rule for a pay statement item.
+        Delete a rule for a pay statement item.
 
         Args:
           entity_ids: The entity IDs to delete the rule for.
