@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.43.0 (2026-01-05)
+
+Full Changelog: [v1.42.3...v1.43.0](https://github.com/Finch-API/finch-api-python/compare/v1.42.3...v1.43.0)
+
+### Features
+
+* **api:** api update ([72885ba](https://github.com/Finch-API/finch-api-python/commit/72885ba284dd6f36f99d4876daf3ea8a5467d7ce))
+
+
+### Chores
+
+* **internal:** codegen related update ([4d51ed5](https://github.com/Finch-API/finch-api-python/commit/4d51ed5b72e04d0dac4cc39525ca37377ad5b666))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([ca943e8](https://github.com/Finch-API/finch-api-python/commit/ca943e890bdda91757ed54f6a527bdeb05bcc243))
+
 ## 1.42.3 (2025-12-19)
 
 Full Changelog: [v1.42.2...v1.42.3](https://github.com/Finch-API/finch-api-python/compare/v1.42.2...v1.42.3)
