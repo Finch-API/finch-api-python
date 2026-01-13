@@ -88,8 +88,7 @@ class Employment(SyncAPIResource):
 
           employment: The employment object.
 
-          employment_status: The detailed employment status of the individual. Available options: `active`,
-              `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          employment_status: The detailed employment status of the individual.
 
           first_name: The legal first name of the individual.
 
@@ -221,8 +220,7 @@ class AsyncEmployment(AsyncAPIResource):
 
           employment: The employment object.
 
-          employment_status: The detailed employment status of the individual. Available options: `active`,
-              `deceased`, `leave`, `onboarding`, `prehire`, `retired`, `terminated`.
+          employment_status: The detailed employment status of the individual.
 
           first_name: The legal first name of the individual.
 

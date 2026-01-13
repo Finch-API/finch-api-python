@@ -59,10 +59,10 @@ class Payments(SyncAPIResource):
 
         Args:
           end_date: The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-              format.
+              format. Filters payments by their **pay_date** field.
 
           start_date: The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-              format.
+              format. Filters payments by their **pay_date** field.
 
           entity_ids: The entity IDs to specify which entities' data to access.
 
@@ -133,10 +133,10 @@ class AsyncPayments(AsyncAPIResource):
 
         Args:
           end_date: The end date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-              format.
+              format. Filters payments by their **pay_date** field.
 
           start_date: The start date to retrieve payments by a company (inclusive) in `YYYY-MM-DD`
-              format.
+              format. Filters payments by their **pay_date** field.
 
           entity_ids: The entity IDs to specify which entities' data to access.
 
