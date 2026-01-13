@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.44.0 (2026-01-13)
+
+Full Changelog: [v1.43.0...v1.44.0](https://github.com/Finch-API/finch-api-python/compare/v1.43.0...v1.44.0)
+
+### Features
+
+* **api:** api update ([004c50f](https://github.com/Finch-API/finch-api-python/commit/004c50fd1518ea7bbab70bf275aa86cc9556b2ab))
+* **client:** add support for binary request streaming ([c5fde16](https://github.com/Finch-API/finch-api-python/commit/c5fde16f5560a89e53f94ac444f86537c3946f73))
+
+
+### Bug Fixes
+
+* **client:** loosen auth header validation ([61fb929](https://github.com/Finch-API/finch-api-python/commit/61fb929e1cfc7f7c055f13a1c12c9590cb428594))
+
 ## 1.43.0 (2026-01-05)
 
 Full Changelog: [v1.42.3...v1.43.0](https://github.com/Finch-API/finch-api-python/compare/v1.42.3...v1.43.0)
