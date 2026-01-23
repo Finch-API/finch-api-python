@@ -137,6 +137,7 @@ class Automated(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AutomatedCreateResponse:
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/jobs/automated",
             body=maybe_transform(
@@ -177,6 +178,7 @@ class Automated(SyncAPIResource):
         """
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
@@ -216,6 +218,7 @@ class Automated(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/jobs/automated",
             options=make_request_options(
@@ -351,6 +354,7 @@ class AsyncAutomated(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AutomatedCreateResponse:
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/jobs/automated",
             body=await async_maybe_transform(
@@ -391,6 +395,7 @@ class AsyncAutomated(AsyncAPIResource):
         """
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
@@ -430,6 +435,7 @@ class AsyncAutomated(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/jobs/automated",
             options=make_request_options(

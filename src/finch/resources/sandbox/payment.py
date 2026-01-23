@@ -67,6 +67,7 @@ class Payment(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/sandbox/payment",
             body=maybe_transform(
@@ -131,6 +132,7 @@ class AsyncPayment(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/sandbox/payment",
             body=await async_maybe_transform(

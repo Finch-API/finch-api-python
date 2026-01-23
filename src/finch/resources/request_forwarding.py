@@ -87,6 +87,7 @@ class RequestForwarding(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/forward",
             body=maybe_transform(
@@ -174,6 +175,7 @@ class AsyncRequestForwarding(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/forward",
             body=await async_maybe_transform(

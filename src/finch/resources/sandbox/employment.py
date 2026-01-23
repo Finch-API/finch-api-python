@@ -122,6 +122,7 @@ class Employment(SyncAPIResource):
         """
         if not individual_id:
             raise ValueError(f"Expected a non-empty value for `individual_id` but received {individual_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._put(
             f"/sandbox/employment/{individual_id}",
             body=maybe_transform(
@@ -254,6 +255,7 @@ class AsyncEmployment(AsyncAPIResource):
         """
         if not individual_id:
             raise ValueError(f"Expected a non-empty value for `individual_id` but received {individual_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._put(
             f"/sandbox/employment/{individual_id}",
             body=await async_maybe_transform(

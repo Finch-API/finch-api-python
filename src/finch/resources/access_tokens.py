@@ -71,6 +71,7 @@ class AccessTokens(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Authorization": omit, **(extra_headers or {})}
         return self._post(
             "/auth/token",
             body=maybe_transform(
@@ -143,6 +144,7 @@ class AsyncAccessTokens(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Authorization": omit, **(extra_headers or {})}
         return await self._post(
             "/auth/token",
             body=await async_maybe_transform(

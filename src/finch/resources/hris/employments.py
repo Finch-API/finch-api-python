@@ -68,6 +68,7 @@ class Employments(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/employment",
             page=SyncResponsesPage[EmploymentDataResponse],
@@ -134,6 +135,7 @@ class AsyncEmployments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/employment",
             page=AsyncResponsesPage[EmploymentDataResponse],

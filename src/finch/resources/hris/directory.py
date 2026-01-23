@@ -71,6 +71,7 @@ class Directory(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/directory",
             page=SyncIndividualsPage[IndividualInDirectory],
@@ -185,6 +186,7 @@ class AsyncDirectory(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/directory",
             page=AsyncIndividualsPage[IndividualInDirectory],
