@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.44.1 (2026-01-16)
+
+Full Changelog: [v1.44.0...v1.44.1](https://github.com/Finch-API/finch-api-python/compare/v1.44.0...v1.44.1)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([8b19e59](https://github.com/Finch-API/finch-api-python/commit/8b19e592256042a0e5e3daf597bfa29ebfdfa1c8))
+
 ## 1.44.0 (2026-01-13)
 
 Full Changelog: [v1.43.0...v1.44.0](https://github.com/Finch-API/finch-api-python/compare/v1.43.0...v1.44.0)
