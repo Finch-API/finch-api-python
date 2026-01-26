@@ -83,6 +83,7 @@ class Connections(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return self._post(
             "/sandbox/connections",
             body=maybe_transform(
@@ -157,6 +158,7 @@ class AsyncConnections(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return await self._post(
             "/sandbox/connections",
             body=await async_maybe_transform(

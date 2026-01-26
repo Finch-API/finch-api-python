@@ -72,6 +72,7 @@ class Accounts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return self._post(
             "/sandbox/connections/accounts",
             body=maybe_transform(
@@ -114,6 +115,7 @@ class Accounts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._put(
             "/sandbox/connections/accounts",
             body=maybe_transform({"connection_status": connection_status}, account_update_params.AccountUpdateParams),
@@ -175,6 +177,7 @@ class AsyncAccounts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return await self._post(
             "/sandbox/connections/accounts",
             body=await async_maybe_transform(
@@ -217,6 +220,7 @@ class AsyncAccounts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._put(
             "/sandbox/connections/accounts",
             body=await async_maybe_transform(

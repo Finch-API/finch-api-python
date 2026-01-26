@@ -74,6 +74,7 @@ class CompanyResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/employer/company",
             options=make_request_options(
@@ -136,6 +137,7 @@ class AsyncCompanyResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/employer/company",
             options=make_request_options(

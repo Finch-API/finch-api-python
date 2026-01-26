@@ -71,6 +71,8 @@ class AccessTokens(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Authorization": omit, **(extra_headers or {})}
+        
         if not is_given(client_id):
             if self._client.client_id is None:
                 raise ValueError(
@@ -157,6 +159,8 @@ class AsyncAccessTokens(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {"Authorization": omit, **(extra_headers or {})}
+        
         if not is_given(client_id):
             if self._client.client_id is None:
                 raise ValueError(

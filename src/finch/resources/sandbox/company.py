@@ -85,6 +85,7 @@ class Company(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._put(
             "/sandbox/company",
             body=maybe_transform(
@@ -172,6 +173,7 @@ class AsyncCompany(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._put(
             "/sandbox/company",
             body=await async_maybe_transform(

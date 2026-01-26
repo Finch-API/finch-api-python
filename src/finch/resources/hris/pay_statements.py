@@ -71,6 +71,7 @@ class PayStatements(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/pay-statement",
             page=SyncResponsesPage[PayStatementResponse],
@@ -142,6 +143,7 @@ class AsyncPayStatements(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/pay-statement",
             page=AsyncResponsesPage[PayStatementResponse],

@@ -62,6 +62,7 @@ class Manual(SyncAPIResource):
         """
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             f"/jobs/manual/{job_id}",
             options=make_request_options(
@@ -118,6 +119,7 @@ class AsyncManual(AsyncAPIResource):
         """
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             f"/jobs/manual/{job_id}",
             options=make_request_options(

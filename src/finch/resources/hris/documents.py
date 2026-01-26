@@ -82,6 +82,7 @@ class Documents(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/employer/documents",
             options=make_request_options(
@@ -133,6 +134,7 @@ class Documents(SyncAPIResource):
         """
         if not document_id:
             raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return cast(
             DocumentRetreiveResponse,
             self._get(
@@ -212,6 +214,7 @@ class AsyncDocuments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/employer/documents",
             options=make_request_options(
@@ -263,6 +266,7 @@ class AsyncDocuments(AsyncAPIResource):
         """
         if not document_id:
             raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return cast(
             DocumentRetreiveResponse,
             await self._get(

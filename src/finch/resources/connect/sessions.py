@@ -104,6 +104,7 @@ class Sessions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return self._post(
             "/connect/sessions",
             body=maybe_transform(
@@ -177,6 +178,7 @@ class Sessions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return self._post(
             "/connect/sessions/reauthenticate",
             body=maybe_transform(
@@ -278,6 +280,7 @@ class AsyncSessions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return await self._post(
             "/connect/sessions",
             body=await async_maybe_transform(
@@ -351,6 +354,7 @@ class AsyncSessions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return await self._post(
             "/connect/sessions/reauthenticate",
             body=await async_maybe_transform(

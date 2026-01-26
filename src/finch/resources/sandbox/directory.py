@@ -65,6 +65,7 @@ class Directory(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/sandbox/directory",
             body=maybe_transform(body, Iterable[directory_create_params.Body]),
@@ -121,6 +122,7 @@ class AsyncDirectory(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/sandbox/directory",
             body=await async_maybe_transform(body, Iterable[directory_create_params.Body]),
