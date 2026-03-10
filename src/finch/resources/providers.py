@@ -47,12 +47,15 @@ class Providers(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncSinglePage[ProviderListResponse]:
         """Return details on all available payroll and HR systems."""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/providers",
             page=SyncSinglePage[ProviderListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             model=ProviderListResponse,
         )
@@ -89,12 +92,15 @@ class AsyncProviders(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ProviderListResponse, AsyncSinglePage[ProviderListResponse]]:
         """Return details on all available payroll and HR systems."""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/providers",
             page=AsyncSinglePage[ProviderListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             model=ProviderListResponse,
         )

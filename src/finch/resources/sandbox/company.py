@@ -85,7 +85,6 @@ class Company(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._put(
             "/sandbox/company",
             body=maybe_transform(
@@ -102,7 +101,11 @@ class Company(SyncAPIResource):
                 company_update_params.CompanyUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=CompanyUpdateResponse,
         )
@@ -173,7 +176,6 @@ class AsyncCompany(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._put(
             "/sandbox/company",
             body=await async_maybe_transform(
@@ -190,7 +192,11 @@ class AsyncCompany(AsyncAPIResource):
                 company_update_params.CompanyUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=CompanyUpdateResponse,
         )

@@ -68,7 +68,6 @@ class Employments(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/employment",
             page=SyncResponsesPage[EmploymentDataResponse],
@@ -81,6 +80,7 @@ class Employments(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, employment_retrieve_many_params.EmploymentRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=EmploymentDataResponse,
             method="post",
@@ -135,7 +135,6 @@ class AsyncEmployments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/employment",
             page=AsyncResponsesPage[EmploymentDataResponse],
@@ -148,6 +147,7 @@ class AsyncEmployments(AsyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, employment_retrieve_many_params.EmploymentRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=EmploymentDataResponse,
             method="post",

@@ -106,7 +106,6 @@ class Benefits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/employer/benefits",
             body=maybe_transform(
@@ -124,6 +123,7 @@ class Benefits(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, benefit_create_params.BenefitCreateParams),
+                security={"bearer_auth": True},
             ),
             cast_to=CreateCompanyBenefitsResponse,
         )
@@ -156,7 +156,6 @@ class Benefits(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             f"/employer/benefits/{benefit_id}",
             options=make_request_options(
@@ -165,6 +164,7 @@ class Benefits(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, benefit_retrieve_params.BenefitRetrieveParams),
+                security={"bearer_auth": True},
             ),
             cast_to=CompanyBenefit,
         )
@@ -200,7 +200,6 @@ class Benefits(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             f"/employer/benefits/{benefit_id}",
             body=maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
@@ -210,6 +209,7 @@ class Benefits(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, benefit_update_params.BenefitUpdateParams),
+                security={"bearer_auth": True},
             ),
             cast_to=UpdateCompanyBenefitResponse,
         )
@@ -239,7 +239,6 @@ class Benefits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/benefits",
             page=SyncSinglePage[CompanyBenefit],
@@ -249,6 +248,7 @@ class Benefits(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, benefit_list_params.BenefitListParams),
+                security={"bearer_auth": True},
             ),
             model=CompanyBenefit,
         )
@@ -278,7 +278,6 @@ class Benefits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/benefits/meta",
             page=SyncSinglePage[SupportedBenefit],
@@ -291,6 +290,7 @@ class Benefits(SyncAPIResource):
                     {"entity_ids": entity_ids},
                     benefit_list_supported_benefits_params.BenefitListSupportedBenefitsParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=SupportedBenefit,
         )
@@ -361,7 +361,6 @@ class AsyncBenefits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/employer/benefits",
             body=await async_maybe_transform(
@@ -381,6 +380,7 @@ class AsyncBenefits(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, benefit_create_params.BenefitCreateParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=CreateCompanyBenefitsResponse,
         )
@@ -413,7 +413,6 @@ class AsyncBenefits(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             f"/employer/benefits/{benefit_id}",
             options=make_request_options(
@@ -424,6 +423,7 @@ class AsyncBenefits(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, benefit_retrieve_params.BenefitRetrieveParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=CompanyBenefit,
         )
@@ -459,7 +459,6 @@ class AsyncBenefits(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             f"/employer/benefits/{benefit_id}",
             body=await async_maybe_transform({"description": description}, benefit_update_params.BenefitUpdateParams),
@@ -471,6 +470,7 @@ class AsyncBenefits(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, benefit_update_params.BenefitUpdateParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=UpdateCompanyBenefitResponse,
         )
@@ -500,7 +500,6 @@ class AsyncBenefits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/benefits",
             page=AsyncSinglePage[CompanyBenefit],
@@ -510,6 +509,7 @@ class AsyncBenefits(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, benefit_list_params.BenefitListParams),
+                security={"bearer_auth": True},
             ),
             model=CompanyBenefit,
         )
@@ -539,7 +539,6 @@ class AsyncBenefits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/benefits/meta",
             page=AsyncSinglePage[SupportedBenefit],
@@ -552,6 +551,7 @@ class AsyncBenefits(AsyncAPIResource):
                     {"entity_ids": entity_ids},
                     benefit_list_supported_benefits_params.BenefitListSupportedBenefitsParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=SupportedBenefit,
         )

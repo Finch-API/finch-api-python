@@ -74,7 +74,6 @@ class Payments(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/payment",
             page=SyncSinglePage[Payment],
@@ -91,6 +90,7 @@ class Payments(SyncAPIResource):
                     },
                     payment_list_params.PaymentListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=Payment,
         )
@@ -149,7 +149,6 @@ class AsyncPayments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/payment",
             page=AsyncSinglePage[Payment],
@@ -166,6 +165,7 @@ class AsyncPayments(AsyncAPIResource):
                     },
                     payment_list_params.PaymentListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=Payment,
         )

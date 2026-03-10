@@ -83,7 +83,6 @@ class Individuals(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             f"/employer/benefits/{benefit_id}/individuals",
             body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
@@ -95,6 +94,7 @@ class Individuals(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_enroll_many_params.IndividualEnrollManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=EnrolledIndividualBenefitResponse,
         )
@@ -127,7 +127,6 @@ class Individuals(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             f"/employer/benefits/{benefit_id}/enrolled",
             options=make_request_options(
@@ -138,6 +137,7 @@ class Individuals(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_enrolled_ids_params.IndividualEnrolledIDsParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=IndividualEnrolledIDsResponse,
         )
@@ -174,7 +174,6 @@ class Individuals(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=SyncSinglePage[IndividualBenefit],
@@ -190,6 +189,7 @@ class Individuals(SyncAPIResource):
                     },
                     individual_retrieve_many_benefits_params.IndividualRetrieveManyBenefitsParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualBenefit,
         )
@@ -225,7 +225,6 @@ class Individuals(SyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._delete(
             f"/employer/benefits/{benefit_id}/individuals",
             body=maybe_transform(
@@ -239,6 +238,7 @@ class Individuals(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=UnenrolledIndividualBenefitResponse,
         )
@@ -299,7 +299,6 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             f"/employer/benefits/{benefit_id}/individuals",
             body=await async_maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
@@ -311,6 +310,7 @@ class AsyncIndividuals(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, individual_enroll_many_params.IndividualEnrollManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=EnrolledIndividualBenefitResponse,
         )
@@ -343,7 +343,6 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             f"/employer/benefits/{benefit_id}/enrolled",
             options=make_request_options(
@@ -354,6 +353,7 @@ class AsyncIndividuals(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, individual_enrolled_ids_params.IndividualEnrolledIDsParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=IndividualEnrolledIDsResponse,
         )
@@ -390,7 +390,6 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             f"/employer/benefits/{benefit_id}/individuals",
             page=AsyncSinglePage[IndividualBenefit],
@@ -406,6 +405,7 @@ class AsyncIndividuals(AsyncAPIResource):
                     },
                     individual_retrieve_many_benefits_params.IndividualRetrieveManyBenefitsParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualBenefit,
         )
@@ -441,7 +441,6 @@ class AsyncIndividuals(AsyncAPIResource):
         """
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._delete(
             f"/employer/benefits/{benefit_id}/individuals",
             body=await async_maybe_transform(
@@ -455,6 +454,7 @@ class AsyncIndividuals(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=UnenrolledIndividualBenefitResponse,
         )

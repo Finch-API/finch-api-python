@@ -71,7 +71,6 @@ class AccessTokens(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Authorization": omit, **(extra_headers or {})}
         return self._post(
             "/auth/token",
             body=maybe_transform(
@@ -84,7 +83,11 @@ class AccessTokens(SyncAPIResource):
                 access_token_create_params.AccessTokenCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={},
             ),
             cast_to=CreateAccessTokenResponse,
         )
@@ -144,7 +147,6 @@ class AsyncAccessTokens(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Authorization": omit, **(extra_headers or {})}
         return await self._post(
             "/auth/token",
             body=await async_maybe_transform(
@@ -157,7 +159,11 @@ class AsyncAccessTokens(AsyncAPIResource):
                 access_token_create_params.AccessTokenCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={},
             ),
             cast_to=CreateAccessTokenResponse,
         )

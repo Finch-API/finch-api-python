@@ -47,11 +47,14 @@ class Account(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DisconnectResponse:
         """Disconnect one or more `access_token`s from your application."""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/disconnect",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=DisconnectResponse,
         )
@@ -67,11 +70,14 @@ class Account(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Introspection:
         """Read account information associated with an `access_token`"""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/introspect",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=Introspection,
         )
@@ -108,11 +114,14 @@ class AsyncAccount(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DisconnectResponse:
         """Disconnect one or more `access_token`s from your application."""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/disconnect",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=DisconnectResponse,
         )
@@ -128,11 +137,14 @@ class AsyncAccount(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Introspection:
         """Read account information associated with an `access_token`"""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/introspect",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=Introspection,
         )

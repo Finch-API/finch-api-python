@@ -71,7 +71,6 @@ class Directory(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/directory",
             page=SyncIndividualsPage[IndividualInDirectory],
@@ -88,6 +87,7 @@ class Directory(SyncAPIResource):
                     },
                     directory_list_params.DirectoryListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualInDirectory,
         )
@@ -186,7 +186,6 @@ class AsyncDirectory(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/directory",
             page=AsyncIndividualsPage[IndividualInDirectory],
@@ -203,6 +202,7 @@ class AsyncDirectory(AsyncAPIResource):
                     },
                     directory_list_params.DirectoryListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualInDirectory,
         )
