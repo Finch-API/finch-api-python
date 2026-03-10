@@ -54,3 +54,9 @@ class CreateAccessTokenResponse(BaseModel):
     The ID of your customer you provided to Finch when a connect session was created
     for this connection
     """
+
+    customer_name: Optional[str] = None
+    """
+    The name of your customer you provided to Finch when a connect session was
+    created for this connection
+    """
