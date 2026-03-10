@@ -56,6 +56,7 @@ class Employment(SyncAPIResource):
         | Omit = omit,
         end_date: Optional[str] | Omit = omit,
         first_name: Optional[str] | Omit = omit,
+        flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] | Omit = omit,
         income: Optional[IncomeParam] | Omit = omit,
         income_history: Optional[Iterable[Optional[IncomeParam]]] | Omit = omit,
         is_active: Optional[bool] | Omit = omit,
@@ -91,6 +92,9 @@ class Employment(SyncAPIResource):
           employment_status: The detailed employment status of the individual.
 
           first_name: The legal first name of the individual.
+
+          flsa_status: The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+              `unknown`.
 
           income: The employee's income as reported by the provider. This may not always be
               annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
@@ -134,6 +138,7 @@ class Employment(SyncAPIResource):
                     "employment_status": employment_status,
                     "end_date": end_date,
                     "first_name": first_name,
+                    "flsa_status": flsa_status,
                     "income": income,
                     "income_history": income_history,
                     "is_active": is_active,
@@ -189,6 +194,7 @@ class AsyncEmployment(AsyncAPIResource):
         | Omit = omit,
         end_date: Optional[str] | Omit = omit,
         first_name: Optional[str] | Omit = omit,
+        flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] | Omit = omit,
         income: Optional[IncomeParam] | Omit = omit,
         income_history: Optional[Iterable[Optional[IncomeParam]]] | Omit = omit,
         is_active: Optional[bool] | Omit = omit,
@@ -224,6 +230,9 @@ class AsyncEmployment(AsyncAPIResource):
           employment_status: The detailed employment status of the individual.
 
           first_name: The legal first name of the individual.
+
+          flsa_status: The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
+              `unknown`.
 
           income: The employee's income as reported by the provider. This may not always be
               annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
@@ -267,6 +276,7 @@ class AsyncEmployment(AsyncAPIResource):
                     "employment_status": employment_status,
                     "end_date": end_date,
                     "first_name": first_name,
+                    "flsa_status": flsa_status,
                     "income": income,
                     "income_history": income_history,
                     "is_active": is_active,

@@ -52,6 +52,7 @@ class TestDirectory:
                     "end_date": "end_date",
                     "ethnicity": "asian",
                     "first_name": "first_name",
+                    "flsa_status": "exempt",
                     "gender": "female",
                     "income": {
                         "amount": 0,
@@ -168,6 +169,7 @@ class TestAsyncDirectory:
                     "end_date": "end_date",
                     "ethnicity": "asian",
                     "first_name": "first_name",
+                    "flsa_status": "exempt",
                     "gender": "female",
                     "income": {
                         "amount": 0,

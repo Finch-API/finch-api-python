@@ -127,6 +127,12 @@ class Body(TypedDict, total=False):
     first_name: Optional[str]
     """The legal first name of the individual."""
 
+    flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]]
+    """The FLSA status of the individual.
+
+    Available options: `exempt`, `non_exempt`, `unknown`.
+    """
+
     gender: Optional[Literal["female", "male", "other", "decline_to_specify"]]
     """The gender of the individual."""
 

@@ -75,6 +75,12 @@ class UnionMember0(BaseModel):
     first_name: Optional[str] = None
     """The legal first name of the individual."""
 
+    flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] = None
+    """The FLSA status of the individual.
+
+    Available options: `exempt`, `non_exempt`, `unknown`.
+    """
+
     is_active: Optional[bool] = None
     """`true` if the individual an an active employee or contractor at the company."""
 

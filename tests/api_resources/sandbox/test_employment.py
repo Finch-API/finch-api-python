@@ -44,6 +44,7 @@ class TestEmployment:
             employment_status="active",
             end_date="end_date",
             first_name="first_name",
+            flsa_status="exempt",
             income={
                 "amount": 0,
                 "currency": "currency",
@@ -142,6 +143,7 @@ class TestAsyncEmployment:
             employment_status="active",
             end_date="end_date",
             first_name="first_name",
+            flsa_status="exempt",
             income={
                 "amount": 0,
                 "currency": "currency",
