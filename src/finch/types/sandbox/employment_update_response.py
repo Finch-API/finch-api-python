@@ -74,6 +74,12 @@ class EmploymentUpdateResponse(BaseModel):
     first_name: Optional[str] = None
     """The legal first name of the individual."""
 
+    flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] = None
+    """The FLSA status of the individual.
+
+    Available options: `exempt`, `non_exempt`, `unknown`.
+    """
+
     income_history: Optional[List[Optional[Income]]] = None
     """The array of income history."""
 
