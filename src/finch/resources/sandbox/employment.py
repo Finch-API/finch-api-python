@@ -9,7 +9,7 @@ import httpx
 
 from ... import _legacy_response
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -127,7 +127,7 @@ class Employment(SyncAPIResource):
         if not individual_id:
             raise ValueError(f"Expected a non-empty value for `individual_id` but received {individual_id!r}")
         return self._put(
-            f"/sandbox/employment/{individual_id}",
+            path_template("/sandbox/employment/{individual_id}", individual_id=individual_id),
             body=maybe_transform(
                 {
                     "class_code": class_code,
@@ -268,7 +268,7 @@ class AsyncEmployment(AsyncAPIResource):
         if not individual_id:
             raise ValueError(f"Expected a non-empty value for `individual_id` but received {individual_id!r}")
         return await self._put(
-            f"/sandbox/employment/{individual_id}",
+            path_template("/sandbox/employment/{individual_id}", individual_id=individual_id),
             body=await async_maybe_transform(
                 {
                     "class_code": class_code,
