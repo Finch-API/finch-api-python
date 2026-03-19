@@ -8,7 +8,7 @@ import httpx
 
 from .... import _legacy_response
 from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -84,7 +84,7 @@ class Individuals(SyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._post(
-            f"/employer/benefits/{benefit_id}/individuals",
+            path_template("/employer/benefits/{benefit_id}/individuals", benefit_id=benefit_id),
             body=maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -128,7 +128,7 @@ class Individuals(SyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get(
-            f"/employer/benefits/{benefit_id}/enrolled",
+            path_template("/employer/benefits/{benefit_id}/enrolled", benefit_id=benefit_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -175,7 +175,7 @@ class Individuals(SyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
-            f"/employer/benefits/{benefit_id}/individuals",
+            path_template("/employer/benefits/{benefit_id}/individuals", benefit_id=benefit_id),
             page=SyncSinglePage[IndividualBenefit],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -226,7 +226,7 @@ class Individuals(SyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._delete(
-            f"/employer/benefits/{benefit_id}/individuals",
+            path_template("/employer/benefits/{benefit_id}/individuals", benefit_id=benefit_id),
             body=maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
@@ -300,7 +300,7 @@ class AsyncIndividuals(AsyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._post(
-            f"/employer/benefits/{benefit_id}/individuals",
+            path_template("/employer/benefits/{benefit_id}/individuals", benefit_id=benefit_id),
             body=await async_maybe_transform(individuals, Iterable[individual_enroll_many_params.Individual]),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -344,7 +344,7 @@ class AsyncIndividuals(AsyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._get(
-            f"/employer/benefits/{benefit_id}/enrolled",
+            path_template("/employer/benefits/{benefit_id}/enrolled", benefit_id=benefit_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -391,7 +391,7 @@ class AsyncIndividuals(AsyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return self._get_api_list(
-            f"/employer/benefits/{benefit_id}/individuals",
+            path_template("/employer/benefits/{benefit_id}/individuals", benefit_id=benefit_id),
             page=AsyncSinglePage[IndividualBenefit],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -442,7 +442,7 @@ class AsyncIndividuals(AsyncAPIResource):
         if not benefit_id:
             raise ValueError(f"Expected a non-empty value for `benefit_id` but received {benefit_id!r}")
         return await self._delete(
-            f"/employer/benefits/{benefit_id}/individuals",
+            path_template("/employer/benefits/{benefit_id}/individuals", benefit_id=benefit_id),
             body=await async_maybe_transform(
                 {"individual_ids": individual_ids}, individual_unenroll_many_params.IndividualUnenrollManyParams
             ),
