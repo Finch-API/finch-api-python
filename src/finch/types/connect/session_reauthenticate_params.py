@@ -34,7 +34,11 @@ class SessionReauthenticateParams(TypedDict, total=False):
             ]
         ]
     ]
-    """The products to request access to (optional for reauthentication)"""
+    """The products to request access to (optional for reauthentication).
+
+    Use `benefits` to access deductions endpoints — `deduction` is a deprecated
+    alias that is still accepted but should not be combined with `benefits`.
+    """
 
     redirect_uri: Optional[str]
     """The URI to redirect to after the Connect flow is completed"""

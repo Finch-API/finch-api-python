@@ -81,7 +81,9 @@ class Sessions(SyncAPIResource):
 
           customer_name: Name of the customer
 
-          products: The Finch products to request access to
+          products: The Finch products to request access to. Use `benefits` to access deductions
+              endpoints — `deduction` is a deprecated alias that is still accepted but should
+              not be combined with `benefits`.
 
           customer_email: Email address of the customer
 
@@ -169,7 +171,9 @@ class Sessions(SyncAPIResource):
           minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
-          products: The products to request access to (optional for reauthentication)
+          products: The products to request access to (optional for reauthentication). Use
+              `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+              that is still accepted but should not be combined with `benefits`.
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
@@ -263,7 +267,9 @@ class AsyncSessions(AsyncAPIResource):
 
           customer_name: Name of the customer
 
-          products: The Finch products to request access to
+          products: The Finch products to request access to. Use `benefits` to access deductions
+              endpoints — `deduction` is a deprecated alias that is still accepted but should
+              not be combined with `benefits`.
 
           customer_email: Email address of the customer
 
@@ -351,7 +357,9 @@ class AsyncSessions(AsyncAPIResource):
           minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
-          products: The products to request access to (optional for reauthentication)
+          products: The products to request access to (optional for reauthentication). Use
+              `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+              that is still accepted but should not be combined with `benefits`.
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 

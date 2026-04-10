@@ -31,7 +31,11 @@ class SessionNewParams(TypedDict, total=False):
             ]
         ]
     ]
-    """The Finch products to request access to"""
+    """The Finch products to request access to.
+
+    Use `benefits` to access deductions endpoints — `deduction` is a deprecated
+    alias that is still accepted but should not be combined with `benefits`.
+    """
 
     customer_email: Optional[str]
     """Email address of the customer"""
