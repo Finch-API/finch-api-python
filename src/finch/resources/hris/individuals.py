@@ -67,7 +67,6 @@ class Individuals(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/individual",
             page=SyncResponsesPage[IndividualResponse],
@@ -86,6 +85,7 @@ class Individuals(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_retrieve_many_params.IndividualRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualResponse,
             method="post",
@@ -139,7 +139,6 @@ class AsyncIndividuals(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/individual",
             page=AsyncResponsesPage[IndividualResponse],
@@ -158,6 +157,7 @@ class AsyncIndividuals(AsyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_retrieve_many_params.IndividualRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualResponse,
             method="post",

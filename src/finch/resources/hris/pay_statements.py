@@ -71,7 +71,6 @@ class PayStatements(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/pay-statement",
             page=SyncResponsesPage[PayStatementResponse],
@@ -86,6 +85,7 @@ class PayStatements(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayStatementResponse,
             method="post",
@@ -143,7 +143,6 @@ class AsyncPayStatements(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/pay-statement",
             page=AsyncResponsesPage[PayStatementResponse],
@@ -158,6 +157,7 @@ class AsyncPayStatements(AsyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayStatementResponse,
             method="post",

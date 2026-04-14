@@ -99,7 +99,11 @@ class AccessTokens(SyncAPIResource):
                 access_token_create_params.AccessTokenCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={},
             ),
             cast_to=CreateAccessTokenResponse,
         )
@@ -187,7 +191,11 @@ class AsyncAccessTokens(AsyncAPIResource):
                 access_token_create_params.AccessTokenCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={},
             ),
             cast_to=CreateAccessTokenResponse,
         )

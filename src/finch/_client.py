@@ -23,6 +23,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._compat import cached_property
+from ._models import SecurityOptions
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
@@ -201,7 +202,6 @@ class Finch(SyncAPIClient):
     def qs(self) -> Querystring:
         return Querystring(array_format="brackets")
 
-    @property
     @override
     def auth_headers(self) -> dict[str, str]:
         if self._bearer_auth:
@@ -544,7 +544,6 @@ class AsyncFinch(AsyncAPIClient):
     def qs(self) -> Querystring:
         return Querystring(array_format="brackets")
 
-    @property
     @override
     def auth_headers(self) -> dict[str, str]:
         if self._bearer_auth:

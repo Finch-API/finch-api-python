@@ -137,7 +137,6 @@ class Automated(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AutomatedCreateResponse:
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/jobs/automated",
             body=maybe_transform(
@@ -148,7 +147,11 @@ class Automated(SyncAPIResource):
                 automated_create_params.AutomatedCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=AutomatedCreateResponse,
         )
@@ -178,11 +181,14 @@ class Automated(SyncAPIResource):
         """
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=AutomatedAsyncJob,
         )
@@ -218,7 +224,6 @@ class Automated(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/jobs/automated",
             options=make_request_options(
@@ -233,6 +238,7 @@ class Automated(SyncAPIResource):
                     },
                     automated_list_params.AutomatedListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=AutomatedListResponse,
         )
@@ -354,7 +360,6 @@ class AsyncAutomated(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AutomatedCreateResponse:
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/jobs/automated",
             body=await async_maybe_transform(
@@ -365,7 +370,11 @@ class AsyncAutomated(AsyncAPIResource):
                 automated_create_params.AutomatedCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=AutomatedCreateResponse,
         )
@@ -395,11 +404,14 @@ class AsyncAutomated(AsyncAPIResource):
         """
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             f"/jobs/automated/{job_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=AutomatedAsyncJob,
         )
@@ -435,7 +447,6 @@ class AsyncAutomated(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/jobs/automated",
             options=make_request_options(
@@ -450,6 +461,7 @@ class AsyncAutomated(AsyncAPIResource):
                     },
                     automated_list_params.AutomatedListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=AutomatedListResponse,
         )

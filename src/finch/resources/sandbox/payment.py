@@ -67,7 +67,6 @@ class Payment(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._post(
             "/sandbox/payment",
             body=maybe_transform(
@@ -79,7 +78,11 @@ class Payment(SyncAPIResource):
                 payment_create_params.PaymentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=PaymentCreateResponse,
         )
@@ -132,7 +135,6 @@ class AsyncPayment(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._post(
             "/sandbox/payment",
             body=await async_maybe_transform(
@@ -144,7 +146,11 @@ class AsyncPayment(AsyncAPIResource):
                 payment_create_params.PaymentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=PaymentCreateResponse,
         )

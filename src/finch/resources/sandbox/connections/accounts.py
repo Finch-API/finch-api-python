@@ -72,7 +72,6 @@ class Accounts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return self._post(
             "/sandbox/connections/accounts",
             body=maybe_transform(
@@ -85,7 +84,11 @@ class Accounts(SyncAPIResource):
                 account_create_params.AccountCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=AccountCreateResponse,
         )
@@ -115,12 +118,15 @@ class Accounts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._put(
             "/sandbox/connections/accounts",
             body=maybe_transform({"connection_status": connection_status}, account_update_params.AccountUpdateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=AccountUpdateResponse,
         )
@@ -177,7 +183,6 @@ class AsyncAccounts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._basic_auth, **(extra_headers or {})}
         return await self._post(
             "/sandbox/connections/accounts",
             body=await async_maybe_transform(
@@ -190,7 +195,11 @@ class AsyncAccounts(AsyncAPIResource):
                 account_create_params.AccountCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=AccountCreateResponse,
         )
@@ -220,14 +229,17 @@ class AsyncAccounts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._put(
             "/sandbox/connections/accounts",
             body=await async_maybe_transform(
                 {"connection_status": connection_status}, account_update_params.AccountUpdateParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=AccountUpdateResponse,
         )

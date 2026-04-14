@@ -67,7 +67,6 @@ class PayGroups(SyncAPIResource):
         """
         if not pay_group_id:
             raise ValueError(f"Expected a non-empty value for `pay_group_id` but received {pay_group_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             f"/employer/pay-groups/{pay_group_id}",
             options=make_request_options(
@@ -76,6 +75,7 @@ class PayGroups(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, pay_group_retrieve_params.PayGroupRetrieveParams),
+                security={"bearer_auth": True},
             ),
             cast_to=PayGroupRetrieveResponse,
         )
@@ -107,7 +107,6 @@ class PayGroups(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/pay-groups",
             page=SyncSinglePage[PayGroupListResponse],
@@ -124,6 +123,7 @@ class PayGroups(SyncAPIResource):
                     },
                     pay_group_list_params.PayGroupListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayGroupListResponse,
         )
@@ -177,7 +177,6 @@ class AsyncPayGroups(AsyncAPIResource):
         """
         if not pay_group_id:
             raise ValueError(f"Expected a non-empty value for `pay_group_id` but received {pay_group_id!r}")
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             f"/employer/pay-groups/{pay_group_id}",
             options=make_request_options(
@@ -188,6 +187,7 @@ class AsyncPayGroups(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, pay_group_retrieve_params.PayGroupRetrieveParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=PayGroupRetrieveResponse,
         )
@@ -219,7 +219,6 @@ class AsyncPayGroups(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get_api_list(
             "/employer/pay-groups",
             page=AsyncSinglePage[PayGroupListResponse],
@@ -236,6 +235,7 @@ class AsyncPayGroups(AsyncAPIResource):
                     },
                     pay_group_list_params.PayGroupListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayGroupListResponse,
         )

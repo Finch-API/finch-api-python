@@ -51,11 +51,14 @@ class Configuration(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConfigurationRetrieveResponse:
         """Get configurations for sandbox jobs"""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/sandbox/jobs/configuration",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=ConfigurationRetrieveResponse,
         )
@@ -84,7 +87,6 @@ class Configuration(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._put(
             "/sandbox/jobs/configuration",
             body=maybe_transform(
@@ -95,7 +97,11 @@ class Configuration(SyncAPIResource):
                 configuration_update_params.ConfigurationUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=SandboxJobConfiguration,
         )
@@ -132,11 +138,14 @@ class AsyncConfiguration(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConfigurationRetrieveResponse:
         """Get configurations for sandbox jobs"""
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/sandbox/jobs/configuration",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=ConfigurationRetrieveResponse,
         )
@@ -165,7 +174,6 @@ class AsyncConfiguration(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._put(
             "/sandbox/jobs/configuration",
             body=await async_maybe_transform(
@@ -176,7 +184,11 @@ class AsyncConfiguration(AsyncAPIResource):
                 configuration_update_params.ConfigurationUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=SandboxJobConfiguration,
         )

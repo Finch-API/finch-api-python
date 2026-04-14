@@ -74,7 +74,6 @@ class CompanyResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return self._get(
             "/employer/company",
             options=make_request_options(
@@ -83,6 +82,7 @@ class CompanyResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, company_retrieve_params.CompanyRetrieveParams),
+                security={"bearer_auth": True},
             ),
             cast_to=Company,
         )
@@ -137,7 +137,6 @@ class AsyncCompanyResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {**self._client._bearer_auth, **(extra_headers or {})}
         return await self._get(
             "/employer/company",
             options=make_request_options(
@@ -148,6 +147,7 @@ class AsyncCompanyResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, company_retrieve_params.CompanyRetrieveParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=Company,
         )
