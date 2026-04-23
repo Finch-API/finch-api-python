@@ -24,3 +24,6 @@ class BaseWebhookEvent(BaseModel):
 
     connection_id: Optional[str] = None
     """Unique Finch ID of the connection associated with the webhook event."""
+
+    entity_id: Optional[str] = None
+    """Unique Finch id of the entity for which data has been updated."""
