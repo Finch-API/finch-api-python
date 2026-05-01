@@ -8,20 +8,20 @@ from ...._models import BaseModel
 __all__ = [
     "IndividualBenefit",
     "Body",
-    "BodyUnionMember0",
-    "BodyUnionMember0CompanyContribution",
-    "BodyUnionMember0CompanyContributionUnionMember0",
-    "BodyUnionMember0CompanyContributionUnionMember1",
-    "BodyUnionMember0CompanyContributionUnionMember2",
-    "BodyUnionMember0CompanyContributionUnionMember2Tier",
-    "BodyUnionMember0EmployeeDeduction",
-    "BodyUnionMember0EmployeeDeductionUnionMember0",
-    "BodyUnionMember0EmployeeDeductionUnionMember1",
+    "BodyIndividualBenefit",
+    "BodyIndividualBenefitCompanyContribution",
+    "BodyIndividualBenefitCompanyContributionCompanyContributionFixed",
+    "BodyIndividualBenefitCompanyContributionCompanyContributionPercent",
+    "BodyIndividualBenefitCompanyContributionCompanyContributionTiered",
+    "BodyIndividualBenefitCompanyContributionCompanyContributionTieredTier",
+    "BodyIndividualBenefitEmployeeDeduction",
+    "BodyIndividualBenefitEmployeeDeductionEmployeeDeductionContributionFixed",
+    "BodyIndividualBenefitEmployeeDeductionEmployeeDeductionContributionPercent",
     "BodyBatchError",
 ]
 
 
-class BodyUnionMember0CompanyContributionUnionMember0(BaseModel):
+class BodyIndividualBenefitCompanyContributionCompanyContributionFixed(BaseModel):
     amount: int
     """
     Contribution amount in cents (for type=fixed) or basis points (for type=percent,
@@ -36,7 +36,7 @@ class BodyUnionMember0CompanyContributionUnionMember0(BaseModel):
     """
 
 
-class BodyUnionMember0CompanyContributionUnionMember1(BaseModel):
+class BodyIndividualBenefitCompanyContributionCompanyContributionPercent(BaseModel):
     amount: int
     """
     Contribution amount in cents (for type=fixed) or basis points (for type=percent,
@@ -51,14 +51,14 @@ class BodyUnionMember0CompanyContributionUnionMember1(BaseModel):
     """
 
 
-class BodyUnionMember0CompanyContributionUnionMember2Tier(BaseModel):
+class BodyIndividualBenefitCompanyContributionCompanyContributionTieredTier(BaseModel):
     match: int
 
     threshold: int
 
 
-class BodyUnionMember0CompanyContributionUnionMember2(BaseModel):
-    tiers: List[BodyUnionMember0CompanyContributionUnionMember2Tier]
+class BodyIndividualBenefitCompanyContributionCompanyContributionTiered(BaseModel):
+    tiers: List[BodyIndividualBenefitCompanyContributionCompanyContributionTieredTier]
     """
     Array of tier objects defining employer match tiers based on employee
     contribution thresholds. Required when type=tiered.
@@ -72,15 +72,15 @@ class BodyUnionMember0CompanyContributionUnionMember2(BaseModel):
     """
 
 
-BodyUnionMember0CompanyContribution: TypeAlias = Union[
-    BodyUnionMember0CompanyContributionUnionMember0,
-    BodyUnionMember0CompanyContributionUnionMember1,
-    BodyUnionMember0CompanyContributionUnionMember2,
+BodyIndividualBenefitCompanyContribution: TypeAlias = Union[
+    BodyIndividualBenefitCompanyContributionCompanyContributionFixed,
+    BodyIndividualBenefitCompanyContributionCompanyContributionPercent,
+    BodyIndividualBenefitCompanyContributionCompanyContributionTiered,
     None,
 ]
 
 
-class BodyUnionMember0EmployeeDeductionUnionMember0(BaseModel):
+class BodyIndividualBenefitEmployeeDeductionEmployeeDeductionContributionFixed(BaseModel):
     amount: int
     """
     Contribution amount in cents (for type=fixed) or basis points (for type=percent,
@@ -95,7 +95,7 @@ class BodyUnionMember0EmployeeDeductionUnionMember0(BaseModel):
     """
 
 
-class BodyUnionMember0EmployeeDeductionUnionMember1(BaseModel):
+class BodyIndividualBenefitEmployeeDeductionEmployeeDeductionContributionPercent(BaseModel):
     amount: int
     """
     Contribution amount in cents (for type=fixed) or basis points (for type=percent,
@@ -110,12 +110,14 @@ class BodyUnionMember0EmployeeDeductionUnionMember1(BaseModel):
     """
 
 
-BodyUnionMember0EmployeeDeduction: TypeAlias = Union[
-    BodyUnionMember0EmployeeDeductionUnionMember0, BodyUnionMember0EmployeeDeductionUnionMember1, None
+BodyIndividualBenefitEmployeeDeduction: TypeAlias = Union[
+    BodyIndividualBenefitEmployeeDeductionEmployeeDeductionContributionFixed,
+    BodyIndividualBenefitEmployeeDeductionEmployeeDeductionContributionPercent,
+    None,
 ]
 
 
-class BodyUnionMember0(BaseModel):
+class BodyIndividualBenefit(BaseModel):
     annual_maximum: Optional[int] = None
     """
     If the benefit supports annual maximum, the amount in cents for this individual.
@@ -127,14 +129,14 @@ class BodyUnionMember0(BaseModel):
     for this individual.
     """
 
-    company_contribution: Optional[BodyUnionMember0CompanyContribution] = None
+    company_contribution: Optional[BodyIndividualBenefitCompanyContribution] = None
     """Company contribution configuration.
 
     Supports fixed amounts (in cents), percentage-based contributions (in basis
     points where 100 = 1%), or tiered matching structures.
     """
 
-    employee_deduction: Optional[BodyUnionMember0EmployeeDeduction] = None
+    employee_deduction: Optional[BodyIndividualBenefitEmployeeDeduction] = None
     """Employee deduction configuration.
 
     Supports both fixed amounts (in cents) and percentage-based contributions (in
@@ -155,7 +157,7 @@ class BodyBatchError(BaseModel):
     finch_code: Optional[str] = None
 
 
-Body: TypeAlias = Union[BodyUnionMember0, BodyBatchError]
+Body: TypeAlias = Union[BodyIndividualBenefit, BodyBatchError]
 
 
 class IndividualBenefit(BaseModel):
