@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..income_param import IncomeParam
@@ -32,7 +32,7 @@ class DirectoryCreateParams(TypedDict, total=False):
 class BodyCustomField(TypedDict, total=False):
     name: Optional[str]
 
-    value: object
+    value: Union[Optional[str], Optional[Iterable[object]], Optional[float], Optional[bool], Optional[object], None]
 
 
 class BodyDepartment(TypedDict, total=False):

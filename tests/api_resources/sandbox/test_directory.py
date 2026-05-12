@@ -32,7 +32,7 @@ class TestDirectory:
                     "custom_fields": [
                         {
                             "name": "name",
-                            "value": {},
+                            "value": "string",
                         }
                     ],
                     "department": {"name": "name"},
@@ -149,7 +149,7 @@ class TestAsyncDirectory:
                     "custom_fields": [
                         {
                             "name": "name",
-                            "value": {},
+                            "value": "string",
                         }
                     ],
                     "department": {"name": "name"},

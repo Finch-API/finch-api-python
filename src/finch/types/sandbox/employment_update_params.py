@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..income_param import IncomeParam
@@ -82,7 +82,7 @@ class EmploymentUpdateParams(TypedDict, total=False):
 class CustomField(TypedDict, total=False):
     name: Optional[str]
 
-    value: object
+    value: Union[Optional[str], Optional[Iterable[object]], Optional[float], Optional[bool], Optional[object], None]
 
 
 class Department(TypedDict, total=False):
