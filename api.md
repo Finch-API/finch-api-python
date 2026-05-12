@@ -165,6 +165,7 @@ from finch.types.hris import (
     BenefitsSupport,
     CompanyBenefit,
     CreateCompanyBenefitsResponse,
+    RegisterCompanyBenefitResponse,
     SupportPerBenefitType,
     SupportedBenefit,
     UpdateCompanyBenefitResponse,
@@ -179,6 +180,7 @@ Methods:
 - <code title="post /employer/benefits/{benefit_id}">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">update</a>(benefit_id, \*\*<a href="src/finch/types/hris/benefit_update_params.py">params</a>) -> <a href="./src/finch/types/hris/update_company_benefit_response.py">UpdateCompanyBenefitResponse</a></code>
 - <code title="get /employer/benefits">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list</a>(\*\*<a href="src/finch/types/hris/benefit_list_params.py">params</a>) -> <a href="./src/finch/types/hris/company_benefit.py">SyncSinglePage[CompanyBenefit]</a></code>
 - <code title="get /employer/benefits/meta">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">list_supported_benefits</a>(\*\*<a href="src/finch/types/hris/benefit_list_supported_benefits_params.py">params</a>) -> <a href="./src/finch/types/hris/supported_benefit.py">SyncSinglePage[SupportedBenefit]</a></code>
+- <code title="post /employer/benefits/register">client.hris.benefits.<a href="./src/finch/resources/hris/benefits/benefits.py">register</a>(\*\*<a href="src/finch/types/hris/benefit_register_params.py">params</a>) -> <a href="./src/finch/types/hris/register_company_benefit_response.py">RegisterCompanyBenefitResponse</a></code>
 
 ### Individuals
 
@@ -217,12 +219,13 @@ Methods:
 Types:
 
 ```python
-from finch.types import DisconnectResponse, Introspection
+from finch.types import DisconnectEntityResponse, DisconnectResponse, Introspection
 ```
 
 Methods:
 
 - <code title="post /disconnect">client.account.<a href="./src/finch/resources/account.py">disconnect</a>() -> <a href="./src/finch/types/disconnect_response.py">DisconnectResponse</a></code>
+- <code title="post /disconnect-entity">client.account.<a href="./src/finch/resources/account.py">disconnect_entity</a>(\*\*<a href="src/finch/types/account_disconnect_entity_params.py">params</a>) -> <a href="./src/finch/types/disconnect_entity_response.py">DisconnectEntityResponse</a></code>
 - <code title="get /introspect">client.account.<a href="./src/finch/resources/account.py">introspect</a>() -> <a href="./src/finch/types/introspection.py">Introspection</a></code>
 
 # Webhooks

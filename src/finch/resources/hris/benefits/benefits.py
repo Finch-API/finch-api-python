@@ -27,6 +27,7 @@ from ....types.hris import (
     benefit_list_params,
     benefit_create_params,
     benefit_update_params,
+    benefit_register_params,
     benefit_retrieve_params,
     benefit_list_supported_benefits_params,
 )
@@ -37,6 +38,7 @@ from ....types.hris.benefit_frequency import BenefitFrequency
 from ....types.hris.supported_benefit import SupportedBenefit
 from ....types.hris.update_company_benefit_response import UpdateCompanyBenefitResponse
 from ....types.hris.create_company_benefits_response import CreateCompanyBenefitsResponse
+from ....types.hris.register_company_benefit_response import RegisterCompanyBenefitResponse
 
 __all__ = ["Benefits", "AsyncBenefits"]
 
@@ -293,6 +295,60 @@ class Benefits(SyncAPIResource):
                 security={"bearer_auth": True},
             ),
             model=SupportedBenefit,
+        )
+
+    def register(
+        self,
+        *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        description: str | Omit = omit,
+        frequency: Optional[BenefitFrequency] | Omit = omit,
+        type: Optional[BenefitType] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> RegisterCompanyBenefitResponse:
+        """
+        Register existing benefits from the customer on the provider, on Finch's end.
+        Please use the `/provider` endpoint to view available types for each provider.
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          frequency: The frequency of the benefit deduction/contribution.
+
+          type: Type of benefit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/employer/benefits/register",
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "frequency": frequency,
+                    "type": type,
+                },
+                benefit_register_params.BenefitRegisterParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"entity_ids": entity_ids}, benefit_register_params.BenefitRegisterParams),
+                security={"bearer_auth": True},
+            ),
+            cast_to=RegisterCompanyBenefitResponse,
         )
 
 
@@ -556,6 +612,62 @@ class AsyncBenefits(AsyncAPIResource):
             model=SupportedBenefit,
         )
 
+    async def register(
+        self,
+        *,
+        entity_ids: SequenceNotStr[str] | Omit = omit,
+        description: str | Omit = omit,
+        frequency: Optional[BenefitFrequency] | Omit = omit,
+        type: Optional[BenefitType] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> RegisterCompanyBenefitResponse:
+        """
+        Register existing benefits from the customer on the provider, on Finch's end.
+        Please use the `/provider` endpoint to view available types for each provider.
+
+        Args:
+          entity_ids: The entity IDs to specify which entities' data to access.
+
+          frequency: The frequency of the benefit deduction/contribution.
+
+          type: Type of benefit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/employer/benefits/register",
+            body=await async_maybe_transform(
+                {
+                    "description": description,
+                    "frequency": frequency,
+                    "type": type,
+                },
+                benefit_register_params.BenefitRegisterParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"entity_ids": entity_ids}, benefit_register_params.BenefitRegisterParams
+                ),
+                security={"bearer_auth": True},
+            ),
+            cast_to=RegisterCompanyBenefitResponse,
+        )
+
 
 class BenefitsWithRawResponse:
     def __init__(self, benefits: Benefits) -> None:
@@ -575,6 +687,9 @@ class BenefitsWithRawResponse:
         )
         self.list_supported_benefits = _legacy_response.to_raw_response_wrapper(
             benefits.list_supported_benefits,
+        )
+        self.register = _legacy_response.to_raw_response_wrapper(
+            benefits.register,
         )
 
     @cached_property
@@ -601,6 +716,9 @@ class AsyncBenefitsWithRawResponse:
         self.list_supported_benefits = _legacy_response.async_to_raw_response_wrapper(
             benefits.list_supported_benefits,
         )
+        self.register = _legacy_response.async_to_raw_response_wrapper(
+            benefits.register,
+        )
 
     @cached_property
     def individuals(self) -> AsyncIndividualsWithRawResponse:
@@ -626,6 +744,9 @@ class BenefitsWithStreamingResponse:
         self.list_supported_benefits = to_streamed_response_wrapper(
             benefits.list_supported_benefits,
         )
+        self.register = to_streamed_response_wrapper(
+            benefits.register,
+        )
 
     @cached_property
     def individuals(self) -> IndividualsWithStreamingResponse:
@@ -650,6 +771,9 @@ class AsyncBenefitsWithStreamingResponse:
         )
         self.list_supported_benefits = async_to_streamed_response_wrapper(
             benefits.list_supported_benefits,
+        )
+        self.register = async_to_streamed_response_wrapper(
+            benefits.register,
         )
 
     @cached_property
