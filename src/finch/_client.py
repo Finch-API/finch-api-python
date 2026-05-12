@@ -216,12 +216,11 @@ class Finch(SyncAPIClient):
         return Querystring(array_format="brackets")
 
     @override
-    def auth_headers(self) -> dict[str, str]:
-        if self._bearer_auth:
-            return self._bearer_auth
-        if self._basic_auth:
-            return self._basic_auth
-        return {}
+    def _auth_headers(self, security: SecurityOptions) -> dict[str, str]:
+        return {
+            **(self._bearer_auth if security.get("bearer_auth", False) else {}),
+            **(self._basic_auth if security.get("basic_auth", False) else {}),
+        }
 
     @property
     def _bearer_auth(self) -> dict[str, str]:
@@ -567,12 +566,11 @@ class AsyncFinch(AsyncAPIClient):
         return Querystring(array_format="brackets")
 
     @override
-    def auth_headers(self) -> dict[str, str]:
-        if self._bearer_auth:
-            return self._bearer_auth
-        if self._basic_auth:
-            return self._basic_auth
-        return {}
+    def _auth_headers(self, security: SecurityOptions) -> dict[str, str]:
+        return {
+            **(self._bearer_auth if security.get("bearer_auth", False) else {}),
+            **(self._basic_auth if security.get("basic_auth", False) else {}),
+        }
 
     @property
     def _bearer_auth(self) -> dict[str, str]:
