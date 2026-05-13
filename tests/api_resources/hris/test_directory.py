@@ -11,7 +11,6 @@ from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
 from finch.pagination import SyncIndividualsPage, AsyncIndividualsPage
 from finch.types.hris import IndividualInDirectory
-from finch.types.hris.directory_list_individuals_params import UnnamedTypeWithNoPropertyInfoOrParent0
 
 # pyright: reportDeprecated=false
 
@@ -60,7 +59,7 @@ class TestDirectory:
         with pytest.warns(DeprecationWarning):
             directory = client.hris.directory.list_individuals()
 
-        assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     def test_method_list_individuals_with_all_params(self, client: Finch) -> None:
@@ -71,7 +70,7 @@ class TestDirectory:
                 offset=0,
             )
 
-        assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     def test_raw_response_list_individuals(self, client: Finch) -> None:
@@ -81,7 +80,7 @@ class TestDirectory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         directory = response.parse()
-        assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+        assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     def test_streaming_response_list_individuals(self, client: Finch) -> None:
@@ -91,7 +90,7 @@ class TestDirectory:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 directory = response.parse()
-                assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+                assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -140,7 +139,7 @@ class TestAsyncDirectory:
         with pytest.warns(DeprecationWarning):
             directory = await async_client.hris.directory.list_individuals()
 
-        assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     async def test_method_list_individuals_with_all_params(self, async_client: AsyncFinch) -> None:
@@ -151,7 +150,7 @@ class TestAsyncDirectory:
                 offset=0,
             )
 
-        assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     async def test_raw_response_list_individuals(self, async_client: AsyncFinch) -> None:
@@ -161,7 +160,7 @@ class TestAsyncDirectory:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         directory = response.parse()
-        assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+        assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
     @parametrize
     async def test_streaming_response_list_individuals(self, async_client: AsyncFinch) -> None:
@@ -171,6 +170,6 @@ class TestAsyncDirectory:
                 assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
                 directory = await response.parse()
-                assert_matches_type(UnnamedTypeWithNoPropertyInfoOrParent0, directory, path=["response"])
+                assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
 
         assert cast(Any, response.is_closed) is True
