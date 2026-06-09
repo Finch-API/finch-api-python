@@ -27,6 +27,7 @@ class SessionNewParams(TypedDict, total=False):
                 "individual",
                 "payment",
                 "pay_statement",
+                "recordkeeping",
                 "ssn",
             ]
         ]
