@@ -57,6 +57,7 @@ class Sessions(SyncAPIResource):
                 "individual",
                 "payment",
                 "pay_statement",
+                "recordkeeping",
                 "ssn",
             ]
         ],
@@ -149,6 +150,7 @@ class Sessions(SyncAPIResource):
                     "individual",
                     "payment",
                     "pay_statement",
+                    "recordkeeping",
                     "ssn",
                 ]
             ]
@@ -243,6 +245,7 @@ class AsyncSessions(AsyncAPIResource):
                 "individual",
                 "payment",
                 "pay_statement",
+                "recordkeeping",
                 "ssn",
             ]
         ],
@@ -335,6 +338,7 @@ class AsyncSessions(AsyncAPIResource):
                     "individual",
                     "payment",
                     "pay_statement",
+                    "recordkeeping",
                     "ssn",
                 ]
             ]
