@@ -69,7 +69,11 @@ class Directory(SyncAPIResource):
             "/sandbox/directory",
             body=maybe_transform(body, Iterable[directory_create_params.Body]),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=DirectoryCreateResponse,
         )
@@ -125,7 +129,11 @@ class AsyncDirectory(AsyncAPIResource):
             "/sandbox/directory",
             body=await async_maybe_transform(body, Iterable[directory_create_params.Body]),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=DirectoryCreateResponse,
         )

@@ -9,7 +9,7 @@ import httpx
 
 from ..... import _legacy_response
 from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -108,6 +108,7 @@ class Rules(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, rule_create_params.RuleCreateParams),
+                security={"bearer_auth": True},
             ),
             cast_to=RuleCreateResponse,
         )
@@ -142,7 +143,7 @@ class Rules(SyncAPIResource):
         if not rule_id:
             raise ValueError(f"Expected a non-empty value for `rule_id` but received {rule_id!r}")
         return self._put(
-            f"/employer/pay-statement-item/rule/{rule_id}",
+            path_template("/employer/pay-statement-item/rule/{rule_id}", rule_id=rule_id),
             body=maybe_transform({"optional_property": optional_property}, rule_update_params.RuleUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -150,6 +151,7 @@ class Rules(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, rule_update_params.RuleUpdateParams),
+                security={"bearer_auth": True},
             ),
             cast_to=RuleUpdateResponse,
         )
@@ -188,6 +190,7 @@ class Rules(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, rule_list_params.RuleListParams),
+                security={"bearer_auth": True},
             ),
             model=RuleListResponse,
         )
@@ -221,13 +224,14 @@ class Rules(SyncAPIResource):
         if not rule_id:
             raise ValueError(f"Expected a non-empty value for `rule_id` but received {rule_id!r}")
         return self._delete(
-            f"/employer/pay-statement-item/rule/{rule_id}",
+            path_template("/employer/pay-statement-item/rule/{rule_id}", rule_id=rule_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, rule_delete_params.RuleDeleteParams),
+                security={"bearer_auth": True},
             ),
             cast_to=RuleDeleteResponse,
         )
@@ -312,6 +316,7 @@ class AsyncRules(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform({"entity_ids": entity_ids}, rule_create_params.RuleCreateParams),
+                security={"bearer_auth": True},
             ),
             cast_to=RuleCreateResponse,
         )
@@ -346,7 +351,7 @@ class AsyncRules(AsyncAPIResource):
         if not rule_id:
             raise ValueError(f"Expected a non-empty value for `rule_id` but received {rule_id!r}")
         return await self._put(
-            f"/employer/pay-statement-item/rule/{rule_id}",
+            path_template("/employer/pay-statement-item/rule/{rule_id}", rule_id=rule_id),
             body=await async_maybe_transform(
                 {"optional_property": optional_property}, rule_update_params.RuleUpdateParams
             ),
@@ -356,6 +361,7 @@ class AsyncRules(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform({"entity_ids": entity_ids}, rule_update_params.RuleUpdateParams),
+                security={"bearer_auth": True},
             ),
             cast_to=RuleUpdateResponse,
         )
@@ -394,6 +400,7 @@ class AsyncRules(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, rule_list_params.RuleListParams),
+                security={"bearer_auth": True},
             ),
             model=RuleListResponse,
         )
@@ -427,13 +434,14 @@ class AsyncRules(AsyncAPIResource):
         if not rule_id:
             raise ValueError(f"Expected a non-empty value for `rule_id` but received {rule_id!r}")
         return await self._delete(
-            f"/employer/pay-statement-item/rule/{rule_id}",
+            path_template("/employer/pay-statement-item/rule/{rule_id}", rule_id=rule_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform({"entity_ids": entity_ids}, rule_delete_params.RuleDeleteParams),
+                security={"bearer_auth": True},
             ),
             cast_to=RuleDeleteResponse,
         )

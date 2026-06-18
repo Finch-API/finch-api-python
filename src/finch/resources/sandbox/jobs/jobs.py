@@ -81,7 +81,11 @@ class Jobs(SyncAPIResource):
             "/sandbox/jobs",
             body=maybe_transform({"type": type}, job_create_params.JobCreateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=JobCreateResponse,
         )
@@ -141,7 +145,11 @@ class AsyncJobs(AsyncAPIResource):
             "/sandbox/jobs",
             body=await async_maybe_transform({"type": type}, job_create_params.JobCreateParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=JobCreateResponse,
         )

@@ -63,7 +63,7 @@ from ._types import (
 )
 from ._utils import is_dict, is_list, asyncify, is_given, lru_cache, is_mapping
 from ._compat import PYDANTIC_V1, model_copy, model_dump
-from ._models import GenericModel, FinalRequestOptions, validate_type, construct_type
+from ._models import GenericModel, SecurityOptions, FinalRequestOptions, validate_type, construct_type
 from ._response import (
     APIResponse,
     BaseAPIResponse,
@@ -86,6 +86,7 @@ from ._exceptions import (
     APIConnectionError,
     APIResponseValidationError,
 )
+from ._utils._json import openapi_dumps
 from ._legacy_response import LegacyAPIResponse
 
 log: logging.Logger = logging.getLogger(__name__)
@@ -432,9 +433,27 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
     ) -> _exceptions.APIStatusError:
         raise NotImplementedError()
 
+    def _auth_headers(
+        self,
+        security: SecurityOptions,  # noqa: ARG002
+    ) -> dict[str, str]:
+        return {}
+
+    def _auth_query(
+        self,
+        security: SecurityOptions,  # noqa: ARG002
+    ) -> dict[str, str]:
+        return {}
+
+    def _custom_auth(
+        self,
+        security: SecurityOptions,  # noqa: ARG002
+    ) -> httpx.Auth | None:
+        return None
+
     def _build_headers(self, options: FinalRequestOptions, *, retries_taken: int = 0) -> httpx.Headers:
         custom_headers = options.headers or {}
-        headers_dict = _merge_mappings(self.default_headers, custom_headers)
+        headers_dict = _merge_mappings({**self._auth_headers(options.security), **self.default_headers}, custom_headers)
         self._validate_headers(headers_dict, custom_headers)
 
         # headers are case-insensitive while dictionaries are not.
@@ -506,7 +525,7 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
                 raise RuntimeError(f"Unexpected JSON data type, {type(json_data)}, cannot merge with `extra_body`")
 
         headers = self._build_headers(options, retries_taken=retries_taken)
-        params = _merge_mappings(self.default_query, options.params)
+        params = _merge_mappings({**self._auth_query(options.security), **self.default_query}, options.params)
         content_type = headers.get("Content-Type")
         files = options.files
 
@@ -540,6 +559,10 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
                 files = cast(HttpxRequestFiles, ForceMultipartDict())
 
         prepared_url = self._prepare_url(options.url)
+        # preserve hard-coded query params from the url
+        if params and prepared_url.query:
+            params = {**dict(prepared_url.params.items()), **params}
+            prepared_url = prepared_url.copy_with(raw_path=prepared_url.raw_path.split(b"?", 1)[0])
         if "_" in prepared_url.host:
             # work around https://github.com/encode/httpx/discussions/2880
             kwargs["extensions"] = {"sni_hostname": prepared_url.host.replace("_", "-")}
@@ -555,8 +578,10 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
                 kwargs["content"] = options.content
             elif isinstance(json_data, bytes):
                 kwargs["content"] = json_data
-            else:
-                kwargs["json"] = json_data if is_given(json_data) else None
+            elif not files:
+                # Don't set content when JSON is sent as multipart/form-data,
+                # since httpx's content param overrides other body arguments
+                kwargs["content"] = openapi_dumps(json_data) if is_given(json_data) and json_data is not None else None
             kwargs["files"] = files
         else:
             headers.pop("Content-Type", None)
@@ -669,7 +694,6 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             "Content-Type": "application/json",
             "User-Agent": self.user_agent,
             **self.platform_headers(),
-            **self.auth_headers,
             **self._custom_headers,
         }
 
@@ -988,8 +1012,9 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
             self._prepare_request(request)
 
             kwargs: HttpxSendArgs = {}
-            if self.custom_auth is not None:
-                kwargs["auth"] = self.custom_auth
+            custom_auth = self._custom_auth(options.security)
+            if custom_auth is not None:
+                kwargs["auth"] = custom_auth
 
             if options.follow_redirects is not None:
                 kwargs["follow_redirects"] = options.follow_redirects
@@ -1978,6 +2003,7 @@ def make_request_options(
     idempotency_key: str | None = None,
     timeout: float | httpx.Timeout | None | NotGiven = not_given,
     post_parser: PostParser | NotGiven = not_given,
+    security: SecurityOptions | None = None,
 ) -> RequestOptions:
     """Create a dict of type RequestOptions without keys of NotGiven values."""
     options: RequestOptions = {}
@@ -2002,6 +2028,9 @@ def make_request_options(
     if is_given(post_parser):
         # internal
         options["post_parser"] = post_parser  # type: ignore
+
+    if security is not None:
+        options["security"] = security
 
     return options
 

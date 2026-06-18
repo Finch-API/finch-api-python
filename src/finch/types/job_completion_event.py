@@ -28,5 +28,8 @@ class JobCompletionEvent(BaseWebhookEvent):
             "job.benefit_unenroll.completed",
             "job.benefit_update.completed",
             "job.data_sync_all.completed",
+            "job.w4_form_employee_sync.completed",
+            "job.initial_data_sync_org.succeeded",
+            "job.initial_data_sync_payroll.succeeded",
         ]
     ] = None

@@ -95,7 +95,11 @@ class Connections(SyncAPIResource):
                 connection_create_params.ConnectionCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=ConnectionCreateResponse,
         )
@@ -169,7 +173,11 @@ class AsyncConnections(AsyncAPIResource):
                 connection_create_params.ConnectionCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=ConnectionCreateResponse,
         )

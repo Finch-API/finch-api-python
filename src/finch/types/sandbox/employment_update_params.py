@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..income_param import IncomeParam
@@ -37,6 +37,12 @@ class EmploymentUpdateParams(TypedDict, total=False):
 
     first_name: Optional[str]
     """The legal first name of the individual."""
+
+    flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]]
+    """The FLSA status of the individual.
+
+    Available options: `exempt`, `non_exempt`, `unknown`.
+    """
 
     income: Optional[IncomeParam]
     """The employee's income as reported by the provider.
@@ -76,7 +82,7 @@ class EmploymentUpdateParams(TypedDict, total=False):
 class CustomField(TypedDict, total=False):
     name: Optional[str]
 
-    value: object
+    value: Union[Optional[str], Optional[Iterable[object]], Optional[float], Optional[bool], Optional[object], None]
 
 
 class Department(TypedDict, total=False):

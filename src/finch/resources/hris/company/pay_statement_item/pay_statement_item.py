@@ -117,6 +117,7 @@ class PayStatementItem(SyncAPIResource):
                     },
                     pay_statement_item_list_params.PayStatementItemListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayStatementItemListResponse,
         )
@@ -209,6 +210,7 @@ class AsyncPayStatementItem(AsyncAPIResource):
                     },
                     pay_statement_item_list_params.PayStatementItemListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayStatementItemListResponse,
         )

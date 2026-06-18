@@ -80,6 +80,7 @@ class Employments(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, employment_retrieve_many_params.EmploymentRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=EmploymentDataResponse,
             method="post",
@@ -146,6 +147,7 @@ class AsyncEmployments(AsyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, employment_retrieve_many_params.EmploymentRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=EmploymentDataResponse,
             method="post",

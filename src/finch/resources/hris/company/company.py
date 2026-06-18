@@ -82,6 +82,7 @@ class CompanyResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform({"entity_ids": entity_ids}, company_retrieve_params.CompanyRetrieveParams),
+                security={"bearer_auth": True},
             ),
             cast_to=Company,
         )
@@ -146,6 +147,7 @@ class AsyncCompanyResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {"entity_ids": entity_ids}, company_retrieve_params.CompanyRetrieveParams
                 ),
+                security={"bearer_auth": True},
             ),
             cast_to=Company,
         )

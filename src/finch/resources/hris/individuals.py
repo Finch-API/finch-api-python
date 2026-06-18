@@ -85,6 +85,7 @@ class Individuals(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_retrieve_many_params.IndividualRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualResponse,
             method="post",
@@ -156,6 +157,7 @@ class AsyncIndividuals(AsyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, individual_retrieve_many_params.IndividualRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualResponse,
             method="post",

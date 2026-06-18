@@ -54,6 +54,11 @@ class Entity(BaseModel):
     source_id: Optional[str] = None
     """The source ID of the entity"""
 
+    status: Literal[
+        "pending", "processing", "connected", "error_no_account_setup", "error_permissions", "reauth", "disconnected"
+    ]
+    """The status of the entity connection"""
+
 
 class Introspection(BaseModel):
     id: str

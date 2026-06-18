@@ -87,6 +87,7 @@ class Directory(SyncAPIResource):
                     },
                     directory_list_params.DirectoryListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualInDirectory,
         )
@@ -201,6 +202,7 @@ class AsyncDirectory(AsyncAPIResource):
                     },
                     directory_list_params.DirectoryListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=IndividualInDirectory,
         )

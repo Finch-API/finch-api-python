@@ -51,7 +51,11 @@ class Providers(SyncAPIResource):
             "/providers",
             page=SyncSinglePage[ProviderListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             model=ProviderListResponse,
         )
@@ -92,7 +96,11 @@ class AsyncProviders(AsyncAPIResource):
             "/providers",
             page=AsyncSinglePage[ProviderListResponse],
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             model=ProviderListResponse,
         )

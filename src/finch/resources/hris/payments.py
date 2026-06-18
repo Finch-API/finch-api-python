@@ -90,6 +90,7 @@ class Payments(SyncAPIResource):
                     },
                     payment_list_params.PaymentListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=Payment,
         )
@@ -164,6 +165,7 @@ class AsyncPayments(AsyncAPIResource):
                     },
                     payment_list_params.PaymentListParams,
                 ),
+                security={"bearer_auth": True},
             ),
             model=Payment,
         )

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
 from typing_extensions import Literal, TypedDict
 
 from ..income_param import IncomeParam
@@ -32,7 +32,7 @@ class DirectoryCreateParams(TypedDict, total=False):
 class BodyCustomField(TypedDict, total=False):
     name: Optional[str]
 
-    value: object
+    value: Union[Optional[str], Optional[Iterable[object]], Optional[float], Optional[bool], Optional[object], None]
 
 
 class BodyDepartment(TypedDict, total=False):
@@ -126,6 +126,12 @@ class Body(TypedDict, total=False):
 
     first_name: Optional[str]
     """The legal first name of the individual."""
+
+    flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]]
+    """The FLSA status of the individual.
+
+    Available options: `exempt`, `non_exempt`, `unknown`.
+    """
 
     gender: Optional[Literal["female", "male", "other", "decline_to_specify"]]
     """The gender of the individual."""

@@ -1,5 +1,81 @@
 # Changelog
 
+## 1.45.0 (2026-06-17)
+
+Full Changelog: [v1.44.1...v1.45.0](https://github.com/Finch-API/finch-api-python/compare/v1.44.1...v1.45.0)
+
+### Features
+
+* **api:** add per endpoint security ([686b27e](https://github.com/Finch-API/finch-api-python/commit/686b27e6d19cc5858b420e2b1bb265f50791c7ea))
+* **api:** add register benefits method ([d7caac4](https://github.com/Finch-API/finch-api-python/commit/d7caac40edd435141d67d2033a60719d6867e8dc))
+* **api:** api update ([ccc3835](https://github.com/Finch-API/finch-api-python/commit/ccc38350f0a4076f2349962ca80aa52c47346dac))
+* **api:** api update ([581ee7c](https://github.com/Finch-API/finch-api-python/commit/581ee7c9372b4eb5dd5858a0aa32bed0edb3a470))
+* **api:** api update ([abb9fa0](https://github.com/Finch-API/finch-api-python/commit/abb9fa0f5555143e8dfcd483e859d4a2a6d5c9c0))
+* **api:** api update ([0608eea](https://github.com/Finch-API/finch-api-python/commit/0608eea99892801e0575da4731a5717a3360be4b))
+* **api:** api update ([c4bd9ea](https://github.com/Finch-API/finch-api-python/commit/c4bd9ea002acfc7aec3f1413d97f71040000e0c9))
+* **api:** api update ([0a947a8](https://github.com/Finch-API/finch-api-python/commit/0a947a818fb4b1ccfe17cf7ee7a21b6d3c9d1bcc))
+* **api:** api update ([9736c48](https://github.com/Finch-API/finch-api-python/commit/9736c482b0e58023b806d55096a7d271395efdbb))
+* **api:** api update ([c6631fc](https://github.com/Finch-API/finch-api-python/commit/c6631fc8d74f89931be556746c6ce67e4cb62867))
+* **api:** manual updates ([7708a43](https://github.com/Finch-API/finch-api-python/commit/7708a432267ae51d4ec98f21747c7fa5d7364b8c))
+* **client:** add custom JSON encoder for extended type support ([02cb5a0](https://github.com/Finch-API/finch-api-python/commit/02cb5a0bdcdbd8b4652937928ca7d0b336f6c53c))
+* **internal/types:** support eagerly validating pydantic iterators ([04753d4](https://github.com/Finch-API/finch-api-python/commit/04753d43634c69c6928d230c5c60c4846de1d536))
+* **internal:** implement indices array format for query and form serialization ([a8f9575](https://github.com/Finch-API/finch-api-python/commit/a8f9575597da48d407feac3c4d13d592b4241192))
+* support setting headers via env ([e3efcee](https://github.com/Finch-API/finch-api-python/commit/e3efceee56e129cc009ba0124341b49ad808f283))
+
+
+### Bug Fixes
+
+* **aliases:** resolve broken types for alias methods with pagination ([f22aab4](https://github.com/Finch-API/finch-api-python/commit/f22aab4df6b44baaf33724a64c18351a8902a58f))
+* **api:** remove invalid transform config ([565de84](https://github.com/Finch-API/finch-api-python/commit/565de8480f61bf07d5dbd0fb39fbb8b4f5ea9671))
+* **auth:** prioritize first auth header ([7946837](https://github.com/Finch-API/finch-api-python/commit/79468370cad93a682716afaa40d68e9c76994ff8))
+* **client:** add missing f-string prefix in file type error message ([99e028e](https://github.com/Finch-API/finch-api-python/commit/99e028ee64f045980b7245948adc86b02ffeb63f))
+* **client:** preserve hardcoded query params when merging with user params ([e9413d1](https://github.com/Finch-API/finch-api-python/commit/e9413d1d2f5684edd21808cb199e7b4cae9375f6))
+* **deps:** bump minimum typing-extensions version ([16af387](https://github.com/Finch-API/finch-api-python/commit/16af387fd95f0207db3ce4a072cab0946ce977af))
+* **docs:** fix mcp installation instructions for remote servers ([298ddec](https://github.com/Finch-API/finch-api-python/commit/298ddec8fded9a72146800253d644cb96227cbde))
+* ensure file data are only sent as 1 parameter ([028a805](https://github.com/Finch-API/finch-api-python/commit/028a8051485aa5ef15c6f894ac20f11ba588211c))
+* **pydantic:** do not pass `by_alias` unless set ([399bc94](https://github.com/Finch-API/finch-api-python/commit/399bc94cf48e0518f87b239ead5e869d66b03fce))
+* sanitize endpoint path params ([896338f](https://github.com/Finch-API/finch-api-python/commit/896338f100cb035ad2ff29d9c7f199836aafe85c))
+* **tests:** skip broken date validation test ([e22eb0f](https://github.com/Finch-API/finch-api-python/commit/e22eb0ffed3e42143600c931f2ab5b342160230c))
+* use correct field name format for multipart file arrays ([f952a4d](https://github.com/Finch-API/finch-api-python/commit/f952a4d765d4295cbc6474787fa67b9dfa1fd19f))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([4c5544c](https://github.com/Finch-API/finch-api-python/commit/4c5544ca2e32e65798b720cd89f9f3a3b5c8cbc7))
+
+
+### Chores
+
+* **auth:** remove custom header handling code ([#692](https://github.com/Finch-API/finch-api-python/issues/692)) ([d64958b](https://github.com/Finch-API/finch-api-python/commit/d64958b1d3fb1ffbc25ea0d7785b838198b2fbff))
+* **ci:** skip lint on metadata-only changes ([2f97b57](https://github.com/Finch-API/finch-api-python/commit/2f97b57c54b536e47a0117d22ecbe1330532028b))
+* **ci:** skip uploading artifacts on stainless-internal branches ([0d13335](https://github.com/Finch-API/finch-api-python/commit/0d13335d29a546c8cc94e67b59c19835821f974e))
+* **ci:** upgrade `actions/github-script` ([f342729](https://github.com/Finch-API/finch-api-python/commit/f3427295a99f7aa4a45412f699ec6b3cc41b16c2))
+* format all `api.md` files ([8555964](https://github.com/Finch-API/finch-api-python/commit/8555964275d168e400ef190422baee5a1983eeb1))
+* **internal:** add request options to SSE classes ([977dcfa](https://github.com/Finch-API/finch-api-python/commit/977dcfa5e7da78f0d4b465843e52a4fd2999799b))
+* **internal:** bump dependencies ([0b67a64](https://github.com/Finch-API/finch-api-python/commit/0b67a64b36f6824c1000d126e5ed707e495c3c59))
+* **internal:** codegen related update ([94aae5c](https://github.com/Finch-API/finch-api-python/commit/94aae5c36d464596cda9c899f64be67959fd9cb5))
+* **internal:** codegen related update ([b746d12](https://github.com/Finch-API/finch-api-python/commit/b746d12f98b1fcb287bf1b7844fc8a2d864a7d86))
+* **internal:** fix lint error on Python 3.14 ([b0f5ba3](https://github.com/Finch-API/finch-api-python/commit/b0f5ba3c117a989524c31e6c62ab9215f98fccd2))
+* **internal:** make `test_proxy_environment_variables` more resilient ([e33584f](https://github.com/Finch-API/finch-api-python/commit/e33584fc7bc4aaaa73377f8436f9858190266236))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([9f092c7](https://github.com/Finch-API/finch-api-python/commit/9f092c7d989fbe863c8d8624238694c564a871f0))
+* **internal:** more robust bootstrap script ([524ba9e](https://github.com/Finch-API/finch-api-python/commit/524ba9ee8dacdeb0cb810b409d9de754df330202))
+* **internal:** reformat pyproject.toml ([d713cd0](https://github.com/Finch-API/finch-api-python/commit/d713cd0cebe21fbeea5e46f075c3bd7eb9f4fbe0))
+* **internal:** tweak CI branches ([9e540f1](https://github.com/Finch-API/finch-api-python/commit/9e540f1c1e03cd4099b4b7338fc689c569bd8e54))
+* **internal:** update gitignore ([fd09507](https://github.com/Finch-API/finch-api-python/commit/fd09507b7fce652401ad9b70288ecd584810a91c))
+* **tests:** bump steady to v0.19.4 ([bfdc74c](https://github.com/Finch-API/finch-api-python/commit/bfdc74c110317db9f811a74dffe77401972f2886))
+* **tests:** bump steady to v0.19.5 ([2822044](https://github.com/Finch-API/finch-api-python/commit/2822044db38b48467ff6d82e060071833d2a4940))
+* **tests:** bump steady to v0.19.6 ([b3457c1](https://github.com/Finch-API/finch-api-python/commit/b3457c13fc3dcbe72cfb4adba20f064785e54e1e))
+* **tests:** bump steady to v0.19.7 ([634c5ef](https://github.com/Finch-API/finch-api-python/commit/634c5ef26def74ca00f796e01cdd1412e10e7f82))
+* **tests:** bump steady to v0.20.1 ([f92438d](https://github.com/Finch-API/finch-api-python/commit/f92438d4a64c8b830068bed2ee9b6ec45a3d9562))
+* **tests:** bump steady to v0.20.2 ([2abc18d](https://github.com/Finch-API/finch-api-python/commit/2abc18d84f6101550cf5d898cf5d5492f00e08fa))
+* **tests:** bump steady to v0.22.1 ([78e1421](https://github.com/Finch-API/finch-api-python/commit/78e14212421f1cb9ad536fb94b4f3992800d5cee))
+* update mock server docs ([7891a91](https://github.com/Finch-API/finch-api-python/commit/7891a91c042ae55b9aeaec5980b81197b8692039))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([8ff1f27](https://github.com/Finch-API/finch-api-python/commit/8ff1f27fe2442bfdc34937c1595fd23d2db9a60d))
+
 ## 1.44.1 (2026-01-16)
 
 Full Changelog: [v1.44.0...v1.44.1](https://github.com/Finch-API/finch-api-python/compare/v1.44.0...v1.44.1)

@@ -57,6 +57,7 @@ class Sessions(SyncAPIResource):
                 "individual",
                 "payment",
                 "pay_statement",
+                "recordkeeping",
                 "ssn",
             ]
         ],
@@ -81,7 +82,9 @@ class Sessions(SyncAPIResource):
 
           customer_name: Name of the customer
 
-          products: The Finch products to request access to
+          products: The Finch products to request access to. Use `benefits` to access deductions
+              endpoints — `deduction` is a deprecated alias that is still accepted but should
+              not be combined with `benefits`.
 
           customer_email: Email address of the customer
 
@@ -121,7 +124,11 @@ class Sessions(SyncAPIResource):
                 session_new_params.SessionNewParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=SessionNewResponse,
         )
@@ -143,6 +150,7 @@ class Sessions(SyncAPIResource):
                     "individual",
                     "payment",
                     "pay_statement",
+                    "recordkeeping",
                     "ssn",
                 ]
             ]
@@ -165,7 +173,9 @@ class Sessions(SyncAPIResource):
           minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
-          products: The products to request access to (optional for reauthentication)
+          products: The products to request access to (optional for reauthentication). Use
+              `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+              that is still accepted but should not be combined with `benefits`.
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
@@ -189,7 +199,11 @@ class Sessions(SyncAPIResource):
                 session_reauthenticate_params.SessionReauthenticateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=SessionReauthenticateResponse,
         )
@@ -231,6 +245,7 @@ class AsyncSessions(AsyncAPIResource):
                 "individual",
                 "payment",
                 "pay_statement",
+                "recordkeeping",
                 "ssn",
             ]
         ],
@@ -255,7 +270,9 @@ class AsyncSessions(AsyncAPIResource):
 
           customer_name: Name of the customer
 
-          products: The Finch products to request access to
+          products: The Finch products to request access to. Use `benefits` to access deductions
+              endpoints — `deduction` is a deprecated alias that is still accepted but should
+              not be combined with `benefits`.
 
           customer_email: Email address of the customer
 
@@ -295,7 +312,11 @@ class AsyncSessions(AsyncAPIResource):
                 session_new_params.SessionNewParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=SessionNewResponse,
         )
@@ -317,6 +338,7 @@ class AsyncSessions(AsyncAPIResource):
                     "individual",
                     "payment",
                     "pay_statement",
+                    "recordkeeping",
                     "ssn",
                 ]
             ]
@@ -339,7 +361,9 @@ class AsyncSessions(AsyncAPIResource):
           minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
               days)
 
-          products: The products to request access to (optional for reauthentication)
+          products: The products to request access to (optional for reauthentication). Use
+              `benefits` to access deductions endpoints — `deduction` is a deprecated alias
+              that is still accepted but should not be combined with `benefits`.
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
@@ -363,7 +387,11 @@ class AsyncSessions(AsyncAPIResource):
                 session_reauthenticate_params.SessionReauthenticateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"basic_auth": True},
             ),
             cast_to=SessionReauthenticateResponse,
         )

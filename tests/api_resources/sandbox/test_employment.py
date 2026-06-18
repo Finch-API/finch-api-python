@@ -33,7 +33,7 @@ class TestEmployment:
             custom_fields=[
                 {
                     "name": "name",
-                    "value": {},
+                    "value": "string",
                 }
             ],
             department={"name": "name"},
@@ -44,6 +44,7 @@ class TestEmployment:
             employment_status="active",
             end_date="end_date",
             first_name="first_name",
+            flsa_status="exempt",
             income={
                 "amount": 0,
                 "currency": "currency",
@@ -74,7 +75,7 @@ class TestEmployment:
             manager={"id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
             middle_name="middle_name",
             source_id="source_id",
-            start_date="start_date",
+            start_date="3/4/2020",
             title="title",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
@@ -131,7 +132,7 @@ class TestAsyncEmployment:
             custom_fields=[
                 {
                     "name": "name",
-                    "value": {},
+                    "value": "string",
                 }
             ],
             department={"name": "name"},
@@ -142,6 +143,7 @@ class TestAsyncEmployment:
             employment_status="active",
             end_date="end_date",
             first_name="first_name",
+            flsa_status="exempt",
             income={
                 "amount": 0,
                 "currency": "currency",
@@ -172,7 +174,7 @@ class TestAsyncEmployment:
             manager={"id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"},
             middle_name="middle_name",
             source_id="source_id",
-            start_date="start_date",
+            start_date="3/4/2020",
             title="title",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])

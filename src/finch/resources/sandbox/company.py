@@ -101,7 +101,11 @@ class Company(SyncAPIResource):
                 company_update_params.CompanyUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=CompanyUpdateResponse,
         )
@@ -188,7 +192,11 @@ class AsyncCompany(AsyncAPIResource):
                 company_update_params.CompanyUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=CompanyUpdateResponse,
         )

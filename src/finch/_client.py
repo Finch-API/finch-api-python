@@ -21,8 +21,13 @@ from ._types import (
     RequestOptions,
     not_given,
 )
-from ._utils import is_given, get_async_library
+from ._utils import (
+    is_given,
+    is_mapping_t,
+    get_async_library,
+)
 from ._compat import cached_property
+from ._models import SecurityOptions
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
@@ -117,6 +122,15 @@ class Finch(SyncAPIClient):
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
 
+        custom_headers_env = os.environ.get("FINCH_CUSTOM_HEADERS")
+        if custom_headers_env is not None:
+            parsed: dict[str, str] = {}
+            for line in custom_headers_env.split("\n"):
+                colon = line.find(":")
+                if colon >= 0:
+                    parsed[line[:colon].strip()] = line[colon + 1 :].strip()
+            default_headers = {**parsed, **(default_headers if is_mapping_t(default_headers) else {})}
+
         super().__init__(
             version=__version__,
             base_url=base_url,
@@ -201,14 +215,16 @@ class Finch(SyncAPIClient):
     def qs(self) -> Querystring:
         return Querystring(array_format="brackets")
 
-    @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        if self._bearer_auth:
-            return self._bearer_auth
-        if self._basic_auth:
-            return self._basic_auth
-        return {}
+    def _auth_headers(self, security: SecurityOptions) -> dict[str, str]:
+        headers: dict[str, str] = {}
+        if security.get("bearer_auth", False):
+            for key, value in self._bearer_auth.items():
+                headers.setdefault(key, value)
+        if security.get("basic_auth", False):
+            for key, value in self._basic_auth.items():
+                headers.setdefault(key, value)
+        return headers
 
     @property
     def _bearer_auth(self) -> dict[str, str]:
@@ -460,6 +476,15 @@ class AsyncFinch(AsyncAPIClient):
         if base_url is None:
             base_url = f"https://api.tryfinch.com"
 
+        custom_headers_env = os.environ.get("FINCH_CUSTOM_HEADERS")
+        if custom_headers_env is not None:
+            parsed: dict[str, str] = {}
+            for line in custom_headers_env.split("\n"):
+                colon = line.find(":")
+                if colon >= 0:
+                    parsed[line[:colon].strip()] = line[colon + 1 :].strip()
+            default_headers = {**parsed, **(default_headers if is_mapping_t(default_headers) else {})}
+
         super().__init__(
             version=__version__,
             base_url=base_url,
@@ -544,14 +569,16 @@ class AsyncFinch(AsyncAPIClient):
     def qs(self) -> Querystring:
         return Querystring(array_format="brackets")
 
-    @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        if self._bearer_auth:
-            return self._bearer_auth
-        if self._basic_auth:
-            return self._basic_auth
-        return {}
+    def _auth_headers(self, security: SecurityOptions) -> dict[str, str]:
+        headers: dict[str, str] = {}
+        if security.get("bearer_auth", False):
+            for key, value in self._bearer_auth.items():
+                headers.setdefault(key, value)
+        if security.get("basic_auth", False):
+            for key, value in self._basic_auth.items():
+                headers.setdefault(key, value)
+        return headers
 
     @property
     def _bearer_auth(self) -> dict[str, str]:

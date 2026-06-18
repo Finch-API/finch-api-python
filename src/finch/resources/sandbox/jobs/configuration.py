@@ -54,7 +54,11 @@ class Configuration(SyncAPIResource):
         return self._get(
             "/sandbox/jobs/configuration",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=ConfigurationRetrieveResponse,
         )
@@ -93,7 +97,11 @@ class Configuration(SyncAPIResource):
                 configuration_update_params.ConfigurationUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=SandboxJobConfiguration,
         )
@@ -133,7 +141,11 @@ class AsyncConfiguration(AsyncAPIResource):
         return await self._get(
             "/sandbox/jobs/configuration",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=ConfigurationRetrieveResponse,
         )
@@ -172,7 +184,11 @@ class AsyncConfiguration(AsyncAPIResource):
                 configuration_update_params.ConfigurationUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                security={"bearer_auth": True},
             ),
             cast_to=SandboxJobConfiguration,
         )

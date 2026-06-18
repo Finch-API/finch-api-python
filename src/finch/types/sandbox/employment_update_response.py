@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal
 
 from ..income import Income
@@ -13,7 +13,7 @@ __all__ = ["EmploymentUpdateResponse", "CustomField", "Department", "Employment"
 class CustomField(BaseModel):
     name: Optional[str] = None
 
-    value: Optional[object] = None
+    value: Union[Optional[str], Optional[List[object]], Optional[float], Optional[bool], Optional[object], None] = None
 
 
 class Department(BaseModel):
@@ -73,6 +73,12 @@ class EmploymentUpdateResponse(BaseModel):
 
     first_name: Optional[str] = None
     """The legal first name of the individual."""
+
+    flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] = None
+    """The FLSA status of the individual.
+
+    Available options: `exempt`, `non_exempt`, `unknown`.
+    """
 
     income_history: Optional[List[Optional[Income]]] = None
     """The array of income history."""

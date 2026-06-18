@@ -85,6 +85,7 @@ class PayStatements(SyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayStatementResponse,
             method="post",
@@ -156,6 +157,7 @@ class AsyncPayStatements(AsyncAPIResource):
                 query=maybe_transform(
                     {"entity_ids": entity_ids}, pay_statement_retrieve_many_params.PayStatementRetrieveManyParams
                 ),
+                security={"bearer_auth": True},
             ),
             model=PayStatementResponse,
             method="post",

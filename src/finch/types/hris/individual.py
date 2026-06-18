@@ -6,22 +6,28 @@ from typing_extensions import Literal, TypeAlias
 from ..._models import BaseModel
 from ..location import Location
 
-__all__ = ["Individual", "UnionMember0", "UnionMember0PhoneNumber", "UnionMember0Email", "BatchError"]
+__all__ = [
+    "Individual",
+    "IndividualResponseBody",
+    "IndividualResponseBodyPhoneNumber",
+    "IndividualResponseBodyEmail",
+    "BatchError",
+]
 
 
-class UnionMember0PhoneNumber(BaseModel):
+class IndividualResponseBodyPhoneNumber(BaseModel):
     data: Optional[str] = None
 
     type: Optional[Literal["work", "personal"]] = None
 
 
-class UnionMember0Email(BaseModel):
+class IndividualResponseBodyEmail(BaseModel):
     data: str
 
     type: Optional[Literal["work", "personal"]] = None
 
 
-class UnionMember0(BaseModel):
+class IndividualResponseBody(BaseModel):
     id: str
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
@@ -53,14 +59,14 @@ class UnionMember0(BaseModel):
     middle_name: Optional[str] = None
     """The legal middle name of the individual."""
 
-    phone_numbers: Optional[List[Optional[UnionMember0PhoneNumber]]] = None
+    phone_numbers: Optional[List[Optional[IndividualResponseBodyPhoneNumber]]] = None
 
     preferred_name: Optional[str] = None
     """The preferred name of the individual."""
 
     residence: Optional[Location] = None
 
-    emails: Optional[List[UnionMember0Email]] = None
+    emails: Optional[List[IndividualResponseBodyEmail]] = None
 
     encrypted_ssn: Optional[str] = None
     """Social Security Number of the individual in **encrypted** format.
@@ -88,4 +94,4 @@ class BatchError(BaseModel):
     finch_code: Optional[str] = None
 
 
-Individual: TypeAlias = Union[UnionMember0, BatchError]
+Individual: TypeAlias = Union[IndividualResponseBody, BatchError]
