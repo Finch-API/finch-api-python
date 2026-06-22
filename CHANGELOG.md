@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0.0 (2026-06-22)
+
+Full Changelog: [v1.46.0...v2.0.0](https://github.com/Finch-API/finch-api-python/compare/v1.46.0...v2.0.0)
+
+### Bug Fixes
+
+* **payroll:** pay_statement_item is now a direct subresource of hris instead of company ([f8194d7](https://github.com/Finch-API/finch-api-python/commit/f8194d748c7b37fa624a3ca36f0f29b6243aa7d5))
+
 ## 1.46.0 (2026-06-22)
 
 Full Changelog: [v1.45.0...v1.46.0](https://github.com/Finch-API/finch-api-python/compare/v1.45.0...v1.46.0)
