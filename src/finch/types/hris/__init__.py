@@ -15,6 +15,7 @@ from .benefits_support import BenefitsSupport as BenefitsSupport
 from .benefit_frequency import BenefitFrequency as BenefitFrequency
 from .document_response import DocumentResponse as DocumentResponse
 from .supported_benefit import SupportedBenefit as SupportedBenefit
+from .pay_statement_data import PayStatementData as PayStatementData
 from .benefit_list_params import BenefitListParams as BenefitListParams
 from .individual_response import IndividualResponse as IndividualResponse
 from .payment_list_params import PaymentListParams as PaymentListParams
@@ -32,7 +33,6 @@ from .document_retreive_params import DocumentRetreiveParams as DocumentRetreive
 from .employment_data_response import EmploymentDataResponse as EmploymentDataResponse
 from .support_per_benefit_type import SupportPerBenefitType as SupportPerBenefitType
 from .document_retreive_response import DocumentRetreiveResponse as DocumentRetreiveResponse
-from .pay_statement_response_body import PayStatementResponseBody as PayStatementResponseBody
 from .benefit_features_and_operations import BenefitFeaturesAndOperations as BenefitFeaturesAndOperations
 from .employment_retrieve_many_params import EmploymentRetrieveManyParams as EmploymentRetrieveManyParams
 from .individual_retrieve_many_params import IndividualRetrieveManyParams as IndividualRetrieveManyParams

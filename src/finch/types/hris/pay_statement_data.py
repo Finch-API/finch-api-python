@@ -5,7 +5,7 @@ from typing import List, Optional
 from ..._models import BaseModel
 from .pay_statement import PayStatement
 
-__all__ = ["PayStatementResponseBody", "Paging"]
+__all__ = ["PayStatementData", "Paging"]
 
 
 class Paging(BaseModel):
@@ -16,7 +16,7 @@ class Paging(BaseModel):
     """The total number of elements for the entire query (not just the given page)"""
 
 
-class PayStatementResponseBody(BaseModel):
+class PayStatementData(BaseModel):
     paging: Paging
 
     pay_statements: List[PayStatement]
