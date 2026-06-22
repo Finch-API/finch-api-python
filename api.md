@@ -130,9 +130,9 @@ Types:
 ```python
 from finch.types.hris import (
     PayStatement,
+    PayStatementData,
     PayStatementDataSyncInProgress,
     PayStatementResponse,
-    PayStatementResponseBody,
 )
 ```
 
