@@ -6,8 +6,8 @@ from typing import List, Union
 from datetime import date
 from typing_extensions import Literal, Annotated, TypedDict
 
-from ...._types import SequenceNotStr
-from ...._utils import PropertyInfo
+from ..._types import SequenceNotStr
+from ..._utils import PropertyInfo
 
 __all__ = ["PayStatementItemListParams"]
 

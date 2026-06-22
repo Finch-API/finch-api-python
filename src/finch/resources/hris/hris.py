@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+from .company import (
+    CompanyResource,
+    AsyncCompanyResource,
+    CompanyResourceWithRawResponse,
+    AsyncCompanyResourceWithRawResponse,
+    CompanyResourceWithStreamingResponse,
+    AsyncCompanyResourceWithStreamingResponse,
+)
 from .payments import (
     Payments,
     AsyncPayments,
@@ -52,14 +60,6 @@ from .pay_statements import (
     PayStatementsWithStreamingResponse,
     AsyncPayStatementsWithStreamingResponse,
 )
-from .company.company import (
-    CompanyResource,
-    AsyncCompanyResource,
-    CompanyResourceWithRawResponse,
-    AsyncCompanyResourceWithRawResponse,
-    CompanyResourceWithStreamingResponse,
-    AsyncCompanyResourceWithStreamingResponse,
-)
 from .benefits.benefits import (
     Benefits,
     AsyncBenefits,
@@ -67,6 +67,14 @@ from .benefits.benefits import (
     AsyncBenefitsWithRawResponse,
     BenefitsWithStreamingResponse,
     AsyncBenefitsWithStreamingResponse,
+)
+from .pay_statement_item.pay_statement_item import (
+    PayStatementItem,
+    AsyncPayStatementItem,
+    PayStatementItemWithRawResponse,
+    AsyncPayStatementItemWithRawResponse,
+    PayStatementItemWithStreamingResponse,
+    AsyncPayStatementItemWithStreamingResponse,
 )
 
 __all__ = ["HRIS", "AsyncHRIS"]
@@ -76,6 +84,10 @@ class HRIS(SyncAPIResource):
     @cached_property
     def company(self) -> CompanyResource:
         return CompanyResource(self._client)
+
+    @cached_property
+    def pay_statement_item(self) -> PayStatementItem:
+        return PayStatementItem(self._client)
 
     @cached_property
     def directory(self) -> Directory:
@@ -129,6 +141,10 @@ class AsyncHRIS(AsyncAPIResource):
     @cached_property
     def company(self) -> AsyncCompanyResource:
         return AsyncCompanyResource(self._client)
+
+    @cached_property
+    def pay_statement_item(self) -> AsyncPayStatementItem:
+        return AsyncPayStatementItem(self._client)
 
     @cached_property
     def directory(self) -> AsyncDirectory:
@@ -187,6 +203,10 @@ class HRISWithRawResponse:
         return CompanyResourceWithRawResponse(self._hris.company)
 
     @cached_property
+    def pay_statement_item(self) -> PayStatementItemWithRawResponse:
+        return PayStatementItemWithRawResponse(self._hris.pay_statement_item)
+
+    @cached_property
     def directory(self) -> DirectoryWithRawResponse:
         return DirectoryWithRawResponse(self._hris.directory)
 
@@ -222,6 +242,10 @@ class AsyncHRISWithRawResponse:
     @cached_property
     def company(self) -> AsyncCompanyResourceWithRawResponse:
         return AsyncCompanyResourceWithRawResponse(self._hris.company)
+
+    @cached_property
+    def pay_statement_item(self) -> AsyncPayStatementItemWithRawResponse:
+        return AsyncPayStatementItemWithRawResponse(self._hris.pay_statement_item)
 
     @cached_property
     def directory(self) -> AsyncDirectoryWithRawResponse:
@@ -261,6 +285,10 @@ class HRISWithStreamingResponse:
         return CompanyResourceWithStreamingResponse(self._hris.company)
 
     @cached_property
+    def pay_statement_item(self) -> PayStatementItemWithStreamingResponse:
+        return PayStatementItemWithStreamingResponse(self._hris.pay_statement_item)
+
+    @cached_property
     def directory(self) -> DirectoryWithStreamingResponse:
         return DirectoryWithStreamingResponse(self._hris.directory)
 
@@ -296,6 +324,10 @@ class AsyncHRISWithStreamingResponse:
     @cached_property
     def company(self) -> AsyncCompanyResourceWithStreamingResponse:
         return AsyncCompanyResourceWithStreamingResponse(self._hris.company)
+
+    @cached_property
+    def pay_statement_item(self) -> AsyncPayStatementItemWithStreamingResponse:
+        return AsyncPayStatementItemWithStreamingResponse(self._hris.pay_statement_item)
 
     @cached_property
     def directory(self) -> AsyncDirectoryWithStreamingResponse:
