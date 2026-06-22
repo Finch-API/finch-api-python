@@ -4,9 +4,9 @@ from typing import Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from ....._models import BaseModel
+from ...._models import BaseModel
 
-__all__ = ["RuleCreateResponse", "Attributes", "Condition"]
+__all__ = ["RuleDeleteResponse", "Attributes", "Condition"]
 
 
 class Attributes(BaseModel):
@@ -31,7 +31,7 @@ class Condition(BaseModel):
     """The value of the field to be checked in the rule."""
 
 
-class RuleCreateResponse(BaseModel):
+class RuleDeleteResponse(BaseModel):
     id: Optional[str] = None
     """Finch id (uuidv4) for the rule."""
 
@@ -42,6 +42,9 @@ class RuleCreateResponse(BaseModel):
 
     created_at: Optional[datetime] = None
     """The datetime when the rule was created."""
+
+    deleted_at: Optional[datetime] = None
+    """The datetime when the rule was deleted."""
 
     effective_end_date: Optional[str] = None
     """Specifies when the rules should stop applying rules based on the date."""

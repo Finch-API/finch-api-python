@@ -10,7 +10,7 @@ import pytest
 from finch import Finch, AsyncFinch
 from tests.utils import assert_matches_type
 from finch.pagination import SyncResponsesPage, AsyncResponsesPage
-from finch.types.hris.company.pay_statement_item import (
+from finch.types.hris.pay_statement_item import (
     RuleListResponse,
     RuleCreateResponse,
     RuleDeleteResponse,
@@ -25,12 +25,12 @@ class TestRules:
 
     @parametrize
     def test_method_create(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.create()
+        rule = client.hris.pay_statement_item.rules.create()
         assert_matches_type(RuleCreateResponse, rule, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.create(
+        rule = client.hris.pay_statement_item.rules.create(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             attributes={"metadata": {"foo": "bar"}},
             conditions=[
@@ -48,7 +48,7 @@ class TestRules:
 
     @parametrize
     def test_raw_response_create(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.rules.with_raw_response.create()
+        response = client.hris.pay_statement_item.rules.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -57,7 +57,7 @@ class TestRules:
 
     @parametrize
     def test_streaming_response_create(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.rules.with_streaming_response.create() as response:
+        with client.hris.pay_statement_item.rules.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -68,14 +68,14 @@ class TestRules:
 
     @parametrize
     def test_method_update(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.update(
+        rule = client.hris.pay_statement_item.rules.update(
             rule_id="rule_id",
         )
         assert_matches_type(RuleUpdateResponse, rule, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.update(
+        rule = client.hris.pay_statement_item.rules.update(
             rule_id="rule_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             optional_property={},
@@ -84,7 +84,7 @@ class TestRules:
 
     @parametrize
     def test_raw_response_update(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.rules.with_raw_response.update(
+        response = client.hris.pay_statement_item.rules.with_raw_response.update(
             rule_id="rule_id",
         )
 
@@ -95,7 +95,7 @@ class TestRules:
 
     @parametrize
     def test_streaming_response_update(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.rules.with_streaming_response.update(
+        with client.hris.pay_statement_item.rules.with_streaming_response.update(
             rule_id="rule_id",
         ) as response:
             assert not response.is_closed
@@ -109,25 +109,25 @@ class TestRules:
     @parametrize
     def test_path_params_update(self, client: Finch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
-            client.hris.company.pay_statement_item.rules.with_raw_response.update(
+            client.hris.pay_statement_item.rules.with_raw_response.update(
                 rule_id="",
             )
 
     @parametrize
     def test_method_list(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.list()
+        rule = client.hris.pay_statement_item.rules.list()
         assert_matches_type(SyncResponsesPage[RuleListResponse], rule, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.list(
+        rule = client.hris.pay_statement_item.rules.list(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(SyncResponsesPage[RuleListResponse], rule, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.rules.with_raw_response.list()
+        response = client.hris.pay_statement_item.rules.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -136,7 +136,7 @@ class TestRules:
 
     @parametrize
     def test_streaming_response_list(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.rules.with_streaming_response.list() as response:
+        with client.hris.pay_statement_item.rules.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -147,14 +147,14 @@ class TestRules:
 
     @parametrize
     def test_method_delete(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.delete(
+        rule = client.hris.pay_statement_item.rules.delete(
             rule_id="rule_id",
         )
         assert_matches_type(RuleDeleteResponse, rule, path=["response"])
 
     @parametrize
     def test_method_delete_with_all_params(self, client: Finch) -> None:
-        rule = client.hris.company.pay_statement_item.rules.delete(
+        rule = client.hris.pay_statement_item.rules.delete(
             rule_id="rule_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
@@ -162,7 +162,7 @@ class TestRules:
 
     @parametrize
     def test_raw_response_delete(self, client: Finch) -> None:
-        response = client.hris.company.pay_statement_item.rules.with_raw_response.delete(
+        response = client.hris.pay_statement_item.rules.with_raw_response.delete(
             rule_id="rule_id",
         )
 
@@ -173,7 +173,7 @@ class TestRules:
 
     @parametrize
     def test_streaming_response_delete(self, client: Finch) -> None:
-        with client.hris.company.pay_statement_item.rules.with_streaming_response.delete(
+        with client.hris.pay_statement_item.rules.with_streaming_response.delete(
             rule_id="rule_id",
         ) as response:
             assert not response.is_closed
@@ -187,7 +187,7 @@ class TestRules:
     @parametrize
     def test_path_params_delete(self, client: Finch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
-            client.hris.company.pay_statement_item.rules.with_raw_response.delete(
+            client.hris.pay_statement_item.rules.with_raw_response.delete(
                 rule_id="",
             )
 
@@ -199,12 +199,12 @@ class TestAsyncRules:
 
     @parametrize
     async def test_method_create(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.create()
+        rule = await async_client.hris.pay_statement_item.rules.create()
         assert_matches_type(RuleCreateResponse, rule, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.create(
+        rule = await async_client.hris.pay_statement_item.rules.create(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             attributes={"metadata": {"foo": "bar"}},
             conditions=[
@@ -222,7 +222,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.create()
+        response = await async_client.hris.pay_statement_item.rules.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -231,7 +231,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.create() as response:
+        async with async_client.hris.pay_statement_item.rules.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -242,14 +242,14 @@ class TestAsyncRules:
 
     @parametrize
     async def test_method_update(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.update(
+        rule = await async_client.hris.pay_statement_item.rules.update(
             rule_id="rule_id",
         )
         assert_matches_type(RuleUpdateResponse, rule, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.update(
+        rule = await async_client.hris.pay_statement_item.rules.update(
             rule_id="rule_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
             optional_property={},
@@ -258,7 +258,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.update(
+        response = await async_client.hris.pay_statement_item.rules.with_raw_response.update(
             rule_id="rule_id",
         )
 
@@ -269,7 +269,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.update(
+        async with async_client.hris.pay_statement_item.rules.with_streaming_response.update(
             rule_id="rule_id",
         ) as response:
             assert not response.is_closed
@@ -283,25 +283,25 @@ class TestAsyncRules:
     @parametrize
     async def test_path_params_update(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
-            await async_client.hris.company.pay_statement_item.rules.with_raw_response.update(
+            await async_client.hris.pay_statement_item.rules.with_raw_response.update(
                 rule_id="",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.list()
+        rule = await async_client.hris.pay_statement_item.rules.list()
         assert_matches_type(AsyncResponsesPage[RuleListResponse], rule, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.list(
+        rule = await async_client.hris.pay_statement_item.rules.list(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
         assert_matches_type(AsyncResponsesPage[RuleListResponse], rule, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.list()
+        response = await async_client.hris.pay_statement_item.rules.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -310,7 +310,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.list() as response:
+        async with async_client.hris.pay_statement_item.rules.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -321,14 +321,14 @@ class TestAsyncRules:
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.delete(
+        rule = await async_client.hris.pay_statement_item.rules.delete(
             rule_id="rule_id",
         )
         assert_matches_type(RuleDeleteResponse, rule, path=["response"])
 
     @parametrize
     async def test_method_delete_with_all_params(self, async_client: AsyncFinch) -> None:
-        rule = await async_client.hris.company.pay_statement_item.rules.delete(
+        rule = await async_client.hris.pay_statement_item.rules.delete(
             rule_id="rule_id",
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
         )
@@ -336,7 +336,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncFinch) -> None:
-        response = await async_client.hris.company.pay_statement_item.rules.with_raw_response.delete(
+        response = await async_client.hris.pay_statement_item.rules.with_raw_response.delete(
             rule_id="rule_id",
         )
 
@@ -347,7 +347,7 @@ class TestAsyncRules:
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncFinch) -> None:
-        async with async_client.hris.company.pay_statement_item.rules.with_streaming_response.delete(
+        async with async_client.hris.pay_statement_item.rules.with_streaming_response.delete(
             rule_id="rule_id",
         ) as response:
             assert not response.is_closed
@@ -361,6 +361,6 @@ class TestAsyncRules:
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncFinch) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `rule_id` but received ''"):
-            await async_client.hris.company.pay_statement_item.rules.with_raw_response.delete(
+            await async_client.hris.pay_statement_item.rules.with_raw_response.delete(
                 rule_id="",
             )

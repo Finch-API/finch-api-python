@@ -72,6 +72,14 @@ from .pay_statements import (
     PayStatementsWithStreamingResponse,
     AsyncPayStatementsWithStreamingResponse,
 )
+from .pay_statement_item import (
+    PayStatementItem,
+    AsyncPayStatementItem,
+    PayStatementItemWithRawResponse,
+    AsyncPayStatementItemWithRawResponse,
+    PayStatementItemWithStreamingResponse,
+    AsyncPayStatementItemWithStreamingResponse,
+)
 
 __all__ = [
     "CompanyResource",
@@ -80,6 +88,12 @@ __all__ = [
     "AsyncCompanyResourceWithRawResponse",
     "CompanyResourceWithStreamingResponse",
     "AsyncCompanyResourceWithStreamingResponse",
+    "PayStatementItem",
+    "AsyncPayStatementItem",
+    "PayStatementItemWithRawResponse",
+    "AsyncPayStatementItemWithRawResponse",
+    "PayStatementItemWithStreamingResponse",
+    "AsyncPayStatementItemWithStreamingResponse",
     "Directory",
     "AsyncDirectory",
     "DirectoryWithRawResponse",

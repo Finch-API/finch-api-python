@@ -4,9 +4,9 @@ from typing import Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from ....._models import BaseModel
+from ...._models import BaseModel
 
-__all__ = ["RuleListResponse", "Attributes", "Condition"]
+__all__ = ["RuleCreateResponse", "Attributes", "Condition"]
 
 
 class Attributes(BaseModel):
@@ -31,7 +31,7 @@ class Condition(BaseModel):
     """The value of the field to be checked in the rule."""
 
 
-class RuleListResponse(BaseModel):
+class RuleCreateResponse(BaseModel):
     id: Optional[str] = None
     """Finch id (uuidv4) for the rule."""
 
