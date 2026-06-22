@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from ....._types import SequenceNotStr
+from ...._types import SequenceNotStr
 
-__all__ = ["RuleListParams"]
+__all__ = ["RuleDeleteParams"]
 
 
-class RuleListParams(TypedDict, total=False):
+class RuleDeleteParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to retrieve rules for."""
+    """The entity IDs to delete the rule for."""

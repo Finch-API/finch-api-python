@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..... import _legacy_response
+from .... import _legacy_response
 from .rules import (
     Rules,
     AsyncRules,
@@ -17,15 +17,15 @@ from .rules import (
     RulesWithStreamingResponse,
     AsyncRulesWithStreamingResponse,
 )
-from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ....._utils import maybe_transform
-from ....._compat import cached_property
-from ....._resource import SyncAPIResource, AsyncAPIResource
-from ....._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
-from .....pagination import SyncResponsesPage, AsyncResponsesPage
-from ....._base_client import AsyncPaginator, make_request_options
-from .....types.hris.company import pay_statement_item_list_params
-from .....types.hris.company.pay_statement_item_list_response import PayStatementItemListResponse
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ...._utils import maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ....pagination import SyncResponsesPage, AsyncResponsesPage
+from ....types.hris import pay_statement_item_list_params
+from ...._base_client import AsyncPaginator, make_request_options
+from ....types.hris.pay_statement_item_list_response import PayStatementItemListResponse
 
 __all__ = ["PayStatementItem", "AsyncPayStatementItem"]
 
