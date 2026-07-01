@@ -44,7 +44,7 @@ class Earning(BaseModel):
     """
 
     name: Optional[str] = None
-    """The exact name of the deduction from the pay statement."""
+    """The exact name of the earning from the pay statement."""
 
     type: Optional[
         Literal[
