@@ -14,7 +14,7 @@ class DirectoryListParams(TypedDict, total=False):
     """The entity IDs to specify which entities' data to access."""
 
     limit: int
-    """Number of employees to return (defaults to all)"""
+    """Number of employees to return (defaults to 100, maximum 10000)"""
 
     offset: int
     """Index to start from (defaults to 0)"""

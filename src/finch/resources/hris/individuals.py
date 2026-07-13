@@ -43,9 +43,9 @@ class Individuals(SyncAPIResource):
     def retrieve_many(
         self,
         *,
+        requests: Iterable[individual_retrieve_many_params.Request],
         entity_ids: SequenceNotStr[str] | Omit = omit,
         options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
-        requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -57,6 +57,8 @@ class Individuals(SyncAPIResource):
         Read individual data, excluding income and employment data
 
         Args:
+          requests: The array of batch requests. Maximum 10000 items per request.
+
           entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
@@ -72,8 +74,8 @@ class Individuals(SyncAPIResource):
             page=SyncResponsesPage[IndividualResponse],
             body=maybe_transform(
                 {
-                    "options": options,
                     "requests": requests,
+                    "options": options,
                 },
                 individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),
@@ -115,9 +117,9 @@ class AsyncIndividuals(AsyncAPIResource):
     def retrieve_many(
         self,
         *,
+        requests: Iterable[individual_retrieve_many_params.Request],
         entity_ids: SequenceNotStr[str] | Omit = omit,
         options: Optional[individual_retrieve_many_params.Options] | Omit = omit,
-        requests: Iterable[individual_retrieve_many_params.Request] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,6 +131,8 @@ class AsyncIndividuals(AsyncAPIResource):
         Read individual data, excluding income and employment data
 
         Args:
+          requests: The array of batch requests. Maximum 10000 items per request.
+
           entity_ids: The entity IDs to specify which entities' data to access.
 
           extra_headers: Send extra headers
@@ -144,8 +148,8 @@ class AsyncIndividuals(AsyncAPIResource):
             page=AsyncResponsesPage[IndividualResponse],
             body=maybe_transform(
                 {
-                    "options": options,
                     "requests": requests,
+                    "options": options,
                 },
                 individual_retrieve_many_params.IndividualRetrieveManyParams,
             ),

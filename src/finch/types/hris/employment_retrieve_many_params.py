@@ -12,7 +12,7 @@ __all__ = ["EmploymentRetrieveManyParams", "Request"]
 
 class EmploymentRetrieveManyParams(TypedDict, total=False):
     requests: Required[Iterable[Request]]
-    """The array of batch requests."""
+    """The array of batch requests. Maximum 10000 items per request."""
 
     entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
@@ -20,9 +20,4 @@ class EmploymentRetrieveManyParams(TypedDict, total=False):
 
 class Request(TypedDict, total=False):
     individual_id: Required[str]
-    """A stable Finch `id` (UUID v4) for an individual in the company.
-
-    There is no limit to the number of `individual_id` to send per request. It is
-    preferantial to send all ids in a single request for Finch to optimize provider
-    rate-limits.
-    """
+    """A stable Finch `id` (UUID v4) for an individual in the company."""

@@ -59,7 +59,7 @@ class Directory(SyncAPIResource):
         Args:
           entity_ids: The entity IDs to specify which entities' data to access.
 
-          limit: Number of employees to return (defaults to all)
+          limit: Number of employees to return (defaults to 100, maximum 10000)
 
           offset: Index to start from (defaults to 0)
 
@@ -112,7 +112,7 @@ class Directory(SyncAPIResource):
         Args:
           entity_ids: The entity IDs to specify which entities' data to access.
 
-          limit: Number of employees to return (defaults to all)
+          limit: Number of employees to return (defaults to 100, maximum 10000)
 
           offset: Index to start from (defaults to 0)
 
@@ -174,7 +174,7 @@ class AsyncDirectory(AsyncAPIResource):
         Args:
           entity_ids: The entity IDs to specify which entities' data to access.
 
-          limit: Number of employees to return (defaults to all)
+          limit: Number of employees to return (defaults to 100, maximum 10000)
 
           offset: Index to start from (defaults to 0)
 
@@ -227,7 +227,7 @@ class AsyncDirectory(AsyncAPIResource):
         Args:
           entity_ids: The entity IDs to specify which entities' data to access.
 
-          limit: Number of employees to return (defaults to all)
+          limit: Number of employees to return (defaults to 100, maximum 10000)
 
           offset: Index to start from (defaults to 0)
 
