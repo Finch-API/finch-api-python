@@ -29,7 +29,7 @@ class TestDirectory:
     def test_method_list_with_all_params(self, client: Finch) -> None:
         directory = client.hris.directory.list(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-            limit=0,
+            limit=10000,
             offset=0,
         )
         assert_matches_type(SyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
@@ -66,7 +66,7 @@ class TestDirectory:
         with pytest.warns(DeprecationWarning):
             directory = client.hris.directory.list_individuals(
                 entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-                limit=0,
+                limit=10000,
                 offset=0,
             )
 
@@ -109,7 +109,7 @@ class TestAsyncDirectory:
     async def test_method_list_with_all_params(self, async_client: AsyncFinch) -> None:
         directory = await async_client.hris.directory.list(
             entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-            limit=0,
+            limit=10000,
             offset=0,
         )
         assert_matches_type(AsyncIndividualsPage[IndividualInDirectory], directory, path=["response"])
@@ -146,7 +146,7 @@ class TestAsyncDirectory:
         with pytest.warns(DeprecationWarning):
             directory = await async_client.hris.directory.list_individuals(
                 entity_ids=["550e8400-e29b-41d4-a716-446655440000"],
-                limit=0,
+                limit=10000,
                 offset=0,
             )
 

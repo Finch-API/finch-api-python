@@ -21,7 +21,7 @@ class TestPayStatements:
     @parametrize
     def test_method_retrieve_many(self, client: Finch) -> None:
         pay_statement = client.hris.pay_statements.retrieve_many(
-            requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+            requests=[{"payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142"}],
         )
         assert_matches_type(SyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
 
@@ -30,8 +30,8 @@ class TestPayStatements:
         pay_statement = client.hris.pay_statements.retrieve_many(
             requests=[
                 {
-                    "payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    "limit": 50,
+                    "payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142",
+                    "limit": 100,
                     "offset": 0,
                 }
             ],
@@ -42,7 +42,7 @@ class TestPayStatements:
     @parametrize
     def test_raw_response_retrieve_many(self, client: Finch) -> None:
         response = client.hris.pay_statements.with_raw_response.retrieve_many(
-            requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+            requests=[{"payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142"}],
         )
 
         assert response.is_closed is True
@@ -53,7 +53,7 @@ class TestPayStatements:
     @parametrize
     def test_streaming_response_retrieve_many(self, client: Finch) -> None:
         with client.hris.pay_statements.with_streaming_response.retrieve_many(
-            requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+            requests=[{"payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -72,7 +72,7 @@ class TestAsyncPayStatements:
     @parametrize
     async def test_method_retrieve_many(self, async_client: AsyncFinch) -> None:
         pay_statement = await async_client.hris.pay_statements.retrieve_many(
-            requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+            requests=[{"payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142"}],
         )
         assert_matches_type(AsyncResponsesPage[PayStatementResponse], pay_statement, path=["response"])
 
@@ -81,8 +81,8 @@ class TestAsyncPayStatements:
         pay_statement = await async_client.hris.pay_statements.retrieve_many(
             requests=[
                 {
-                    "payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-                    "limit": 50,
+                    "payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142",
+                    "limit": 100,
                     "offset": 0,
                 }
             ],
@@ -93,7 +93,7 @@ class TestAsyncPayStatements:
     @parametrize
     async def test_raw_response_retrieve_many(self, async_client: AsyncFinch) -> None:
         response = await async_client.hris.pay_statements.with_raw_response.retrieve_many(
-            requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+            requests=[{"payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142"}],
         )
 
         assert response.is_closed is True
@@ -104,7 +104,7 @@ class TestAsyncPayStatements:
     @parametrize
     async def test_streaming_response_retrieve_many(self, async_client: AsyncFinch) -> None:
         async with async_client.hris.pay_statements.with_streaming_response.retrieve_many(
-            requests=[{"payment_id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"}],
+            requests=[{"payment_id": "fc8b024e-d373-4c9c-80fc-f1625383d142"}],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

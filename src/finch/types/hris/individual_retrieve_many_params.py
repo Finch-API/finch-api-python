@@ -3,25 +3,26 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
 from ..._types import SequenceNotStr
 
-__all__ = ["IndividualRetrieveManyParams", "Options", "Request"]
+__all__ = ["IndividualRetrieveManyParams", "Request", "Options"]
 
 
 class IndividualRetrieveManyParams(TypedDict, total=False):
+    requests: Required[Iterable[Request]]
+    """The array of batch requests. Maximum 10000 items per request."""
+
     entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
 
     options: Optional[Options]
 
-    requests: Iterable[Request]
+
+class Request(TypedDict, total=False):
+    individual_id: Required[str]
 
 
 class Options(TypedDict, total=False):
     include: SequenceNotStr[str]
-
-
-class Request(TypedDict, total=False):
-    individual_id: str
