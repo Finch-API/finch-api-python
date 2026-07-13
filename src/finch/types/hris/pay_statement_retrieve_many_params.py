@@ -12,7 +12,7 @@ __all__ = ["PayStatementRetrieveManyParams", "Request"]
 
 class PayStatementRetrieveManyParams(TypedDict, total=False):
     requests: Required[Iterable[Request]]
-    """The array of batch requests."""
+    """The array of batch requests. Maximum 10 payment_ids per request."""
 
     entity_ids: SequenceNotStr[str]
     """The entity IDs to specify which entities' data to access."""
@@ -23,7 +23,7 @@ class Request(TypedDict, total=False):
     """A stable Finch `id` (UUID v4) for a payment."""
 
     limit: int
-    """Number of pay statements to return (defaults to all)."""
+    """Number of pay statements to return (defaults to 100, maximum 5000)."""
 
     offset: int
     """Index to start from."""

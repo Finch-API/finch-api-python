@@ -59,7 +59,7 @@ class PayStatements(SyncAPIResource):
         supports Benefits.
 
         Args:
-          requests: The array of batch requests.
+          requests: The array of batch requests. Maximum 10 payment_ids per request.
 
           entity_ids: The entity IDs to specify which entities' data to access.
 
@@ -131,7 +131,7 @@ class AsyncPayStatements(AsyncAPIResource):
         supports Benefits.
 
         Args:
-          requests: The array of batch requests.
+          requests: The array of batch requests. Maximum 10 payment_ids per request.
 
           entity_ids: The entity IDs to specify which entities' data to access.
 

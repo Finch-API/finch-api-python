@@ -56,7 +56,7 @@ class Employments(SyncAPIResource):
         Read individual employment and income data
 
         Args:
-          requests: The array of batch requests.
+          requests: The array of batch requests. Maximum 10000 items per request.
 
           entity_ids: The entity IDs to specify which entities' data to access.
 
@@ -123,7 +123,7 @@ class AsyncEmployments(AsyncAPIResource):
         Read individual employment and income data
 
         Args:
-          requests: The array of batch requests.
+          requests: The array of batch requests. Maximum 10000 items per request.
 
           entity_ids: The entity IDs to specify which entities' data to access.
 
