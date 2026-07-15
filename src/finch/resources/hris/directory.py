@@ -57,7 +57,8 @@ class Directory(SyncAPIResource):
         Read company directory and organization structure
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           limit: Number of employees to return (defaults to 100, maximum 10000)
 
@@ -110,7 +111,8 @@ class Directory(SyncAPIResource):
         Read company directory and organization structure
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           limit: Number of employees to return (defaults to 100, maximum 10000)
 
@@ -172,7 +174,8 @@ class AsyncDirectory(AsyncAPIResource):
         Read company directory and organization structure
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           limit: Number of employees to return (defaults to 100, maximum 10000)
 
@@ -225,7 +228,8 @@ class AsyncDirectory(AsyncAPIResource):
         Read company directory and organization structure
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           limit: Number of employees to return (defaults to 100, maximum 10000)
 

@@ -59,7 +59,8 @@ class Individuals(SyncAPIResource):
         Args:
           requests: The array of batch requests. Maximum 10000 items per request.
 
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -133,7 +134,8 @@ class AsyncIndividuals(AsyncAPIResource):
         Args:
           requests: The array of batch requests. Maximum 10000 items per request.
 
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 

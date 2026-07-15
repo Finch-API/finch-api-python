@@ -52,7 +52,8 @@ class CompanyResource(SyncAPIResource):
         Read basic company data
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -111,7 +112,8 @@ class AsyncCompanyResource(AsyncAPIResource):
         Read basic company data
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 

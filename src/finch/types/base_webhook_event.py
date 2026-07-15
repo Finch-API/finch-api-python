@@ -16,11 +16,7 @@ class BaseWebhookEvent(BaseModel):
     """
 
     company_id: str
-    """[DEPRECATED] Unique Finch ID of the company for which data has been updated.
-
-    Use `connection_id` instead to identify the connection associated with this
-    event.
-    """
+    """Unique Finch ID of the company for which data has been updated."""
 
     connection_id: Optional[str] = None
     """Unique Finch ID of the connection associated with the webhook event."""

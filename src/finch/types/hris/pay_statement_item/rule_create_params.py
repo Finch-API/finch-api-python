@@ -12,7 +12,10 @@ __all__ = ["RuleCreateParams", "Attributes", "Condition"]
 
 class RuleCreateParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to create the rule for."""
+    """The entity IDs to create the rule for.
+
+    Provide exactly one entity ID per request; a maximum of one is accepted.
+    """
 
     attributes: Attributes
     """Specifies the fields to be applied when the condition is met."""

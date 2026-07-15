@@ -11,4 +11,7 @@ __all__ = ["RuleListParams"]
 
 class RuleListParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to retrieve rules for."""
+    """The entity IDs to retrieve rules for.
+
+    Provide exactly one entity ID per request; a maximum of one is accepted.
+    """
