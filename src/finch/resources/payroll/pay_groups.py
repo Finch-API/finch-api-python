@@ -55,7 +55,8 @@ class PayGroups(SyncAPIResource):
         Read information from a single pay group
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -97,7 +98,8 @@ class PayGroups(SyncAPIResource):
         Read company pay groups and frequencies
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -165,7 +167,8 @@ class AsyncPayGroups(AsyncAPIResource):
         Read information from a single pay group
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -209,7 +212,8 @@ class AsyncPayGroups(AsyncAPIResource):
         Read company pay groups and frequencies
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 

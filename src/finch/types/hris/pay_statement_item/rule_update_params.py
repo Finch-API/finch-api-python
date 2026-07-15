@@ -12,6 +12,9 @@ __all__ = ["RuleUpdateParams"]
 
 class RuleUpdateParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to update the rule for."""
+    """The entity IDs to update the rule for.
+
+    Provide exactly one entity ID per request; a maximum of one is accepted.
+    """
 
     optional_property: Annotated[object, PropertyInfo(alias="optionalProperty")]

@@ -62,7 +62,8 @@ class Documents(SyncAPIResource):
         company-wide documents.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
@@ -122,7 +123,8 @@ class Documents(SyncAPIResource):
         specific document by its ID.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -194,7 +196,8 @@ class AsyncDocuments(AsyncAPIResource):
         company-wide documents.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individual_ids: Comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
@@ -254,7 +257,8 @@ class AsyncDocuments(AsyncAPIResource):
         specific document by its ID.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 

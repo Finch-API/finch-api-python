@@ -72,7 +72,8 @@ class Rules(SyncAPIResource):
         retrieved where pay statement item information is available.
 
         Args:
-          entity_ids: The entity IDs to create the rule for.
+          entity_ids: The entity IDs to create the rule for. Provide exactly one entity ID per
+              request; a maximum of one is accepted.
 
           attributes: Specifies the fields to be applied when the condition is met.
 
@@ -130,7 +131,8 @@ class Rules(SyncAPIResource):
         Update a rule for a pay statement item.
 
         Args:
-          entity_ids: The entity IDs to update the rule for.
+          entity_ids: The entity IDs to update the rule for. Provide exactly one entity ID per
+              request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -171,7 +173,8 @@ class Rules(SyncAPIResource):
         List all rules of a connection account.
 
         Args:
-          entity_ids: The entity IDs to retrieve rules for.
+          entity_ids: The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
+              a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -211,7 +214,8 @@ class Rules(SyncAPIResource):
         Delete a rule for a pay statement item.
 
         Args:
-          entity_ids: The entity IDs to delete the rule for.
+          entity_ids: The entity IDs to delete the rule for. Provide exactly one entity ID per
+              request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -280,7 +284,8 @@ class AsyncRules(AsyncAPIResource):
         retrieved where pay statement item information is available.
 
         Args:
-          entity_ids: The entity IDs to create the rule for.
+          entity_ids: The entity IDs to create the rule for. Provide exactly one entity ID per
+              request; a maximum of one is accepted.
 
           attributes: Specifies the fields to be applied when the condition is met.
 
@@ -338,7 +343,8 @@ class AsyncRules(AsyncAPIResource):
         Update a rule for a pay statement item.
 
         Args:
-          entity_ids: The entity IDs to update the rule for.
+          entity_ids: The entity IDs to update the rule for. Provide exactly one entity ID per
+              request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -381,7 +387,8 @@ class AsyncRules(AsyncAPIResource):
         List all rules of a connection account.
 
         Args:
-          entity_ids: The entity IDs to retrieve rules for.
+          entity_ids: The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
+              a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -421,7 +428,8 @@ class AsyncRules(AsyncAPIResource):
         Delete a rule for a pay statement item.
 
         Args:
-          entity_ids: The entity IDs to delete the rule for.
+          entity_ids: The entity IDs to delete the rule for. Provide exactly one entity ID per
+              request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 

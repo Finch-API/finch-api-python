@@ -12,7 +12,10 @@ __all__ = ["DocumentListParams"]
 
 class DocumentListParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to specify which entities' data to access."""
+    """The entity IDs to specify which entities' data to access.
+
+    Provide exactly one entity ID per request; a maximum of one is accepted.
+    """
 
     individual_ids: SequenceNotStr[str]
     """Comma-delimited list of stable Finch uuids for each individual.

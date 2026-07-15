@@ -69,7 +69,8 @@ class Individuals(SyncAPIResource):
         enrollments, but will continue to set the state of the existing enrollment.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individuals: Array of the individual_id to enroll and a configuration object.
 
@@ -115,7 +116,8 @@ class Individuals(SyncAPIResource):
         Lists individuals currently enrolled in a given deduction.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -159,7 +161,8 @@ class Individuals(SyncAPIResource):
         Get enrollment information for the given individuals.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
@@ -211,7 +214,8 @@ class Individuals(SyncAPIResource):
         Unenroll individuals from a deduction or contribution
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individual_ids: Array of individual_ids to unenroll.
 
@@ -285,7 +289,8 @@ class AsyncIndividuals(AsyncAPIResource):
         enrollments, but will continue to set the state of the existing enrollment.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individuals: Array of the individual_id to enroll and a configuration object.
 
@@ -331,7 +336,8 @@ class AsyncIndividuals(AsyncAPIResource):
         Lists individuals currently enrolled in a given deduction.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -375,7 +381,8 @@ class AsyncIndividuals(AsyncAPIResource):
         Get enrollment information for the given individuals.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
@@ -427,7 +434,8 @@ class AsyncIndividuals(AsyncAPIResource):
         Unenroll individuals from a deduction or contribution
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           individual_ids: Array of individual_ids to unenroll.
 
