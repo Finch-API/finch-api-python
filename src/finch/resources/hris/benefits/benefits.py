@@ -88,7 +88,8 @@ class Benefits(SyncAPIResource):
         `/providers` endpoint to view available types for each provider.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           company_contribution: The company match for this benefit.
 
@@ -146,7 +147,8 @@ class Benefits(SyncAPIResource):
         Lists deductions and contributions information for a given item
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -188,7 +190,8 @@ class Benefits(SyncAPIResource):
         Updates an existing company-wide deduction or contribution
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           description: Updated name or description.
 
@@ -231,7 +234,8 @@ class Benefits(SyncAPIResource):
         List all company-wide deductions and contributions.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -270,7 +274,8 @@ class Benefits(SyncAPIResource):
         Get deductions metadata
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -316,7 +321,8 @@ class Benefits(SyncAPIResource):
         Please use the `/provider` endpoint to view available types for each provider.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           frequency: The frequency of the benefit deduction/contribution.
 
@@ -397,7 +403,8 @@ class AsyncBenefits(AsyncAPIResource):
         `/providers` endpoint to view available types for each provider.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           company_contribution: The company match for this benefit.
 
@@ -457,7 +464,8 @@ class AsyncBenefits(AsyncAPIResource):
         Lists deductions and contributions information for a given item
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -501,7 +509,8 @@ class AsyncBenefits(AsyncAPIResource):
         Updates an existing company-wide deduction or contribution
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           description: Updated name or description.
 
@@ -546,7 +555,8 @@ class AsyncBenefits(AsyncAPIResource):
         List all company-wide deductions and contributions.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -585,7 +595,8 @@ class AsyncBenefits(AsyncAPIResource):
         Get deductions metadata
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           extra_headers: Send extra headers
 
@@ -631,7 +642,8 @@ class AsyncBenefits(AsyncAPIResource):
         Please use the `/provider` endpoint to view available types for each provider.
 
         Args:
-          entity_ids: The entity IDs to specify which entities' data to access.
+          entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
+              entity ID per request; a maximum of one is accepted.
 
           frequency: The frequency of the benefit deduction/contribution.
 

@@ -97,10 +97,7 @@ class Introspection(BaseModel):
     authentication_methods: Optional[List[AuthenticationMethod]] = None
 
     company_id: Optional[str] = None
-    """
-    [DEPRECATED] Use `connection_id` to associate tokens with a Finch connection
-    instead of this company ID
-    """
+    """The Finch UUID of the company associated with the `access_token`."""
 
     customer_email: Optional[str] = None
     """

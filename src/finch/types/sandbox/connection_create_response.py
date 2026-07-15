@@ -17,7 +17,7 @@ class ConnectionCreateResponse(BaseModel):
     authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
 
     company_id: str
-    """[DEPRECATED] Use `connection_id` to associate a connection with an access token"""
+    """The Finch UUID of the company associated with the `access_token`."""
 
     connection_id: str
     """The ID of the new connection"""

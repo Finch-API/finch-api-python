@@ -11,4 +11,7 @@ __all__ = ["RuleDeleteParams"]
 
 class RuleDeleteParams(TypedDict, total=False):
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to delete the rule for."""
+    """The entity IDs to delete the rule for.
+
+    Provide exactly one entity ID per request; a maximum of one is accepted.
+    """

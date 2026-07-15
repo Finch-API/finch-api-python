@@ -44,10 +44,7 @@ class CreateAccessTokenResponse(BaseModel):
     """
 
     company_id: Optional[str] = None
-    """
-    [DEPRECATED] Use `connection_id` to identify the connection instead of this
-    company ID
-    """
+    """The Finch UUID of the company associated with the `access_token`."""
 
     customer_id: Optional[str] = None
     """

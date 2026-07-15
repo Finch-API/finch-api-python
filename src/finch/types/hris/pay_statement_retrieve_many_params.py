@@ -15,7 +15,10 @@ class PayStatementRetrieveManyParams(TypedDict, total=False):
     """The array of batch requests. Maximum 10 payment_ids per request."""
 
     entity_ids: SequenceNotStr[str]
-    """The entity IDs to specify which entities' data to access."""
+    """The entity IDs to specify which entities' data to access.
+
+    Provide exactly one entity ID per request; a maximum of one is accepted.
+    """
 
 
 class Request(TypedDict, total=False):
