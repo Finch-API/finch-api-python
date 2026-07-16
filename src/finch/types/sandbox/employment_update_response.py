@@ -80,6 +80,12 @@ class EmploymentUpdateResponse(BaseModel):
     Available options: `exempt`, `non_exempt`, `unknown`.
     """
 
+    highly_compensated_employee: Optional[bool] = None
+    """
+    IRS flag indicating whether the employee is classified as a Highly Compensated
+    Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+    """
+
     income_history: Optional[List[Optional[Income]]] = None
     """The array of income history."""
 
@@ -92,6 +98,12 @@ class EmploymentUpdateResponse(BaseModel):
 
     is_active: Optional[bool] = None
     """`true` if the individual an an active employee or contractor at the company."""
+
+    key_employee: Optional[bool] = None
+    """
+    IRS flag indicating whether the employee is classified as a Key Employee for
+    top-heavy testing purposes. US-only.
+    """
 
     last_name: Optional[str] = None
     """The legal last name of the individual."""
@@ -113,3 +125,12 @@ class EmploymentUpdateResponse(BaseModel):
 
     title: Optional[str] = None
     """The current title of the individual."""
+
+    union_code: Optional[str] = None
+    """
+    The code identifying the union the employee is a member of, as configured in the
+    payroll system.
+    """
+
+    union_local: Optional[str] = None
+    """The local chapter or local number within the employee's union."""

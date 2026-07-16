@@ -40,6 +40,7 @@ class TestIndividual:
             first_name="first_name",
             gender="female",
             last_name="last_name",
+            marital_status="single",
             middle_name="middle_name",
             phone_numbers=[
                 {
@@ -122,6 +123,7 @@ class TestAsyncIndividual:
             first_name="first_name",
             gender="female",
             last_name="last_name",
+            marital_status="single",
             middle_name="middle_name",
             phone_numbers=[
                 {

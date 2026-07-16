@@ -45,6 +45,7 @@ class TestEmployment:
             end_date="end_date",
             first_name="first_name",
             flsa_status="exempt",
+            highly_compensated_employee=True,
             income={
                 "amount": 0,
                 "currency": "currency",
@@ -60,6 +61,7 @@ class TestEmployment:
                 }
             ],
             is_active=True,
+            key_employee=True,
             last_name="last_name",
             latest_rehire_date="latest_rehire_date",
             location={
@@ -77,6 +79,8 @@ class TestEmployment:
             source_id="source_id",
             start_date="3/4/2020",
             title="title",
+            union_code="union_code",
+            union_local="union_local",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 
@@ -144,6 +148,7 @@ class TestAsyncEmployment:
             end_date="end_date",
             first_name="first_name",
             flsa_status="exempt",
+            highly_compensated_employee=True,
             income={
                 "amount": 0,
                 "currency": "currency",
@@ -159,6 +164,7 @@ class TestAsyncEmployment:
                 }
             ],
             is_active=True,
+            key_employee=True,
             last_name="last_name",
             latest_rehire_date="latest_rehire_date",
             location={
@@ -176,6 +182,8 @@ class TestAsyncEmployment:
             source_id="source_id",
             start_date="3/4/2020",
             title="title",
+            union_code="union_code",
+            union_local="union_local",
         )
         assert_matches_type(EmploymentUpdateResponse, employment, path=["response"])
 

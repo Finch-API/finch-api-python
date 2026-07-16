@@ -59,6 +59,12 @@ class IndividualUpdateResponse(BaseModel):
     last_name: Optional[str] = None
     """The legal last name of the individual."""
 
+    marital_status: Optional[Literal["single", "married", "divorced", "widowed", "domestic_partner", "unknown"]] = None
+    """
+    The employee's marital status, used for beneficiary designation and spousal
+    consent workflows.
+    """
+
     middle_name: Optional[str] = None
     """The legal middle name of the individual."""
 
