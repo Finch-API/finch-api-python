@@ -64,6 +64,8 @@ class Individual(SyncAPIResource):
         first_name: Optional[str] | Omit = omit,
         gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | Omit = omit,
         last_name: Optional[str] | Omit = omit,
+        marital_status: Optional[Literal["single", "married", "divorced", "widowed", "domestic_partner", "unknown"]]
+        | Omit = omit,
         middle_name: Optional[str] | Omit = omit,
         phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | Omit = omit,
         preferred_name: Optional[str] | Omit = omit,
@@ -91,6 +93,9 @@ class Individual(SyncAPIResource):
           gender: The gender of the individual.
 
           last_name: The legal last name of the individual.
+
+          marital_status: The employee's marital status, used for beneficiary designation and spousal
+              consent workflows.
 
           middle_name: The legal middle name of the individual.
 
@@ -124,6 +129,7 @@ class Individual(SyncAPIResource):
                     "first_name": first_name,
                     "gender": gender,
                     "last_name": last_name,
+                    "marital_status": marital_status,
                     "middle_name": middle_name,
                     "phone_numbers": phone_numbers,
                     "preferred_name": preferred_name,
@@ -186,6 +192,8 @@ class AsyncIndividual(AsyncAPIResource):
         first_name: Optional[str] | Omit = omit,
         gender: Optional[Literal["female", "male", "other", "decline_to_specify"]] | Omit = omit,
         last_name: Optional[str] | Omit = omit,
+        marital_status: Optional[Literal["single", "married", "divorced", "widowed", "domestic_partner", "unknown"]]
+        | Omit = omit,
         middle_name: Optional[str] | Omit = omit,
         phone_numbers: Optional[Iterable[Optional[individual_update_params.PhoneNumber]]] | Omit = omit,
         preferred_name: Optional[str] | Omit = omit,
@@ -213,6 +221,9 @@ class AsyncIndividual(AsyncAPIResource):
           gender: The gender of the individual.
 
           last_name: The legal last name of the individual.
+
+          marital_status: The employee's marital status, used for beneficiary designation and spousal
+              consent workflows.
 
           middle_name: The legal middle name of the individual.
 
@@ -246,6 +257,7 @@ class AsyncIndividual(AsyncAPIResource):
                     "first_name": first_name,
                     "gender": gender,
                     "last_name": last_name,
+                    "marital_status": marital_status,
                     "middle_name": middle_name,
                     "phone_numbers": phone_numbers,
                     "preferred_name": preferred_name,

@@ -136,6 +136,12 @@ class Body(TypedDict, total=False):
     gender: Optional[Literal["female", "male", "other", "decline_to_specify"]]
     """The gender of the individual."""
 
+    highly_compensated_employee: Optional[bool]
+    """
+    IRS flag indicating whether the employee is classified as a Highly Compensated
+    Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+    """
+
     income: Optional[IncomeParam]
     """The employee's income as reported by the provider.
 
@@ -149,6 +155,12 @@ class Body(TypedDict, total=False):
     is_active: Optional[bool]
     """`true` if the individual an an active employee or contractor at the company."""
 
+    key_employee: Optional[bool]
+    """
+    IRS flag indicating whether the employee is classified as a Key Employee for
+    top-heavy testing purposes. US-only.
+    """
+
     last_name: Optional[str]
     """The legal last name of the individual."""
 
@@ -158,6 +170,12 @@ class Body(TypedDict, total=False):
 
     manager: Optional[BodyManager]
     """The manager object representing the manager of the individual within the org."""
+
+    marital_status: Optional[Literal["single", "married", "divorced", "widowed", "domestic_partner", "unknown"]]
+    """
+    The employee's marital status, used for beneficiary designation and spousal
+    consent workflows.
+    """
 
     middle_name: Optional[str]
     """The legal middle name of the individual."""
@@ -184,3 +202,12 @@ class Body(TypedDict, total=False):
 
     title: Optional[str]
     """The current title of the individual."""
+
+    union_code: Optional[str]
+    """
+    The code identifying the union the employee is a member of, as configured in the
+    payroll system.
+    """
+
+    union_local: Optional[str]
+    """The local chapter or local number within the employee's union."""

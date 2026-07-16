@@ -57,9 +57,11 @@ class Employment(SyncAPIResource):
         end_date: Optional[str] | Omit = omit,
         first_name: Optional[str] | Omit = omit,
         flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] | Omit = omit,
+        highly_compensated_employee: Optional[bool] | Omit = omit,
         income: Optional[IncomeParam] | Omit = omit,
         income_history: Optional[Iterable[Optional[IncomeParam]]] | Omit = omit,
         is_active: Optional[bool] | Omit = omit,
+        key_employee: Optional[bool] | Omit = omit,
         last_name: Optional[str] | Omit = omit,
         latest_rehire_date: Optional[str] | Omit = omit,
         location: Optional[LocationParam] | Omit = omit,
@@ -68,6 +70,8 @@ class Employment(SyncAPIResource):
         source_id: Optional[str] | Omit = omit,
         start_date: Optional[str] | Omit = omit,
         title: Optional[str] | Omit = omit,
+        union_code: Optional[str] | Omit = omit,
+        union_local: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -96,6 +100,9 @@ class Employment(SyncAPIResource):
           flsa_status: The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
               `unknown`.
 
+          highly_compensated_employee: IRS flag indicating whether the employee is classified as a Highly Compensated
+              Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+
           income: The employee's income as reported by the provider. This may not always be
               annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
               depending on what information the provider returns.
@@ -103,6 +110,9 @@ class Employment(SyncAPIResource):
           income_history: The array of income history.
 
           is_active: `true` if the individual an an active employee or contractor at the company.
+
+          key_employee: IRS flag indicating whether the employee is classified as a Key Employee for
+              top-heavy testing purposes. US-only.
 
           last_name: The legal last name of the individual.
 
@@ -115,6 +125,11 @@ class Employment(SyncAPIResource):
           source_id: The source system's unique employment identifier for this individual
 
           title: The current title of the individual.
+
+          union_code: The code identifying the union the employee is a member of, as configured in the
+              payroll system.
+
+          union_local: The local chapter or local number within the employee's union.
 
           extra_headers: Send extra headers
 
@@ -138,9 +153,11 @@ class Employment(SyncAPIResource):
                     "end_date": end_date,
                     "first_name": first_name,
                     "flsa_status": flsa_status,
+                    "highly_compensated_employee": highly_compensated_employee,
                     "income": income,
                     "income_history": income_history,
                     "is_active": is_active,
+                    "key_employee": key_employee,
                     "last_name": last_name,
                     "latest_rehire_date": latest_rehire_date,
                     "location": location,
@@ -149,6 +166,8 @@ class Employment(SyncAPIResource):
                     "source_id": source_id,
                     "start_date": start_date,
                     "title": title,
+                    "union_code": union_code,
+                    "union_local": union_local,
                 },
                 employment_update_params.EmploymentUpdateParams,
             ),
@@ -198,9 +217,11 @@ class AsyncEmployment(AsyncAPIResource):
         end_date: Optional[str] | Omit = omit,
         first_name: Optional[str] | Omit = omit,
         flsa_status: Optional[Literal["exempt", "non_exempt", "unknown"]] | Omit = omit,
+        highly_compensated_employee: Optional[bool] | Omit = omit,
         income: Optional[IncomeParam] | Omit = omit,
         income_history: Optional[Iterable[Optional[IncomeParam]]] | Omit = omit,
         is_active: Optional[bool] | Omit = omit,
+        key_employee: Optional[bool] | Omit = omit,
         last_name: Optional[str] | Omit = omit,
         latest_rehire_date: Optional[str] | Omit = omit,
         location: Optional[LocationParam] | Omit = omit,
@@ -209,6 +230,8 @@ class AsyncEmployment(AsyncAPIResource):
         source_id: Optional[str] | Omit = omit,
         start_date: Optional[str] | Omit = omit,
         title: Optional[str] | Omit = omit,
+        union_code: Optional[str] | Omit = omit,
+        union_local: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,6 +260,9 @@ class AsyncEmployment(AsyncAPIResource):
           flsa_status: The FLSA status of the individual. Available options: `exempt`, `non_exempt`,
               `unknown`.
 
+          highly_compensated_employee: IRS flag indicating whether the employee is classified as a Highly Compensated
+              Employee for nondiscrimination testing purposes (ADP/ACP tests). US-only.
+
           income: The employee's income as reported by the provider. This may not always be
               annualized income, but may be in units of bi-weekly, semi-monthly, daily, etc,
               depending on what information the provider returns.
@@ -244,6 +270,9 @@ class AsyncEmployment(AsyncAPIResource):
           income_history: The array of income history.
 
           is_active: `true` if the individual an an active employee or contractor at the company.
+
+          key_employee: IRS flag indicating whether the employee is classified as a Key Employee for
+              top-heavy testing purposes. US-only.
 
           last_name: The legal last name of the individual.
 
@@ -256,6 +285,11 @@ class AsyncEmployment(AsyncAPIResource):
           source_id: The source system's unique employment identifier for this individual
 
           title: The current title of the individual.
+
+          union_code: The code identifying the union the employee is a member of, as configured in the
+              payroll system.
+
+          union_local: The local chapter or local number within the employee's union.
 
           extra_headers: Send extra headers
 
@@ -279,9 +313,11 @@ class AsyncEmployment(AsyncAPIResource):
                     "end_date": end_date,
                     "first_name": first_name,
                     "flsa_status": flsa_status,
+                    "highly_compensated_employee": highly_compensated_employee,
                     "income": income,
                     "income_history": income_history,
                     "is_active": is_active,
+                    "key_employee": key_employee,
                     "last_name": last_name,
                     "latest_rehire_date": latest_rehire_date,
                     "location": location,
@@ -290,6 +326,8 @@ class AsyncEmployment(AsyncAPIResource):
                     "source_id": source_id,
                     "start_date": start_date,
                     "title": title,
+                    "union_code": union_code,
+                    "union_local": union_local,
                 },
                 employment_update_params.EmploymentUpdateParams,
             ),
