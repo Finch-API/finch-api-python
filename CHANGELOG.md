@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.0 (2026-07-17)
+
+Full Changelog: [v2.3.0...v2.4.0](https://github.com/Finch-API/finch-api-python/compare/v2.3.0...v2.4.0)
+
+### Features
+
+* **api:** api update ([f616b88](https://github.com/Finch-API/finch-api-python/commit/f616b8826871f77486b927b29ed76839bb519a17))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([8848074](https://github.com/Finch-API/finch-api-python/commit/88480743771a3345f4a7f95f2cae55978d9ec37e))
+
 ## 2.3.0 (2026-07-15)
 
 Full Changelog: [v2.2.0...v2.3.0](https://github.com/Finch-API/finch-api-python/compare/v2.2.0...v2.3.0)
