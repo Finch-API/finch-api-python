@@ -45,6 +45,12 @@ class IndividualUpdateParams(TypedDict, total=False):
     last_name: Optional[str]
     """The legal last name of the individual."""
 
+    marital_status: Optional[Literal["single", "married", "divorced", "widowed", "domestic_partner", "unknown"]]
+    """
+    The employee's marital status, used for beneficiary designation and spousal
+    consent workflows.
+    """
+
     middle_name: Optional[str]
     """The legal middle name of the individual."""
 
