@@ -30,6 +30,9 @@ class SessionReauthenticateParams(TypedDict, total=False):
                 "individual",
                 "payment",
                 "pay_statement",
+                "plans",
+                "plans_dependents",
+                "plans_enrollments",
                 "recordkeeping",
                 "ssn",
             ]
