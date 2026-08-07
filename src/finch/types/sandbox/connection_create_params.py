@@ -13,7 +13,7 @@ class ConnectionCreateParams(TypedDict, total=False):
     provider_id: Required[str]
     """The provider associated with the connection"""
 
-    authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
+    authentication_type: Literal["api_token", "assisted", "credential", "oauth"]
 
     employee_size: int
     """Optional: the size of the employer to be created with this connection.
