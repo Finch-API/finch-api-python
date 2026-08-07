@@ -55,7 +55,7 @@ class Connections(SyncAPIResource):
         self,
         *,
         provider_id: str,
-        authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | Omit = omit,
+        authentication_type: Literal["api_token", "assisted", "credential", "oauth"] | Omit = omit,
         employee_size: int | Omit = omit,
         products: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -133,7 +133,7 @@ class AsyncConnections(AsyncAPIResource):
         self,
         *,
         provider_id: str,
-        authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | Omit = omit,
+        authentication_type: Literal["api_token", "assisted", "credential", "oauth"] | Omit = omit,
         employee_size: int | Omit = omit,
         products: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

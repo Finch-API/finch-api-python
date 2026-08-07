@@ -46,7 +46,7 @@ class Accounts(SyncAPIResource):
         *,
         company_id: str,
         provider_id: str,
-        authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | Omit = omit,
+        authentication_type: Literal["api_token", "assisted", "credential", "oauth"] | Omit = omit,
         products: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -157,7 +157,7 @@ class AsyncAccounts(AsyncAPIResource):
         *,
         company_id: str,
         provider_id: str,
-        authentication_type: Literal["credential", "api_token", "oauth", "assisted"] | Omit = omit,
+        authentication_type: Literal["api_token", "assisted", "credential", "oauth"] | Omit = omit,
         products: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
