@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.7.0 (2026-08-07)
+
+Full Changelog: [v2.6.0...v2.7.0](https://github.com/Finch-API/finch-api-python/compare/v2.6.0...v2.7.0)
+
+### Features
+
+* **api:** api update ([ddc420c](https://github.com/Finch-API/finch-api-python/commit/ddc420c27d5b54d5763662065f330ae568283cc5))
+
 ## 2.6.0 (2026-08-07)
 
 Full Changelog: [v2.5.1...v2.6.0](https://github.com/Finch-API/finch-api-python/compare/v2.5.1...v2.6.0)
