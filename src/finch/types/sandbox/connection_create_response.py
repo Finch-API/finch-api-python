@@ -15,8 +15,6 @@ class ConnectionCreateResponse(BaseModel):
 
     authentication_type: Literal["api_token", "assisted", "credential", "oauth"]
 
-    company_id: Optional[str] = None
-
     connection_id: str
 
     entity_id: str
@@ -26,3 +24,5 @@ class ConnectionCreateResponse(BaseModel):
     provider_id: str
 
     token_type: str
+
+    company_id: Optional[str] = None
