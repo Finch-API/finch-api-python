@@ -30,7 +30,7 @@ class TestConnections:
     def test_method_create_with_all_params(self, client: Finch) -> None:
         connection = client.sandbox.connections.create(
             provider_id="provider_id",
-            authentication_type="credential",
+            authentication_type="api_token",
             employee_size=0,
             products=["string"],
         )
@@ -81,7 +81,7 @@ class TestAsyncConnections:
     async def test_method_create_with_all_params(self, async_client: AsyncFinch) -> None:
         connection = await async_client.sandbox.connections.create(
             provider_id="provider_id",
-            authentication_type="credential",
+            authentication_type="api_token",
             employee_size=0,
             products=["string"],
         )

@@ -14,7 +14,7 @@ class AccountCreateResponse(BaseModel):
     account_id: str
     """[DEPRECATED] Use `connection_id` to associate a connection with an access token"""
 
-    authentication_type: Literal["credential", "api_token", "oauth", "assisted"]
+    authentication_type: Literal["api_token", "assisted", "credential", "oauth"]
 
     company_id: str
     """The Finch UUID of the company associated with the `access_token`."""
