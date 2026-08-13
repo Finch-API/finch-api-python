@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["SessionNewParams", "Integration"]
+__all__ = ["SessionNewParams", "Integration", "Recordkeeping"]
 
 
 class SessionNewParams(TypedDict, total=False):
@@ -56,6 +56,13 @@ class SessionNewParams(TypedDict, total=False):
     90 days)
     """
 
+    recordkeeping: Optional[Recordkeeping]
+    """Optional recordkeeping configuration.
+
+    Can only be provided when the `recordkeeping` product is requested. Currently
+    supports `recordkeeper` set to `voya`.
+    """
+
     redirect_uri: Optional[str]
     """The URI to redirect to after the Connect flow is completed"""
 
@@ -71,3 +78,16 @@ class Integration(TypedDict, total=False):
 
     auth_method: Optional[Literal["assisted", "credential", "oauth", "api_token"]]
     """The authentication method to use"""
+
+
+class Recordkeeping(TypedDict, total=False):
+    """Optional recordkeeping configuration.
+
+    Can only be provided when the `recordkeeping` product is requested. Currently supports `recordkeeper` set to `voya`.
+    """
+
+    plan_id: Required[str]
+    """The plan identifier used by the recordkeeper"""
+
+    recordkeeper: Required[Literal["voya"]]
+    """The recordkeeper to configure for this connection"""
