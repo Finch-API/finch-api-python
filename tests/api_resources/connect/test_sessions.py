@@ -45,8 +45,8 @@ class TestSessions:
             manual=True,
             minutes_to_expire=1,
             recordkeeping={
-                "plan_id": "x",
                 "recordkeeper": "voya",
+                "plan_id": "x",
             },
             redirect_uri="redirect_uri",
             sandbox="finch",
@@ -159,8 +159,8 @@ class TestAsyncSessions:
             manual=True,
             minutes_to_expire=1,
             recordkeeping={
-                "plan_id": "x",
                 "recordkeeper": "voya",
+                "plan_id": "x",
             },
             redirect_uri="redirect_uri",
             sandbox="finch",

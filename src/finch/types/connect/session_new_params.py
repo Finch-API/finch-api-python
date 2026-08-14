@@ -60,7 +60,7 @@ class SessionNewParams(TypedDict, total=False):
     """Optional recordkeeping configuration.
 
     Can only be provided when the `recordkeeping` product is requested. Currently
-    supports `recordkeeper` set to `voya`.
+    supports `recordkeeper` set to `voya` or `empower`.
     """
 
     redirect_uri: Optional[str]
@@ -83,11 +83,11 @@ class Integration(TypedDict, total=False):
 class Recordkeeping(TypedDict, total=False):
     """Optional recordkeeping configuration.
 
-    Can only be provided when the `recordkeeping` product is requested. Currently supports `recordkeeper` set to `voya`.
+    Can only be provided when the `recordkeeping` product is requested. Currently supports `recordkeeper` set to `voya` or `empower`.
     """
 
-    plan_id: Required[str]
-    """The plan identifier used by the recordkeeper"""
-
-    recordkeeper: Required[Literal["voya"]]
+    recordkeeper: Required[Literal["voya", "empower"]]
     """The recordkeeper to configure for this connection"""
+
+    plan_id: Optional[str]
+    """The plan identifier used by the recordkeeper"""
