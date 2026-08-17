@@ -101,7 +101,7 @@ class Sessions(SyncAPIResource):
 
           recordkeeping: Optional recordkeeping configuration. Can only be provided when the
               `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-              `voya` or `empower`.
+              `voya`, `empower`, `fidelity`, or `transamerica`.
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
@@ -301,7 +301,7 @@ class AsyncSessions(AsyncAPIResource):
 
           recordkeeping: Optional recordkeeping configuration. Can only be provided when the
               `recordkeeping` product is requested. Currently supports `recordkeeper` set to
-              `voya` or `empower`.
+              `voya`, `empower`, `fidelity`, or `transamerica`.
 
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
