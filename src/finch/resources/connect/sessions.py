@@ -68,6 +68,7 @@ class Sessions(SyncAPIResource):
         integration: Optional[session_new_params.Integration] | Omit = omit,
         manual: Optional[bool] | Omit = omit,
         minutes_to_expire: Optional[float] | Omit = omit,
+        recordkeeping: Optional[session_new_params.Recordkeeping] | Omit = omit,
         redirect_uri: Optional[str] | Omit = omit,
         sandbox: Optional[Literal["finch", "provider"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -98,6 +99,10 @@ class Sessions(SyncAPIResource):
           minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
               90 days)
 
+          recordkeeping: Optional recordkeeping configuration. Can only be provided when the
+              `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+              `voya`, `empower`, `fidelity`, or `transamerica`.
+
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
           sandbox: Sandbox mode for testing
@@ -121,6 +126,7 @@ class Sessions(SyncAPIResource):
                     "integration": integration,
                     "manual": manual,
                     "minutes_to_expire": minutes_to_expire,
+                    "recordkeeping": recordkeeping,
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
@@ -262,6 +268,7 @@ class AsyncSessions(AsyncAPIResource):
         integration: Optional[session_new_params.Integration] | Omit = omit,
         manual: Optional[bool] | Omit = omit,
         minutes_to_expire: Optional[float] | Omit = omit,
+        recordkeeping: Optional[session_new_params.Recordkeeping] | Omit = omit,
         redirect_uri: Optional[str] | Omit = omit,
         sandbox: Optional[Literal["finch", "provider"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -292,6 +299,10 @@ class AsyncSessions(AsyncAPIResource):
           minutes_to_expire: The number of minutes until the session expires (defaults to 129,600, which is
               90 days)
 
+          recordkeeping: Optional recordkeeping configuration. Can only be provided when the
+              `recordkeeping` product is requested. Currently supports `recordkeeper` set to
+              `voya`, `empower`, `fidelity`, or `transamerica`.
+
           redirect_uri: The URI to redirect to after the Connect flow is completed
 
           sandbox: Sandbox mode for testing
@@ -315,6 +326,7 @@ class AsyncSessions(AsyncAPIResource):
                     "integration": integration,
                     "manual": manual,
                     "minutes_to_expire": minutes_to_expire,
+                    "recordkeeping": recordkeeping,
                     "redirect_uri": redirect_uri,
                     "sandbox": sandbox,
                 },
