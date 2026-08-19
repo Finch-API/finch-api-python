@@ -1,0 +1,105 @@
+name: Promote SDKs
+
+# Publishes staging -> production. Merge-commit PR variant, because
+# Finch-API/finch-api-python requires a pull request with an approving review on main; a
+# fast-forward push is not possible there. That review is the publication gate,
+# which is how the Stainless GitHub App's release PR gated publishing before.
+#
+# The promote PR MUST merge with a MERGE COMMIT. Squash and rebase rewrite the
+# commit SHAs, which forks the two trunks apart and stops release-please from
+# computing a version.
+#
+# Note the trigger: unlike the fast-forward variant's manual dispatch, this opens
+# the PR automatically whenever staging advances. The PR is a queue, not a
+# publication -- nothing reaches users until it is approved and merged.
+on:
+  push:
+    # main only. stlc preview/integrated/codegen branches never push to main.
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  promote:
+    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    if: github.repository == 'Finch-API/finch-api-python-staging'
+    concurrency:
+      group: stlc-promote
+      cancel-in-progress: true
+    env:
+      PRODUCTION_REPO: Finch-API/finch-api-python
+      GH_TOKEN: ${{ secrets.PRODUCTION_REPO_TOKEN }}
+    steps:
+      - name: Check out staging
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Fetch production main
+        run: |
+          git remote add production \
+            "https://x-access-token:${GH_TOKEN}@github.com/${PRODUCTION_REPO}.git"
+          git fetch production main
+
+      - name: Check whether production already has staging's content
+        id: diff
+        run: |
+          # Compare by CONTENT, not SHA: release-please commits on production
+          # make the SHAs always differ, which would re-open a spurious PR.
+          MERGED=$(git merge-tree --write-tree production/main origin/main) || MERGED=conflict
+          PRODUCTION_TREE=$(git rev-parse 'production/main^{tree}')
+          if [ "$MERGED" = "$PRODUCTION_TREE" ]; then
+            echo "Production already contains staging's content. Nothing to promote."
+            echo "synced=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "synced=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Push staging main to the release branch on production
+        if: steps.diff.outputs.synced == 'false'
+        run: |
+          # Force is safe: this branch only carries the PR; re-pushing updates it in place.
+          git push production origin/main:refs/heads/stainless/release --force
+
+      - name: Open or update the promote PR (merge commit)
+        if: steps.diff.outputs.synced == 'false'
+        run: |
+          EXISTING_PR=$(gh pr list \
+            --repo "${PRODUCTION_REPO}" \
+            --head stainless/release \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+          if [ -z "${EXISTING_PR}" ]; then
+            gh pr create \
+              --repo "${PRODUCTION_REPO}" \
+              --base main \
+              --head stainless/release \
+              --title "Release SDK updates" \
+              --body "$(git log --oneline production/main..origin/main)"
+          else
+            echo "Promote PR #${EXISTING_PR} already exists. The force-push has updated it."
+          fi
+          # --merge = MERGE COMMIT — never --squash/--rebase (that rewrites SHAs
+          # and forks the trunks). Auto-merge still waits for production's
+          # required review — it gates when the code publishes.
+          gh pr merge stainless/release --repo "${PRODUCTION_REPO}" --merge --auto \
+            || echo "Auto-merge unavailable — review and merge the promote PR manually with a merge commit."
+
+      - name: Alert on failure
+        if: failure()
+        env:
+          ALERT_WEBHOOK_URL: ${{ secrets.STLC_ALERT_WEBHOOK_URL }}
+        run: |
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          msg="stlc promote failed in ${{ github.repository }}. A stalled promote or back-sync lets custom-code tracking drift, which later builds refuse on — investigate before the next build. Run: $run_url"
+          echo "::error title=stlc workflow failed::$msg"
+          { echo "### ⚠️ stlc workflow failed"; echo ""; echo "$msg"; } >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${ALERT_WEBHOOK_URL:-}" ]; then
+            curl -sS -X POST -H 'Content-Type: application/json' \
+              -d "$(jq -n --arg text "$msg" '{text:$text}')" "$ALERT_WEBHOOK_URL" \
+              || echo "::warning::Alert webhook POST failed"
+          fi
