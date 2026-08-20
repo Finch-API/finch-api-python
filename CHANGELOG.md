@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/Finch-API/finch-api-python/compare/v2.7.0...v2.8.0) (2026-08-20)
+
+
+### Features
+
+* **stainless:** migrate SDK generation from Stainless SaaS to self-hosted stlc - PLAT-3989 ([3d8d408](https://github.com/Finch-API/finch-api-python/commit/3d8d408b18d9b1718afdc942bf8bc63151e6898d))
+
 ## 2.7.0 (2026-08-07)
 
 Full Changelog: [v2.6.0...v2.7.0](https://github.com/Finch-API/finch-api-python/compare/v2.6.0...v2.7.0)
