@@ -23,7 +23,7 @@ permissions:
 
 jobs:
   promote:
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'blacksmith-2vcpu-ubuntu-2404' }}
     if: github.repository == 'Finch-API/finch-api-python-staging'
     concurrency:
       group: stlc-promote
