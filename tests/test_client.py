@@ -476,6 +476,16 @@ class TestFinch:
         )
         assert request2.headers.get("Authorization") is None
 
+    @pytest.mark.respx(base_url=base_url)
+    def test_no_auth_operation_omits_auth_headers(self, respx_mock: MockRouter, client: Finch) -> None:
+        respx_mock.post("/auth/token").mock(return_value=httpx.Response(200, json={}))
+
+        response = client.access_tokens.with_raw_response.create(code="code")
+
+        assert response.http_response.status_code == 200
+        assert response.http_request.headers.get("Authorization") is None
+        assert response.http_request.headers.get("Authorization") is None
+
     def test_default_query_option(self) -> None:
         client = Finch(
             base_url=base_url,
@@ -1538,6 +1548,16 @@ class TestAsyncFinch:
             FinalRequestOptions(method="get", url="/foo", headers={"Authorization": Omit()})
         )
         assert request2.headers.get("Authorization") is None
+
+    @pytest.mark.respx(base_url=base_url)
+    async def test_no_auth_operation_omits_auth_headers(self, respx_mock: MockRouter, async_client: AsyncFinch) -> None:
+        respx_mock.post("/auth/token").mock(return_value=httpx.Response(200, json={}))
+
+        response = await async_client.access_tokens.with_raw_response.create(code="code")
+
+        assert response.http_response.status_code == 200
+        assert response.http_request.headers.get("Authorization") is None
+        assert response.http_request.headers.get("Authorization") is None
 
     async def test_default_query_option(self) -> None:
         client = AsyncFinch(

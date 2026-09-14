@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+from typing import Any, cast
+
 import pytest
 
 from finch._utils import required_args
+from finch._base_client import BaseClient
+
+
+def test_base_client_validate_headers_accepts_security_options() -> None:
+    cast(Any, BaseClient)._validate_headers(None, {}, {}, {})
 
 
 def test_too_many_positional_params() -> None:

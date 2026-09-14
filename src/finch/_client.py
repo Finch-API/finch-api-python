@@ -254,7 +254,10 @@ class Finch(SyncAPIClient):
         }
 
     @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+    def _validate_headers(self, headers: Headers, custom_headers: Headers, security: SecurityOptions) -> None:
+        if not any(security.values()):
+            return
+
         if headers.get("Authorization") or isinstance(custom_headers.get("Authorization"), Omit):
             return
 
@@ -608,7 +611,10 @@ class AsyncFinch(AsyncAPIClient):
         }
 
     @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+    def _validate_headers(self, headers: Headers, custom_headers: Headers, security: SecurityOptions) -> None:
+        if not any(security.values()):
+            return
+
         if headers.get("Authorization") or isinstance(custom_headers.get("Authorization"), Omit):
             return
 
