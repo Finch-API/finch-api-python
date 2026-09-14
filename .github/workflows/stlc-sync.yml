@@ -25,7 +25,7 @@ on:
 jobs:
   back-sync:
     # Fast-forward production main back onto staging so the trunks stay identical.
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'blacksmith-2vcpu-ubuntu-2404' }}
     if: >-
       github.repository == 'Finch-API/finch-api-python-staging' &&
       (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' || github.event_name == 'repository_dispatch')
@@ -125,7 +125,7 @@ jobs:
   notify-back-sync:
     # On a published release, tell staging to back-sync now instead of waiting for
     # the poll. Dispatch-only: it cannot write production or staging contents.
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'blacksmith-2vcpu-ubuntu-2404' }}
     if: >-
       github.repository == 'Finch-API/finch-api-python' &&
       (github.event_name == 'release' || github.event_name == 'workflow_dispatch')
@@ -178,7 +178,7 @@ jobs:
     # When out-of-band custom code lands on staging main, tell the config repo to
     # re-seal now instead of waiting for its scheduled sync. The loop guards skip
     # stlc's own pushes, so the bot's commits can't trigger a re-seal loop.
-    runs-on: ${{ vars.STLC_RUNNER || 'ubuntu-latest' }}
+    runs-on: ${{ vars.STLC_RUNNER || 'blacksmith-2vcpu-ubuntu-2404' }}
     if: >-
       github.repository == 'Finch-API/finch-api-python-staging' &&
       github.event_name == 'push'
