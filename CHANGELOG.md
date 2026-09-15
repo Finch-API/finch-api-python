@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.2](https://github.com/Finch-API/finch-api-python/compare/v2.8.1...v2.8.2) (2026-09-15)
+
+
+### Bug Fixes
+
+* **sdk:** restore basic authentication for providers ([5362a49](https://github.com/Finch-API/finch-api-python/commit/5362a492d390299f6c635d40b10dc6c3b7459dbc))
+
 ## [2.8.1](https://github.com/Finch-API/finch-api-python/compare/v2.8.0...v2.8.1) (2026-08-21)
 
 
