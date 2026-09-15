@@ -55,7 +55,7 @@ class Providers(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                security={"bearer_auth": True},
+                security={},
             ),
             model=ProviderListResponse,
         )
@@ -100,7 +100,7 @@ class AsyncProviders(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                security={"bearer_auth": True},
+                security={},
             ),
             model=ProviderListResponse,
         )
