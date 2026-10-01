@@ -17,6 +17,11 @@ class Email(BaseModel):
 
 class PhoneNumber(BaseModel):
     data: Optional[str] = None
+    """The phone number.
+
+    Format: E.164, with extension where applicable, e.g. `+NNNNNNNNNNN xExtension`.
+    If the number cannot be parsed, the raw value from the provider is returned.
+    """
 
     type: Optional[Literal["work", "personal"]] = None
 
