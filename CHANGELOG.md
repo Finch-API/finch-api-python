@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.3](https://github.com/Finch-API/finch-api-python/compare/v2.8.2...v2.8.3) (2026-10-01)
+
+
+### Documentation
+
+* **spec:** document phone number format on individual phone_numbers ([12b021a](https://github.com/Finch-API/finch-api-python/commit/12b021a793353f6e48ff720ed4afb2ec114b8824))
+
 ## [2.8.2](https://github.com/Finch-API/finch-api-python/compare/v2.8.1...v2.8.2) (2026-09-15)
 
 
