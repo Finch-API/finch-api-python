@@ -43,6 +43,15 @@ __all__ = [
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayStatementPayStatementsTaxes",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayment",
     "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPaymentPayPeriod",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependents",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependentsCoverage",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependentsCoverageEnrollments",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollments",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributions",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributionsEmployeeContribution",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributionsEmployerContribution",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlans",
+    "AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlansCarrier",
 ]
 
 
@@ -392,8 +401,120 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayment(BaseModel
     pay_period: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPaymentPayPeriod] = None
 
 
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependentsCoverageEnrollments(BaseModel):
+    id: Optional[bool] = None
+
+    type: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependentsCoverage(BaseModel):
+    enrollments: Optional[
+        AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependentsCoverageEnrollments
+    ] = None
+
+    individual_id: Optional[bool] = None
+
+    relationship_to_individual: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependents(BaseModel):
+    coverage: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependentsCoverage] = None
+
+    date_of_birth: Optional[bool] = None
+
+    dependent_id: Optional[bool] = None
+
+    first_name: Optional[bool] = None
+
+    gender: Optional[bool] = None
+
+    last_name: Optional[bool] = None
+
+    middle_name: Optional[bool] = None
+
+    ssn: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributionsEmployeeContribution(
+    BaseModel
+):
+    amount: Optional[bool] = None
+
+    currency: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributionsEmployerContribution(
+    BaseModel
+):
+    amount: Optional[bool] = None
+
+    currency: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributions(BaseModel):
+    employee_contribution: Optional[
+        AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributionsEmployeeContribution
+    ] = None
+
+    employer_contribution: Optional[
+        AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributionsEmployerContribution
+    ] = None
+
+    frequency: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollments(BaseModel):
+    id: Optional[bool] = None
+
+    contributions: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollmentsContributions] = (
+        None
+    )
+
+    coverage_end_date: Optional[bool] = None
+
+    coverage_start_date: Optional[bool] = None
+
+    coverage_tier: Optional[bool] = None
+
+    dependent_ids: Optional[bool] = None
+
+    individual_id: Optional[bool] = None
+
+    plan_id: Optional[bool] = None
+
+    status: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlansCarrier(BaseModel):
+    id: Optional[bool] = None
+
+    name: Optional[bool] = None
+
+
+class AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlans(BaseModel):
+    id: Optional[bool] = None
+
+    carrier: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlansCarrier] = None
+
+    coverage_tiers: Optional[bool] = None
+
+    deduction_codes: Optional[bool] = None
+
+    description: Optional[bool] = None
+
+    end_date: Optional[bool] = None
+
+    name: Optional[bool] = None
+
+    network_type: Optional[bool] = None
+
+    start_date: Optional[bool] = None
+
+    type: Optional[bool] = None
+
+
 class AccountUpdateEventDataAuthenticationMethodSupportedFields(BaseModel):
-    """The supported data fields returned by our HR and payroll endpoints"""
+    """The supported data fields returned by our HR, payroll, and benefits endpoints"""
 
     company: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsCompany] = None
 
@@ -409,6 +530,12 @@ class AccountUpdateEventDataAuthenticationMethodSupportedFields(BaseModel):
 
     payment: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPayment] = None
 
+    plan_dependents: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanDependents] = None
+
+    plan_enrollments: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlanEnrollments] = None
+
+    plans: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFieldsPlans] = None
+
 
 class AccountUpdateEventDataAuthenticationMethod(BaseModel):
     benefits_support: Optional[BenefitsSupport] = None
@@ -418,7 +545,7 @@ class AccountUpdateEventDataAuthenticationMethod(BaseModel):
     """
 
     supported_fields: Optional[AccountUpdateEventDataAuthenticationMethodSupportedFields] = None
-    """The supported data fields returned by our HR and payroll endpoints"""
+    """The supported data fields returned by our HR, payroll, and benefits endpoints"""
 
     type: Optional[Literal["assisted", "credential", "api_token", "api_credential", "oauth"]] = None
     """The type of authentication method."""
