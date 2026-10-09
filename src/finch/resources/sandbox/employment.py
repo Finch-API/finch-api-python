@@ -46,6 +46,7 @@ class Employment(SyncAPIResource):
         self,
         individual_id: str,
         *,
+        benefit_eligibility_class: Optional[str] | Omit = omit,
         class_code: Optional[str] | Omit = omit,
         custom_fields: Optional[Iterable[employment_update_params.CustomField]] | Omit = omit,
         department: Optional[employment_update_params.Department] | Omit = omit,
@@ -83,6 +84,10 @@ class Employment(SyncAPIResource):
         Update sandbox employment
 
         Args:
+          benefit_eligibility_class: The employer defined benefit eligibility class that groups an employee into a
+              set of eligible benefit plans, as stored by the provider. Null when not
+              configured.
+
           class_code: Worker's compensation classification code for this employee
 
           custom_fields: Custom fields for the individual. These are fields which are defined by the
@@ -145,6 +150,7 @@ class Employment(SyncAPIResource):
             path_template("/sandbox/employment/{individual_id}", individual_id=individual_id),
             body=maybe_transform(
                 {
+                    "benefit_eligibility_class": benefit_eligibility_class,
                     "class_code": class_code,
                     "custom_fields": custom_fields,
                     "department": department,
@@ -206,6 +212,7 @@ class AsyncEmployment(AsyncAPIResource):
         self,
         individual_id: str,
         *,
+        benefit_eligibility_class: Optional[str] | Omit = omit,
         class_code: Optional[str] | Omit = omit,
         custom_fields: Optional[Iterable[employment_update_params.CustomField]] | Omit = omit,
         department: Optional[employment_update_params.Department] | Omit = omit,
@@ -243,6 +250,10 @@ class AsyncEmployment(AsyncAPIResource):
         Update sandbox employment
 
         Args:
+          benefit_eligibility_class: The employer defined benefit eligibility class that groups an employee into a
+              set of eligible benefit plans, as stored by the provider. Null when not
+              configured.
+
           class_code: Worker's compensation classification code for this employee
 
           custom_fields: Custom fields for the individual. These are fields which are defined by the
@@ -305,6 +316,7 @@ class AsyncEmployment(AsyncAPIResource):
             path_template("/sandbox/employment/{individual_id}", individual_id=individual_id),
             body=await async_maybe_transform(
                 {
+                    "benefit_eligibility_class": benefit_eligibility_class,
                     "class_code": class_code,
                     "custom_fields": custom_fields,
                     "department": department,

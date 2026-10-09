@@ -28,6 +28,7 @@ class TestDirectory:
         directory = client.sandbox.directory.create(
             body=[
                 {
+                    "benefit_eligibility_class": "benefit_eligibility_class",
                     "class_code": "class_code",
                     "custom_fields": [
                         {
@@ -150,6 +151,7 @@ class TestAsyncDirectory:
         directory = await async_client.sandbox.directory.create(
             body=[
                 {
+                    "benefit_eligibility_class": "benefit_eligibility_class",
                     "class_code": "class_code",
                     "custom_fields": [
                         {

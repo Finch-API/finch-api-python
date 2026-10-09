@@ -29,6 +29,7 @@ class TestEmployment:
     def test_method_update_with_all_params(self, client: Finch) -> None:
         employment = client.sandbox.employment.update(
             individual_id="individual_id",
+            benefit_eligibility_class="benefit_eligibility_class",
             class_code="class_code",
             custom_fields=[
                 {
@@ -132,6 +133,7 @@ class TestAsyncEmployment:
     async def test_method_update_with_all_params(self, async_client: AsyncFinch) -> None:
         employment = await async_client.sandbox.employment.update(
             individual_id="individual_id",
+            benefit_eligibility_class="benefit_eligibility_class",
             class_code="class_code",
             custom_fields=[
                 {

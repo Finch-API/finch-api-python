@@ -81,6 +81,13 @@ class BodyPhoneNumber(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    benefit_eligibility_class: Optional[str]
+    """
+    The employer defined benefit eligibility class that groups an employee into a
+    set of eligible benefit plans, as stored by the provider. Null when not
+    configured.
+    """
+
     class_code: Optional[str]
     """Worker's compensation classification code for this employee"""
 
