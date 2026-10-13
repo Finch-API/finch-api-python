@@ -48,6 +48,13 @@ class EmploymentUpdateResponse(BaseModel):
     id: Optional[str] = None
     """A stable Finch `id` (UUID v4) for an individual in the company."""
 
+    benefit_eligibility_class: Optional[str] = None
+    """
+    The employer defined benefit eligibility class that groups an employee into a
+    set of eligible benefit plans, as stored by the provider. Null when not
+    configured.
+    """
+
     class_code: Optional[str] = None
     """Worker's compensation classification code for this employee"""
 
