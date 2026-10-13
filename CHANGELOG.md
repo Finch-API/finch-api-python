@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/Finch-API/finch-api-python/compare/v2.8.3...v2.9.0) (2026-10-13)
+
+
+### Features
+
+* **employment:** expose benefit_eligibility_class on the API surface [INT-4092] ([5ba11aa](https://github.com/Finch-API/finch-api-python/commit/5ba11aaeedc40af417d60457813fa971ae439197))
+
 ## [2.8.3](https://github.com/Finch-API/finch-api-python/compare/v2.8.2...v2.8.3) (2026-10-01)
 
 
