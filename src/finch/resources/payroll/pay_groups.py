@@ -56,7 +56,9 @@ class PayGroups(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -99,7 +101,9 @@ class PayGroups(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -168,7 +172,9 @@ class AsyncPayGroups(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -213,7 +219,9 @@ class AsyncPayGroups(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 

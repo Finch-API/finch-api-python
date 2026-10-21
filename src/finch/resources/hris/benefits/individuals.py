@@ -70,7 +70,9 @@ class Individuals(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           individuals: Array of the individual_id to enroll and a configuration object.
 
@@ -117,7 +119,9 @@ class Individuals(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -162,7 +166,9 @@ class Individuals(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
@@ -215,7 +221,9 @@ class Individuals(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           individual_ids: Array of individual_ids to unenroll.
 
@@ -290,7 +298,9 @@ class AsyncIndividuals(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           individuals: Array of the individual_id to enroll and a configuration object.
 
@@ -337,7 +347,9 @@ class AsyncIndividuals(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -382,7 +394,9 @@ class AsyncIndividuals(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           individual_ids: comma-delimited list of stable Finch uuids for each individual. If empty,
               defaults to all individuals
@@ -435,7 +449,9 @@ class AsyncIndividuals(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           individual_ids: Array of individual_ids to unenroll.
 
