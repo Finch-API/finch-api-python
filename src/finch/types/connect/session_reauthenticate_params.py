@@ -45,4 +45,9 @@ class SessionReauthenticateParams(TypedDict, total=False):
     """
 
     redirect_uri: Optional[str]
-    """The URI to redirect to after the Connect flow is completed"""
+    """The URI to redirect to after the Connect flow is completed.
+
+    Required if you use the redirect flow, and it must be registered on the
+    Credentials tab of the Finch Developer Dashboard. Omit it for the embedded flow
+    (Connect SDK).
+    """
