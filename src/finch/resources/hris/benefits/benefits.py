@@ -89,7 +89,9 @@ class Benefits(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           company_contribution: The company match for this benefit.
 
@@ -148,7 +150,9 @@ class Benefits(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -191,7 +195,9 @@ class Benefits(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           description: Updated name or description.
 
@@ -235,7 +241,9 @@ class Benefits(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -275,7 +283,9 @@ class Benefits(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -322,7 +332,9 @@ class Benefits(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           frequency: The frequency of the benefit deduction/contribution.
 
@@ -404,7 +416,9 @@ class AsyncBenefits(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           company_contribution: The company match for this benefit.
 
@@ -465,7 +479,9 @@ class AsyncBenefits(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -510,7 +526,9 @@ class AsyncBenefits(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           description: Updated name or description.
 
@@ -556,7 +574,9 @@ class AsyncBenefits(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -596,7 +616,9 @@ class AsyncBenefits(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -643,7 +665,9 @@ class AsyncBenefits(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to specify which entities' data to access. Provide exactly one
-              entity ID per request; a maximum of one is accepted.
+              entity ID per request; a maximum of one is accepted. Required when the
+              connection has more than one entity — omitting it returns a `400`
+              `invalid_request_error`. Optional for single-entity connections.
 
           frequency: The frequency of the benefit deduction/contribution.
 

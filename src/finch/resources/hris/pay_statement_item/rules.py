@@ -73,7 +73,9 @@ class Rules(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to create the rule for. Provide exactly one entity ID per
-              request; a maximum of one is accepted.
+              request; a maximum of one is accepted. Required when the connection has more
+              than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+              for single-entity connections.
 
           attributes: Specifies the fields to be applied when the condition is met.
 
@@ -132,7 +134,9 @@ class Rules(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to update the rule for. Provide exactly one entity ID per
-              request; a maximum of one is accepted.
+              request; a maximum of one is accepted. Required when the connection has more
+              than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+              for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -174,7 +178,9 @@ class Rules(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
-              a maximum of one is accepted.
+              a maximum of one is accepted. Required when the connection has more than one
+              entity — omitting it returns a `400` `invalid_request_error`. Optional for
+              single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -215,7 +221,9 @@ class Rules(SyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to delete the rule for. Provide exactly one entity ID per
-              request; a maximum of one is accepted.
+              request; a maximum of one is accepted. Required when the connection has more
+              than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+              for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -285,7 +293,9 @@ class AsyncRules(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to create the rule for. Provide exactly one entity ID per
-              request; a maximum of one is accepted.
+              request; a maximum of one is accepted. Required when the connection has more
+              than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+              for single-entity connections.
 
           attributes: Specifies the fields to be applied when the condition is met.
 
@@ -344,7 +354,9 @@ class AsyncRules(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to update the rule for. Provide exactly one entity ID per
-              request; a maximum of one is accepted.
+              request; a maximum of one is accepted. Required when the connection has more
+              than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+              for single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -388,7 +400,9 @@ class AsyncRules(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to retrieve rules for. Provide exactly one entity ID per request;
-              a maximum of one is accepted.
+              a maximum of one is accepted. Required when the connection has more than one
+              entity — omitting it returns a `400` `invalid_request_error`. Optional for
+              single-entity connections.
 
           extra_headers: Send extra headers
 
@@ -429,7 +443,9 @@ class AsyncRules(AsyncAPIResource):
 
         Args:
           entity_ids: The entity IDs to delete the rule for. Provide exactly one entity ID per
-              request; a maximum of one is accepted.
+              request; a maximum of one is accepted. Required when the connection has more
+              than one entity — omitting it returns a `400` `invalid_request_error`. Optional
+              for single-entity connections.
 
           extra_headers: Send extra headers
 
