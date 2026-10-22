@@ -103,7 +103,9 @@ class Sessions(SyncAPIResource):
               `recordkeeping` product is requested. Currently supports `recordkeeper` set to
               `voya`, `empower`, `fidelity`, or `transamerica`.
 
-          redirect_uri: The URI to redirect to after the Connect flow is completed
+          redirect_uri: The URI to redirect to after the Connect flow is completed. Required if you use
+              the redirect flow, and it must be registered on the Credentials tab of the Finch
+              Developer Dashboard. Omit it for the embedded flow (Connect SDK).
 
           sandbox: Sandbox mode for testing
 
@@ -189,7 +191,9 @@ class Sessions(SyncAPIResource):
               `benefits` to access deductions endpoints — `deduction` is a deprecated alias
               that is still accepted but should not be combined with `benefits`.
 
-          redirect_uri: The URI to redirect to after the Connect flow is completed
+          redirect_uri: The URI to redirect to after the Connect flow is completed. Required if you use
+              the redirect flow, and it must be registered on the Credentials tab of the Finch
+              Developer Dashboard. Omit it for the embedded flow (Connect SDK).
 
           extra_headers: Send extra headers
 
@@ -303,7 +307,9 @@ class AsyncSessions(AsyncAPIResource):
               `recordkeeping` product is requested. Currently supports `recordkeeper` set to
               `voya`, `empower`, `fidelity`, or `transamerica`.
 
-          redirect_uri: The URI to redirect to after the Connect flow is completed
+          redirect_uri: The URI to redirect to after the Connect flow is completed. Required if you use
+              the redirect flow, and it must be registered on the Credentials tab of the Finch
+              Developer Dashboard. Omit it for the embedded flow (Connect SDK).
 
           sandbox: Sandbox mode for testing
 
@@ -389,7 +395,9 @@ class AsyncSessions(AsyncAPIResource):
               `benefits` to access deductions endpoints — `deduction` is a deprecated alias
               that is still accepted but should not be combined with `benefits`.
 
-          redirect_uri: The URI to redirect to after the Connect flow is completed
+          redirect_uri: The URI to redirect to after the Connect flow is completed. Required if you use
+              the redirect flow, and it must be registered on the Credentials tab of the Finch
+              Developer Dashboard. Omit it for the embedded flow (Connect SDK).
 
           extra_headers: Send extra headers
 
