@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.9.1](https://github.com/Finch-API/finch-api-python/compare/v2.9.0...v2.9.1) (2026-10-22)
+
+
+### Documentation
+
+* **spec:** clarify redirect_uri requirement on connect and token endpoints [DDR-1050] ([3eca067](https://github.com/Finch-API/finch-api-python/commit/3eca067f301fa924c977fe7e6b49233906e3ac44))
+* **spec:** document missing entity_ids error for multi-entity connections [DDR-1051] ([b66faa8](https://github.com/Finch-API/finch-api-python/commit/b66faa896620ec693a3aef28a01decd90b402b13))
+
 ## [2.9.0](https://github.com/Finch-API/finch-api-python/compare/v2.8.3...v2.9.0) (2026-10-13)
 
 
