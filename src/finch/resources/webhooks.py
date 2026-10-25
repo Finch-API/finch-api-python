@@ -114,7 +114,10 @@ class Webhooks(SyncAPIResource):
             if version != "v1":
                 continue
 
-            sig_bytes = base64.b64decode(signature)
+            try:
+                sig_bytes = base64.b64decode(signature)
+            except ValueError:
+                continue
             if hmac.compare_digest(expected_signature, sig_bytes):
                 # valid!
                 return None
@@ -213,7 +216,10 @@ class AsyncWebhooks(AsyncAPIResource):
             if version != "v1":
                 continue
 
-            sig_bytes = base64.b64decode(signature)
+            try:
+                sig_bytes = base64.b64decode(signature)
+            except ValueError:
+                continue
             if hmac.compare_digest(expected_signature, sig_bytes):
                 # valid!
                 return None
