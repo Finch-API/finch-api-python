@@ -185,7 +185,7 @@ class Sessions(SyncAPIResource):
           connection_id: The ID of the existing connection to reauthenticate
 
           minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
-              days)
+              days). Must be between 1 and 129,600 (90 days).
 
           products: The products to request access to (optional for reauthentication). Use
               `benefits` to access deductions endpoints — `deduction` is a deprecated alias
@@ -389,7 +389,7 @@ class AsyncSessions(AsyncAPIResource):
           connection_id: The ID of the existing connection to reauthenticate
 
           minutes_to_expire: The number of minutes until the session expires (defaults to 43,200, which is 30
-              days)
+              days). Must be between 1 and 129,600 (90 days).
 
           products: The products to request access to (optional for reauthentication). Use
               `benefits` to access deductions endpoints — `deduction` is a deprecated alias
