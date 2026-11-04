@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.2](https://github.com/Finch-API/finch-api-python/compare/v2.9.1...v2.9.2) (2026-10-30)
+
+
+### Documentation
+
+* **spec:** fix OpenAPI lint errors flagged by Unum's Spectral review [DDR-984] ([68113a0](https://github.com/Finch-API/finch-api-python/commit/68113a01e87a6dad5f442b6524a053e7808c79fe))
+
 ## [2.9.1](https://github.com/Finch-API/finch-api-python/compare/v2.9.0...v2.9.1) (2026-10-22)
 
 
