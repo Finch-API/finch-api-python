@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.10.0](https://github.com/Finch-API/finch-api-python/compare/v2.9.2...v2.10.0) (2026-11-13)
+
+
+### Features
+
+* **benefit-plan-admin:** accept coverage date, individual and plan filters on the list endpoints [DDR-1177] ([4ba8118](https://github.com/Finch-API/finch-api-python/commit/4ba81184c685cf72aaf2f7f84edb255dfb455899))
+
+
+### Bug Fixes
+
+* **connect:** treat allow_multi_account_connections as always true ([a7e48e1](https://github.com/Finch-API/finch-api-python/commit/a7e48e1a21e7a730122e82a7e4b4c9c7439f63f2))
+
+
+### Chores
+
+* **codeowners:** DEVOPS-390 Transfer SDK ownership to Data Delivery ([#3](https://github.com/Finch-API/finch-api-python/issues/3)) ([6f6f8cf](https://github.com/Finch-API/finch-api-python/commit/6f6f8cfb4056617486a134df263a43d69a944d40))
+* **codeowners:** DEVOPS-390 Transfer SDK ownership to Data Delivery ([#728](https://github.com/Finch-API/finch-api-python/issues/728)) ([5938d8a](https://github.com/Finch-API/finch-api-python/commit/5938d8a024f74fbbf802d3ad85db38a500d58aaf))
+* **codeowners:** transfer ownership to data delivery ([5938d8a](https://github.com/Finch-API/finch-api-python/commit/5938d8a024f74fbbf802d3ad85db38a500d58aaf))
+* **codeowners:** transfer ownership to data delivery ([6f6f8cf](https://github.com/Finch-API/finch-api-python/commit/6f6f8cfb4056617486a134df263a43d69a944d40))
+
 ## [2.9.2](https://github.com/Finch-API/finch-api-python/compare/v2.9.1...v2.9.2) (2026-10-30)
 
 
