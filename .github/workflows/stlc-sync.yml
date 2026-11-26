@@ -6,7 +6,7 @@ name: Sync SDK repos
 # polls cover them) and no-op when their token isn't set.
 #
 # The back-sync is what unblocks codegen after a release: release-please bumps the
-# version on production, and the generate workflow in Finch-API/api-server refuses to
+# version on production, and the generate workflow in Finch-API/bigbird refuses to
 # build while production is ahead of the staging trunk.
 on:
   schedule:
@@ -188,7 +188,7 @@ jobs:
       group: seal-dispatch-${{ github.ref }}
       cancel-in-progress: false
     env:
-      CONFIG_REPO: Finch-API/api-server
+      CONFIG_REPO: Finch-API/bigbird
     steps:
       - name: Loop-guard and send re-seal dispatch
         env:
